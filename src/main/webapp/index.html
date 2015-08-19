@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
     <meta name="viewport" content="initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -11,30 +12,83 @@
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header pull-left">
-                <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button> -->
                 <a class="navbar-brand" href="/">Tipsters</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             
-            <!-- <div class="navbar-header pull-right"> -->
 
-                <ul class="nav navbar-nav navbar-right pull-right">
-                    <li class="navbarImage"><img src ="img/settings.png" ></li>
-                    <li class="navbarImage"><img src ="img/faq.png" ></li>
-                    <li id="userName"><a>Paulo Teixeira</a></li>
-                    <li id="greenBar"><a></a></li>
-                    <li class="navbarImage"><img src ="img/undefinedUser.png" ></li>
-                </ul>
-            <!-- </div> -->
+            <ul class="nav navbar-nav navbar-right pull-right">
+                <li class="navbarImage"><img src ="img/settings.png" ></li>
+                <li class="navbarImage"><img src ="img/faq.png" ></li>
+                <li id="userName"><a>Paulo Teixeira</a></li>
+                <li id="greenBar"><a></a></li>
+                <li class="navbarImage"><img src ="img/undefinedUser.png" ></li>
+            </ul>
+
+            <button type="button" id="menu-toggle" class="navbar-toggle collapsed .navbar-left" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div><!-- /.container-fluid -->
     </nav>
+    <!-- <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a> -->
+
+
+    <div id="wrapper">
+    <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <!-- <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                </li> -->
+                <li>
+                    <img src="img/feed.png">
+                    <a href="#">Feed</a>
+                </li>
+                <li>
+                    <img src="img/sportEvents.png">
+                    <a href="#">Sport Events</a>
+                </li>
+                <li>
+                    <img src="img/watchList.png">
+                    <a href="#">WatchList</a>
+                </li>
+                <li>
+                    <img src="img/rankings.png">
+                    <a href="#">Rankings</a>
+                </li>
+                <li>
+                    <img src="img/notifications.png">
+                    <a href="#">Notifications</a>
+                </li>
+                <li>
+                    <img src="img/search.png">
+                    <a href="#">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    $(".navbar-brand").click(function(e) {
+        e.preventDefault();
+        if ($("#menu-toggle").is(':visible') || $("#wrapper").hasClass("toggled"))
+            $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 </body>
 </html>
