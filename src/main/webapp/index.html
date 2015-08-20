@@ -1,14 +1,40 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Bootstrap the angular app after the Google Java Script libraries are loaded. -->
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title></title>
+    
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
-    <meta name="viewport" content="initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        /**
+         * Initializes the Google API JavaScript client. Bootstrap the angular module after loading the Google libraries
+         * so that Google JavaScript library ready in the angular modules.
+         */
+        function init() {
+            gapi.client.load('conference', 'v1', null, '//' + window.location.host + '/_ah/api');
+            gapi.client.load('oauth2', 'v2', function () {
+                angular.bootstrap(document, ['conferenceApp']);
+            });
+        };
+    </script>
+    <script src="//apis.google.com/js/client:plusone.js?onload=init"></script>
 </head>
-<body>
-    <nav class="navbar navbar-default" role="navigation">
+
+<!-- Restore the credential from cookie if stored by calling initSignInButton() -->
+<body ng-controller="RootCtrl" ng-init="initSignInButton()">
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header pull-left">
@@ -36,6 +62,7 @@
     <!-- <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a> -->
 
 
+
     <div id="wrapper">
     <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -54,7 +81,7 @@
                     <a href="#">Sport Events</a>
                 </li>
                 <li>
-                    <img src="img/watchList.png">
+                    <img src="img/watchlist2.png">
                     <a href="#">WatchList</a>
                 </li>
                 <li>
@@ -72,10 +99,26 @@
             </ul>
         </div>
     </div>
+    
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="rootMessages" class="alert alert-{{alertStatus}}" ng-show="rootMessages">
+                <span ng-bind="rootMessages"></span>
+                <i class="dismiss-messages pull-right glyphicon glyphicon-remove" ng-click="rootMessages = ''"
+                   ng-show="rootMessages"></i>
+            </div>
+        </div>
+    </div>
+    <ng-view></ng-view>
+</div>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/controllers.js"></script>
 
 
     <!-- Menu Toggle Script -->
@@ -90,5 +133,6 @@
             $("#wrapper").toggleClass("toggled");
     });
     </script>
+
 </body>
 </html>
