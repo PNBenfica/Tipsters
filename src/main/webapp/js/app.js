@@ -32,6 +32,10 @@ var app = angular.module('conferenceApp',
                     templateUrl: '/partials/profile.html',
                     controller: 'MyProfileCtrl'
                 }).
+                when('/feed', {
+                    templateUrl: '/partials/feed.html',
+                    controller: 'FeedCtrl'
+                }).
                 when('/', {
                     templateUrl: '/partials/home.html'
                 }).

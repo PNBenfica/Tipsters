@@ -1,17 +1,18 @@
 html, body{
-	background-color: #CCFFFF;
+    /*background-color: #CCFFFF;*/
+    background-color: #C4C4C4;
 }
 
 .navbar-default{
-	background-color: #003056;
-	color: #000000;
+    background-color: #003056;
+    color: #000000;
 }
 
 .navbar-default .navbar-toggle {
     position: absolute;
     left: -25px;
-	margin-top: 0;
-	padding-right: -50px;
+    margin-top: 0;
+    padding-right: -50px;
 }
 
 #menu-toggle :hover{
@@ -23,38 +24,38 @@ html, body{
     height: 34px;
 }
 .navbar {
-	min-height:35px !important;
-	/*float: center;*/
-	max-height:35px !important;
+    min-height:35px !important;
+    /*float: center;*/
+    max-height:35px !important;
 }
 
 
 .navbar-nav {padding:0px 0;}
 
 #userName :hover{
-	background-color: #335978;
-	cursor: pointer;
+    background-color: #335978;
+    cursor: pointer;
 }
 
 #userName{
-	position: relative;
-	top: 0px;
+    position: relative;
+    top: 0px;
 }
 
 #greenBar, #greenBar :hover  {
-	background-color: #7FBA00;
-	width: 3px;
+    background-color: #7FBA00;
+    width: 3px;
 }
 
 .navbarImage img{
-	background-color: #003056;
-	width: 34px;
-	height: 34px;
+    background-color: #003056;
+    width: 34px;
+    height: 34px;
 }
 
 .navbarImage :hover{
-	background-color: #335978;
-	cursor: pointer;
+    background-color: #335978;
+    cursor: pointer;
 }
 
 .navbar-collapse.collapse {
@@ -129,6 +130,7 @@ margin-top: 0;
     top: 0;
     width: 94px;
     margin: 0;
+    margin-top: 10px;
     margin-bottom: 20px;
     padding: 0;
     list-style: none;
@@ -206,4 +208,87 @@ margin-top: 0;
         position: relative;
         margin-right: 0;
     }
+}
+
+
+
+
+.panel{
+    background: transparent;
+    border-color: transparent;
+}
+
+#feed-container{
+    padding-top: 50px;
+}
+
+#feed-post-container{
+    margin-left: 2%;
+}
+
+.panel-default > .panel-heading {
+    color: #B5C3B8;
+    background-color: #195A8E;
+    border-right-style: solid;
+    border-right-width: 0px;
+    border-color: #C4C4C4;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.post_right_panel{
+    margin-left: -28px;
+    margin-top: 1px;
+}
+
+.post_right_panel > .btn-group-vertical > .btn :hover{
+    margin-bottom: 1px;
+}
+
+.tipster_post_text {   
+    position: relative;
+    vertical-align:top;
+    color: #B5C3B8;
+    margin-left: 50px;
+    margin-top: -40px;
+}
+
+.tipster_post_text :hover, .panel-default > .panel-heading img :hover{
+    cursor: pointer;
+}
+
+.tipster_post_text_hour{
+    font-size: 80%;
+}
+
+.tipster_post_text_name{
+    font-size: 100%;
+    color: white;
+}
+
+
+.panel-default > .panel-body {
+  color: white;
+}
+
+.post_event{
+    background-color: #70A4B5;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #C4C4C4;
+}
+
+.post_seletion{
+    background-color: #70A4B5;
+    border-style: solid;
+    border-width: 2px;
+    border-bottom-width: 20px;
+    border-color: #C4C4C4;
+}
+.post_odd{
+    border-style: solid;
+    border-width: 2px;
+    border-color: #C4C4C4;
+    background-color: #70A4B5;
+    text-align: center;
 }

@@ -46,7 +46,7 @@
             <ul class="nav navbar-nav navbar-right pull-right">
                 <li class="navbarImage"><img src ="img/settings.png" ></li>
                 <li class="navbarImage"><img src ="img/faq.png" ></li>
-                <li id="userName"><a>Paulo Teixeira</a></li>
+                <li id="userName"><a href="#/profile">Paulo Teixeira</a></li>
                 <li id="greenBar"><a></a></li>
                 <li class="navbarImage"><img src ="img/undefinedUser.png" ></li>
             </ul>
@@ -73,8 +73,8 @@
                     </a>
                 </li> -->
                 <li>
-                    <img src="img/feed.png">
-                    <a href="#">Feed</a>
+                    <a href="#/feed"><img src="img/feed.png"></a>
+                    <a href="#/feed">Feed</a>
                 </li>
                 <li>
                     <img src="img/sportEvents.png">
@@ -102,15 +102,6 @@
     
 
 <div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <div id="rootMessages" class="alert alert-{{alertStatus}}" ng-show="rootMessages">
-                <span ng-bind="rootMessages"></span>
-                <i class="dismiss-messages pull-right glyphicon glyphicon-remove" ng-click="rootMessages = ''"
-                   ng-show="rootMessages"></i>
-            </div>
-        </div>
-    </div>
     <ng-view></ng-view>
 </div>
 
