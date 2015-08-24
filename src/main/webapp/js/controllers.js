@@ -710,7 +710,20 @@ conferenceApp.controllers.controller('ConferenceDetailCtrl', function ($scope, $
  */
 conferenceApp.controllers.controller('RootCtrl', function ($scope, $location, oauth2Provider) {
 
-    /**
+	
+	$scope.notifications = 
+        [{tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", action:"liked", event:"Benfica vs Estoril"}, 
+          {tipsterName: "Fernando Silva", tipsterImage:"img/undefinedUser.png", action:"commented", event:"Arouca vs Benfica"}, 
+         {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", action:"liked", event:"Sporting vs Tondela"}, 
+         {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", action:"commented", event:"Benfica vs Porto"}, 
+         {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", action:"commented", event:"Gil Vicente vs Estoril"}];
+    
+	
+	$scope.removeNotification = function (notificationIndex){
+		$scope.notifications.splice(notificationIndex, 1);;
+	}
+	
+	/**
      * Returns if the viewLocation is the currently viewed page.
      *
      * @param viewLocation

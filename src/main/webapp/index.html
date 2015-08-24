@@ -45,7 +45,7 @@
 
             <ul class="nav navbar-nav navbar-right pull-right">
                 <li class="navbarImage"><img src ="img/settings.png" ></li>
-                <li class="navbarImage"><img src ="img/faq.png" ></li>
+                <li id="notifications" class="navbarImage"><img src ="img/notificationsN.png" ></li>
                 <li id="userName"><a href="#/profile">Paulo Teixeira</a></li>
                 <li id="greenBar"><a></a></li>
                 <li class="navbarImage"><img src ="img/undefinedUser.png" ></li>
@@ -100,6 +100,34 @@
         </div>
     </div>
     
+    
+    <div id="right_wrapper" class="toggled">
+    <!-- Sidebar -->
+        <div id="right_sidebar-wrapper">
+            <ul class="right_sidebar-nav">
+                <!-- <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                </li> -->
+                <li class="right-sidebar-brand">
+                    <p class="closes">×</p>
+                    <a>Notifications</a>
+                </li>
+                
+                
+
+                <li class="notification" ng-repeat="notification in notifications">
+                    <div>
+                        <p ng-click="removeNotification($index)">×</p>
+                        <img ng-src="{{notification.tipsterImage}}">
+                        <a>{{notification.tipsterName}} {{notification.action}} your tip "{{notification.event}}"</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
 
 <div class="container">
     <ng-view></ng-view>
@@ -120,9 +148,22 @@
     });
     $(".navbar-brand").click(function(e) {
         e.preventDefault();
-        if ($("#menu-toggle").is(':visible') || $("#wrapper").hasClass("toggled"))
+        if ($("#menu-toggle").is(':visible') || $("#wrapper").hasClass("toggled")){
             $("#wrapper").toggleClass("toggled");
+            $("#right_wrapper").removeClass("toggled");
+        }
     });
+    $("#notifications").click(function(e) {
+        e.preventDefault();
+        $("#right_wrapper").toggleClass("toggled");
+    });
+
+    $(".closes").click(function(e) {
+        e.preventDefault();
+        $("#right_wrapper").toggleClass("toggled");
+    });
+    $("#right_wrapper").toggleClass("toggled");
+    setTimeout(function(){ $("#right_wrapper").css('opacity', '1'); }, 500);
     </script>
 
 </body>
