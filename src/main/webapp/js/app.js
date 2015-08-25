@@ -2,42 +2,26 @@
 
 /**
  * @ngdoc object
- * @name conferenceApp
+ * @name tipstersApp
  * @requires $routeProvider
- * @requires conferenceControllers
+ * @requires tipstersControllers
  * @requires ui.bootstrap
  *
  * @description
  * Root app, which routes and specifies the partial html and controller depending on the url requested.
  *
  */
-var app = angular.module('conferenceApp',
-    ['conferenceControllers', 'ngRoute', 'ui.bootstrap']).
+var app = angular.module('tipstersApp',
+    ['tipstersControllers', 'ngRoute', 'ui.bootstrap']).
     config(['$routeProvider',
         function ($routeProvider) {
             $routeProvider.
-                when('/conference', {
-                    templateUrl: '/partials/show_conferences.html',
-                    controller: 'ShowConferenceCtrl'
-                }).
-                when('/conference/create', {
-                    templateUrl: '/partials/create_conferences.html',
-                    controller: 'CreateConferenceCtrl'
-                }).
-                when('/conference/detail/:websafeConferenceKey', {
-                    templateUrl: '/partials/conference_detail.html',
-                    controller: 'ConferenceDetailCtrl'
-                }).
-                when('/profile', {
-                    templateUrl: '/partials/profile.html',
-                    controller: 'MyProfileCtrl'
-                }).
                 when('/feed', {
                     templateUrl: '/partials/feed.html',
                     controller: 'FeedCtrl'
                 }).
                 when('/', {
-                    templateUrl: '/partials/home.html'
+                    templateUrl: '/partials/feed.html'
                 }).
                 otherwise({
                     redirectTo: '/'

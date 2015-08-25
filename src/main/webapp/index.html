@@ -24,7 +24,7 @@
         function init() {
             gapi.client.load('conference', 'v1', null, '//' + window.location.host + '/_ah/api');
             gapi.client.load('oauth2', 'v2', function () {
-                angular.bootstrap(document, ['conferenceApp']);
+                angular.bootstrap(document, ['tipstersApp']);
             });
         };
     </script>
@@ -38,14 +38,14 @@
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header pull-left">
-                <a class="navbar-brand" href="/">Tipsters</a>
+                <a id="nav-brand-name" class="navbar-brand" href="#">Tipsters</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             
 
             <ul class="nav navbar-nav navbar-right pull-right">
                 <li class="navbarImage"><img src ="img/settings.png" ></li>
-                <li id="notifications" class="navbarImage"><img src ="img/notificationsN.png" ></li>
+                <li class="navbarImage" ng-click="toggleRightSidebar()"><img src ="img/notificationsN.png" ></li>
                 <li id="userName"><a href="#/profile">Paulo Teixeira</a></li>
                 <li id="greenBar"><a></a></li>
                 <li class="navbarImage"><img src ="img/undefinedUser.png" ></li>
@@ -88,7 +88,7 @@
                     <img src="img/rankings.png">
                     <a href="#">Rankings</a>
                 </li>
-                <li>
+                <li id="xxx">
                     <img src="img/notifications.png">
                     <a href="#">Notifications</a>
                 </li>
@@ -101,7 +101,7 @@
     </div>
     
     
-    <div id="right_wrapper" class="toggled">
+    <div id="right_wrapper">
     <!-- Sidebar -->
         <div id="right_sidebar-wrapper">
             <ul class="right_sidebar-nav">
@@ -111,7 +111,7 @@
                     </a>
                 </li> -->
                 <li class="right-sidebar-brand">
-                    <p class="closes">×</p>
+                    <p class="closes" ng-click="toggleRightSidebar()">×</p>
                     <a>Notifications</a>
                 </li>
                 
@@ -152,17 +152,10 @@
             $("#wrapper").toggleClass("toggled");
             $("#right_wrapper").removeClass("toggled");
         }
+        else
+        	window.location = $(".navbar-brand").attr('href');
     });
-    $("#notifications").click(function(e) {
-        e.preventDefault();
-        $("#right_wrapper").toggleClass("toggled");
-    });
-
-    $(".closes").click(function(e) {
-        e.preventDefault();
-        $("#right_wrapper").toggleClass("toggled");
-    });
-    $("#right_wrapper").toggleClass("toggled");
+    
     setTimeout(function(){ $("#right_wrapper").css('opacity', '1'); }, 500);
     </script>
 
