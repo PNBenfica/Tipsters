@@ -44,8 +44,8 @@
             
 
             <ul class="nav navbar-nav navbar-right pull-right">
-                <li class="navbarImage"><img src ="img/settings.png" ></li>
-                <li class="navbarImage" ng-click="toggleRightSidebar()"><img src ="img/notificationsN.png" ></li>
+                <li class="navbarImage"  ng-click="toggleBetSlip()"><img src ="img/betslip.png" ></li>
+                <li class="navbarImage" ng-click="toggleNotifications()"><img src ="img/notificationsN.png" ></li>
                 <li id="userName"><a href="#/profile">Paulo Teixeira</a></li>
                 <li id="greenBar"><a></a></li>
                 <li class="navbarImage"><img src ="img/undefinedUser.png" ></li>
@@ -101,21 +101,15 @@
     </div>
     
     
-    <div id="right_wrapper">
+    <div id="notifications-wrapper">
     <!-- Sidebar -->
         <div id="right_sidebar-wrapper">
             <ul class="right_sidebar-nav">
-                <!-- <li class="sidebar-brand">
-                    <a href="#">
-                        Start Bootstrap
-                    </a>
-                </li> -->
+            
                 <li class="right-sidebar-brand">
-                    <p class="closes" ng-click="toggleRightSidebar()">×</p>
+                    <p class="closes" ng-click="toggleNotifications()">×</p>
                     <a>Notifications</a>
-                </li>
-                
-                
+                </li>     
 
                 <li class="notification" ng-repeat="notification in notifications">
                     <div>
@@ -127,6 +121,36 @@
             </ul>
         </div>
     </div>
+    
+    
+    
+    <div id="bet-slip-wrapper">
+    <!-- Sidebar -->
+        <div id="right_sidebar-wrapper">
+            <ul class="right_sidebar-nav">
+            
+                <li class="right-sidebar-brand">
+                    <p class="closes" ng-click="toggleBetSlip()">×</p>
+                    <a>Bet Slip</a>
+                </li>
+
+                <li class="single-bet-slip" ng-repeat="betSlipTip in betSlipTips">
+                    <div>
+                        <p ng-click="removeSingleTip($index)">×</p>
+                        <a><b>{{$index + 1}}. {{betSlipTip.selection}}</b></a>
+                        <a>{{betSlipTip.event}}</a>
+                        <a>{{betSlipTip.odd}}</a>
+                    </div>
+                </li>
+
+                <p id="totalOdd" ng-hide="betSlipTips.length < 2">Total odd: {{betSlipTotalOdd()}}</p>
+                
+                <button type="button" ng-hide="betSlipTips.length < 1" class="btn btn-primary btn-sm">Share {{betSlipTips.length}} single tips</button>
+                <button type="button" ng-hide="betSlipTips.length < 1" class="btn btn-primary btn-sm" ng-disabled="betSlipTips.length < 2">Share as multiple bet</button>
+            </ul>
+        </div>
+    </div>
+    
     
 
 <div class="container">
@@ -150,13 +174,14 @@
         e.preventDefault();
         if ($("#menu-toggle").is(':visible') || $("#wrapper").hasClass("toggled")){
             $("#wrapper").toggleClass("toggled");
-            $("#right_wrapper").removeClass("toggled");
+            $("#notifications-wrapper").removeClass("toggled");
+            $("#bet-slip-wrapper").removeClass("toggled");
         }
         else
         	window.location = $(".navbar-brand").attr('href');
     });
     
-    setTimeout(function(){ $("#right_wrapper").css('opacity', '1'); }, 500);
+    //setTimeout(function(){ $("#notifications-wrapper").css('opacity', '1'); }, 500);
     </script>
 
 </body>

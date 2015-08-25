@@ -203,8 +203,7 @@ margin-top: 0;
 *******************************************************************************/
 
 
-#right_wrapper {
-    opacity: 0;
+#notifications-wrapper {
     margin-top: 21px;
     padding-right: 0;
     -webkit-transition: all 0.5s ease;
@@ -214,7 +213,7 @@ margin-top: 0;
     height: 100%;
 }
 
-#right_wrapper.toggled {
+#notifications-wrapper.toggled {
     padding-right: 320px;
 }
 
@@ -233,7 +232,7 @@ margin-top: 0;
     transition: all 0.5s ease;
 }
 
-#right_wrapper.toggled #right_sidebar-wrapper {
+#notifications-wrapper.toggled #right_sidebar-wrapper {
     width: 320px;
 }
 
@@ -266,6 +265,7 @@ margin-top: 0;
     border: 1px;
     border-style: solid;
     border-color: #3F79C3;
+    text-align: left;
 }
 
 
@@ -275,23 +275,43 @@ margin-top: 0;
     color: #B5C3B8;
 }
 
+
+.right_sidebar-nav > li > div{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.right_sidebar-nav li div p{
+    color: #B5C3B8;
+    font-size: 20px;
+    float: right;
+    margin-right: 5%;
+}
+
+.right_sidebar-nav li div p:hover {
+    color: black;
+    text-decoration: none;
+    opacity: 0.8;
+    filter: alpha(opacity=40);
+    cursor: pointer;
+}
+
 @media(min-width:768px) {
-#right_wrapper {
-padding-right: 0;
-}
+    #notifications-wrapper {
+    padding-right: 0;
+    }
 
-#right_wrapper.toggled {
-padding-right: -320px;
-}
+    #notifications-wrapper.toggled {
+    padding-right: -320px;
+    }
 
-#right_sidebar-wrapper {
-width: 0;
-}
+    #right_sidebar-wrapper {
+    width: 0;
+    }
 
-#right_wrapper.toggled #right_sidebar-wrapper {
-width: -320px;
-}
-
+    #notifications-wrapper.toggled #right_sidebar-wrapper {
+    width: -320px;
+    }
 }
 
 .right_sidebar-nav > .right-sidebar-brand {
@@ -342,7 +362,6 @@ width: -320px;
 .notification{
     min-height: 60px;
     line-height: 120%;
-    text-align: left;
 }
 
 .notification img {
@@ -351,31 +370,81 @@ width: -320px;
     margin-right: 3%;
 }
 
-.notification > div{
-    margin-top: 2%;
-    margin-bottom: 2%;
-}
-
-.notification p{
-    color: #B5C3B8;
-    font-size: 20px;
-    float: right;
-    margin-right: 5%;
-}
-
 .notification div a{
     color: white;
 }
 
-.notification p:hover {
-    color: black;
-    text-decoration: none;
-    opacity: 0.8;
-    filter: alpha(opacity=40);
-    cursor: pointer;
+
+/*<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+<><><><><><><><><><><><><><><> Bet Slip <><><><><><><><><><><><><><><>
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>*/
+
+
+#bet-slip-wrapper {
+    margin-top: 21px;
+    padding-right: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    height: 100%;
+}
+
+#bet-slip-wrapper.toggled {
+    padding-right: 320px;
+}
+
+#bet-slip-wrapper.toggled #right_sidebar-wrapper {
+    width: 320px;
+}
+
+@media(min-width:768px) {
+    #bet-slip-wrapper {
+    padding-right: 0;
+    }
+
+    #bet-slip-wrapper.toggled {
+    padding-right: -320px;
+    }
+
+    #right_sidebar-wrapper {
+    width: 0;
+    }
+
+    #bet-slip-wrapper.toggled #right_sidebar-wrapper {
+    width: -320px;
+    }
 }
 
 
+.single-bet-slip{
+    min-height: 60px;
+    line-height: 120%;
+}
+
+
+.single-bet-slip > div > a {
+    margin-left: 5%;
+    color: #B5C3B8;
+}
+
+.single-bet-slip > div > a > b {
+    color: white;
+}
+
+#bet-slip-wrapper button{
+    font-size: 100%;
+    background-color: #006ABD;
+}
+
+#bet-slip-wrapper p{
+    color: #B5C3B8;
+}
+
+#totalOdd{
+    background: #003C6C;
+    cursor: default;
+}
 
 /*<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 <><><><><><><><><><><><><><><> Feed <><><><><><><><><><><><><><><><><>

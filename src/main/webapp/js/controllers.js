@@ -69,22 +69,69 @@ tipstersApp.controllers.controller('RootCtrl', function ($scope, $location, oaut
          {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", action:"commented", event:"Gil Vicente vs Estoril"}];
     
 	/**
-     * Remove a notification
      * @param notificationIndex
      */
 	$scope.removeNotification = function (notificationIndex){
 		$scope.notifications.splice(notificationIndex, 1);
 		if (!$scope.hasNotifications())
-			$scope.toggleRightSidebar();
+			$scope.toggleNotifications();
 	}
 	
 	$scope.hasNotifications = function(){
 		return $scope.notifications.length > 0;
 	}
+
 	
-	$scope.toggleRightSidebar = function(){
-		var notificationWrapper = document.querySelector('#right_wrapper');
-		notificationWrapper.classList.toggle('toggled');
+	
+
+	$scope.betSlipTips = 
+		[{event:"Benfica vs Estoril", selection:"Benfica", odd:1.82 }, 
+         {event:"Arouca vs Benfica", selection:"Under 0.5 Goals - 1st Half", odd:3.20 }, 
+         {event:"Sporting vs Tondela", selection:"Tondela Over 1.5 Golos - 1st Half", odd:5.9 }, 
+         {event:"Benfica vs Porto", selection:"Benfica", odd:1.22 }, 
+         {event:"Gil Vicente vs Estoril", selection:"Gil Vicente", odd:1.64 }];
+	
+	/**
+     * @param tipIndex
+     */
+	$scope.removeSingleTip = function (tipIndex){
+		$scope.betSlipTips.splice(tipIndex, 1);
+		if (!$scope.hasSingleTips())
+			$scope.toggleBetSlip();
+	}
+	
+	$scope.hasSingleTips = function(){
+		return $scope.betSlipTips.length > 0;
+	}
+	
+
+	$scope.betSlipTotalOdd = function(){
+		var totalOdd = 1;
+		for(var i=0; i<$scope.betSlipTips.length; i++) {
+			totalOdd *= $scope.betSlipTips[i].odd;
+		}
+		return totalOdd.toFixed(2);
+	}
+	
+	
+	$scope.toggleBetSlip = function(){
+		$scope.toggleClass('#bet-slip-wrapper', 'toggled');
+		$scope.removeClass('#notifications-wrapper', 'toggled');
+	}
+	
+	$scope.toggleNotifications = function(){
+		$scope.toggleClass('#notifications-wrapper', 'toggled');
+		$scope.removeClass('#bet-slip-wrapper', 'toggled');
+	}
+	
+	$scope.toggleClass = function(id, classe){
+		var element = document.querySelector(id);
+		element.classList.toggle(classe);
+	}
+	
+	$scope.removeClass = function(id, classe){
+		var element = document.querySelector(id);
+		element.classList.remove(classe);
 	}
 	
 	/**
