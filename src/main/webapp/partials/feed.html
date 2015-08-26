@@ -2,7 +2,79 @@
 <div class="container" id="feed-container" ng-controller="FeedCtrl">
     <div class="row">
 
-        <div class="col-xs-12 col-lg-8 col-md-offset-2">
+		<!-- Filters -->
+	    <div class="col-xs-12 col-lg-3 col-md-push-8 hidden-xs filter-accordion">
+	        <div class="panel-group" id="accordion-filter" role="tablist" aria-multiselectable="true">
+	          <div class="panel panel-default">
+	            <div class="panel-heading" role="tab" id="accordion-filter-headingOne">
+	              <h4 class="panel-title">
+	                <a role="button" data-toggle="collapse" data-parent="#accordion-filter" href="#accordion-filter-collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	                  <span class="glyphicon glyphicon-filter pull-left" aria-hidden="true"></span>Filters
+	                </a>
+	              </h4>
+	            </div>
+	            <div id="accordion-filter-collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="accordion-filter-headingOne">
+	            
+	                <div class="panel-body col-xs-6">
+	                    Order By
+	                </div>
+	                
+	                <div class="panel-body col-xs-6 filter-select">
+	                    <select class="col-xs-12">
+	                        <option selected="selected">Share Date</option>
+	                        <option>Event Date</option>
+	                    </select>
+	                </div>
+	
+	                <div class="panel-body col-xs-6">
+	                    Odds over
+	                </div>
+	                <div class="panel-body col-xs-6 filter-input">
+	                    <input type="text" class="form-control" placeholder="1.33">
+	                </div>
+	                <div class="panel-body col-xs-6">
+	                    Odds under
+	                </div>
+	                <div class="panel-body col-xs-6 filter-input">
+	                    <input type="text" class="form-control" placeholder="2.4">
+	                </div>
+	
+	
+	                <div class="panel-body col-xs-6">
+	                    Tip Type
+	                </div>
+	                <div class="panel-body col-xs-6 filter-select">
+	                    <select class="col-xs-12">
+	                        <option selected="selected">All</option>
+	                        <option>Multiple</option>
+	                        <option>Single</option>
+	                    </select>
+	                </div>
+	
+	
+	                <div class="panel-body col-xs-6">
+	                    Sports
+	                </div>
+	                <div class="panel-body col-xs-6 filter-select">
+	                    <select class="col-xs-12">
+	                        <option selected="selected">All</option>
+	                        <option>Football</option>
+	                        <option>Basketball</option>
+	                        <option>Tennis</option>
+	                        <option>Handball</option>
+	                        <option>Volleyball</option>
+	                    </select>
+	                </div>
+	
+	
+	                <button type="button" class="btn btn-primary btn-sm col-xs-12">Apply Filters</button>
+	            </div>
+	          </div>
+	      </div>
+	    </div>
+
+
+        <div class="col-xs-12 col-lg-8 col-md-offset-1">
             <div class="row" id="feed-post-container" ng-repeat="post in posts">
 
                 <div class="col-xs-11">
