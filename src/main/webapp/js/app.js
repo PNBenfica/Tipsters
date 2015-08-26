@@ -20,6 +20,10 @@ var app = angular.module('tipstersApp',
                     templateUrl: '/partials/feed.html',
                     controller: 'FeedCtrl'
                 }).
+                when('/watchlist', {
+                    templateUrl: '/partials/watchlist.html',
+                    controller: 'WatchListCtrl'
+                }).
                 when('/', {
                     templateUrl: '/partials/feed.html'
                 }).
