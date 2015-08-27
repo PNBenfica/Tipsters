@@ -12,7 +12,7 @@
  *
  */
 var app = angular.module('tipstersApp',
-    ['tipstersControllers', 'ngRoute', 'ui.bootstrap']).
+    ['tipstersControllers', 'ngRoute', 'ngResource', 'ui.bootstrap']).
     config(['$routeProvider',
         function ($routeProvider) {
             $routeProvider.
@@ -23,6 +23,10 @@ var app = angular.module('tipstersApp',
                 when('/watchlist', {
                     templateUrl: '/partials/watchlist.html',
                     controller: 'WatchListCtrl'
+                }).
+                when('/rankings', {
+                    templateUrl: '/partials/rankings.html',
+                    controller: 'RankingsCtrl'
                 }).
                 when('/', {
                     templateUrl: '/partials/feed.html'

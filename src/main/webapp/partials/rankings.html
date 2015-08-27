@@ -1,0 +1,129 @@
+<div class="container" id="feed-container" ng-controller="RankingsCtrl" autoscroll="true">
+        <div class="row">
+
+            <div class="col-xs-12 col-lg-3 col-md-push-8 hidden-xs filter-accordion">
+                <div class="panel-group" id="accordion-filter" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="accordion-filter-headingOne">
+                      <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion-filter" href="#accordion-filter-collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <span class="glyphicon glyphicon-filter pull-left" aria-hidden="true"></span>Filters
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="accordion-filter-collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="accordion-filter-headingOne">
+                    
+                        <div class="panel-body col-xs-6">
+                            Order By
+                        </div>
+                        
+                        <div class="panel-body col-xs-6 filter-select">
+                            <select class="col-xs-12">
+                                <option selected="selected">ROI</option>
+                                <option>Win Percentage</option>
+                                <option>Win Streak</option>
+                                <option>Number os Tips</option>
+                                <option>Average Odds</option>
+                            </select>
+                        </div>
+
+                        <div class="panel-body col-xs-6">
+                            Avg. odds over
+                        </div>
+                        <div class="panel-body col-xs-6 filter-input">
+                            <input type="text" class="form-control" placeholder="1.33">
+                        </div>
+                        <div class="panel-body col-xs-6">
+                            Avg. odds under
+                        </div>
+                        <div class="panel-body col-xs-6 filter-input">
+                            <input type="text" class="form-control" placeholder="2.4">
+                        </div>
+
+
+                        <div class="panel-body col-xs-6">
+                            Tip Type
+                        </div>
+                        <div class="panel-body col-xs-6 filter-select">
+                            <select class="col-xs-12">
+                                <option selected="selected">All</option>
+                                <option>Multiple</option>
+                                <option>Single</option>
+                            </select>
+                        </div>
+
+
+                        <div class="panel-body col-xs-6">
+                            Sports
+                        </div>
+                        <div class="panel-body col-xs-6 filter-select">
+                            <select class="col-xs-12">
+                                <option selected="selected">All</option>
+                                <option>Football</option>
+                                <option>Basketball</option>
+                                <option>Tennis</option>
+                                <option>Handball</option>
+                                <option>Volleyball</option>
+                            </select>
+                        </div>
+
+
+                        <button type="button" class="btn btn-primary btn-sm col-xs-12">Apply Filters</button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            
+           <div class="col-xs-12 col-lg-8">
+
+            <div class="table-responsive" ng-show="tipstersRankInfo.length > 0">
+                <table id="conference-table" class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Tipster</th>
+                        <th>ROI</th>
+                        <th>Win %</th>
+                        <th>N&#186; of Tips</th>
+                        <th>Avg Odds</th>
+                        <th>Win Streak</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="tipster in tipstersRankInfo | startFrom: pagination.currentPage * pagination.pageSize | limitTo: pagination.pageSize">
+                        <td class="col-xs-1">{{$index + 1 + pagination.currentPage * 10}}</td>
+                        <td class="col-xs-2">
+                            <img src ="img/undefinedUser.png" >
+                            {{tipster.tipsterName}}
+                        </td>
+                        <td class="col-xs-1">{{tipster.ROI}}</td>
+                        <td class="col-xs-1">{{tipster.winPercent}}</td>
+                        <td class="col-xs-1">{{tipster.numberTips}}</td>
+                        <td class="col-xs-1">{{tipster.averageOdds}}</td>
+                        <td class="col-xs-1">{{tipster.winStreak}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <ul class="pagination" ng-show="tipstersRankInfo.length > 0">
+                <li ng-class="{disabled: pagination.currentPage == 0 }">
+                    <a ng-class="{disabled: pagination.currentPage == 0 }"
+                       ng-click="pagination.isDisabled($event) || (pagination.currentPage = pagination.currentPage - 1)">&lt</a>
+                </li>
+
+                <!-- ng-repeat creates a new scope. Need to specify the pagination.currentPage as $parent.pagination.currentPage -->
+                <li ng-repeat="page in pagination.pageArray()" 
+                	ng-show="isPageVisible(page)"
+                    ng-class="{active: $parent.pagination.currentPage == page}">
+                    <a ng-click="$parent.pagination.currentPage = page">{{page + 1}}</a>
+                </li>
+
+                <li ng-class="{disabled: pagination.currentPage == pagination.numberOfPages() - 1}">
+                    <a ng-class="{disabled: pagination.currentPage == pagination.numberOfPages() - 1}"
+                       ng-click="pagination.isDisabled($event) || (pagination.currentPage = pagination.currentPage + 1)">&gt</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+        </div>

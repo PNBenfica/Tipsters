@@ -45,6 +45,12 @@ tipstersApp.controllers.controller('FeedCtrl',
     	$scope.addToWatchList = function (post) {
     		post.watchList = !post.watchList;
     	};
+    	
+    	$scope.sort = function () {
+    		$scope.posts.sort(function(a, b){
+    			  return a.odd == b.odd ? 0 : +(a.odd > b.odd) || -1;
+    			});
+    	};
     })
 ;
 
@@ -75,6 +81,352 @@ tipstersApp.controllers.controller('WatchListCtrl',
     	};
     })
 ;
+
+
+
+/**
+ * @ngdoc controller
+ * @name FeedCtrl
+ *
+ * @description
+ * A controller used for the Feed page.
+ */
+
+tipstersApp.controllers.controller('RankingsCtrl',
+    function ($scope, $log, oauth2Provider, HTTP_ERRORS) {
+
+	$scope.submitted = false;
+
+	/**
+     * Holds the tipsters currently displayed in the page.
+     * @type {Array}
+     */
+    $scope.tipstersRankInfo = [{tipsterName: "Fernando Silva", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"26%", numberTips:125, averageOdds:1.56, ROI:"5.2%"}, 
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"3.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"3.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"3.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"2.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"2.8%"}, 
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"3.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"3.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"3.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"2.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"2.8%"}, 
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"3.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"3.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"3.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"2.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"2.8%"}, 
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"3.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"3.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"3.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"2.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"2.8%"}, 
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"3.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"3.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"3.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"2.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"2.8%"}, 
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"3.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"3.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"3.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"2.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"2.8%"}, 
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"3.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"3.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"3.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"2.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"2.8%"}, 
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"3.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"3.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"3.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"2.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"2.8%"}, 
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"3.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"3.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"3.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"2.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"2.8%"}, 
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"3.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"3.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"3.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"2.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"2.8%"}, 
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"3.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"3.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"3.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"2.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"2.8%"}, 
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"3.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"3.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"3.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"2.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"2.8%"}, 
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"3.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"3.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"3.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"2.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"2.8%"}, 
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", winStreak:3, winPercent:"25%", numberTips:133, averageOdds:1.36, ROI:"4.2%"}, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", winStreak:1, winPercent:"35%", numberTips:25, averageOdds:1.46, ROI:"4.2%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"},
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:0, winPercent:"18%", numberTips:43, averageOdds:1.54, ROI:"4.1%"}, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", winStreak:7, winPercent:"24%", numberTips:12, averageOdds:1.47, ROI:"3.9%"}];
+    /**
+     * Namespace for the pagination.
+     * @type {{}|*}
+     */
+    $scope.pagination = $scope.pagination || {};
+    $scope.pagination.currentPage = 0;
+    $scope.pagination.pageSize = 10;
+    /**
+     * Returns the number of the pages in the pagination.
+     *
+     * @returns {number}
+     */
+    $scope.pagination.numberOfPages = function () {
+        return Math.ceil($scope.tipstersRankInfo.length / $scope.pagination.pageSize);
+    };
+
+    /**
+     * Returns an array including the numbers from 1 to the number of the pages.
+     *
+     * @returns {Array}
+     */
+    $scope.pagination.pageArray = function () {
+        var pages = [];
+        var numberOfPages = $scope.pagination.numberOfPages();
+        for (var i = 0; i < numberOfPages; i++) {
+            pages.push(i);
+        }
+        return pages;
+    };
+    
+    $scope.isPageVisible = function(page) {
+    	page++;
+    	return $scope.pagination.currentPage - $scope.pagination.currentPage % 10 < page && $scope.pagination.currentPage - $scope.pagination.currentPage % 10 + 11 > page;
+    }
+
+    /**
+     * Checks if the target element that invokes the click event has the "disabled" class.
+     *
+     * @param event the click event
+     * @returns {boolean} if the target element that has been clicked has the "disabled" class.
+     */
+    $scope.pagination.isDisabled = function (event) {
+        return angular.element(event.target).hasClass('disabled');
+    };
+});
+
+
+
+
 
 /**
  * @ngdoc controller
