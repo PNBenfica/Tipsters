@@ -31,13 +31,12 @@ tipstersApp.controllers = angular.module('tipstersControllers', ['ui.bootstrap']
 tipstersApp.controllers.controller('FeedCtrl',
     function ($scope, $log, oauth2Provider, HTTP_ERRORS) {
 		$scope.started = false;
-		$scope.posts = [{tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", like:false, watchList:false, postTime:"2 min", event:"Benfica vs Estoril", selection:"Benfica wins", odd:1.82 }, 
-		                {tipsterName: "Fernando Silva", tipsterImage:"img/undefinedUser.png", like:false, watchList:false, postTime:"6 min", event:"Arouca vs Benfica", selection:"Under 0.5 Goals - 1st Half", odd:3.20 }, 
-		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", like:false, watchList:false, postTime:"8 min", event:"Sporting vs Tondela", selection:"Tondela Over 1.5 Golos - 1st Half", odd:5.9 }, 
-		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", like:false, watchList:false, postTime:"16 min", event:"Benfica vs Porto", selection:"Benfica wins", odd:1.22 }, 
-		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", like:false, watchList:false, postTime:"48 min", event:"Gil Vicente vs Estoril", selection:"Benfica wins", odd:1.64 }];
-
-    	
+		$scope.posts = [{tipsterName: "Fernando Silva", tipsterImage:"img/user1.png", like:false, watchList:false, postTime:"6 min", events:[{name:"Arouca vs Benfica", selection:"Under 0.5 Goals - 1st Half", odd:3.20},{name:"Sporting vs Tondela", selection:"Tondela Over 1.5 Golos - 1st Half", odd:5.9} ] }, 
+		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", like:false, watchList:false, postTime:"8 min", events:[{name:"Sporting vs Tondela", selection:"Tondela Over 1.5 Golos - 1st Half", odd:5.9}] }, 
+		                {tipsterName: "Nuno Cainço", tipsterImage:"img/user2.png", like:false, watchList:false, postTime:"2 min", events:[{name:"Benfica vs Estoril", selection:"Benfica wins", odd:1.82}] }, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/user1.png", like:false, watchList:false, postTime:"16 min", events:[{name:"Benfica vs Porto", selection:"Benfica wins", odd:1.22}] }, 
+		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/user2.png", like:false, watchList:false, postTime:"48 min", events:[{name:"Gil Vicente vs Estoril", selection:"Benfica wins", odd:1.64}] }];
+		
 		$scope.likePost = function (post) {
     		post.like = !post.like;
     	};
@@ -65,14 +64,13 @@ tipstersApp.controllers.controller('FeedCtrl',
 
 tipstersApp.controllers.controller('WatchListCtrl',
     function ($scope, $log, oauth2Provider, HTTP_ERRORS) {
-		$scope.posts = [{tipsterName: "Fernando Silva", tipsterImage:"img/undefinedUser.png", like:false, watchList:true, postTime:"6 min", event:"Arouca vs Benfica", selection:"Under 0.5 Goals - 1st Half", odd:3.20 }, 
-		                {tipsterName: "Paula Cainço", tipsterImage:"img/undefinedUser.png", like:false, watchList:true, postTime:"8 min", event:"Sporting vs Tondela", selection:"Tondela Over 1.5 Golos - 1st Half", odd:5.9 }, 
-		                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", like:false, watchList:true, postTime:"2 min", event:"Benfica vs Estoril", selection:"Benfica wins", odd:1.82 }, 
-		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", like:false, watchList:true, postTime:"16 min", event:"Benfica vs Porto", selection:"Benfica wins", odd:1.22 }, 
-		                {tipsterName: "Pedro Teixeira", tipsterImage:"img/undefinedUser.png", like:false, watchList:true, postTime:"48 min", event:"Gil Vicente vs Estoril", selection:"Benfica wins", odd:1.64 }];
-
-    	
-		$scope.likePost = function (post) {
+	$scope.posts = [{tipsterName: "Fernando Silva", tipsterImage:"img/user2.png", like:false, watchList:true, postTime:"6 min", events:[{name:"Arouca vs Benfica", selection:"Under 0.5 Goals - 1st Half", odd:3.20},{name:"Sporting vs Tondela", selection:"Tondela Over 1.5 Golos - 1st Half", odd:5.9} ] }, 
+	                {tipsterName: "Paula Cainço", tipsterImage:"img/user2.png", like:false, watchList:true, postTime:"8 min", events:[{name:"Sporting vs Tondela", selection:"Tondela Over 1.5 Golos - 1st Half", odd:5.9}] }, 
+	                {tipsterName: "Nuno Cainço", tipsterImage:"img/undefinedUser.png", like:false, watchList:true, postTime:"2 min", events:[{name:"Benfica vs Estoril", selection:"Benfica wins", odd:1.82}] }, 
+	                {tipsterName: "Pedro Teixeira", tipsterImage:"img/user1.png", like:false, watchList:true, postTime:"16 min", events:[{name:"Benfica vs Porto", selection:"Benfica wins", odd:1.22}] }, 
+	                {tipsterName: "Pedro Teixeira", tipsterImage:"img/user2.png", like:false, watchList:true, postTime:"48 min", events:[{name:"Gil Vicente vs Estoril", selection:"Benfica wins", odd:1.64}] }];
+		
+	$scope.likePost = function (post) {
     		post.like = !post.like;
     	};
     	

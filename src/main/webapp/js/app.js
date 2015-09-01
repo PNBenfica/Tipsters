@@ -12,7 +12,7 @@
  *
  */
 var app = angular.module('tipstersApp',
-    ['tipstersControllers', 'ngRoute', 'ngResource', 'ui.bootstrap']).
+    ['tipstersControllers', 'ngRoute', 'ui.bootstrap']).
     config(['$routeProvider',
         function ($routeProvider) {
             $routeProvider.

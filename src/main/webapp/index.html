@@ -15,7 +15,6 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js"></script>
-    <script src="http://code.angularjs.org/1.2.16/angular-resource.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>
         /**
@@ -34,6 +33,7 @@
 
 <!-- Restore the credential from cookie if stored by calling initSignInButton() -->
 <body ng-controller="RootCtrl" ng-init="initSignInButton()">
+    <img src="img/background.png" id="bg" alt="">
 
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
@@ -47,7 +47,7 @@
             <ul class="nav navbar-nav navbar-right pull-right">
                 <li class="navbarImage"  ng-click="toggleBetSlip()"><img src ="img/betslip.png" ></li>
                 <li class="navbarImage" ng-click="toggleNotifications()"><img src ="img/notificationsN.png" ></li>
-                <li id="userName"><a href="#/profile">Paulo Teixeira</a></li>
+                <li id="userName"><a>Paulo Teixeira</a></li>
                 <li id="greenBar"><a></a></li>
                 <li class="navbarImage"><img src ="img/undefinedUser.png" ></li>
             </ul>
@@ -152,6 +152,28 @@
         </div>
     </div>
     
+    <div id="profile-slide-wrapper">
+        <div id="right_sidebar-wrapper">
+            <ul class="right_sidebar-nav">
+                <li> <!-- style="background-color:#90C3D4;" -->
+                    <img src="img/icon-user-default.png">
+                    <a>My Profile</a>
+                </li>
+                <li> <!-- style="background-color:#1D9110;" -->
+                    <img src="img/dollar.png">
+                    <a>Bank</a>
+                </li>
+                <li> <!-- style="background-color:#005C7A;" -->
+                    <img src="img/settings.png">
+                    <a>Settings</a>
+                </li>
+                <li> <!-- style="background-color:#F71B1B;" -->
+                    <img src="img/sign-out.png">
+                    <a>Sign Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
     
 
 <div class="container">
@@ -181,7 +203,17 @@
         else
         	window.location = $(".navbar-brand").attr('href');
     });
+
     
+    $("#userName").click(function(e) {
+        e.preventDefault();
+        $("#profile-slide-wrapper").toggle();
+    });
+    $("#profile-slide-wrapper .right_sidebar-nav").mouseleave(function(e) {
+        e.preventDefault();
+        $("#profile-slide-wrapper").hide();
+    });
+    $("#profile-slide-wrapper").hide();
     //setTimeout(function(){ $("#notifications-wrapper").css('opacity', '1'); }, 500);
     </script>
 
