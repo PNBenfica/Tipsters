@@ -1,80 +1,64 @@
 <div class="container" id="feed-container" ng-controller="RankingsCtrl" autoscroll="true">
         <div class="row">
 
-            <div class="col-xs-12 col-lg-3 col-md-push-8 hidden-xs filter-accordion">
-                <div class="panel-group" id="accordion-filter" role="tablist" aria-multiselectable="true">
-                  <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="accordion-filter-headingOne">
-                      <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion-filter" href="#accordion-filter-collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          <span class="glyphicon glyphicon-filter pull-left" aria-hidden="true"></span>Filters
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="accordion-filter-collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="accordion-filter-headingOne">
-                    
-                        <div class="panel-body col-xs-6">
-                            Order By
-                        </div>
-                        
-                        <div class="panel-body col-xs-6 filter-select">
-                            <select class="col-xs-12">
-                                <option selected="selected">ROI</option>
-                                <option>Win Percentage</option>
-                                <option>Win Streak</option>
-                                <option>Number os Tips</option>
-                                <option>Average Odds</option>
-                            </select>
-                        </div>
-
-                        <div class="panel-body col-xs-6">
-                            Avg. odds over
-                        </div>
-                        <div class="panel-body col-xs-6 filter-input">
-                            <input type="text" class="form-control" placeholder="1.33">
-                        </div>
-                        <div class="panel-body col-xs-6">
-                            Avg. odds under
-                        </div>
-                        <div class="panel-body col-xs-6 filter-input">
-                            <input type="text" class="form-control" placeholder="2.4">
-                        </div>
-
-
-                        <div class="panel-body col-xs-6">
-                            Tip Type
-                        </div>
-                        <div class="panel-body col-xs-6 filter-select">
-                            <select class="col-xs-12">
-                                <option selected="selected">All</option>
-                                <option>Multiple</option>
-                                <option>Single</option>
-                            </select>
-                        </div>
-
-
-                        <div class="panel-body col-xs-6">
-                            Sports
-                        </div>
-                        <div class="panel-body col-xs-6 filter-select">
-                            <select class="col-xs-12">
-                                <option selected="selected">All</option>
-                                <option>Football</option>
-                                <option>Basketball</option>
-                                <option>Tennis</option>
-                                <option>Handball</option>
-                                <option>Volleyball</option>
-                            </select>
-                        </div>
-
-
-                        <button type="button" class="btn btn-primary btn-sm col-xs-12">Apply Filters</button>
-                    </div>
-                  </div>
-              </div>
-            </div>
             
-           <div class="col-xs-12 col-lg-8">
+        <div class="col-xs-2 filters" style="margin-top:2%;">
+            <div class="row">
+                <!-- <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Filters</h4>
+                    </div>
+                </div> -->
+
+
+                <div class="panel-body col-xs-12">   
+
+                    <div>
+                        <h4>Order By</h4>
+                        <div class="custom-radio"><input type="radio" checked="" name="filter_hotel" id="filter_hotel_1" value="1" hidefocus="true" style="outline: none;"><label for="filter_hotel_1" class="checked">ROI</label></div> 
+                        <div class="custom-radio"><input type="radio" name="filter_hotel" id="filter_hotel_2" value="2" hidefocus="true" style="outline: none;"><label for="filter_hotel_2" class="">Win Percentage</label></div> 
+                        <div class="custom-radio"><input type="radio" name="filter_hotel" id="filter_hotel_3" value="3" hidefocus="true" style="outline: none;"><label for="filter_hotel_3" class="">Win Streak</label></div> 
+                        <div class="custom-radio"><input type="radio" name="filter_hotel" id="filter_hotel_4" value="4" hidefocus="true" style="outline: none;"><label for="filter_hotel_4" class="">Number of Tips</label></div> 
+                        <div class="custom-radio"><input type="radio" name="filter_hotel" id="filter_hotel_5" value="5" hidefocus="true" style="outline: none;"><label for="filter_hotel_5" class="">Average Odds</label></div> 
+                    </div>
+
+                    <div class="divider"></div>
+
+
+                    <div>
+                        <h4>Tip Type</h4>
+                        <div class="custom-checkbox"><input type="checkbox" name="filter_location_1" id="filter_location_1" value="1" checked="" hidefocus="true" style="outline: none;"><label for="filter_location_1" class="checked">Single Bet</label></div> 
+                        <div class="custom-checkbox"><input type="checkbox" name="filter_location_2" id="filter_location_2" value="2" checked="" hidefocus="true" style="outline: none;"><label for="filter_location_2" class="checked">Multiple Bet</label></div> 
+                    </div>
+
+
+                    <div class="divider"></div>
+
+
+                    <div>
+                        <h4>Average Odds over</h4>
+                        <input id="min-odd-input" type="number" name="min-odd" min="1.00" value="1.00" step="0.01" size="5">
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div>
+                        <h4>Sports</h4>
+                        <div class="custom-checkbox"><input type="checkbox" name="filter_location_3" id="filter_location_3" value="3" checked="" hidefocus="true" style="outline: none;"><label for="filter_location_3" class="checked">Football</label></div> 
+                        <div class="custom-checkbox"><input type="checkbox" name="filter_location_4" id="filter_location_4" value="4" checked="" hidefocus="true" style="outline: none;"><label for="filter_location_4" class="checked">BasketBall</label></div> 
+                        <div class="custom-checkbox"><input type="checkbox" name="filter_location_5" id="filter_location_5" value="5" checked="" hidefocus="true" style="outline: none;"><label for="filter_location_5" class="checked">Tennis</label></div> 
+                        <div class="custom-checkbox"><input type="checkbox" name="filter_location_6" id="filter_location_6" value="6" checked="" hidefocus="true" style="outline: none;"><label for="filter_location_6" class="checked">HandBall</label></div> 
+                        <div class="custom-checkbox"><input type="checkbox" name="filter_location_6" id="filter_location_6" value="6" checked="" hidefocus="true" style="outline: none;"><label for="filter_location_6" class="checked">VolleyBall</label></div> 
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <button type="button" class="btn btn-primary btn-xs col-xs-12">Refresh</button>
+                </div>
+            </div>
+        </div>
+            
+           <div class="col-xs-12 col-lg-8 col-md-offset-4">
 
             <div class="table-responsive" ng-show="tipstersRankInfo.length > 0">
                 <table id="conference-table" class="table table-striped table-hover">
@@ -93,7 +77,7 @@
                     <tr ng-repeat="tipster in tipstersRankInfo | startFrom: pagination.currentPage * pagination.pageSize | limitTo: pagination.pageSize">
                         <td class="col-xs-1">{{$index + 1 + pagination.currentPage * 10}}</td>
                         <td class="col-xs-2">
-                            <img src ="img/undefinedUser.png" >
+                            <img ng-src="{{tipster.tipsterImage}}">
                             {{tipster.tipsterName}}
                         </td>
                         <td class="col-xs-1">{{tipster.ROI}}</td>

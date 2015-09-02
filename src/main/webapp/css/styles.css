@@ -552,11 +552,10 @@ margin-top: 0;
 }
 
 #feed-container{
-    padding-top: 50px;
+    padding-top: 30px;
 }
 
 #feed-post-container{
-    /*margin-right: 7%;*/
 }
 
 .panel-default > .panel-heading {
@@ -644,86 +643,91 @@ margin-top: 0;
 <><><><><><><><><><><><><><><> Filters ><><><><><><><><><><><><><><><>
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>*/
 
-.filter-accordion{
-    text-align:center;
-    color:white;
+.filters {
+    margin-left: 6%;
     position: fixed;
-    margin-left:2%;
-    margin-top: 3%;
-    background: #003C6C;
-    padding-right: 0px;
-
+    margin-top: 4%;
 }
 
-.filter-accordion .panel-heading{
+.filters .panel-heading{
     color: white;
-    margin-bottom: 4px;
-    margin-right: 7px;
-    margin-left: -5px;
-    margin-top: 0px;
+    padding: 0px;
+    padding-top: 1px;
+    padding-left: 13px;
+    background: rgba(0,60,108,0.7);
 }
 
-.filter-accordion .panel-body{
-    background: #002A4B;
-    border: 1px;
-    border-style: solid;
-    border-color: #3F79C3  !important;
-    padding: 7px;
-    padding-right: 7px;
-
-    margin-left: -5px;
-    margin-right: 5px;
+.filters .panel-body{
+    margin-top: -20px;
+    background: rgba(255,255,255,0.4);
+    min-height: 400px;
+    padding-top: 0px;
+    display: inline-block;
 }
 
-
-.filter-accordion button{
-    margin-left: -5px;
-    margin-top: 3px;
-    margin-bottom: 18px;
-    border-right-style: solid;
-    width: 98%;
-    font-size: 15px;
+.filters button{
+    background: rgba(0,60,108,0.7);
+    border: none;
 }
 
-.filter-accordion select{
-    color: black;
-    background-color: #70A4B5;
-    height: 35px;
-    margin-top: -7px;
+#amount{
+    margin-left: -9px;
 }
 
-.filter-accordion .filter-select{
-    background-color:transparent;
-    border:none !important;
-}
-
-.filter-accordion .filter-input{
-    background-color:transparent;
-    border:none !important;
-}
-
-.filter-accordion select:hover{
+label {
+    display: inline-block;
     cursor: pointer;
-    background-color: #88B2BF;
+    position: relative;
+    padding-left: 25px;
+    margin-right: 15px;
+    font-size: 13px;
 }
 
-.filter-accordion option{
-    background-color: #E1ECF0;
+input[type=radio],
+input[type=checkbox] {
+    display: none;
+}
+label:before {
+    content: "";
+    display: inline-block;
+
+    width: 16px;
+    height: 16px;
+
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    background-color: #aaa;
+    box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
 }
 
-.filter-accordion option:hover{
-    background-color: white;
+.custom-radio label:before {
+    border-radius: 8px;
+}
+.custom-checkbox label {
+    margin-bottom: 10px;
+}
+.custom-checkbox label:before {
+    border-radius: 3px;
 }
 
-.filter-accordion .panel-body input{
-    height:35px; 
-    background-color: #E1ECF0;
-    border-width: 1px !important;
-    border-color: #70A4B5 !important;
-    color: black;
-    margin-top: -7px;
+input[type=radio]:checked + label:before {
+    content: "\2022";
+    color: #003C6C;
+    font-size: 30px;
+    text-align: center;
+    line-height: 10px;
 }
 
+input[type=checkbox]:checked + label:before {
+    content: "\2713";
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+    font-size: 15px;
+    color: #003C6C;
+    text-align: center;
+    line-height: 15px;
+}
 
 
 /*<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
@@ -731,7 +735,8 @@ margin-top: 0;
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>*/
 
 .table-responsive  {
-    margin-left: 3%;
+    margin-top: 5%;
+    /*margin-left: 3%;*/
 }
 
 .table-responsive table {
