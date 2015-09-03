@@ -843,6 +843,7 @@ input[type=checkbox]:checked + label:before {
 .table-responsive  {
     margin-top: 5%;
     /*margin-left: 3%;*/
+    overflow: hidden;
 }
 
 .table-responsive table {
@@ -857,18 +858,39 @@ input[type=checkbox]:checked + label:before {
 
 .table-responsive thead th{
     font-weight: normal;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #C4C4C4;
     text-align: center;
 }
 
+.table-responsive thead th:first-child{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.table-responsive thead th:last-child{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.table-responsive tbody tr:first-child td:first-child{
+    border-top-left-radius: 5px;
+}
+
+.table-responsive tbody tr:first-child td:last-child{
+    border-top-right-radius: 5px;
+}
+
+.table-responsive tbody tr:last-child td:first-child{
+    border-bottom-left-radius: 5px;
+}
+
+.table-responsive tbody tr:last-child td:last-child{
+    border-bottom-right-radius: 5px;
+}
+
+
 .table-responsive tbody td{
-    background-color: white;
+    background-color: #E4F1F5;
     font-weight: normal;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #C4C4C4;
     text-align: center;
 }
 
@@ -886,12 +908,8 @@ input[type=checkbox]:checked + label:before {
     cursor: pointer;
 }
 
-/*.table-responsive tbody tr:hover td{
-    background-color: #70A4B5;
-}
-*/
 .table-striped > tbody > tr:nth-child(2n+1) > td{
-    background-color: white;
+    background: white;
 }
 
 .table-striped > tbody > tr:nth-child(2n+1):hover > td,.table-responsive tbody tr:hover td{
@@ -899,10 +917,13 @@ input[type=checkbox]:checked + label:before {
 }
 
 
-
 .pagination{
-    margin-left: 3%;
+    margin-left: 45%;
     margin-top: -1%;
+}
+
+.pagination li{
+    width: 250px;
 }
 
 .pagination li:hover{
@@ -914,6 +935,15 @@ input[type=checkbox]:checked + label:before {
     color: white;
 }
 
+.pagination li:first-child > a{
+    border-top-left-radius: 30px !important;
+    border-bottom-left-radius: 30px !important;
+}
+
+.pagination li:last-child > a{
+    border-top-right-radius: 30px !important;
+    border-bottom-right-radius: 30px !important;
+}
 
 .pagination li.active a{
     background-color: #005496;
