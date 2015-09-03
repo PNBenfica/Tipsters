@@ -565,6 +565,8 @@ margin-top: 0;
     border-right-width: 0px;
     border-color: #C4C4C4;
     margin-top: 35px;
+
+    border-top-left-radius: 5px;
 }
 
 .tipster_post > .btn-group-horizontal{
@@ -575,10 +577,17 @@ margin-top: 0;
 
 .tipster_post > .btn-group-horizontal > .btn{
     margin-right: -3px;
+    background: rgba(0,42,75,0.4);
+    border-color: rgba(63,121,195,0.6);
+    border-radius: 25px;
 }
 
 .tipster_post > .btn-group-horizontal > .btn :hover{
     margin-bottom: 1px;
+}
+
+.tipster_post > .btn-group-horizontal > .btn:focus{
+    outline: 0 none;
 }
 
 .tipster_post_text {   
@@ -637,6 +646,103 @@ margin-top: 0;
     color: yellow;
     cursor: pointer;
 }
+
+/*******************************************************************************
+********************************* Left Side Bar ********************************
+*******************************************************************************/
+
+.feed-right-news{
+    border-radius: 5px;
+    background: white;
+    padding-left: 0px;
+    padding-right: 0px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+.feed-right-news:hover{
+    background: #EDEDED;
+}
+
+.feed-right-news img:nth-child(1){
+    height: 100%;
+    width: 100%;
+}
+
+.feed-right-news img:nth-child(2){
+    /*margin-left: 5px;
+    height: 100%;
+    width: 30%;*/
+}
+
+.feed-right-news h5{
+    font-family: "Times New Roman", Georgia, Serif;
+    position: relative;
+    top: 0;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.feed-right-news-content p{
+    line-height: 90%;
+    font-size: 13px;
+    padding-right: 5px;
+}
+.feed-right-news-content .avatar{
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: 34%;
+    max-height: 52px; 
+    float: left;
+}
+.feed-right-news-content .avatar img{
+    max-height: 52px; 
+    width: 100%;
+}
+
+.feed-right-news-content{
+    /*overflow: auto*/
+    max-height: 52px; 
+    margin-left: -4px;
+}
+
+/*
+.feed-right-news-content{
+    background: white;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: table;
+}
+
+.feed-right-news-content div{
+    display: inline-block;
+}
+
+.feed-right-news-content .avatar{
+    padding-left: 10px;
+    padding-right: 10px;
+    background: blue;
+    height: 100%;
+    width: 38%;
+}
+
+.feed-right-news-content .subtitle{
+    background: yellow;
+    height: 100%;
+    width: 62%;
+    padding-right: 0px;
+}
+
+.feed-right-news-content .subtitle h3{
+    width: 100%;
+}
+
+.feed-right-news-content img{
+    height: 100%;
+    width: 100%;
+}*/
+
 
 
 /*<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
