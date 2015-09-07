@@ -22,6 +22,35 @@ tipstersApp.controllers = angular.module('tipstersControllers', ['ui.bootstrap']
 
 /**
  * @ngdoc controller
+ * @name ProfileCtrl
+ *
+ * @description
+ * A controller used for a profile page.
+ */
+
+tipstersApp.controllers.controller('ProfileCtrl',
+    function ($scope, $log, $routeParams, HTTP_ERRORS) {
+	
+		$scope.tipsterName = $routeParams.tipsterName;
+
+		$scope.posts = [{tipsterName: $scope.tipsterName, tipsterImage:"img/user2.png", like:false, watchList:false, postTime:"6 min", events:[{name:"Arouca vs Benfica", selection:"Under 0.5 Goals - 1st Half", odd:3.20},{name:"Sporting vs Tondela", selection:"Tondela Over 1.5 Golos - 1st Half", odd:5.9} ] }, 
+		                {tipsterName: $scope.tipsterName, tipsterImage:"img/user2.png", like:false, watchList:false, postTime:"8 min", events:[{name:"Sporting vs Tondela", selection:"Tondela Over 1.5 Golos - 1st Half", odd:5.9}] }, 
+		                {tipsterName: $scope.tipsterName, tipsterImage:"img/user2.png", like:false, watchList:false, postTime:"2 min", events:[{name:"Benfica vs Estoril", selection:"Benfica wins", odd:1.82}] }, 
+		                {tipsterName: $scope.tipsterName, tipsterImage:"img/user2.png", like:false, watchList:false, postTime:"16 min", events:[{name:"Benfica vs Porto", selection:"Benfica wins", odd:1.22}] }, 
+		                {tipsterName: $scope.tipsterName, tipsterImage:"img/user2.png", like:false, watchList:false, postTime:"48 min", events:[{name:"Gil Vicente vs Estoril", selection:"Benfica wins", odd:1.64}] }];
+		
+		$scope.likePost = function (post) {
+    		post.like = !post.like;
+    	};
+    	
+    	$scope.addToWatchList = function (post) {
+    		post.watchList = !post.watchList;
+    	};
+    })
+;
+
+/**
+ * @ngdoc controller
  * @name FeedCtrl
  *
  * @description

@@ -68,9 +68,9 @@
                         <div class="panel-heading tipster_post">
                             <img ng-src="{{post.tipsterImage}}">
                             <div class="tipster_post_text">
-                                <span class="tipster_post_text_name">{{post.tipsterName}}</span>
+                                <a href="#/users/{{post.tipsterName}}" class="tipster_post_text_name">{{post.tipsterName}}</a>
                                 <br>
-                                <span class="tipster_post_text_hour">{{post.postTime}}</span>
+                                <a class="tipster_post_text_hour">{{post.postTime}}</a>
                             </div>  
 
                             <div class="btn-group-horizontal" role="group">

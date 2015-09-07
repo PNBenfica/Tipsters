@@ -78,8 +78,10 @@
                     <tr ng-repeat="tipster in tipstersRankInfo | startFrom: pagination.currentPage * pagination.pageSize | limitTo: pagination.pageSize">
                         <td style="width:4%;">{{$index + 1 + pagination.currentPage * 10}}</td>
                         <td class="col-xs-2">
-                            <img ng-src="{{tipster.tipsterImage}}">
-                            {{tipster.tipsterName}}
+                        	<a href="#/users/{{tipster.tipsterName}}" >
+	                            <img ng-src="{{tipster.tipsterImage}}">
+	                            {{tipster.tipsterName}}
+                            </a>
                         </td>
                         <td class="col-xs-1">{{tipster.ROI}}</td>
                         <td class="col-xs-1">{{tipster.winPercent}}</td>

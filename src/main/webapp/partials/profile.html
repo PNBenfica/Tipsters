@@ -1,0 +1,93 @@
+<div class="container" id="feed-container" ng-controller="ProfileCtrl">
+    <div class="row"> 
+
+        <div class="col-xs-12 col-md-4 col-sm-offset-1 profile-info">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="profile-avatar"><img src="img/user1.png"></div>
+                    <div class="profile-avatar-name">
+                        <h3 class="panel-title">{{tipsterName}}</h3>
+                        <p>127 Followers</p>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="col-xs-7">
+                        <h5>Return On Investment</h5>
+                        <h3>5.3%</h3>
+                    </div>
+                    <div class="col-xs-5">
+                        <h5>Average Odds</h5>
+                        <h3>1.33</h3>
+                    </div>
+                    <div class="col-xs-5">
+                        <h5>Winning Streak</h5>
+                        <h3>7</h3>
+                    </div>
+                    <div class="col-xs-7 favourite-sports">
+                        <h5>Sports</h5>
+                        <img src="img/football-icon.png">
+                        <h4>Football</h4>
+                        <img src="img/tennis-icon.png">
+                        <h4>Tennis</h4>
+                    </div>
+                    <div class="col-xs-6">
+                        <h5>Tips Shared</h5>
+                        <h3>2015</h3>
+                    </div>
+                    <div class="col-xs-6">
+                        <h5>Winning Percentage</h5>
+                        <h3>25.4%</h3>
+                    </div>
+                    <!-- Return On Investment
+                    Winning Tips
+                    Total Tips
+                    Average Odds
+                    Streak
+                    Sports -->
+                </div>
+                <div class="panel-footer">
+                    <img src="img/follow.png">
+                    <b>Follow</b>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="col-xs-12 col-md-5 col-md-offset-6">
+            <div class="row" id="feed-post-container" ng-repeat="post in posts">
+
+                <div class="col-xs-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading tipster_post">
+                            <img ng-src="{{post.tipsterImage}}">
+                            <div class="tipster_post_text">
+                                <span class="tipster_post_text_name">{{post.tipsterName}}</span>
+                                <br>
+                                <span class="tipster_post_text_hour">{{post.postTime}}</span>
+                            </div>  
+
+                            <div class="btn-group-horizontal" role="group">
+		                        <button type="button" class="btn btn-primary btn-sm" ng-click="likePost(post)"><img src="{{!post.like && 'img/like.png' || 'img/likefilled.png'}}"></button>
+		                        <button type="button" class="btn btn-success btn-sm"><img src="img/comments.png"></button>
+		                        <button type="button" class="btn btn-warning btn-sm" ng-click=addToWatchList(post)><img src="{{!post.watchList && 'img/star.png' || 'img/starfilled.png'}}"></button>
+		                    </div>                            
+                        </div>
+                        
+                        <div class="panel-body col-xs-12 post-event" ng-repeat="event in post.events">
+                            <div>
+                                <p><b>{{$index + 1}}.  {{event.selection}}</b></p>
+                                <p>{{event.name}}</p>
+                                <p>Odd: {{event.odd}}</p>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

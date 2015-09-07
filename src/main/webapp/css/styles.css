@@ -1,6 +1,7 @@
 html {
     /*background-color: #CCFFFF;*/
     /*background-color: #C4C4C4;*/
+    /*background-color: #1E5D75;*/
     cursor: default;
 }
 #bg {
@@ -598,6 +599,11 @@ margin-top: 0;
     margin-top: -40px;
 }
 
+.tipster_post_text a{   
+    text-decoration: none;
+    color: white;
+}
+
 .tipster_post_text :hover, .panel-default > .panel-heading img :hover{
     cursor: pointer;
 }
@@ -900,6 +906,12 @@ input[type=checkbox]:checked + label:before {
     margin-left: 5%;
 }
 
+.table-responsive a{
+    text-decoration: none !important;
+    color: #0B6280;
+}
+
+
 .table-responsive tbody td.col-xs-2{
     text-align: left;
 }
@@ -959,4 +971,180 @@ input[type=checkbox]:checked + label:before {
 
 .pagination li.disabled a.disabled:hover{
     cursor: default;
+}
+
+
+
+
+/*<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+<><><><><><><><><><><><><><><> Profile  <><><><><><><><><><><><><><><>
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>*/
+
+
+/*******************************************************************************
+******************************** Profile Header ********************************
+*******************************************************************************/
+
+
+.profile-info{
+    height: 100%;
+    width: 30%;
+    position: fixed;
+    left: 6%;
+}
+
+
+@media screen and (max-width: 728px) {
+    .profile-info {
+        width: 98%;
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .profile-info {
+        width: 90%;
+        left: 6%;
+        position: relative;
+    }
+}
+
+.profile-info .panel-default > .panel-heading {
+    background: #0B6280;
+    border-style: none;
+    border-top-left-radius: 0px;
+    min-height: 85px;
+    min-width: 260px;
+}
+
+.profile-info .profile-avatar{
+    width: 70px;
+    height: 70px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #AB8865;
+    border-radius: 100px;
+}
+
+.profile-info .profile-avatar img{
+    height: 60px;
+    width: 60px;
+    margin-left: 3px;
+    margin-top: 3px;
+    border-radius: 100px;
+}
+
+.profile-info .profile-avatar-name{
+    margin-top: -60px;
+    top: 20px;
+    height: 50px;
+    min-width: 150px;
+    margin-left: 80px;
+}
+
+
+.profile-info .profile-avatar-name h3{
+    font-size: 25px;
+    font-weight: normal;
+    color: white;
+}
+
+.profile-info .profile-avatar-name p:hover{
+    cursor: pointer;
+}
+
+/*******************************************************************************
+********************************* Profile stats ********************************
+*******************************************************************************/
+
+.profile-info .panel-default > .panel-body {
+    background: white;
+}
+
+
+.profile-info .panel-body div{
+    background: rgba(0,60,255,0.3);
+    color: black;
+    text-align: center;
+    height: 100px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: white;
+}
+
+.profile-info .panel-body div h5{
+    font-weight: normal;
+}
+
+.profile-info .panel-body div h3{
+    font-weight: bold;
+    margin-top: -1px;
+    color: #363636;
+}
+
+.profile-info .panel-body div:nth-child(1){
+    background: rgba(0,60,255,0.3);
+}
+
+.profile-info .panel-body div:nth-child(2){
+    background: rgba(255,60,0,0.3);
+}
+
+.profile-info .panel-body div:nth-child(3){
+    background: rgba(60,255,0,0.3);
+}
+
+.profile-info .panel-body div:nth-child(4){
+    background: rgba(255,60,255,0.3);
+}
+
+.profile-info .panel-body div:nth-child(5){
+    background: rgba(0,60,0,0.3);
+}
+
+.profile-info .panel-body div:nth-child(6){
+    background: rgba(60,0,60,0.3);
+}
+
+.profile-info .favourite-sports{
+}
+
+.profile-info .favourite-sports h4{
+    line-height: 80%;
+    text-align: left;
+}
+
+.profile-info .favourite-sports img{
+    margin-left: 0px;
+    margin-right: 5px;
+    left: 0px;
+    height: 20px;
+    float: left;
+}
+
+/*******************************************************************************
+***************************** Profile Follow Button ****************************
+*******************************************************************************/
+
+.profile-info .panel-footer{
+    background: #50ABF1;
+    border: none;
+    text-align: center;
+}
+
+.profile-info .panel-footer:hover{
+    background: #74BBF2;
+    cursor: pointer;
+}
+
+.profile-info .panel-footer b{
+    font-size: 20px;
+    color: white;
+    margin-left: 15px;
+}
+
+.profile-info .panel-footer img{
+    margin-left: -20px;
+    max-height: 25px; 
+    margin-top: -2px;
 }

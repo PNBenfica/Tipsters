@@ -28,6 +28,10 @@ var app = angular.module('tipstersApp',
                     templateUrl: '/partials/rankings.html',
                     controller: 'RankingsCtrl'
                 }).
+                when('/users/:tipsterName', {
+                    templateUrl: '/partials/profile.html',
+                    controller: 'ProfileCtrl'
+                }).
                 when('/', {
                     templateUrl: '/partials/feed.html'
                 }).
