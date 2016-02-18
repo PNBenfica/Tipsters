@@ -1,0 +1,155 @@
+
+<!-- Left Bar -->
+<div class="left-bar col-xs-12 col-sm-4 col-md-3 col-lg-2 hidden-xs">
+    <ul class="list-group affix">
+        <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-user"></span> Paulo Teixeira</a></li>
+        <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-pencil"></span> Editar Perfil</a></li>
+        <li class="list-group-item"></li>
+        <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-signal"></span> Feed de Noticias</a></li>
+        <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-star-empty"></span> WatchList</a></li>
+        <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-picture"></span> Eventos Desportivos</a></li>
+        <li class="list-group-item"><a href="#/Rankings"><span class="glyphicon glyphicon-stats"></span> Rankings</a></li>
+    </ul>
+</div> <!-- Left Bar -->
+
+<!-- Feed -->
+<div class="col-xs-12 col-sm-7 col-md-5 ">
+
+
+
+    <div class="panel panel-default col-md-12" id="feed-new-post" style="background-color:transparent;">
+        
+        <div class="panel-body">
+            <textarea onkeyup="AutoGrowTextArea(this)" onfocus="EnterTextArea(this)" id="feed-textarea" class="col-xs-12"  rows="1" style="overflow:hidden" placeholder="Got any tips?"></textarea>
+        </div>
+        <div class="panel-body">
+            <button type="button" class="btn btn-default">Publicar</button>
+        </div>
+    </div>
+
+
+    <!-- <div class="form-group">
+        <input type="text" class="form-control" placeholder="Got any tips?"></input>
+    </div> -->
+
+    <div class="feed-post panel panel-default col-md-12">
+        <div class="panel-heading col-xs-12">
+            <div class="col-xs-1 feed-post-tipster-image">
+                <a href="#"><img src="img/joaoalmeida.jpg" class="img-circle"></a>
+            </div>
+            <h3 class="panel-title col-xs-8 col-lg-10">
+                <p>João Almeida</p>
+                <p class="small-text">2 min</p>
+            </h3>
+            
+        </div>
+        <div class="panel-body post-content">
+            <div class="panel panel-default post-tips">
+                <div class="panel-body">
+                    <p class="post-tip-selection">1. Benfica<p>
+                    <p class="post-tip-event">Belenenses vs Benfica<p>
+                    <p class="post-tip-odd">1.51<p>
+                </div>
+            </div>
+            <div class="panel panel-default post-tips">
+                <div class="panel-body">
+                    <p class="post-tip-selection">2. Rio Ave<p>
+                    <p class="post-tip-event">Sporting vs Rio Ave<p>
+                    <p class="post-tip-odd">2.35<p>
+                </div>
+            </div>
+            <p class="tipster-comment">Benfica is very strong, they win.<br>Sporting is very weak, they lose for sure.<p>
+        </div>
+
+        <div class="panel-footer">
+            <div class="row">
+                <a href="#" class="col-xs-3"><span class="col-xs-push-6 glyphicon glyphicon-thumbs-up"></span></a>
+                <a href="#" class="col-xs-3"><span class="col-xs-push-6 glyphicon glyphicon-comment"></span></a>
+                <a href="#" class="col-xs-3"><span class="col-xs-push-6 glyphicon glyphicon-share"></span></a>
+                <a href="#" class="col-xs-3"><span class="col-xs-push-6 glyphicon glyphicon-star-empty"></span></a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="feed-post panel panel-default col-md-12">
+        <div class="panel-heading col-xs-12">
+            <div class="col-xs-1 feed-post-tipster-image">
+                <a href="#"><img src="img/pauloteixeira.jpg" class="img-circle"></a>
+            </div>
+            <h3 class="panel-title col-xs-8 col-lg-10">
+                <p>Paulo Teixeira</p>
+                <p class="small-text">2 min</p>
+            </h3>
+            
+        </div>
+        <div class="panel-body post-content">
+            <div class="panel panel-default post-tips">
+                <div class="panel-body">
+                    <p class="post-tip-selection">1. Benfica<p>
+                    <p class="post-tip-event">Belenenses vs Benfica<p>
+                    <p class="post-tip-odd">1.51<p>
+                </div>
+            </div>
+            <div class="panel panel-default post-tips">
+                <div class="panel-body">
+                    <p class="post-tip-selection">2. Rio Ave<p>
+                    <p class="post-tip-event">Sporting vs Rio Ave<p>
+                    <p class="post-tip-odd">2.35<p>
+                </div>
+            </div>
+            <p class="tipster-comment">Benfica is very strong, they win.<br>Sporting is very weak, they lose for sure.<p>
+        </div>
+
+        <div class="panel-footer">
+            <div class="row">
+                <a href="#" class="col-xs-3"><span class="col-xs-push-6 glyphicon glyphicon-thumbs-up"></span></a>
+                <a href="#" class="col-xs-3"><span class="col-xs-push-6 glyphicon glyphicon-comment"></span></a>
+                <a href="#" class="col-xs-3"><span class="col-xs-push-6 glyphicon glyphicon-share"></span></a>
+                <a href="#" class="col-xs-3"><span class="col-xs-push-6 glyphicon glyphicon-star-empty"></span></a>
+            </div>
+        </div>
+    </div>
+</div> <!-- Feed -->
+
+
+<!-- Trend bar -->
+<div class="panel panel-default trend-bar affix col-md-push-8 col-md-3 hidden-xs hidden-sm">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            Trends
+            <a href="#" data-toggle="tooltip" title="Eventos Populares"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+            <a href="#" data-toggle="tooltip" title="Publicações Populares"><span class="glyphicon glyphicon-comment"></span></a>
+            <a href="#" data-toggle="tooltip" title="Tipsters Sugeridos"><span class="glyphicon glyphicon-user"></span></a>
+        </h3>
+        
+    </div>
+    <div class="panel-body">
+        <div class="panel panel-default trend-event">
+            <img src="img/vardy.jpg">
+            <div class="panel-footer"><p>Leicester vs Watford</p></div>
+        </div>
+
+        <div class="panel panel-default trend-event">
+            <img src="img/liverunited.png">
+            <div class="panel-footer">Liverpool vs United</div>
+        </div>
+
+        <div class="panel panel-default trend-event">
+            <img src="img/barcareal.jpg">
+            <div class="panel-footer">Barcelona vs Real Madrid</div>
+        </div>
+    </div>
+</div> <!-- Trend bar -->
+
+
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip(); 
+
+        $( "#feed-textarea" ).focus(function() {
+            $('#feed-new-post button').css('opacity',1);
+            $("#feed-textarea").css('height', "100px");
+        });
+    });
+</script>

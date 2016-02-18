@@ -1,0 +1,74 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Tipsters - Share your tips</title>
+
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <link rel="stylesheet" href="css/jquery-ui.min.css">
+
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </head>
+
+    <body ng-app="tipstersApp">
+
+        
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span> 
+                    </button>
+                    <a class="navbar-brand" href="#">Tipsters</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <div class="col-sm-5 col-md-5 col-md-push-2">
+                        <form class="navbar-form" role="search">
+                            <div class="input-group col-xs-12">
+                                <input type="text" class="form-control col-md-12" placeholder="Search tipsters, events..." name="srch-term" id="srch-term">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right">                        
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Saldo: 20.00€
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Depositos</a></li>
+                                <li><a href="#">Levantamentos</a></li>
+                                <li><a href="#">Historial</a></li> 
+                            </ul>
+                        </li>
+
+                        <li><a href="#"><span class="glyphicon glyphicon-bell"></span></a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-envelope"></span></a></li>
+                        <li id="navbar-tipster"><a href="#">Paulo Teixeira  <img class="img-circle" src="img/pauloteixeira.jpg"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+
+        <ng-view autoscroll="true"></ng-view>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/controllers.js"></script>
+
+    </body>
+
+</html>

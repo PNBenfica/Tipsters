@@ -1,0 +1,180 @@
+
+/*************************************************
+Html General Elements
+*************************************************/
+
+html, body{
+	background-color: #F7F7F7;
+}
+
+body { padding-top: 70px; }
+
+a, a:hover, a:active, a:visited {
+    text-decoration:none;
+}
+
+a:hover {
+    color: #D9230F;
+}
+
+
+/*************************************************
+Nav Bar
+*************************************************/
+
+#navbar-tipster img{
+	width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
+
+/*************************************************
+Left Bar
+*************************************************/
+
+.left-bar .list-group .list-group-item{
+	border-color: transparent;
+	background-color: #F7F7F7;
+}
+
+.left-bar .list-group .list-group-item a { 
+    color: #424444;
+    text-decoration: none;
+}
+
+.left-bar .list-group .list-group-item a:hover { 
+    color: #D9230F;
+}
+
+
+/*************************************************
+Trend Bar
+*************************************************/
+
+.trend-bar .panel-heading .panel-title a:first-child{
+	margin-left: 45%;
+}
+
+.trend-bar .panel-heading .panel-title a{
+	margin-left: 10px;
+}
+
+.trend-bar .panel-heading {
+	background-color: white;
+}
+
+.trend-bar .trend-event .panel-footer {
+	height: 30px;
+	margin-top: -30px;
+	color: white;
+	background: #5C5C5C;
+	text-align:center;
+	font-weight:bold;
+	opacity:0.7;
+}
+
+.trend-bar .trend-event img {
+	width: 100%;
+	height: 140px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+/*************************************************
+Feed
+*************************************************/
+
+.feed-post a { 
+    color: #424444;
+}
+
+.feed-post a:hover{
+	color: #D9230F;
+}
+
+.feed-post .panel-heading, .feed-post .panel-footer{
+	background-color: white;
+} 
+
+.feed-post .feed-post-tipster-image{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    margin-top: 5px;
+}
+
+.feed-post .feed-post-tipster-image img{
+	width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 0px;
+}
+
+@media screen and (min-width: 768px) {
+    .feed-post .feed-post-tipster-image {
+        margin-left: 15px;
+    }
+}
+
+.feed-post .small-text{
+	font-size: 10px;
+}
+
+.feed-post .panel-title{
+    margin-top: 10px;
+}
+
+.post-content{
+	margin-top: 80px;
+}
+
+.feed-post .post-content .post-tips .panel-body{
+	padding-top: 6px;
+	padding-bottom: 0px;
+	padding-left: 25px;
+	line-height: 90%;
+}
+
+.feed-post .tipster-comment{
+	margin-bottom: -15px;
+	padding-left: 25px;
+}
+
+#feed-new-post{
+	margin-bottom: 50px;
+}
+
+#feed-new-post, #feed-new-post .panel-body{
+	border: none;
+	outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+#feed-new-post .panel-body{
+	padding: 0px;
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+#feed-new-post button{
+	position: absolute;
+	right: 0px;
+	margin-top: 5px;
+	margin-bottom: 20px;
+	opacity: 0;
+}
+
+#feed-textarea{
+	padding-top: 8px;
+	border-radius: 5px;
+	border-color: #D9D9D9;
+    resize: none;
+    height: 40px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+}
