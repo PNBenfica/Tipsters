@@ -53,7 +53,7 @@ Trend Bar
 *************************************************/
 
 .trend-bar .panel-heading .panel-title a:first-child{
-	margin-left: 45%;
+	margin-left: 55%;
 }
 
 .trend-bar .panel-heading .panel-title a{
@@ -64,22 +64,26 @@ Trend Bar
 	background-color: white;
 }
 
-.trend-bar .trend-event .panel-footer {
-	height: 30px;
-	margin-top: -30px;
-	color: white;
-	background: #5C5C5C;
-	text-align:center;
-	font-weight:bold;
-	opacity:0.7;
+.trend-bar .panel-body{
+	padding: 5px;
 }
 
-.trend-bar .trend-event img {
-	width: 100%;
-	height: 140px;
-    border-top-right-radius: 3px;
-    border-top-left-radius: 3px;
+.trend-bar .panel-body .list-group li{
+	border-color: transparent;
+	padding-bottom: 5px;
 }
+
+.trend-bar .panel-body .list-group li:last-child{
+	border-color: transparent;
+	padding-bottom: 0px;
+}
+
+.trend-bar .panel-body .list-group .trend-event-description{
+	margin-top: -10px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
 
 /*************************************************
 Feed
