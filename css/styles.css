@@ -52,16 +52,20 @@ Left Bar
 Trend Bar
 *************************************************/
 
-.trend-bar .panel-heading .panel-title a:first-child{
-	margin-left: 55%;
+
+.trend-bar{
+	/*background-color: black;*/
+	padding: 0px;
 }
 
-.trend-bar .panel-heading .panel-title a{
-	margin-left: 10px;
+.trend-bar .tooltip-inner {
+  white-space:nowrap;
+  max-width:none;
 }
 
-.trend-bar .panel-heading {
-	background-color: white;
+.trend-bar .panel-heading .panel-title {
+	padding-top: 10px;
+	padding-left: 10px;
 }
 
 .trend-bar .panel-body{
@@ -83,6 +87,66 @@ Trend Bar
 	padding-top: 0px;
 	padding-bottom: 0px;
 }
+
+.trend-bar .panel-heading{
+	padding-bottom: 0px;
+	/*padding-top: 0px;*/
+}
+
+.trend-bar .panel-heading .nav-tabs:hover{
+	cursor: pointer;
+}
+
+
+
+.trend-bar .trend-user .trend-user-tipster-image{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    margin-top: 5px;
+    float: left;
+}
+
+.trend-bar .trend-user .trend-user-tipster-image img{
+	width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 0px;
+}
+
+.trend-bar .trend-user{
+	padding-left: 15px;
+	padding-bottom: 15px;
+}
+
+.trend-bar .small-text{
+	font-size: 11px;
+}
+
+.trend-bar .trend-user .panel-title{
+    /*text-align: right;*/
+    position: absolute;
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+.trend-bar .trend-user #add-user-trend{
+	margin-right: 20px;
+	margin-top: 10px;
+	width: 40px;
+	height: 40px;
+}
+
+.trend-bar .trend-user #add-user-trend img{
+	width: 40px;
+	height: 40px;
+}
+
+
+.trend-bar .trend-user #add-user-trend:hover{
+	cursor: pointer;
+}
+
 
 
 /*************************************************
@@ -121,7 +185,7 @@ Feed
     }
 }
 
-.feed-post .small-text{
+.small-text{
 	font-size: 10px;
 }
 
