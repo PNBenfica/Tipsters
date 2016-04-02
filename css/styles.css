@@ -147,6 +147,10 @@ Trend Bar
 	cursor: pointer;
 }
 
+.trend-bar a, .trend-bar a:hover, .trend-bar a:active, .trend-bar a:visited {
+    text-decoration:none;
+}
+
 
 
 /*************************************************
@@ -246,3 +250,24 @@ Feed
     box-shadow: none;
     outline: none;
 }
+
+/***** post to buy a tip ****/
+
+.feed-post-to-buy, .feed-post-to-buy .panel-body, .feed-post-to-buy .panel-heading, .feed-post-to-buy .panel-footer{
+	background-color: #F7FFF9;
+}
+
+.feed-post-to-buy .panel-footer{
+	margin-top: -5px;
+}
+
+.feed-post-to-buy .panel-footer .glyphicon-shopping-cart {
+    margin-right: 10px;
+}
+
+.feed-post-to-buy .panel-footer .buttons a {
+    float: left;
+    position: relative;
+    width: 25%;
+}
+
