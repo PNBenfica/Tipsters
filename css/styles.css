@@ -213,30 +213,39 @@ Feed
 	padding-left: 25px;
 }
 
+
+/** new post - Got any tips? */
+
 #feed-new-post{
 	margin-bottom: 50px;
-}
-
-#feed-new-post, #feed-new-post .panel-body{
-	border: none;
-	outline: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-
-#feed-new-post .panel-body{
 	padding: 0px;
-	margin-left: -15px;
-	margin-right: -15px;
+	background: #FAFAFA;
+	/*background: #F2F2F2;*/
+}
+
+#feed-new-post textarea{
+	overflow:hidden;
+}
+
+#feed-new-post .new-post-tipster-image{
+	padding: 0px;
+}
+
+#feed-new-post .new-post-tipster-image img{
+	width: 38px;
+	height: 38px;
+}
+
+#new-post-button-wrapper{
+	padding-top: 0px;
 }
 
 #feed-new-post button{
-	position: absolute;
+	/*position: absolute;
 	right: 0px;
 	margin-top: 5px;
 	margin-bottom: 20px;
-	opacity: 0;
+	opacity: 0;*/
 }
 
 #feed-textarea{
