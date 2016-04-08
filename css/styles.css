@@ -17,6 +17,29 @@ a:hover {
     color: #D9230F;
 }
 
+.dropdown-menu:before {
+  position: absolute;
+  top: -7px;
+  right: 12px;
+  display: inline-block;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #ccc;
+  border-left: 7px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  content: '';
+}
+
+.dropdown-menu:after {
+  position: absolute;
+  top: -6px;
+  right: 13px;
+  display: inline-block;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #ffffff;
+  border-left: 6px solid transparent;
+  content: '';
+}
+
 
 /*************************************************
 Nav Bar
@@ -46,6 +69,58 @@ Left Bar
 .left-bar .list-group .list-group-item a:hover { 
     color: #D9230F;
 }
+
+
+/*************************************************
+Notifications
+*************************************************/
+
+.my-dropdown .panel{
+	width: 300px;
+}
+.my-dropdown .panel-heading{
+	padding-top: 0px;
+	padding-bottom: 2px;
+}
+
+.my-dropdown .panel .row{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.my-dropdown .panel-body{
+	padding-left: 0px;
+	padding-top: 5px;
+	padding-bottom: 0px;
+
+	border-bottom-style: solid;
+	border-bottom-width: 1.5px;
+	border-color: #E5E5E5;
+}
+
+.my-dropdown .panel-body:last-child{
+	border: none;
+}
+
+.my-dropdown .panel-body:hover{
+	cursor: pointer;
+	background-color: #F5F5F5;
+}
+
+.my-dropdown .panel-body img{
+	width: 50px;
+	height: 50px;
+}
+
+.my-dropdown .panel-body .notification-text{
+	margin-top: -8px;
+	padding-left: 4px; 
+}
+
+.my-dropdown .panel-body .notification-text p{
+	font-size: 75%;
+}
+
 
 
 /*************************************************
