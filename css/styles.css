@@ -72,11 +72,11 @@ Left Bar
 
 
 /*************************************************
-Notifications
+Notifications dropdown
 *************************************************/
 
 .my-dropdown .panel{
-	width: 300px;
+	width: 320px;
 }
 .my-dropdown .panel-heading{
 	padding-top: 0px;
@@ -120,6 +120,32 @@ Notifications
 .my-dropdown .panel-body .notification-text p{
 	font-size: 75%;
 }
+
+
+
+/*************************************************
+Messages dropdown
+*************************************************/
+
+.messages-dropdown .panel .panel-heading a{
+	font-size: 85%;
+}
+
+.messages-dropdown .panel .panel-body h5, .messages-dropdown .panel .panel-body h6{
+  	line-height: 10px; 
+}
+
+
+.messages-dropdown .panel .panel-body .messages-number{
+	font-size: 85%;
+	margin-top: 5px;
+}
+
+
+.messages-dropdown .panel-body .notification-text p{
+	margin-top: -3px; 
+}
+
 
 
 
@@ -206,15 +232,15 @@ Trend Bar
 }
 
 .trend-bar .trend-user #add-user-trend{
-	margin-right: 20px;
-	margin-top: 10px;
-	width: 40px;
-	height: 40px;
+	margin-right: 24px;
+	margin-top: 11px;
+	width: 30px;
+	height: 30px;
 }
 
 .trend-bar .trend-user #add-user-trend img{
-	width: 40px;
-	height: 40px;
+	width: 30px;
+	height: 30px;
 }
 
 
