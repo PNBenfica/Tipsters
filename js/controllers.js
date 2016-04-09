@@ -20,3 +20,8 @@ tipstersApp.controller('FeedController', function($scope) {
 tipstersApp.controller('RankingsController', function($scope) {
  
 });
+ 
+ 
+tipstersApp.controller('ProfileController', function($scope) {
+ 
+});

@@ -381,3 +381,61 @@ Feed
     width: 25%;
 }
 
+
+
+/*************************************************
+Profile
+*************************************************/
+
+/*********** Profile info */
+
+#profile-info .profile-user-img{
+	width: 50px;
+	height: 50px;
+}
+
+#profile-info .profile-user-img img{
+	width: 50px;
+	height: 50px;
+}
+
+#profile-info .panel-heading .panel-title {
+	padding-top: 15px;
+	padding-left: 10px;
+	font-size: 130%;
+}
+
+#profile-info .panel-heading #profile-add-user {
+	width: 30px;
+	height: 30px;
+	padding-top: 10px;
+	padding-right: 10px;
+}
+
+#profile-info .panel-heading #profile-add-user img{
+	width: 30px;
+	height: 30px;
+}
+
+#profile-info .panel-body {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+#profile-info .panel-body #profile-info-details div{
+	text-align: center;
+}
+
+#profile-info .panel-body #profile-info-other-networks {
+	margin-top: 15px;
+}
+
+#profile-info .panel-body #profile-info-other-networks div{
+	text-align: center;
+	/*width: 25%;*/
+}
+
+#profile-info .panel-body #profile-info-other-networks div img{
+	width: 75%;
+	height: 75%;
+}
