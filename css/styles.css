@@ -389,32 +389,40 @@ Profile
 
 /*********** Profile info */
 
+@media (max-width: 768px) {
+    .affix {
+	  position: static;
+	  width: auto;
+	  top: 0;
+    }
+}
+
 #profile-info .profile-user-img{
-	width: 50px;
-	height: 50px;
+	width: 35px;
+	height: 35px;
 }
 
 #profile-info .profile-user-img img{
-	width: 50px;
-	height: 50px;
+	width: 35px;
+	height: 35px;
 }
 
 #profile-info .panel-heading .panel-title {
-	padding-top: 15px;
+	padding-top: 5px;
 	padding-left: 10px;
 	font-size: 130%;
 }
 
 #profile-info .panel-heading #profile-add-user {
-	width: 30px;
-	height: 30px;
-	padding-top: 10px;
+	width: 23px;
+	height: 23px;
 	padding-right: 10px;
+	padding-top: 5px;
 }
 
 #profile-info .panel-heading #profile-add-user img{
-	width: 30px;
-	height: 30px;
+	width: 23px;
+	height: 23px;
 }
 
 #profile-info .panel-body {
@@ -424,6 +432,10 @@ Profile
 
 #profile-info .panel-body #profile-info-details div{
 	text-align: center;
+}
+
+#profile-info .panel-body #profile-info-details div h5{
+	font-weight: bold;
 }
 
 #profile-info .panel-body #profile-info-other-networks {
@@ -438,4 +450,20 @@ Profile
 #profile-info .panel-body #profile-info-other-networks div img{
 	width: 75%;
 	height: 75%;
+}
+
+#profile-info .profile-stats .panel-heading .panel-title{
+	padding-top: 5px;
+	padding-left: 10px;
+	font-size: 115%;
+}
+
+#profile-info .profile-stats .panel-heading span{
+	padding-right: 5px;
+}
+
+#profile-info .profile-stats #profile-prefered-sports img{
+	width: 10px;
+	height: 10px;
+	margin-bottom: 2px;
 }

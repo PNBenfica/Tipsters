@@ -1,5 +1,7 @@
 <!-- profile info details -->
-<div id="profile-info" class="col-xs-12 col-sm-4 col-md-3">
+<div id="profile-info" class="col-xs-12 col-sm-4 col-md-3 affix">
+
+    <!-- profile details -->
 	<div class="panel panel-default">
 	    <div class="panel-heading clearfix">
 
@@ -49,12 +51,49 @@
 
 
 	    </div>
-	</div>
+	</div> <!-- profile details -->
+
+
+    <!-- profile stats -->
+    <div class="panel panel-default profile-stats">
+        <div class="panel-heading clearfix">
+
+            <div class="panel-title"> <span class="glyphicon glyphicon-stats"></span> Estatisticas </div>
+
+        </div>
+
+        <div class="panel-body">
+            
+            <div class="col-xs-12" id="profile-info-details">
+                <div class="col-xs-4">
+                    <h5>ROI</h5>
+                    <span>5.23%</span>
+                </div>
+                <div class="col-xs-4">
+                    <h5>Streak</h5>
+                    <span>6</span>
+                </div>
+                <div class="col-xs-4">
+                    <h5>Win %</h5>
+                    <span>20.5%</span>
+                </div>
+                <div class="col-xs-6">
+                    <h5>Avg Win Odds</h5>
+                    <span>1.26</span>
+                </div>
+                <div class="col-xs-6" id="profile-prefered-sports">
+                    <h5>More tips on</h5>
+                    <img src="img/football.png">
+                    <span>Football</span>
+                </div>
+            </div>
+        </div>
+    </div> <!-- profile stats -->
 </div> <!-- profile info details -->
 
 
 <!-- posts -->
-<div class="col-xs-12 col-sm-7 col-md-5 ">
+<div class="col-xs-12 col-sm-7 col-md-5 col-sm-push-4 col-md-push-3">
     <div class="feed-post panel panel-default col-md-12">
         <div class="panel-heading col-xs-12">
             <div class="col-xs-1 feed-post-tipster-image">
@@ -139,3 +178,4 @@
 
 <!-- Trend bar -->
 <div ng-include="'partials/trendBar.html'"></div>
+
