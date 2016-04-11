@@ -25,3 +25,8 @@ tipstersApp.controller('RankingsController', function($scope) {
 tipstersApp.controller('ProfileController', function($scope) {
  
 });
+ 
+ 
+tipstersApp.controller('SportsController', function($scope) {
+ 
+});

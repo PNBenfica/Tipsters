@@ -17,6 +17,10 @@ tipstersApp.config(['$routeProvider',
         templateUrl: 'partials/profile.html',
         controller: 'ProfileController'
       }).
+      when('/sports', {
+        templateUrl: 'partials/sports.html',
+        controller: 'SportsController'
+      }).
       otherwise({
         redirectTo: '/'
       });

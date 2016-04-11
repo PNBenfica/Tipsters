@@ -467,3 +467,19 @@ Profile
 	height: 10px;
 	margin-bottom: 2px;
 }
+
+
+/*************************************************
+Sports
+*************************************************/
+
+#sports-list-bar .list-group-item img{
+	height: 15px;
+	width: 15px;
+	margin-top: -3px;
+}
+
+#sports-list-bar .list-group .top-leagues-list-bar{
+	padding-left: 10px;
+	margin-bottom: 0px;
+}
