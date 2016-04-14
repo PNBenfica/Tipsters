@@ -483,3 +483,30 @@ Sports
 	padding-left: 10px;
 	margin-bottom: 0px;
 }
+
+
+/**********************************
+league tables
+**********************************/
+
+.league-tables .panel-heading{
+	/*padding-bottom: 0px;
+	padding-top: 0px;*/
+}
+
+.league-tables .panel-heading h3{
+	font-size: 110%;
+}
+
+.league-tables .panel-body{
+	padding-bottom: 2px;
+	padding-top: 7px;
+}
+
+.league-tables .panel-body a{
+	padding-bottom: 5px;
+}
+
+.league-tables .breadcrumb{
+	margin-bottom: 0px;
+}
