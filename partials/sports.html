@@ -137,7 +137,7 @@
 
 
 <!-- boletim -->
-<div class="league-tables col-lg-3 col-lg-push-2">
+<div id="bet-slip" class="league-tables col-lg-3 col-lg-push-8 hidden-md hidden-sm hidden-xs affix">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Boletim</h3>  
@@ -145,6 +145,31 @@
 
         <div class="panel-body">
 
+            <div class="panel panel-default bet-slip-single-bet">
+                <div class="panel-body">
+                  <p>1. Benfica <a href="#/sports" class="cross pull-right">x</a></p>
+                  <p>Benfica vs Arouca</p>
+                  <p>1.33</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default bet-slip-single-bet">
+                <div class="panel-body">
+                  <p>2. Benfica <a href="#/sports" class="cross pull-right">x</a></p>
+                  <p>Benfica vs Arouca</p>
+                  <p>1.33</p>
+                </div>
+            </div>
+
+            <p>Odd total: 2.6</p>
+
+            <p>Selling Price: <input type="text" class="form-control" id="inputEmail3" placeholder="0.0"> €</p>
+
+            <div class="form-group">
+                <textarea class="form-control" rows="3" id="bet-slip-comment" placeholder="Add comment"></textarea>
+            </div>
+
+            <button type="button" class="btn btn-default btn-sm btn-block">Share</button>
         </div>
     </div> 
 </div> <!-- boletim -->

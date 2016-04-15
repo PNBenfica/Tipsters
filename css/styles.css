@@ -489,11 +489,6 @@ Sports
 league tables
 **********************************/
 
-.league-tables .panel-heading{
-	/*padding-bottom: 0px;
-	padding-top: 0px;*/
-}
-
 .league-tables .panel-heading h3{
 	font-size: 110%;
 }
@@ -509,4 +504,31 @@ league tables
 
 .league-tables .breadcrumb{
 	margin-bottom: 0px;
+}
+
+/**********************************
+bet slip
+**********************************/
+
+
+#bet-slip .panel-body{
+	padding-bottom: 10px;
+}
+
+#bet-slip .panel-body input { 
+	display: inline;
+	width: 50px;
+	margin-left: 5px;
+}
+
+#bet-slip .panel-body .bet-slip-single-bet .panel-body{ 
+	padding-bottom: 0px; 
+}
+
+#bet-slip .panel-body .bet-slip-single-bet .panel-body p{ 
+    line-height: 90%;
+}
+
+#bet-slip .panel-body .bet-slip-single-bet .panel-body .cross{  
+    font-size: 90%;
 }
