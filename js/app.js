@@ -21,6 +21,10 @@ tipstersApp.config(['$routeProvider',
         templateUrl: 'partials/sports.html',
         controller: 'SportsController'
       }).
+      when('/sports/premierleague', {
+        templateUrl: 'partials/sportsleague.html',
+        controller: 'SportsLeagueController'
+      }).
       otherwise({
         redirectTo: '/'
       });

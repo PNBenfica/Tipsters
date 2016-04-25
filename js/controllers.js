@@ -30,3 +30,7 @@ tipstersApp.controller('ProfileController', function($scope) {
 tipstersApp.controller('SportsController', function($scope) {
  
 });
+ 
+tipstersApp.controller('SportsLeagueController', function($scope) {
+ 
+});

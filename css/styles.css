@@ -40,6 +40,10 @@ a:hover {
   content: '';
 }
 
+.no-padding-sides{
+	padding-left: 0px;
+	padding-right: 0px;
+}
 
 /*************************************************
 Nav Bar
@@ -55,6 +59,12 @@ Nav Bar
 /*************************************************
 Left Bar
 *************************************************/
+
+@media screen and (min-width: 1200px) {
+	.left-bar.push-left{
+		margin-left: 60px;
+	}
+}
 
 .left-bar .list-group .list-group-item{
 	border-color: transparent;
@@ -252,6 +262,22 @@ Trend Bar
     text-decoration:none;
 }
 
+
+.trend-bar.panel.with-nav-tabs .panel-heading{
+    padding: 5px 5px 0 5px;
+}
+.trend-bar.panel.with-nav-tabs .panel-heading .panel-title{
+    padding: 10px;
+}
+.trend-bar.panel.with-nav-tabs .nav-tabs{
+	border-bottom: none;
+}
+.trend-bar.panel.with-nav-tabs .nav-tabs .active a{
+	background-color: white;
+}
+.trend-bar.panel.with-nav-tabs .nav-justified{
+	margin-bottom: -1px;
+}
 
 
 /*************************************************
@@ -506,6 +532,34 @@ league tables
 	margin-bottom: 0px;
 }
 
+.league-tables .league-game a{
+	text-align: center;
+}
+
+.league-tables .league-game:first-child{
+	padding-top: 5px;
+}
+
+.league-tables .league-game a:first-child{
+	text-align: left;
+}
+
+.league-tables .league-game-selection-type{
+	text-align: center;
+	font-size: 90%;
+}
+
+.league-tables .league-game a:not(:first-child):hover{
+	background-color: #F0F0F0;
+}
+
+.league-tables .league-game a span{
+	color: #D17166;
+	font-size: 90%;
+	padding-right: 10px;
+}
+
+
 
 /**********************************
 bet slip
@@ -532,6 +586,11 @@ bet slip
 
 #bet-slip .panel-body .bet-slip-single-bet .panel-body .cross{  
     font-size: 90%;
+}
+
+#bet-slip .panel-body .bet-slip-make-a-selection{  
+    margin-top: 5px;
+    margin-bottom: 2px;
 }
 
 
