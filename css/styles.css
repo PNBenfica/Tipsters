@@ -506,6 +506,7 @@ league tables
 	margin-bottom: 0px;
 }
 
+
 /**********************************
 bet slip
 **********************************/
@@ -531,4 +532,55 @@ bet slip
 
 #bet-slip .panel-body .bet-slip-single-bet .panel-body .cross{  
     font-size: 90%;
+}
+
+
+/**********************************
+Tips on this game
+**********************************/
+
+#tips-on-this-events #tips-this-event-wrapper{
+	max-height: 250px;
+	overflow-y: scroll;
+}
+
+#tips-on-this-events #tips-this-event-wrapper::-webkit-scrollbar { 
+    display: none; 
+}
+
+#tips-on-this-events .tip-on-this-event { 
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: #E8E8E8;
+
+    line-height: 90%;
+}
+
+#tips-on-this-events .tip-on-this-event img{ 
+    width: 25px;
+    height: 25px;
+    float:left;
+}
+
+#tips-on-this-events .tip-on-this-event .media-body p:nth-child(2){ 
+	margin-top: -3px;
+	font-size: 80%;
+}
+
+
+#tips-on-this-events .tip-on-this-event .panel { 
+    padding-left: 10px;
+    padding-top: 8px;
+}
+
+#tips-on-this-events .tip-on-this-event .tip-this-event-only-text{ 
+    line-height: 120%;
+}
+
+#tips-on-this-events #add-comment-this-event{
+	padding-bottom: 5px; 
+}
+
+#tips-on-this-events #add-comment-this-event button{
+	margin-top: -10px;  
 }
