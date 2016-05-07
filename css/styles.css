@@ -3,12 +3,6 @@
 Html General Elements
 *************************************************/
 
-html, body{
-	background-color: #F7F7F7;
-}
-
-body { padding-top: 70px; }
-
 a, a:hover, a:active, a:visited {
     text-decoration:none;
 }
@@ -84,6 +78,30 @@ Left Bar
 /*************************************************
 Notifications dropdown
 *************************************************/
+
+@media screen and (max-width: 768px) {
+	/*.dropdown-pull-right {
+	  float: right !important;
+	  right: 0;
+	  left: auto;
+	}*/
+
+	.dropdown > .dropdown-menu{
+		position: fixed;
+    	left:10px;
+    	top:100px;
+	}
+
+	.dropdown-alerts{
+		position: fixed !important;
+    	right:-50px !important;
+    	top:100px !important;
+	}
+}
+
+.dropdown-alerts2{
+	width: 300px;
+}
 
 .my-dropdown .panel{
 	width: 320px;
@@ -209,20 +227,20 @@ Trend Bar
 }
 
 
+.trend-bar .trend-user:first-child{
+	margin-top: 10px;
+}
 
 .trend-bar .trend-user .trend-user-tipster-image{
     height: 50px;
     width: 50px;
     border-radius: 50px;
     margin-top: 5px;
-    float: left;
 }
 
 .trend-bar .trend-user .trend-user-tipster-image img{
 	width: 50px;
     height: 50px;
-    position: absolute;
-    right: 0px;
 }
 
 .trend-bar .trend-user{
@@ -236,26 +254,17 @@ Trend Bar
 
 .trend-bar .trend-user .panel-title{
     /*text-align: right;*/
-    position: absolute;
     margin-left: 50px;
     margin-top: 10px;
 }
 
-.trend-bar .trend-user #add-user-trend{
-	margin-right: 24px;
-	margin-top: 11px;
-	width: 30px;
-	height: 30px;
+
+.trend-bar .trend-user button{
+	margin-top: 5px;
 }
 
-.trend-bar .trend-user #add-user-trend img{
-	width: 30px;
-	height: 30px;
-}
-
-
-.trend-bar .trend-user #add-user-trend:hover{
-	cursor: pointer;
+.trend-bar .trend-user .pull-right:hover{
+	background-color: black;
 }
 
 .trend-bar a, .trend-bar a:hover, .trend-bar a:active, .trend-bar a:visited {
@@ -510,6 +519,10 @@ Sports
 	margin-bottom: 0px;
 }
 
+.sidebar img{
+	height: 15px;
+	width: 15px;
+}
 
 /**********************************
 league tables
@@ -529,6 +542,7 @@ league tables
 }
 
 .league-tables .breadcrumb{
+	background: white;
 	margin-bottom: 0px;
 }
 
@@ -576,29 +590,46 @@ bet slip
 	margin-left: 5px;
 }
 
-#bet-slip .panel-body .bet-slip-single-bet .panel-body{ 
-	padding-bottom: 0px; 
+#bet-slip .panel-body .bet-slip-single-bet:first-child{ 
+	margin-top: -8px; 
+}
+
+#bet-slip .panel-body .bet-slip-single-bet{ 
+	margin-top: -8px; 
+}
+
+#bet-slip .panel-body .bet-slip-single-bet:first-child{ 
+	margin-top: 0px; 
+}
+
+#bet-slip .panel-body .bet-slip-single-bet .panel-body{  
+    padding-bottom: 0px;
 }
 
 #bet-slip .panel-body .bet-slip-single-bet .panel-body p{ 
     line-height: 90%;
 }
 
+
+#bet-slip #bet-slip-total-odd{ 
+    margin-top: -10px;
+}
+
 #bet-slip .panel-body .bet-slip-single-bet .panel-body .cross{  
     font-size: 90%;
 }
 
-#bet-slip .panel-body .bet-slip-make-a-selection{  
+
+#bet-slip .panel-body .empty-bet-slip{  
     margin-top: 5px;
     margin-bottom: 2px;
 }
-
 
 /**********************************
 Tips on this game
 **********************************/
 
-#tips-on-this-events #tips-this-event-wrapper{
+/*#tips-on-this-events #tips-this-event-wrapper{
 	max-height: 250px;
 	overflow-y: scroll;
 }
@@ -619,6 +650,12 @@ Tips on this game
     width: 25px;
     height: 25px;
     float:left;
+}*/
+
+
+#tips-on-this-events .chat-img img{ 
+    width: 50px;
+    height: 50px;
 }
 
 #tips-on-this-events .tip-on-this-event .media-body p:nth-child(2){ 
@@ -627,19 +664,10 @@ Tips on this game
 }
 
 
-#tips-on-this-events .tip-on-this-event .panel { 
+#tips-on-this-events .tip-on-this-event { 
     padding-left: 10px;
-    padding-top: 8px;
 }
 
-#tips-on-this-events .tip-on-this-event .tip-this-event-only-text{ 
-    line-height: 120%;
-}
-
-#tips-on-this-events #add-comment-this-event{
-	padding-bottom: 5px; 
-}
-
-#tips-on-this-events #add-comment-this-event button{
-	margin-top: -10px;  
+#tips-on-this-events .tip-on-this-event a { 
+    color:black;
 }
