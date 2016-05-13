@@ -39,6 +39,10 @@ a:hover {
 	padding-right: 0px;
 }
 
+.panel, .btn{
+	border-radius: 0px;
+}
+
 /*************************************************
 Nav Bar
 *************************************************/
@@ -305,6 +309,10 @@ Feed
 	background-color: white;
 } 
 
+.feed-post .panel-heading .panel-title{
+	padding-top: 10px;
+}
+
 .feed-post .feed-post-tipster-image{
     height: 50px;
     width: 50px;
@@ -315,8 +323,6 @@ Feed
 .feed-post .feed-post-tipster-image img{
 	width: 50px;
     height: 50px;
-    position: absolute;
-    right: 0px;
 }
 
 @media screen and (min-width: 768px) {
@@ -361,6 +367,7 @@ Feed
 
 #feed-new-post textarea{
 	overflow:hidden;
+	border-radius:0px;
 }
 
 #feed-new-post .new-post-tipster-image{
@@ -370,18 +377,12 @@ Feed
 #feed-new-post .new-post-tipster-image img{
 	width: 38px;
 	height: 38px;
+	margin-right: 5px;
+	margin-top: 1px;
 }
 
 #new-post-button-wrapper{
 	padding-top: 0px;
-}
-
-#feed-new-post button{
-	/*position: absolute;
-	right: 0px;
-	margin-top: 5px;
-	margin-bottom: 20px;
-	opacity: 0;*/
 }
 
 #feed-textarea{
@@ -524,6 +525,30 @@ Sports
 	width: 15px;
 }
 
+.sidebar #empty-sidebar{
+	height: 100px;
+}
+
+.sidebar{
+	overflow-y:scroll;
+}
+
+.sidebar::-webkit-scrollbar-track
+{
+	/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+	background-color: transparent;
+}
+
+.sidebar::-webkit-scrollbar
+{
+	width: 1px;
+	background-color: #F5F5F5;
+}
+
+.sidebar::-webkit-scrollbar-thumb
+{
+	background-color: #5E5E5E;
+}
 /**********************************
 league tables
 **********************************/
