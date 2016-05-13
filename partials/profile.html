@@ -2,22 +2,19 @@
 <div class="row">
 
     <!-- profile info details -->
-    <div id="profile-info" class="col-lg-4">
+    <div id="profile-info" class="col-md-4">
 
         <!-- profile details -->
     	<div class="panel panel-default">
-    	    <div class="panel-heading clearfix">
+    	    <div class="panel-heading clearfix col-xs-12 media">
 
-                <div class="col-xs-1 profile-user-img">
+                <div class="profile-user-img media-left">
                     <a href="#"><img src="img/joaoalmeida.jpg" class="img-circle"></a>
                 </div>
-                <div class="col-xs-8">
+                <div class="media-body">
                 	<p class="panel-title">João Almeida</p>
                 </div>
-
-    	        <!-- <div class="pull-right" id="profile-add-user">
-    				<a href="/#"><img src="img/add-user.png"></a>           
-    	        </div>   -->                     
+                 
     	    </div>
 
     	    <div class="panel-body">
@@ -98,16 +95,58 @@
 
 
     <!-- posts -->
-    <div class="col-lg-6 col-lg-push-1">
+    <div class="col-md-6 col-md-push-1">
 
-        <div class="feed-post panel panel-default">
-            <div class="panel-heading col-xs-12">
-                <div class="col-xs-1 feed-post-tipster-image">
+        
+        <!-- posts -->
+        <div class="feed-post panel panel-default col-md-12">
+            <div class="panel-heading col-xs-12 media">
+                <div class="feed-post-tipster-image media-left">
                     <a href="#"><img src="img/joaoalmeida.jpg" class="img-circle"></a>
                 </div>
-                <h3 class="panel-title col-xs-8 col-lg-10">
+                <h3 class="panel-title media-body">
                     <p>João Almeida</p>
-                    <p class="small-text">2 min</p>
+                    <p class="small-text"><i class="fa fa-clock-o fa-fw"></i> 2 min</p>
+                </h3>                
+            </div>
+
+            <div class="panel-body post-content">
+                <div class="panel panel-default post-tips">
+                    <div class="panel-body">
+                        <p class="post-tip-selection">1. Benfica<p>
+                        <p class="post-tip-event">Belenenses vs Benfica<p>
+                        <p class="post-tip-odd">1.51<p>
+                    </div>
+                </div>
+                <div class="panel panel-default post-tips">
+                    <div class="panel-body">
+                        <p class="post-tip-selection">2. Rio Ave<p>
+                        <p class="post-tip-event">Sporting vs Rio Ave<p>
+                        <p class="post-tip-odd">2.35<p>
+                    </div>
+                </div>
+                <p class="tipster-comment">Benfica is very strong, they win.<br>Sporting is very weak, they lose for sure.<p>
+            </div>
+
+            <div class="panel-footer">
+                <div class="row">
+                    <a href="#" class="col-xs-3"><span class="col-xs-push-6 glyphicon glyphicon-thumbs-up"></span></a>
+                    <a href="#" class="col-xs-3"><span class="col-xs-push-6 glyphicon glyphicon-comment"></span></a>
+                    <a href="#" class="col-xs-3"><span class="col-xs-push-6 glyphicon glyphicon-share"></span></a>
+                    <a href="#" class="col-xs-3"><span class="col-xs-push-6 glyphicon glyphicon-star-empty"></span></a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="feed-post panel panel-default col-md-12">
+            <div class="panel-heading col-xs-12 media">
+                <div class="feed-post-tipster-image media-left">
+                    <a href="#"><img src="img/joaoalmeida.jpg" class="img-circle"></a>
+                </div>
+                <h3 class="panel-title media-body">
+                    <p>João Almeida</p>
+                    <p class="small-text"><i class="fa fa-clock-o fa-fw"></i> 2 min</p>
                 </h3>
                 
             </div>
@@ -140,41 +179,36 @@
         </div>
 
 
-        <div class="feed-post panel panel-default col-md-12">
-            <div class="panel-heading col-xs-12">
-                <div class="col-xs-1 feed-post-tipster-image">
+        <div class="feed-post feed-post-to-buy panel panel-default col-md-12">
+            <div class="panel-heading col-xs-12 media">
+                <div class="feed-post-tipster-image media-left">
                     <a href="#"><img src="img/joaoalmeida.jpg" class="img-circle"></a>
                 </div>
-                <h3 class="panel-title col-xs-8 col-lg-10">
+                <h3 class="panel-title media-body">
                     <p>João Almeida</p>
-                    <p class="small-text">12 min</p>
+                    <p class="small-text"><i class="fa fa-clock-o fa-fw"></i> 2 min</p>
                 </h3>
                 
             </div>
             <div class="panel-body post-content">
                 <div class="panel panel-default post-tips">
                     <div class="panel-body">
-                        <p class="post-tip-selection">1. Benfica<p>
-                        <p class="post-tip-event">Belenenses vs Benfica<p>
-                        <p class="post-tip-odd">1.51<p>
+                        <p class="post-tip-selection">Numero de Seleções: 5<p>
+                        <p class="post-tip-event">Odd total: 2.23<p>
+                        <p class="post-tip-odd">Preço: 0.30€<p>
                     </div>
                 </div>
-                <div class="panel panel-default post-tips">
-                    <div class="panel-body">
-                        <p class="post-tip-selection">2. Rio Ave<p>
-                        <p class="post-tip-event">Sporting vs Rio Ave<p>
-                        <p class="post-tip-odd">2.35<p>
-                    </div>
-                </div>
-                <p class="tipster-comment">Benfica is very strong, they win.<br>Sporting is very weak, they lose for sure.<p>
             </div>
 
             <div class="panel-footer">
                 <div class="row">
-                    <a href="#" class="col-xs-3"><span class="col-xs-push-6 glyphicon glyphicon-thumbs-up"></span></a>
-                    <a href="#" class="col-xs-3"><span class="col-xs-push-6 glyphicon glyphicon-comment"></span></a>
-                    <a href="#" class="col-xs-3"><span class="col-xs-push-6 glyphicon glyphicon-share"></span></a>
-                    <a href="#" class="col-xs-3"><span class="col-xs-push-6 glyphicon glyphicon-star-empty"></span></a>
+                    <a href="#" class="col-xs-6 col-sm-4"><span class="glyphicon glyphicon-shopping-cart"></span>Comprar tip</a>
+                    <div class="col-xs-6 col-sm-8 buttons">
+                        <a href="#" class=""><span class="glyphicon glyphicon-thumbs-up"></span></a>
+                        <a href="#" class=""><span class="glyphicon glyphicon-comment"></span></a>
+                        <a href="#" class=""><span class="glyphicon glyphicon-share"></span></a>
+                        <a href="#" class=""><span class="glyphicon glyphicon-star-empty"></span></a>
+                    </div>
                 </div>
             </div>
         </div>

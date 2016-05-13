@@ -2,6 +2,19 @@ $(function() {
 
     $('#side-menu').metisMenu();
 
+    $("#sport-events-sidebar").click(function() {
+        // $('#sport-events-sidebar').animate({
+        //     scrollTop: $("#side-menu").offset().top
+        // }, 2000);
+        $('#sport-events-sidebar').parent().find('.nav-second-level li:first-child a:first-child').click();
+
+        var container = $('.sidebar'),
+            scrollTo = $('#sport-events-sidebar');
+        container.animate({
+            scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+        }, 500);
+    });
+
 });
 
 //Loads the correct sidebar on window load,
@@ -24,6 +37,11 @@ $(function() {
         if (height > topOffset) {
             $("#page-wrapper").css("min-height", (height) + "px");
         }
+
+    if (width > 768)
+        $(".sidebar").css("min-height", (height) + "px");
+    else
+        $(".sidebar").css("min-height", (0) + "px");
     });
 
     // var url = window.location;
