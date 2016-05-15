@@ -7,6 +7,14 @@ a, a:hover, a:active, a:visited {
     text-decoration:none;
 }
 
+a{
+	color: #3C4F85;
+}
+
+a i{
+	color: #637BBF;
+}
+
 a:hover {
     color: #D9230F;
 }
@@ -313,6 +321,11 @@ Feed
 	padding-top: 10px;
 }
 
+.feed-post .panel-heading .btn-group button{
+	margin-left: 1px;
+}
+
+
 .feed-post .feed-post-tipster-image{
     height: 50px;
     width: 50px;
@@ -355,6 +368,43 @@ Feed
 	padding-left: 25px;
 }
 
+.feed-post .panel-footer a{
+	text-align: center;
+}
+.feed-post .panel-footer small{
+	margin-left: 6px;
+}
+
+.feed-post .feed-post-tipster-history{
+	float: right;
+	margin-top: -50px;
+}
+
+.popover-tipster-history div div{
+	line-height: 90%;
+	padding: 5px;
+	padding-bottom: 0px;
+}
+
+.popover-tipster-history div{
+	margin-bottom: 10px;
+}
+
+.popover-tipster-history div:last-child{
+	margin-bottom: 2px;
+}
+
+
+@media screen and (max-width: 400px) {
+    .feed-post .feed-post-tipster-history {
+		margin-top: 0px;
+    }    
+
+	.feed-post .post-content .post-tips:first-child{
+		margin-top: 46px;
+	}
+}
+
 
 /** new post - Got any tips? */
 
@@ -391,10 +441,6 @@ Feed
 	border-color: #D9D9D9;
     resize: none;
     height: 40px;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    outline: none;
 }
 
 /***** post to buy a tip ****/
@@ -414,7 +460,7 @@ Feed
 .feed-post-to-buy .panel-footer .buttons a {
     float: left;
     position: relative;
-    width: 25%;
+    width: 33%;
 }
 
 
@@ -706,4 +752,31 @@ Tips on this game
 
 #tips-on-this-events .tip-on-this-event a { 
     color:black;
+}
+
+
+/*****************************************
+Buttons
+*****************************************/
+
+.my-sucess-button{
+	color: white;
+	border-color: #5CB85C;
+	background-color: rgba(92, 184, 92, 0.8);
+}
+
+.my-sucess-button:hover{
+	color: white;
+	background-color: rgba(92, 184, 92, 0.6);
+}
+
+.my-fail-button{
+	color: white;
+	border-color: #D9534F;
+	background-color: rgba(217, 83, 79, 0.8);
+}
+
+.my-fail-button:hover{
+	color: white;
+	background-color: rgba(217, 83, 79, 0.6);
 }

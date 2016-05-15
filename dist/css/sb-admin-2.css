@@ -8,6 +8,14 @@ body {
     background-color: #f8f8f8;
 }
 
+.navbar{
+    /*background-color: #EDEDED;*/
+}
+.sidebar{
+    background-color: #FAFAFA;
+}
+
+
 #wrapper {
     width: 100%;
 }

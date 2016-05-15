@@ -3,9 +3,7 @@ $(function() {
     $('#side-menu').metisMenu();
 
     $("#sport-events-sidebar").click(function() {
-        // $('#sport-events-sidebar').animate({
-        //     scrollTop: $("#side-menu").offset().top
-        // }, 2000);
+        
         $('#sport-events-sidebar').parent().find('.nav-second-level li:first-child a:first-child').click();
 
         var container = $('.sidebar'),
@@ -14,6 +12,17 @@ $(function() {
             scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
         }, 500);
     });
+
+    $(".navbar-brand").click(function() {
+        if (sportsEventsTabOpen()){
+            $("#sport-events-sidebar").parent().removeClass('active');
+            $("#sport-events-sidebar").parent().find('.nav-second-level').removeClass('in');
+        }
+    });
+
+    function sportsEventsTabOpen () {
+        return $("#sport-events-sidebar").parent().hasClass('active');
+    }
 
 });
 
