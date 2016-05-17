@@ -122,7 +122,16 @@ body {
     content: "\f107";
 }
 
-.sidebar .nav-second-level li,
+.sidebar .nav-second-level li a{
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.sidebar .nav-third-level li a{
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
 .sidebar .nav-third-level li {
     border-bottom: 0!important;
 }

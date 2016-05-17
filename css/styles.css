@@ -8,7 +8,7 @@ a, a:hover, a:active, a:visited {
 }
 
 a{
-	color: #3C4F85;
+	color: #3591B0;
 }
 
 a i{
@@ -589,7 +589,7 @@ Sports
 
 .sidebar::-webkit-scrollbar-thumb, .chat-panel .panel-body::-webkit-scrollbar-thumb
 {
-	background-color: #5E5E5E;
+	background-color: #8F8F8F;
 }
 
 .chat-panel .panel-body::-webkit-scrollbar-track{
@@ -610,17 +610,26 @@ Sports
 league tables
 **********************************/
 
+.league-tables .panel-heading{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
 .league-tables .panel-heading h3{
-	font-size: 110%;
+	font-size: 105%;
 }
 
 .league-tables .panel-body{
-	padding-bottom: 2px;
-	padding-top: 7px;
+	padding: 0px;
 }
 
 .league-tables .panel-body a{
 	padding-bottom: 5px;
+	padding-top: 2px;
+
+	border-bottom-style: solid;
+	border-bottom-width: 0.1px;
+	border-bottom-color: #EBEBEB;
 }
 
 .league-tables .breadcrumb{
@@ -628,12 +637,13 @@ league tables
 	margin-bottom: 0px;
 }
 
-.league-tables .league-game a{
-	text-align: center;
+.league-tables .league-game{
+	padding-left: 0px;
+	padding-right: 0px;
 }
 
-.league-tables .league-game:first-child{
-	padding-top: 5px;
+.league-tables .league-game a{
+	text-align: center;
 }
 
 .league-tables .league-game a:first-child{
@@ -646,13 +656,12 @@ league tables
 }
 
 .league-tables .league-game a:not(:first-child):hover{
-	background-color: #F0F0F0;
+	background-color: #F7F7F7;
 }
 
-.league-tables .league-game a span{
-	color: #D17166;
-	font-size: 90%;
-	padding-right: 10px;
+.league-tables .league-game a small{
+	color: #3C4F85;
+	padding-right: 5px;
 }
 
 
@@ -662,8 +671,23 @@ bet slip
 **********************************/
 
 
+#bet-slip .panel-heading{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#bet-slip .panel-heading h3{
+	font-size: 110%;
+}
+
 #bet-slip .panel-body{
 	padding-bottom: 10px;
+}
+
+
+#bet-slip .panel-body{
+	padding-bottom: 2px;
+	padding-top: 7px;
 }
 
 #bet-slip .panel-body input { 
@@ -702,9 +726,13 @@ bet slip
 }
 
 
-#bet-slip .panel-body .empty-bet-slip{  
-    margin-top: 5px;
-    margin-bottom: 2px;
+#bet-slip .empty-bet-slip{  
+    margin-top: 7px;
+    margin-bottom: 0px;
+}
+
+#bet-slip button{
+    margin-bottom: 5px;
 }
 
 /**********************************
@@ -752,6 +780,11 @@ Tips on this game
 
 #tips-on-this-events .tip-on-this-event a { 
     color:black;
+}
+
+#tips-on-this-events .tip-on-this-event { 
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
 
