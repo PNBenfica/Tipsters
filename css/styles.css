@@ -305,20 +305,36 @@ Trend Bar
 Feed
 *************************************************/
 
+.feed-post{
+	border-style: solid;
+	border-width: 5px;
+	border-color: #E5E5E5;
+}
+
 .feed-post a { 
     color: #424444;
+}
+
+.feed-post a small{ 
+	color: #999999;
 }
 
 .feed-post a:hover{
 	color: #D9230F;
 }
 
+.feed-post .post-content{
+	color: #828282;
+}
+
 .feed-post .panel-heading, .feed-post .panel-footer{
 	background-color: white;
+	color: #A0A0A0;
 } 
 
 .feed-post .panel-heading .panel-title{
 	padding-top: 10px;
+	color: #999999;
 }
 
 .feed-post .panel-heading .btn-group button{
@@ -365,7 +381,7 @@ Feed
 
 .feed-post .tipster-comment{
 	margin-bottom: -15px;
-	padding-left: 25px;
+	padding-left: 10px;
 }
 
 .feed-post .panel-footer a{
@@ -633,7 +649,7 @@ league tables
 }
 
 .league-tables .breadcrumb{
-	background: white;
+	background: #EDEEF0;
 	margin-bottom: 0px;
 }
 
