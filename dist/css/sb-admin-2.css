@@ -17,6 +17,12 @@ body {
     color: #FFFFFF;
 }
 
+
+.navbar .navbar-brand:active, .navbar .navbar-brand:visited {
+    color: #FFFFFF;
+}
+
+
 .panel .panel-heading{
     border-radius: 0px;
 }
@@ -29,7 +35,7 @@ body {
     color: #CFCFCF;
 }
 
-.sidebar ul li a:hover{
+.sidebar ul li a:hover, .navbar .navbar-top-links a:hover, .navbar .navbar-top-links a:visited{
     background-color: #303030;
     color: #CFCFCF !important;
 }

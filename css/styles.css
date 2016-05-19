@@ -599,7 +599,7 @@ Sports
 
 .sidebar::-webkit-scrollbar, .chat-panel .panel-body::-webkit-scrollbar
 {
-	width: 1px;
+	width: 2px;
 	background-color: #F5F5F5;
 }
 
@@ -631,6 +631,10 @@ league tables
 	padding-bottom: 5px;
 }
 
+.league-tables a{
+	color: #999999;
+}
+
 .league-tables .panel-heading h3{
 	font-size: 105%;
 }
@@ -649,7 +653,7 @@ league tables
 }
 
 .league-tables .breadcrumb{
-	background: #EDEEF0;
+	background: #F0F2F5;
 	margin-bottom: 0px;
 }
 
@@ -828,4 +832,41 @@ Buttons
 .my-fail-button:hover{
 	color: white;
 	background-color: rgba(217, 83, 79, 0.6);
+}
+
+
+/*******************************************
+		bordered-panel
+******************************************/
+
+.bordered-panel-green{
+	border-width: 2px;
+	border-color: #488C6C;/*3C3C3C*/
+}
+.bordered-panel-green .panel-heading{
+	background-color: #488C6C;/*3C3C3C*/
+}
+.bordered-panel-green .panel-heading .panel-title{
+	padding-top: 2px;
+	padding-bottom: 2px;
+
+	color: white;
+	font-size: 110%;
+}
+
+
+.bordered-panel-blue{
+	border-width: 2px;
+	border-color: #4B5D67;
+}
+.bordered-panel-blue .panel-heading{
+	background-color: #4B5D67;
+	color: white;
+}
+.bordered-panel-blue .panel-heading .panel-title{
+	padding-top: 2px;
+	padding-bottom: 2px;
+
+	color: white;
+	font-size: 110%;
 }
