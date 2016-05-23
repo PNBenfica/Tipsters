@@ -8,7 +8,7 @@ a, a:hover, a:active, a:visited {
 }
 
 a{
-	color: #3591B0;
+	color: #8EB7D4;
 }
 
 a i{
@@ -51,52 +51,12 @@ a:hover {
 	border-radius: 0px;
 }
 
-/*************************************************
-Nav Bar
-*************************************************/
-
-#navbar-tipster img{
-	width: 20px;
-    height: 20px;
-    margin-left: 5px;
-}
-
-
-/*************************************************
-Left Bar
-*************************************************/
-
-@media screen and (min-width: 1200px) {
-	.left-bar.push-left{
-		margin-left: 60px;
-	}
-}
-
-.left-bar .list-group .list-group-item{
-	border-color: transparent;
-	background-color: #F7F7F7;
-}
-
-.left-bar .list-group .list-group-item a { 
-    color: #424444;
-    text-decoration: none;
-}
-
-.left-bar .list-group .list-group-item a:hover { 
-    color: #D9230F;
-}
-
 
 /*************************************************
 Notifications dropdown
 *************************************************/
 
 @media screen and (max-width: 768px) {
-	/*.dropdown-pull-right {
-	  float: right !important;
-	  right: 0;
-	  left: auto;
-	}*/
 
 	.dropdown > .dropdown-menu{
 		position: fixed;
@@ -195,7 +155,6 @@ Trend Bar
 
 
 .trend-bar{
-	/*background-color: black;*/
 	padding: 0px;
 }
 
@@ -265,7 +224,6 @@ Trend Bar
 }
 
 .trend-bar .trend-user .panel-title{
-    /*text-align: right;*/
     margin-left: 50px;
     margin-top: 10px;
 }
@@ -274,15 +232,6 @@ Trend Bar
 .trend-bar .trend-user button{
 	margin-top: 5px;
 }
-
-.trend-bar .trend-user .pull-right:hover{
-	background-color: black;
-}
-
-.trend-bar a, .trend-bar a:hover, .trend-bar a:active, .trend-bar a:visited {
-    text-decoration:none;
-}
-
 
 .trend-bar.panel.with-nav-tabs .panel-heading{
     padding: 5px 5px 0 5px;
@@ -299,6 +248,75 @@ Trend Bar
 .trend-bar.panel.with-nav-tabs .nav-justified{
 	margin-bottom: -1px;
 }
+
+/*******************************
+trend-bar-item
+********************************/
+
+.trend-bar-item{
+	border-style: solid;
+	border-width: 5px;
+	border-color: #E5E5E5;
+
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 0px;
+}
+
+.trend-bar-item .panel-heading{
+	background-color: white;
+	color: #A0A0A0;
+}
+
+.trend-bar-item .panel-heading .panel-title{
+	font-size: 120%;
+}
+
+.trend-bar-item .panel-heading .panel-title i {
+	margin-right: 5px;
+}
+
+.trend-bar-item .panel-body{
+	border-color: transparent;
+	padding: 0px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin-bottom: -10px;
+}
+
+.trend-bar-item .panel-body .list-group li{
+	border-color: transparent;
+	padding-bottom: 2px;
+	padding-top: 2px;
+}
+
+
+.trend-bar-item .trend-user a{
+	color: #7F8B94;
+}
+
+.trend-bar-item .trend-user:first-child{
+	margin-top: 10px;
+}
+
+.trend-bar-item .trend-user .trend-user-tipster-image img{
+	width: 40px;
+    height: 40px;
+}
+
+.trend-bar-item .trend-user:last-child{
+	margin-bottom: 15px;
+}
+
+.trend-bar-item .small-text{
+	font-size: 11px;
+	color: #A0A0A0;
+}
+
+.trend-bar-item .trend-user button i{
+	color: #A0A0A0;
+}
+
 
 
 /*************************************************
@@ -840,17 +858,19 @@ Buttons
 ******************************************/
 
 .bordered-panel-green{
-	border-width: 2px;
-	border-color: #488C6C;/*3C3C3C*/
+	border-width: 1px;
+	border-color: #B8C2B8;/*3C3C3C*/
 }
 .bordered-panel-green .panel-heading{
-	background-color: #488C6C;/*3C3C3C*/
+	background-color: #F5F5F5;/*3C3C3C*/
+	border-bottom-width: 1px;
+	border-color: #B8C2B8;/*3C3C3C*/
 }
 .bordered-panel-green .panel-heading .panel-title{
 	padding-top: 2px;
 	padding-bottom: 2px;
 
-	color: white;
+	color: black;
 	font-size: 110%;
 }
 
