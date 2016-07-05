@@ -258,14 +258,12 @@ trend-bar-item
 	border-width: 1px;
 	border-color: #D3E0E9;
 
-	padding-left: 20px;
-	padding-right: 20px;
 	padding-bottom: 0px;
 }
 
 .trend-bar-item .panel-heading{
-	background-color: white;
-	color: #A0A0A0;
+	color: #9E9E9E;
+	background-color: #FAFAFA;
 }
 
 .trend-bar-item .panel-heading .panel-title{
@@ -711,7 +709,7 @@ league tables
 }
 
 .league-tables .breadcrumb{
-	background: #F0F2F5;
+	background: #E9EBEE;
 	margin-bottom: 0px;
 }
 

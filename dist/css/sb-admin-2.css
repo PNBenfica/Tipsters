@@ -9,17 +9,18 @@ body {
 }
 
 .navbar{
-    background-color: #1E1E1E;
-    border-bottom-color: #484848;
+    background-color: #ffffff;
+    padding: 0px;
 }
 
 .navbar .navbar-brand, .navbar .navbar-top-links a, .navbar .navbar-top-links a i{
-    color: #FFFFFF;
+    border-bottom-color: #D2D3D6;
+    color: #BEC1C9;
 }
 
 
 .navbar .navbar-brand:active, .navbar .navbar-brand:visited {
-    color: #FFFFFF;
+    color: #BEC1C9;
 }
 
 
@@ -28,11 +29,17 @@ body {
 }
 
 .sidebar{
-    background-color: #3C3C3C;
+    background-color: #FFFFFF;
+    font-size: 95%;
 }
 
 .sidebar a, .sidebar a i{
-    color: #CFCFCF;
+    color: #BDC1C9;
+}
+
+.sidebar a i{
+    font-size: 120%;
+    margin-right: 2px;
 }
 
 .sidebar ul li a:hover, .navbar .navbar-top-links a:hover, .navbar .navbar-top-links a:visited{
@@ -51,15 +58,15 @@ body {
 #page-wrapper {
     padding: 0 15px;
     min-height: 568px;
-    background-color: #F0F2F5;
+    background-color: #E9EBEE;
 }
 
 @media(min-width:768px) {
     #page-wrapper {
         position: inherit;
-        margin: 0 0 0 250px;
+        margin: 0 0 0 200px;
         padding: 0 30px;
-        border-left: 1px solid #e7e7e7;
+        border-left: 1px solid #D2D3D6;
     }
 }
 
@@ -131,7 +138,7 @@ body {
 }
 
 .sidebar ul li {
-    border-bottom: 1px solid #484848;
+    /*border-bottom: 1px solid #484848;*/
 }
 
 .sidebar ul li a.active {
@@ -176,7 +183,7 @@ body {
     .sidebar {
         z-index: 1;
         position: absolute;
-        width: 250px;
+        width: 200px;
         margin-top: 51px;
     }
 
