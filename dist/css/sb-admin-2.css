@@ -19,7 +19,7 @@ body {
 }
 
 
-.navbar .navbar-brand:active, .navbar .navbar-brand:visited {
+.navbar .navbar-brand:active, .navbar .navbar-brand:visited, .navbar .navbar-top-links a:visited {
     color: #BEC1C9;
 }
 
@@ -42,13 +42,13 @@ body {
     margin-right: 2px;
 }
 
-.sidebar ul li a:hover, .navbar .navbar-top-links a:hover, .navbar .navbar-top-links a:visited{
-    background-color: #303030;
-    color: #CFCFCF !important;
+.sidebar ul li a:hover, .navbar .navbar-top-links a:hover, .navbar .navbar-top-links i:hover{
+    /*background-color: #303030;*/
+    color: #8DA7FC !important;
 }
 
-.sidebar ul li a:active, .sidebar ul li a:visited {
-    background-color: #3E77AB;
+.sidebar ul li a:active, .sidebar ul li a:visited,  .navbar .navbar-top-links a:hover, .navbar .navbar-top-links a:visited{
+    background-color: #F9F9F9;
 }
 
 #wrapper {

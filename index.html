@@ -46,11 +46,14 @@
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-fixed-top navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-nav">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
+                </button>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search">
+                    <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
                 <a class="navbar-brand" href="#">Tipsters</a>
             </div>
@@ -80,7 +83,7 @@
 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-envelope fa-fw"><span class="font-awesome-badge badge-red">2</span></i> 
                     </a>
                     <ul class="dropdown-menu dropdown-messages col-xs-12">
                         <li>
@@ -131,7 +134,8 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
+
+                        <i class="fa fa-bell fa-fw"><span style="right:27px;" class="font-awesome-badge badge-green">5</span></i>
                     </a>
                     <ul class="dropdown-menu dropdown-alerts2 ">
                         <li>
@@ -191,7 +195,7 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -207,6 +211,32 @@
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
+
+
+
+    <div class="collapse navbar-collapse pull-left col-sm-offset-2 col-xs-12" id="search">
+        <form class="navbar-form" role="search">
+            <div class="input-group">
+                <!-- <input type="text"  style="width:450px !important;" class="form-control" placeholder="Search"> -->
+                <input type="text" style="width:450px" class="form-control" placeholder="Search for tipsters or sport events...">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+
+
+
+
+            <!-- <div class="col-sm-5 col-sm-offset-2 collapse navbar-collapse" id="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for tipsters or sport events...">
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </span> -->
+                <!-- </div> --><!-- /input-group -->
+            <!-- </div> --><!-- /.col-sm-5 -->
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
@@ -242,7 +272,7 @@
                             <a id="sport-events-sidebar" href="#/sports"><i class="fa fa-soccer-ball-o fa-fw"></i> Eventos Desportivos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#/sports"><img src="img/sports/football.png"> Futebol <span class="fa arrow"></span></a>
+                                    <a href="#/sports"><i class="fa fa-soccer-ball-o fa-fw"></i> Futebol <span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                         <li>
                                             <a href="#/sports/premierleague"><img src="img/sports/premierleague.png"> Premier League</a>
@@ -259,34 +289,40 @@
                                     </ul>
                                     <!-- /.nav-third-level -->
                                 </li>
-
                                 <li>
+                                    <a href="#/sports"><img src="img/sports/tennis.png"> Tennis</a>
+                                </li>
+                                <li>
+                                    <a href="#/sports"><img src="img/sports/basket.png"> Basketball</a>
+                                </li>
+                                <li>
+                                    <a href="#/sports"><img src="img/sports/bike.png"> Ciclismo</a>
+                                </li>
+                                <li>
+                                    <a href="#/sports"><img src="img/sports/wheel.png"> Motor</a>
+                                </li>
+
+                                <!-- <li>
                                     <a href="#/sports"><img src="img/sports/handball.png"> Andebol</a>
                                 </li>
                                 <li>
                                     <a href="#/sports"><img src="img/sports/baseball.png"> Basebol</a>
                                 </li>
                                 <li>
-                                    <a href="#/sports"><img src="img/sports/bike.png"> Ciclismo</a>
-                                </li>
-                                <li>
                                     <a href="#/sports"><img src="img/sports/golfball.png"> Golfe</a>
                                 </li>
                                 <li>
                                     <a href="#/sports"><img src="img/sports/futsal.png"> Futsal</a>
-                                </li>
+                                </li> 
                                 <li>
-                                    <a href="#/sports"><img src="img/sports/wheel.png"> Motor</a>
+                                    <a href="#/sports"><img src="img/sports/volleyball.png"> Volley</a>
                                 </li>
                                 <li>
                                     <a href="#/sports"><img src="img/sports/8ball.png"> Snooker</a>
                                 </li>
-                                <li>
-                                    <a href="#/sports"><img src="img/sports/tennis.png"> Tennis</a>
-                                </li>
-                                <li>
-                                    <a href="#/sports"><img src="img/sports/volleyball.png"> Volley</a>
-                                </li>
+
+
+                            -->
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

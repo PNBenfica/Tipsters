@@ -648,8 +648,12 @@ Sports
 	width: 15px;
 }
 
+.sidebar .nav-third-level img{
+	opacity: 0.65;
+}
+
 .sidebar{
-	overflow-y:scroll;
+	overflow-y:auto;
 }
 
 .chat-panel .panel-body::-webkit-scrollbar-track, .sidebar::-webkit-scrollbar-track
@@ -666,7 +670,7 @@ Sports
 
 .sidebar::-webkit-scrollbar-thumb, .chat-panel .panel-body::-webkit-scrollbar-thumb
 {
-	background-color: #8F8F8F;
+	background-color: rgba(0,0,0,0.2);
 }
 
 
@@ -871,22 +875,86 @@ Buttons
 
 
 /*******************************************
-		bordered-panel
+		font-awesome badge
 ******************************************/
 
-.bordered-panel-green{
-	border-width: 1px;
-	border-color: #B8C2B8;/*3C3C3C*/
+.font-awesome-badge {
+  position: absolute;
+  margin-top: -9px;
+  right: 31px;
+  display: inline;
+  font-size: 11px;
+  padding: 2px 4px 2px 4px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 100%;
+  color: white;
 }
-.bordered-panel-green .panel-heading{
-	background-color: #F5F5F5;/*3C3C3C*/
-	border-bottom-width: 1px;
-	border-color: #B8C2B8;/*3C3C3C*/
-}
-.bordered-panel-green .panel-heading .panel-title{
-	padding-top: 2px;
-	padding-bottom: 2px;
 
-	color: black;
-	font-size: 110%;
+.badge-default {
+  background-color: #999 !important;
+}
+.badge-primary {
+  background-color: #dc6767 !important;
+}
+.badge-red {
+  background-color: #bf4346 !important;
+}
+.badge-orange {
+  background-color: #e9662c !important;
+}
+.badge-green {
+  background-color: #5CB85C !important;
+}
+.badge-yellow {
+  background-color: #f2994b !important;
+}
+.badge-blue {
+  background-color: #0a819c !important;
+}
+.badge-violet {
+  background-color: #9351ad !important;
+}
+.badge-pink {
+  background-color: #bf3773 !important;
+}
+.badge-grey {
+  background-color: #4b5d67 !important;
+}
+.badge-dark {
+  background-color: #594857 !important;
+}
+
+.badge-success {
+  background-color: #5cb85c;
+  background-image: none !important;
+}
+
+.badge-warning {
+  background-color: #f0ad4e;
+  background-image: none !important;
+}
+
+.badge-danger {
+  background-color: #d9534f;
+  background-image: none !important;
+}
+
+.badge-info {
+  background-color: #5bc0de;
+  background-image: none !important;
+}
+
+
+/********************************************
+ 	navbar search
+ ********************************************/
+
+ @media (max-width:767px) {
+    .navbar-nav.navbar-collapse {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
