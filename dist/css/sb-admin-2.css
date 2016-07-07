@@ -44,7 +44,7 @@ body {
 
 .sidebar ul li a:hover, .navbar .navbar-top-links a:hover, .navbar .navbar-top-links i:hover{
     /*background-color: #303030;*/
-    color: #8DA7FC !important;
+    color: #BEC1C9;
 }
 
 .sidebar ul li a:active, .sidebar ul li a:visited,  .navbar .navbar-top-links a:hover, .navbar .navbar-top-links a:visited{
@@ -58,7 +58,7 @@ body {
 #page-wrapper {
     padding: 0 15px;
     min-height: 568px;
-    background-color: #E9EBEE;
+    background-color: #F0F2F5;
 }
 
 @media(min-width:768px) {

@@ -64,6 +64,10 @@ a:hover {
 .green{
 	background-color: green;
 }
+.blue{
+	background-color: blue;
+	color: blue;
+}
 
 
 /*************************************************
@@ -80,10 +84,61 @@ Notifications dropdown
 
 }
 
-.dropdown-alerts2{
+
+.dropdown-menu{
+    right: 0;
+    left: auto;
+}
+
+.dropdown-notifications{
 	width: 300px;
 }
 
+.dropdown-menu .divider{
+	margin: 0px !important;
+}
+
+.dropdown-menu {
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+}
+
+.dropdown-menu {
+	max-height: 500px;
+	overflow: auto;
+}
+
+.dropdown-menu li a{
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+}
+
+
+
+.dropdown-menu a strong{
+	color: #A6A7AB;
+}
+
+.dropdown-menu a img{
+	width: 20px;
+	height: 20px;
+}
+
+.dropdown-messages a div:first-child{
+	color: #8B8C8E;
+}
+
+.dropdown-messages a div:nth-child(2){
+	padding-top: 3px;
+	font-size: 100%;
+}
+
+.dropdown-messages a em, .dropdown-menu a:hover{
+	color: #A6A7AB !important;
+}
+
+
+/*
 .my-dropdown .panel{
 	width: 320px;
 }
@@ -128,32 +183,7 @@ Notifications dropdown
 
 .my-dropdown .panel-body .notification-text p{
 	font-size: 75%;
-}
-
-
-
-/*************************************************
-Messages dropdown
-*************************************************/
-
-.messages-dropdown .panel .panel-heading a{
-	font-size: 85%;
-}
-
-.messages-dropdown .panel .panel-body h5, .messages-dropdown .panel .panel-body h6{
-  	line-height: 10px; 
-}
-
-
-.messages-dropdown .panel .panel-body .messages-number{
-	font-size: 85%;
-	margin-top: 5px;
-}
-
-
-.messages-dropdown .panel-body .notification-text p{
-	margin-top: -3px; 
-}
+}*/
 
 
 
@@ -229,7 +259,7 @@ Trend Bar
 }
 
 .trend-bar .small-text{
-	font-size: 11px;
+	font-size: 20px;
 }
 
 .trend-bar .trend-user .panel-title{
@@ -320,8 +350,12 @@ trend-bar-item
 	color: #A0A0A0;
 }
 
+.trend-bar-item .trend-user button {
+	background-color: #F4FCFC;
+}
+
 .trend-bar-item .trend-user button i{
-	color: #A0A0A0;
+	color: #8DA7FC;
 }
 
 
