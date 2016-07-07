@@ -5,7 +5,7 @@
  */
 
 body {
-    background-color: #f8f8f8;
+    background-color: #ffffff;
 }
 
 .navbar{
@@ -72,10 +72,17 @@ body {
 
 .navbar-top-links {
     margin-right: 0;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .navbar-top-links li {
     display: inline-block;
+    float: right;
+}
+
+.navbar-top-links .dropdown li {
+    float: none;
 }
 
 .navbar-top-links li:last-child {

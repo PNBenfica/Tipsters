@@ -51,24 +51,33 @@ a:hover {
 	border-radius: 0px;
 }
 
+[role="search"] input{
+	border-radius: 0px;
+}
+
+.black{
+	background-color: black;
+}
+.red{
+	background-color: red;
+}
+.green{
+	background-color: green;
+}
+
 
 /*************************************************
 Notifications dropdown
 *************************************************/
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 420px) {
 
 	.dropdown > .dropdown-menu{
 		position: fixed;
-    	left:10px;
-    	top:100px;
+    	left:0px;
+    	top:50px;
 	}
 
-	.dropdown-alerts{
-		position: fixed !important;
-    	right:-50px !important;
-    	top:100px !important;
-	}
 }
 
 .dropdown-alerts2{
