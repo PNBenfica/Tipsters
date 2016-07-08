@@ -281,7 +281,6 @@ trend-bar-item
 
 @media screen and (min-width: 1200px) {
 	.trend-bar-container{
-		/*padding-left: 30px;*/
 		padding-right: 60px;
 	}
 }
@@ -712,6 +711,21 @@ Sports
 	width: 15px;
 }
 
+.sidebar #sidebar-account-money img{
+	height: 20px;
+	width: 20px;
+	margin-top: -4px;
+}
+
+.sidebar #user-sidebar-profile {
+	font-size: 110%;
+}
+
+.sidebar #user-sidebar-profile img{
+	width: 20px;
+	height: 20px;
+}
+
 .sidebar .nav-third-level img{
 	opacity: 0.65;
 }
@@ -742,22 +756,28 @@ Sports
 league tables
 **********************************/
 
+@media screen and (min-width: 1200px) {
+	.sports-table-container {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+
 .league-tables .panel{
 	border-width: 1px;
 	border-color: #D3E0E9;
 
-	padding-left: 15px;
-	padding-right: 15px;
 	padding-bottom: 0px;
 }
 
 .league-tables .panel .panel-heading{
-	background-color: white;
-	color: #A0A0A0;
+	color: #8B8C8E;
+	background-color: #ffffff;
+	border-bottom-color: rgba(234,222,222, 0.5);
 }
 
 .league-tables .panel .panel-heading .panel-title{
-	font-size: 115%;
+	font-size: 105%;
 }
 
 
@@ -774,10 +794,11 @@ league tables
 .league-tables .panel-body a{
 	padding-bottom: 5px;
 	padding-top: 2px;
+	color: #A1ABBF;
 }
 
 .league-tables .breadcrumb{
-	background: #E9EBEE;
+	background: #F0F2F5;
 	margin-bottom: 0px;
 }
 
@@ -815,7 +836,23 @@ bet slip
 **********************************/
 
 
+@media screen and (min-width: 1200px) {
+	.right-sports-bar-container{
+		padding-left: 40px;
+		padding-right: 20px;
+	}
+}
+
+
+#bet-slip {
+	color: #8B8C8E;
+}
+
 #bet-slip .panel-heading{
+	color: #8B8C8E;
+	background-color: #ffffff;
+	border-bottom: none;
+
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
@@ -876,12 +913,20 @@ bet slip
 }
 
 #bet-slip button{
+	background-color: #F8F8F8;
+	color: #A8A9AA;
     margin-bottom: 5px;
 }
 
 /**********************************
 Tips on this game
 **********************************/
+
+.chat-panel .panel-heading{	
+	color: #8B8C8E;
+	background-color: #ffffff;
+	/*border-bottom: none;*/
+}
 
 #tips-on-this-events .chat-img img{ 
     width: 50px;
@@ -916,7 +961,11 @@ Buttons
 	color: white;
 	border-color: #5CB85C;
 	background-color: #5CB85C;
-	border-radius: 2px !important;
+	min-width: 20px;
+	min-height: 20px;
+	padding: 2px;
+	font-size: 60%;
+	border-radius: 100% !important;
 }
 
 .my-sucess-button:hover{
@@ -928,7 +977,11 @@ Buttons
 	color: white;
 	border-color: #F0433D;
 	background-color: #F0433D;
-	border-radius: 2px !important;
+	min-width: 20px;
+	min-height: 20px;
+	padding: 2px;
+	font-size: 60%;
+	border-radius: 100% !important;
 }
 
 .my-fail-button:hover{
