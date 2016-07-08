@@ -364,6 +364,23 @@ trend-bar-item
 Feed
 *************************************************/
 
+
+@media screen and (max-width: 768px) {
+	.feed-container {
+		padding-left: 2px;
+		padding-right: 2px;
+	}
+	.post-content {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.tipster-comment{
+		padding-left: 5px !important;
+	}
+}
+
+
+
 .feed-post{
 	border-style: solid;
 	border-width: 1px;
