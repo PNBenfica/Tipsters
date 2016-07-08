@@ -272,25 +272,21 @@ Trend Bar
 	margin-top: 5px;
 }
 
-.trend-bar.panel.with-nav-tabs .panel-heading{
-    padding: 5px 5px 0 5px;
-}
-.trend-bar.panel.with-nav-tabs .panel-heading .panel-title{
-    padding: 10px;
-}
-.trend-bar.panel.with-nav-tabs .nav-tabs{
-	border-bottom: none;
-}
-.trend-bar.panel.with-nav-tabs .nav-tabs .active a{
-	background-color: white;
-}
-.trend-bar.panel.with-nav-tabs .nav-justified{
-	margin-bottom: -1px;
-}
 
 /*******************************
 trend-bar-item
 ********************************/
+
+
+
+@media screen and (min-width: 1200px) {
+	.trend-bar-container{
+		/*padding-left: 30px;*/
+		padding-right: 60px;
+	}
+}
+
+
 
 .trend-bar-item{
 	border-style: solid;
@@ -298,15 +294,18 @@ trend-bar-item
 	border-color: #D3E0E9;
 
 	padding-bottom: 0px;
+	padding-left: 10px;
+	padding-top: 5px;
 }
 
 .trend-bar-item .panel-heading{
-	color: #9E9E9E;
-	background-color: #FAFAFA;
+	color: #8B8C8E;
+	background-color: #ffffff;
+	border-bottom: none;
 }
 
 .trend-bar-item .panel-heading .panel-title{
-	font-size: 120%;
+	font-size: 105%;
 }
 
 .trend-bar-item .panel-heading .panel-title i {
@@ -345,13 +344,18 @@ trend-bar-item
 	margin-bottom: 15px;
 }
 
+.trend-bar-item .trend-user .panel-title{
+	font-size: 100%;
+	color: #8B8C8E;
+}
+
 .trend-bar-item .small-text{
 	font-size: 11px;
 	color: #A0A0A0;
 }
 
 .trend-bar-item .trend-user button {
-	background-color: #F4FCFC;
+	border-color: #8DA7FC;
 }
 
 .trend-bar-item .trend-user button i{
