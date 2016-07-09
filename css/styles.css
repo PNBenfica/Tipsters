@@ -619,65 +619,99 @@ Profile
     }
 }
 
-#profile-info .profile-user-img{
-	width: 35px;
-	height: 35px;
+
+#profile-info #profile-info-details .panel-footer{
+	background-color: white;
+	border-top-color: white;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-top: 0px;
 }
 
-#profile-info .profile-user-img img{
-	width: 35px;
-	height: 35px;
+#profile-info #profile-info-details .panel-footer button i{
+	color: #8B8C8E;
 }
 
-#profile-info .panel-heading .panel-title {
-	padding-top: 5px;
-	padding-left: 10px;
-	font-size: 130%;
+#profile-info #profile-info-details .panel-body {
+	background-color: #ffffff;
 }
 
-#profile-info .panel-heading #profile-add-user {
-	width: 23px;
-	height: 23px;
-	padding-right: 10px;
-	padding-top: 5px;
-}
-
-#profile-info .panel-heading #profile-add-user img{
-	width: 23px;
-	height: 23px;
-}
-
-#profile-info .panel-body {
+#profile-info #profile-info-details,  #profile-info .profile-stats, #profile-info .profile-stats .panel-body div:first-child{
 	padding-left: 0px;
 	padding-right: 0px;
 }
 
-#profile-info .panel-body #profile-info-details div{
+
+#profile-info #profile-info-details .panel-heading,  #profile-info .profile-stats .panel-heading{
+	color: #8B8C8E;
+	background-color: #ffffff;
+	border-color: rgba(234,222,222, 0.5);
+}
+
+
+#profile-info .media-body{
+	padding-left: 5px;
+	padding-top: 12px;
+}
+
+#profile-info #profile-info-details .panel-heading p{
+	color: #A5A8AF;
+	font-size: 18px;
+}
+
+#profile-info .profile-user-img{
+	width: 66px;
+	height: 66px;
+}
+
+#profile-info .profile-user-img div{
+	width: 66px;
+	height: 66px;
+	padding: 0px;
+	margin: 0;
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgba(234,222,222, 0.9);
+}
+
+#profile-info .profile-user-img img{
+	width: 58px;
+	height: 58px;
+    margin: 3px;
+}
+
+#profile-info #profile-info-details .panel-body {
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 15px;
+}
+
+#profile-info #profile-info-details .panel-body div{
 	text-align: center;
+	color: #8B8C8E;
+	padding-top: 5px;
+	line-height: 1.0;
 }
 
-#profile-info .panel-body #profile-info-details div h5{
-	font-weight: bold;
+#profile-info #profile-info-details .panel-body p{
+	font-size: 20px;
+	margin-bottom: 2px;
+	margin-top: 10px;
 }
 
-#profile-info .panel-body #profile-info-other-networks {
-	margin-top: 15px;
+
+#profile-info #profile-info-details .panel-body span{
+	font-size: 12px;
 }
 
-#profile-info .panel-body #profile-info-other-networks div{
-	text-align: center;
-	/*width: 25%;*/
-}
 
-#profile-info .panel-body #profile-info-other-networks div img{
-	width: 75%;
-	height: 75%;
-}
+
+
 
 #profile-info .profile-stats .panel-heading .panel-title{
 	padding-top: 5px;
 	padding-left: 10px;
-	font-size: 115%;
+	font-size: 105%;
 }
 
 #profile-info .profile-stats .panel-heading span{
@@ -690,6 +724,23 @@ Profile
 	margin-bottom: 2px;
 }
 
+#profile-info .profile-stats .panel-body div{
+	text-align: center;
+	color: #8B8C8E;
+}
+
+#profile-info .profile-stats .panel-body div h5{
+	font-weight: bold;
+}
+
+
+
+#profile-posts-divider{
+	height: 1px;
+	/*background-color: #E0D7D7;*/
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
 
 /*************************************************
 Sports
@@ -727,7 +778,7 @@ Sports
 }
 
 .sidebar .nav-third-level img{
-	opacity: 0.65;
+	/*opacity: 0.65;*/
 }
 
 .sidebar{
@@ -904,6 +955,8 @@ bet slip
 
 #bet-slip .panel-body .bet-slip-single-bet .panel-body .cross{  
     font-size: 90%;
+    color: red;
+    font-weight: bold;
 }
 
 
@@ -925,7 +978,7 @@ Tips on this game
 .chat-panel .panel-heading{	
 	color: #8B8C8E;
 	background-color: #ffffff;
-	/*border-bottom: none;*/
+	border-bottom-color: rgba(234,222,222, 0.5);
 }
 
 #tips-on-this-events .chat-img img{ 

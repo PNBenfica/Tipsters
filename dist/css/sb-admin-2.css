@@ -35,7 +35,7 @@ body {
 }
 
 .sidebar a, .sidebar a i{
-    color: #BDC1C9;
+    color: #8B8C8E;
 }
 
 .sidebar a i{
@@ -45,7 +45,7 @@ body {
 
 .sidebar ul li a:hover, .navbar .navbar-top-links a:hover, .navbar .navbar-top-links i:hover{
     /*background-color: #303030;*/
-    color: #BEC1C9;
+    color: #8B8C8E;
 }
 
 .sidebar ul li a:active, .sidebar ul li a:visited,  .navbar .navbar-top-links a:hover, .navbar .navbar-top-links a:visited{
