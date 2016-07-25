@@ -7,12 +7,15 @@ export default class Nav extends React.Component {
 
   render() {
 
-    return (
+    	const { location } = this.props;
+    	
+	    return (
 
-        <nav class="navbar navbar-default navbar-fixed-top navbar-static-top" role="navigation">
-            <TopBar />
-            <SideBar />
-        </nav>
-    );
+
+	        <nav class="navbar navbar-default navbar-fixed-top navbar-static-top" role="navigation">
+	            <TopBar />
+	            <SideBar location={location} />
+	        </nav>
+	    );
   }
 }

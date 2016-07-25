@@ -6,10 +6,12 @@ import NavBar from "../components/navbar/NavBar";
 export default class Layout extends React.Component {
     render() {
 
+        const { location } = this.props;
+
         return (
             <div id="wrapper">
 
-                <NavBar />
+                <NavBar location={location} />
 
                 <div id="page-wrapper">
                     {this.props.children}

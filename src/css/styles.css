@@ -7,7 +7,7 @@ a, a:hover, a:active, a:visited {
     text-decoration:none !important;
 }
 
-a{
+/*a{
 	color: #8EB7D4;
 }
 
@@ -17,7 +17,7 @@ a i{
 
 a:hover {
     color: #D9230F;
-}
+}*/
 
 .dropdown-menu:before {
   position: absolute;
@@ -289,14 +289,16 @@ trend-bar-item
 	border-color: #D3E0E9;
 
 	padding-bottom: 0px;
-	padding-left: 10px;
+	padding-left: 0px;
 	padding-top: 5px;
 }
 
 .trend-bar-item .panel-heading{
-	color: #8B8C8E;
-	background-color: #ffffff;
-	border-bottom: none;
+	/*#8B8C8E*/
+	color: #333333;
+	background-color: white;
+	border-color: rgba(234,222,222, 0.3);
+	padding-left: 20px;
 }
 
 .trend-bar-item .panel-heading .panel-title{
@@ -310,7 +312,7 @@ trend-bar-item
 .trend-bar-item .panel-body{
 	border-color: transparent;
 	padding: 0px;
-	padding-top: 2px;
+	padding-top: 0px;
 	padding-bottom: 2px;
 	margin-bottom: -10px;
 }
@@ -321,22 +323,43 @@ trend-bar-item
 	padding-top: 2px;
 }
 
-
-.trend-bar-item .trend-user a{
-	color: #7F8B94;
+.trendbar-users{
+	/*background-color: black;*/
 }
 
-.trend-bar-item .trend-user:first-child{
-	margin-top: 10px;
+.trend-bar-item .trend-user{
+	margin-top: 0px;
+	padding-top: 15px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-color: rgba(234,222,222, 0.5);
+}
+
+@media screen and (max-width: 1200px) {
+	.trend-bar-item .trend-user{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
+
+.trendbar-users .panel-body > .trend-user:nth-child(5){
+	border-bottom: none;
+}
+
+.trend-bar-item .trend-user:hover{
+	background: rgba(234,222,222, 0.5);
+}
+
+.trend-bar-item .trend-user a{
+	color: #636363;
 }
 
 .trend-bar-item .trend-user .trend-user-tipster-image img{
 	width: 40px;
     height: 40px;
-}
-
-.trend-bar-item .trend-user:last-child{
-	margin-bottom: 15px;
 }
 
 .trend-bar-item .trend-user .panel-title{
@@ -346,17 +369,26 @@ trend-bar-item
 
 .trend-bar-item .small-text{
 	font-size: 11px;
-	color: #A0A0A0;
+	color: #F47238;
 }
 
 .trend-bar-item .trend-user button {
-	border-color: #8DA7FC;
+	border-color: #1AB2AC;
 }
 
 .trend-bar-item .trend-user button i{
-	color: #8DA7FC;
+	color: #1AB2AC;
 }
 
+.trend-bar-item .panel-footer{
+	background-color: white;
+	border-top: none;
+}
+
+.trend-bar-item .panel-footer button{
+	color: white;
+	background-color: #1AB2AC;
+}
 
 
 /*************************************************
@@ -577,7 +609,7 @@ post-comment-box
 }
 
 .post-comment-box .media-body a{
-	color: #8EB7D4;
+	color: #1AB2AC;
 }
 
 .post-comment-box .media-body small{
@@ -598,6 +630,11 @@ post-comment-box
 .post-comment-box img{
 	width: 30px;
 	height: 30px;
+}
+
+.post-comment-box button{
+	background-color: #F47238;
+	border-color: #F47238;
 }
 
 
@@ -742,17 +779,6 @@ Profile
 Sports
 *************************************************/
 
-#sports-list-bar .list-group-item img{
-	height: 15px;
-	width: 15px;
-	margin-top: -3px;
-}
-
-#sports-list-bar .list-group .top-leagues-list-bar{
-	padding-left: 10px;
-	margin-bottom: 0px;
-}
-
 .sidebar img{
 	height: 15px;
 	width: 15px;
@@ -762,19 +788,7 @@ Sports
 	height: 20px;
 	width: 20px;
 	margin-top: -4px;
-}
-
-.sidebar #user-sidebar-profile {
-	font-size: 110%;
-}
-
-.sidebar #user-sidebar-profile img{
-	width: 20px;
-	height: 20px;
-}
-
-.sidebar .nav-third-level img{
-	/*opacity: 0.65;*/
+	margin-right: 4px;
 }
 
 .sidebar{

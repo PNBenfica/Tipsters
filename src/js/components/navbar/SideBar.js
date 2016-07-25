@@ -4,6 +4,13 @@ export default class SideBar extends React.Component {
 
   render() {
 
+    const { location } = this.props;
+    console.log(location);
+    const feedClass = location.pathname === "/" ? "sidebar-item-active" : "";
+    const profileClass = location.pathname.match(/^\/profile/) ? "sidebar-item-active" : "";
+    const sportsClass = location.pathname.match(/^\/sports/) ? "sidebar-item-active" : "";
+    const rankingsClass = location.pathname.match(/^\/rankings/) ? "sidebar-item-active" : "";
+
     return (
 
         <div class="navbar-default sidebar" role="navigation">
@@ -28,7 +35,7 @@ export default class SideBar extends React.Component {
                     </li> -->*/}
 
                     <li>
-                        <a href="#/profile"><i class="fa fa-user fa-fw"></i> Paulo Teixeira</a>
+                        <a className={profileClass} href="#/profile"><i class="fa fa-user fa-fw"></i> Paulo Teixeira</a>
                     </li>
 
                     <li id="sidebar-account-money">
@@ -51,15 +58,15 @@ export default class SideBar extends React.Component {
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-feed fa-fw"></i> Feed de Noticias</a>
+                        <a href="#" className={feedClass}><i class="fa fa-feed fa-fw"></i> Feed de Noticias</a>
                     </li>
 
                     <li>
-                        <a id="sport-events-sidebar" href="#/sports"><i class="fa fa-soccer-ball-o fa-fw"></i> Eventos Desportivos<span class="fa arrow"></span></a>
+                        <a id="sport-events-sidebar" className={sportsClass} href="#/sports"><i class="fa fa-soccer-ball-o fa-fw"></i> Eventos Desportivos<span class="fa arrow"></span></a>
                         
                         {/*<!-- sports list -->*/}
                         <ul class="nav nav-second-level">
-                            <li>
+                            <li class="active">
                                 <a href="#/sports"><i class="fa fa-soccer-ball-o fa-fw"></i> Futebol <span class="fa arrow"></span></a>
                                 
                                 {/*<!-- main football leagues -->*/}
@@ -95,7 +102,7 @@ export default class SideBar extends React.Component {
                         {/*<!-- ./sports list -->*/}
                     </li>
                     <li>
-                        <a href="#/rankings"><i class="fa fa-bar-chart fa-fw"></i> Rankings</a>
+                        <a href="#/rankings" className={rankingsClass}><i class="fa fa-bar-chart fa-fw"></i> Rankings</a>
                     </li>
                 </ul>
             </div>

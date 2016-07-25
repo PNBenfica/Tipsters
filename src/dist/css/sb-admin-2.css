@@ -13,7 +13,7 @@ body {
     padding: 0px;
 }
 
-.navbar .navbar-brand, .navbar .navbar-top-links a, .navbar .navbar-top-links a i{
+.navbar .navbar-top-links a, .navbar .navbar-top-links a i{
     border-bottom-color: #D2D3D6;
     color: #BEC1C9;
 }
@@ -31,11 +31,11 @@ body {
 .sidebar{
     background-color: #FFFFFF;
     font-size: 95%;
-    /*margin-top: 15px !important;*/
 }
 
 .sidebar a, .sidebar a i{
-    color: #8B8C8E;
+    color: #333333;
+    /*color: #F47238;    */
 }
 
 .sidebar a i{
@@ -43,12 +43,24 @@ body {
     margin-right: 2px;
 }
 
-.sidebar ul li a:hover, .navbar .navbar-top-links a:hover, .navbar .navbar-top-links i:hover{
-    /*background-color: #303030;*/
-    color: #8B8C8E;
+.sidebar-item-active{
+    color: #F47238 !important;
 }
 
-.sidebar ul li a:active, .sidebar ul li a:visited,  .navbar .navbar-top-links a:hover, .navbar .navbar-top-links a:visited{
+.sidebar-item-active i{
+    color: #F47238 !important;
+}
+
+.sidebar ul li a:hover{
+    background-color: #1AB2AC !important;
+    color: white !important;
+}
+
+.sidebar ul li a:active, .sidebar ul li a:visited{
+    background-color: #F9F9F9;
+}
+
+.navbar .navbar-top-links a:hover, .navbar .navbar-top-links a:visited{
     background-color: #F9F9F9;
 }
 
@@ -165,7 +177,7 @@ body {
 }
 
 .sidebar ul li a.active {
-    background-color: #eee;
+    background-color: black;
 }
 
 .sidebar .arrow {
