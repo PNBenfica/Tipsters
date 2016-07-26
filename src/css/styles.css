@@ -182,93 +182,6 @@ Notifications dropdown
 }*/
 
 
-
-
-/*************************************************
-Trend Bar
-*************************************************/
-
-
-.trend-bar{
-	padding: 0px;
-}
-
-.trend-bar .tooltip-inner {
-  white-space:nowrap;
-  max-width:none;
-}
-
-.trend-bar .panel-heading .panel-title {
-	padding-top: 10px;
-	padding-left: 10px;
-}
-
-.trend-bar .panel-body{
-	padding: 5px;
-}
-
-.trend-bar .panel-body .list-group li{
-	border-color: transparent;
-	padding-bottom: 5px;
-}
-
-.trend-bar .panel-body .list-group li:last-child{
-	border-color: transparent;
-	padding-bottom: 0px;
-}
-
-.trend-bar .panel-body .list-group .trend-event-description{
-	margin-top: -10px;
-	padding-top: 0px;
-	padding-bottom: 0px;
-}
-
-.trend-bar .panel-heading{
-	padding-bottom: 0px;
-	/*padding-top: 0px;*/
-}
-
-.trend-bar .panel-heading .nav-tabs:hover{
-	cursor: pointer;
-}
-
-
-.trend-bar .trend-user:first-child{
-	margin-top: 10px;
-}
-
-.trend-bar .trend-user .trend-user-tipster-image{
-    height: 50px;
-    width: 50px;
-    border-radius: 50px;
-    margin-top: 5px;
-}
-
-.trend-bar .trend-user .trend-user-tipster-image img{
-	width: 50px;
-    height: 50px;
-}
-
-.trend-bar .trend-user{
-	padding-left: 15px;
-	padding-bottom: 15px;
-}
-
-.trend-bar .small-text{
-	font-size: 20px;
-}
-
-.trend-bar .trend-user .panel-title{
-    margin-left: 50px;
-    margin-top: 10px;
-}
-
-
-.trend-bar .trend-user button{
-	margin-top: 5px;
-}
-
-
 /*******************************
 trend-bar-item
 ********************************/
@@ -294,10 +207,10 @@ trend-bar-item
 }
 
 .trend-bar-item .panel-heading{
-	/*#8B8C8E*/
 	color: #333333;
 	background-color: white;
-	border-color: rgba(234,222,222, 0.3);
+	/*border-color: rgba(234,222,222, 0.3);*/
+	border-bottom: none;
 	padding-left: 20px;
 }
 
@@ -323,9 +236,18 @@ trend-bar-item
 	padding-top: 2px;
 }
 
-.trendbar-users{
-	/*background-color: black;*/
+.trend-bar-item .panel-body .list-group li:first-child{
+	padding-bottom: 0px;
 }
+
+.trend-bar-item .panel-body .list-group li a{
+	color: #8B8C8E;
+}
+
+.trend-bar-item .panel-body .list-group li a:hover{
+	color: #1AB2AC;
+}
+
 
 .trend-bar-item .trend-user{
 	margin-top: 0px;
@@ -333,9 +255,9 @@ trend-bar-item
 	padding-bottom: 10px;
 	padding-left: 15px;
 
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
-	border-color: rgba(234,222,222, 0.5);
+	/*border-bottom-style: solid;*/
+	/*border-bottom-width: 1px;*/
+	/*border-color: rgba(234,222,222, 0.5);*/
 }
 
 @media screen and (max-width: 1200px) {
@@ -370,6 +292,7 @@ trend-bar-item
 .trend-bar-item .small-text{
 	font-size: 11px;
 	color: #F47238;
+	margin-bottom: 0px;
 }
 
 .trend-bar-item .trend-user button {
@@ -416,10 +339,19 @@ Feed
 	border-style: solid;
 	border-width: 1px;
 	border-color: #D3E0E9;
+
+	border-top-width: 3px;
+	border-top-left-radius: 5px !important;
+	border-top-right-radius: 5px !important;
+	border-top-color: #1AB2AC;
+
+	padding-left: 0px;
+	padding-right: 0px;
 }
 
+
 .feed-post a { 
-    color: #424444;
+    color: #636363;
 }
 
 .feed-post a small{ 
@@ -434,14 +366,33 @@ Feed
 	color: #828282;
 }
 
-.feed-post .panel-heading, .feed-post .panel-footer{
+.feed-post .panel-heading{
 	background-color: white;
-	color: #A0A0A0;
-} 
+	padding-top: 14px;
+	padding-left: 26px;
+	border-bottom: none;
+}
 
-.feed-post .panel-heading .panel-title{
-	padding-top: 10px;
-	color: #999999;
+.feed-post .panel-heading a{
+	padding-top: 0px;
+	color: #337AB7;
+	font-weight: 600;
+	font-size: 16px;
+    font-family: Lato,"Helvetica Neue",Arial,Verdana,Tahoma,"Lucida Sans",FreeSans,"Lucida Sans Unicode","Luxi Sans",sans-serif;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.feed-post .panel-heading .panel-title .small-text{
+	color: #999999;	
+	padding-top: 4px;
+}
+
+.feed-post .panel-heading .panel-title {
+}
+
+.feed-post .panel-footer{
+	background-color: white;
 }
 
 .feed-post .panel-heading .btn-group button{
@@ -450,15 +401,15 @@ Feed
 
 
 .feed-post .feed-post-tipster-image{
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     border-radius: 50px;
     margin-top: 5px;
 }
 
 .feed-post .feed-post-tipster-image img{
-	width: 50px;
-    height: 50px;
+    height: 40px;
+	width: 40px;
 }
 
 @media screen and (min-width: 768px) {

@@ -34,8 +34,10 @@ export default class Post extends React.Component {
                 <a href="#"><img src="img/joaoalmeida.jpg" class="img-circle"></img></a>
             </div>
             <h3 class="panel-title media-body">
-                <p>João Almeida</p>
-                <p class="small-text"><i class="fa fa-clock-o fa-fw"></i> 2 min</p>
+                <div>
+                    <a href="#/profile">John Breakgrow jr.</a>
+                    <p class="small-text"><i class="fa fa-clock-o fa-fw"></i> 7:30 PM</p>
+                </div>
             </h3>
             <div class="feed-post-tipster-history">
                 <div class="row">
@@ -67,7 +69,7 @@ export default class Post extends React.Component {
             <div class="panel panel-default post-tips">
                 <div class="panel-body">
                     <p class="post-tip-selection">1. Benfica</p>
-                    <p class="post-tip-event">Belenenses vs Benfica</p>
+                    <a href="#/sports"><p class="post-tip-event">Belenenses vs Benfica</p></a>
                     <p class="post-tip-odd">1.51</p>
                 </div>
             </div>
@@ -81,7 +83,7 @@ export default class Post extends React.Component {
             <p class="tipster-comment">Benfica is very strong, they win.<br></br>Sporting is very weak, they lose for sure.</p><p></p>
         </div>
 
-        <div class="panel-footer">
+        <div class="panel-footer visible-xs">
             <div class="row">
                 <a href="#" class="col-xs-4"><span class="glyphicon glyphicon-thumbs-up"></span><small>5</small></a>
                 <a class="col-xs-4" role="button" data-toggle="collapse" href="#commentBox" aria-expanded="false" aria-controls="commentBox"><span class="glyphicon glyphicon-comment"></span><small>2</small></a>
@@ -90,7 +92,7 @@ export default class Post extends React.Component {
         </div>
 
 
-        <div class="collapse post-comment-box panel panel-default row" id="commentBox">
+        <div class="collapse post-comment-box panel panel-default" id="commentBox">
             
             <div class="panel-body media">
                 <div class="media-left">
