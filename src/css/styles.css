@@ -370,6 +370,7 @@ Feed
 	background-color: white;
 	padding-top: 14px;
 	padding-left: 26px;
+	padding-bottom: 8px;
 	border-bottom: none;
 }
 
@@ -426,8 +427,65 @@ Feed
     margin-top: 10px;
 }
 
-.post-content{
-	margin-top: 80px;
+@media screen and (max-width: 767px) {
+	.feed-post  .feed-post-left-container div:first-child{
+	}
+	.feed-post  .feed-post-left-container{
+		padding-bottom: 0px !important;
+		padding-left: 20px !important;
+	}
+
+	.feed-post .feed-post-left-container .wrapper{
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+	}
+}
+
+@media screen and (min-width: 768px) {
+
+
+	.feed-post .post-content{
+		padding-left: 0px;
+		padding-top: 0px;
+		padding-bottom: 5px;
+	}
+
+	.feed-post  .feed-post-left-container .divider{
+		height: 1px;
+	}
+
+	.feed-post .feed-post-left-container .wrapper{
+		border-right-style: solid;
+		border-right-width: 1px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+
+	.feed-post-right-container{
+		padding-left: 0px;
+	}
+}
+
+.feed-post  .feed-post-left-container{
+	padding: 0px;
+	padding-bottom: 10px;
+	padding-right: 29px;
+}
+
+.feed-post .feed-post-left-container .wrapper{
+	border-color: #1AB2AC;
+	padding-left: 20px;
+}
+
+.feed-post  .feed-post-left-container p{
+	color: #828282;
+	font-size: 13px;
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+
+.feed-post .post-content .post-tips{
+	border-radius: 10px; 
+	border-color: rgba(26, 178, 172, 0.3);
 }
 
 .feed-post .post-content .post-tips .panel-body{
@@ -438,20 +496,48 @@ Feed
 }
 
 .feed-post .tipster-comment{
-	margin-bottom: -15px;
-	padding-left: 10px;
+	padding-left: 3px;
+	margin-top: -8px;
 }
 
 .feed-post .panel-footer a{
 	text-align: center;
+	color: #1AB2AC;
 }
-.feed-post .panel-footer small{
+
+.feed-post .panel-footer a:hover, .feed-post .panel-heading .btn-group a:hover{
+	color: #F47238;
+}
+
+.feed-post .panel-footer small, .feed-post .panel-heading .btn-group small{
 	margin-left: 6px;
 }
 
-.feed-post .feed-post-tipster-history{
+.feed-post .panel-heading .btn-group{
 	float: right;
-	margin-top: -50px;
+	margin-top: -45px;
+}
+
+.feed-post .panel-heading .btn-group a{
+	font-weight: normal;
+	color: #1AB2AC;
+	font-size: 14px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.feed-post .panel-heading .btn-group a:first-child{
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: #1AB2AC;
+}
+
+.feed-post .feed-post-tipster-history{
+	margin-top: -8px;
+}
+
+.feed-post .feed-post-tipster-history button{
+	margin-left: 1px !important;
 }
 
 .popover-tipster-history div div{
@@ -466,17 +552,6 @@ Feed
 
 .popover-tipster-history div:last-child{
 	margin-bottom: 2px;
-}
-
-
-@media screen and (max-width: 400px) {
-    .feed-post .feed-post-tipster-history {
-		margin-top: 0px;
-    }    
-
-	.feed-post .post-content .post-tips:first-child{
-		margin-top: 46px;
-	}
 }
 
 

@@ -43,15 +43,11 @@ body {
     margin-right: 2px;
 }
 
-.sidebar-item-active{
+.sidebar-item-active, .sidebar-item-active i{
     color: #F47238 !important;
 }
 
-.sidebar-item-active i{
-    color: #F47238 !important;
-}
-
-.sidebar ul li a:hover{
+.sidebar ul li a:hover, .sidebar ul li a:hover i{
     background-color: #1AB2AC !important;
     color: white !important;
 }

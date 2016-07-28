@@ -2,17 +2,6 @@ $(function() {
 
     $('#side-menu').metisMenu();
 
-
-    $('#side-menu a').mouseenter( function() {
-      var i = $( this ).find('i');
-      if (i)
-        $(i).css({'color': 'white'})
-    }).mouseleave( function() {
-      var i = $( this ).find('i');
-      if (i)
-        $(i).css({'color': '#333333'})
-    });
-
     $("#sport-events-sidebar").click(function() {
         
         var location = '' + window.location;
