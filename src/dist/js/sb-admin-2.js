@@ -66,3 +66,13 @@ $(function() {
     //     element.addClass('active');
     // }
 });
+
+
+$(document).ready(function(){
+
+    // $('.trend-bar-container').affix({
+    //     offset: {
+    //         top: $('.trend-bar-container').height() - $(window).height()
+    //     }
+    // }); 
+});

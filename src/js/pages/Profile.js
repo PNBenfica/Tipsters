@@ -1,6 +1,6 @@
 import React from "react";
 
-import Post from "../components/Post";
+import Post from "../components/post/Post";
 import TrendEvents from "../components/trendbar/TrendEvents";
 import TrendUsers from "../components/trendbar/TrendUsers";
 

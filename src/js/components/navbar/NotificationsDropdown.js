@@ -10,22 +10,102 @@ export default class NotificationsDropdown extends React.Component {
         {
             date : "15:11",
             type : "fa-comment",
-            notificationImage : "img/joaoalmeida.jpg",
-            content : "John Smith e 3 outras pessoas comentaram a tua tip"
+            tipsterImage : "img/joaoalmeida.jpg",
+            tipsterName : "John Smith",
+            content : "e 3 outras pessoas comentaram a tua tip"
         },
         {
             date : "13:53",
             type : "fa-user",
-            notificationImage : "img/pauloteixeira.jpg",
-            content : "John Smith começou a seguir-te"
+            tipsterImage : "img/pauloteixeira.jpg",
+            tipsterName : "John Smith",
+            content : "começou a seguir-te"
+        },
+        {
+            date : "13:53",
+            type : "fa-user",
+            tipsterImage : "img/pauloteixeira.jpg",
+            tipsterName : "John Smith",
+            content : "começou a seguir-te"
+        },
+        {
+            date : "13:53",
+            type : "fa-user",
+            tipsterImage : "img/pauloteixeira.jpg",
+            tipsterName : "John Smith",
+            content : "começou a seguir-te"
+        },
+        {
+            date : "13:53",
+            type : "fa-user",
+            tipsterImage : "img/pauloteixeira.jpg",
+            tipsterName : "John Smith",
+            content : "começou a seguir-te"
+        },
+        {
+            date : "13:53",
+            type : "fa-user",
+            tipsterImage : "img/pauloteixeira.jpg",
+            tipsterName : "John Smith",
+            content : "começou a seguir-te"
+        },
+        {
+            date : "13:53",
+            type : "fa-user",
+            tipsterImage : "img/pauloteixeira.jpg",
+            tipsterName : "John Smith",
+            content : "começou a seguir-te"
+        },
+        {
+            date : "13:53",
+            type : "fa-user",
+            tipsterImage : "img/pauloteixeira.jpg",
+            tipsterName : "John Smith",
+            content : "começou a seguir-te"
+        },
+        {
+            date : "13:53",
+            type : "fa-user",
+            tipsterImage : "img/pauloteixeira.jpg",
+            tipsterName : "John Smith",
+            content : "começou a seguir-te"
+        },
+        {
+            date : "13:53",
+            type : "fa-user",
+            tipsterImage : "img/pauloteixeira.jpg",
+            tipsterName : "John Smith",
+            content : "começou a seguir-te"
+        },
+        {
+            date : "13:53",
+            type : "fa-user",
+            tipsterImage : "img/pauloteixeira.jpg",
+            tipsterName : "John Smith",
+            content : "começou a seguir-te"
+        },
+        {
+            date : "13:53",
+            type : "fa-user",
+            tipsterImage : "img/pauloteixeira.jpg",
+            tipsterName : "John Smith",
+            content : "começou a seguir-te"
+        },
+        {
+            date : "13:53",
+            type : "fa-user",
+            tipsterImage : "img/pauloteixeira.jpg",
+            tipsterName : "John Smith",
+            content : "começou a seguir-te"
         },
         {
             date : "15:11",
             type : "fa-thumbs-up",
-            notificationImage : "img/pauloteixeira.jpg",
-            content : "John Smith gostou da tua tip"
+            tipsterImage : "img/pauloteixeira.jpg",
+            tipsterName : "John Smith",
+            content : "gostou da tua tip"
         }
-    ].map(({date, type, notificationImage, content}, i) => <NotificationItem key={i} date={date} type={type} notificationImage={notificationImage} content={content}/> );
+    ].map(({date, type, tipsterName, tipsterImage, content}, i) => <NotificationItem key={i} date={date} type={type} tipsterName={tipsterName} tipsterImage={tipsterImage} content={content}/> );
 
 
     return (
@@ -36,11 +116,19 @@ export default class NotificationsDropdown extends React.Component {
             </a>
             <ul class="dropdown-menu dropdown-notifications">
                 
-                {Notifications}
+                <div class="dropdown-content-container">
+                    {Notifications}
+                    <li>
+                        <a class="text-center col-xs-12" href="#" style={{"paddingTop": "0px !important", "paddingBottom":"0px !important"}}>
+                            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </div>
 
-                <li>
-                    <a class="text-center" href="#" style={{"paddingTop": "0px !important", "paddingBottom":"0px !important"}}>
-                        <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                <li class="divider"></li>
+                <li class="dropdown-fixed-element">
+                    <a class="text-center" href="#">
+                        <strong> See All</strong>
                     </a>
                 </li>
             </ul>

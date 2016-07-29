@@ -34,15 +34,17 @@ export default class MessagesDropdown extends React.Component {
             </a>
             <ul class="dropdown-menu dropdown-messages col-xs-12">
                 
-                {Messages}
+                <div class="dropdown-content-container">
+                    {Messages}
+                    <li>
+                        <a class="text-center col-xs-12" href="#" style={{"paddingTop": "0px !important", "paddingBottom":"0px !important"}}>
+                            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </div>
 
-                <li>
-                    <a class="text-center" href="#" style={{"paddingTop": "0px !important", "paddingBottom":"0px !important"}}>
-                        <i class="fa fa-angle-double-down" aria-hidden="true"></i>
-                    </a>
-                </li>
                 <li class="divider"></li>
-                <li>
+                <li class="dropdown-fixed-element">
                     <a class="text-center" href="#">
                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
                         <strong> New Message</strong>

@@ -101,9 +101,9 @@ body {
     }
 }
 
-@media(max-width:350px) {
-    .navbar-top-links li {
-        float: none;
+@media(max-width:370px) {
+    .navbar-top-links {
+        padding-right: 20px;
     }
 }
 

@@ -100,93 +100,65 @@ Notifications dropdown
 }
 
 .dropdown-menu {
-	max-height: 500px;
+}
+
+.dropdown-menu .dropdown-content-container{
+	max-height: 300px;
 	overflow: auto;
 }
 
-.dropdown-menu li a{
-	padding-top: 10px !important;
-	padding-bottom: 10px !important;
+.dropdown-menu li .media{
+	padding-top: 8px;
+	padding-bottom: 8px;
 }
 
-
-
-.dropdown-menu a strong{
-	color: #A6A7AB;
-}
-
-.dropdown-menu a img{
-	width: 20px;
-	height: 20px;
-}
-
-.dropdown-messages a div:first-child{
-	color: #8B8C8E;
-}
-
-.dropdown-messages a div:nth-child(2){
-	padding-top: 3px;
-	font-size: 100%;
-}
-
-.dropdown-messages a em, .dropdown-menu a:hover{
-	color: #A6A7AB !important;
-}
-
-
-/*
-.my-dropdown .panel{
-	width: 320px;
-}
-.my-dropdown .panel-heading{
-	padding-top: 0px;
-	padding-bottom: 2px;
-}
-
-.my-dropdown .panel .row{
-	padding-left: 0px;
-	padding-right: 0px;
-}
-
-.my-dropdown .panel-body{
-	padding-left: 0px;
-	padding-top: 5px;
-	padding-bottom: 0px;
-
-	border-bottom-style: solid;
-	border-bottom-width: 1.5px;
-	border-color: #E5E5E5;
-}
-
-.my-dropdown .panel-body:last-child{
-	border: none;
-}
-
-.my-dropdown .panel-body:hover{
+.dropdown-menu li .media:hover{
 	cursor: pointer;
-	background-color: #F5F5F5;
+	background-color: #F9F9F9;
 }
 
-.my-dropdown .panel-body img{
-	width: 50px;
-	height: 50px;
+.dropdown-menu li .media .media-left{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.dropdown-menu img{
+	width: 39px;
+	height: 39px;
 }
 
-.my-dropdown .panel-body .notification-text{
-	margin-top: -8px;
-	padding-left: 4px; 
+.dropdown-menu .media-body{
+	color:#5B5B5C;
+	font-size: 13px;
+	padding-bottom: 0px;
+	padding-top: 2px;
+	overflow-y:
 }
 
-.my-dropdown .panel-body .notification-text p{
-	font-size: 75%;
-}*/
+.dropdown-menu .dropdown-menu-item-time{
+	color:#C0C2C4;
+	font-size: 11px;
+	margin-bottom: 0px;
+	padding-right: 30px;
+}
+
+.dropdown-menu .dropdown-fixed-element a{
+	color:#5B5B5C !important;
+}
+
+.dropdown-menu .dropdown-fixed-element i{
+	color:#F47238 !important;;
+}
 
 
 /*******************************
 trend-bar-item
 ********************************/
 
-
+.affix{
+	position: fixed;
+    bottom: 0px !important;
+    right: 0px !important;
+}
 
 @media screen and (min-width: 1200px) {
 	.trend-bar-container{
@@ -207,7 +179,7 @@ trend-bar-item
 }
 
 .trend-bar-item .panel-heading{
-	color: #333333;
+	color: #8B8C8E;
 	background-color: white;
 	/*border-color: rgba(234,222,222, 0.3);*/
 	border-bottom: none;
@@ -241,7 +213,7 @@ trend-bar-item
 }
 
 .trend-bar-item .panel-body .list-group li a{
-	color: #8B8C8E;
+	color: #8EB7D4;
 }
 
 .trend-bar-item .panel-body .list-group li a:hover{
@@ -276,7 +248,7 @@ trend-bar-item
 }
 
 .trend-bar-item .trend-user a{
-	color: #636363;
+	color: #7F8B94;
 }
 
 .trend-bar-item .trend-user .trend-user-tipster-image img{
@@ -507,6 +479,7 @@ Feed
 
 .feed-post .panel-footer a:hover, .feed-post .panel-heading .btn-group a:hover{
 	color: #F47238;
+	cursor: pointer;
 }
 
 .feed-post .panel-footer small, .feed-post .panel-heading .btn-group small{
@@ -598,7 +571,18 @@ Feed
 	background-color: #F7FFF9;
 }
 
-.feed-post-to-buy .panel-footer{
+
+.feed-post-to-buy .feed-post-right-container button{
+	color: white;
+	background-color: #1AB2AC;
+}
+
+.feed-post-to-buy .post-tips .panel-body{
+	background-color: transparent;
+}
+
+
+/*.feed-post-to-buy .panel-footer{
 	margin-top: -5px;
 }
 
@@ -610,7 +594,7 @@ Feed
     float: left;
     position: relative;
     width: 33%;
-}
+}*/
 
 
 
@@ -622,9 +606,6 @@ post-comment-box
 	padding-bottom: 0px !important;}
 
 .post-comment-box{
-	/*padding: 15px;*/
-	padding-top: 10px;
-	padding-bottom: 10px;
 	background-color: #F7F7F7;
 	color: #828282;
 
@@ -642,11 +623,12 @@ post-comment-box
 	font-size: 70%;
 }
 
-.post-comment-box .panel-body{
+.post-comment-box .media{
 	margin-top: 0px;
-	margin-bottom: 0px;
+}
+
+.post-comment-box .input-group{
 	padding-top: 5px;
-	padding-bottom: 5px;
 }
 
 .post-comment-box .media-left{
@@ -660,6 +642,7 @@ post-comment-box
 
 .post-comment-box button{
 	background-color: #F47238;
+	color: white;
 	border-color: #F47238;
 }
 
@@ -671,11 +654,11 @@ Profile
 /*********** Profile info */
 
 @media (max-width: 768px) {
-    .affix {
+    /*.affix {
 	  position: static;
 	  width: auto;
 	  top: 0;
-    }
+    }*/
 }
 
 
