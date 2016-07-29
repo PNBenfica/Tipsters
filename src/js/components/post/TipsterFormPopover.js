@@ -1,13 +1,13 @@
 import React from "react";
 
-import PopoverTipItem from "./PopoverTipItem";
+import Tip from "./Tip";
 
 export default class TipsterFormPopover extends React.Component {
 
   render() {
 
     const Tips = this.props.tips
-        .map(({selection, event, odd}, i) => <PopoverTipItem key={i} tipnumber={i+1} selection={selection} event={event} odd={odd}/>);
+        .map(({selection, event, odd}, i) => <Tip key={i} tipnumber={i+1} selection={selection} event={event} odd={odd}/>);
 
     return (
         <div class="popover-tipster-history">

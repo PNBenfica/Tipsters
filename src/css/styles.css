@@ -460,6 +460,10 @@ Feed
 	border-color: rgba(26, 178, 172, 0.3);
 }
 
+.post-tips, .post-tips a{
+	color: #828282;
+}
+
 .feed-post .post-content .post-tips .panel-body{
 	padding-top: 6px;
 	padding-bottom: 0px;

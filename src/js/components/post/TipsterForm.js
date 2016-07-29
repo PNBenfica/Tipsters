@@ -11,49 +11,17 @@ export default class TipsterForm extends React.Component {
 
   render() {
 
-    const Tips = [
-        {
-            selection : "Benfica",
-            event : "Belenenses vs Benfica",
-            odd : 1.51
-        },
-        {
-            selection : "Bayern",
-            event : "Wolfsburg vs Bayern",
-            odd : 1.36
-        }
-    ];
-    const Tips2 = [
-    {
-            selection : "Bayern",
-            event : "Wolfsburg vs Bayern",
-            odd : 1.36
-        }
-    ];
+    const Tips = [ { selection : "Benfica", event : "Belenenses vs Benfica", odd : 1.51},
+                   { selection : "Bayern",  event : "Wolfsburg vs Bayern",   odd : 1.36}];
+    const Tips2 = [{ selection : "Bayern",  event : "Wolfsburg vs Bayern",   odd : 1.36} ];
 
 
-    const LastTips = [
-        {
-            status: "win",
-            tips: Tips
-        },
-        {
-            status: "lost",
-            tips: Tips2
-        },
-        {
-            status: "win",
-            tips: Tips
-        },
-        {
-            status: "lost",
-            tips: Tips2
-        },
-        {
-            status: "win",
-            tips: Tips
-        }
-    ].map(({status, tips}, i) => {
+    const LastTips = [ { status: "win",  tips: Tips}, 
+                       { status: "lost", tips: Tips2}, 
+                       { status: "win",  tips: Tips}, 
+                       { status: "lost",  tips: Tips2}, 
+                       { status: "win",  tips: Tips}
+        ].map(({status, tips}, i) => {
 
             const popoverId = lodash.uniqueId('popover_');
             const popover = (
