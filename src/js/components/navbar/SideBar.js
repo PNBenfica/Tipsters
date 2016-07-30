@@ -5,7 +5,6 @@ export default class SideBar extends React.Component {
   render() {
 
     const { location } = this.props;
-    console.log(location);
     const feedClass = location.pathname === "/" ? "sidebar-item-active" : "";
     const profileClass = location.pathname.match(/^\/profile/) ? "sidebar-item-active" : "";
     const sportsClass = location.pathname.match(/^\/sports/) ? "sidebar-item-active" : "";

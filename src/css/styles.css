@@ -361,9 +361,6 @@ Feed
 	padding-top: 4px;
 }
 
-.feed-post .panel-heading .panel-title {
-}
-
 .feed-post .panel-footer{
 	background-color: white;
 }
@@ -373,14 +370,7 @@ Feed
 }
 
 
-.feed-post .feed-post-tipster-image{
-    height: 40px;
-    width: 40px;
-    border-radius: 50px;
-    margin-top: 5px;
-}
-
-.feed-post .feed-post-tipster-image img{
+.feed-post img{
     height: 40px;
 	width: 40px;
 }

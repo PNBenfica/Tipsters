@@ -1,17 +1,17 @@
 import React from "react";
 
-import TipsterForm from "./TipsterForm";
+import TipsterForm from "./tipsterForm/TipsterForm";
 
-export default class PostInfoContainer extends React.Component {
+export default class InfoContainer extends React.Component {
 
   render() {
 
-    const { totalodd, profit, wins, losses} = this.props;
+    const { totalOdd, profit, wins, losses} = this.props;
 
     return (
         <div class="col-xs-12 col-sm-4 feed-post-left-container">
             <div class="wrapper">
-                <p>Total odd: {totalodd}</p>
+                <p>Total odd: {totalOdd}</p>
                 <p class="divider hidden-xs"></p>
                 <p>Tipster form:</p>
 
@@ -20,7 +20,7 @@ export default class PostInfoContainer extends React.Component {
                 <p class="divider"></p>
                 <p class="divider hidden-xs"></p>
                 <p class="hidden-xs">Profit: {profit}</p>
-                <p class="hidden-xs">Win-Loss: {wins}-{losses}</p>
+                <p class="hidden-xs">Win-Loss: {wins} - {losses}</p>
             </div>
         </div>
     );
