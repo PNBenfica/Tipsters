@@ -1,4 +1,7 @@
 import React from "react";
+import {Media} from "react-bootstrap";
+
+import DropdownItemImage from "./DropdownItemImage";
 
 export default class MessageItem extends React.Component {
 
@@ -8,11 +11,11 @@ export default class MessageItem extends React.Component {
 
     return (
         <li>
-            <div class="media">
-                <a class="media-left" href="#">
-                    <img class="media-object" src={senderImage} class="img-rounded"/>
-                </a>
-                <div class="media-body">
+            <Media>
+                
+                <DropdownItemImage img={senderImage}/>
+
+                <Media.Body>
                     <h5 class="media-heading">
                         <strong>{sender}</strong>
                         <span class="dropdown-menu-item-time pull-right text-muted">
@@ -21,8 +24,9 @@ export default class MessageItem extends React.Component {
                         </span>
                     </h5>
                     {content}
-                </div>
-            </div>
+                </Media.Body>
+
+            </Media>
             <div class="divider"></div>
         </li>
     );

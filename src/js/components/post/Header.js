@@ -1,5 +1,5 @@
 import React from "react";
-import {ButtonGroup, Glyphicon, Media} from "react-bootstrap";
+import {Media} from "react-bootstrap";
 
 
 

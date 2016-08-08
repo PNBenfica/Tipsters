@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 import TipsterForm from "./tipsterForm/TipsterForm";
 
@@ -6,16 +7,16 @@ export default class InfoContainer extends React.Component {
 
   render() {
 
-    const { totalOdd, profit, wins, losses} = this.props;
+    const { totalOdd, profit, wins, losses, lastTips} = this.props;
 
     return (
         <div class="col-xs-12 col-sm-4 feed-post-left-container">
             <div class="wrapper">
-                <p>Total odd: {totalOdd}</p>
-                <p class="divider hidden-xs"></p>
+                <p class={classNames({totalOdd : 'hidden'})}>Total odd: {totalOdd}</p>
+                <p class={classNames("divider", "hidden-xs", {totalOdd : 'hidden'})} ></p>
                 <p>Tipster form:</p>
 
-                <TipsterForm />
+                <TipsterForm lastTips={lastTips}/>
 
                 <p class="divider"></p>
                 <p class="divider hidden-xs"></p>

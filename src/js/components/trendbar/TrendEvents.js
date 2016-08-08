@@ -1,29 +1,26 @@
 import React from "react";
+import {ListGroup, Panel} from "react-bootstrap";
+
+import Header from "./Header";
+import TrendEventItem from "./TrendEventItem";
 
 export default class TrendEvents extends React.Component {
 
   render() {
 
+    const TrendEvents = [{event:"Real Madrid vs Barcelona", description:"20 tips shared in the last hour"}, {event:"Leicester vs Norwich"}, {event:"Bayern Munique vs Benfica"}, {event:"Reading vs Burnley"}, {event:"Federer vs Nadal"}]
+                        .map(({event, description}, i) => <TrendEventItem event={event} description={description} key={i}/>);
+
     return (
-    <div class="trend-bar-item panel panel-default">
+        <Panel class="trend-bar-item">
 
-        <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-line-chart fa-fw"></i>Trends</h3>
-        </div>
+            <Header title="Trends" icon="fa-line-chart" />
 
-        <div class="panel-body">
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <a href="#">Real Madrid vs Barcelona</a>
-                    <p class="small-text">20 tips shared in the last hour</p>
-                </li>
-                <li class="list-group-item"><a href="#">Leicester vs Norwich</a></li>
-                <li class="list-group-item"><a href="#">Bayern Munique vs Benfica</a></li>
-                <li class="list-group-item"><a href="#">Reading vs Burnley</a></li>
-                <li class="list-group-item"><a href="#">Federer vs Nadal</a></li>
-            </ul>
-        </div>
-    </div>
+            <ListGroup>
+                {TrendEvents}
+            </ListGroup>
+
+        </Panel>
     );
   }
 }

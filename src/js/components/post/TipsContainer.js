@@ -12,11 +12,9 @@ export default class TipsContainer extends React.Component {
 
     return (
         <div class="col-xs-12 col-sm-8 feed-post-right-container">
-            <div class="panel-body post-content">
-                
+            <div class="panel-body post-content">                
                 {Tips}
-
-                <TipsterComment comment={this.props.comment}/>
+                <TipsterComment comment={this.props.comment}/>                
             </div>
         </div>
     );

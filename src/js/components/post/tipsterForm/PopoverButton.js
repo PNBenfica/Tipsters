@@ -1,8 +1,6 @@
 import React from "react";
+import classNames from "classnames";
 import {OverlayTrigger} from "react-bootstrap";
-
-var classNames = require('classnames');
-
 
 export default class PopoverButton extends React.Component {
 

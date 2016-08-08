@@ -1,6 +1,9 @@
 import React from "react";
 
+import DropdownIcon from "./DropdownIcon";
+import LoadMoreDropdownItems from "./LoadMoreDropdownItems";
 import MessageItem from "./MessageItem";
+import NewMessageDropdownItem from "./NewMessageDropdownItem";
 
 export default class MessagesDropdown extends React.Component {
 
@@ -29,29 +32,20 @@ export default class MessagesDropdown extends React.Component {
 
     return (
         <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-envelope fa-fw"><span class="font-awesome-badge badge-red">2</span></i> 
-            </a>
+
+            <DropdownIcon icon="fa-envelope" badge="badge-red" newItems="2"/>
+
             <ul class="dropdown-menu dropdown-messages col-xs-12">
                 
                 <div class="dropdown-content-container">
                     {Messages}
-                    <li>
-                        <a class="text-center col-xs-12" href="#" style={{"paddingTop": "0px !important", "paddingBottom":"0px !important"}}>
-                            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
-                        </a>
-                    </li>
+                    <LoadMoreDropdownItems />
                 </div>
 
                 <li class="divider"></li>
-                <li class="dropdown-fixed-element">
-                    <a class="text-center" href="#">
-                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                        <strong> New Message</strong>
-                    </a>
-                </li>
+
+                <NewMessageDropdownItem />
             </ul>
-            {/*<!-- /.dropdown-messages -->*/}
         </li>
     );
   }

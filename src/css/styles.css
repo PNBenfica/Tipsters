@@ -166,7 +166,7 @@ trend-bar-item
 
 @media screen and (min-width: 1200px) {
 	.trend-bar-container{
-		padding-right: 60px;
+		padding-right: 75px;
 	}
 }
 
@@ -185,13 +185,8 @@ trend-bar-item
 .trend-bar-item .panel-heading{
 	color: #8B8C8E;
 	background-color: white;
-	/*border-color: rgba(234,222,222, 0.3);*/
 	border-bottom: none;
 	padding-left: 20px;
-}
-
-.trend-bar-item .panel-heading .panel-title{
-	/*font-size: 105%;*/
 }
 
 .trend-bar-item .panel-heading .panel-title i {
@@ -199,7 +194,6 @@ trend-bar-item
 }
 
 .trend-bar-item .panel-body{
-	border-color: transparent;
 	padding: 0px;
 	padding-top: 0px;
 	padding-bottom: 2px;
@@ -251,7 +245,7 @@ trend-bar-item
 	color: #7F8B94;
 }
 
-.trend-bar-item .trend-user .trend-user-tipster-image img{
+.trend-bar-item .trend-user img{
 	width: 40px;
     height: 40px;
 }
@@ -440,16 +434,19 @@ Feed
 	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
 
-.feed-post .post-content .post-tips{
-	border-radius: 10px; 
-	border-color: rgba(26, 178, 172, 0.3);
+.post-tips{
+	background-color: #F7F7F7;
+	border-color: #F7F7F7;
+
+	border-left-width: 2px;
+	border-left-color: #2DC3E8;
 }
 
 .post-tips, .post-tips a{
 	color: #828282;
 }
 
-.feed-post .post-content .post-tips .panel-body{
+.post-tips .panel-body{
 	padding-top: 6px;
 	padding-bottom: 0px;
 	padding-left: 25px;
@@ -565,22 +562,9 @@ Feed
 	background-color: transparent;
 }
 
-
-/*.feed-post-to-buy .panel-footer{
-	margin-top: -5px;
+.feed-post-to-buy .feed-post-right-container{
+	margin-top: 25px;
 }
-
-.feed-post-to-buy .panel-footer .glyphicon-shopping-cart {
-    margin-right: 10px;
-}
-
-.feed-post-to-buy .panel-footer .buttons a {
-    float: left;
-    position: relative;
-    width: 33%;
-}*/
-
-
 
 /*************************************************
 post-comment-box
@@ -1025,7 +1009,7 @@ Buttons
 	min-height: 20px;
 	padding: 2px;
 	font-size: 60%;
-	border-radius: 100% !important;
+	border-radius: 20% !important;
 }
 
 .my-sucess-button:hover{
@@ -1041,7 +1025,7 @@ Buttons
 	min-height: 20px;
 	padding: 2px;
 	font-size: 60%;
-	border-radius: 100% !important;
+	border-radius: 20% !important;
 }
 
 .my-fail-button:hover{

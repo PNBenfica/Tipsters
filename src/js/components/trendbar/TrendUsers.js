@@ -1,62 +1,31 @@
 import React from "react";
+import {Panel} from "react-bootstrap";
+
+import Header from "./Header";
+import TrendUserItem from "./TrendUserItem";
 
 export default class TrendUsers extends React.Component {
 
   render() {
 
-    return (
-        <div class="trend-bar-item panel panel-default trendbar-users">
+    const TrendUsers = [{tipsterName:"Paulo Teixeira", tipsterImage:"img/pauloteixeira.jpg", description:"Is on a 5 green tips streak!"},
+                        {tipsterName:"João Almeida", tipsterImage:"img/joaoalmeida.jpg", description:"Is on a 27 loosing streak!"},
+                        {tipsterName:"Paulo Teixeira", tipsterImage:"img/pauloteixeira.jpg", description:"Is on a 5 green tips streak!"}]
+                        .map(({tipsterName, tipsterImage, description}, i) => <TrendUserItem tipsterName={tipsterName} tipsterImage={tipsterImage} description={description} key={i}/>);
 
-            <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-users fa-fw"></i>Tipsters sugeridos</h3>
-            </div>
+    return (
+        <Panel class="trend-bar-item">
+
+            <Header title="Tipsters sugeridos" icon="fa-users" />
 
             <div class="panel-body">
+                {TrendUsers}                
+            </div>  
 
-                <div class ="col-xs-12 trend-user media">
-                    <div class="trend-user-tipster-image media-left">
-                        <a href=""><img src="img/pauloteixeira.jpg" class="img-circle"></img></a>
-                    </div>
-                    <div class="panel-title media-body">
-                        <a href="">Paulo Teixeira</a>
-                        <p class="small-text">Is on a 5 green tips streak!</p>
-                    </div>
-                    <div class="media-right">
-                        <button type="button" class="btn btn-default"><i class="fa fa-user-plus fa-fw"></i></button>
-                    </div>
-                </div> {/*<!-- user 1 -->*/}
-
-                <div class ="col-xs-12 trend-user media">
-                    <div class="trend-user-tipster-image media-left">
-                        <a href=""><img src="img/joaoalmeida.jpg" class="img-circle"></img></a>
-                    </div>
-                    <div class="panel-title media-body">
-                        <a href="">João Almeida</a>
-                        <p class="small-text">Is on a 27 loosing streak!</p>
-                    </div>
-                    <div class="media-right">
-                        <button type="button" class="btn btn-default"><i class="fa fa-user-plus fa-fw"></i></button>
-                    </div>
-                </div>  {/*<!-- user 2 -->*/}
-
-                <div class ="col-xs-12 trend-user media">
-                    <div class="trend-user-tipster-image media-left">
-                        <a href=""><img src="img/joaoalmeida.jpg" class="img-circle"></img></a>
-                    </div>
-                    <div class="panel-title media-body">
-                        <a href="">João Almeida</a>
-                        <p class="small-text">Is on a 27 loosing streak!</p>
-                    </div>
-                    <div class="media-right">
-                        <button type="button" class="btn btn-default"><i class="fa fa-user-plus fa-fw"></i></button>
-                    </div>
-                </div>  {/*<!-- user 3 -->*/}
-                
-            </div>  {/*<!-- panel-body -->*/}
             <div class="panel-footer">
                 <button type="button" class="btn btn-default btn-block">Find More</button>
             </div>
-        </div> 
+        </Panel> 
     );
   }
 }

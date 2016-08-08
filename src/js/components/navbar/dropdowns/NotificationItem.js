@@ -1,5 +1,8 @@
 import React from "react";
-var classNames = require('classnames');
+import classNames from "classnames";
+import {Media} from "react-bootstrap";
+
+import DropdownItemImage from "./DropdownItemImage";
 
 export default class NotificationItem extends React.Component {
 
@@ -10,18 +13,19 @@ export default class NotificationItem extends React.Component {
 
     return (
         <li>
-            <div class="media">
-                <a class="media-left" href="#">
-                    <img class="media-object" src={tipsterImage} class="img-rounded"/>
-                </a>
-                <div class="media-body">
+            <Media>
+
+                <DropdownItemImage img={tipsterImage}/>
+
+                <Media.Body>
                     <strong>{tipsterName} </strong>{content}
                     <p class="dropdown-menu-item-time">
-                        <i className={iconClasses}></i>
+                        <i class={iconClasses}></i>
                         <em> {date}</em>
                     </p>
-                </div>
-            </div>
+                </Media.Body>
+
+            </Media>
             <div class="divider"></div>
         </li>
     );
