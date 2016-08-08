@@ -20,11 +20,7 @@ export default class Header extends React.Component {
                 <a href="#/profile">{tipsterName}</a>
                 <p class="small-text"><i class="fa fa-clock-o fa-fw"></i> {date}</p>
             </Media.Body>
-
-            <ButtonGroup class="hidden-xs">
-                <a><Glyphicon glyph="thumbs-up"/><small>{likes}</small></a>
-                <a onClick={() => this.props.toggleCommentBox()}><Glyphicon glyph="comment"/><small>{comments}</small></a>
-            </ButtonGroup>
+            
         </Media>
     );
   }

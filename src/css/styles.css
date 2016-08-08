@@ -3,6 +3,10 @@
 Html General Elements
 *************************************************/
 
+body{	
+    font-family: Lato,"Helvetica Neue",Arial,Verdana,Tahoma,"Lucida Sans",FreeSans,"Lucida Sans Unicode","Luxi Sans",sans-serif;
+}
+
 a, a:hover, a:active, a:visited {
     text-decoration:none !important;
 }
@@ -187,7 +191,7 @@ trend-bar-item
 }
 
 .trend-bar-item .panel-heading .panel-title{
-	font-size: 105%;
+	/*font-size: 105%;*/
 }
 
 .trend-bar-item .panel-heading .panel-title i {
@@ -213,11 +217,11 @@ trend-bar-item
 }
 
 .trend-bar-item .panel-body .list-group li a{
-	color: #8EB7D4;
+	color: #2DC3E8;
 }
 
 .trend-bar-item .panel-body .list-group li a:hover{
-	color: #1AB2AC;
+	color: #2DC3E8;
 }
 
 
@@ -237,10 +241,6 @@ trend-bar-item
 		padding-left: 10px;
 		padding-right: 10px;
 	}
-}
-
-.trendbar-users .panel-body > .trend-user:nth-child(5){
-	border-bottom: none;
 }
 
 .trend-bar-item .trend-user:hover{
@@ -268,11 +268,11 @@ trend-bar-item
 }
 
 .trend-bar-item .trend-user button {
-	border-color: #1AB2AC;
+	border-color: #2DC3E8;
 }
 
 .trend-bar-item .trend-user button i{
-	color: #1AB2AC;
+	color: #2DC3E8;
 }
 
 .trend-bar-item .panel-footer{
@@ -282,7 +282,7 @@ trend-bar-item
 
 .trend-bar-item .panel-footer button{
 	color: white;
-	background-color: #1AB2AC;
+	background-color: #2DC3E8;
 }
 
 
@@ -315,7 +315,7 @@ Feed
 	border-top-width: 3px;
 	border-top-left-radius: 5px !important;
 	border-top-right-radius: 5px !important;
-	border-top-color: #1AB2AC;
+	border-top-color: #2DC3E8;
 
 	padding-left: 0px;
 	padding-right: 0px;
@@ -351,24 +351,19 @@ Feed
 	color: #337AB7;
 	font-weight: 600;
 	font-size: 16px;
-    font-family: Lato,"Helvetica Neue",Arial,Verdana,Tahoma,"Lucida Sans",FreeSans,"Lucida Sans Unicode","Luxi Sans",sans-serif;
 	margin-top: 0px;
 	margin-bottom: 0px;
 }
 
-.feed-post .panel-heading .panel-title .small-text{
+.feed-post .panel-heading .panel-title p{
 	color: #999999;	
 	padding-top: 4px;
+	font-size: 12px;
 }
 
 .feed-post .panel-footer{
 	background-color: white;
 }
-
-.feed-post .panel-heading .btn-group button{
-	margin-left: 1px;
-}
-
 
 .feed-post img{
     height: 40px;
@@ -435,7 +430,7 @@ Feed
 }
 
 .feed-post .feed-post-left-container .wrapper{
-	border-color: #1AB2AC;
+	border-color: #2DC3E8;
 	padding-left: 20px;
 }
 
@@ -466,37 +461,32 @@ Feed
 	margin-top: -8px;
 }
 
+.feed-post .panel-footer{
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
 .feed-post .panel-footer a{
 	text-align: center;
-	color: #1AB2AC;
+	color: #2DC3E8;
+	padding-top: 6px;
+	padding-bottom: 6px;
 }
 
-.feed-post .panel-footer a:hover, .feed-post .panel-heading .btn-group a:hover{
+.feed-post .panel-footer a:hover{
 	color: #F47238;
 	cursor: pointer;
+	background-color: rgba(235, 234, 230, 0.3);
 }
 
-.feed-post .panel-footer small, .feed-post .panel-heading .btn-group small{
+.feed-post .panel-footer small{
 	margin-left: 6px;
 }
 
-.feed-post .panel-heading .btn-group{
-	float: right;
-	margin-top: -45px;
-}
-
-.feed-post .panel-heading .btn-group a{
-	font-weight: normal;
-	color: #1AB2AC;
-	font-size: 14px;
-	padding-right: 15px;
-	padding-left: 15px;
-}
-
-.feed-post .panel-heading .btn-group a:first-child{
+.feed-post .panel-footer a:first-child{
 	border-right-style: solid;
 	border-right-width: 1px;
-	border-right-color: #1AB2AC;
+	border-right-color: rgba(26, 178, 172, 0.3);
 }
 
 .feed-post .feed-post-tipster-history{
@@ -568,7 +558,7 @@ Feed
 
 .feed-post-to-buy .feed-post-right-container button{
 	color: white;
-	background-color: #1AB2AC;
+	background-color: #2DC3E8;
 }
 
 .feed-post-to-buy .post-tips .panel-body{
@@ -609,8 +599,12 @@ post-comment-box
     margin-bottom: 0;
 }
 
-.post-comment-box .media-body a{
-	color: #1AB2AC;
+.post-comment-box a{
+	color: #2DC3E8;
+}
+
+.post-comment-box a:hover{
+	cursor: pointer;
 }
 
 .post-comment-box .media-body small{
@@ -634,10 +628,10 @@ post-comment-box
 	height: 30px;
 }
 
-.post-comment-box button{
-	background-color: #F47238;
-	color: white;
-	border-color: #F47238;
+.post-comment-box button, .post-comment-box button:hover, .post-comment-box button:active, .post-comment-box button:visited{
+	background-color: #F47238 !important;
+	color: white !important;
+	border-color: #F47238 !important;
 }
 
 

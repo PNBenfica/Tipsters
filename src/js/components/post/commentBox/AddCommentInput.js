@@ -10,7 +10,7 @@ export default class AddCommentInput extends React.Component {
         <InputGroup>
             <FormControl type="text" class="input-sm" placeholder="Add a comment..."/>
             <InputGroup.Button>
-                <Button bsSize="small">Send</Button>
+                <Button bsSize="small" onClick={()=> this.props.addComment("novo comentario")}>Send</Button>
             </InputGroup.Button>
         </InputGroup>
     );

@@ -57,11 +57,11 @@ export default class SideBar extends React.Component {
                     </li>
 
                     <li>
-                        <a href="#" className={feedClass}><i class="fa fa-feed fa-fw"></i> Feed de Noticias</a>
+                        <a href="#" className={feedClass}><i class="fa fa-feed fa-fw"></i> News Feed</a>
                     </li>
 
                     <li>
-                        <a id="sport-events-sidebar" className={sportsClass} href="#/sports"><i class="fa fa-soccer-ball-o fa-fw"></i> Eventos Desportivos<span class="fa arrow"></span></a>
+                        <a id="sport-events-sidebar" className={sportsClass} href="#/sports"><i class="fa fa-soccer-ball-o fa-fw"></i> Sports<span class="fa arrow"></span></a>
                         
                         {/*<!-- sports list -->*/}
                         <ul class="nav nav-second-level">

@@ -1,7 +1,7 @@
 import React from "react";
 
 import CommentBox from "./commentBox/CommentBox";
-import FooterXs from "./FooterXs";
+import Footer from "./Footer";
 import Header from "./Header";
 import PostBody from "./PostBody";
 
@@ -19,27 +19,18 @@ export default class Post extends React.Component {
 
     render() {
 
-
-        const Post = {
-                        tips : [ { selection : "Benfica", event : "Belenenses vs Benfica", odd : 1.51}, { selection : "Rio Ave",  event : "Sporting vs Rio Ave",   odd : 2.35}],
-                        comment : "Benfica is very strong, they win. Sporting is very weak, they lose for sure.",
-                        tipster : {name: "João Almeida", image : "img/joaoalmeida.jpg", profit : 120, wins: 120, losses: 60},
-                        date : "7:30 PM",
-                        likes : "5",
-                        comments : "2",
-                        totalOdd : 3.41
-                    };
+        const { tipster, tips, comment, date, likes, nComments, totalOdd, comments, addComment} = this.props;
         
         return (
             <div class="feed-post panel panel-default col-md-12">
                 
-                <Header tipsterName={Post.tipster.name} tipsterImage={Post.tipster.image} date={Post.date} likes={Post.likes} comments={Post.comments} toggleCommentBox={this.toggleCommentBox.bind(this)} />
+                <Header tipsterName={tipster.name} tipsterImage={tipster.image} date={date} likes={likes} comments={nComments} toggleCommentBox={this.toggleCommentBox.bind(this)} />
 
-                <PostBody tips={Post.tips} comment={Post.comment} tipster={Post.tipster} totalOdd={Post.totalOdd}/>
+                <PostBody tips={tips} comment={comment} tipster={tipster} totalOdd={totalOdd}/>
 
-                <FooterXs likes={Post.likes} comments={Post.comments} toggleCommentBox={this.toggleCommentBox.bind(this)} />
-     
-                <CommentBox in={this.state.commentBoxOpen}/>
+                <Footer likes={likes} comments={nComments} toggleCommentBox={this.toggleCommentBox.bind(this)} />
+    
+                <CommentBox in={this.state.commentBoxOpen} comments={comments} addComment={addComment}/>
 
             </div>
     );
