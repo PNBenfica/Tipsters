@@ -91,7 +91,8 @@ body {
 #page-wrapper {
     padding: 0 15px;
     padding-top: 70px !important;
-    min-height: 568px;
+    /*min-height: 568px;*/
+    min-height: 640px !important;
     background-color: #E9EAED;
 }
 

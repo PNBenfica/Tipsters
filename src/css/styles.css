@@ -872,7 +872,8 @@ league tables
 }
 
 .league-tables .league-game a small{
-	color: #3C4F85;
+	/*color: #3C4F85;*/
+	color: #2DC3E8;
 	padding-right: 5px;
 }
 

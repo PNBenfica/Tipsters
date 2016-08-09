@@ -17,7 +17,7 @@ ReactDOM.render(
       <IndexRoute component={Feed}></IndexRoute>
       <Route path="profile" name="profile" component={Profile}></Route>
       <Route path="rankings" name="rankings" component={Rankings}></Route>
-      <Route path="sports" name="sports" component={Sports}></Route>
+      <Route path="sports(/:sport(/:league))" name="sports" component={Sports}></Route>
       <Route path="sports/premierleague" name="sportsleague" component={SportsLeague}></Route>
     </Route>
   </Router>,
