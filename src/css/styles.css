@@ -790,7 +790,7 @@ Sports
 
 .sidebar::-webkit-scrollbar-thumb, .chat-panel .panel-body::-webkit-scrollbar-thumb
 {
-	background-color: rgba(0,0,0,0.2);
+	background-color: rgba(0,0,0,0.0);
 }
 
 
@@ -813,9 +813,10 @@ league tables
 }
 
 .league-tables .panel .panel-heading{
-	color: #8B8C8E;
-	background-color: #ffffff;
-	border-bottom-color: rgba(234,222,222, 0.5);
+	color: #2DC3E8;
+	background-color: #fafafa;
+	border-bottom-color: #2DC3E8;
+	border-bottom-width: 2px;
 }
 
 .league-tables .panel .panel-heading .panel-title{
@@ -836,11 +837,15 @@ league tables
 .league-tables .panel-body a{
 	padding-bottom: 5px;
 	padding-top: 2px;
-	color: #A1ABBF;
+	color: #8B8C8E;
+}
+
+.league-tables .panel-body a:hover{
+	color: #2DC3E8;
 }
 
 .league-tables .breadcrumb{
-	background: #F0F2F5;
+	background: #E9EAED;
 	margin-bottom: 0px;
 }
 
@@ -885,28 +890,22 @@ bet slip
 	}
 }
 
+.right-sports-bar-container .panel-heading{
+	color: #8B8C8E;
+	background-color: #ffffff;
+	border-bottom: none;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
 
 #bet-slip {
 	color: #8B8C8E;
 }
 
-#bet-slip .panel-heading{
-	color: #8B8C8E;
-	background-color: #ffffff;
-	border-bottom: none;
-
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-
 #bet-slip .panel-heading h3{
-	font-size: 110%;
+	font-size: 14px;
 }
-
-#bet-slip .panel-body{
-	padding-bottom: 10px;
-}
-
 
 #bet-slip .panel-body{
 	padding-bottom: 2px;
@@ -919,35 +918,22 @@ bet slip
 	margin-left: 5px;
 }
 
-#bet-slip .panel-body .bet-slip-single-bet:first-child{ 
-	margin-top: -8px; 
+#bet-slip .panel-body .post-tips{ 
+	border-left-color: #F47238;
 }
-
-#bet-slip .panel-body .bet-slip-single-bet{ 
-	margin-top: -8px; 
-}
-
-#bet-slip .panel-body .bet-slip-single-bet:first-child{ 
-	margin-top: 0px; 
-}
-
-#bet-slip .panel-body .bet-slip-single-bet .panel-body{  
-    padding-bottom: 0px;
-}
-
-#bet-slip .panel-body .bet-slip-single-bet .panel-body p{ 
-    line-height: 90%;
-}
-
 
 #bet-slip #bet-slip-total-odd{ 
     margin-top: -10px;
 }
 
-#bet-slip .panel-body .bet-slip-single-bet .panel-body .cross{  
+#bet-slip .panel-body .post-tips .panel-body .cross{  
     font-size: 90%;
-    color: red;
+    color: #F47238;
     font-weight: bold;
+}
+
+#bet-slip .panel-body .post-tips .panel-body .cross:hover{  
+    cursor: pointer;
 }
 
 
@@ -956,10 +942,16 @@ bet slip
     margin-bottom: 0px;
 }
 
+#bet-slip .empty-bet-slip .panel{  
+    padding-top: 10px;
+    padding-bottom: 7px;
+}
+
 #bet-slip button{
-	background-color: #F8F8F8;
-	color: #A8A9AA;
+	background-color: #F47238;
+	color: white;
     margin-bottom: 5px;
+    font-size: 14px;
 }
 
 /**********************************
@@ -967,33 +959,24 @@ Tips on this game
 **********************************/
 
 .chat-panel .panel-heading{	
-	color: #8B8C8E;
-	background-color: #ffffff;
-	border-bottom-color: rgba(234,222,222, 0.5);
 }
 
 #tips-on-this-events .chat-img img{ 
+	margin-top: 5px;
     width: 50px;
     height: 50px;
 }
 
-#tips-on-this-events .tip-on-this-event .media-body p:nth-child(2){ 
-	margin-top: -3px;
-	font-size: 80%;
-}
-
-
-#tips-on-this-events .tip-on-this-event { 
+#tips-on-this-events .post-tips { 
     padding-left: 10px;
 }
 
-#tips-on-this-events .tip-on-this-event a { 
-    color:black;
+.chat-panel .tips-container{
+	margin-top: 5px;
 }
 
-#tips-on-this-events .tip-on-this-event { 
-    margin-top: 3px;
-    margin-bottom: 3px;
+.chat-panel button {
+	background-color: #F47238;
 }
 
 

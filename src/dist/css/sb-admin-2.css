@@ -62,7 +62,11 @@ body {
     border-bottom-color: #EBEAE6;
 }
 
-.sidebar ul {
+.sidebar ul li .nav-second-level a{
+    border-bottom: none;
+}
+
+.sidebar ul:first-child {
     border-top-style: solid;
     border-top-width: 1px;
     border-top-color: #EBEAE6;
@@ -209,8 +213,8 @@ body {
 }
 
 .sidebar .nav-second-level li a{
-    padding-top: 7px !important;
-    padding-bottom: 7px !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
 }
 
 .sidebar .nav-third-level li a{
@@ -235,7 +239,7 @@ body {
         z-index: 1;
         position: absolute;
         width: 200px;
-        margin-top: 51px;
+        padding-top: 50px;
     }
 
 
@@ -329,8 +333,13 @@ body {
 }
 
 .chat-panel .panel-body {
-    height: 350px;
+    height: 320px;
     overflow-y: scroll;
+}
+
+.chat-panel .small-chat{
+    height: 130px;
+    overflow-y: hidden;
 }
 
 .login-panel {

@@ -121,7 +121,7 @@ export default class SportsLeague extends React.Component {
 
 
     {/*<!-- right-sports-bar -->*/}
-    <div class="col-lg-4 hidden-md hidden-sm hidden-xs">
+    <div class="col-lg-4 hidden-md hidden-sm hidden-xs right-sports-bar-container">
 
         {/*<!-- boletim -->*/}
         <div id="bet-slip">
