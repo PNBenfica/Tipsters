@@ -71,16 +71,16 @@ export default class SideBar extends React.Component {
                                 {/*<!-- main football leagues -->*/}
                                 <ul class="nav nav-third-level">
                                     <li>
-                                        <a href="#/sports/premierleague"><img src="img/sports/premierleague.png"></img> Premier League</a>
+                                        <a href="#/sports/football/premier-league"><img src="img/sports/premierleague.png"></img> Premier League</a>
                                     </li>
                                     <li>
-                                        <a href="#/sports/premierleague"><img src="img/sports/laliga.png"></img> La Liga</a>
+                                        <a href="#/sports/football/premier-league"><img src="img/sports/laliga.png"></img> La Liga</a>
                                     </li>
                                     <li>
-                                        <a href="#/sports/premierleague"><img src="img/sports/bundesliga.png"></img> Bundesliga</a>
+                                        <a href="#/sports/football/premier-league"><img src="img/sports/bundesliga.png"></img> Bundesliga</a>
                                     </li>
                                     <li>
-                                        <a href="#/sports/premierleague"><img src="img/sports/seriea.png"></img> Serie A</a>
+                                        <a href="#/sports/football/premier-league"><img src="img/sports/seriea.png"></img> Serie A</a>
                                     </li>
                                 </ul>
                                 {/*<!-- /.main football leagues -->*/}

@@ -869,6 +869,7 @@ league tables
 
 .league-tables .league-game a:not(:first-child):hover{
 	background-color: #F7F7F7;
+	cursor: pointer;
 }
 
 .league-tables .league-game a small{

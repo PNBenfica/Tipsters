@@ -3,18 +3,30 @@ import React from "react";
 
 export default class Breadcrumb extends React.Component {
 
-	capitalizeFirstLetter(string) {
-	    return string.charAt(0).toUpperCase() + string.slice(1);
+	formatOption(string) {
+	    return string.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase());
 	}
 
   	render() {
 
-	    let {sport, league} = this.props;
-	    sport = this.capitalizeFirstLetter(sport);
+	    let {sport, league, match} = this.props;
+
+	    let options = [sport, league, match].filter((ele) => typeof ele !== "undefined");
+
+	    let ref = "#/sports";
+	    for (var i = 0; i < options.length; i++){
+	    	ref += "/" + options[i];
+
+	    	const name = this.formatOption(options[i]);
+	    	if (i === options.length - 1)
+	    		options[i] = <li key={i} class="active">{name}</li>;
+	    	else
+	    		options[i] = <li key={i}><a href={ref}>{name}</a></li>;
+	    }
 
 	    return (
 	        <ol class="breadcrumb">
-	            <li class="active">{sport}</li>
+	            {options}
 	        </ol>
 	    );
   	}

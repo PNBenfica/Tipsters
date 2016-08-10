@@ -6,9 +6,9 @@ export default class FootballMatchesTable extends React.Component {
 
   	render() {
 
-	    let {date, matches} = this.props;
+	    let {date, matches, addTip} = this.props;
 
-        matches = matches.map(({...match}, i) => <FootballMatchItem key={i} {...match} />);
+        matches = matches.map(({...match}, i) => <FootballMatchItem key={i} {...match} addTip={addTip}/>);
 
 	    return (
             <div class="panel panel-default">

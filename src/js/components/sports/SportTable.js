@@ -14,7 +14,7 @@ export default class SportTable extends React.Component {
                 </div>
 
                 <div class="panel-body">                    
-                    {options.map((option, i) => <a key={i} href="#/sports/football/premierleague" class="col-xs-12 col-sm-6 col-lg-4">{option}</a>)}
+                    {options.map((option, i) => <a key={i} href="#/sports/football/premier-league" class="col-xs-12 col-sm-6 col-lg-4">{option}</a>)}
                 </div>
             </div>
 	    );
