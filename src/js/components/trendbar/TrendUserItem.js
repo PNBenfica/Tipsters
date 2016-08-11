@@ -11,7 +11,7 @@ export default class TrendUserItem extends React.Component {
         <Media class ="col-xs-12 trend-user">
 
             <Media.Left>
-                <a href="#/profile"><img src={tipsterImage} class="img-circle"></img></a>
+                <a href="#/profile"><img src={tipsterImage} class="img-rounded"></img></a>
             </Media.Left>
 
             <Media.Body class="panel-title">

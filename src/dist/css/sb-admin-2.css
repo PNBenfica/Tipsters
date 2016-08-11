@@ -93,7 +93,7 @@ body {
     padding-top: 70px !important;
     /*min-height: 568px;*/
     min-height: 640px !important;
-    background-color: #E9EAED;
+    background-color: #F5F5F5;
 }
 
 @media(min-width:768px) {

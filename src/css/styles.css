@@ -173,21 +173,36 @@ trend-bar-item
 
 
 .trend-bar-item{
-	border-style: solid;
+/*	border-style: solid;
 	border-width: 1px;
-	border-color: #D3E0E9;
-
+	border-color: #D3E0E9;*/
+	border: none;
+	margin-bottom: 35px;
 	padding-bottom: 0px;
 	padding-left: 0px;
 	padding-top: 5px;
 }
 
 .trend-bar-item .panel-heading{
-	color: #8B8C8E;
+	color: #333
 	background-color: white;
-	border-bottom: none;
 	padding-left: 20px;
+	border-bottom-style: solid;
+	border-bottom-color: #2DC3E8;
+	border-bottom-width: 1px;
 }
+
+.trend-bar-item .panel-heading .small-text{
+	color: #2DC3E8;
+	padding-top: 3px;
+}
+
+.trend-bar-item .panel-heading .panel-title {
+	font-size: 1.8rem;
+	font-weight: 700;
+	font-family: Lato,sans-serif;
+}
+
 
 .trend-bar-item .panel-heading .panel-title i {
 	margin-right: 5px;
@@ -197,17 +212,32 @@ trend-bar-item
 	padding: 0px;
 	padding-top: 0px;
 	padding-bottom: 2px;
-	margin-bottom: -10px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+.trend-bar-item .panel-body .list-group{
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 5px;
+	margin-bottom: 5px;
 }
 
 .trend-bar-item .panel-body .list-group li{
-	border-color: transparent;
-	padding-bottom: 2px;
-	padding-top: 2px;
+	padding-bottom: 6px;
+	padding-top: 6px;
+	padding-left: 0px;
+	border-left: none;
+	border-right: none;
+	border-bottom-color: #CCCCCC;
 }
 
 .trend-bar-item .panel-body .list-group li:first-child{
 	padding-bottom: 0px;
+}
+
+.trend-bar-item .panel-body .list-group li:last-child{
+	border-bottom: none;
 }
 
 .trend-bar-item .panel-body .list-group li a{
@@ -224,10 +254,6 @@ trend-bar-item
 	padding-top: 15px;
 	padding-bottom: 10px;
 	padding-left: 15px;
-
-	/*border-bottom-style: solid;*/
-	/*border-bottom-width: 1px;*/
-	/*border-color: rgba(234,222,222, 0.5);*/
 }
 
 @media screen and (max-width: 1200px) {
@@ -237,12 +263,8 @@ trend-bar-item
 	}
 }
 
-.trend-bar-item .trend-user:hover{
-	background: rgba(234,222,222, 0.5);
-}
-
 .trend-bar-item .trend-user a{
-	color: #7F8B94;
+	color: #5D617A;
 }
 
 .trend-bar-item .trend-user img{
@@ -258,11 +280,10 @@ trend-bar-item
 .trend-bar-item .small-text{
 	font-size: 11px;
 	color: #F47238;
-	margin-bottom: 0px;
 }
 
 .trend-bar-item .trend-user button {
-	border-color: #2DC3E8;
+	border-color: transparent;
 }
 
 .trend-bar-item .trend-user button i{
@@ -625,135 +646,194 @@ Profile
 
 /*********** Profile info */
 
-@media (max-width: 768px) {
-    /*.affix {
-	  position: static;
-	  width: auto;
-	  top: 0;
-    }*/
+
+#profile-container .main-avatar #topimage{
+	height: 80px;
+	width: 100%
 }
 
-
-#profile-info #profile-info-details .panel-footer{
+#profile-container .main-avatar{
 	background-color: white;
-	border-top-color: white;
-	padding-right: 0px;
-	padding-left: 0px;
-	padding-top: 0px;
+	margin-bottom: 30px;
 }
 
-#profile-info #profile-info-details .panel-footer button i{
-	color: #8B8C8E;
+#profile-container .main-avatar #profile-image-wrapper{
+	position: absolute;
+	height: 200px;
+	width: 200px;
+	top:0px;
+	padding-top: 28px;
+	padding-left: 35px;
 }
 
-#profile-info #profile-info-details .panel-body {
-	background-color: #ffffff;
-}
-
-#profile-info #profile-info-details,  #profile-info .profile-stats, #profile-info .profile-stats .panel-body div:first-child{
-	padding-left: 0px;
-	padding-right: 0px;
-}
-
-
-#profile-info #profile-info-details .panel-heading,  #profile-info .profile-stats .panel-heading{
-	color: #8B8C8E;
-	background-color: #ffffff;
-	border-color: rgba(234,222,222, 0.5);
-}
-
-
-#profile-info .media-body{
-	padding-left: 5px;
-	padding-top: 12px;
-}
-
-#profile-info #profile-info-details .panel-heading p{
-	color: #A5A8AF;
-	font-size: 18px;
-}
-
-#profile-info .profile-user-img{
-	width: 66px;
-	height: 66px;
-}
-
-#profile-info .profile-user-img div{
-	width: 66px;
-	height: 66px;
+#profile-container .main-avatar #profile-image-wrapper div{
+	width: 106px;
+	height: 106px;
 	padding: 0px;
 	margin: 0;
+	border-style: solid;
+	border-width: 1px;
+	background-color: white;
+	border-color: rgba(234,222,222, 0.9);
+}
+
+#profile-container .main-avatar #profile-image-wrapper img{
+	width: 100px;
+	height: 100px;
+    margin: 2px;
+}
+
+#profile-container .main-avatar #profile-name{
+	color: white;
+	font-size: 30px;
+	font-weight: 500;
+
+	position: absolute;
+	top: 32px;
+	left: 175px;
+}
+
+#profile-container .main-avatar .container{
+	padding-top: 13px;
+	padding-bottom: 13px;
+	width: 100%;
+
+	background-color: #FBFBFB;
 	border-style: solid;
 	border-width: 1px;
 	border-color: rgba(234,222,222, 0.9);
 }
 
-#profile-info .profile-user-img img{
-	width: 58px;
-	height: 58px;
-    margin: 3px;
+#profile-container .main-avatar .container .btn-toolbar{
+	float: right;
 }
 
-#profile-info #profile-info-details .panel-body {
-	padding-right: 0px;
+#profile-container .main-avatar .container .btn-toolbar button{
+	margin-right: 20px;
+	width: 150px;
+}
+
+
+@media (max-width: 798px) {
+	#profile-container .main-avatar .container .btn-toolbar button{
+		width: 120px;
+	}
+}
+@media (max-width: 520px) {
+    #profile-container .main-avatar .container .btn-toolbar button{
+		width: 60px;
+    }
+	#profile-container .main-avatar #topimage {
+		content:url("../img/stadium.png");
+		/*width: 120%;*/
+	}
+}
+@media (max-width: 400px) {
+    #profile-container .main-avatar .container .btn-toolbar button{
+		width: 55px;
+		margin-right: 10px;
+    }
+	#profile-container .main-avatar #profile-image-wrapper{
+		padding-left: 10px;
+	}
+	#profile-container .main-avatar #profile-name{
+		left: 110px;
+		font-size: 25px;
+	}
+	#profile-container .main-avatar #profile-image-wrapper div{
+		width: 80px;
+		height: 80px;
+	}
+	#profile-container .main-avatar #profile-image-wrapper img{
+		width: 74px;
+		height: 74px;
+	}
+}
+
+
+#profile-container .profile-panel .panel-heading{
+	border-bottom-width: 3px;
+	border-bottom-color: #2DC3E8;
+
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+#profile-container .profile-panel .description{
+	color: #777;
+}
+
+#profile-container .profile-panel .about-table{
 	padding-left: 0px;
-	padding-bottom: 15px;
-}
-
-#profile-info #profile-info-details .panel-body div{
-	text-align: center;
-	color: #8B8C8E;
-	padding-top: 5px;
-	line-height: 1.0;
-}
-
-#profile-info #profile-info-details .panel-body p{
-	font-size: 20px;
-	margin-bottom: 2px;
-	margin-top: 10px;
 }
 
 
-#profile-info #profile-info-details .panel-body span{
+/** Followers/Following **/
+
+#profile-container .nav-tabs .active a{
+	border-radius: 0px;
+}
+
+#profile-container .nav-tabs .active a{
+	border-top-color: #2DC3E8;
+	border-top-width: 2px;
+}
+
+#profile-container .nav-tabs .active:first-child a{
+	border-left: none;
+}
+
+#profile-container .nav-tabs li:not(.active) a{
+	background-color: #F9F9F9;
+	border-color: #EDEBEB;
+	color: #999;
+	border-bottom: none;
+}
+
+#profile-container .nav-tabs li a, #profile-container .nav-tabs li a:active, #profile-container .nav-tabs li a:visited {
+    outline: 0;
+}
+
+#profile-container .user-list-container{
+	margin-bottom: 40px;
+	background-color: white;
+	padding: 10px;
+	padding-right: 15px;
+}
+
+
+#profile-container .user-list-container .img-wrapper{
+	width: 84px;
+	height: 84px;
+}
+
+#profile-container .user-list-container img{
+	width: 80px;
+	height: 80px;
+	margin: 2px;
+}
+
+#profile-container .user-list-container .img-wrapper .caption{
+	color: white;
+	background-color: rgba(0,0,0, 0.3);
+
+	position: absolute;
+	top: 65px;
+	left: 17px;
+	padding-left: 3px;
+	width: 80px;
+	height: 15px;
 	font-size: 12px;
 }
 
-
-
-
-
-#profile-info .profile-stats .panel-heading .panel-title{
-	padding-top: 5px;
-	padding-left: 10px;
-	font-size: 105%;
+#profile-container .user-list-container .img-wrapper .see-all-users{
+	margin-top: 35px;
+	margin-left: 10px;
+	min-width: 70px;
+	color: #F47238;
 }
-
-#profile-info .profile-stats .panel-heading span{
-	padding-right: 5px;
-}
-
-#profile-info .profile-stats #profile-prefered-sports img{
-	width: 10px;
-	height: 10px;
-	margin-bottom: 2px;
-}
-
-#profile-info .profile-stats .panel-body div{
-	text-align: center;
-	color: #8B8C8E;
-}
-
-#profile-info .profile-stats .panel-body div h5{
-	font-weight: bold;
-}
-
-
-
-#profile-posts-divider{
-	height: 1px;
-	/*background-color: #E0D7D7;*/
-	margin-top: 10px;
-	margin-bottom: 30px;
+#profile-container .user-list-container .img-wrapper .see-all-users i{
+    color: #F47238;
 }
 
 /*************************************************
@@ -845,7 +925,7 @@ league tables
 }
 
 .league-tables .breadcrumb{
-	background: #E9EAED;
+	background: #F5F5F5;
 	margin-bottom: 0px;
 }
 

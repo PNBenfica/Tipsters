@@ -16,15 +16,17 @@ export default class TrendUsers extends React.Component {
     return (
         <Panel class="trend-bar-item">
 
-            <Header title="Tipsters sugeridos" icon="fa-users" />
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Tipsters Sugeridos
+                    <a href="#" class="pull-right small-text">ver mais</a>
+                </h3>
+            </div>
 
             <div class="panel-body">
                 {TrendUsers}                
             </div>  
 
-            <div class="panel-footer">
-                <button type="button" class="btn btn-default btn-block">Find More</button>
-            </div>
         </Panel> 
     );
   }

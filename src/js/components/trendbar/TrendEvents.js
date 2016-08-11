@@ -14,7 +14,7 @@ export default class TrendEvents extends React.Component {
     return (
         <Panel class="trend-bar-item">
 
-            <Header title="Trends" icon="fa-line-chart" />
+            <Header title="Trends" />
 
             <ListGroup>
                 {TrendEvents}
