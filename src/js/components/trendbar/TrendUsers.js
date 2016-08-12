@@ -19,7 +19,7 @@ export default class TrendUsers extends React.Component {
             <div class="panel-heading">
                 <h3 class="panel-title">
                     Tipsters Sugeridos
-                    <a href="#" class="pull-right small-text">ver mais</a>
+                    <small> . <a href="#" class="small-text">See All</a></small>
                 </h3>
             </div>
 
