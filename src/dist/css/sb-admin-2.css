@@ -256,7 +256,8 @@ body {
 }
 
 .navbar-brand, .navbar .navbar-brand:active, .navbar .navbar-brand:visited{
-    background-color: #F47238 !important;
+    background-color: #3097D1 !important;
+    /*background-color: #F47238 !important;*/
     color: white !important;
     text-align: center;
 }

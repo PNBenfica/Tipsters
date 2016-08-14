@@ -5,15 +5,19 @@ export default class TrendEventItem extends React.Component {
 
     render() {
 
-        const {event, description} = this.props;
+        const {homeTeam, awayTeam, description} = this.props;
     	const descriptionClasses = classNames("small-text", {hidden: typeof description === "undefined" });
-        console.log(this.props);
 
         return (
-            <li class="list-group-item">
-                <a href="#">{event}</a>
-                <p class={descriptionClasses}>{description}</p>
-            </li>
+            <div class="panel trend-event">
+                <a href="#/sports/premier-league/">
+                    <div class="trend-event-team"><img src={homeTeam.logo}/>{homeTeam.name}</div>
+                    <div class="trend-event-team"><img src={awayTeam.logo}/>{awayTeam.name}</div>
+                    <div class="panel-footer">
+                        <span class={descriptionClasses}>{description}</span>
+                    </div>
+                </a>
+            </div>
         );
     }
 }

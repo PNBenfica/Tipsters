@@ -6,7 +6,7 @@ export default class UsersList extends React.Component {
 
     render() {
 
-        const Users = [{name: "Paulo Teixeira", img: "../img/pauloteixeira.jpg"}, {name: "João Almeida", img: "../img/joaoalmeida.jpg"}, {name: "Miguel Fernandes", img: "../img/stadium.png"},{name: "Ricardo Vieira", img: "../img/tennis.png"},{name: "Carlos Oliveira", img: "../img/basket.jpg"},{name: "Maria Carmo", img: "../img/run.png"},{name: "Paulo Teixeira", img: "../img/pauloteixeira.jpg"},{name: "Joao Almeida", img: "../img/joaoalmeida.jpg"}]
+        const Users = [{name: "Paulo Teixeira", img: "img/pauloteixeira.jpg"}, {name: "João Almeida", img: "img/joaoalmeida.jpg"}, {name: "Miguel Fernandes", img: "img/stadium.png"},{name: "Ricardo Vieira", img: "img/tennis.png"},{name: "Carlos Oliveira", img: "img/basket.jpg"},{name: "Maria Carmo", img: "img/run.png"},{name: "Paulo Teixeira", img: "img/pauloteixeira.jpg"},{name: "Joao Almeida", img: "img/joaoalmeida.jpg"}]
             .map(({...user}, i) => <UserListItem key={i} {...user}/>)
 
         return (
