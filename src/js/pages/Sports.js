@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import { fetchTables } from "../actions/sportsActions";
 
 import BetSlip from "../components/sports/betslip/BetSlip";
 import Breadcrumb from "../components/sports/Breadcrumb";
@@ -6,11 +9,30 @@ import FootballMatchesTable from "../components/sports/FootballMatchesTable";
 import SportTable from "../components/sports/SportTable";
 import TipsOnThisEvent from "../components/sports/chatpanel/TipsOnThisEvent";
 
+@connect((store) => {
+  return {
+    tables: store.sports.tables,
+  };
+})
 export default class Sports extends React.Component {
 
     constructor(...args) {
         super(...args);
         this.state = { betSlip : { tips: [], sellingPrice : 0 }};
+    }
+    
+    componentWillMount() {
+        this.props.dispatch(fetchTables('football', this.props.params.league))
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const {sport, league, match} = nextProps.params;
+
+        if (league !== this.props.params.league){
+            this.props.dispatch(fetchTables('football', league));
+        }
+        // if (nextProps.sport !== this.props.fullName) {
+        // loadData(nextProps);
     }
 
     /***** Bet Slip *****/
@@ -49,19 +71,7 @@ export default class Sports extends React.Component {
 	    	sport = "Football";
 
 
-	    let data;
-        if (typeof league !== "undefined"){
-        	data = [{ type: "FootballMatchesList", date: "30 de Abril", matches:[{ homeTeam : "Watford", awayTeam: "Aston Villa", hour: "14:00", odds:[1.64, 3.80, 5.40]},{ homeTeam: "West Brom", awayTeam: "West Ham", hour: "14:00", odds:[3.60, 3.35, 2.10]},{ homeTeam: "Stoke City", awayTeam: "Sunderland", hour: "14:00", odds:[2.55, 3.25, 2.80]},{ homeTeam: "Everton", awayTeam: "Bournemouth", hour: "14:00", odds:[1.90, 3.65, 4.00]},{ homeTeam: "Newcastle", awayTeam: "Crystal Palace", hour: "14:00", odds:[1.90, 3.50, 4.10]},{ homeTeam: "Arsenal", awayTeam: "Norwich", hour: "16:30", odds:[1.24, 6.10, 11.5]}]},
-        			{ type: "FootballMatchesList", date: "1 de Maio", matches:[{ homeTeam: "Swansea", awayTeam: "Liverpool", hour: "11:00", odds:[3.25, 3.45, 2.20]},{ homeTeam: "Man Utd", awayTeam: "Leicester", hour: "13:00", odds:[2.05, 3.35, 3.75]},{ homeTeam: "Southampton", awayTeam: "Man City", hour: "15:30", odds:[3.15, 3.45, 2.25]}] },
-        			{ type: "FootballMatchesList", date: "2 de Maio", matches:[{ homeTeam: "Chelsea", awayTeam: "Tottenham", hour: "19:00", odds:[3.05, 3.45, 2.25]}] }];
-    	}
-        else {
-        	data = [{ title: "Ligas Principais", options:["Premier League", "La Liga", "Bundesliga", "Serie A", "Ligue 1"]},
-					{ title: "Internacional", options:["Champions League", "Europa League", "Euro 2016"] },
-					{ title: "Europa", options:["Portugal - Primeira Liga", "Portugal - Segunda Liga", "Inglaterra - Championship", "Inglaterra - League One", "Inglaterra - League Two", "Inglaterra - Championship", "Turquia - Super Liga", "Holanda - Eredivise", "Brasil - Serie A", "Escócia - Premiership", "Bélgica - Pro League"] },
-					{ title: "Europa", options:["Portugal - Primeira Liga", "Portugal - Segunda Liga", "Inglaterra - Championship", "Inglaterra - League One", "Inglaterra - League Two", "Inglaterra - Championship", "Turquia - Super Liga", "Holanda - Eredivise", "Brasil - Serie A", "Escócia - Premiership", "Bélgica - Pro League"] },
-					{ title: "Europa", options:["Portugal - Primeira Liga", "Portugal - Segunda Liga", "Inglaterra - Championship", "Inglaterra - League One", "Inglaterra - League Two", "Inglaterra - Championship", "Turquia - Super Liga", "Holanda - Eredivise", "Brasil - Serie A", "Escócia - Premiership", "Bélgica - Pro League"] }];
-			}
+	    let data = this.props.tables;
 
 	  	const Tables = data.map((table, i) =>{
 	  		if (table.type === "FootballMatchesList")

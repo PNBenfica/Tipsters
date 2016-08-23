@@ -1,0 +1,43 @@
+application: ud858-dev-playground
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:       # static then dynamic
+
+- url: /js
+  static_dir: src/js
+
+- url: /img
+  static_dir: src/img
+
+- url: /css
+  static_dir: src/css
+
+- url: /dist
+  static_dir: src/dist
+
+- url: /fonts
+  static_dir: src/fonts
+
+- url: /
+  static_files: src/index.html
+  upload: src/index\.html
+
+- url: /client\.min\.js
+  static_files: src/client.min.js
+  upload: src/client\.min\.js
+
+- url: /_ah/spi/.*
+  script: src.backend.conference.api
+  secure: always
+
+libraries:
+
+- name: endpoints
+  version: latest
+
+# pycrypto library used for OAuth2 (req'd for authenticated APIs)
+- name: pycrypto
+  version: latest

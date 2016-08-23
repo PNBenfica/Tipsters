@@ -5,7 +5,8 @@ var path = require('path');
 module.exports = {
   context: path.join(__dirname, "src"),
   devtool: debug ? "inline-sourcemap" : null,
-  entry: "./js/client.js",
+  entry: "./js/client.js", 
+  watch: true,
   module: {
     loaders: [
       {
@@ -16,7 +17,8 @@ module.exports = {
           presets: ['react', 'es2015', 'stage-0'],
           plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
         }
-      }
+      },
+      { test: /\.css$/, loader: "style-loader!css-loader" },
     ]
   },
   output: {

@@ -1,9 +1,15 @@
+@import url("bootstrap/dist/css/bootstrap.min.css");
+@import url("font-awesome/css/font-awesome.min.css");
+@import url("sb-admin-2.css");
+@import url("//fonts.googleapis.com/css?family=Lato");
+@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic");
 
 /*************************************************
 Html General Elements
 *************************************************/
 
 body{	
+    background-color: #ffffff;
     font-family: Lato,"Helvetica Neue",Arial,Verdana,Tahoma,"Lucida Sans",FreeSans,"Lucida Sans Unicode","Luxi Sans",sans-serif;
 }
 
@@ -985,6 +991,10 @@ league tables
 	text-align: left;
 }
 
+.league-tables .league-game a:hover{
+	color: #3097D1;
+}
+
 .league-tables .league-game-selection-type{
 	text-align: center;
 	font-size: 90%;
@@ -997,8 +1007,7 @@ league tables
 }
 
 .league-tables .league-game a small{
-	/*color: #3C4F85;*/
-	color: #2DC3E8;
+	color: #3097D1;
 	padding-right: 5px;
 }
 
