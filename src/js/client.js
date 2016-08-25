@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { Router, Route, IndexRoute, hashHistory } from "react-router";
 import { Provider } from "react-redux";
 
+import gapiLoader from './scripts/gapi';
+
 import Feed from "./pages/Feed";
 import Layout from "./pages/Layout";
 import Profile from "./pages/Profile";
@@ -12,12 +14,7 @@ import store from "./store";
 
 const app = document.getElementById('app');
 
-gapi.client.load('conference', 'v1', loadCallback, '//' + window.location.host + '/_ah/api');
-gapi.client.load('oauth2', 'v2', function () {});
-
-function loadCallback () {
-	console.log("api loaded");
-}
+gapiLoader.loadAPI();
 
 ReactDOM.render(
 	<Provider store={store}>

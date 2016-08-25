@@ -1,21 +1,30 @@
 import React from "react";
 import { Link } from "react-router";
 
+import gapiLoader from '../scripts/gapi';
+
 import NavBar from "../components/navbar/NavBar";
 
 export default class Layout extends React.Component {
 
-loadCallback () {  
-    console.log("ola");
-    var request = gapi.client.conference.sayHello();
-    request.execute(this.sayHelloCallback.bind(this));
-}
-sayHelloCallback (response) {
-    alert(response.greeting);   
-}
+    sayHelloCallback (response) {
+        console.log(response.greeting);   
+    }
+    
+    sayHello(){
+        if( gapiLoader.apiLoaded() ){
+            console.log("api loaded - making request");
+            var request = gapi.client.conference.sayHello();
+            request.execute(this.sayHelloCallback.bind(this));
+        }
+        else{
+            setTimeout(() => { console.log("waiting for api load"); this.sayHello(); }, 500);
+        }
+    }
 
     render() {
-setTimeout(() => { console.log("10sec"); this.loadCallback(); }, 10000);
+
+        this.sayHello();
 
         const { location } = this.props;
 
