@@ -6,11 +6,12 @@ class gapiLoader {
 
 	loadAPI() {
 		try {
-			gapi.client.load('conference', 'v1', this.loadAPICallback.bind(this), '//' + window.location.host + '/_ah/api');
+			gapi.client.load('tipsters', 'v1', this.loadAPICallback.bind(this), '//' + window.location.host + '/_ah/api');
 			gapi.client.load('oauth2', 'v2', function () {});
 		}
 		catch (e){
-			if (e instanceof TypeError){
+			console.log(e);
+			if (e instanceof TypeError || e instanceof ReferenceError){
 				setTimeout(() => this.loadAPI(), 500);
 			}
 		}
@@ -18,7 +19,7 @@ class gapiLoader {
 	
 	loadAPICallback () {
 		this.loaded = true;
-		console.log(this.loaded? "api loaded": "fuck this");
+		console.log("tipsters api loaded");
 	}
 
 	apiLoaded(){

@@ -14,7 +14,7 @@ export default class Layout extends React.Component {
     sayHello(){
         if( gapiLoader.apiLoaded() ){
             console.log("api loaded - making request");
-            var request = gapi.client.conference.sayHello();
+            var request = gapi.client.tipsters.sayHello();
             request.execute(this.sayHelloCallback.bind(this));
         }
         else{

@@ -31,6 +31,34 @@ class ProfileMiniForm(messages.Message):
     teeShirtSize = messages.EnumField('TeeShirtSize', 2)
 
 
+class Sport(messages.Message):
+    name = messages.StringField(1)
+    id = messages.StringField(2)
+    events = messages.MessageField('Event',3,repeated=True)
+
+class Event(messages.Message):
+    name = messages.StringField(1)
+    id = messages.StringField(2)
+    matches = messages.MessageField('Match',3,repeated=True)
+
+class Match(messages.Message):
+    name = messages.StringField(1)
+    id = messages.StringField(2)
+    start_date = messages.StringField(3)
+    bets = messages.MessageField('Bet',4,repeated=True)
+
+class Bet(messages.Message):
+    name = messages.StringField(1)
+    id = messages.StringField(2)
+    code = messages.StringField(3)
+    choices = messages.MessageField('Choice',4,repeated=True)
+
+class Choice(messages.Message):
+    name = messages.StringField(1)
+    id = messages.StringField(2)
+    odd = messages.StringField(3)
+    
+
 class ProfileForm(messages.Message):
     """ProfileForm -- Profile outbound form message"""
     displayName = messages.StringField(1)

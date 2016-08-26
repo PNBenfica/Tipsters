@@ -28,9 +28,9 @@ handlers:       # static then dynamic
 - url: /client\.min\.js
   static_files: src/client.min.js
   upload: src/client\.min\.js
-
+  
 - url: /_ah/spi/.*
-  script: src.backend.conference.api
+  script: src.backend.tipsters.api
   secure: always
 
 libraries:
