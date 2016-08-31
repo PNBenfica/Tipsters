@@ -1,30 +1,24 @@
+import gapiLoader from './gapiLoader';
 
-class gapiLoader {
-	constructor() {
-		this.loaded = false;
-	}
 
-	loadAPI() {
-		try {
-			gapi.client.load('tipsters', 'v1', this.loadAPICallback.bind(this), '//' + window.location.host + '/_ah/api');
-			gapi.client.load('oauth2', 'v2', function () {});
-		}
-		catch (e){
-			console.log(e);
-			if (e instanceof TypeError || e instanceof ReferenceError){
-				setTimeout(() => this.loadAPI(), 500);
-			}
-		}
-	}
-	
-	loadAPICallback () {
-		this.loaded = true;
-		console.log("tipsters api loaded");
-	}
+export function callAPI(payload){
 
-	apiLoaded(){
-		return this.loaded === true;
-	}
+    payload.dispatch({type: payload.type + "_PENDING"})
+    
+    if( gapiLoader.apiLoaded() ){
+        console.log("api loaded - making request");
+        var request = payload.request();
+        request.execute((resp) => apiCallBack(resp, payload));
+    }
+    else{
+        setTimeout(() => { console.log("waiting for api load"); callAPI(payload); }, 2000);
+    }
 }
 
-export default (new gapiLoader);
+function apiCallBack(resp, payload){
+    if (resp.error) {
+    	payload.dispatch({type: payload.type + "_REJECTED", payload: resp.error})
+    } else {
+    	payload.dispatch({type: payload.type + "_FULFILLED", payload: resp.result})
+    }
+}

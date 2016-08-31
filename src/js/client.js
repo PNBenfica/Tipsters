@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { Router, Route, IndexRoute, hashHistory } from "react-router";
 import { Provider } from "react-redux";
 
-import gapiLoader from './scripts/gapi';
+import gapiLoader from './scripts/gapiLoader';
 
 import Feed from "./pages/Feed";
 import Layout from "./pages/Layout";
@@ -23,7 +23,7 @@ ReactDOM.render(
 				<IndexRoute component={Feed}></IndexRoute>
 				<Route path="profile" name="profile" component={Profile}></Route>
 				<Route path="rankings" name="rankings" component={Rankings}></Route>
-				<Route path="sports(/:sport(/:league(/:match)))" name="sports" component={Sports}></Route>
+				<Route path="sports(/:sport/:sportCode(/:league/:leagueCode(/:match/:matchCode)))" name="sports" component={Sports}></Route>
 			</Route>
 		</Router>
 	</Provider>,

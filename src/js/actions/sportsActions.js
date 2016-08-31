@@ -1,11 +1,17 @@
 import axios from "axios";
+import {callAPI} from '../scripts/gapi';
 
-export function fetchTables(sport, league = "") {    
-    if (league !== "")
-        league = league + "/";
+export function fetchTables(sportParams) {
+	
+	console.log(sportParams)
 
-    return {
-        type: "FETCH_TABLES", 
-        payload: axios.get("http://web.ist.utl.pt/~ist175449/Tipsters/resources/sports/" + sport + "/" + league)
-    }
+	return function(dispatch) {
+
+        callAPI({
+            type: "FETCH_TABLES",
+            request: (() => gapi.client.tipsters.getOdds(sportParams)),
+            dispatch: dispatch
+        })
+
+	 }
 }

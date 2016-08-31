@@ -18,6 +18,13 @@ $(function() {
         // }, 500);
     });
 
+    $("#football-seletor-sidebar").click(function() {
+        // var location = '' + window.location;
+        // if ( location.search("/football") <= 0){
+            window.location.href='#/sports/football/1';
+        // }
+    });
+
     function sportsEventsTabOpen() {
         return $("#sport-events-sidebar").parent().hasClass('active');
     }

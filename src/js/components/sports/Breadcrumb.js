@@ -9,15 +9,15 @@ export default class Breadcrumb extends React.Component {
 
   	render() {
 
-	    let {sport, league, match} = this.props;
+	    let {sport, sportCode, league, leagueCode, match, matchCode} = this.props;
 
-	    let options = [sport, league, match].filter((ele) => typeof ele !== "undefined");
+	    let options = [[sport, sportCode], [league, leagueCode], [match, matchCode]].filter((ele) => typeof ele[0] !== "undefined");
 
 	    let ref = "#/sports";
 	    for (var i = 0; i < options.length; i++){
-	    	ref += "/" + options[i];
+	    	ref += "/" + options[i][0] + "/" + options[i][1];
 
-	    	const name = this.formatOption(options[i]);
+	    	const name = this.formatOption(options[i][0]);
 	    	if (i === options.length - 1)
 	    		options[i] = <li key={i} class="active">{name}</li>;
 	    	else

@@ -65,37 +65,37 @@ export default class SideBar extends React.Component {
                         
                         {/*<!-- sports list -->*/}
                         <ul class="nav nav-second-level">
-                            <li class="active">
+                            <li id="football-seletor-sidebar" class="active">
                                 <a href="#/sports"><i class="fa fa-soccer-ball-o fa-fw"></i> Futebol <span class="fa arrow"></span></a>
                                 
                                 {/*<!-- main football leagues -->*/}
                                 <ul class="nav nav-third-level">
                                     <li>
-                                        <a href="#/sports/football/premier-league"><img src="img/sports/premierleague.png"></img> Premier League</a>
+                                        <a href="#/sports/football/1/premier-league/3"><img src="img/sports/premierleague.png"></img> Premier League</a>
                                     </li>
                                     <li>
-                                        <a href="#/sports/football/premier-league"><img src="img/sports/laliga.png"></img> La Liga</a>
+                                        <a href="#/sports/football/1/la-liga/7"><img src="img/sports/laliga.png"></img> La Liga</a>
                                     </li>
                                     <li>
-                                        <a href="#/sports/football/premier-league"><img src="img/sports/bundesliga.png"></img> Bundesliga</a>
+                                        <a href="#/sports/football/1/premier-league/5"><img src="img/sports/bundesliga.png"></img> Bundesliga</a>
                                     </li>
                                     <li>
-                                        <a href="#/sports/football/premier-league"><img src="img/sports/seriea.png"></img> Serie A</a>
+                                        <a href="#/sports/football/1/premier-league/6"><img src="img/sports/seriea.png"></img> Serie A</a>
                                     </li>
                                 </ul>
                                 {/*<!-- /.main football leagues -->*/}
                             </li>
                             <li>
-                                <a href="#/sports"><img src="img/sports/tennis.png"></img> Tennis</a>
+                                <a href="#/sports/tennis/2"><img src="img/sports/tennis.png"></img> Tennis</a>
                             </li>
                             <li>
-                                <a href="#/sports"><img src="img/sports/basket.png"></img> Basketball</a>
+                                <a href="#/sports/basketball/4"><img src="img/sports/basket.png"></img> Basketball</a>
                             </li>
                             <li>
-                                <a href="#/sports"><img src="img/sports/bike.png"></img> Ciclismo</a>
+                                <a href="#/sports/ciclying/15"><img src="img/sports/bike.png"></img> Motorcycling</a>
                             </li>
                             <li>
-                                <a href="#/sports"><img src="img/sports/wheel.png"></img> Motor</a>
+                                <a href="#/sports/f1/3"><img src="img/sports/wheel.png"></img> Formula 1</a>
                             </li>
                         </ul>
                         {/*<!-- ./sports list -->*/}

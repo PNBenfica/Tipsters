@@ -13,11 +13,13 @@ export default function reducer(state={
             return {...state, fetching: false, error: action.payload.err}
         }
         case "FETCH_TABLES_FULFILLED": {
+
+            console.log(action.payload)
             return {
                 ...state,
                 fetching: false,
                 fetched: true,
-                tables: action.payload.data,
+                tables: action.payload,
             }
         }
     }
