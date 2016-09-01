@@ -5,9 +5,9 @@ export default class MatchRow extends React.Component {
 
   	render() {
 
-        const {name, id, bets, date, addTip, start_date, sportRef} = this.props
-        const eventRef = "#/sports/" + sportRef + "/" + name + "/" + id
-        const [homeTeam, awayTeam] = name.split("-")
+        const {name, id, bets, date, addTip, start_date, baseRef} = this.props
+        const eventRef = "#/sports/" + baseRef + "/" + name + "/" + id
+        const [homeTeam, awayTeam] = name.split(" - ")
         const hour = start_date.split("T")[1].slice(0, -3);
         
         let selections = [homeTeam, "Draw", awayTeam]

@@ -18,7 +18,7 @@ from models import Sport
 import time
 from settings import WEB_CLIENT_ID
 
-from sports.XMLOddsParser import parseXMLOdds
+from sports.XMLOddsParser import parseXMLOdds, replaceDefaultTeamNames
 
 EMAIL_SCOPE = endpoints.EMAIL_SCOPE
 API_EXPLORER_CLIENT_ID = endpoints.API_EXPLORER_CLIENT_ID
@@ -40,7 +40,7 @@ class Hello(messages.Message):
 class TipstersApi(remote.Service):
     """TipstersApi API v0.1"""
     
-    sports = parseXMLOdds()
+    sports = replaceDefaultTeamNames(parseXMLOdds())
     
     @endpoints.method(message_types.VoidMessage, Hello, path = "sayHello", http_method='GET', name = "sayHello")
     def say_hello(self, request):
@@ -98,9 +98,8 @@ class TipstersApi(remote.Service):
             try:
                 bet = self.filterByAttr(match["bets"], "name", mainBets[sportCode])
                 return [Bet(name = bet["name"], id = bet["id"], code = bet["code"], choices = self.getBetChoices(bet))]
-            except TipstersApi.EventNotFoundException:
-                return self.getSpecialBets(match)
-        return []
+            except TipstersApi.EventNotFoundException: pass
+        return self.getSpecialBets(match)
         
     def getLeagueOdds(self, sportsData, sportCode, leagueCode):
         sport = self.filterById(sportsData, sportCode)

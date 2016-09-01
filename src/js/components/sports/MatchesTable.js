@@ -7,9 +7,9 @@ export default class MatchesTable extends React.Component {
 
   	render() {
 
-	    let {date, matches, sportRef,addTip} = this.props;
+	    let {date, matches, baseRef,addTip} = this.props;
 
-        const Matches = matches.map(({...match}, i) => <MatchRow key={i} {...match} sportRef={sportRef} addTip={addTip}/>);
+        const Matches = matches.map(({...match}, i) => <MatchRow key={i} {...match} baseRef={baseRef} addTip={addTip}/>);
 
 	    return (
             <div class="panel panel-default">

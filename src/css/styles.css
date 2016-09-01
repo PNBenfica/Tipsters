@@ -970,7 +970,7 @@ league tables
 }
 
 .league-tables .panel-body a:hover{
-	color: #2DC3E8;
+	color: #3097D1;
 }
 
 .league-tables .breadcrumb{
@@ -1011,6 +1011,47 @@ league tables
 	padding-right: 5px;
 }
 
+/**********************
+Match odds tables
+**********************/
+
+.odds-table a:hover{
+	background-color: rgba(48,151,209,0.1);
+	cursor: pointer;
+}
+
+.odds-table a.empty-option:hover{
+	background-color: white;
+	color: white;
+	cursor: default;
+}
+
+.odds-table a.empty-option{
+	border-color: transparent;
+	color: white;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+.odds-table a{
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 5px !important;
+	padding-bottom: 5px !important;
+	
+	border-left-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-color: rgba(48,151,209,0.1);
+}
 
 
 /**********************************
