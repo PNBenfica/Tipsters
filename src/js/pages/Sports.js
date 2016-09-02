@@ -17,6 +17,7 @@ import TipsOnThisEvent from "../components/sports/chatpanel/TipsOnThisEvent";
   return {
     tables: store.sports.tables,
     fetched: store.sports.fetched,
+    fetching: store.sports.fetching,
   };
 })
 export default class Sports extends React.Component {
@@ -176,6 +177,12 @@ export default class Sports extends React.Component {
         if (this.props.fetched){
             ({Tables, sport, league, match}  = this.renderTables(data,sportCode, leagueCode, matchCode))
         }
+        let Loading = []
+        if (this.props.fetching) {
+            Loading =(   <div class="cssload-container">
+                            <div class="cssload-whirlpool"></div>
+                        </div>)
+        }
 
 	    return (
 
@@ -186,6 +193,7 @@ export default class Sports extends React.Component {
 	                <Breadcrumb sport={sport} sportCode={sportCode} league={league} leagueCode={leagueCode} match={match} matchCode={matchCode}/>	                
 
 	                {Tables}
+                    {Loading}
 	            </div>
 
 

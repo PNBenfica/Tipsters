@@ -18,7 +18,7 @@ from models import Sport
 import time
 from settings import WEB_CLIENT_ID
 
-from sports.XMLOddsParser import parseXMLOdds, replaceDefaultTeamNames
+from sports.XMLOddsParser import parseXMLOdds, beautify
 
 EMAIL_SCOPE = endpoints.EMAIL_SCOPE
 API_EXPLORER_CLIENT_ID = endpoints.API_EXPLORER_CLIENT_ID
@@ -40,7 +40,7 @@ class Hello(messages.Message):
 class TipstersApi(remote.Service):
     """TipstersApi API v0.1"""
     
-    sports = replaceDefaultTeamNames(parseXMLOdds())
+    sports = beautify(parseXMLOdds())
     
     @endpoints.method(message_types.VoidMessage, Hello, path = "sayHello", http_method='GET', name = "sayHello")
     def say_hello(self, request):
