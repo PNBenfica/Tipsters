@@ -83,7 +83,7 @@ class TipstersApi(remote.Service):
         return map(lambda choice: Choice(name=choice["name"], id=choice["id"], odd=choice["odd"]), bet["choices"])
         
     def getSpecialBets(self, match):
-        specialBets = ["Relegation", "Place 1-4", "Outright Winner"]
+        specialBets = ["Relegation", "Place 1-4", "Outright Winner", "Drivers Championship Winner", "Constructors Championship", "Winner"]
         bets = []
         for betName in specialBets:
             try:

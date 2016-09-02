@@ -71,31 +71,31 @@ export default class SideBar extends React.Component {
                                 {/*<!-- main football leagues -->*/}
                                 <ul class="nav nav-third-level">
                                     <li>
-                                        <a href="#/sports/football/1/premier-league/3"><img src="img/sports/premierleague.png"></img> Premier League</a>
+                                        <a href="#/sports/Football/1/Premier-League/3"><img src="img/sports/premierleague.png"></img> Premier League</a>
                                     </li>
                                     <li>
-                                        <a href="#/sports/football/1/la-liga/7"><img src="img/sports/laliga.png"></img> La Liga</a>
+                                        <a href="#/sports/Football/1/La-Liga/7"><img src="img/sports/laliga.png"></img> La Liga</a>
                                     </li>
                                     <li>
-                                        <a href="#/sports/football/1/premier-league/5"><img src="img/sports/bundesliga.png"></img> Bundesliga</a>
+                                        <a href="#/sports/Football/1/Bundesliga/5"><img src="img/sports/bundesliga.png"></img> Bundesliga</a>
                                     </li>
                                     <li>
-                                        <a href="#/sports/football/1/premier-league/6"><img src="img/sports/seriea.png"></img> Serie A</a>
+                                        <a href="#/sports/Football/1/Serie-A/6"><img src="img/sports/seriea.png"></img> Serie A</a>
                                     </li>
                                 </ul>
                                 {/*<!-- /.main football leagues -->*/}
                             </li>
                             <li>
-                                <a href="#/sports/tennis/2"><img src="img/sports/tennis.png"></img> Tennis</a>
+                                <a href="#/sports/Tennis/2"><img src="img/sports/tennis.png"></img> Tennis</a>
                             </li>
                             <li>
-                                <a href="#/sports/basketball/4"><img src="img/sports/basket.png"></img> Basketball</a>
+                                <a href="#/sports/Basketball/4"><img src="img/sports/basket.png"></img> Basketball</a>
                             </li>
                             <li>
-                                <a href="#/sports/ciclying/15"><img src="img/sports/bike.png"></img> Motorcycling</a>
+                                <a href="#/sports/Motorcycling/15"><img src="img/sports/bike.png"></img> Motorcycling</a>
                             </li>
                             <li>
-                                <a href="#/sports/f1/3"><img src="img/sports/wheel.png"></img> Formula 1</a>
+                                <a href="#/sports/Formula-1/3"><img src="img/sports/wheel.png"></img> Formula 1</a>
                             </li>
                         </ul>
                         {/*<!-- ./sports list -->*/}

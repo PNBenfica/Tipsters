@@ -12,7 +12,7 @@ export default class ThreeColumnsTable extends React.Component {
         const col3 = bet.choices.filter(filters[2])
         
         let Options = []
-        for (var i = 0; i < Math.max(col1.length,col2.length); i++) {
+        for (var i = 0; i < Math.max(col1.length,col2.length, col3.length); i++) {
             Options.push(i >= col1.length ? "" : col1[i])
             Options.push(i >= col2.length ? "" : col2[i])
             Options.push(i >= col3.length ? "" : col3[i])

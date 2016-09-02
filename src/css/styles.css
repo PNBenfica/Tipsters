@@ -1027,7 +1027,6 @@ Match odds tables
 }
 
 .odds-table a.empty-option{
-	border-color: transparent;
 	color: white;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Chrome/Safari/Opera */
@@ -1036,6 +1035,14 @@ Match odds tables
   -ms-user-select: none;       /* Internet Explorer/Edge */
   user-select: none;           /* Non-prefixed version, currently
                                   not supported by any browser */
+}
+
+.odds-table a.empty-option:not(.bordered){
+	border-color: transparent;
+}
+
+.centered{
+	text-align: center;
 }
 
 .odds-table a{

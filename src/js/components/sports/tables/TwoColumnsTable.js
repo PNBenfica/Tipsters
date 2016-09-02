@@ -7,14 +7,18 @@ export default class TwoColumnsTable extends React.Component {
 
 	    const { eventName, bet, filters, addTip } = this.props
         
-        const col1 = bet.choices.filter(filters[0])
-        const col2 = bet.choices.filter(filters[1])
-
         let Options = []
-        for (var i = 0; i < Math.max(col1.length,col2.length); i++) {
-            Options.push(i >= col1.length ? "" : col1[i])
-            Options.push(i >= col2.length ? "" : col2[i])
+        if (filters.length > 0){
+            const col1 = bet.choices.filter(filters[0])
+            const col2 = bet.choices.filter(filters[1])
+
+            for (var i = 0; i < Math.max(col1.length,col2.length); i++) {
+                Options.push(i >= col1.length ? "" : col1[i])
+                Options.push(i >= col2.length ? "" : col2[i])
+            }
         }
+        else
+            Options = bet.choices
 
         Options = Options.map((choice,i) => {
             if(choice === "")

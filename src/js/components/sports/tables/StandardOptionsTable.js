@@ -7,8 +7,10 @@ export default class StandardOptionsTable extends React.Component {
 
 	    const { bet, eventName, addTip } = this.props
 
-        const Options = bet.choices.map((choice,i) => 
-            <a key={i} onClick={() => addTip(bet.name+": "+choice.name, eventName, choice.odd)} class="col-xs-12 col-sm-4">{choice.name} <span class="pull-right">{choice.odd}</span></a> )
+        let Options = []
+        if (typeof bet.choices !== 'undefined')
+            Options = bet.choices.map((choice,i) => 
+                <a key={i} onClick={() => addTip(bet.name+": "+choice.name, eventName, choice.odd)} class="col-xs-12 col-sm-4">{choice.name} <span class="pull-right">{choice.odd}</span></a> )
 
 	    return (
             <div class="panel panel-default odds-table">

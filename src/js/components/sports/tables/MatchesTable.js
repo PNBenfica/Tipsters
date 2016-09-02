@@ -1,7 +1,7 @@
 import React from "react";
 
 import MatchRow from "./MatchRow";
-import MatchesTableHeader from "./MatchesTableHeader";
+import MatchesTableHeader from "./headers/MatchesTableHeader";
 
 export default class MatchesTable extends React.Component {
 

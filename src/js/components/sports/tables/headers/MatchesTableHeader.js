@@ -1,10 +1,8 @@
 import React from "react";
 import classNames from "classnames";
 
-import MatchRow from "./MatchRow";
-import MatchesTableHeader from "./MatchesTableHeader";
 
-export default class MatchesTable extends React.Component {
+export default class MatchesTableHeader extends React.Component {
 
   	render() {
 
