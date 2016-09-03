@@ -1001,7 +1001,7 @@ league tables
 }
 
 .league-tables .league-game a:not(:first-child):hover{
-	background-color: #F7F7F7;
+	background-color: rgba(48,151,209,0.1);
 	cursor: pointer;
 	color: #8B8C8E;
 }

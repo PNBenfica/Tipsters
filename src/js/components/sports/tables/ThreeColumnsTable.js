@@ -5,7 +5,7 @@ export default class ThreeColumnsTable extends React.Component {
 
   	render() {
 
-	    const { eventName, bet, filters, addTip } = this.props
+	    const { eventURL, bet, filters, addTip } = this.props
         
         const col1 = bet.choices.filter(filters[0])
         const col2 = bet.choices.filter(filters[1])
@@ -21,7 +21,7 @@ export default class ThreeColumnsTable extends React.Component {
         Options = Options.map((choice,i) => {
             if(choice === "")
                 return <a key={i} class="empty-option col-xs-4">-</a>
-            return <a key={i} onClick={() => addTip(bet.name+": "+choice.name, eventName, choice.odd)} class="col-xs-4">{choice.name} <span class="pull-right">{choice.odd}</span></a>
+            return <a key={i} onClick={() => addTip(eventURL, bet, choice)} class="col-xs-4">{choice.name} <span class="pull-right">{choice.odd}</span></a>
         })
 
 	    return (

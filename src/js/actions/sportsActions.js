@@ -3,8 +3,6 @@ import {callAPI} from '../scripts/gapi';
 
 export function fetchTables(sportParams) {
 	
-	console.log(sportParams)
-
 	return function(dispatch) {
 
         callAPI({

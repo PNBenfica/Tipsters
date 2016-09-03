@@ -1,6 +1,6 @@
 $(function() {
 
-    setTimeout(function(){  $('#side-menu').metisMenu(); }, 1000);
+    $('#side-menu').metisMenu();
    
     
     $("#sport-events-sidebar").click(function() {

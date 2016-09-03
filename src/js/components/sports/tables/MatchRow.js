@@ -5,16 +5,15 @@ export default class MatchRow extends React.Component {
 
   	render() {
 
-        const {name, id, bets, date, addTip, start_date, baseRef} = this.props
-        const eventRef = "#/sports/" + baseRef + "/" + name + "/" + id
+        let {name, id, bets, date, addTip, start_date, eventURL } = this.props
+
+        eventURL = eventURL.addMatch({name, id})
+
         const [homeTeam, awayTeam] = name.split(" - ")
         const hour = start_date.split("T")[1].slice(0, -3);
         
         let selections = [homeTeam, "Draw", awayTeam]
         let selectionClass = "col-xs-2"
-
-        if (typeof bets === 'undefined')
-            return null
 
         if (bets[0].choices.length === 2){
             selections = [homeTeam, awayTeam]
@@ -23,9 +22,9 @@ export default class MatchRow extends React.Component {
 
 	    return (
             <div class="col-xs-12 league-game">
-                <a href={eventRef} class="col-xs-6"><small>{hour}</small> {name}</a>
-                {bets[0].choices.map((bet,i) => 
-                    <a key={i} onClick={() => addTip(selections[i], name, bet.odd)} class={selectionClass}>{bet.odd}</a> )}
+                <a href={eventURL.renderPath()} class="col-xs-6"><small>{hour}</small> {name}</a>
+                {bets[0].choices.map((choice,i) => 
+                    <a key={i} onClick={() => addTip(eventURL, bets[0], choice)} class={selectionClass}>{choice.odd}</a> )}
             </div>
 	    );
   	}

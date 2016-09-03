@@ -7,13 +7,13 @@ export default class Tip extends React.Component {
 
   render() {
 
-    const { tipnumber , selection , event, odd} = this.props;
+    const { tipnumber , eventURL, bet, choice} = this.props;
 
     return (
         <Panel class="post-tips">
-            <p>{tipnumber}. {selection} <a onClick={() => this.props.removeTip(tipnumber - 1)} class="cross pull-right">x</a></p>
-            <p><a href="#/sports">{event}</a></p>
-            <p>{odd}</p>
+            <p>{tipnumber}. {bet.name }: {choice.name} <a onClick={() => this.props.removeTip(tipnumber - 1)} class="cross pull-right">x</a></p>
+            <p><a href={eventURL.renderPath()}>{eventURL.getMatchName()}</a></p>
+            <p>{choice.odd}</p>
         </Panel>
     );
   }

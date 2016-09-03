@@ -5,7 +5,7 @@ export default class TwoColumnsTable extends React.Component {
 
   	render() {
 
-	    const { eventName, bet, filters, addTip } = this.props
+	    const { eventURL, bet, filters, addTip } = this.props
         
         let Options = []
         if (filters.length > 0){
@@ -23,7 +23,7 @@ export default class TwoColumnsTable extends React.Component {
         Options = Options.map((choice,i) => {
             if(choice === "")
                 return <a key={i} class="empty-option col-xs-6">-</a>
-            return <a key={i} onClick={() => addTip(bet.name+": "+choice.name, eventName, choice.odd)} class="col-xs-6">{choice.name} <span class="pull-right">{choice.odd}</span></a>
+            return <a key={i} onClick={() => addTip(eventURL, bet, choice)} class="col-xs-6">{choice.name} <span class="pull-right">{choice.odd}</span></a>
         })
 
 	    return (
