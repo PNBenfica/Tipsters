@@ -27,49 +27,103 @@ export default class Sports extends React.Component {
         super(...args);
         this.state = { betSlip : { tips: [], sellingPrice : 0 }};
     }
+
+    /*
+        * @desc fetch tables from the server based on the url params
+    */
+    fetchTables(sportParams){
+        const {sportCode, leagueCode, matchCode} = sportParams
+        this.props.dispatch(fetchTables(sportParams))
+    }
     
     componentWillMount() {
-        const {sportCode, leagueCode, matchCode} = this.props.params;
-        this.props.dispatch(fetchTables({sportCode, leagueCode, matchCode}))
+        this.fetchTables(this.props.params)
     }
 
+    /*
+        * @desc when the url params change (sport, league or match code) the tables must be updated
+    */
     componentWillReceiveProps(nextProps) {
-        const {sportCode, leagueCode, matchCode} = nextProps.params;
+        const {sportCode, leagueCode, matchCode} = nextProps.params
+        const urlParamsChanged = (sportCode !== this.props.params.sportCode || leagueCode !== this.props.params.leagueCode  || matchCode !== this.props.params.matchCode)
 
-        if (sportCode !== this.props.params.sportCode || leagueCode !== this.props.params.leagueCode  || matchCode !== this.props.params.matchCode){
-            this.props.dispatch(fetchTables({sportCode, leagueCode, matchCode}));
+        if (urlParamsChanged){
+            this.fetchTables(nextProps.params)
         }
     }
 
+    /*
+        * @desc must redefine this method since the componentWillReceiveProps will cause a rerender of the page before the new tables are fetched
+        *       this will cause a bug because the tables will be rendered with the new url params, but the old tables data (during a fraction of seconds)
+    */
     shouldComponentUpdate(nextProps, nextState){
         const {sportCode, leagueCode, matchCode} = nextProps.params;
+        const urlParamsChanged = (sportCode !== this.props.params.sportCode || leagueCode !== this.props.params.leagueCode  || matchCode !== this.props.params.matchCode)
         
-        if (sportCode !== this.props.params.sportCode || leagueCode !== this.props.params.leagueCode  || matchCode !== this.props.params.matchCode)
+        if (urlParamsChanged)
             return nextProps.fetching != this.props.fetching
         return true
     }
 
     /***** <Bet Slip> *****/
 
+    /*
+        * @desc updates the selling price of th betslip
+        * @param the new selling price
+    */
     updateSellingPrice(sellingPrice){
-        this.setState({sellingPrice});
+        this.setState({ betSlip: { ...this.state.betSlip, sellingPrice: sellingPrice } })
     }
 
+    getBetSlipTips(){
+        return this.state.betSlip.tips
+    }
+
+    getBetSlipTip(eventURL, bet, choice){
+        return this.getBetSlipTips().find((tip) => tip.bet.id==bet.id && tip.choice.id==choice.id && (tip.eventURL.renderPath() == eventURL.renderPath()))
+    }
+
+    /*
+        * @return array of all url paths of the events present in the bet slip
+    */
+    getBetSlipEventsURL(){
+        return this.getBetSlipTips().map((tip) => tip.eventURL.renderPath())
+    }
+
+    /*
+        * @return true if this choice is in the bet slip
+    */
+    isInBetSlip(eventURL, bet, choice){
+        return typeof this.getBetSlipTip(eventURL, bet, choice) !== 'undefined'
+    }
+
+    /*
+        * @return true if a tip on the event is already on the bet slip
+    */
     alreadyTipOnEvent(eventURL){
-    	let eventsList = this.state.betSlip.tips.map((tip) => tip.eventURL.renderPath());
-		return eventsList.indexOf(eventURL.renderPath()) !== -1;
+		return this.getBetSlipEventsURL().includes(eventURL.renderPath())
+    }
+
+
+    /*
+        * @desc a betslip can only have 14 tips
+    */
+    isBetSlipFull(){
+        return this.getBetSlipTips().length === 14
     }
 
     addTip(eventURL, bet, choice){
-        if (this.state.betSlip.tips.length < 14 && !this.alreadyTipOnEvent(eventURL)){
+        if (this.isInBetSlip(eventURL, bet, choice))
+            this.removeTip(eventURL, bet, choice)
+        else if (!this.isBetSlipFull() && !this.alreadyTipOnEvent(eventURL)){
             const Tip = { eventURL, bet: { name: bet.name , id: bet.id }, choice }
             this.state.betSlip.tips = [ ...this.state.betSlip.tips, Tip];
             this.setState({betSlip: this.state.betSlip});
         }
     }
 
-    removeTip(index){
-        this.state.betSlip.tips = this.state.betSlip.tips.filter((_, i) => i !== index);
+    removeTip(eventURL, bet, choice){
+        this.state.betSlip.tips = this.state.betSlip.tips.filter(tip => !(tip.bet.id==bet.id && tip.choice.id==choice.id && (tip.eventURL.renderPath() == eventURL.renderPath())));
         this.setState({
             betSlip: this.state.betSlip
         });
@@ -221,7 +275,8 @@ export default class Sports extends React.Component {
     }
 
     /* 
-        * @desc renders a table that will have only for example, a header and league bet options ["Relegation", "Place 1-4", "Outright Winner"]
+        * @desc renders a league bet table (each league may have league bets (ex: League Winner, etc))
+                renders a table that will have only for example, a header and league bet options ["Relegation", "Place 1-4", "Outright Winner"]
                 the id of each option is changed to the match id so that when selected it shows all the league bets and not only the selected
                 should I do this?
         * @param json 'match' - match that contains the league bets 
@@ -241,7 +296,7 @@ export default class Sports extends React.Component {
         * @return table
      */
     renderMatchesTable(eventURL, day, matches, i){
-        return <MatchesTable key={i} eventURL={eventURL} date={day} matches={matches} addTip={this.addTip.bind(this)}/>
+        return <MatchesTable key={i} eventURL={eventURL} date={day} matches={matches} addTip={this.addTip.bind(this)} isInBetSlip={this.isInBetSlip.bind(this)} />
     }
 
 
@@ -298,16 +353,16 @@ export default class Sports extends React.Component {
     }
     
     renderStandardOptionsTable(eventURL, bet, i){
-        return <StandardOptionsTable key={i} eventURL={eventURL} bet={bet} addTip={this.addTip.bind(this)}/>
+        return <StandardOptionsTable key={i} eventURL={eventURL} bet={bet} addTip={this.addTip.bind(this)} isInBetSlip={this.isInBetSlip.bind(this)}/>
     }
 
     /* filters will map the choices to the respective column */
     renderTwoColumnsTable(eventURL, bet, i, filters=[]){
-        return <TwoColumnsTable key={i} eventURL={eventURL} bet={bet} filters={filters} addTip={this.addTip.bind(this)}/>
+        return <TwoColumnsTable key={i} eventURL={eventURL} bet={bet} filters={filters} addTip={this.addTip.bind(this)} isInBetSlip={this.isInBetSlip.bind(this)}/>
     }
 
     renderThreeColumnsTable(eventURL, bet, i, filters){
-        return <ThreeColumnsTable key={i} eventURL={eventURL} bet={bet} filters={filters} addTip={this.addTip.bind(this)}/>
+        return <ThreeColumnsTable key={i} eventURL={eventURL} bet={bet} filters={filters} addTip={this.addTip.bind(this)} isInBetSlip={this.isInBetSlip.bind(this)}/>
     }
 
 
@@ -326,7 +381,7 @@ export default class Sports extends React.Component {
     }
     
     renderGoalscorers(eventURL, bets, i){
-        return <GoalsScorersTable key={i} eventURL={eventURL} bets={bets} addTip={this.addTip.bind(this)}/>
+        return <GoalsScorersTable key={i} eventURL={eventURL} bets={bets} addTip={this.addTip.bind(this)} isInBetSlip={this.isInBetSlip.bind(this)}/>
     }
 
     renderLoadingGif(){

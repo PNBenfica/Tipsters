@@ -16,7 +16,7 @@ export default class SellingPrice extends React.Component {
 			price = 0;
 
 		if (this.isNumeric(price)){
-			this.props.updateSellingPrice(price);
+			this.props.updateSellingPrice(parseFloat(price));
 		}
 		else{
 			e.target.value = price.slice(0, -1);

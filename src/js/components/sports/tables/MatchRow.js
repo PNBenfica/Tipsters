@@ -1,11 +1,13 @@
-import React from "react";
-import classNames from "classnames";
+import React from "react"
+
+import Choice from "./Choice"
 
 export default class MatchRow extends React.Component {
 
+
   	render() {
 
-        let {name, id, bets, date, addTip, start_date, eventURL } = this.props
+        let { name, id, bets, date, addTip, start_date, eventURL, isInBetSlip } = this.props
 
         eventURL = eventURL.addMatch({name, id})
 
@@ -23,8 +25,7 @@ export default class MatchRow extends React.Component {
 	    return (
             <div class="col-xs-12 league-game">
                 <a href={eventURL.renderPath()} class="col-xs-6"><small>{hour}</small> {name}</a>
-                {bets[0].choices.map((choice,i) => 
-                    <a key={i} onClick={() => addTip(eventURL, bets[0], choice)} class={selectionClass}>{choice.odd}</a> )}
+                {bets[0].choices.map((choice,i) => <Choice key={i} eventURL={eventURL} bet={bets[0]} choice={choice} addTip={addTip} isInBetSlip={isInBetSlip} classes={selectionClass}>{choice.odd}</Choice>)}
             </div>
 	    );
   	}

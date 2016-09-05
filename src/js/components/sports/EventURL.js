@@ -1,5 +1,6 @@
 import React from "react";
 
+// this class will be used to store and render url paths (/sport/sportCode/league/leagueCode/event/eventCode)
 export default class EventURL {
 
 	constructor(sport, league, match){

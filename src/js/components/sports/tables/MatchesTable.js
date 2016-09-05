@@ -1,20 +1,21 @@
 import React from "react";
 
-import MatchRow from "./MatchRow";
-import MatchesTableHeader from "./headers/MatchesTableHeader";
+import MatchRow from "./MatchRow"
+import Header from "./Header"
 
 export default class MatchesTable extends React.Component {
 
   	render() {
 
-	    let {date, matches, eventURL,addTip} = this.props;
+	    let {date, matches, eventURL,addTip, isInBetSlip} = this.props;
 
-        const Matches = matches.map(({...match}, i) => <MatchRow key={i} {...match} eventURL={eventURL} addTip={addTip}/>);
+        const Header = this.renderHeader(date, matches[0].bets)
+        const Matches = matches.map(({...match}, i) => <MatchRow key={i} {...match} eventURL={eventURL} isInBetSlip={isInBetSlip} addTip={addTip}/>);
 
 	    return (
             <div class="panel panel-default">
                 
-                <MatchesTableHeader date={date} bets={matches[0].bets} />
+                {Header}
 
                 <div class="panel-body">                    
                     {Matches}
@@ -22,4 +23,11 @@ export default class MatchesTable extends React.Component {
             </div>
 	    );
   	}
+
+    renderHeader(date, bets){
+        const nMainBetOptions = bets[0].choices.length
+        const options = (nMainBetOptions == 2) ? ["1", "2"] : ["1", "X", "2"]
+        return <Header title={date} options={options} />
+    }
+
 }

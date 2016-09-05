@@ -1,20 +1,20 @@
 import React from "react";
 
-import HeaderThreeOptions from "./headers/HeaderThreeOptions";
-
+import Choice from "./Choice"
+import Header from "./Header"
 
 export default class GoalsScorersTable extends React.Component {
 
 	render() {
 
-		const { eventURL, bets, addTip} = this.props;
+		const { eventURL, bets, addTip, isInBetSlip } = this.props;
 
 		return (
 			<div class="panel panel-default odds-table">					
 				
-                <HeaderThreeOptions name="Goalscorers" options={["First", "Last", "Anytime"]} />
+                <Header title="Goalscorers" options={["First", "Last", "Anytime"]} />
 
-                <ThreeColumns eventURL={eventURL} bets={bets} addTip={addTip} />
+                <ThreeColumns eventURL={eventURL} bets={bets} addTip={addTip} isInBetSlip={isInBetSlip}/>
 			</div>
 		);
 	}
@@ -24,7 +24,7 @@ class ThreeColumns extends React.Component{
 
 	render() {
 
-		const { bets, eventURL, addTip } = this.props;
+		const { bets, eventURL, addTip, isInBetSlip  } = this.props;
         
         const firstGoalscorer = bets.find(bet => bet.name == "First Goalscorer")
         const lastGoalscorer = bets.find(bet => bet.name == "Last Goalscorer")
@@ -37,7 +37,7 @@ class ThreeColumns extends React.Component{
         		const choice = bet.choices.find(choice => choice.name == player)
         		if (typeof choice === 'undefined') 
         			return <a key={i} class="empty-option centered bordered col-xs-2">-</a>
-        		return <a key={i} onClick={() => addTip(eventURL, bet, choice)} class="col-xs-2 centered">{choice.odd}</a>
+        		return <Choice key={i} eventURL={eventURL} bet={bet} choice={choice} addTip={addTip} isInBetSlip={isInBetSlip} classes={"col-xs-2 centered"}>{choice.odd}</Choice>
         	})
                 
 	        return  (<div key={i}>

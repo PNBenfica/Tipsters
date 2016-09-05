@@ -11,7 +11,7 @@ export default class Tip extends React.Component {
 
     return (
         <Panel class="post-tips">
-            <p>{tipnumber}. {bet.name }: {choice.name} <a onClick={() => this.props.removeTip(tipnumber - 1)} class="cross pull-right">x</a></p>
+            <p>{tipnumber}. {bet.name }: {choice.name} <a onClick={() => this.props.removeTip(eventURL, bet, choice)} class="cross pull-right">x</a></p>
             <p><a href={eventURL.renderPath()}>{eventURL.getMatchName()}</a></p>
             <p>{choice.odd}</p>
         </Panel>

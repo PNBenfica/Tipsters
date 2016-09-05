@@ -1,11 +1,12 @@
 import React from "react";
 
+import Header from "./Header"
 
 export default class SportTable extends React.Component {
 
   	render() {
 
-	    const {title, events, eventURL} = this.props;
+	    const {title, events, eventURL } = this.props;
 
         const Events = events.map((event, i) => {
                 const ref = eventURL.add(event.name, event.id).renderPath()
@@ -14,9 +15,8 @@ export default class SportTable extends React.Component {
 
 	    return (
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{title}</h3>            
-                </div>
+            
+                <Header title={title} />
 
                 <div class="panel-body">        
                     {Events}            

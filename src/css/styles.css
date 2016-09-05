@@ -187,7 +187,7 @@ trend-bar-item
 	padding-left: 0px;
 	padding-top: 5px;
 
-	box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 16px 0px, rgba(0, 0, 0, 0.188235) 0px 6px 20px 0px;
+	box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 8px 0px, rgba(0, 0, 0, 0.065) 0px 3px 5px 0px;
 }
 
 .trend-bar-item .panel-heading{
@@ -382,7 +382,7 @@ Feed
 	padding-left: 0px;
 	padding-right: 0px;
 
-	box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 16px 0px, rgba(0, 0, 0, 0.188235) 0px 6px 20px 0px;
+	box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 8px 0px, rgba(0, 0, 0, 0.065) 0px 3px 5px 0px;
 }
 
 
@@ -1009,6 +1009,10 @@ league tables
 .league-tables .league-game a small{
 	color: #3097D1;
 	padding-right: 5px;
+}
+
+.highlighted{
+	background-color: rgba(48,151,209,0.1);
 }
 
 /**********************

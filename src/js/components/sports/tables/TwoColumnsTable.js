@@ -1,11 +1,13 @@
 import React from "react";
 
+import Choice from "./Choice"
+import Header from "./Header"
 
 export default class TwoColumnsTable extends React.Component {
 
   	render() {
 
-	    const { eventURL, bet, filters, addTip } = this.props
+	    const { eventURL, bet, filters, addTip, isInBetSlip } = this.props
         
         let Options = []
         if (filters.length > 0){
@@ -23,14 +25,13 @@ export default class TwoColumnsTable extends React.Component {
         Options = Options.map((choice,i) => {
             if(choice === "")
                 return <a key={i} class="empty-option col-xs-6">-</a>
-            return <a key={i} onClick={() => addTip(eventURL, bet, choice)} class="col-xs-6">{choice.name} <span class="pull-right">{choice.odd}</span></a>
+            return <Choice key={i} eventURL={eventURL} bet={bet} choice={choice} addTip={addTip} isInBetSlip={isInBetSlip} classes={"col-xs-6"}>{choice.name} <span class="pull-right">{choice.odd}</span></Choice>
         })
 
 	    return (
             <div class="panel panel-default odds-table">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{bet.name}</h3>            
-                </div>
+                
+                <Header title={bet.name} />
 
                 <div class="panel-body">        
                     {Options}
