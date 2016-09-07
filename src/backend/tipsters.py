@@ -116,8 +116,8 @@ class TipstersApi(remote.Service):
         return Sport(name=sportData["name"], id=sportData["id"], events=events)
     
     
-    def filterById(self, collection, id):
-        return self.filterByAttr(collection, "id", id)
+    def filterById(self, collection, _id):
+        return self.filterByAttr(collection, "id", _id)
         
     def filterByAttr(self, collection, attrName, attrVal):
         data = filter(lambda elem: elem[attrName] == attrVal , collection)
