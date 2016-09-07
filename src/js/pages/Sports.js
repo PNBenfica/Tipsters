@@ -7,8 +7,7 @@ import BetSlip from "../components/sports/betslip/BetSlip";
 import Breadcrumb from "../components/sports/Breadcrumb";
 import EventURL from "../components/sports/EventURL";
 import GoalsScorersTable from "../components/sports/tables/GoalsScorersTable";
-import TwoColumnsTable from "../components/sports/tables/TwoColumnsTable";
-import ThreeColumnsTable from "../components/sports/tables/ThreeColumnsTable";
+import ColumnsTable from "../components/sports/tables/ColumnsTable";
 import MatchesTable from "../components/sports/tables/MatchesTable";
 import SportTable from "../components/sports/tables/SportTable";
 import StandardOptionsTable from "../components/sports/tables/StandardOptionsTable";
@@ -328,7 +327,7 @@ export default class Sports extends React.Component {
         * @return match tables
      */
     renderMatch(match, eventURL){
-        const tablesMap = {"Match Result": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Half-Time Result": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Total Goals": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Number of Goals": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Double Chance": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "First Team To Score": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Half-Time / Full-Time": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Handicap" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Correct Score" : (eventURL, bet, i) => this.renderCorrectScore(eventURL, bet, i), "Half-Time Correct Score" : (eventURL, bet, i) => this.renderCorrectScore(eventURL, bet, i), "Goalscorers" : (eventURL, bet, i) => this.renderGoalscorers(eventURL, bet.bets, i), "Outright Winner" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Place 1-4" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Relegation" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Over/Under" : (eventURL, bet, i) => this.renderTwoColumnsTable(eventURL, bet, i, [(choice => choice.name.includes("Over")), (choice => choice.name.includes("Under"))]), "Total Sets" : (eventURL, bet, i) => this.renderTwoColumnsTable(eventURL, bet, i), "Total Games" : (eventURL, bet, i) => this.renderTwoColumnsTable(eventURL, bet, i), "Match Winner" : (eventURL, bet, i) => this.renderTwoColumnsTable(eventURL, bet, i), "Drivers Championship Winner" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Constructors Championship" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Winner" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true),}
+        const tablesMap = {"Match Result": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Half-Time Result": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Total Goals": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Number of Goals": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Double Chance": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "First Team To Score": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Half-Time / Full-Time": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Handicap" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Correct Score" : (eventURL, bet, i) => this.renderCorrectScore(eventURL, bet, i), "Half-Time Correct Score" : (eventURL, bet, i) => this.renderCorrectScore(eventURL, bet, i), "Goalscorers" : (eventURL, bet, i) => this.renderGoalscorers(eventURL, bet.bets, i), "Outright Winner" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Place 1-4" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Relegation" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Over/Under" : (eventURL, bet, i) => this.renderColumnsTable(eventURL, bet, 2, i, [(choice => choice.name.includes("Over")), (choice => choice.name.includes("Under"))]), "Total Sets" : (eventURL, bet, i) => this.renderColumnsTable(eventURL, bet, 2, i), "Total Games" : (eventURL, bet, i) => this.renderColumnsTable(eventURL, bet, 2, i), "Match Winner" : (eventURL, bet, i) => this.renderColumnsTable(eventURL, bet, 2, i), "Drivers Championship Winner" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Constructors Championship" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Winner" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true),}
         
         if (this.hasGoalscorerBets(match)){
             this.reformGoalscorerBets(match)
@@ -392,12 +391,8 @@ export default class Sports extends React.Component {
     }
 
     /* filters will map the choices to the respective column */
-    renderTwoColumnsTable(eventURL, bet, i, filters=[]){
-        return <TwoColumnsTable key={i} eventURL={eventURL} bet={bet} filters={filters} addTip={this.addTip.bind(this)} isInBetSlip={this.isInBetSlip.bind(this)}/>
-    }
-
-    renderThreeColumnsTable(eventURL, bet, i, filters){
-        return <ThreeColumnsTable key={i} eventURL={eventURL} bet={bet} filters={filters} addTip={this.addTip.bind(this)} isInBetSlip={this.isInBetSlip.bind(this)}/>
+    renderColumnsTable(eventURL, bet, nCols, i, filters=[]){
+        return <ColumnsTable key={i} eventURL={eventURL} bet={bet} nCols={nCols} filters={filters} addTip={this.addTip.bind(this)} isInBetSlip={this.isInBetSlip.bind(this)}/>
     }
 
 
@@ -412,7 +407,7 @@ export default class Sports extends React.Component {
     renderCorrectScore(eventName, bet, i){ 
         bet.choices.forEach(choice => choice.result = this.parseScore(choice.name)) /* "1 - 0" => [1,0] */
         const filters = [(choice => choice.result[0] > choice.result[1]), (choice => choice.result[0] == choice.result[1]), (choice => choice.result[0] < choice.result[1])]
-        return this.renderThreeColumnsTable(eventName, bet, i, filters)
+        return this.renderColumnsTable(eventName, bet, 3, i, filters)
     }
     
     renderGoalscorers(eventURL, bets, i){

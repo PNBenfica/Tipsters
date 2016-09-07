@@ -39,6 +39,6 @@ export default class EventURL {
   	}
 
   	renderElement(ele){
-  		return (typeof ele !== 'undefined') ? ele.name +"/"+ ele.id +"/" : ""
+  		return (typeof ele !== 'undefined') ? ele.name.replace(/\//g, '') +"/"+ ele.id +"/" : ""
   	}
 }

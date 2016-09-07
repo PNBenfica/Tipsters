@@ -33,7 +33,7 @@ export default class GoalsScorersTable extends React.Component {
     renderPlayerRow(player, i){            
         return  (
         	<tr key={i}>
-		        <td class="col-xs-6 not-hovered">{player}</td>
+		        <td class="col-xs-6 not-hovered player-name">{player}</td>
 		        {this.renderOdds(player)}
 		    </tr>)        
 	}

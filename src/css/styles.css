@@ -987,7 +987,7 @@ league tables
 	text-align: left;
 }
 
-.league-tables .league-game a:hover{
+.league-tables .league-game a:hover,{
 	color: #3097D1;
 }
 
@@ -1052,22 +1052,52 @@ Match odds tables
 	padding-bottom: 5px !important;
 	
 	border-left-style: solid;
-	border-right-style: solid;
 	border-bottom-style: solid;
 	border-left-width: 1px;
-	border-right-width: 1px;
 	border-bottom-width: 1px;
 	border-color: rgba(48,151,209,0.1);
 }
 
+.odds-table a:last-child{
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: rgba(48,151,209,0.1);
+}
+
+
 .odds-table a span{
-	padding-left: 0px;
+	position: absolute;
+	right: 7px;
+	top: 6px;
 }
 
 .bigger{
 	height: 50px;
 }
 
+
+.odds-table .table{
+	padding-left: 0px;
+	border: none !important;
+}
+
+.odds-table .table tr td:not(:last-child){
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: rgba(48,151,209,0.1);
+}
+
+@media screen and (min-width: 650px) {
+	.odds-table .table tr td{
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+
+	.table .player-name
+	{
+		padding-left: 15px;
+	}
+}
 
 .sports-table-container .table{
 	background-color: white;
@@ -1092,9 +1122,12 @@ Match odds tables
 	background-color: rgba(48,151,209,0.1);
 	cursor: pointer;
 }
-.sports-table-container .table td.not-hovered:hover, .sports-table-container .table td.empty-option:hover{
+.sports-table-container .table td.not-hovered:hover, .sports-table-container .table td.empty-option:hover, .sports-table-container .table .match-name:hover{
 	background-color: white;
 	cursor: default;
+}
+.sports-table-container .table .match-name:hover a{
+	color: #3097D1;
 }
 
 .sports-table-container .table td.empty-option:hover{
