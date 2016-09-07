@@ -212,7 +212,28 @@ export default class Sports extends React.Component {
         * @return sports tables
      */
     renderSport(sport, eventURL){
+        if (sport.name == "Football")
+            return this.renderFootball(sport, eventURL)
         return this.renderGenericTable("Leagues", sport.events, eventURL)
+    }
+
+
+    /* 
+        * @desc renders the football page, it must first separate the leagues (main leagues - [premier league, la liga, ...])
+        * @param json 'sport' - sport data fetched from the server 
+        * @param EventURL 'eventURL' - contains the url params, used to build events href
+        * @return sports tables
+     */
+    renderFootball(sport, eventURL){
+        const mainLeaguesNames = ["Eng. Premier League", "Portuguese Prim. Liga", "German Bundesliga", "Italian Serie A", "French League 1", "Spanish Liga Primera"]
+        const uefaLeaguesNames = ["Champions League", "Europa League"]
+
+        const mainLeagues = {name:"Main Leagues", events: sport.events.filter(event => mainLeaguesNames.includes(event.name))}
+        const uefaLeagues = {name:"Uefa", events: sport.events.filter(event => uefaLeaguesNames.includes(event.name))}
+        const allLeagues = {name:"All Leagues", events: sport.events}
+        return [mainLeagues, uefaLeagues, allLeagues].
+                                                filter(category => category.events.length > 0).
+                                                map(({name, events}, i) => this.renderGenericTable(name, events, eventURL, i))
     }
 
     /* 
@@ -308,11 +329,24 @@ export default class Sports extends React.Component {
      */
     renderMatch(match, eventURL){
         const tablesMap = {"Match Result": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Half-Time Result": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Total Goals": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Number of Goals": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Double Chance": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "First Team To Score": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Half-Time / Full-Time": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Handicap" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Correct Score" : (eventURL, bet, i) => this.renderCorrectScore(eventURL, bet, i), "Half-Time Correct Score" : (eventURL, bet, i) => this.renderCorrectScore(eventURL, bet, i), "Goalscorers" : (eventURL, bet, i) => this.renderGoalscorers(eventURL, bet.bets, i), "Outright Winner" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Place 1-4" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Relegation" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Over/Under" : (eventURL, bet, i) => this.renderTwoColumnsTable(eventURL, bet, i, [(choice => choice.name.includes("Over")), (choice => choice.name.includes("Under"))]), "Total Sets" : (eventURL, bet, i) => this.renderTwoColumnsTable(eventURL, bet, i), "Total Games" : (eventURL, bet, i) => this.renderTwoColumnsTable(eventURL, bet, i), "Match Winner" : (eventURL, bet, i) => this.renderTwoColumnsTable(eventURL, bet, i), "Drivers Championship Winner" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Constructors Championship" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Winner" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i),}
-
+        
         if (this.hasGoalscorerBets(match)){
             this.reformGoalscorerBets(match)
         }
+        this.sortMatchBets(match)
+
         return match.bets.map((bet,i) => tablesMap[bet.name](eventURL, bet, i))
+    }
+
+    /* 
+        * @desc sorts the bets accordingly to their name
+        * @param json 'match' - match data fetched from the server 
+        * @return match tables
+     */
+    sortMatchBets(match){
+        const betNamesOrdered = ["Match Result", "Double Chance", "Over/Under", "Total Goals", "Number of Goals", "First Team To Score", "Half-Time Result", "Half-Time / Full-Time", "Handicap", "Correct Score", "Half-Time Correct Score", "Goalscorers", "Match Winner", "Outright Winner", "Place 1-4", "Relegation", "Total Sets", "Total Games", "Winner", "Drivers Championship Winner", "Constructors Championship"]
+        // match.bets.sort((a, b) => a.name.localeCompare(b.name))
+        match.bets.sort((a, b) => betNamesOrdered.indexOf(a.name) - betNamesOrdered.indexOf(b.name))
     }
 
     /* 
@@ -344,7 +378,6 @@ export default class Sports extends React.Component {
         const joinedBets = {name: "Goalscorers", bets: goalscorersBets}
         match.bets = match.bets.filter(bet => !goalscorersBets.includes(bet))
         match.bets.push(joinedBets)
-        console.log(match.bets)
     }
 
     

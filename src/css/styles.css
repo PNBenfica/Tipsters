@@ -946,18 +946,14 @@ league tables
 	background-color: #fafafa;
 	border-bottom-color: #3097D1;
 	border-bottom-width: 2px;
+	padding-top: 9px;
+	padding-bottom: 10px;
 }
 
 .league-tables .panel .panel-heading .panel-title{
-	font-size: 105%;
+	font-size: 14px;
+	padding-left: 10px;
 }
-
-
-.league-tables .panel-heading{
-	padding-top: 8px;
-	padding-bottom: 5px;
-}
-
 
 .league-tables .panel-body{
 	padding: 0px;
@@ -1006,7 +1002,7 @@ league tables
 	color: #8B8C8E;
 }
 
-.league-tables .league-game a small{
+.league-tables small{
 	color: #3097D1;
 	padding-right: 5px;
 }
@@ -1062,6 +1058,58 @@ Match odds tables
 	border-right-width: 1px;
 	border-bottom-width: 1px;
 	border-color: rgba(48,151,209,0.1);
+}
+
+.odds-table a span{
+	padding-left: 0px;
+}
+
+.bigger{
+	height: 50px;
+}
+
+
+.sports-table-container .table{
+	background-color: white;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #D3E0E9;
+}
+
+.sports-table-container .table thead th{
+	border-bottom-color: #3097D1;
+	border-bottom-width: 2px;
+	color: #3097D1;
+	background-color: #fafafa;
+	font-weight: normal;
+}
+
+.sports-table-container .table td, .sports-table-container .table td a{
+	color: #8B8C8E;
+}
+
+.sports-table-container .table td:hover{
+	background-color: rgba(48,151,209,0.1);
+	cursor: pointer;
+}
+.sports-table-container .table td.not-hovered:hover, .sports-table-container .table td.empty-option:hover{
+	background-color: white;
+	cursor: default;
+}
+
+.sports-table-container .table td.empty-option:hover{
+	color: white;
+}
+
+.sports-table-container .table td.empty-option{
+	color: white;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
 }
 
 
@@ -1127,6 +1175,10 @@ bet slip
 #bet-slip .empty-bet-slip{  
     margin-top: 7px;
     margin-bottom: 0px;
+}
+
+#bet-slip .post-tips .panel-body{
+	line-height: 100%;
 }
 
 #bet-slip .empty-bet-slip .panel{  

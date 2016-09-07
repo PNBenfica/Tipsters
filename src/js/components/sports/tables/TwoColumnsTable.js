@@ -25,7 +25,7 @@ export default class TwoColumnsTable extends React.Component {
         Options = Options.map((choice,i) => {
             if(choice === "")
                 return <a key={i} class="empty-option col-xs-6">-</a>
-            return <Choice key={i} eventURL={eventURL} bet={bet} choice={choice} addTip={addTip} isInBetSlip={isInBetSlip} classes={"col-xs-6"}>{choice.name} <span class="pull-right">{choice.odd}</span></Choice>
+            return <Choice key={i} eventURL={eventURL} bet={bet} choice={choice} addTip={addTip} isInBetSlip={isInBetSlip} classes={"col-xs-6"}><div class="col-xs-10 no-padding-sides">{choice.name}</div> <span class="col-xs-2 centered">{choice.odd}</span></Choice>
         })
 
 	    return (

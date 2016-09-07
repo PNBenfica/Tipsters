@@ -1,55 +1,70 @@
 import React from "react";
 
-import Choice from "./Choice"
-import Header from "./Header"
+import ChoiceTD from "./ChoiceTD"
+import HeaderTH from "./HeaderTH"
 
 export default class GoalsScorersTable extends React.Component {
 
 	render() {
-
-		const { eventURL, bets, addTip, isInBetSlip } = this.props;
-
+	
 		return (
-			<div class="panel panel-default odds-table">					
-				
-                <Header title="Goalscorers" options={["First", "Last", "Anytime"]} />
+			<table class="table">
 
-                <ThreeColumns eventURL={eventURL} bets={bets} addTip={addTip} isInBetSlip={isInBetSlip}/>
-			</div>
+			    <HeaderTH title="Goalscorers" options={["First", "Last", "Anytime"]} />
+
+			    {this.renderBody()}
+			
+			</table>
 		);
 	}
-}
 
-class ThreeColumns extends React.Component{
+	renderBody(){
 
-	render() {
-
-		const { bets, eventURL, addTip, isInBetSlip  } = this.props;
-        
-        const firstGoalscorer = bets.find(bet => bet.name == "First Goalscorer")
-        const lastGoalscorer = bets.find(bet => bet.name == "Last Goalscorer")
-        const anytimeGoalscorer = bets.find(bet => bet.name == "Goalscorer")
-
-        const playersNames = firstGoalscorer.choices.map(choice => choice.name)
-
-        const rows = playersNames.map((player, i) => {
-        	const options = [firstGoalscorer, lastGoalscorer, anytimeGoalscorer].map((bet, i) => {
-        		const choice = bet.choices.find(choice => choice.name == player)
-        		if (typeof choice === 'undefined') 
-        			return <a key={i} class="empty-option centered bordered col-xs-2">-</a>
-        		return <Choice key={i} eventURL={eventURL} bet={bet} choice={choice} addTip={addTip} isInBetSlip={isInBetSlip} classes={"col-xs-2 centered"}>{choice.odd}</Choice>
-        	})
-                
-	        return  (<div key={i}>
-			            <a class="col-xs-6">{player}</a>
-			            {options}
-			        </div>)
-        })
+        const players = this.getPlayersList()
+        const rows = players.map((player, i) => this.renderPlayerRow(player, i))
 
 	    return (
-            <div class="panel-body">  
-		        {rows}
-            </div>
+			<tbody>
+				{rows}
+			</tbody>
 	    );	
+    }
+
+    renderPlayerRow(player, i){            
+        return  (
+        	<tr key={i}>
+		        <td class="col-xs-6 not-hovered">{player}</td>
+		        {this.renderOdds(player)}
+		    </tr>)        
 	}
+
+    
+	renderOdds(player){
+    	return this.getBets().map((bet, i) => this.renderOdd(player, bet, i))
+	}
+
+	renderOdd(player, bet, i){
+		const { eventURL, addTip, isInBetSlip } = this.props
+    	const choice = bet.choices.find(choice => choice.name == player)
+		if (typeof choice === 'undefined') 
+			return <td key={i} class="empty-option bordered col-xs-2">-</td>
+		return <ChoiceTD key={i} eventURL={eventURL} bet={bet} choice={choice} addTip={addTip} isInBetSlip={isInBetSlip} classes={"col-xs-2 centered"}>{choice.odd}</ChoiceTD>
+	}
+
+    getPlayersList(){
+    	const bet = this.getBet("First Goalscorer")
+    	return bet.choices.map(choice => choice.name)
+    }
+
+    /*
+		* @desc returns First Goalscorer, Last Goalscorer or Goalscorer bet
+    */
+    getBet(betName){
+    	return this.props.bets.find(bet => bet.name == betName)
+    }
+
+    getBets(){
+    	return [this.getBet("First Goalscorer"), this.getBet("Last Goalscorer"), this.getBet("Goalscorer")]
+    }
+
 }
