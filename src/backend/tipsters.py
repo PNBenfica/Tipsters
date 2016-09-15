@@ -47,9 +47,7 @@ class Hello(messages.Message):
 
 @endpoints.api( name='tipsters', version='v1', allowed_client_ids=[WEB_CLIENT_ID, API_EXPLORER_CLIENT_ID], scopes=[EMAIL_SCOPE])
 class TipstersApi(remote.Service):
-    """TipstersApi API v0.1"""
-    
-    sports = parseXMLOdds()
+    """TipstersApi API v0.1"""    
     
     @endpoints.method(message_types.VoidMessage, Hello, path = "sayHello", http_method='GET', name = "sayHello")
     def say_hello(self, request):
@@ -57,9 +55,10 @@ class TipstersApi(remote.Service):
     
     @endpoints.method(message_types.VoidMessage, Hello, path = "populateOdds", http_method='POST', name = "populateOdds")
     def populate_odds(self, request):
-        sportNames = ["Formula 1", "Basketball", "Motorcycling" ]
+        sportNames = ["Formula 1", "Basketball", "Motorcycling", "Tennis" ]
         #sportNames = ["Formula 1"]
-        sports = filter(lambda s: s["name"] in sportNames, self.sports)
+        sports = parseXMLOdds()
+        sports = filter(lambda s: s["name"] in sportNames, sports)
         for sport in sports:
             self.insertSport(sport)
             
@@ -109,77 +108,77 @@ class TipstersApi(remote.Service):
         sportCode, leagueCode, matchCode = request.sportCode, request.leagueCode, request.matchCode
         
         if (matchCode is not None) and (sportCode is not None):
-            response = self.getMatchOdds(self.sports, sportCode, leagueCode, matchCode)
+            response = self.getMatchOdds(sportCode, leagueCode, matchCode)
         elif (leagueCode is not None) and (sportCode is not None):
-            response = self.getLeagueOdds(self.sports, sportCode, leagueCode)
+            response = self.getLeagueOdds(sportCode, leagueCode)
         else:
-            response = self.getSportOdds(self.sports, sportCode)
+            response = self.getSportOdds(sportCode)
 
         return response
     
-    def getMatchOdds(self, sportsData, sportCode, leagueCode, matchCode):
-        sport = self.filterById(sportsData, sportCode)
-        event = self.filterById(sport["events"], leagueCode)
-        match = self.filterById(event["matches"], matchCode)
-        
-        bets = self.getMatchBets(match)
-        match = MatchMessage(name = match["name"], id = match["id"], start_date = match["start_date"], bets=bets)
-        event = EventMessage(name=event["name"], id=event["id"], matches=[match])
-        return SportMessage(name=sport["name"], id=sport["id"], events=[event])
     
-    def getMatchBets(self, match):
-        return map(lambda bet: 
-                    BetMessage(name = bet["name"], id = bet["id"], code = bet["code"], choices = self.getBetChoices(bet))
-                   , match["bets"])
+    def fetchElement(self, type, code, parentKey = None):
+        key = ndb.Key(type, code, parent=parentKey)
+        return key, key.get()
+    
+    
+    def getMatchOdds(self, sportCode, eventCode, matchCode):
+        sportKey, sport = self.fetchElement(Sport, sportCode)
+        eventKey, event = self.fetchElement(Event, eventCode, sportKey)
+        matchKey, match = self.fetchElement(Match, matchCode, eventKey)
+
+        bets = self.getMatchBets(matchKey)
+        return self.createMatchMessage(sport, event, match, bets)
+    
+    def getMatchBets(self, matchKey):
+        bets = Bet.query(ancestor=matchKey)
+        return map(lambda bet: BetMessage(name = bet.name, id = bet.id, choices = self.getBetChoices(bet, matchKey)), bets)
             
-    def getBetChoices(self, bet):
-        return map(lambda choice: ChoiceMessage(name=choice["name"], id=choice["id"], odd=choice["odd"]), bet["choices"])
+    def getBetChoices(self, bet, matchKey):
+        betKey = self.fetchElement(Bet, bet.id, matchKey)[0]
+        choices = Choice.query(ancestor=betKey)
+        return map(lambda choice: ChoiceMessage(name=choice.name, id=choice.id, odd=choice.odd), choices)
         
-    def getSpecialBets(self, match):
+    def getSpecialBets(self, bets):
         specialBets = ["Relegation", "Place 1-4", "Outright Winner", "Drivers Championship Winner", "Constructors Championship", "Winner"]
-        bets = []
-        for betName in specialBets:
-            try:
-                bets += [self.filterByAttr(match["bets"], "name", betName)]
-            except TipstersApi.EventNotFoundException: pass
-        return map( lambda bet: BetMessage(name = bet["name"], id = bet["id"], code = bet["code"]) ,bets)
-            
-    #get the main bets
-    def getMainBets(self, sportCode, match):
+        bets = bets.filter(Bet.name.IN(specialBets))        
+        return map(lambda bet: BetMessage(name = bet.name, id = bet.id), bets)
+
+    def getMainBets(self, sportCode, matchCode, eventKey):
         mainBets = {"1" : "Match Result", "2" : "Match Winner", "4" : "Match Winner"}
+        matchKey = ndb.Key(Match, matchCode, parent = eventKey)
+        bets = Bet.query(ancestor=matchKey)
         if sportCode in mainBets:            
-            try:
-                bet = self.filterByAttr(match["bets"], "name", mainBets[sportCode])
-                return [BetMessage(name = bet["name"], id = bet["id"], code = bet["code"], choices = self.getBetChoices(bet))]
-            except TipstersApi.EventNotFoundException: pass
-        return self.getSpecialBets(match)
+            bet = bets.filter(ndb.GenericProperty("name") == mainBets[sportCode]).get()
+            if bet:
+                return [BetMessage(name = bet.name, id = bet.id, choices = self.getBetChoices(bet, matchKey))]
+        return self.getSpecialBets(bets)
         
-    def getLeagueOdds(self, sportsData, sportCode, leagueCode):
-        sport = self.filterById(sportsData, sportCode)
-        event = self.filterById(sport["events"], leagueCode)
-                
-        matches = map(lambda match: MatchMessage(name = match["name"], id = match["id"], start_date = match["start_date"], bets = self.getMainBets(sportCode, match)), event["matches"])
-        event = EventMessage(name=event["name"], id=event["id"], matches=matches)
-        return SportMessage(name=sport["name"], id=sport["id"], events=[event])
-    
-    def getSportOdds(self, sportsData, sportCode):
-        if sportCode is None: sportCode = "1"
-        sportData = self.filterById(sportsData, sportCode)        
-        events = map(lambda event: EventMessage(name = event["name"], id = event["id"]), sportData["events"])
-        return SportMessage(name=sportData["name"], id=sportData["id"], events=events)
-    
-    
-    def filterById(self, collection, _id):
-        return self.filterByAttr(collection, "id", _id)
+    def getLeagueOdds(self, sportCode, eventCode):
+        sportKey, sport = self.fetchElement(Sport, sportCode)
+        eventKey, event = self.fetchElement(Event, eventCode, sportKey)
         
-    def filterByAttr(self, collection, attrName, attrVal):
-        data = filter(lambda elem: elem[attrName] == attrVal , collection)
-        if data:
-            return data[0]
-        else:
-            raise TipstersApi.EventNotFoundException("Event queried does not exist")
+        matches = Match.query(ancestor=eventKey)
+        matches = map(lambda match: MatchMessage(name = match.name, id = match.id, start_date = match.start_date, bets = self.getMainBets(sportCode, match.id, eventKey)), matches)
         
-    class EventNotFoundException(Exception):
-        pass
+        return self.createEventMessage(sport, event, matches)
+    
+    def getSportOdds(self, sportCode):        
+        sportKey, sport = self.fetchElement(Sport, sportCode)
+        events = Event.query(ancestor=sportKey)
+        events = map(lambda event: EventMessage(name = event.name, id = event.id), events)
+        return self.createSportMessage(sport, events)
+    
+    def createMatchMessage(self, sport, event, match, bets):
+        match = MatchMessage(name = match.name, id = match.id, start_date = match.start_date, bets=bets)
+        return self.createEventMessage(sport, event, [match])
+    
+    def createEventMessage(self, sport, event, matches):
+        event = EventMessage(name=event.name, id=event.id, matches=matches)
+        return self.createSportMessage(sport, [event])
+    
+    def createSportMessage(self, sport, events):
+        return SportMessage(name=sport.name, id=sport.id, events=events)
+    
 # registers API
 api = endpoints.api_server([TipstersApi]) 
