@@ -10,76 +10,68 @@ created/forked from conferences.py by wesc on 2014 may 24
 
 """
 
-__author__ = 'wesc+api@google.com (Wesley Chun)'
-
-import httplib
-import endpoints
 from protorpc import messages
 from google.appengine.ext import ndb
 
 
-class Profile(ndb.Model):
-    """Profile -- User profile object"""
-    displayName = ndb.StringProperty()
-    mainEmail = ndb.StringProperty()
-    teeShirtSize = ndb.StringProperty(default='NOT_SPECIFIED')
+class Sport(ndb.Model):
+    name = ndb.StringProperty()
+    id = ndb.StringProperty()
+
+class Event(ndb.Model):
+    name = ndb.StringProperty()
+    id = ndb.StringProperty()
+    sportId = ndb.StringProperty()
+    
+class Match(ndb.Model):
+    name = ndb.StringProperty()
+    id = ndb.StringProperty()
+    start_date = ndb.StringProperty()
+    eventId = ndb.StringProperty()
+    
+class Bet(ndb.Model):
+    name = ndb.StringProperty()
+    id = ndb.StringProperty()
+    matchId = ndb.StringProperty()
+
+class Choice(ndb.Model):
+    name = ndb.StringProperty()
+    id = ndb.StringProperty()
+    odd = ndb.StringProperty()
+    betId = ndb.StringProperty()
+    
+    
+    
+class SportParams(messages.Message):
+    sportCode = messages.StringField(1, required = False)
+    leagueCode = messages.StringField(2, required = False)
+    matchCode = messages.StringField(3, required = False)
 
 
-class ProfileMiniForm(messages.Message):
-    """ProfileMiniForm -- update Profile form message"""
-    displayName = messages.StringField(1)
-    teeShirtSize = messages.EnumField('TeeShirtSize', 2)
-
-
-class Sport(messages.Message):
+class SportMessage(messages.Message):
     name = messages.StringField(1)
     id = messages.StringField(2)
-    events = messages.MessageField('Event',3,repeated=True)
+    events = messages.MessageField('EventMessage',3,repeated=True)
 
-class Event(messages.Message):
+class EventMessage(messages.Message):
     name = messages.StringField(1)
     id = messages.StringField(2)
-    matches = messages.MessageField('Match',3,repeated=True)
+    matches = messages.MessageField('MatchMessage',3,repeated=True)
 
-class Match(messages.Message):
+class MatchMessage(messages.Message):
     name = messages.StringField(1)
     id = messages.StringField(2)
     start_date = messages.StringField(3)
-    bets = messages.MessageField('Bet',4,repeated=True)
+    bets = messages.MessageField('BetMessage',4,repeated=True)
 
-class Bet(messages.Message):
+class BetMessage(messages.Message):
     name = messages.StringField(1)
     id = messages.StringField(2)
     code = messages.StringField(3)
-    choices = messages.MessageField('Choice',4,repeated=True)
+    choices = messages.MessageField('ChoiceMessage',4,repeated=True)
 
-class Choice(messages.Message):
+class ChoiceMessage(messages.Message):
     name = messages.StringField(1)
     id = messages.StringField(2)
     odd = messages.StringField(3)
     
-
-class ProfileForm(messages.Message):
-    """ProfileForm -- Profile outbound form message"""
-    displayName = messages.StringField(1)
-    mainEmail = messages.StringField(2)
-    teeShirtSize = messages.EnumField('TeeShirtSize', 3)
-
-
-class TeeShirtSize(messages.Enum):
-    """TeeShirtSize -- t-shirt size enumeration value"""
-    NOT_SPECIFIED = 1
-    XS_M = 2
-    XS_W = 3
-    S_M = 4
-    S_W = 5
-    M_M = 6
-    M_W = 7
-    L_M = 8
-    L_W = 9
-    XL_M = 10
-    XL_W = 11
-    XXL_M = 12
-    XXL_W = 13
-    XXXL_M = 14
-    XXXL_W = 15
