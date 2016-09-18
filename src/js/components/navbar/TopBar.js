@@ -3,7 +3,7 @@ import React from "react";
 import MessagesDropdown from "./dropdowns/MessagesDropdown";
 import NotificationsDropdown from "./dropdowns/NotificationsDropdown";
 import SearchBar from "./SearchBar";
-import SettingsDropdown from "./dropdowns/SettingsDropdown";
+import UserDropdown from "./dropdowns/UserDropdown";
 
 export default class TopBar extends React.Component {
 
@@ -25,13 +25,13 @@ export default class TopBar extends React.Component {
 
                 <SearchBar />
 
-                <ul class="nav navbar-top-links col-xs-5 col-xs-push-2 col-sm-push-0 col-sm-3 col-md-2">
+                <ul class="nav navbar-top-links col-xs-5 col-xs-push-2 col-sm-push-0 col-sm-3 col-md-3">
 
                     <MessagesDropdown />
 
                     <NotificationsDropdown />
 
-                    <SettingsDropdown />
+                    <UserDropdown />
 
                 </ul>
 

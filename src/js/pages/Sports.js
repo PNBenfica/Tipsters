@@ -31,7 +31,8 @@ export default class Sports extends React.Component {
         * @desc fetch tables from the server based on the url params
     */
     fetchTables(sportParams){
-        const {sportCode, leagueCode, matchCode} = sportParams
+        if (typeof sportParams.sportCode === 'undefined')
+            sportParams = {sportCode: '1'}
         this.props.dispatch(fetchTables(sportParams))
     }
     
@@ -290,7 +291,7 @@ export default class Sports extends React.Component {
      */
     isLeagueBet(matches){
         const hasOneMatch = (matches.length === 1) 
-        const specialBets = ["Relegation", "Place 1-4", "Outright Winner", "Winner", "Drivers Championship Winner", "Constructors Championship"]
+        const specialBets = ["Relegation", "Place 1-4", "Outright Winner", "Winner", "Winning Team", "Place 1-2", "Drivers Championship Winner", "Constructors Championship"]
         return hasOneMatch && specialBets.includes(matches[0].bets[0].name)
     }
 
@@ -327,7 +328,7 @@ export default class Sports extends React.Component {
         * @return match tables
      */
     renderMatch(match, eventURL){
-        const tablesMap = {"Match Result": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Half-Time Result": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Total Goals": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Number of Goals": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Double Chance": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "First Team To Score": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Half-Time / Full-Time": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Handicap" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Correct Score" : (eventURL, bet, i) => this.renderCorrectScore(eventURL, bet, i), "Half-Time Correct Score" : (eventURL, bet, i) => this.renderCorrectScore(eventURL, bet, i), "Goalscorers" : (eventURL, bet, i) => this.renderGoalscorers(eventURL, bet.bets, i), "Outright Winner" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Place 1-4" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Relegation" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Over/Under" : (eventURL, bet, i) => this.renderColumnsTable(eventURL, bet, 2, i, [(choice => choice.name.includes("Over")), (choice => choice.name.includes("Under"))]), "Total Sets" : (eventURL, bet, i) => this.renderColumnsTable(eventURL, bet, 2, i), "Total Games" : (eventURL, bet, i) => this.renderColumnsTable(eventURL, bet, 2, i), "Match Winner" : (eventURL, bet, i) => this.renderColumnsTable(eventURL, bet, 2, i), "Drivers Championship Winner" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Constructors Championship" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Winner" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true),}
+        const tablesMap = {"Match Result": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Half-Time Result": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Total Goals": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Number of Goals": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Double Chance": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "First Team To Score": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Half-Time / Full-Time": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Handicap" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i), "Correct Score" : (eventURL, bet, i) => this.renderCorrectScore(eventURL, bet, i), "Half-Time Correct Score" : (eventURL, bet, i) => this.renderCorrectScore(eventURL, bet, i), "Goalscorers" : (eventURL, bet, i) => this.renderGoalscorers(eventURL, bet.bets, i), "Outright Winner" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Place 1-4" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Relegation" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Over/Under" : (eventURL, bet, i) => this.renderColumnsTable(eventURL, bet, 2, i, [(choice => choice.name.includes("Over")), (choice => choice.name.includes("Under"))]), "Total Sets" : (eventURL, bet, i) => this.renderColumnsTable(eventURL, bet, 2, i), "Total Games" : (eventURL, bet, i) => this.renderColumnsTable(eventURL, bet, 2, i), "Match Winner" : (eventURL, bet, i) => this.renderColumnsTable(eventURL, bet, 2, i), "Drivers Championship Winner" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Constructors Championship" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Winner" : (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Winning Team": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true), "Place 1-2": (eventURL, bet, i) => this.renderStandardOptionsTable(eventURL, bet, i, true),}
         
         if (this.hasGoalscorerBets(match)){
             this.reformGoalscorerBets(match)

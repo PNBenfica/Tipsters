@@ -38,8 +38,8 @@ def parseElement(element, childAttrName, childParseFunc):
     return parsedElement
 
 def parseXMLOdds():
-    #file = urllib2.urlopen('http://xml.cdn.betclic.com/odds_en.xml')    
-    #http://web.ist.utl.pt/ist175449/odds_en2.xml
+    #file = urllib2.urlopen('http://xml.cdn.betclic.com/odds_en.xml')
+    #file = urllib2.urlopen('http://web.ist.utl.pt/ist175449/odds_en2.xml')
     #tree = ET.parse(file)
     
     tree = ET.parse(os.path.dirname(__file__) + '\odds_en2.xml')

@@ -33,6 +33,7 @@ class Bet(ndb.Model):
     name = ndb.StringProperty()
     id = ndb.StringProperty()
     matchId = ndb.StringProperty()
+    choices = ndb.JsonProperty()
 
 class Choice(ndb.Model):
     name = ndb.StringProperty()

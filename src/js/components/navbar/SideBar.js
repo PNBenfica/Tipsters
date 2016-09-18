@@ -33,11 +33,11 @@ export default class SideBar extends React.Component {
                         <p style="height:20px;" class="hidden-xs"> </p>
                     </li> -->*/}
 
-                    <li>
+                    <li class="visible-xs">
                         <a className={profileClass} href="#/profile"><i class="fa fa-user fa-fw"></i> Paulo Teixeira</a>
                     </li>
 
-                    <li id="sidebar-account-money">
+                    <li id="sidebar-account-money" class="visible-xs">
                         <a href="#"><i class="fa fa-money fa-fw"></i> Saldo: 20,00€<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
@@ -52,16 +52,16 @@ export default class SideBar extends React.Component {
                         </ul>
                     </li>
 
-                    <li>
+                    <li class="visible-xs">
                         <p style={{"height":"20px"}}> </p>
                     </li>
 
                     <li>
-                        <a href="#" className={feedClass}><i class="fa fa-feed fa-fw"></i> News Feed</a>
+                        <a href="#" className={feedClass}><i class="fa fa-feed fa-fw color-black"></i> News Feed</a>
                     </li>
 
                     <li>
-                        <a id="sport-events-sidebar" className={sportsClass} href="#/sports"><i class="fa fa-soccer-ball-o fa-fw"></i> Sports<span class="fa arrow"></span></a>
+                        <a id="sport-events-sidebar" className={sportsClass} href="#/sports"><i class="color-black fa fa-soccer-ball-o fa-fw"></i> Sports<span class="fa arrow"></span></a>
                         
                         {/*<!-- sports list -->*/}
                         <ul class="nav nav-second-level">
@@ -101,7 +101,7 @@ export default class SideBar extends React.Component {
                         {/*<!-- ./sports list -->*/}
                     </li>
                     <li>
-                        <a href="#/rankings" className={rankingsClass}><i class="fa fa-bar-chart fa-fw"></i> Rankings</a>
+                        <a href="#/rankings" className={rankingsClass}><i class="color-black fa fa-bar-chart fa-fw"></i> Rankings</a>
                     </li>
 
                     <li>

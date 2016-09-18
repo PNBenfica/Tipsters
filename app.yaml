@@ -25,6 +25,9 @@ handlers:       # static then dynamic
   static_files: src/index.html
   upload: src/index\.html
 
+- url: /tasks/populate_odds
+  script: src.backend.main.app
+
 - url: /client\.min\.js
   static_files: src/client.min.js
   upload: src/client\.min\.js

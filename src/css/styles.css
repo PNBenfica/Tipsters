@@ -64,17 +64,83 @@ a:hover {
 .black{
 	background-color: black;
 }
+.color-black{
+	color: black !important;
+}
 .red{
 	background-color: red;
 }
 .green{
 	background-color: green;
 }
+.color-orange{
+	color: orange !important;
+}
+.color-dark-red{
+	color: #D90000 !important;
+}
 .blue{
 	background-color: blue;
 	color: blue;
 }
 
+
+/*************************************************
+Nav bar user avatar
+*************************************************/
+
+.nav-bar-avatar {
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+	white-space: nowrap;
+}
+
+.nav-bar-avatar img{
+	margin-top: -20px;
+	width: 24px;
+	height: 24px;
+	padding: 1px;
+}
+
+.nav-bar-avatar .tipster-name-avatar{
+	display: inline-block;
+	padding-top: 5px;
+	margin-left: 5px;
+}
+
+.nav-bar-avatar .tipster-name-avatar p:first-child{
+	margin-bottom: 0px;
+	color: #888888;
+}
+
+.nav-bar-avatar .tipster-name-avatar p:last-child{
+	margin-bottom: 3px;
+	font-size: 12px;
+	color: #888888;
+}
+
+@media screen and (max-width: 1110px) {
+	.nav-bar-avatar .tipster-name-avatar{
+		display:none!important;
+	}
+	.nav-bar-avatar img{
+		margin-top: 10px;
+		margin-right: 3px;
+	}
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1217px) {
+	.navbar-top-links{
+		width: 20% !important;
+	}
+	.nav-bar-avatar .tipster-name-avatar{
+		display:none!important;
+	}
+	.nav-bar-avatar img{
+		margin-top: 10px;
+		margin-right: 3px;
+	}
+}
 
 /*************************************************
 Notifications dropdown
