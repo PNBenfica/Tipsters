@@ -14,33 +14,32 @@ from protorpc import messages
 from google.appengine.ext import ndb
 
 
-class Sport(ndb.Model):
+class SportModel(ndb.Model):
     name = ndb.StringProperty()
     id = ndb.StringProperty()
 
-class Event(ndb.Model):
+class EventModel(ndb.Model):
     name = ndb.StringProperty()
     id = ndb.StringProperty()
     sportId = ndb.StringProperty()
     
-class Match(ndb.Model):
+class MatchModel(ndb.Model):
     name = ndb.StringProperty()
     id = ndb.StringProperty()
     start_date = ndb.StringProperty()
     eventId = ndb.StringProperty()
     
-class Bet(ndb.Model):
+class BetModel(ndb.Model):
     name = ndb.StringProperty()
     id = ndb.StringProperty()
     matchId = ndb.StringProperty()
     choices = ndb.JsonProperty()
 
-class Choice(ndb.Model):
+class ChoiceModel(ndb.Model):
     name = ndb.StringProperty()
     id = ndb.StringProperty()
     odd = ndb.StringProperty()
     betId = ndb.StringProperty()
-    
     
     
 class SportParams(messages.Message):
