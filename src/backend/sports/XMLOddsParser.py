@@ -82,9 +82,10 @@ def beautify(sports):
 
 #Replaces %1% and %2% for home team and away team
 def replaceDefaultTeamNames(match, choice):
-    if "%1%" in choice["name"] :
-        homeTeam = match["name"].split(' - ')[0]
-        choice["name"] = choice["name"].replace("%1%", homeTeam)
-    if "%2%" in choice["name"]:
-        awayTeam = match["name"].split(' - ')[1]
-        choice["name"] = choice["name"].replace("%2%", awayTeam)
+    return
+    #if "%1%" in choice["name"] :
+    #    homeTeam = match["name"].split(' - ')[0]
+    #    choice["name"] = choice["name"].replace("%1%", homeTeam)
+    #if "%2%" in choice["name"]:
+    #    awayTeam = match["name"].split(' - ')[1]
+    #    choice["name"] = choice["name"].replace("%2%", awayTeam)

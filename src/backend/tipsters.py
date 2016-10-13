@@ -17,7 +17,7 @@ from google.appengine.api import taskqueue
 
 from __builtin__ import setattr
 from settings import WEB_CLIENT_ID
-from sports.betValidator import updateBet
+from sports.footballMatchValidator import updateFootballMatchBets
 
 
 EMAIL_SCOPE = endpoints.EMAIL_SCOPE
@@ -36,6 +36,7 @@ class TipstersApi(remote.Service):
     
     @endpoints.method(message_types.VoidMessage, Hello, path = "sayHello", http_method='GET', name = "sayHello")
     def say_hello(self, request):
+        updateFootballMatchBets("1", "3", "1181299", {"Full_time_goals": [3,4]})
         return Hello(greeting="Hello World")
     
     @endpoints.method(message_types.VoidMessage, Hello, path = "populateOdds", http_method='POST', name = "populateOdds")
