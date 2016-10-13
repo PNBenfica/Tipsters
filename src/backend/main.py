@@ -8,8 +8,7 @@ main.py -- Tipsters server-side Python App Engine
 
 import webapp2
 
-from backend.sports.sportsPopulator import populate_odds
-
+from sports.sportsPopulator import populate_odds
 
 class PopulateOddsHandler(webapp2.RequestHandler):
     def post(self):

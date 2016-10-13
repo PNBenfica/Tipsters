@@ -8,6 +8,8 @@ import xml.etree.ElementTree as ET
 import os.path
 import urllib2
 
+from ..domain import ChoiceStatus, MatchStatus
+
 def parseXMLOdds():
     #file = urllib2.urlopen('http://xml.cdn.betclic.com/odds_en.xml')
     #tree = ET.parse(file)    
@@ -27,6 +29,7 @@ def parseEvents(eventRoot):
 
 def parseMatches(matchRoot):
     matchRoot.attrib["bets"] = parseBets(matchRoot[0])
+    matchRoot.attrib["status"] = MatchStatus.PRELIVE
     return matchRoot.attrib
 
 # @param betsRoot - bets xml element
@@ -47,6 +50,7 @@ def parseChoices(choicesRoot):
 # @desc - maps each xml choice directly returning all is attributes
 # @param choiceRoot - choice xml element
 def parseChoice(choiceRoot):
+    choiceRoot.attrib["status"] = ChoiceStatus.PENDENT
     return choiceRoot.attrib
 
 # @param element - xml element being parsed

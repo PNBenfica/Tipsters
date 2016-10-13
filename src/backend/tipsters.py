@@ -11,13 +11,13 @@ from protorpc import messages
 from protorpc import message_types
 from protorpc import remote
 from models import SportMessage, SportParams
-from sports.sportsRetriever import get
+from sports.sportsRetriever import get, getBet
 
 from google.appengine.api import taskqueue
 
+from __builtin__ import setattr
 from settings import WEB_CLIENT_ID
 
-from __builtin__ import setattr
 
 EMAIL_SCOPE = endpoints.EMAIL_SCOPE
 API_EXPLORER_CLIENT_ID = endpoints.API_EXPLORER_CLIENT_ID

@@ -13,7 +13,6 @@ created/forked from conferences.py by wesc on 2014 may 24
 from protorpc import messages
 from google.appengine.ext import ndb
 
-
 class SportModel(ndb.Model):
     name = ndb.StringProperty()
     id = ndb.StringProperty()
@@ -28,6 +27,7 @@ class MatchModel(ndb.Model):
     id = ndb.StringProperty()
     start_date = ndb.StringProperty()
     eventId = ndb.StringProperty()
+    status = ndb.StringProperty()
     
 class BetModel(ndb.Model):
     name = ndb.StringProperty()
@@ -35,11 +35,11 @@ class BetModel(ndb.Model):
     matchId = ndb.StringProperty()
     choices = ndb.JsonProperty()
 
-class ChoiceModel(ndb.Model):
-    name = ndb.StringProperty()
-    id = ndb.StringProperty()
-    odd = ndb.StringProperty()
-    betId = ndb.StringProperty()
+#class ChoiceModel(ndb.Model):
+#    name = ndb.StringProperty()
+#    id = ndb.StringProperty()
+#    odd = ndb.StringProperty()
+#    betId = ndb.StringProperty()
     
     
 class SportParams(messages.Message):
@@ -62,7 +62,8 @@ class MatchMessage(messages.Message):
     name = messages.StringField(1)
     id = messages.StringField(2)
     start_date = messages.StringField(3)
-    bets = messages.MessageField('BetMessage',4,repeated=True)
+    status = messages.StringField(4)
+    bets = messages.MessageField('BetMessage',5,repeated=True)
 
 class BetMessage(messages.Message):
     name = messages.StringField(1)
@@ -74,4 +75,5 @@ class ChoiceMessage(messages.Message):
     name = messages.StringField(1)
     id = messages.StringField(2)
     odd = messages.StringField(3)
+    status = messages.StringField(4)
     

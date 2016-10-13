@@ -1,12 +1,7 @@
-'''
-Created on 05/10/2016
-
-@author: paulo
-'''
 
 from google.appengine.ext import ndb
 
-from ..models import BetMessage, ChoiceMessage, EventMessage, MatchMessage, SportMessage, SportModel, EventModel, MatchModel, BetModel, ChoiceModel
+from ..models import SportModel, EventModel, MatchModel, BetModel
 
 from XMLOddsParser import parseXMLOdds
 
@@ -14,7 +9,7 @@ def populate_odds():
     sports = parseXMLOdds()
     for sport in sports:
         insertSport(sport)
-
+        
 # @desc inserts a sport entity in the datastore and all its events
 def insertSport(sport):
     s_key = ndb.Key(SportModel, sport["id"])
@@ -46,7 +41,7 @@ def createEvent(event, sport, sportKey):
     return createElement(EventModel, event, sport, sportKey, "sportId", "matches")
     
 def createMatche(match, event, eventKey):
-    return createElement(MatchModel, match, event, eventKey, "eventId", "bets", ["start_date"])
+    return createElement(MatchModel, match, event, eventKey, "eventId", "bets", ["start_date", "status"])
     
 def createBet(bet, match, matchKey):
     b_key = ndb.Key(BetModel, bet["id"], parent=matchKey)
@@ -58,5 +53,5 @@ def createBet(bet, match, matchKey):
             choices = bet["choices"],
             matchId = match["id"])
     
-def createChoice(choice, bet, betKey):
-    return createElement(ChoiceModel, choice, bet, betKey, "betId", None, ["odd"])
+#def createChoice(choice, bet, betKey):
+#    return createElement(ChoiceModel, choice, bet, betKey, "betId", None, ["odd"])

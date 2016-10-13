@@ -19,14 +19,15 @@ class Event():
         return EventMessage(name=self.name, id=self.id, matches=map(lambda match: match.toMessage(), self.matches))
     
 class Match():
-    def __init__(self, name, matchId, start_date, bets = []):
+    def __init__(self, name, matchId, start_date, status, bets = []):
         self.name = name
         self.id = matchId
         self.start_date = start_date
+        self.status = status
         self.bets = bets
         
     def toMessage(self):
-        return MatchMessage(name = self.name, id = self.id, start_date = self.start_date, bets=map(lambda bet: bet.toMessage(), self.bets))
+        return MatchMessage(name = self.name, id = self.id, start_date = self.start_date, status = self.status, bets=map(lambda bet: bet.toMessage(), self.bets))
     
 class Bet():
     def __init__(self, name, betId, choices = []):
@@ -38,10 +39,17 @@ class Bet():
         return BetMessage(name = self.name, id = self.id, choices = map(lambda choice: choice.toMessage(), self.choices))
 
 class Choice():
-    def __init__(self, name, choiceId, odd):
+    def __init__(self, name, choiceId, odd, status):
         self.name = name
         self.id = choiceId
         self.odd = odd
+        self.status = status
         
     def toMessage(self):
-        return ChoiceMessage(name = self.name, id = self.id, odd = self.odd)
+        return ChoiceMessage(name = self.name, id = self.id, odd = self.odd, status = self.status)
+    
+def enum(**enums):
+    return type('Enum', (), enums)
+
+ChoiceStatus = enum(PENDENT="Pendent", WON="Won", LOST="Lost")
+MatchStatus = enum(PRELIVE="Pre-live", LIVE="Live", ARCHIVED="Archived")
