@@ -1,7 +1,7 @@
 from google.appengine.ext import ndb
 
 from ..models import SportModel, EventModel, MatchModel, BetModel
-from ..domain import Bet, Choice, Event, Match, Sport
+from ..domain import Bet, Event, Match, Sport
 from ..gaeUtils import fetchEntity, getKeyByAncestors
 
 def get(sportId, leagueId, matchId):
@@ -50,23 +50,19 @@ def getMatch(sportId, eventId, matchId):
 def getBet(sportId, eventId, matchId, betId):
     betKey = getKeyByAncestors([SportModel, sportId], [EventModel, eventId], [MatchModel, matchId], [BetModel, betId])
     bet = betKey.get()
-    return Bet(bet.name, bet.id, getBetChoices(bet))
+    return Bet(bet)
 
 # @return all the bets of a match
 def getMatchBets(matchKey):
     bets = BetModel.query(ancestor=matchKey)
-    return map(lambda bet: Bet(bet.name, bet.id, getBetChoices(bet)), bets)
-
-# @return all the choices of a bet
-def getBetChoices(bet):
-    return map(lambda choice: Choice(choice["name"], choice["id"], choice["odd"], choice["status"]), bet.choices)
+    return map(lambda bet: Bet(bet), bets)
 
 # @desc - each event may have a special bet, if so it is returned
 # @param bets - bets of a match retrieved from the datastore
 def getSpecialBets(bets):
     specialBets = ["Relegation", "Place 1-4", "Outright Winner", "Place 1-2", "Drivers Championship Winner", "Constructors Championship", "Winner", "Winning Team"]
     bets = bets.filter(BetModel.name.IN(specialBets))        
-    return map(lambda bet: Bet(bet.name, bet.id), bets)
+    return map(lambda bet: Bet(bet.name, bet.id, bet), bets)
 
 # @return the main bets of a match
 def getMainBets(sportCode, matchCode, eventKey):
@@ -76,7 +72,7 @@ def getMainBets(sportCode, matchCode, eventKey):
     if sportCode in mainBets:            
         bet = bets.filter(ndb.GenericProperty("name") == mainBets[sportCode]).get()
         if bet:
-            return [Bet(bet.name, bet.id, getBetChoices(bet))]
+            return [Bet(bet)]
     return getSpecialBets(bets)
 
 def createSport(sport, events = None):

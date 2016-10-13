@@ -17,6 +17,7 @@ from google.appengine.api import taskqueue
 
 from __builtin__ import setattr
 from settings import WEB_CLIENT_ID
+from sports.betValidator import updateBet
 
 
 EMAIL_SCOPE = endpoints.EMAIL_SCOPE
