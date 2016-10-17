@@ -11,13 +11,12 @@ from protorpc import messages
 from protorpc import message_types
 from protorpc import remote
 from models import SportMessage, SportParams
-from sports.sportsRetriever import get, getBet
+from sports.sportsRetriever import get
 
 from google.appengine.api import taskqueue
 
-from __builtin__ import setattr
 from settings import WEB_CLIENT_ID
-from sports.footballMatchValidator import updateFootballMatchBets
+from sports.footballMatchValidator import FootballMatchValidator
 
 
 EMAIL_SCOPE = endpoints.EMAIL_SCOPE
@@ -36,7 +35,7 @@ class TipstersApi(remote.Service):
     
     @endpoints.method(message_types.VoidMessage, Hello, path = "sayHello", http_method='GET', name = "sayHello")
     def say_hello(self, request):
-        updateFootballMatchBets("1", "3", "1181299", {"Full_time_goals": [3,4]})
+        FootballMatchValidator("1", "3", "1181299").updateMatchResults({"Full_time_goals": [2,0], "Half_time_goals": [0,0], "First_team_to_score": "No Goal", "Goalscorers":{"first":"211432922", "last":"211432754", "all":["211434234","211434230"]}})
         return Hello(greeting="Hello World")
     
     @endpoints.method(message_types.VoidMessage, Hello, path = "populateOdds", http_method='POST', name = "populateOdds")
