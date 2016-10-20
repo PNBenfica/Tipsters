@@ -5,6 +5,14 @@
 from sportsRetriever import getMatch
 from betValidator import updateBet
 from ..domain import ChoiceStatus
+import importlib
+
+def getMatchValidator(sportId, leagueId, matchId):
+    sportMap = {"3":"Formula 1", "4":"Basketball", "15":"Motorcycling", "2":"Tennis", "1":"Football"}
+    sportValidatorName = sportMap[sportId] + "MatchValidator"
+    moduleName = "src.backend.sports." + sportValidatorName 
+    sportValidatorClass = getattr(importlib.import_module(moduleName), sportValidatorName)
+    return sportValidatorClass(sportId, leagueId, matchId)
 
 class MatchValidator(object):
     
@@ -43,6 +51,14 @@ class MatchValidator(object):
     
     def getBetValidatorName(self, betName):
         return betName.replace(" ", "_").replace("-", "_").replace("/", "") + "_validator"
+    
+    def overUnderValidator(self, choices, total):
+        return filter(lambda choice: \
+                      (choice["name"].startswith("Under") and self.getOverUnderValue(choice) > total) or \
+                      (choice["name"].startswith("Over") and self.getOverUnderValue(choice) < total), choices)
+    
+    def getOverUnderValue(self, choice):
+        return float(choice["name"].rsplit(None, 1)[-1])
     
     # @return a list of the winning choices (filters the initial list based on the choices[attr])
     # @param attr - "name" or "id"

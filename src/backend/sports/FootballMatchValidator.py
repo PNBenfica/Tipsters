@@ -75,10 +75,8 @@ class FootballMatchValidator(MatchValidator):
     
     def OverUnder_validator(self, choices, results):
         totalGoals = self.getTotalGoals(results)
-        return filter(lambda choice: \
-                      (choice["name"].startswith("Under") and float(choice["name"][-3:]) > totalGoals) or \
-                      (choice["name"].startswith("Over") and float(choice["name"][-3:]) < totalGoals), choices)
-
+        return super(FootballMatchValidator, self).overUnderValidator(choices, totalGoals)
+    
     def Total_Goals_validator(self, choices, results):
         totalGoals = self.getTotalGoals(results)
         

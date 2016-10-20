@@ -39,7 +39,7 @@
 }
 
 .sidebar a i{
-    color: #BCB3AA;
+    color: #BCB3AA !important;
     font-size: 14px;
     margin-right: 6px;
 }

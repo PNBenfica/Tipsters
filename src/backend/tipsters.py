@@ -16,7 +16,7 @@ from sports.sportsRetriever import get
 from google.appengine.api import taskqueue
 
 from settings import WEB_CLIENT_ID
-from sports.footballMatchValidator import FootballMatchValidator
+from sports.MatchValidator import getMatchValidator
 
 
 EMAIL_SCOPE = endpoints.EMAIL_SCOPE
@@ -35,7 +35,8 @@ class TipstersApi(remote.Service):
     
     @endpoints.method(message_types.VoidMessage, Hello, path = "sayHello", http_method='GET', name = "sayHello")
     def say_hello(self, request):
-        FootballMatchValidator("1", "3", "1181299").updateMatchResults({"Full_time_goals": [2,0], "Half_time_goals": [0,0], "First_team_to_score": "No Goal", "Goalscorers":{"first":"211432922", "last":"211432754", "all":["211434234","211434230"]}})
+        getMatchValidator("1", "3", "1181299").updateMatchResults({"Full_time_goals": [2,0], "Half_time_goals": [0,0], "First_team_to_score": "No Goal", "Goalscorers":{"first":"211432922", "last":"211432754", "all":["211434234","211434230"]}})
+        getMatchValidator("2", "239", "1221474").updateMatchResults({"Sets": [[1,6],[0,6],[6,0]]})
         return Hello(greeting="Hello World")
     
     @endpoints.method(message_types.VoidMessage, Hello, path = "populateOdds", http_method='POST', name = "populateOdds")
