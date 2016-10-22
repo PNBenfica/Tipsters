@@ -40,7 +40,11 @@ class MatchValidator(object):
         winningChoicesIDs = map(lambda choice: choice["id"], winningChoices)
         winningChoices = map(lambda choiceID: [choiceID, ChoiceStatus.WON], winningChoicesIDs)
         
-        loosingChoices = filter(lambda choice: choice["id"] not in winningChoicesIDs, bet.choices )
+        voidChoices = filter(lambda choice: choice["status"] == ChoiceStatus.VOID, bet.choices )
+        voidChoicesIDs = map(lambda choice: choice["id"], voidChoices)
+        assignedChoicesIDs = winningChoicesIDs + voidChoicesIDs
+        
+        loosingChoices = filter(lambda choice: choice["id"] not in assignedChoicesIDs, bet.choices )
         loosingChoices = map(lambda choice: [choice["id"], ChoiceStatus.LOST], loosingChoices)
     
         return winningChoices + loosingChoices

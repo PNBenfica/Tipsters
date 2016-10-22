@@ -3,6 +3,7 @@
 '''
 
 from MatchValidator import MatchValidator
+from ..domain import ChoiceStatus
 
 class FootballMatchValidator(MatchValidator):
     def __init__(self, sportId, eventId, matchId):
@@ -68,12 +69,15 @@ class FootballMatchValidator(MatchValidator):
         return self.filterWinningChoices(choices, [teamName], "name")
 
     def First_Goalscorer_validator(self, choices, results):
+        self.determineVoidChoices(choices, results["Goalscorers"]["firstEligibles"])
         return self.getGoalScorerChoice(choices, results["Goalscorers"]["first"])
 
     def Last_Goalscorer_validator(self, choices, results):
+        self.determineVoidChoices(choices, results["Goalscorers"]["lastEligibles"])
         return self.getGoalScorerChoice(choices, results["Goalscorers"]["last"])
 
     def Goalscorer_validator(self, choices, results):
+        self.determineVoidChoices(choices, results["Goalscorers"]["anytimeEligibles"])
         return self.filterWinningChoices(choices, results["Goalscorers"]["all"], "id")
 
     def getGoalScorerChoice(self, choices, goalScorer):
@@ -81,3 +85,8 @@ class FootballMatchValidator(MatchValidator):
             return self.filterWinningChoices(choices, ["No Goalscorer"], "name")
         else:
             return self.filterWinningChoices(choices, [goalScorer], "id")
+    
+    def determineVoidChoices(self, choices, eligibleChoices):
+        for choice in choices:
+            if choice["id"] not in eligibleChoices:
+                choice["status"] = ChoiceStatus.VOID
