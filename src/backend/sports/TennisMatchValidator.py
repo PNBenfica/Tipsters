@@ -21,7 +21,7 @@ class TennisMatchValidator(MatchValidator):
     
     def Total_Games_validator(self, choices, results):
         totalGames = self.getTotalGames(results)
-        return super(TennisMatchValidator, self).overUnderValidator(choices, totalGames)
+        return self.overUnderValidator(choices, totalGames)
     
     def getTotalGames(self, results):
         return reduce(lambda a , b: a + sum(b) ,results["Sets"], 0)

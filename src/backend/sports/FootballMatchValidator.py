@@ -25,57 +25,14 @@ class FootballMatchValidator(MatchValidator):
         return filter(lambda choice: matchWinnerName in choice["name"], choices)
 
     def Handicap_validator(self, choices, results):
-        return filter(lambda choice:  self.handicapPredicate(choice, results["Full_time_goals"]), choices)
-
-    def handicapPredicate(self, choice, result):
-        choiceSelectionName = choice["name"].split(' ', 1)[0] # "%1% +2" => "%1%"
-        result = self.determineHandicapResult(choice["name"], choiceSelectionName, result)
-        return self.getMatchWinnerName(result) == choiceSelectionName
-
-    # returns the final result taking in consideration the handicap
-    # ex: determineHandicapResult("%1% + 1", "%1%", [1,1]) => [2,1]
-    def determineHandicapResult(self, choiceName, choiceSelectionName, result):
-        result = list(result)
-        if (choiceSelectionName == "Draw"):
-            handicapTeamIndex = int(choiceName[7]) - 1
-            handicapGoals = int(choiceName[-3:-1])
-        else:
-            handicapTeamIndex = int(choiceName[1]) - 1   # "%2% +2" => 2 => index 1
-            handicapGoals = int(choiceName[-2:])    # "%2% +2" => 2
-        
-        result[handicapTeamIndex] += handicapGoals
-        return result
-
-    # @param result - [homeTeamGoals, awayTeamGoals] - p.e [3,2]
-    # @return [choice that won (1, draw or 2 choice)]
-    def getMatchWinner(self, choices, result):
-        winningChoiceName = self.getMatchWinnerName(result)
-        return self.filterWinningChoices(choices, [winningChoiceName], "name")
-
-    def getMatchWinnerName(self, result):
-        winningChoiceName = "Draw"
-        if self.homeTeamWon(result):
-            winningChoiceName = "%1%"
-        elif self.awayTeamWon(result):
-            winningChoiceName = "%2%"
-        return winningChoiceName
-
-    # @param result - [homeTeamGoals, awayTeamGoals] - p.e [3,2]
-    def homeTeamWon(self, result):
-        homeTeamGoals, awayTeamGoals = result
-        return homeTeamGoals > awayTeamGoals
-
-    # @param result - [homeTeamGoals, awayTeamGoals] - p.e [3,2]
-    def awayTeamWon(self, result):
-        homeTeamGoals, awayTeamGoals = result
-        return homeTeamGoals < awayTeamGoals
+        return self.handicapValidator(choices, results["Full_time_goals"])
 
     def getTotalGoals(self, results):
         return sum(results["Full_time_goals"])
     
     def OverUnder_validator(self, choices, results):
         totalGoals = self.getTotalGoals(results)
-        return super(FootballMatchValidator, self).overUnderValidator(choices, totalGoals)
+        return self.overUnderValidator(choices, totalGoals)
     
     def Total_Goals_validator(self, choices, results):
         totalGoals = self.getTotalGoals(results)
