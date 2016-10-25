@@ -7,20 +7,24 @@ tipsters.py -- tipsters server-side Python App Engine API;
 
 
 import endpoints
-from protorpc import messages
-from protorpc import message_types
-from protorpc import remote
-from models import SportMessage, SportParams
-from sports.sportsRetriever import get
-
 from google.appengine.api import taskqueue
+from google.appengine.ext import ndb
+from protorpc import message_types
+from protorpc import messages
+from protorpc import remote
 
+from models import SportMessage, SportParams, User, UserForm, UserCreationForm
 from settings import WEB_CLIENT_ID
 from sports.MatchValidator import getMatchValidator
+from sports.sportsRetriever import get
 
 
 EMAIL_SCOPE = endpoints.EMAIL_SCOPE
 API_EXPLORER_CLIENT_ID = endpoints.API_EXPLORER_CLIENT_ID
+
+USER_GET_REQUEST = endpoints.ResourceContainer(
+    username=messages.StringField(1),
+)
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -39,6 +43,36 @@ class TipstersApi(remote.Service):
         getMatchValidator("2", "239", "1221474").updateMatchResults({"Sets": [[1,6],[0,6],[6,0]]})
         getMatchValidator("4", "20381", "1221980").updateMatchResults({"Result": [70,70], "OT-result": [84,92]})
         return Hello(greeting="Hello World")
+    
+    @endpoints.method(UserCreationForm, Hello, path = "registerUser", http_method='POST', name = "registerUser")
+    def register_user(self, request):
+        name, email, pwd = request.name, request.email, request.pwd
+        
+        if self._userAlreadyExist(name):
+            raise endpoints.BadRequestException("Username already exists")
+        if self._emailAlreadyExist(email):
+            raise endpoints.BadRequestException("Email already being used")
+            
+        User(id=name, email=email, pwd=pwd).put()
+        return Hello(greeting="User sucessful created ")
+    
+    @endpoints.method(USER_GET_REQUEST, UserForm, path = "getUser", http_method='GET', name = "getUser")
+    def get_user(self, request):
+        username = request.username        
+        user = self._getUser(username)
+        if not user:
+            raise endpoints.NotFoundException(username)
+
+        return UserForm(name=username, email=user.email)
+    
+    def _getUser(self, username):
+        return ndb.Key(User, username).get()
+    
+    def _userAlreadyExist(self, username):
+        return self._getUser(username)
+    
+    def _emailAlreadyExist(self, email):
+        return User.query(ndb.GenericProperty("email") == email).get()
     
     @endpoints.method(message_types.VoidMessage, Hello, path = "populateOdds", http_method='POST', name = "populateOdds")
     def populate_odds(self, request):        

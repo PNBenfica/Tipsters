@@ -13,6 +13,19 @@ created/forked from conferences.py by wesc on 2014 may 24
 from protorpc import messages
 from google.appengine.ext import ndb
 
+class User(ndb.Model):
+    email = ndb.StringProperty()
+    pwd = ndb.StringProperty()
+    
+class UserCreationForm(messages.Message):
+    name = messages.StringField(1, required=True)
+    email = messages.StringField(2, required=True)
+    pwd = messages.StringField(3, required=True)
+    
+class UserForm(messages.Message):
+    name = messages.StringField(1)
+    email = messages.StringField(2)
+    
 class SportModel(ndb.Model):
     name = ndb.StringProperty()
     id = ndb.StringProperty()
@@ -76,4 +89,5 @@ class ChoiceMessage(messages.Message):
     id = messages.StringField(2)
     odd = messages.StringField(3)
     status = messages.StringField(4)
+    
     
