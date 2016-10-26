@@ -16,6 +16,10 @@ from google.appengine.ext import ndb
 class User(ndb.Model):
     email = ndb.StringProperty()
     pwd = ndb.StringProperty()
+    followersKeys = ndb.StringProperty(repeated=True)
+    followingKeys = ndb.StringProperty(repeated=True)
+    authToken = ndb.StringProperty()
+    authTokenDate = ndb.StringProperty()
     
 class UserCreationForm(messages.Message):
     name = messages.StringField(1, required=True)
@@ -25,6 +29,13 @@ class UserCreationForm(messages.Message):
 class UserForm(messages.Message):
     name = messages.StringField(1)
     email = messages.StringField(2)
+    followers = messages.MessageField('UserMiniForm',3,repeated=True)
+    following = messages.MessageField('UserMiniForm',4,repeated=True)
+    
+class UserMiniForm(messages.Message):
+    name = messages.StringField(1)
+    email = messages.StringField(2)
+    pwd = messages.StringField(3)
     
 class SportModel(ndb.Model):
     name = ndb.StringProperty()
