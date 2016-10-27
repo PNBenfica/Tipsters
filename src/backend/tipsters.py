@@ -66,6 +66,12 @@ class TipstersApi(remote.Service):
         UserManager.follow_user(user, request.userToFollow)
         return Hello(greeting="Success")
     
+    @endpoints.method(FOLLOW_USER_REQUEST, Hello, path = "unfollowUser", http_method='POST', name = "unfollowUser")
+    def unfollow_user(self, request):
+        user = SessionManager.get_current_user()
+        UserManager.unfollow_user(user, request.userToFollow)
+        return Hello(greeting="Success")
+    
     
     @endpoints.method(UserMiniForm, Hello, path = "login", http_method='POST', name = "login")
     def login(self, request):

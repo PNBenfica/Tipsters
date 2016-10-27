@@ -44,6 +44,17 @@ def follow_user(user, userToFollowName):
         
         user.put()
         userToFollow.put()
+        
+# user is an user object
+def unfollow_user(user, userToUnfollowName):
+    userToUnfollow = getUser(userToUnfollowName)
+    
+    if userToUnfollowName in user.followingKeys:
+        user.followingKeys.remove(userToUnfollowName)
+        userToUnfollow.followersKeys.remove(user.key.id())
+        
+        user.put()
+        userToUnfollow.put()
 
 def _userAlreadyExist(username):
     return ndb.Key(User, username).get()
