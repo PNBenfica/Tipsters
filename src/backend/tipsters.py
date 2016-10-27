@@ -6,21 +6,18 @@ tipsters.py -- tipsters server-side Python App Engine API;
 """
 
 
-import os
-
 import endpoints
 from google.appengine.api import taskqueue
-from google.appengine.ext import ndb
 from protorpc import message_types
 from protorpc import messages
 from protorpc import remote
-import datetime
-from Crypto.Random import random
 
 
-from models import SportMessage, SportParams, User, UserForm, UserCreationForm, UserMiniForm
+from models import SportMessage, SportParams, UserForm, UserCreationForm, UserMiniForm
 from settings import WEB_CLIENT_ID
 from sports.sportsRetriever import get
+import SessionManager
+import UserManager
 
 
 EMAIL_SCOPE = endpoints.EMAIL_SCOPE
@@ -31,8 +28,7 @@ USER_GET_REQUEST = endpoints.ResourceContainer(
 )
 
 FOLLOW_USER_REQUEST = endpoints.ResourceContainer(
-    username=messages.StringField(1),
-    userToFollow=messages.StringField(2),
+    userToFollow=messages.StringField(1),
 )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -57,102 +53,31 @@ class TipstersApi(remote.Service):
     @endpoints.method(UserCreationForm, Hello, path = "registerUser", http_method='POST', name = "registerUser")
     def register_user(self, request):
         name, email, pwd = request.name, request.email, request.pwd
-        
-        if self._userAlreadyExist(name):
-            raise endpoints.BadRequestException("Username already exists")
-        if self._emailAlreadyExist(email):
-            raise endpoints.BadRequestException("Email already being used")
-            
-        User(id=name, email=email, pwd=pwd).put()
-        return Hello(greeting="User sucessful created ")
+        UserManager.register_user(name, email, pwd)
+        return Hello(greeting="User sucessful created")
     
     @endpoints.method(USER_GET_REQUEST, UserForm, path = "getUser", http_method='GET', name = "getUser")
     def get_user(self, request):
-        username = request.username        
-        user = self._getUser(username)
-        followers = map(self._toUserMiniForm ,self._getFollowers(user))
-        following = map(self._toUserMiniForm ,self._getFollowing(user))
-
-        return UserForm(name=username, email=user.email, followers=followers, following=following)
+        return UserManager.getUserProfile(request.username)
     
     @endpoints.method(FOLLOW_USER_REQUEST, Hello, path = "followUser", http_method='POST', name = "followUser")
     def follow_user(self, request):
-        username, userToFollowName = request.username, request.userToFollow
-        user = self.get_current_user()
-        userToFollow = self._getUser(userToFollowName)
-        
-        if userToFollowName not in user.followingKeys:
-            user.followingKeys.append(userToFollowName)
-            userToFollow.followersKeys.append(username)
-            
-            user.put()
-            userToFollow.put()
-
-        return Hello(greeting=username + " following " + userToFollowName)
-        
-    def get_current_user(self):
-        authToken = self.request_state.headers.get('authorization')
-        
-        user = self._getUserByToken(authToken)
-        
-        if user and self._isTokenValid(user.authTokenDate):
-            return user
-        else:
-            raise endpoints.UnauthorizedException("Not logged in")
-        
-    def _isTokenValid(self, tokenCreationDate):
-        tokenDate = datetime.datetime.strptime(tokenCreationDate, "%Y-%m-%d %H:%M:%S")
-        expiringDate = tokenDate + datetime.timedelta(days=1)
-        return datetime.datetime.now() < expiringDate
+        user = SessionManager.get_current_user()
+        UserManager.follow_user(user, request.userToFollow)
+        return Hello(greeting="Success")
     
-    def _getUser(self, username):
-        user = ndb.Key(User, username).get()
-        if not user:
-            raise endpoints.NotFoundException(username)
-        else:
-            return user
-    
-    def _getUserByToken(self, token):
-        return User.query(ndb.GenericProperty("authToken") == token).get()
-    
-    def _userAlreadyExist(self, username):
-        return ndb.Key(User, username).get()
-    
-    def _emailAlreadyExist(self, email):
-        return User.query(ndb.GenericProperty("email") == email).get()
-    
-    def _getFollowers(self, user):
-        followersKeys = [ndb.Key(User, followerName) for followerName in user.followersKeys]
-        return ndb.get_multi(followersKeys)
-    
-    def _getFollowing(self, user):
-        followingKeys = [ndb.Key(User, followingName) for followingName in user.followingKeys]
-        return ndb.get_multi(followingKeys)
-    
-    def _toUserMiniForm(self, user):
-        return UserMiniForm(name=user.key.id(), email=user.email)
     
     @endpoints.method(UserMiniForm, Hello, path = "login", http_method='POST', name = "login")
     def login(self, request):
         username, pwd = request.name, request.pwd
-        user = self._getUser(username)
+        user = UserManager.getUser(username)
         
-        if user.pwd == pwd:
-            token = self._generateAuthToken()
-            self._updateAuthToken(user, token)
+        if UserManager.checkPassword(user, pwd):
+            token = SessionManager.generateAuthToken()
+            UserManager.updateAuthToken(user, token)
             return Hello(greeting=token)
         else:
             return Hello(greeting="Bad login", code=5001)
-    
-    def _generateAuthToken(self):
-        """ Generate a 32-char alnum string. 190 bits of entropy. """
-        alnum = ''.join(c for c in map(chr, range(256)) if c.isalnum())
-        return ''.join(random.choice(alnum) for _ in range(32))
-    
-    def _updateAuthToken(self, user, token):
-        user.authToken = token
-        user.authTokenDate = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        user.put()        
     
     @endpoints.method(message_types.VoidMessage, Hello, path = "populateOdds", http_method='POST', name = "populateOdds")
     def populate_odds(self, request):        
