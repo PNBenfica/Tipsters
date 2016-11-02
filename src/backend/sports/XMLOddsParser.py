@@ -51,6 +51,7 @@ def parseChoices(choicesRoot):
 # @param choiceRoot - choice xml element
 def parseChoice(choiceRoot):
     choiceRoot.attrib["status"] = ChoiceStatus.PENDENT
+    choiceRoot.attrib["postsKeys"] = []
     return choiceRoot.attrib
 
 # @param element - xml element being parsed

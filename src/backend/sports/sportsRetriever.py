@@ -48,9 +48,12 @@ def getMatch(sportId, eventId, matchId):
 
 # @return only the bet with id 'betId'
 def getBet(sportId, eventId, matchId, betId):
-    betKey = getKeyByAncestors([SportModel, sportId], [EventModel, eventId], [MatchModel, matchId], [BetModel, betId])
+    betKey = getBetKey(sportId, eventId, matchId, betId)
     bet = betKey.get()
     return Bet(bet)
+
+def getBetKey(sportId, eventId, matchId, betId):
+    return getKeyByAncestors([SportModel, sportId], [EventModel, eventId], [MatchModel, matchId], [BetModel, betId])
 
 # @return all the bets of a match
 def getMatchBets(matchKey):

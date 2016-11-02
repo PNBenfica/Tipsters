@@ -14,7 +14,6 @@ from protorpc import messages
 from google.appengine.ext import ndb
 
 
-
 class Post(ndb.Model):
     author = ndb.StringProperty()
     comment = ndb.StringProperty()
@@ -121,5 +120,4 @@ class ChoiceMessage(messages.Message):
     id = messages.StringField(2)
     odd = messages.StringField(3)
     status = messages.StringField(4)
-    
-    
+    postsKeys = messages.StringField(5, repeated=True)

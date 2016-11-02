@@ -17,10 +17,9 @@ from datetime import datetime
 
 from models import SportMessage, SportParams, UserForm, UserCreationForm, UserMiniForm, PostForm, Post, PostMessage, User
 from settings import WEB_CLIENT_ID
-from sports.sportsRetriever import get
+from sports.sportsRetriever import get, getBet
 import SessionManager
 import UserManager
-from gaeUtils import getKeyByAncestors
 
 
 EMAIL_SCOPE = endpoints.EMAIL_SCOPE
@@ -52,9 +51,17 @@ class TipstersApi(remote.Service):
     
     @endpoints.method(message_types.VoidMessage, Hello, path = "sayHello", http_method='GET', name = "sayHello")
     def say_hello(self, request):
-        #getMatchValidator("1", "3", "1181299").updateMatchResults({"Full_time_goals": [2,0], "Half_time_goals": [0,0], "First_team_to_score": "No Goal", "Goalscorers":{"first":"211432922", "last":"211432754", "all":["211434234","211434230"], "firstEligibles": ["211432918", "211432914", "211432922"], "lastEligibles": ["211432754", "211432750", "211432746"], "anytimeEligibles":["211434234", "211434230", "211434226"]}})
-        #getMatchValidator("2", "239", "1221474").updateMatchResults({"Sets": [[1,6],[0,6],[6,0]]})
-        #getMatchValidator("4", "20381", "1221980").updateMatchResults({"Result": [70,70], "OT-result": [84,92]})
+        data ={"sportId":"1", "leagueId":"3", "matchId":"1181299", "betId":"27152659", "choiceId":"197593702"}
+        
+        bet = getBet(data["sportId"], data["leagueId"], data["matchId"], data["betId"])
+        bet.addTip(data["choiceId"], "ahBkZXZ-dGlwc3RlcnMtMzY1chkLEgRVc2VyIgVwYXVsbwwLEgRQb3N0GAEM")
+        
+        #bet_key = getBetKey(data["sportId"], data["leagueId"], data["matchId"], data["betId"])
+        #tip_id = Tip.allocate_ids(size=1, parent=bet_key)[0]
+        #tip_key = ndb.Key(Tip, tip_id, parent=bet_key)
+        
+        #tip = { "choiceId" : data["choiceId"], "key" : tip_key }
+        #Tip(**tip).put()
         return Hello(greeting="Hello World")
     
     @endpoints.method(UserCreationForm, Hello, path = "registerUser", http_method='POST', name = "registerUser")
