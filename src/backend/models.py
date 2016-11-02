@@ -13,6 +13,19 @@ created/forked from conferences.py by wesc on 2014 may 24
 from protorpc import messages
 from google.appengine.ext import ndb
 
+
+
+class Post(ndb.Model):
+    author = ndb.StringProperty()
+    comment = ndb.StringProperty()
+    nComments = ndb.IntegerProperty()
+    nLikes = ndb.IntegerProperty()
+    date = ndb.StringProperty()
+
+class PostForm(messages.Message):
+    comment = messages.StringField(1, required=True) 
+
+
 class User(ndb.Model):
     email = ndb.StringProperty()
     pwd = ndb.StringProperty()

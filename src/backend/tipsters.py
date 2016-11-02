@@ -8,12 +8,14 @@ tipsters.py -- tipsters server-side Python App Engine API;
 
 import endpoints
 from google.appengine.api import taskqueue
+from google.appengine.ext import ndb
 from protorpc import message_types
 from protorpc import messages
 from protorpc import remote
+from datetime import datetime
 
 
-from models import SportMessage, SportParams, UserForm, UserCreationForm, UserMiniForm
+from models import SportMessage, SportParams, UserForm, UserCreationForm, UserMiniForm, PostForm, Post, User
 from settings import WEB_CLIENT_ID
 from sports.sportsRetriever import get
 import SessionManager
@@ -96,6 +98,24 @@ class TipstersApi(remote.Service):
         sportCode, leagueCode, matchCode = request.sportCode, request.leagueCode, request.matchCode     
         sport = get(sportCode, leagueCode, matchCode)
         return sport.toMessage()
+    
+    
+    @endpoints.method(PostForm, Hello, path = "addPost", http_method='Post', name = "addPost")
+    def add_post(self, request):
+        data = {field.name: getattr(request, field.name) for field in request.all_fields()}
+        data['nComments'] = data['nLikes'] = 0
+        data['date'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        user_key = ndb.Key(User, "paulo")
+        post_id = Post.allocate_ids(size=1, parent=user_key)[0]
+        post_key = ndb.Key(Post, post_id, parent=user_key)
+        data['key'] = post_key
+        data['author'] = "paulo"
+
+        # create Conference, send email to organizer confirming
+        # creation of Conference & return (modified) ConferenceForm
+        Post(**data).put()
+        return Hello(greeting="post success")
 
 # registers API
 api = endpoints.api_server([TipstersApi]) 
