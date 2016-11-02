@@ -1,7 +1,7 @@
 import endpoints
 from Crypto.Hash import SHA256
 from google.appengine.ext import ndb
-from models import User, UserForm, UserMiniForm
+from models import User, UserForm, UserMiniForm, Post, PostMessage
 from datetime import datetime
 
 def register_user(name, email, pwd):    
@@ -30,8 +30,9 @@ def getUserProfile(username):
     user = getUser(username)
     followers = map(_toUserMiniForm ,_getFollowers(user))
     following = map(_toUserMiniForm ,_getFollowing(user))
+    posts = map(toPostMessage, _getPosts(user))
 
-    return UserForm(name=username, email=user.email, followers=followers, following=following)
+    return UserForm(name=username, email=user.email, followers=followers, following=following, posts=posts)
 
 
 # user is an user object
@@ -77,6 +78,12 @@ def _getFollowers(user):
 def _getFollowing(user):
     followingKeys = [ndb.Key(User, followingName) for followingName in user.followingKeys]
     return ndb.get_multi(followingKeys)
+
+def _getPosts(user):
+    return Post.query(ancestor=user.key)
+
+def toPostMessage(post):
+    return PostMessage(author=post.author,comment=post.comment,nComments=post.nComments,nLikes=post.nLikes,date=post.date,websafeKey=post.key.urlsafe())
 
 def _toUserMiniForm(user):
     return UserMiniForm(name=user.key.id(), email=user.email)

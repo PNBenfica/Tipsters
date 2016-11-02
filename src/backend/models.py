@@ -25,6 +25,13 @@ class Post(ndb.Model):
 class PostForm(messages.Message):
     comment = messages.StringField(1, required=True) 
 
+class PostMessage(messages.Message):
+    author = messages.StringField(1)
+    comment = messages.StringField(2)
+    nComments = messages.IntegerField(3)
+    nLikes = messages.IntegerField(4)
+    date = messages.StringField(5)
+    websafeKey = messages.StringField(11)
 
 class User(ndb.Model):
     email = ndb.StringProperty()
@@ -44,6 +51,7 @@ class UserForm(messages.Message):
     email = messages.StringField(2)
     followers = messages.MessageField('UserMiniForm',3,repeated=True)
     following = messages.MessageField('UserMiniForm',4,repeated=True)
+    posts = messages.MessageField('PostMessage',5,repeated=True)
     
 class UserMiniForm(messages.Message):
     name = messages.StringField(1)

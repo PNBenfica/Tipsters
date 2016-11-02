@@ -15,11 +15,12 @@ from protorpc import remote
 from datetime import datetime
 
 
-from models import SportMessage, SportParams, UserForm, UserCreationForm, UserMiniForm, PostForm, Post, User
+from models import SportMessage, SportParams, UserForm, UserCreationForm, UserMiniForm, PostForm, Post, PostMessage, User
 from settings import WEB_CLIENT_ID
 from sports.sportsRetriever import get
 import SessionManager
 import UserManager
+from gaeUtils import getKeyByAncestors
 
 
 EMAIL_SCOPE = endpoints.EMAIL_SCOPE
@@ -27,6 +28,10 @@ API_EXPLORER_CLIENT_ID = endpoints.API_EXPLORER_CLIENT_ID
 
 USER_GET_REQUEST = endpoints.ResourceContainer(
     username=messages.StringField(1),
+)
+
+POST_GET_REQUEST = endpoints.ResourceContainer(
+    post_id=messages.StringField(1),
 )
 
 FOLLOW_USER_REQUEST = endpoints.ResourceContainer(
@@ -116,6 +121,11 @@ class TipstersApi(remote.Service):
         # creation of Conference & return (modified) ConferenceForm
         Post(**data).put()
         return Hello(greeting="post success")
-
+    
+    @endpoints.method(POST_GET_REQUEST, PostMessage, path = "getPost", http_method='Get', name = "getPost")
+    def get_post(self, request):
+        post = ndb.Key(urlsafe=request.post_id).get()
+        return UserManager.toPostMessage(post)
+    
 # registers API
 api = endpoints.api_server([TipstersApi]) 
