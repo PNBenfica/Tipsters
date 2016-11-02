@@ -14,23 +14,46 @@ from protorpc import messages
 from google.appengine.ext import ndb
 
 
+class TipModel(ndb.Model):
+    choiceId = ndb.StringProperty()
+    odd = ndb.FloatProperty()
+    
 class Post(ndb.Model):
     author = ndb.StringProperty()
     comment = ndb.StringProperty()
     nComments = ndb.IntegerProperty()
     nLikes = ndb.IntegerProperty()
     date = ndb.StringProperty()
+    tips = ndb.KeyProperty(repeated=True, kind=TipModel)
 
 class PostForm(messages.Message):
-    comment = messages.StringField(1, required=True) 
-
+    comment = messages.StringField(1, required=True)
+    tips = messages.MessageField('TipForm',2,repeated=True)
+    
+class TipForm(messages.Message):
+    sportId = messages.StringField(1)
+    leagueId = messages.StringField(2)
+    matchId = messages.StringField(3)
+    betId = messages.StringField(4)
+    choiceId = messages.StringField(5)
+    
+    odd = messages.FloatField(6)
+    sportName = messages.StringField(7)
+    leagueName = messages.StringField(8)
+    matchName = messages.StringField(9)
+    betName = messages.StringField(10)
+    choiceName = messages.StringField(11)
+    
 class PostMessage(messages.Message):
     author = messages.StringField(1)
     comment = messages.StringField(2)
     nComments = messages.IntegerField(3)
     nLikes = messages.IntegerField(4)
     date = messages.StringField(5)
-    websafeKey = messages.StringField(11)
+    websafeKey = messages.StringField(6)
+    tips = messages.MessageField('TipForm',7,repeated=True)
+    
+    
 
 class User(ndb.Model):
     email = ndb.StringProperty()
@@ -120,4 +143,3 @@ class ChoiceMessage(messages.Message):
     id = messages.StringField(2)
     odd = messages.StringField(3)
     status = messages.StringField(4)
-    postsKeys = messages.StringField(5, repeated=True)

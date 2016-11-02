@@ -15,9 +15,9 @@ from protorpc import remote
 from datetime import datetime
 
 
-from models import SportMessage, SportParams, UserForm, UserCreationForm, UserMiniForm, PostForm, Post, PostMessage, User
+from models import SportMessage, SportParams, UserForm, UserCreationForm, UserMiniForm, PostForm, Post, PostMessage, TipModel, User
 from settings import WEB_CLIENT_ID
-from sports.sportsRetriever import get, getBet
+from sports.sportsRetriever import get, getBetKey
 import SessionManager
 import UserManager
 
@@ -51,17 +51,7 @@ class TipstersApi(remote.Service):
     
     @endpoints.method(message_types.VoidMessage, Hello, path = "sayHello", http_method='GET', name = "sayHello")
     def say_hello(self, request):
-        data ={"sportId":"1", "leagueId":"3", "matchId":"1181299", "betId":"27152659", "choiceId":"197593702"}
         
-        bet = getBet(data["sportId"], data["leagueId"], data["matchId"], data["betId"])
-        bet.addTip(data["choiceId"], "ahBkZXZ-dGlwc3RlcnMtMzY1chkLEgRVc2VyIgVwYXVsbwwLEgRQb3N0GAEM")
-        
-        #bet_key = getBetKey(data["sportId"], data["leagueId"], data["matchId"], data["betId"])
-        #tip_id = Tip.allocate_ids(size=1, parent=bet_key)[0]
-        #tip_key = ndb.Key(Tip, tip_id, parent=bet_key)
-        
-        #tip = { "choiceId" : data["choiceId"], "key" : tip_key }
-        #Tip(**tip).put()
         return Hello(greeting="Hello World")
     
     @endpoints.method(UserCreationForm, Hello, path = "registerUser", http_method='POST', name = "registerUser")
@@ -114,7 +104,7 @@ class TipstersApi(remote.Service):
     
     @endpoints.method(PostForm, Hello, path = "addPost", http_method='Post', name = "addPost")
     def add_post(self, request):
-        data = {field.name: getattr(request, field.name) for field in request.all_fields()}
+        data = {'comment': request.comment}
         data['nComments'] = data['nLikes'] = 0
         data['date'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
@@ -123,11 +113,24 @@ class TipstersApi(remote.Service):
         post_key = ndb.Key(Post, post_id, parent=user_key)
         data['key'] = post_key
         data['author'] = "paulo"
-
-        # create Conference, send email to organizer confirming
-        # creation of Conference & return (modified) ConferenceForm
+        data['tips'] = []
+        
+        for tip in request.tips:
+            #data ={"sportId":"1", "leagueId":"3", "matchId":"1181299", "betId":"27152659", "choiceId":"197593702"}
+            #bet = getBet(tip.sportId, tip.leagueId, tip.matchId, tip.betId)
+            #bet.addTip(tip.choiceId, post_key.urlsafe())
+            
+            bet_key = getBetKey(tip.sportId, tip.leagueId, tip.matchId, tip.betId)
+            tip_id = TipModel.allocate_ids(size=1, parent=bet_key)[0]
+            tip_key = ndb.Key(TipModel, tip_id, parent=bet_key)
+            data['tips'].append(tip_key)
+              
+            tip = { "choiceId" : tip.choiceId, "odd": 3.20, "key" : tip_key }
+            TipModel(**tip).put()
+        
         Post(**data).put()
         return Hello(greeting="post success")
+    
     
     @endpoints.method(POST_GET_REQUEST, PostMessage, path = "getPost", http_method='Get', name = "getPost")
     def get_post(self, request):

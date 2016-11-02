@@ -47,12 +47,7 @@ class Bet():
         self.betModel.put()
     
     def choiceToMessage(self, choice):
-        return ChoiceMessage(name = choice["name"], id = choice["id"], odd = choice["odd"], status = choice["status"], postsKeys = choice["postsKeys"])
-    
-    def addTip(self, choiceId, postId):
-        choice = self.getChoice(choiceId)
-        choice["postsKeys"].append(postId)
-        self.put()
+        return ChoiceMessage(name = choice["name"], id = choice["id"], odd = choice["odd"], status = choice["status"])
     
     def toMessage(self):
         return BetMessage(name = self.name, id = self.id, choices = map(lambda choice: self.choiceToMessage(choice), self.choices))
