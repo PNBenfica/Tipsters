@@ -12,15 +12,14 @@ from google.appengine.ext import ndb
 from protorpc import message_types
 from protorpc import messages
 from protorpc import remote
-from datetime import datetime
 
 
-from models import SportMessage, SportParams, UserForm, UserCreationForm, UserMiniForm, PostForm, Post, PostMessage, TipModel, User
+from models import SportMessage, SportParams, UserForm, UserCreationForm, UserMiniForm, PostForm, PostMessage, User
 from settings import WEB_CLIENT_ID
-from sports.sportsRetriever import get, getBetKey
+from sports.sportsRetriever import get
+import PostManager
 import SessionManager
 import UserManager
-
 
 EMAIL_SCOPE = endpoints.EMAIL_SCOPE
 API_EXPLORER_CLIENT_ID = endpoints.API_EXPLORER_CLIENT_ID
@@ -31,6 +30,11 @@ USER_GET_REQUEST = endpoints.ResourceContainer(
 
 POST_GET_REQUEST = endpoints.ResourceContainer(
     post_id=messages.StringField(1),
+)
+
+COMMENT_POST_REQUEST = endpoints.ResourceContainer(
+    post_id=messages.StringField(1),
+    comment=messages.StringField(2),
 )
 
 FOLLOW_USER_REQUEST = endpoints.ResourceContainer(
@@ -103,39 +107,21 @@ class TipstersApi(remote.Service):
     
     
     @endpoints.method(PostForm, Hello, path = "addPost", http_method='Post', name = "addPost")
-    def add_post(self, request):
-        data = {'comment': request.comment}
-        data['nComments'] = data['nLikes'] = 0
-        data['date'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    def add_post(self, request):        
+        user_key = ndb.Key(User, "paulo") # must change to get user from token        
+        PostManager.storePost(user_key, request)
         
-        user_key = ndb.Key(User, "paulo")
-        post_id = Post.allocate_ids(size=1, parent=user_key)[0]
-        post_key = ndb.Key(Post, post_id, parent=user_key)
-        data['key'] = post_key
-        data['author'] = "paulo"
-        data['tips'] = []
-        
-        for tip in request.tips:
-            #data ={"sportId":"1", "leagueId":"3", "matchId":"1181299", "betId":"27152659", "choiceId":"197593702"}
-            #bet = getBet(tip.sportId, tip.leagueId, tip.matchId, tip.betId)
-            #bet.addTip(tip.choiceId, post_key.urlsafe())
-            
-            bet_key = getBetKey(tip.sportId, tip.leagueId, tip.matchId, tip.betId)
-            tip_id = TipModel.allocate_ids(size=1, parent=bet_key)[0]
-            tip_key = ndb.Key(TipModel, tip_id, parent=bet_key)
-            data['tips'].append(tip_key)
-              
-            tip = { "choiceId" : tip.choiceId, "odd": 3.20, "key" : tip_key }
-            TipModel(**tip).put()
-        
-        Post(**data).put()
-        return Hello(greeting="post success")
-    
+        return Hello(greeting="post success")        
     
     @endpoints.method(POST_GET_REQUEST, PostMessage, path = "getPost", http_method='Get', name = "getPost")
     def get_post(self, request):
-        post = ndb.Key(urlsafe=request.post_id).get()
-        return UserManager.toPostMessage(post)
+        return PostManager.getPostMessage(request.post_id)
+    
+    @endpoints.method(COMMENT_POST_REQUEST, Hello, path = "addComment", http_method='Post', name = "addComment")
+    def add_comment(self, request):
+        PostManager.addCommentToPost("paulo", request.post_id, request.comment)
+        
+        return Hello(greeting="comment added") 
     
 # registers API
 api = endpoints.api_server([TipstersApi]) 

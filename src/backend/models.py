@@ -25,6 +25,11 @@ class Post(ndb.Model):
     nLikes = ndb.IntegerProperty()
     date = ndb.StringProperty()
     tips = ndb.KeyProperty(repeated=True, kind=TipModel)
+    
+class PostComment(ndb.Model):
+    author = ndb.StringProperty()
+    comment = ndb.StringProperty()
+    date = ndb.StringProperty()
 
 class PostForm(messages.Message):
     comment = messages.StringField(1, required=True)
@@ -52,7 +57,12 @@ class PostMessage(messages.Message):
     date = messages.StringField(5)
     websafeKey = messages.StringField(6)
     tips = messages.MessageField('TipForm',7,repeated=True)
-    
+    comments = messages.MessageField('PostCommentMessage',8,repeated=True)
+
+class PostCommentMessage(messages.Message):
+    author = messages.StringField(1)
+    comment = messages.StringField(2)
+    date = messages.StringField(3)
     
 
 class User(ndb.Model):

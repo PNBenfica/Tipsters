@@ -1,9 +1,9 @@
 import endpoints
 from Crypto.Hash import SHA256
 from google.appengine.ext import ndb
-from models import User, UserForm, UserMiniForm, Post, PostMessage, TipForm
+from models import User, UserForm, UserMiniForm, Post
 from datetime import datetime
-from domain import Bet
+from PostManager import toPostMessage
 
 def register_user(name, email, pwd):    
     if _userAlreadyExist(name):
@@ -82,22 +82,6 @@ def _getFollowing(user):
 
 def _getPosts(user):
     return Post.query(ancestor=user.key)
-
-def toPostMessage(post):
-    tips = map(_toTipMessage, post.tips)
-    return PostMessage(author=post.author,comment=post.comment,nComments=post.nComments,nLikes=post.nLikes,date=post.date,websafeKey=post.key.urlsafe(),tips=tips)
-
-def _toTipMessage(tip_key):
-    tip = tip_key.get()
-    bet_key = tip_key.parent()
-    match_key = bet_key.parent()
-    league_key = match_key.parent()
-    sport_key = league_key.parent()
-    bet, match, league, sport = bet_key.get(), match_key.get(), league_key.get(), sport_key.get()
-    choice = Bet(bet).getChoice(tip.choiceId)
-    
-    return TipForm(odd=tip.odd, choiceName=choice["name"], choiceId=tip.choiceId, sportName=sport.name, sportId=sport.id,\
-                   leagueName=league.name, leagueId=league.id, matchName=match.name, matchId=match.id, betName=bet.name, betId=bet.id)
 
 def _toUserMiniForm(user):
     return UserMiniForm(name=user.key.id(), email=user.email)
