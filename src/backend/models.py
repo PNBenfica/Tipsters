@@ -68,6 +68,7 @@ class PostCommentMessage(messages.Message):
 class User(ndb.Model):
     email = ndb.StringProperty()
     pwd = ndb.StringProperty()
+    avatar = ndb.BlobProperty()
     followersKeys = ndb.StringProperty(repeated=True)
     followingKeys = ndb.StringProperty(repeated=True)
     authToken = ndb.StringProperty()
@@ -84,6 +85,7 @@ class UserForm(messages.Message):
     followers = messages.MessageField('UserMiniForm',3,repeated=True)
     following = messages.MessageField('UserMiniForm',4,repeated=True)
     posts = messages.MessageField('PostMessage',5,repeated=True)
+    avatar = messages.BytesField(6)
     
 class UserMiniForm(messages.Message):
     name = messages.StringField(1)

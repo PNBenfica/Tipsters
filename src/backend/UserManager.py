@@ -33,7 +33,7 @@ def getUserProfile(username):
     following = map(_toUserMiniForm ,_getFollowing(user))
     posts = map(toPostMessage, _getPosts(user))
 
-    return UserForm(name=username, email=user.email, followers=followers, following=following, posts=posts)
+    return UserForm(name=username, email=user.email, avatar=user.avatar, followers=followers, following=following, posts=posts)
 
 
 # user is an user object

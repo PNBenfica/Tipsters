@@ -41,6 +41,10 @@ FOLLOW_USER_REQUEST = endpoints.ResourceContainer(
     userToFollow=messages.StringField(1),
 )
 
+UPDATE_USER_PHOTO_REQUEST = endpoints.ResourceContainer(
+    photo_bytes=messages.BytesField(1)
+)
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 class Hello(messages.Message):
@@ -63,6 +67,13 @@ class TipstersApi(remote.Service):
         name, email, pwd = request.name, request.email, request.pwd
         UserManager.register_user(name, email, pwd)
         return Hello(greeting="User sucessful created")
+    
+    @endpoints.method(UPDATE_USER_PHOTO_REQUEST, Hello, path = "updatePhoto", http_method='POST', name = "updatePhoto")
+    def update_photo(self, request):
+        user = SessionManager.get_current_user()
+        user.avatar = request.photo_bytes
+        user.put()
+        return Hello(greeting="photo successful updated")
     
     @endpoints.method(USER_GET_REQUEST, UserForm, path = "getUser", http_method='GET', name = "getUser")
     def get_user(self, request):
