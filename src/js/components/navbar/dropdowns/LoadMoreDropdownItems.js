@@ -6,7 +6,7 @@ export default class LoadMoreDropdownItems extends React.Component {
 
     return (
         <li>
-            <a class="text-center col-xs-12" href="#" style={{"paddingTop": "0px !important", "paddingBottom":"0px !important"}}>
+            <a class="text-center col-xs-12 dropdown-load-more" href="#">
                 <i class="fa fa-angle-double-down" aria-hidden="true"></i>
             </a>
         </li>

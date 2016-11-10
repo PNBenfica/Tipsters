@@ -29,7 +29,7 @@ export default class NotificationsDropdown extends React.Component {
     return (
         <li class="dropdown">
 
-            <DropdownIcon icon="fa-bell" badge="badge-green" badgeMargin="27px" newItems="5"/>
+            <DropdownIcon icon="fa-bell-o" badge="badge-green" badgeMargin="27px" newItems="5"/>
 
             <ul class="dropdown-menu dropdown-notifications">
                 

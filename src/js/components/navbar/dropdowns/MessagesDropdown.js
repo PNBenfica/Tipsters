@@ -33,7 +33,7 @@ export default class MessagesDropdown extends React.Component {
     return (
         <li class="dropdown">
 
-            <DropdownIcon icon="fa-envelope" badge="badge-red" newItems="2"/>
+            <DropdownIcon icon="fa-envelope-o" badge="badge-red" newItems="2"/>
 
             <ul class="dropdown-menu dropdown-messages col-xs-12">
                 

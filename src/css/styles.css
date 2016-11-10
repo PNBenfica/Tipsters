@@ -104,13 +104,13 @@ Nav bar user avatar
 
 .nav-bar-avatar .tipster-name-avatar{
 	display: inline-block;
-	padding-top: 5px;
+	padding-top: 10px;
 	margin-left: 5px;
 }
 
 .nav-bar-avatar .tipster-name-avatar p:first-child{
-	margin-bottom: 0px;
-	color: #888888;
+	margin-bottom: -5px;
+	color: #fff;
 }
 
 .nav-bar-avatar .tipster-name-avatar p:last-child{
@@ -119,28 +119,10 @@ Nav bar user avatar
 	color: #888888;
 }
 
-@media screen and (max-width: 1110px) {
-	.nav-bar-avatar .tipster-name-avatar{
-		display:none!important;
-	}
-	.nav-bar-avatar img{
-		margin-top: 10px;
-		margin-right: 3px;
-	}
+.nav-bar-avatar i{
+	margin-top: 15px;
 }
 
-@media screen and (min-width: 1200px) and (max-width: 1217px) {
-	.navbar-top-links{
-		width: 20% !important;
-	}
-	.nav-bar-avatar .tipster-name-avatar{
-		display:none!important;
-	}
-	.nav-bar-avatar img{
-		margin-top: 10px;
-		margin-right: 3px;
-	}
-}
 
 /*************************************************
 Notifications dropdown
@@ -188,7 +170,7 @@ Notifications dropdown
 	padding-bottom: 8px;
 }
 
-.dropdown-menu li .media:hover{
+.dropdown-menu li .media:hover, .dropdown-menu .dropdown-load-more:hover{
 	cursor: pointer;
 	background-color: #F9F9F9;
 }
@@ -225,6 +207,14 @@ Notifications dropdown
 	color:#F47238 !important;;
 }
 
+.dropdown-menu .dropdown-load-more {
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+}
+
+.dropdown-menu .dropdown-load-more i{
+	color: black !important;
+}
 
 /*******************************
 trend-bar-item
@@ -1416,50 +1406,24 @@ Buttons
  	navbar search
  ********************************************/
 
+#search-dropdown{
+ 	background-color: red;
+	overflow-y: hidden !important;
+}
+
+#search-dropdown .navbar-form{
+ 	margin: 0px !important;
+ 	padding: 0px !important;
+ 	width: 430px;
+ 	height: 50px;
+}
+#search-dropdown .navbar-form input{
+ 	height: 50px;
+}
+
+
 [role="search"] input{
 	border-radius: 0px;
-}
-
-@media(min-width:768px) {
-	.nav-search-bar [role="search"] input, .nav-search-bar [role="search"] button{
-		border:none;
-	}
-
-	.nav-search-bar [role="search"] input{
-		width: 230px !important;
-		padding-left: 0px;
-	}
-
-	.nav-search-bar [role="search"] input:focus, .nav-search-bar [role="search"] input {
-		text-decoration: none !important;
-		outline:none !important;
-		border: none !important;
-		box-shadow: none !important;
-	}
-}
-
-@media(min-width:800px) {
-	.nav-search-bar [role="search"] input{
-		width: 240px !important;
-	}
-}
-@media(min-width:992px) {
-	.nav-search-bar [role="search"] input{
-		width: 300px !important;
-	}
-}
-@media(min-width:1200px) {
-	.nav-search-bar [role="search"] input{
-		width: 600px !important;
-	}
-}
-
-
-.nav-search-bar{
-	border-right-style: solid;
-	border-right-width: 1px;
-	border-right-color: #D1D1D1;
-	padding-left: 0px;
 }
 
 .navbar-form {

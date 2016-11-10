@@ -13,7 +13,7 @@ export default class UserAvatar extends React.Component {
                 <p>Paulo Teixeira</p>
                 <p>20,00€</p>
             </div> 
-            <i class="fa fa-caret-down"></i>
+            <i class="fa fa-angle-down pull-right"></i>
         </a>
     );
   }

@@ -103,10 +103,6 @@ export default class SideBar extends React.Component {
                     <li>
                         <a href="#/rankings" className={rankingsClass}><i class="color-black fa fa-bar-chart fa-fw"></i> Rankings</a>
                     </li>
-
-                    <li>
-                        <p style={{"height":"60px"}}> </p>
-                    </li>
                 </ul>
             </div>
             {/*<!-- /.sidebar-collapse -->*/}

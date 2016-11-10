@@ -2,7 +2,7 @@ import React from "react";
 
 import MessagesDropdown from "./dropdowns/MessagesDropdown";
 import NotificationsDropdown from "./dropdowns/NotificationsDropdown";
-import SearchBar from "./SearchBar";
+import SearchDropdown from "./dropdowns/SearchDropdown";
 import UserDropdown from "./dropdowns/UserDropdown";
 
 export default class TopBar extends React.Component {
@@ -23,9 +23,9 @@ export default class TopBar extends React.Component {
 
                 <a class="navbar-brand col-xs-3 col-sm-2" href="#">Tipsters</a>
 
-                <SearchBar />
+                <ul class="nav navbar-top-links navbar-right">
 
-                <ul class="nav navbar-top-links col-xs-5 col-xs-push-2 col-sm-push-0 col-sm-3 col-md-3">
+                    <SearchDropdown />
 
                     <MessagesDropdown />
 
