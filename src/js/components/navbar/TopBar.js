@@ -1,42 +1,26 @@
-import React from "react";
+import React from "react"
 
-import MessagesDropdown from "./dropdowns/MessagesDropdown";
-import NotificationsDropdown from "./dropdowns/NotificationsDropdown";
-import SearchDropdown from "./dropdowns/SearchDropdown";
-import UserDropdown from "./dropdowns/UserDropdown";
+import Hamburger from "./Hamburger"
+import NavbarBrand from "./NavbarBrand"
+import NavbarTopLinks from "./navbarTopLinks/NavbarTopLinks"
 
 export default class TopBar extends React.Component {
 
-  render() {
+    render() {
 
-    return (
+        return (
 
-        <div class="row">
+            <div class="row">
+                <div class="navbar-header col-xs-12">
+                    
+                    <Hamburger />
 
-            <div class="navbar-header col-xs-12">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-nav">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                    <NavbarBrand />
 
-                <a class="navbar-brand col-xs-3 col-sm-2" href="#">Tipsters</a>
+                    <NavbarTopLinks />
 
-                <ul class="nav navbar-top-links navbar-right">
-
-                    <SearchDropdown />
-
-                    <MessagesDropdown />
-
-                    <NotificationsDropdown />
-
-                    <UserDropdown />
-
-                </ul>
-
+                </div>
             </div>
-        </div>
-    );
-  }
+        )
+    }
 }

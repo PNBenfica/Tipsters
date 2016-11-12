@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class NewMessageDropdownItem extends React.Component {
+export default class NewMessageLi extends React.Component {
 
   render() {
 

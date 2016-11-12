@@ -109,7 +109,7 @@ Nav bar user avatar
 }
 
 .nav-bar-avatar .tipster-name-avatar p:first-child{
-	margin-bottom: -5px;
+	margin-bottom: -3px;
 	color: #fff;
 }
 
@@ -157,12 +157,13 @@ Notifications dropdown
 	padding-bottom: 0px !important;
 }
 
-.dropdown-menu {
-}
-
 .dropdown-menu .dropdown-content-container{
 	max-height: 300px;
 	overflow: auto;
+}
+
+.dropdown-menu .highlighted .media{
+	background-color: #F7F7F7;
 }
 
 .dropdown-menu li .media{
@@ -203,8 +204,8 @@ Notifications dropdown
 	color:#5B5B5C !important;
 }
 
-.dropdown-menu .dropdown-fixed-element i{
-	color:#F47238 !important;;
+.dropdown-menu .dropdown-fixed-element i, .dropdown-menu#user-dropdown a i{
+	color:#F47238 !important;
 }
 
 .dropdown-menu .dropdown-load-more {
@@ -215,6 +216,17 @@ Notifications dropdown
 .dropdown-menu .dropdown-load-more i{
 	color: black !important;
 }
+
+
+.dropdown-menu#user-dropdown a{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.dropdown-menu#user-dropdown a i, .dropdown-menu#user-dropdown a{
+	color:#5B5B5C !important;
+}
+
 
 /*******************************
 trend-bar-item
