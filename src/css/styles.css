@@ -814,6 +814,12 @@ Profile
 	width: 150px;
 }
 
+#profile-container .main-avatar .container .btn-toolbar button, #profile-container .main-avatar .container .btn-toolbar button:active, #profile-container .main-avatar .container .btn-toolbar button:visited {
+    outline: 0;
+    border: none;
+}
+
+
 
 @media (max-width: 798px) {
 	#profile-container .main-avatar .container .btn-toolbar button{
