@@ -7,6 +7,7 @@ import gapiLoader from './scripts/gapiLoader';
 
 import Feed from "./pages/Feed";
 import Layout from "./pages/Layout";
+import Notifications from "./pages/Notifications";
 import Profile from "./pages/Profile";
 import Rankings from "./pages/Rankings";
 import Sports from "./pages/Sports";
@@ -22,6 +23,7 @@ ReactDOM.render(
 			<Route path="/" component={Layout}>
 				<IndexRoute component={Feed}></IndexRoute>
 				<Route path="profile" name="profile" component={Profile}></Route>
+				<Route path="notifications" name="notifications" component={Notifications}></Route>
 				<Route path="rankings" name="rankings" component={Rankings}></Route>
 				<Route path="sports(/:sport/:sportCode(/:league/:leagueCode(/:match/:matchCode)))" name="sports" component={Sports}></Route>
 			</Route>

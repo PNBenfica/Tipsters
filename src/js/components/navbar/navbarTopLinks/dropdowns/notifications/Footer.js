@@ -6,7 +6,7 @@ export default class Footer extends React.Component {
 
         return (
             <li class="dropdown-fixed-element">
-                <a class="text-center" href="#">
+                <a href="#/notifications" class="text-center">
                     <strong> See All</strong>
                 </a>
             </li>
