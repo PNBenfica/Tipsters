@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 
+import BottomChatContainer from "../components/bottomChat/BottomChatContainer";
 import NavBar from "../components/navbar/NavBar";
 
 export default class Layout extends React.Component {
@@ -18,6 +19,7 @@ export default class Layout extends React.Component {
                     {this.props.children}
                 </div>
                 
+                <BottomChatContainer />
             </div>
         );
     }

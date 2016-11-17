@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux";
 
+import { fetchMessages, markAsSeen, setMessagesNotNew } from "../../../actions/messagesActions";
 import { setNotificationsNotNew } from "../../../actions/notificationsActions";
 
 import MessagesLink from "./MessagesLink"
@@ -11,35 +12,14 @@ import UserAvatarLink from "./UserAvatarLink"
 
 @connect((store) => {
   return {
+    messages: store.messages.messages,
     notifications: store.notifications.notifications,
   };
 })
 export default class NavbarTopLinks extends React.Component {
 
-
-    clearNotificationsBadge(){
-        this.props.dispatch(setNotificationsNotNew())
-    }
-
-    constructor(...args) {
-        super(...args)
-        this.state = { 
-            messages : [
-                { id: 1, date : "15:11", sender : "John Smith", senderImage : "img/joaoalmeida.jpg", content : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...", seen : false, new : true},
-                { id: 2, date : "13:53", sender : "Paulo Teixeira", senderImage : "img/pauloteixeira.jpg", content : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...", seen : false, new : true},
-                { id: 3, date : "Ter", sender : "John Smith", senderImage : "img/joaoalmeida.jpg", content : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...", seen : true, new : false}]
-            }
-    }
-
-
-    markAsSeen(array, id){
-        const ele = array.filter(ele => ele.id==id)[0]
-        ele.seen = true
-        this.setState({array})
-    }
-
-    markMessageAsSeen(messageId){
-        this.markAsSeen(this.state.messages, messageId)
+    componentWillMount() {
+        this.props.dispatch(fetchMessages())
     }
 
     /* 
@@ -57,7 +37,7 @@ export default class NavbarTopLinks extends React.Component {
     *   @returns - number of new messages
     */
     numberNewMessages(){
-        return this.countNew(this.state.messages)
+        return this.countNew(this.props.messages)
     }
 
     /* 
@@ -69,19 +49,23 @@ export default class NavbarTopLinks extends React.Component {
     
 
     /* 
-    *   @desc - this function is called when a icon is clicked.
+    *   @desc - this functions are called when a icon is clicked.
     *       all notifications/messages will be marked as !new, 
     *       the badge will then be hidden
     */
-    clearBadge(array){
-        array.forEach(ele => ele.new=false)
-        this.setState({array})
-    }
 
     clearMessagesBadge(){
-        this.clearBadge(this.state.messages)
+        this.props.dispatch(setMessagesNotNew())
     }
 
+    clearNotificationsBadge(){
+        this.props.dispatch(setNotificationsNotNew())
+    }
+
+
+    markMessageAsSeen(messageId){
+        this.props.dispatch(markAsSeen(messageId))
+    }
 
     render() {
 
@@ -90,7 +74,7 @@ export default class NavbarTopLinks extends React.Component {
 
                 <SearchLink />
 
-                <MessagesLink messages={this.state.messages} nNew={this.numberNewMessages()} clearBadge={this.clearMessagesBadge.bind(this)} markAsSeen={this.markMessageAsSeen.bind(this)} />
+                <MessagesLink messages={this.props.messages} nNew={this.numberNewMessages()} clearBadge={this.clearMessagesBadge.bind(this)} markAsSeen={this.markMessageAsSeen.bind(this)} />
 
                 <NotificationsLink notifications={this.props.notifications} nNew={this.numberNewNotifications()} clearBadge={this.clearNotificationsBadge.bind(this)} />
 

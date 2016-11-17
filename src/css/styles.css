@@ -1608,3 +1608,36 @@ Buttons
 	margin-bottom: 0px;
 	padding-right: 30px;
 }
+
+
+/**********************************
+		Bottom chat
+**********************************/
+
+#bottom-chat{
+	position:absolute;
+	bottom:0;
+	right: 0;
+	z-index: 5000;
+	
+	height: 30px;
+	width: 100%;
+
+
+	background-color: black;
+}
+
+.chat-panel-message{
+	width: 200px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.chat-panel-message .panel-group{
+	margin-bottom: 0px;
+}
+
+.chat-panel-message .panel-heading:hover{
+	cursor: pointer;
+}
