@@ -1,7 +1,7 @@
 import React from "react"
 import {Media} from "react-bootstrap"
 
-import DropdownItem from "./DropdownItem"
+import DropdownItem from "./../navbar/navbarTopLinks/dropdowns/DropdownItem"
 import Time from "./Time"
 
 export default class NotificationItem extends React.Component {

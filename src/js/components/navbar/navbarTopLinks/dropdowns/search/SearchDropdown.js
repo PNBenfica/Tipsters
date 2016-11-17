@@ -8,7 +8,7 @@ export default class SearchDropdown extends React.Component {
 
         return (
             <div id="search-dropdown" class="dropdown-menu">
-                <SearchBar />
+                <SearchBar focus={this.props.focus} />
             </div>
         );
     }
