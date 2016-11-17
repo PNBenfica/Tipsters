@@ -65,7 +65,7 @@ def getMatchBets(matchKey):
 def getSpecialBets(bets):
     specialBets = ["Relegation", "Place 1-4", "Outright Winner", "Place 1-2", "Drivers Championship Winner", "Constructors Championship", "Winner", "Winning Team"]
     bets = bets.filter(BetModel.name.IN(specialBets))        
-    return map(lambda bet: Bet(bet.name, bet.id, bet), bets)
+    return map(lambda bet: Bet(bet), bets)
 
 # @return the main bets of a match
 def getMainBets(sportCode, matchCode, eventKey):

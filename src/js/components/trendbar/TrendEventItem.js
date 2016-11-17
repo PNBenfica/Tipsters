@@ -10,7 +10,7 @@ export default class TrendEventItem extends React.Component {
 
         return (
             <div class="panel trend-event">
-                <a href="#/sports/premier-league/">
+                <a href="#/sports/football/1/premier-league/3/arsenal-united/1267076">
                     <div class="trend-event-team"><img src={homeTeam.logo}/>{homeTeam.name}</div>
                     <div class="trend-event-team"><img src={awayTeam.logo}/>{awayTeam.name}</div>
                     <div class="panel-footer">

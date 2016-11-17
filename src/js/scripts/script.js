@@ -3,6 +3,12 @@ $(function() {
     setTimeout(function(){  $('#side-menu').metisMenu(); }, 1000);
    
     
+    $(".sidebar li").click(function() {
+        var width = $( window ).width();
+        if (width < 751)
+            $(".sidebar-nav").removeClass("in");
+    });
+
     $("#sport-events-sidebar").click(function() {
         
         var location = '' + window.location;

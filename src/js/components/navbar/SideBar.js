@@ -92,9 +92,6 @@ export default class SideBar extends React.Component {
                                 <a href="#/sports/Basketball/4"><img src="img/sports/basket.png"></img> Basketball</a>
                             </li>
                             <li>
-                                <a href="#/sports/Motorcycling/15"><img src="img/sports/bike.png"></img> Motorcycling</a>
-                            </li>
-                            <li>
                                 <a href="#/sports/Formula-1/3"><img src="img/sports/wheel.png"></img> Formula 1</a>
                             </li>
                         </ul>

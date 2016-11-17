@@ -1615,7 +1615,7 @@ Buttons
 **********************************/
 
 #bottom-chat{
-	position:absolute;
+	position:fixed;
 	bottom:0;
 	right: 0;
 	z-index: 5000;
@@ -1638,6 +1638,38 @@ Buttons
 	margin-bottom: 0px;
 }
 
+.chat-panel-message .panel{
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+
+
+#bottom-chat .chat-panel-message:nth-child(1) { right: 0px !important;}
+#bottom-chat .chat-panel-message:nth-child(2) { right: 204px !important;}
+#bottom-chat .chat-panel-message:nth-child(3) { right: 408px !important;}
+#bottom-chat .chat-panel-message:nth-child(4) { right: 612px !important;}
+#bottom-chat .chat-panel-message:nth-child(5) { right: 816px !important;}
+#bottom-chat .chat-panel-message:nth-child(6) { right: 1020px !important;}
+
+
+
+.chat-panel-message .panel-heading{
+}
+
 .chat-panel-message .panel-heading:hover{
 	cursor: pointer;
+}
+
+.chat-panel-message .panel-heading .pull-right{
+	visibility: hidden;
+}
+.chat-panel-message .panel-heading:hover .pull-right{
+	visibility: visible;
+}
+
+
+
+
+#hidden-messages {
+	width: 100px;
 }
