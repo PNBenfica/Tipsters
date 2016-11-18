@@ -8,16 +8,15 @@ export default class MessageItem extends React.Component {
 
     render() {
 
-        const { id, date , sender , senderImage , content, seen, markAsSeen } = this.props
-
+        const { id, messages, sender , senderImage , seen, markAsSeen } = this.props
         return (
             <DropdownItem id={id} img={senderImage} highlighted={!seen} markAsSeen={markAsSeen}>
                 
                 <h5 class="media-heading">
                     <strong>{sender}</strong>
-                    <Time date={date} />
+                    <Time date={messages[0].date} />
                 </h5>
-                {content}
+                {messages[0].content}
 
             </DropdownItem>
         )
