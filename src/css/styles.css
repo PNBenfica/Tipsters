@@ -1622,9 +1622,6 @@ Buttons
 	
 	height: 30px;
 	width: 100%;
-
-
-	background-color: black;
 }
 
 .chat-panel-message{
@@ -1632,6 +1629,8 @@ Buttons
 	position: absolute;
 	bottom: 0;
 	right: 0;
+	padding-left: 2px; 
+	padding-right: 2px; 
 }
 
 .chat-panel-message .panel-group{
@@ -1652,8 +1651,38 @@ Buttons
 #bottom-chat .chat-panel-message:nth-child(6) { right: 1020px !important;}
 
 
-
 .chat-panel-message .panel-heading{
+	padding: 0px;
+	background-color: #F7F7F7;
+}
+
+.chat-panel-message .panel-heading .panel-title{
+	font-size: 13px;
+}
+
+.chat-panel-message .panel-heading .panel-title a{
+	color: #1e3948;
+	font-weight: bold;
+	padding: 8px 10px 8px 15px;
+	width: 80%;
+	display: inline-block;
+	border-radius: 10px;
+}
+
+.chat-panel-message .panel-heading .panel-title i{
+	color: #1e3948;
+	padding: 4px 4px 4px 4px;
+	margin-right: 5px;
+	margin-top: 5px;
+}
+
+.chat-panel-message .panel-heading .panel-title i:hover{
+	color: #2a88bd;
+}
+
+.chat-panel-message .ni.collapse {
+	display: block;
+	height: 240px !important;
 }
 
 .chat-panel-message .panel-heading:hover{
@@ -1668,6 +1697,11 @@ Buttons
 }
 
 
+
+.chat-panel-message .panel-body{
+	height: 200px;
+	overflow: auto;
+}
 
 
 #hidden-messages {
