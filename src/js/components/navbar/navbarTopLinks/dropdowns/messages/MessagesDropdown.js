@@ -1,6 +1,5 @@
 import React from "react"
 
-import LoadMoreDropdownItems from "./../LoadMoreDropdownItems"
 import MessageItem from "./MessageItem"
 import NewMessageLi from "./NewMessageLi"
 
@@ -15,10 +14,8 @@ export default class MessagesDropdown extends React.Component {
                 
                 <div class="dropdown-content-container">
                     {Messages}
-                    <LoadMoreDropdownItems />
                 </div>
 
-                <li class="divider"></li>
 
                 <NewMessageLi />
             </ul>
