@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { closeMessage, sendMessage } from "../../actions/messagesActions";
 
 import ChatPanel from "./ChatPanel"
-import HiddenMessagesPanel from "./HiddenMessagesPanel"
+import NewMessagePanel from "./NewMessagePanel"
+import HiddenMessagesPanel from "./hiddenmesssages/HiddenMessagesPanel"
 
 @connect((store) => {
   return {
@@ -24,7 +25,6 @@ export default class BottomChatContainer extends React.Component {
 
     updateDimensions(){
         const width = this.getWindowWidth()
-        console.log(width)
 
         let nVisibleMessages = 0
         if (width < 655) nVisibleMessages = 1
@@ -39,21 +39,19 @@ export default class BottomChatContainer extends React.Component {
     componentWillReceiveProps(nextProps){
         const newOpen = nextProps.openMessagesIds.filter(id => !this.props.openMessagesIds.includes(id))
         let open = []
-        if (newOpen.length > 0 && !this.state.open.includes(newOpen[0]) ) 
-            open = [...this.state.open, ...newOpen]
+        if (newOpen.length > 0 && !this.state.open.map(ele=>ele.id).includes(newOpen[0]) ) 
+            open = [...this.state.open, {id: newOpen[0], _in:true} ]
         else{
             const toRemove = this.props.openMessagesIds.filter(id => !nextProps.openMessagesIds.includes(id))
-            console.log(toRemove)
-            open = this.state.open.filter(msgId => msgId != toRemove[0])
+            open = this.state.open.filter(ele => ele.id != toRemove[0])
         }
-        console.log( open )
         this.setState( {open} )
     }
 
     componentWillMount(){
         this.updateDimensions()
 
-        const open = [...this.props.openMessagesIds]
+        const open = this.props.openMessagesIds.map(id => {return {id, _in:true} } )
         this.setState({ open })
     }
     componentDidMount(){
@@ -90,10 +88,8 @@ export default class BottomChatContainer extends React.Component {
     */
     toggleMessage(messageId){
         let open = [...this.state.open]
-        if (open.includes(messageId))
-            open = open.filter(id => id != messageId)
-        else
-            open = [...open, messageId]
+        const index = open.findIndex(ele => ele.id === messageId)
+        open[index]._in = !open[index]._in;
         this.setState({ open })
     }
 
@@ -118,16 +114,44 @@ export default class BottomChatContainer extends React.Component {
         this.props.dispatch(sendMessage(messageId, text))
     }
 
+
+    swap(array, x, y){
+        const temp = array[y];
+        array[y] = array[x];
+        array[x] = temp;
+    }
+
+    openHiddenMessage(messageId){
+        let open = [...this.state.open]
+        const index = open.findIndex(ele => ele.id === messageId)
+        for(let i = index; i > this.state.nVisibleMessages - 1; i--){
+            this.swap(open, i, i - 1)
+        }
+        this.setState( {open} )
+    }
+
+    renderMessagePanel(message, i){
+        const index = this.state.open.findIndex(ele => ele.id === message.id)
+        const _in = this.state.open[index]._in;
+        return <ChatPanel key={i} message={message} textInput={this.getInputText(message.id)} sendMessage={this.sendMessage.bind(this, message.id)} onInputChange={this.onInputChange.bind(this, message.id)} in={_in} toggle={this.toggleMessage.bind(this, message.id)} close={this.closeMessage.bind(this, message.id)}/>
+    }
+
+    renderNewMessagePanel(){
+        if (this.props.openMessagesIds.includes("NEW_MESSAGE")) 
+            return <NewMessagePanel close={this.closeMessage.bind(this, "NEW_MESSAGE")} />
+    }
+
     render() {
-        console.log(this.state.texts)
         const messages = this.getOpenMessages()
-        const visibleMessages = messages.slice(0, this.state.nVisibleMessages).sort((msg1,msg2) => this.props.openMessagesIds.findIndex(i => i == msg1.id) - this.props.openMessagesIds.findIndex(i => i == msg2.id) )
+        let sortedMessages = messages.sort((msg1,msg2) => this.state.open.findIndex(m => m.id == msg1.id) - this.state.open.findIndex(m => m.id == msg2.id) )
+        const visibleMessages = sortedMessages.slice(0, this.state.nVisibleMessages)
         const nInvisibleMessages = messages.length - visibleMessages.length
 
         return (
             <div id="bottom-chat">
-                {visibleMessages.map((message, i) => <ChatPanel key={i} message={message} textInput={this.getInputText(message.id)} sendMessage={this.sendMessage.bind(this, message.id)} onInputChange={this.onInputChange.bind(this, message.id)} in={this.state.open} toggle={this.toggleMessage.bind(this, message.id)} close={this.closeMessage.bind(this, message.id)}/>)}
-                { nInvisibleMessages > 0 ? <HiddenMessagesPanel hiddenMessages={messages.slice(this.state.nVisibleMessages)}/>: "" }
+                {this.renderNewMessagePanel() }
+                {visibleMessages.map((message, i) => this.renderMessagePanel(message, i))}
+                { nInvisibleMessages > 0 ? <HiddenMessagesPanel hiddenMessages={sortedMessages.slice(this.state.nVisibleMessages)} openHiddenMessage={this.openHiddenMessage.bind(this)}/>: "" }
             </div>
         )
     }

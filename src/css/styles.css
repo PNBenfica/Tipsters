@@ -167,6 +167,10 @@ Notifications dropdown
 	color:#F47238 !important;
 }
 
+.dropdown-menu .dropdown-fixed-element:hover{
+	cursor: pointer;
+}
+
 .dropdown-menu .dropdown-load-more {
 	padding-top: 0px !important;
 	padding-bottom: 0px !important;
@@ -1736,7 +1740,7 @@ textarea:-ms-input-placeholder {
 	text-align: center;
 }
 
-.chat-panel-message .panel-collapse{
+.chat-panel-message:not(#hidden-messages) .panel-collapse{
 	height: 240px;
 }
 
@@ -1777,15 +1781,35 @@ textarea:-ms-input-placeholder {
 	margin-top: 0px;
 }
 
+
+
+
 #hidden-messages {
-	width: 60px;
+	width: 150px;
 }
+#hidden-messages .panel{
+	border: none !important;
+}
+
 #hidden-messages .panel-heading {
 	padding-top: 0px;
+	width: 60px;
+	float: right;
+	border: 1px solid #DDDDDD;
+	border-bottom: none;
 }
 #hidden-messages .panel-heading a{
 	width: 100%;
 	height: 100%;
 	text-align: center;
 	padding: 0px;
+}
+
+#hidden-messages .list-group{
+	border: 1px solid #DDDDDD;
+}
+
+#hidden-messages .list-group .list-group-item:hover{
+	background-color: #F0F0F0;
+	cursor: pointer;
 }

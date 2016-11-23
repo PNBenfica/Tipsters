@@ -7,7 +7,7 @@ export default class MessagesDropdown extends React.Component {
 
     render() {
 
-        const Messages = this.props.messages.map((message, i) => <MessageItem key={i} {...message} markAsSeen={this.props.markAsSeen}/> )
+        const Messages = this.props.messages.map((message, i) => <MessageItem key={i} {...message} markAsSeen={this.props.markAsSeen} /> )
 
         return (
             <ul class="dropdown-menu dropdown-messages col-xs-12">
@@ -16,8 +16,7 @@ export default class MessagesDropdown extends React.Component {
                     {Messages}
                 </div>
 
-
-                <NewMessageLi />
+                <NewMessageLi createNewMessage={this.props.createNewMessage}/>
             </ul>
         )
     }

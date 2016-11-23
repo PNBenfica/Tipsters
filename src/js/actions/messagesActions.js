@@ -17,6 +17,12 @@ export function openMessage(messageId) {
     }
 }
 
+export function newMessage() {
+    return {
+        type: 'NEW_MESSAGE'
+    }
+}
+
 export function closeMessage(messageId) {
     return {
         type: 'CLOSE_MESSAGE',

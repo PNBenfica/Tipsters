@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux";
 
-import { fetchMessages, setMessagesNotNew, openMessage } from "../../../actions/messagesActions";
+import { fetchMessages, setMessagesNotNew, openMessage, newMessage } from "../../../actions/messagesActions";
 import { setNotificationsNotNew } from "../../../actions/notificationsActions";
 
 import MessagesLink from "./MessagesLink"
@@ -66,10 +66,17 @@ export default class NavbarTopLinks extends React.Component {
     /* 
     *   @desc - open the message in the chat
     */
-
     openMessage(messageId){
         this.props.dispatch(openMessage(messageId))
     }
+
+    /* 
+    *   @desc - create new message in the chat
+    */
+    createNewMessage(){
+        this.props.dispatch(newMessage())
+    }
+
 
     render() {
 
@@ -78,7 +85,7 @@ export default class NavbarTopLinks extends React.Component {
 
                 <SearchLink />
 
-                <MessagesLink messages={this.props.messages} nNew={this.numberNewMessages()} clearBadge={this.clearMessagesBadge.bind(this)} markAsSeen={this.openMessage.bind(this)} />
+                <MessagesLink messages={this.props.messages} nNew={this.numberNewMessages()} clearBadge={this.clearMessagesBadge.bind(this)} markAsSeen={this.openMessage.bind(this)} createNewMessage={this.createNewMessage.bind(this)}/>
 
                 <NotificationsLink notifications={this.props.notifications} nNew={this.numberNewNotifications()} clearBadge={this.clearNotificationsBadge.bind(this)} />
 

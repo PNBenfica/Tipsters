@@ -1,6 +1,7 @@
 import React from "react"
 
-import HeaderCross from "./HeaderCross"
+import Cross from "./Cross"
+import Title from "./Title"
 
 export default class Header extends React.Component {
 
@@ -11,10 +12,11 @@ export default class Header extends React.Component {
         return (
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a id={href + "_button"} data-toggle="collapse" onClick={() => toggle()} href={href}>
-                        {title}
-                    </a>
-                    <HeaderCross close={close} />
+
+                    <Title title={title} href={href} toggle={toggle} />
+
+                    <Cross close={close} />
+                
                 </h4>
             </div>
         )

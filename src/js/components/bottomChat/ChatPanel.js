@@ -3,15 +3,15 @@ import ReactDOM from "react-dom"
 
 import ChatInput from "./ChatInput"
 import ChatBody from "./ChatBody"
-import Header from "./Header"
+import Header from "./header/Header"
 
 export default class ChatPanel extends React.Component {
 
     componentDidUpdate(prevProps, prevState){
 
-        if (prevProps.message.id != this.props.message.id && (prevProps.in.includes(prevProps.message.id)) != (this.props.in.includes(this.props.message.id))){
+        if (prevProps.message.id != this.props.message.id && (prevProps.in) != (this.props.in) ){
             const panel = ReactDOM.findDOMNode(this.refs.panelCollapse)
-            if (prevProps.in.includes(prevProps.message.id)){
+            if (prevProps.in){
                 panel.className = panel.className.replace("in", "")
                 panel.className = panel.className.replace("ni", "")
             }
@@ -30,13 +30,6 @@ export default class ChatPanel extends React.Component {
         else{
             this.props.toggle()
         }
-    }
-
-    inputHeightChange(height){
-        let { bodyHeight, inputHeight } = this.state
-        bodyHeight -= height
-        inputHeight += height
-        this.setState({ bodyHeight, inputHeight })
     }
 
     getBodyHeights(){
@@ -64,7 +57,7 @@ export default class ChatPanel extends React.Component {
         const { bodyHeight, inputHeight } = this.getBodyHeights()
 
         return (
-            <div class="chat-panel-message col-xs-10 col-sm-4 col-md-3 col-lg-2">
+            <div class="chat-panel-message">
                 <div class="panel-group">
                     <div class="panel panel-default">
 

@@ -21,8 +21,11 @@ export default function reducer(state={
                 messages = [
                     { id: 1, sender : "John Smith", senderImage : "img/joaoalmeida.jpg", messages : [ {content:"Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"11:34", author:"John Smith"},{content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}, {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"John Smith"}] , seen : false, new : true},
                     { id: 2, sender : "Paulo Teixeira", senderImage : "img/pauloteixeira.jpg", messages : [ {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"10:32", author:"Paulo Teixeira"},{content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}, {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}] , seen : false, new : true},
-                    { id: 3, sender : "Rui Silva", senderImage : "img/joaoalmeida.jpg", messages : [ {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"9:20", author:"Rui Silva"},{content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Rui Silva"}, {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}] , seen : true, new : false}]
-                openMessagesIds = [1,2,3]
+                    { id: 3, sender : "Rui Silva", senderImage : "img/joaoalmeida.jpg", messages : [ {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"9:20", author:"Rui Silva"},{content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Rui Silva"}, {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}] , seen : true, new : false},
+                    { id: 4, sender : "Carlos Silva", senderImage : "img/joaoalmeida.jpg", messages : [ {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"9:20", author:"Rui Silva"},{content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Rui Silva"}, {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}] , seen : true, new : false},
+                    { id: 5, sender : "Silvia Silva", senderImage : "img/joaoalmeida.jpg", messages : [ {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"9:20", author:"Rui Silva"},{content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Rui Silva"}, {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}] , seen : true, new : false},
+                    { id: 6, sender : "Gonçalo Silva", senderImage : "img/joaoalmeida.jpg", messages : [ {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"9:20", author:"Rui Silva"},{content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Rui Silva"}, {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}] , seen : true, new : false}]
+                openMessagesIds = [1,2,3,4,5,6]
             }
             return {
                 ...state,
@@ -38,6 +41,17 @@ export default function reducer(state={
             return {
                 ...state,
                 messages: messages,
+            }
+        }
+        case "NEW_MESSAGE": {
+            let openMessagesIds = [...state.openMessagesIds]
+            if (openMessagesIds.length == 0 || (openMessagesIds.length > 0 && openMessagesIds[0] != "NEW_MESSAGE")){
+                openMessagesIds = [ "NEW_MESSAGE" , ...openMessagesIds]
+            }  
+
+            return {
+                ...state,
+                openMessagesIds : openMessagesIds
             }
         }
         case "OPEN_MESSAGE": {

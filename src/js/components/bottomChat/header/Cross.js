@@ -1,6 +1,6 @@
 import React from "react"
 
-export default class HeaderCross extends React.Component {
+export default class Cross extends React.Component {
 
     render() {
 
