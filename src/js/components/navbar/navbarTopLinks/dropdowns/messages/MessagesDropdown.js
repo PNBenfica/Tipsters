@@ -5,9 +5,14 @@ import NewMessageLi from "./NewMessageLi"
 
 export default class MessagesDropdown extends React.Component {
 
+    renderMessageItem(message, i){
+        return message.messages.length > 0?
+            <MessageItem key={i} {...message} markAsSeen={this.props.markAsSeen} /> : ""
+    }
+
     render() {
 
-        const Messages = this.props.messages.map((message, i) => <MessageItem key={i} {...message} markAsSeen={this.props.markAsSeen} /> )
+        const Messages = this.props.messages.map(this.renderMessageItem.bind(this))
 
         return (
             <ul class="dropdown-menu dropdown-messages col-xs-12">

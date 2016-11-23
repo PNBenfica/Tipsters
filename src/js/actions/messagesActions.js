@@ -17,9 +17,10 @@ export function openMessage(messageId) {
     }
 }
 
-export function newMessage() {
+export function newMessage(destination) {
     return {
-        type: 'NEW_MESSAGE'
+        type: 'NEW_MESSAGE',
+        payload: destination
     }
 }
 

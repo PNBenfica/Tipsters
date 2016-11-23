@@ -9,7 +9,7 @@ export default class NewMessagePanel extends React.Component {
 
     render() {
 
-        const { close } = this.props
+        const { close, createNewMessage } = this.props
 
         const chat_id = 'chat_msg_new_message'
 
@@ -20,7 +20,7 @@ export default class NewMessagePanel extends React.Component {
 
                         <Header title={"New Message"} href={"#" + chat_id} close={close}/>
                         
-                        <div id={chat_id} class="panel-collapse collapse in">
+                        <div id={chat_id} class="panel-collapse collapse in" onClick={() => createNewMessage("Rui Silva")} >
                             <div class="panel-body"> </div>
                         </div>
                     </div>

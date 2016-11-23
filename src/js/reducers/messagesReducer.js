@@ -25,7 +25,7 @@ export default function reducer(state={
                     { id: 4, sender : "Carlos Silva", senderImage : "img/joaoalmeida.jpg", messages : [ {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"9:20", author:"Rui Silva"},{content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Rui Silva"}, {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}] , seen : true, new : false},
                     { id: 5, sender : "Silvia Silva", senderImage : "img/joaoalmeida.jpg", messages : [ {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"9:20", author:"Rui Silva"},{content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Rui Silva"}, {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}] , seen : true, new : false},
                     { id: 6, sender : "Gonçalo Silva", senderImage : "img/joaoalmeida.jpg", messages : [ {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"9:20", author:"Rui Silva"},{content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Rui Silva"}, {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}] , seen : true, new : false}]
-                openMessagesIds = [1,2,3,4,5,6]
+                openMessagesIds = [1,3]
             }
             return {
                 ...state,
@@ -45,13 +45,23 @@ export default function reducer(state={
         }
         case "NEW_MESSAGE": {
             let openMessagesIds = [...state.openMessagesIds]
-            if (openMessagesIds.length == 0 || (openMessagesIds.length > 0 && openMessagesIds[0] != "NEW_MESSAGE")){
+            let messages = [...state.messages]
+            if (openMessagesIds.includes("NEW_MESSAGE")){
+                const destUser = action.payload
+
+                const id = Math.floor((Math.random() * 10000) + 10)
+                messages = [{id: id, sender: destUser, senderImage : "img/joaoalmeida.jpg", messages : [], seen : true, new : false}, ...messages]
+                openMessagesIds = [id, ...openMessagesIds]
+                openMessagesIds = openMessagesIds.filter(id => id != "NEW_MESSAGE")
+            }
+            else{
                 openMessagesIds = [ "NEW_MESSAGE" , ...openMessagesIds]
-            }  
+            }
 
             return {
                 ...state,
-                openMessagesIds : openMessagesIds
+                openMessagesIds : openMessagesIds,
+                messages : messages
             }
         }
         case "OPEN_MESSAGE": {
@@ -77,7 +87,7 @@ export default function reducer(state={
             const newMessage = {author:"Paulo Teixeira", content: action.payload.content, date: "just now" }
             const messages = [...state.messages]
             const index = messages.findIndex(message => message.id === action.payload.id)
-            messages[index] = Object.assign({}, messages[index], {"messages": [newMessage, ...messages[index].messages]});
+            messages[index] = Object.assign({}, messages[index], {"messages": [newMessage, ...messages[index].messages]})
             return {
                 ...state,
                 messages: messages

@@ -16,7 +16,7 @@ export default class MessageItem extends React.Component {
                     <strong>{sender}</strong>
                     <Time date={messages[0].date} />
                 </h5>
-                {messages[0].content.substring(0,80)}
+                {messages[0].content.substring(0,75)}
 
             </DropdownItem>
         )

@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux";
-import { closeMessage, sendMessage } from "../../actions/messagesActions";
+import { closeMessage, sendMessage, newMessage } from "../../actions/messagesActions";
 
 import ChatPanel from "./ChatPanel"
 import NewMessagePanel from "./NewMessagePanel"
@@ -39,8 +39,9 @@ export default class BottomChatContainer extends React.Component {
     componentWillReceiveProps(nextProps){
         const newOpen = nextProps.openMessagesIds.filter(id => !this.props.openMessagesIds.includes(id))
         let open = []
-        if (newOpen.length > 0 && !this.state.open.map(ele=>ele.id).includes(newOpen[0]) ) 
-            open = [...this.state.open, {id: newOpen[0], _in:true} ]
+        if (newOpen.length > 0 && !this.state.open.map(ele=>ele.id).includes(newOpen[0]) ){
+            open = [{id: newOpen[0], _in:true}, ...this.state.open]
+        }
         else{
             const toRemove = this.props.openMessagesIds.filter(id => !nextProps.openMessagesIds.includes(id))
             open = this.state.open.filter(ele => ele.id != toRemove[0])
@@ -82,6 +83,25 @@ export default class BottomChatContainer extends React.Component {
     */
     closeMessage(messageId){
         this.props.dispatch(closeMessage(messageId))
+    }
+
+    /*
+    *   @desc creates a new message to 'destination'. called after destination is selected in newmessagepanel
+    *   @param destination - name of the user to send a message
+    */
+    createNewMessage(destination){
+        const messageIndex = this.props.messages.findIndex(message => message.sender === destination)
+        if (messageIndex != -1 && this.isOpen(this.props.messages[messageIndex])) {
+            let open = [...this.state.open]
+            const index = open.findIndex(ele => ele.id === this.props.messages[messageIndex].id)
+            for(let i = index; i > 0; i--){
+                this.swap(open, i, i - 1)
+            }
+            this.setState( {open}, () => this.closeMessage("NEW_MESSAGE"))
+        }
+
+        else
+            this.props.dispatch(newMessage(destination))
     }
 
     /*
@@ -138,20 +158,21 @@ export default class BottomChatContainer extends React.Component {
 
     renderNewMessagePanel(){
         if (this.props.openMessagesIds.includes("NEW_MESSAGE")) 
-            return <NewMessagePanel close={this.closeMessage.bind(this, "NEW_MESSAGE")} />
+            return <NewMessagePanel createNewMessage={this.createNewMessage.bind(this)} close={this.closeMessage.bind(this, "NEW_MESSAGE")} />
     }
 
     render() {
         const messages = this.getOpenMessages()
         let sortedMessages = messages.sort((msg1,msg2) => this.state.open.findIndex(m => m.id == msg1.id) - this.state.open.findIndex(m => m.id == msg2.id) )
-        const visibleMessages = sortedMessages.slice(0, this.state.nVisibleMessages)
+        const creatingNewMessage = this.props.openMessagesIds.includes("NEW_MESSAGE")
+        const visibleMessages = sortedMessages.slice(0, this.state.nVisibleMessages - 1 * creatingNewMessage)
         const nInvisibleMessages = messages.length - visibleMessages.length
 
         return (
             <div id="bottom-chat">
                 {this.renderNewMessagePanel() }
                 {visibleMessages.map((message, i) => this.renderMessagePanel(message, i))}
-                { nInvisibleMessages > 0 ? <HiddenMessagesPanel hiddenMessages={sortedMessages.slice(this.state.nVisibleMessages)} openHiddenMessage={this.openHiddenMessage.bind(this)}/>: "" }
+                { nInvisibleMessages > 0 ? <HiddenMessagesPanel hiddenMessages={sortedMessages.slice(this.state.nVisibleMessages - 1 * creatingNewMessage)} openHiddenMessage={this.openHiddenMessage.bind(this)}/>: "" }
             </div>
         )
     }
