@@ -2,6 +2,11 @@ import React from "react";
 
 export default class NewMessageLi extends React.Component {
 
+    componentDidMount(){
+    this.props.createNewMessage()
+        
+    }
+
   render() {
 
     return (

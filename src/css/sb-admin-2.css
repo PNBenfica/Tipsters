@@ -21,7 +21,7 @@
 }
 
 .navbar{
-    background-color: #37384C;
+    background-color: #2B2B2B;
     padding: 0px;
     margin-bottom: 0px !important;
 }
@@ -42,38 +42,44 @@
 }
 
 .sidebar{
-    background-color: #FFFFFF;
-    font-size: 95%;
+    background-color: #323232;
     min-height: 2000px;
 }
 
 .sidebar a{
-    color: #89817f;
+    color: #BCB3AA;
     font-size: 14px;
     padding-top: 15px !important;
     padding-bottom: 15px !important;
 }
 
 .sidebar a i{
-    color: #BCB3AA !important;
     font-size: 14px;
     margin-right: 6px;
 }
 
+.sidebar a:not(.sidebar-item-active) i{
+    color: #BCB3AA !important;
+}
+.sidebar a.sidebar-item-active i{
+    /*color: #BCB3AA !important;*/
+    color: white !important;
+}
+
 .sidebar-item-active{
     border-left-color: #2DC3E8 !important;
-    background-color: #F8F7F5;
+    color: white !important;
 }
 
 
 .sidebar ul li a{
     border-left-style: solid;
-    border-left-color: white;
-    border-left-width: 5px;
+    border-left-color: #323232;
+    border-left-width: 2px;
 
     border-bottom-style: solid;
     border-bottom-width: 1px;
-    border-bottom-color: #EBEAE6;
+    border-bottom-color: #2B2B2B;
 }
 
 .sidebar ul li .nav-second-level a{
@@ -83,15 +89,19 @@
 .sidebar ul:first-child {
     border-top-style: solid;
     border-top-width: 1px;
-    border-top-color: #EBEAE6;
+    border-top-color: #2B2B2B;
 }
 
 .sidebar ul li a:hover{
     border-left-color: #2DC3E8;
+    color: white;
+}
+.sidebar ul li a:hover i{
+    color: white !important;
 }
 
-.sidebar ul li a:active, .sidebar ul li a:visited{
-    background-color: #F9F9F9;
+.sidebar ul li a:active, .sidebar ul li a:visited, .sidebar ul li a:hover{
+    background-color: #2E2E2E;
 }
 
 .navbar .navbar-top-links .dropdown-toggle:hover, .navbar .navbar-top-links .dropdown-toggle:visited{
@@ -271,9 +281,10 @@
 }
 
 .navbar-brand, .navbar .navbar-brand:active, .navbar .navbar-brand:visited{
-    background-color: #37384C;
+    background-color: #2B2B2B;
     color: white;
     text-align: center;
+    border-bottom: solid 1px #3E3E3E;
 }
 
 

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { closeMessage, sendMessage, newMessage } from "../../actions/messagesActions";
 
 import ChatPanel from "./ChatPanel"
-import NewMessagePanel from "./NewMessagePanel"
+import NewMessagePanel from "./newmessage/NewMessagePanel"
 import HiddenMessagesPanel from "./hiddenmesssages/HiddenMessagesPanel"
 
 @connect((store) => {

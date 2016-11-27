@@ -1,9 +1,8 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
-import ChatInput from "./ChatInput"
-import ChatBody from "./ChatBody"
-import Header from "./header/Header"
+import Body from "./Body"
+import Header from "./../header/Header"
 
 export default class NewMessagePanel extends React.Component {
 
@@ -20,8 +19,8 @@ export default class NewMessagePanel extends React.Component {
 
                         <Header title={"New Message"} href={"#" + chat_id} close={close}/>
                         
-                        <div id={chat_id} class="panel-collapse collapse in" onClick={() => createNewMessage("Rui Silva")} >
-                            <div class="panel-body"> </div>
+                        <div id={chat_id} class="panel-collapse collapse in" >
+                            <Body createNewMessage={createNewMessage} />
                         </div>
                     </div>
                 </div>

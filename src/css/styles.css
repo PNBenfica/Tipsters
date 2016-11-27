@@ -913,13 +913,13 @@ Sports
 .sidebar img{
 	height: 15px;
 	width: 15px;
+	margin-right: 4px;
 }
 
 .sidebar #sidebar-account-money img{
 	height: 20px;
 	width: 20px;
 	margin-top: -4px;
-	margin-right: 4px;
 }
 
 .sidebar{
@@ -1744,6 +1744,11 @@ textarea:-ms-input-placeholder {
 	height: 240px;
 }
 
+.chat-panel-message .panel-collapse{
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 16px 0px, rgba(0, 0, 0, 0.160) 0px 6px 10px 0px;
+}
+
+
 .chat-panel-message .panel-body .chat-message span{
 	font-size: 9px;
 }
@@ -1809,7 +1814,16 @@ textarea:-ms-input-placeholder {
 	border: 1px solid #DDDDDD;
 }
 
-#hidden-messages .list-group .list-group-item:hover{
+#hidden-messages .list-group .list-group-item:hover, #chat_msg_new_message .list-group .list-group-item:hover{
 	background-color: #F0F0F0;
 	cursor: pointer;
+}
+
+
+#chat_msg_new_message .panel-body {
+	text-align: left !important;
+}
+
+#chat_msg_new_message .list-group .list-group-item{
+	border-radius: 0px !important;
 }
