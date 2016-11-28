@@ -11,7 +11,9 @@ export default class ProfilePanel extends React.Component {
             <div class="panel profile-panel">
 
                 <div class="panel-heading">
-                    <h5>{header}</h5>
+                    <h3 class="panel-title">
+                        {header}
+                    </h3>
                 </div>
 
                 <div class="panel-body">

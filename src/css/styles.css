@@ -218,7 +218,7 @@ trend-bar-item
 	padding-left: 0px;
 	padding-top: 5px;
 
-	box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 8px 0px, rgba(0, 0, 0, 0.065) 0px 3px 5px 0px;
+	/*box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 8px 0px, rgba(0, 0, 0, 0.065) 0px 3px 5px 0px;*/
 }
 
 .trend-bar-item .panel-heading{
@@ -397,7 +397,7 @@ Feed
 	padding-left: 0px;
 	padding-right: 0px;
 
-	box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 8px 0px, rgba(0, 0, 0, 0.065) 0px 3px 5px 0px;
+	/*box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 8px 0px, rgba(0, 0, 0, 0.065) 0px 3px 5px 0px;*/
 }
 
 
@@ -821,12 +821,29 @@ Profile
 }
 
 
+.trend-bar-item .panel-heading .panel-title {
+	font-size: 14px;
+	font-weight: 700;
+	font-family: Lato,sans-serif;
+}
+
+
+#profile-container .profile-panel{
+	border: solid  1px #D3E0E9;
+}
+
 #profile-container .profile-panel .panel-heading{
-	border-bottom-width: 3px;
+	border-bottom-width: 2px;
 	border-bottom-color: #2DC3E8;
 
-	padding-top: 0px;
-	padding-bottom: 0px;
+	color: #333;
+	padding-left: 20px;
+}
+
+#profile-container .profile-panel .panel-title {
+	font-size: 14px;
+	font-weight: 700;
+	font-family: Lato,sans-serif;
 }
 
 #profile-container .profile-panel .description{
@@ -834,6 +851,9 @@ Profile
 }
 
 #profile-container .profile-panel .about-table{
+	padding-left: 0px;
+}
+#profile-container .profile-panel .about-table p{
 	padding-left: 0px;
 }
 
@@ -850,7 +870,6 @@ Profile
 }
 
 #profile-container .nav-tabs .active:first-child a{
-	border-left: none;
 }
 
 #profile-container .nav-tabs li:not(.active) a{
@@ -869,6 +888,8 @@ Profile
 	background-color: white;
 	padding: 10px;
 	padding-right: 15px;
+	border: solid  1px #D3E0E9;
+	border-top: none;
 }
 
 
@@ -1826,4 +1847,49 @@ textarea:-ms-input-placeholder {
 
 #chat_msg_new_message .list-group .list-group-item{
 	border-radius: 0px !important;
+}
+
+
+
+
+
+
+
+
+/*************************************************
+			Rankings
+*************************************************/
+
+#rankings table{
+	background-color: white;
+	border: solid 1px #D3E0E9;
+}
+
+#rankings thead th:first-child{
+	padding-left: 30px;
+}
+
+#rankings table img{
+	width: 22px;
+	height: 22px;
+	padding: 1px;
+	margin-right: 10px;
+}
+
+
+@media screen and (max-width: 767px) {
+	#rankings table tbody th{
+		margin-right: 20px;
+		padding-right: 50px;
+	}
+}
+
+#rankings table thead th:not(:first-child), #rankings table tbody td{
+	text-align: center;
+}
+
+#rankings table tbody p{
+	display: inline-block;
+	margin: 0px;
+	width: 20px;
 }
