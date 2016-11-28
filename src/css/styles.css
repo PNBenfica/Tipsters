@@ -1863,6 +1863,7 @@ textarea:-ms-input-placeholder {
 #rankings table{
 	background-color: white;
 	border: solid 1px #D3E0E9;
+	margin-bottom: 0px;
 }
 
 #rankings thead th:first-child{
@@ -1892,4 +1893,14 @@ textarea:-ms-input-placeholder {
 	display: inline-block;
 	margin: 0px;
 	width: 20px;
+}
+
+
+
+#rankings .pagination{
+	margin-left: 47%;
+}
+
+#rankings .page-item:hover{
+	cursor: pointer;
 }

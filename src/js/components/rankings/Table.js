@@ -7,7 +7,7 @@ export default class Table extends React.Component {
 
     render() {
 
-        const { values } = this.props
+        const { data } = this.props
 
         return (
             
@@ -16,7 +16,7 @@ export default class Table extends React.Component {
                     
                     <TableHeader />
 
-                    <TableBody values={values} />
+                    <TableBody data={data} />
 
                 </table>
             </div>
