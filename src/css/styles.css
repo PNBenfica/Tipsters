@@ -1870,6 +1870,15 @@ textarea:-ms-input-placeholder {
 	padding-left: 30px;
 }
 
+#rankings thead th i{
+	font-size: 9px;
+	margin-left: 3px;
+}
+
+#rankings thead th:not(:first-child):hover{
+	cursor: pointer;
+}
+
 #rankings table img{
 	width: 22px;
 	height: 22px;

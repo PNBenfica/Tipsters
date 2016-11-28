@@ -14,6 +14,7 @@ export default class Rankings extends React.Component {
 			filters: [{name:"Since", active: "Ever", values:["Last Week","Last Month","Ever"]},
 					  {name:"Odds over", active: "All", values:[1.1,1.2,1.3,"All"]},
 					  {name:"Sports", active: "All", values:["Football","Basketball","Tennis", "All"]}],
+			sortBy: "ROI",
 			data : [
 				{tipster: {name: "Rui Silva", img: "img/joaoalmeida.jpg"}, rank: 1, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
 				{tipster: {name: "Britta Buckmaster", img: "img/pauloteixeira.jpg"}, rank: 2, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
@@ -45,9 +46,15 @@ export default class Rankings extends React.Component {
 			this.setState({ startAt })
 	}
 
+	/*
+		@desc- function called when a table header is clicked
+	*/
+	changeSort(sortBy){
+		this.setState({ sortBy })
+	}
 
 	/*
-		@desc- function called when an letter is written in the search bar
+		@desc- function called when a filter is selected
 	*/
 	addFilter(filterName, value){
 		const filters = [...this.state.filters]
@@ -83,7 +90,7 @@ export default class Rankings extends React.Component {
 
 						<FiltersContainer filters={this.state.filters} addFilter={this.addFilter.bind(this)} addSearchFilter={this.addSearchFilter.bind(this)}/>
 						
-						<Table data={data} />
+						<Table data={data} sortBy={this.state.sortBy} changeSort={this.changeSort.bind(this)}/>
 
 						<Pagination nextPage={this.nextPage.bind(this)} previousPage={this.previousPage.bind(this)}/>
 

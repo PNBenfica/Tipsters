@@ -7,14 +7,14 @@ export default class Table extends React.Component {
 
     render() {
 
-        const { data } = this.props
+        const { data, sortBy, changeSort } = this.props
 
         return (
             
             <div class="table-responsive">
                 <table class="table table-striped">
                     
-                    <TableHeader />
+                    <TableHeader sortBy={sortBy} changeSort={changeSort} />
 
                     <TableBody data={data} />
 
