@@ -10,7 +10,7 @@ export default class TableRow extends React.Component {
                 <th scope="row"><p>{rank}.</p> <img src={tipster.img} class="img-thumbnail img-circle"/><a href="#/profile">{tipster.name}</a></th>
                 <td>{roi}%</td>
                 <td>{winpercentage}%</td>
-                <td>{avgWinOdds}%</td>
+                <td>{avgWinOdds}</td>
                 <td>{tips}</td>
                 <td>{followers}</td>
                 <td>{streak}</td>

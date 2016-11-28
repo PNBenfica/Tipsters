@@ -1,7 +1,7 @@
 import React from "react"
 
 import Pagination from "./../components/rankings/Pagination"
-import SearchBar from "./../components/rankings/SearchBar"
+import FiltersContainer from "./../components/rankings/FiltersContainer"
 import Table from "./../components/rankings/Table"
 
 export default class Rankings extends React.Component {
@@ -11,6 +11,9 @@ export default class Rankings extends React.Component {
 		this.state = {
 			startAt:0,
 			searchFilter : "",
+			filters: [{name:"Since", active: "Ever", values:["Last Week","Last Month","Ever"]},
+					  {name:"Odds over", active: "All", values:[1.1,1.2,1.3,"All"]},
+					  {name:"Sports", active: "All", values:["Football","Basketball","Tennis", "All"]}],
 			data : [
 				{tipster: {name: "Rui Silva", img: "img/joaoalmeida.jpg"}, rank: 1, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
 				{tipster: {name: "Britta Buckmaster", img: "img/pauloteixeira.jpg"}, rank: 2, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
@@ -42,6 +45,17 @@ export default class Rankings extends React.Component {
 			this.setState({ startAt })
 	}
 
+
+	/*
+		@desc- function called when an letter is written in the search bar
+	*/
+	addFilter(filterName, value){
+		const filters = [...this.state.filters]
+		let filterToUpdate = this.state.filters.find(filter => filter.name == filterName)
+		filterToUpdate.active = value
+		this.setState({ filters })
+	}
+
 	/*
 		@desc- function called when an letter is written in the search bar
 	*/
@@ -67,7 +81,7 @@ export default class Rankings extends React.Component {
 				<div class="row">
 					<div class="col-lg-12">
 
-						<SearchBar addSearchFilter={this.addSearchFilter.bind(this)}/>
+						<FiltersContainer filters={this.state.filters} addFilter={this.addFilter.bind(this)} addSearchFilter={this.addSearchFilter.bind(this)}/>
 						
 						<Table data={data} />
 

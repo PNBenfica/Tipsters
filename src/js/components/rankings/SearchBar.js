@@ -10,13 +10,9 @@ export default class SearchBar extends React.Component {
     render() {
 
         return (
-            <div id="search-bar" class="row">
-                <div class="col-xs-12">
-                    <form id="demo-2">
-                        <input onChange={this.handleChange.bind(this)} type="search" placeholder="Search" />
-                    </form>
-                </div>
-            </div>
+            <form>
+                <input onChange={this.handleChange.bind(this)} type="search" placeholder="Search" />
+            </form>
         )
     }
 }

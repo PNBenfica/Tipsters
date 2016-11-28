@@ -1906,13 +1906,15 @@ textarea:-ms-input-placeholder {
 }
 
 
+/*ranking search bar*/
+
 #rankings #search-bar{
 	margin-bottom: 50px;
 }
 
 #rankings #search-bar form{
 	position:absolute;
-	right: 20px;
+	right: 65px;
 }
 #rankings #search-bar form input {
 	outline: none;
@@ -1966,4 +1968,48 @@ textarea:-ms-input-placeholder {
 }
 #rankings #search-bar form input::-webkit-input-placeholder {
 	color: transparent;
+}
+
+
+/*rankings filter*/
+
+
+#rankings #ranking-filters i{
+	position: absolute;
+	right: 30px;
+	font-size: 17px;
+	width: 34px;
+	height: 38px;
+	text-align: center;
+	padding-top: 10px;
+	
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+
+#rankings #ranking-filters i:hover{
+	cursor: pointer;
+	background-color: white;
+}
+
+#ranking-filters-collapse .filter-list{
+	margin-right: 50px;
+}
+
+
+#ranking-filters-collapse .filter-list h5{
+	font-size: 14px;
+	font-weight: 700;
+	font-family: Lato,sans-serif;
+}
+
+#ranking-filters-collapse .filter-list p:hover{
+	color: #2DC3E8;
+	cursor: pointer;
+}
+
+#ranking-filters-collapse .filter-list p.active, #ranking-filters-collapse .filter-list p.active:hover{
+	color: #2DC3E8;
+	cursor: default;
 }
