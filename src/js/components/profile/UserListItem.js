@@ -7,9 +7,9 @@ export default class UserListItem extends React.Component {
         const {name, img} = this.props;
 
         return (
-            <a href="#/profile" class="img-wrapper col-xs-2">
+            <a href="#/profile" class="img-wrapper">
                 <img src={img} />
-                <p class="caption">{name}</p>
+                <p class="caption">{name.substring(0,15)}</p>
             </a>
         );
     }

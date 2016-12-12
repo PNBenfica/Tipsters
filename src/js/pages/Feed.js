@@ -10,7 +10,7 @@ export default class Feed extends React.Component {
 	    return (
 			<PageWithTrendBar>
 
-				<div class="col-lg-6 col-md-8 col-lg-push-1">
+				<div class="col-lg-6 col-md-8 col-lg-push-1 feed-container">
 					<PostsContainer />
 				</div>
 

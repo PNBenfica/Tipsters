@@ -14,7 +14,7 @@ export default class PostBuyBody extends React.Component {
             <div class="container-fluid">
                 <div class= "row">
 
-                    <InfoContainer lastTips={lastTips} profit={profit} wins={wins} losses={losses} />
+                    <InfoContainer totalOdd={totalOdd} lastTips={lastTips} profit={profit} wins={wins} losses={losses} />
 
                     <TipsToBuyInfo totalOdd={totalOdd} selections={selections} price={price}/>
                                         

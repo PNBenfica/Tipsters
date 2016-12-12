@@ -69,6 +69,7 @@
 .sidebar-item-active{
     border-left-color: #2DC3E8 !important;
     color: white !important;
+    background-color: #2E2E2E;
 }
 
 

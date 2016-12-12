@@ -120,7 +120,8 @@ Nav bar user avatar
 }
 
 .nav-bar-avatar i{
-	margin-top: 15px;
+	position: absolute;
+	top: 15px;
 }
 
 
@@ -383,14 +384,17 @@ Feed
 }
 
 
+.feed-container {
+	padding: 0px;
+}
 
 .feed-post{
 	border-style: solid;
 	border-width: 1px;
 	border-color: #D3E0E9;
-	border-top-width: 2px;
+	/*border-top-width: 2px;
 	border-bottom-left-radius: 10px !important;
-	border-bottom-right-radius: 10px !important;
+	border-bottom-right-radius: 10px !important;*/
 	border-top-color: #2DC3E8;
 
 	margin-bottom: 40px;
@@ -543,6 +547,7 @@ Feed
 	background-color: transparent;
 	padding-top: 0px;
 	padding-bottom: 0px;
+	border: none;
 }
 
 .feed-post .panel-footer a{
@@ -553,7 +558,7 @@ Feed
 }
 
 .feed-post .panel-footer a:hover{
-	color: #F47238;
+	/*color: #2DC3E8;*/
 	cursor: pointer;
 	background-color: rgba(235, 234, 230, 0.3);
 }
@@ -563,9 +568,9 @@ Feed
 }
 
 .feed-post .panel-footer a:first-child{
-	border-right-style: solid;
+/*	border-right-style: solid;
 	border-right-width: 1px;
-	border-right-color: rgba(26, 178, 172, 0.3);
+	border-right-color: rgba(26, 178, 172, 0.3);*/
 }
 
 .feed-post .feed-post-tipster-history{
@@ -712,12 +717,12 @@ Profile
 
 
 #profile-container .main-avatar #topimage{
-	height: 80px;
+	height: auto;
+	min-height: 80px;
 	width: 100%
 }
 
 #profile-container .main-avatar{
-	background-color: white;
 	margin-bottom: 30px;
 }
 
@@ -730,31 +735,22 @@ Profile
 	padding-left: 35px;
 }
 
-#profile-container .main-avatar #profile-image-wrapper div{
-	width: 106px;
-	height: 106px;
-	padding: 0px;
-	margin: 0;
-	border-style: solid;
-	border-width: 1px;
-	background-color: white;
-	border-color: rgba(234,222,222, 0.9);
-}
-
 #profile-container .main-avatar #profile-image-wrapper img{
 	width: 100px;
 	height: 100px;
-    margin: 2px;
+	border-radius: 0px;
 }
 
 #profile-container .main-avatar #profile-name{
 	color: white;
-	font-size: 30px;
-	font-weight: 500;
 
 	position: absolute;
-	top: 32px;
+	top: 40px;
 	left: 175px;
+
+	font-size: 25px;
+	font-weight: 700;
+	font-family: Lato,sans-serif;
 }
 
 #profile-container .main-avatar .container{
@@ -763,9 +759,10 @@ Profile
 	width: 100%;
 
 	background-color: #FBFBFB;
-	border-style: solid;
+/*	border-style: solid;
 	border-width: 1px;
-	border-color: rgba(234,222,222, 0.9);
+	border-color: rgba(234,222,222, 0.9);*/
+	border: solid 1px rgba(234,222,222, 1) !important;
 }
 
 #profile-container .main-avatar .container .btn-toolbar{
@@ -775,6 +772,18 @@ Profile
 #profile-container .main-avatar .container .btn-toolbar button{
 	margin-right: 20px;
 	width: 150px;
+	border: solid 1px #37454A !important;
+	color: #37454A;
+	background-color: transparent;
+}
+
+#profile-container .main-avatar .container .btn-toolbar button:hover{
+	background-color: #37454A;
+	color: white;
+	
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
 }
 
 #profile-container .main-avatar .container .btn-toolbar button, #profile-container .main-avatar .container .btn-toolbar button:active, #profile-container .main-avatar .container .btn-toolbar button:visited {
@@ -830,12 +839,10 @@ Profile
 
 #profile-container .profile-panel{
 	border: solid  1px #D3E0E9;
+	border-top-color: #2DC3E8;
 }
 
 #profile-container .profile-panel .panel-heading{
-	border-bottom-width: 2px;
-	border-bottom-color: #2DC3E8;
-
 	color: #333;
 	padding-left: 20px;
 }
@@ -851,7 +858,7 @@ Profile
 }
 
 #profile-container .profile-panel .about-table{
-	padding-left: 0px;
+	padding-left: 5px;
 }
 #profile-container .profile-panel .about-table p{
 	padding-left: 0px;
@@ -866,7 +873,7 @@ Profile
 
 #profile-container .nav-tabs .active a{
 	border-top-color: #2DC3E8;
-	border-top-width: 2px;
+	border-top-width: 1px;
 }
 
 #profile-container .nav-tabs .active:first-child a{
@@ -887,20 +894,21 @@ Profile
 	margin-bottom: 40px;
 	background-color: white;
 	padding: 10px;
-	padding-right: 15px;
 	border: solid  1px #D3E0E9;
 	border-top: none;
+	margin-left: 0px;
 }
 
 
 #profile-container .user-list-container .img-wrapper{
-	width: 84px;
-	height: 84px;
+	width: 104px;
+	height: 104px;
+	position: relative;
 }
 
 #profile-container .user-list-container img{
-	width: 80px;
-	height: 80px;
+	width: 100px;
+	height: 100px;
 	margin: 2px;
 }
 
@@ -908,24 +916,18 @@ Profile
 	color: white;
 	background-color: rgba(0,0,0, 0.3);
 
-	position: absolute;
-	top: 65px;
-	left: 17px;
+	position: absolute; 
+	top: 40px; 
+	left: 0; 
+	width: 96px; 
+	margin-left: 4px;
+	/*top: 65px;*/
+	/*left: 17px;*/
 	padding-left: 3px;
-	width: 80px;
-	height: 15px;
+	/*height: 15px;*/
 	font-size: 12px;
 }
 
-#profile-container .user-list-container .img-wrapper .see-all-users{
-	margin-top: 35px;
-	margin-left: 10px;
-	min-width: 70px;
-	color: #F47238;
-}
-#profile-container .user-list-container .img-wrapper .see-all-users i{
-    color: #F47238;
-}
 
 /*************************************************
 Sports
@@ -1306,8 +1308,10 @@ Buttons
 	min-height: 20px;
 	padding: 2px;
 	font-size: 60%;
-	border-radius: 20% !important;
-}
+
+	font-size: 8px;
+	font-weight: 700;
+	font-family: Lato,sans-serif;}
 
 .my-sucess-button:hover{
 	color: white;
@@ -1322,8 +1326,10 @@ Buttons
 	min-height: 20px;
 	padding: 2px;
 	font-size: 60%;
-	border-radius: 20% !important;
-}
+
+	font-size: 8px;
+	font-weight: 700;
+	font-family: Lato,sans-serif;}
 
 .my-fail-button:hover{
 	color: white;
@@ -1588,7 +1594,7 @@ Buttons
 }
 
 .notifications-container .highlighted .media{
-	background-color: #EDF2FA;
+	background-color: #F5F5F5;
 }
 .dropdown-menu .highlighted .media{
 	background-color: #F7F7F7;
@@ -1866,6 +1872,14 @@ textarea:-ms-input-placeholder {
 	margin-bottom: 0px;
 }
 
+#rankings table thead th{
+	/*border-bottom:none !important;*/
+	/*border-color: #D3E0E9;*/
+	border-bottom-color: #2DC3E8;
+	border-bottom-width: 1px;
+
+}
+
 #rankings thead th:first-child{
 	padding-left: 30px;
 }
@@ -1904,6 +1918,14 @@ textarea:-ms-input-placeholder {
 	width: 20px;
 }
 
+
+#rankings table tbody a{
+	color: #2B608C;
+	font-weight: normal;
+}
+#rankings table tbody a:hover{
+	color: #337ab7;
+}
 
 
 #rankings .pagination{
