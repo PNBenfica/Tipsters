@@ -1,10 +1,16 @@
-import React from "react";
+import React from "react"
+import { connect } from "react-redux"
 
-import {ButtonToolbar} from "react-bootstrap";
+import { newMessage } from "../../actions/messagesActions"
 
+import {ButtonToolbar} from "react-bootstrap"
+
+@connect()
 export default class MainAvatar extends React.Component {
 
     render() {
+
+        console.log(this.props)
 
         const { following, toggleFollow } = this.props
 
@@ -23,14 +29,12 @@ export default class MainAvatar extends React.Component {
 
                 <div class="container">
                     <ButtonToolbar>
-                        <button type="button" class="btn hidden-xs" onClick={() => toggleFollow()}><i class={followButton.icon} aria-hidden="true"></i> {followButton.text}</button>
-                        <button type="button" class="btn hidden-xs"><i class="fa fa-envelope" aria-hidden="true"></i> Message</button>
-                        <button type="button" class="btn visible-xs"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
-                        <button type="button" class="btn visible-xs"><i class="fa fa-envelope" aria-hidden="true"></i></button>
+                        <button type="button" class="btn" onClick={() => toggleFollow()}><i class={followButton.icon} aria-hidden="true"></i> <span class="hidden-xs">{followButton.text}</span></button>
+                        <button type="button" class="btn" onClick={() => this.props.dispatch(newMessage("João Almeida"))}><i class="fa fa-envelope" aria-hidden="true"></i> <span class="hidden-xs">Message</span></button>
                     </ButtonToolbar>
                 </div>
 
             </div>
-        );
+        )
     }
 }

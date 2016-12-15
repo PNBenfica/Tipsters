@@ -6,7 +6,7 @@ import PostsContainer from "../components/PostsContainer";
 export default class Feed extends React.Component {
 
 	render() {
-        
+        console.log(this.props)
 	    return (
 			<PageWithTrendBar>
 

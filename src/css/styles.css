@@ -751,6 +751,8 @@ Profile
 	font-size: 25px;
 	font-weight: 700;
 	font-family: Lato,sans-serif;
+
+	background-color: rgba(0,0,0,0.2);
 }
 
 #profile-container .main-avatar .container{
@@ -775,6 +777,7 @@ Profile
 	border: solid 1px #37454A !important;
 	color: #37454A;
 	background-color: transparent;
+	z-index: 1000;
 }
 
 #profile-container .main-avatar .container .btn-toolbar button:hover{
@@ -802,24 +805,21 @@ Profile
     #profile-container .main-avatar .container .btn-toolbar button{
 		width: 60px;
     }
-	#profile-container .main-avatar #topimage {
-		content:url("../img/stadium.png");
-		/*width: 120%;*/
-	}
 }
 @media (max-width: 400px) {
+
     #profile-container .main-avatar .container .btn-toolbar button{
 		width: 55px;
-		margin-right: 10px;
+		margin-right: 0px;
     }
 	#profile-container .main-avatar #profile-image-wrapper{
 		padding-left: 10px;
 	}
 	#profile-container .main-avatar #profile-name{
 		left: 110px;
-		font-size: 25px;
+		font-size: 20px;
 	}
-	#profile-container .main-avatar #profile-image-wrapper div{
+	#profile-container .main-avatar #profile-image-wrapper{
 		width: 80px;
 		height: 80px;
 	}
@@ -1684,7 +1684,7 @@ Buttons
 
 .chat-panel-message .panel-heading{
 	padding: 0px;
-	background-color: #F7F7F7;
+	background-color: #2B2B2B;
 }
 
 .chat-panel-message .panel-heading .panel-title{
@@ -1692,7 +1692,7 @@ Buttons
 }
 
 .chat-panel-message .panel-heading .panel-title a{
-	color: #1e3948;
+	color: white;
 	font-weight: bold;
 	padding: 8px 10px 8px 15px;
 	width: 80%;
@@ -1701,7 +1701,7 @@ Buttons
 }
 
 .chat-panel-message .panel-heading .panel-title i{
-	color: #1e3948;
+	color: white;
 	padding: 4px 4px 4px 4px;
 	margin-right: 5px;
 	margin-top: 5px;
@@ -1713,7 +1713,7 @@ Buttons
 
 .chat-panel-message .ni.collapse {
 	display: block;
-	height: 240px !important;
+	height: 280px !important;
 }
 
 .chat-panel-message .panel-heading:hover{
@@ -1768,7 +1768,7 @@ textarea:-ms-input-placeholder {
 }
 
 .chat-panel-message:not(#hidden-messages) .panel-collapse{
-	height: 240px;
+	height: 280px;
 }
 
 .chat-panel-message .panel-collapse{

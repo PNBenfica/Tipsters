@@ -1,6 +1,6 @@
 import React from "react"
-import { connect } from "react-redux";
-import { closeMessage, sendMessage, newMessage } from "../../actions/messagesActions";
+import { connect } from "react-redux"
+import { closeMessage, sendMessage, newMessage } from "../../actions/messagesActions"
 
 import ChatPanel from "./ChatPanel"
 import NewMessagePanel from "./newmessage/NewMessagePanel"
@@ -10,7 +10,7 @@ import HiddenMessagesPanel from "./hiddenmesssages/HiddenMessagesPanel"
   return {
     messages: store.messages.messages,
     openMessagesIds: store.messages.openMessagesIds,
-  };
+  }
 })
 export default class BottomChatContainer extends React.Component {
 
@@ -109,7 +109,7 @@ export default class BottomChatContainer extends React.Component {
     toggleMessage(messageId){
         let open = [...this.state.open]
         const index = open.findIndex(ele => ele.id === messageId)
-        open[index]._in = !open[index]._in;
+        open[index]._in = !open[index]._in
         this.setState({ open })
     }
 
@@ -136,9 +136,9 @@ export default class BottomChatContainer extends React.Component {
 
 
     swap(array, x, y){
-        const temp = array[y];
-        array[y] = array[x];
-        array[x] = temp;
+        const temp = array[y]
+        array[y] = array[x]
+        array[x] = temp
     }
 
     openHiddenMessage(messageId){
@@ -152,7 +152,7 @@ export default class BottomChatContainer extends React.Component {
 
     renderMessagePanel(message, i){
         const index = this.state.open.findIndex(ele => ele.id === message.id)
-        const _in = this.state.open[index]._in;
+        const _in = this.state.open[index]._in
         return <ChatPanel key={i} message={message} textInput={this.getInputText(message.id)} sendMessage={this.sendMessage.bind(this, message.id)} onInputChange={this.onInputChange.bind(this, message.id)} in={_in} toggle={this.toggleMessage.bind(this, message.id)} close={this.closeMessage.bind(this, message.id)}/>
     }
 

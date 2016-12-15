@@ -45,7 +45,7 @@ export default function reducer(state={
         case "NEW_MESSAGE": {
             let openMessagesIds = [...state.openMessagesIds]
             let messages = [...state.messages]
-            if (openMessagesIds.includes("NEW_MESSAGE")){
+            if (action.payload){
                 const destUser = action.payload
 
                 const id = Math.floor((Math.random() * 10000) + 10)
@@ -53,7 +53,7 @@ export default function reducer(state={
                 openMessagesIds = [id, ...openMessagesIds]
                 openMessagesIds = openMessagesIds.filter(id => id != "NEW_MESSAGE")
             }
-            else{
+            else if(!openMessagesIds.includes("NEW_MESSAGE")) {
                 openMessagesIds = [ "NEW_MESSAGE" , ...openMessagesIds]
             }
 

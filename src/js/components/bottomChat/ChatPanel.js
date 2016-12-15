@@ -33,17 +33,17 @@ export default class ChatPanel extends React.Component {
     }
 
     getBodyHeights(){
-        let bodyHeight = 205, inputHeight = 35
+        let bodyHeight = 245, inputHeight = 35
         const inputLength = this.props.textInput.length
 
         if (inputLength > 63){
-            bodyHeight = 160; inputHeight = 80
+            bodyHeight = 200; inputHeight = 80
         }
         else if (inputLength > 42){
-            bodyHeight = 175; inputHeight = 65
+            bodyHeight = 215; inputHeight = 65
         }
         else if (inputLength > 21){
-            bodyHeight = 190; inputHeight = 50
+            bodyHeight = 230; inputHeight = 50
         }
 
         return { bodyHeight, inputHeight }
