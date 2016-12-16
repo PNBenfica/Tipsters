@@ -921,14 +921,47 @@ Profile
 	left: 0; 
 	width: 96px; 
 	margin-left: 4px;
-	/*top: 65px;*/
-	/*left: 17px;*/
 	padding-left: 3px;
-	/*height: 15px;*/
 	font-size: 12px;
 }
 
 
+@media (max-width: 1113px) and (min-width: 992px) , (max-width: 1339px) and (min-width: 1205px) {
+
+	#profile-container .user-list-container img{
+		width: 120px;
+		height: 120px;
+	}
+
+	#profile-container .user-list-container .img-wrapper .caption{
+		top: 50px; 
+		width: 116px; 
+	}
+}
+
+#profile-container .user-list-container .see-all-followers{
+	width: 100px;
+	height: 100px;
+}
+
+#profile-container .user-list-container .see-all-followers i{
+	text-align: center !important;
+	margin-left: 35px;
+	margin-top: 10px;
+	padding-top: 7px;
+	width: 40px;
+	height: 40px;
+	font-size: 25px;
+	color: #333;
+	border: solid 1px #333;
+	border-radius: 100%;
+}
+
+#profile-container .user-list-container .see-all-followers i:hover{
+	color: white;
+	background-color: #333;
+	cursor: pointer;
+}
 /*************************************************
 Sports
 *************************************************/

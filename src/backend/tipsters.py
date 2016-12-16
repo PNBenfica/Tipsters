@@ -62,7 +62,7 @@ class TipstersApi(remote.Service):
         
         return Hello(greeting="Hello World")
     
-    @endpoints.method(UserCreationForm, Hello, path = "registerUser", http_method='POST', name = "registerUser")
+    @endpoints.method(UserCreationForm, Hello, path = "users", http_method='POST', name = "registerUser")
     def register_user(self, request):
         name, email, pwd = request.name, request.email, request.pwd
         UserManager.register_user(name, email, pwd)

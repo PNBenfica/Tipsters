@@ -1,6 +1,6 @@
 import React from "react";
 
-import ProfilePanel from "./ProfilePanel";
+import ProfilePanel from "./../ProfilePanel";
 
 export default class Stats extends React.Component {
 
