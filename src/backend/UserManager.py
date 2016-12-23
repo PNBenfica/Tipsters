@@ -4,12 +4,13 @@ from google.appengine.ext import ndb
 from models import User, UserForm, UserMiniForm, Post
 from datetime import datetime
 from PostManager import toPostMessage
+from endpoints.api_exceptions import ConflictException
 
 def register_user(name, email, pwd):    
     if _userAlreadyExist(name):
-        raise endpoints.BadRequestException("Username already exists")
+        raise endpoints.ConflictException("Username already exists")
     if _emailAlreadyExist(email):
-        raise endpoints.BadRequestException("Email already being used")
+        raise endpoints.ConflictException("Email already being used")
     
     hashPwd = _hashPassword(pwd)
     User(id=name, email=email, pwd=hashPwd).put()
@@ -40,7 +41,9 @@ def getUserProfile(username):
 def follow_user(user, userToFollowName):
     userToFollow = getUser(userToFollowName)
     
-    if userToFollowName not in user.followingKeys:
+    if userToFollowName in user.followingKeys:
+        raise ConflictException("Already following " + userToFollowName)
+    else:
         user.followingKeys.append(userToFollowName)
         userToFollow.followersKeys.append(user.key.id())
         

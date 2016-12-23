@@ -29,13 +29,19 @@ def _storeTips(tips):
 # @return - key of the tip model stored
 def _storeTip(tip):
     tip_key = _getTipModelKey(tip)
-    tip = { "choiceId" : tip.choiceId, "odd": tip.odd, "key" : tip_key }
+    tip = { "choiceId" : tip.choiceId, "odd": _getTipOdd(tip), "key" : tip_key }
     TipModel(**tip).put()
     return tip_key
 
 def _getTipModelKey(tip):
     bet_key = getBetKey(tip.sportId, tip.leagueId, tip.matchId, tip.betId)
     return gaeUtils.generateKey(TipModel, bet_key)
+
+def _getTipOdd(tip):
+    bet_key = getBetKey(tip.sportId, tip.leagueId, tip.matchId, tip.betId)
+    bet = Bet(bet_key.get())
+    choice = bet.getChoice(tip.choiceId)
+    return float(choice["odd"])
 
 def _getPost(postKey):
     return ndb.Key(urlsafe=postKey).get()

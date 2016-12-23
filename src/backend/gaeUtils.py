@@ -1,10 +1,15 @@
 
 from google.appengine.ext import ndb
+from endpoints.api_exceptions import NotFoundException
 
 # @desc - retrieves from the datastore the entity of type 'modelClass', with id = 'code' and 'parentKey'
 def fetchEntity(modelClass, code, parentKey = None):
     key = ndb.Key(modelClass, code, parent=parentKey)
-    return key, key.get()
+    entity = key.get()
+    if entity is None:
+        raise NotFoundException("Not found")
+    else:
+        return key, key.get()
 
 
 # @usage - getKeyByAncestors([SportModel, sportId], [EventModel, eventId], [MatchModel, matchId], [BetModel, betId])

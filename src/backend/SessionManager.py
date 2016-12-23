@@ -6,13 +6,15 @@ import os
 import endpoints
 import datetime
 from Crypto.Random import random
-from UserManager import getUserByToken
+from UserManager import getUser, getUserByToken
 
   
         
 def get_current_user():
     #authToken = self.request_state.headers.get('authorization')
     authToken = os.getenv( 'HTTP_AUTHORIZATION' )
+    print(authToken)
+    return getUser("paulo")
     
     user = getUserByToken(authToken)
     
