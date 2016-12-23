@@ -6,6 +6,7 @@ import Chart from 'chart.js'
 import BarChart from './BarChart';
 import DoughnutChart from './DoughnutChart';
 import ProfilePanel from "./../ProfilePanel"
+import SportsFiltersList from "./SportsFiltersList"
 
 export default class Stats extends React.Component {
 
@@ -84,14 +85,71 @@ export default class Stats extends React.Component {
 		data.betStats = data.selections
 		this.state = {
 			data : data,
-    		active: data
+    		active: data,
+    		filters: []
 		}
 	}
 
-	changeStats(index){
-		if (typeof this.state.active.selections[index].selections === "undefined")
-			this.state.active.selections[index].selections = this.state.active.selections
-		this.setState( { active: this.state.active.selections[index] } )
+	removeSiblingFilters(filterName, allSelections){
+		let filters = [...this.state.filters]
+		allSelections.forEach(
+			selection => {
+    			filters = this.sliceArrayFrom(filters, selection.name)
+			}
+		)
+		return filters
+	}
+
+	containsFilter(filterName){
+		return this.state.filters.includes(filterName)
+	}
+
+	addFilter(filterName, allSelections){
+		if (!this.containsFilter(filterName)){
+			const filters = [...this.removeSiblingFilters(filterName, allSelections), filterName]
+			this.setState({ filters })
+		}
+	}
+
+	removeFilter(filterName){
+		const filters = this.sliceArrayFrom(this.state.filters, filterName)
+		let active = this.state.data
+		if (filters.length > 0){
+			const lastFilter = filters[filters.length - 1];
+			active = this.findSelection(active.selections, lastFilter)
+		}
+		this.setState({ filters, active })
+	}
+
+	findSelection(selections, name){
+
+		const selection = selections.find(selection => selection.name == name)
+		if (typeof selection === 'undefined')
+			return this.findSelection(selections.map(selection => selection.selections).reduce((a,b)=>a.concat(b), []), name)
+		else
+			return selection
+	}
+
+	/* 
+	* @desc removes all elements starting from str
+	* @return the sliced array
+	*/
+	sliceArrayFrom(array, str){
+		const index = array.findIndex(ele => ele === str)
+		if (index != -1){
+			return array.slice(0, index)
+		}
+		else{
+			return array
+		}
+	}
+
+	onPieClick(index){
+		const pieClicked = this.state.active.selections[index]
+		if (typeof pieClicked.selections === "undefined")
+			pieClicked.selections = this.state.active.selections
+		this.addFilter(pieClicked.name, this.state.active.selections)
+		this.setState( { active: pieClicked } )
 	}
 
     render() {
@@ -99,9 +157,10 @@ export default class Stats extends React.Component {
         return (
             <ProfilePanel header="Stats">
 
-		        <DoughnutChart data={this.state.active.selections} changeStats={this.changeStats.bind(this)} />
+		        <DoughnutChart data={this.state.active.selections} onPieClick={this.onPieClick.bind(this)} />
 
 		        <br/>
+		        <SportsFiltersList list={this.state.filters} removeFilter={this.removeFilter.bind(this)} />
 		        <br/>
 
 		        <BarChart data={this.state.active.betStats} />

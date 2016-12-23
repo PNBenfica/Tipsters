@@ -962,6 +962,22 @@ Profile
 	background-color: #333;
 	cursor: pointer;
 }
+
+
+/****************************
+profile-stats
+*****************************/
+
+#profile-container .profile-filter-button {
+	margin-right: 10px;
+}
+
+#profile-container .profile-filter-button i{
+	color: red;
+	margin-right: 5px;
+}
+
+
 /*************************************************
 Sports
 *************************************************/
@@ -2078,9 +2094,3 @@ textarea:-ms-input-placeholder {
 	cursor: default;
 }
 
-.doughnut-legend-icon{
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin-right: 5px;
-}

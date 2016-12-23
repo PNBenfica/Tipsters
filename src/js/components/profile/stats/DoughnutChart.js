@@ -9,7 +9,7 @@ export default class DoughnutChart extends React.Component {
 
 	chartClicked(evt){
 		const index = this.refs.chart.chart_instance.getElementAtEvent(evt)[0]._index
-		this.props.changeStats( index )
+		this.props.onPieClick( index )
 	}
 
 
