@@ -16,7 +16,7 @@ export default class BarChart extends React.Component {
     *       [{..., [nWin1, ]}, {..., [nWin2, ]}] => [nWin1, nWin2]
     */
     getWonBets(data){
-        return this.getTotalBetsList(data, 0)
+        return data.map(stat => stat.values[0])
     }
 
     /*
@@ -24,7 +24,7 @@ export default class BarChart extends React.Component {
     *       [{..., [, nLost1]}, {..., [nLost2, ]}] => [nLost1, nLost2]
     */
     getLostBets(data){
-        return this.getTotalBetsList(data, 1)
+        return data.map(stat => stat.values[1])
     }
 
     /*
