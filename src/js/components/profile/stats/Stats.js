@@ -7,6 +7,7 @@ import BarChart from './BarChart';
 import DoughnutChart from './DoughnutChart';
 import ProfilePanel from "./../ProfilePanel"
 import SportsFiltersList from "./SportsFiltersList"
+import TimeSelector from "./TimeSelector"
 
 export default class Stats extends React.Component {
 
@@ -86,7 +87,8 @@ export default class Stats extends React.Component {
 		this.state = {
 			data : data,
     		active: data,
-    		filters: []
+    		filters: [],
+    		timeFilter: "Ever",
 		}
 	}
 
@@ -112,6 +114,13 @@ export default class Stats extends React.Component {
 	}
 
 	removeFilter(filterName){
+		if (this.state.timeFilter === filterName)
+			this.removeTimeFilter()
+		else
+			this.removeSportFilter(filterName)
+	}
+
+	removeSportFilter(filterName){
 		const filters = this.sliceArrayFrom(this.state.filters, filterName)
 		let active = this.state.data
 		if (filters.length > 0){
@@ -152,15 +161,32 @@ export default class Stats extends React.Component {
 		this.setState( { active: pieClicked } )
 	}
 
+	onTimeSelectorOptionClick(timeFilter){
+		this.setState( { timeFilter } )
+	}
+
+	removeTimeFilter(){
+		this.setState( { timeFilter: "Ever" } )
+	}
+
+	getFiltersList(){
+		let filters = this.state.filters
+		if (this.state.timeFilter !== "Ever")
+			filters = filters.concat(this.state.timeFilter)
+		return filters
+	}
+
     render() {
 
         return (
             <ProfilePanel header="Stats">
 
+				<TimeSelector active={this.state.timeFilter} onOptionClick={this.onTimeSelectorOptionClick.bind(this)} />
+
 		        <DoughnutChart data={this.state.active.selections} onPieClick={this.onPieClick.bind(this)} />
 
 		        <br/>
-		        <SportsFiltersList list={this.state.filters} removeFilter={this.removeFilter.bind(this)} />
+		        <SportsFiltersList list={this.getFiltersList()} removeFilter={this.removeFilter.bind(this)} />
 		        <br/>
 
 		        <BarChart data={this.state.active.betStats} />
