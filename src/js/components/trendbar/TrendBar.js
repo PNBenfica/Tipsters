@@ -1,7 +1,7 @@
-import React from "react";
+import React from "react"
 
-import TrendEvents from "./TrendEvents";
-import TrendUsers from "./TrendUsers";
+import TrendEvents from "./trendEvents/TrendEvents"
+import TrendUsers from "./trendUsers/TrendUsers"
 
 export default class TrendBar extends React.Component {
 
@@ -12,6 +12,6 @@ export default class TrendBar extends React.Component {
             <TrendEvents />
             <TrendUsers />
         </div>
-    );
+    )
   }
 }

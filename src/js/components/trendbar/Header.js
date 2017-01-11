@@ -1,17 +1,17 @@
-import React from "react";
+import React from "react"
 
 export default class Header extends React.Component {
 
-  render() {
+    render() {
 
-    const {title} = this.props;
+        const {title} = this.props
 
-    return (
-        <div class="panel-heading">
-            <h3 class="panel-title">
-            	{title}
-            </h3>
-        </div>
-    );
-  }
+        return (
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    {title}
+                </h3>
+            </div>
+        )
+    }
 }

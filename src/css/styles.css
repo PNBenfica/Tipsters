@@ -193,7 +193,7 @@ Notifications dropdown
 
 
 /*******************************
-trend-bar-item
+trend-bar-panel
 ********************************/
 
 .affix{
@@ -210,32 +210,34 @@ trend-bar-item
 
 
 
-.trend-bar-item{
-	border-style: solid;
+.trend-bar-panel{
+	border: none;
+	box-shadow: none;
+	/*border-style: solid;
 	border-width: 1px;
-	border-color: #D3E0E9;
+	border-color: #D3E0E9;*/
+	/*box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 8px 0px, rgba(0, 0, 0, 0.065) 0px 3px 5px 0px;*/
 	margin-bottom: 35px;
 	padding-bottom: 0px;
 	padding-left: 0px;
 	padding-top: 5px;
 
-	/*box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 8px 0px, rgba(0, 0, 0, 0.065) 0px 3px 5px 0px;*/
 }
 
-.trend-bar-item .panel-heading{
+.trend-bar-panel .panel-heading{
 	color: #333
 	background-color: white;
 	padding-left: 20px;
 }
 
-.trend-bar-item .panel-heading small{
+.trend-bar-panel .panel-heading small{
 	margin-left: 3px;
 	color: #3097d1;
 	padding-top: 0px;
 	font-weight: 500;
 }
 
-.trend-bar-item .panel-heading .small-text{
+.trend-bar-panel .panel-heading .small-text{
 	color: #3097d1;
 	padding-top: 3px;
 	margin-left: 3px;
@@ -243,124 +245,90 @@ trend-bar-item
 	font-size: 11px;
 }
 
-.trend-bar-item .panel-heading .panel-title {
+.trend-bar-panel .panel-heading .panel-title {
 	font-size: 14px;
-	font-weight: 700;
+	font-weight: bold;
 	font-family: Lato,sans-serif;
 }
 
 
-.trend-bar-item .panel-heading .panel-title i {
+.trend-bar-panel .panel-heading .panel-title i {
 	margin-right: 5px;
 }
 
-.trend-bar-item .panel-body{
-	padding: 0px;
-	padding-top: 0px;
-	padding-bottom: 2px;
+.trend-bar-panel .panel-body{
+	padding: 0px 15px 0px 15px;
 	margin-bottom: 0px;
-	padding-bottom: 0px;
 }
 
-
-
-.trend-events-container{
-	padding: 15px;
-	padding-top: 0px;
-	padding-bottom: 0px;
-}
-
-.trend-events-container .list-group-item{
-	margin-top: 10px;
-}
-
-.trend-events-container .trend-event{
+.trend-bar-panel .trend-bar-item .panel{
 	border-color: #E5E6E9;
 }
 
-.trend-events-container .trend-event a{
+.trend-bar-panel .trend-bar-item a{
 	display:block;
-	padding-top: 5px;
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-bottom: 0px;
+	padding: 5px 15px 0px 15px;
 }
 
-.trend-events-container .trend-event a:hover, .trend-events-container .trend-event a:hover .panel-footer{
+.trend-bar-panel .trend-bar-item a:hover, .trend-bar-panel .trend-bar-item a:hover .panel-footer, .trend-bar-panel .trend-bar-item a:hover .trend-user button{
 	background-color: #FAFAFA;
 }
 
-.trend-events-container .trend-event .trend-event-team{
+.trend-bar-panel .trend-bar-item p{
+	display: inline-block;
 	font-weight: bold;
-	color: #365899;
 	font-size: 14px;
+	color: #1e3948;
+	margin: 0px;
 }
 
-.trend-events-container .trend-event .trend-event-team img{
+.trend-bar-panel .trend-bar-item .trend-event .trend-event-team img{
 	width: 24px;
 	height: 24px;
-	margin-right: 8px;
-	margin-left: 5px;
-	margin-bottom: 5px;
+	margin: 0px 8px 5px 5px;
 }
 
-.trend-events-container .trend-event .panel-footer{
-	padding: 0px;
-	margin-bottom: 0px;
-	padding-bottom: 3px;
+.trend-bar-panel .trend-bar-item .trend-event .panel-footer{
+	padding: 0px 0px 3px 0px;
 	background-color: white;
 	text-align: center;
 }
-.trend-events-container .trend-event .panel-footer span{
+.trend-bar-panel .trend-bar-item .trend-event .panel-footer span{
 	font-size: 11px;
 	color: #90949c;
 }
 
 
 
-.trend-bar-item .trend-user{
-	margin-top: 0px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	padding-left: 15px;
+.trend-bar-panel .trend-user{
+	padding-top: 5px;
+	padding-bottom: 10px;
 }
 
-.trend-bar-item .trend-user img{
+.trend-bar-panel .trend-user img{
 	width: 40px;
     height: 40px;
 }
 
-.trend-bar-item .trend-user .panel-title{
-	font-size: 14px;
-}
 
-.trend-bar-item .trend-user .panel-title a{
-	color: #1e3948;
-	font-weight: bold;
-}
-
-.trend-bar-item .small-text{
+.trend-bar-panel .small-text{
 	font-size: 11px;
 	color: #90949c;
 }
 
-.trend-bar-item .trend-user .small-text{
-}
-
-.trend-bar-item .trend-user button {
+.trend-bar-panel .trend-user button {
 	padding-right: 2px;
 	font-size: 12px;
 	border-color: transparent;
 	border-left-color: rgba(0,0,0,0.15);
 }
 
-.trend-bar-item .trend-user button i{
+.trend-bar-panel .trend-user button i{
 	color: #4B4F56;
 }
 
-.trend-bar-item .trend-user button:hover, .trend-bar-item .trend-user button:hover i {
+.trend-bar-panel .trend-user button:hover, .trend-bar-panel .trend-user button:hover i {
 	color: #2a88bd;
-	background-color: white;
 }
 
 
@@ -520,9 +488,6 @@ Feed
 }
 
 .post-tips{
-	background-color: #F7F7F7;
-	border-color: #F7F7F7;
-
 	border-left-width: 2px;
 	border-left-color: #2DC3E8;
 }
@@ -545,32 +510,31 @@ Feed
 
 .feed-post .panel-footer{
 	background-color: transparent;
-	padding-top: 0px;
-	padding-bottom: 0px;
 	border: none;
+	padding-left: 40px;
 }
 
+
 .feed-post .panel-footer a{
-	text-align: center;
-	color: rgba(51,51,51,0.8);
-	padding-top: 6px;
-	padding-bottom: 6px;
+	color: #7f7f7f;
+	font-family:  Helvetica, Arial, sans-serif;
+
+	margin-right: 30px;
+
+	font-size: 13px;
+	/*font-weight: 700;*/
+	font-family: Lato,sans-serif;
 }
 
 .feed-post .panel-footer a:hover{
-	/*color: #2DC3E8;*/
 	cursor: pointer;
-	background-color: rgba(235, 234, 230, 0.3);
+	text-decoration: underline !important;
 }
 
-.feed-post .panel-footer small{
-	margin-left: 6px;
-}
 
-.feed-post .panel-footer a:first-child{
-/*	border-right-style: solid;
-	border-right-width: 1px;
-	border-right-color: rgba(26, 178, 172, 0.3);*/
+.feed-post .panel-footer a i{
+	color: #AFB4BD;
+	margin-right: 5px;
 }
 
 .feed-post .feed-post-tipster-history{
@@ -635,12 +599,14 @@ Feed
 
 /***** post to buy a tip ****/
 
-.feed-post-to-buy, .feed-post-to-buy .panel-body, .feed-post-to-buy .panel-heading, .feed-post-to-buy .panel-footer{
-	/*background-color: #F7FFF9;*/
-}
-
 
 .feed-post-to-buy .feed-post-right-container button{
+	color: #2DC3E8;
+	border-color: #2DC3E8;
+	background-color: white;
+}
+
+.feed-post-to-buy .feed-post-right-container button:hover{
 	color: white;
 	background-color: #2DC3E8;
 }
@@ -661,24 +627,21 @@ post-comment-box
 	padding-bottom: 0px !important;}
 
 .post-comment-box{
-	background-color: #F7F7F7;
-	color: #828282;
 
 	border-right: none;
 	border-left: none;
 	border-bottom: none;
     margin-bottom: 0;
-
-    border-bottom-left-radius: 10px !important;
-    border-bottom-right-radius: 10px !important;
 }
 
 .post-comment-box a{
-	color: #2DC3E8;
+	font-size: 13px;
+	font-weight: 700;
+	font-family: Lato,sans-serif;
 }
 
-.post-comment-box a:hover{
-	cursor: pointer;
+.post-comment-box p{
+	color: #828282;
 }
 
 .post-comment-box .media-body small{
@@ -687,6 +650,8 @@ post-comment-box
 
 .post-comment-box .media{
 	margin-top: 0px;
+	padding-top: 10px;
+	border-bottom: solid 1px #D3E0E9;
 }
 
 .post-comment-box .input-group{
@@ -830,7 +795,7 @@ Profile
 }
 
 
-.trend-bar-item .panel-heading .panel-title {
+.trend-bar-panel .panel-heading .panel-title {
 	font-size: 14px;
 	font-weight: 700;
 	font-family: Lato,sans-serif;
@@ -1063,7 +1028,7 @@ league tables
 }
 
 .league-tables .breadcrumb{
-	background: #F5F5F5;
+	background: white;
 	margin-bottom: 0px;
 }
 
@@ -1969,8 +1934,11 @@ textarea:-ms-input-placeholder {
 
 
 #rankings table tbody a{
-	color: #2B608C;
+	color: rgba(0,0,0,0.7);
 	font-weight: normal;
+	font-size: 14px;
+	font-weight: 700;
+	font-family: Lato,sans-serif;
 }
 #rankings table tbody a:hover{
 	color: #337ab7;

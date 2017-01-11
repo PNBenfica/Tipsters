@@ -1,21 +1,21 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Router, Route, IndexRoute, hashHistory } from "react-router";
-import { Provider } from "react-redux";
+import React from "react"
+import ReactDOM from "react-dom"
+import { Router, Route, IndexRoute, hashHistory } from "react-router"
+import { Provider } from "react-redux"
 
-import gapiLoader from './scripts/gapiLoader';
+import gapiLoader from './scripts/gapiLoader'
 
-import Feed from "./pages/Feed";
-import Layout from "./pages/Layout";
-import Notifications from "./pages/Notifications";
-import Profile from "./pages/Profile";
-import Rankings from "./pages/Rankings";
-import Sports from "./pages/Sports";
-import store from "./store";
+import Feed from "./pages/Feed"
+import Layout from "./pages/Layout"
+import Notifications from "./pages/Notifications"
+import Profile from "./pages/Profile"
+import Rankings from "./pages/Rankings"
+import Sports from "./pages/Sports"
+import store from "./store"
 
-const app = document.getElementById('app');
+const app = document.getElementById('app')
 
-gapiLoader.loadAPI();
+gapiLoader.loadAPI()
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -29,4 +29,4 @@ ReactDOM.render(
 			</Route>
 		</Router>
 	</Provider>,
-app);
+app)

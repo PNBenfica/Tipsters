@@ -13,11 +13,11 @@ export default class Comment extends React.Component {
         <Media>
 
             <Media.Left>
-                <a href="#"><img src={tipsterImage}></img></a>
+                <a href="#/profile"><img src={tipsterImage}></img></a>
             </Media.Left>
 
             <Media.Body>
-                <a href="#">{tipsterName} <small><i class="fa fa-clock-o fa-fw"></i> {date}</small></a>
+                <a href="#/profile">{tipsterName} <small><i class="fa fa-clock-o fa-fw"></i> {date}</small></a>
                 <p>{comment}</p>            
             </Media.Body>
             

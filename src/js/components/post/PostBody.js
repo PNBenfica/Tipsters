@@ -2,6 +2,7 @@ import React from "react";
 
 import InfoContainer from "./InfoContainer";
 import TipsContainer from "./TipsContainer";
+import Comment from "./Comment";
 
 export default class PostBody extends React.Component {
 
@@ -16,8 +17,9 @@ export default class PostBody extends React.Component {
 
                     <InfoContainer lastTips={lastTips} totalOdd={totalOdd} profit={profit} wins={wins} losses={losses} />
 
-                    <TipsContainer tips={tips} comment={comment} />
+                    <TipsContainer tips={tips} />
                                         
+                    <Comment comment={comment}/>   
                 </div>
             </div>
     );

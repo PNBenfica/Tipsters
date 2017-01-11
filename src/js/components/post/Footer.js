@@ -1,21 +1,18 @@
-import React from "react";
-import {ButtonGroup, Glyphicon, Media} from "react-bootstrap";
-
-
+import React from "react"
 
 export default class Footer extends React.Component {
 
-  render() {
+    render() {
 
-    const { likes, comments} = this.props;
+        const { likes, comments} = this.props
 
-    return (
-        <div class="panel-footer">
-            <div class="row">
-                <a class="col-xs-6"><Glyphicon glyph="thumbs-up" /><small>{likes}</small></a>
-                <a class="col-xs-6" onClick={() => this.props.toggleCommentBox()}><Glyphicon glyph="comment" /><small>{comments}</small></a>
+        return (
+            <div class="panel-footer">
+                <div class="row">
+                    <a><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like ({likes})</a>
+                    <a onClick={() => this.props.toggleCommentBox()}><i class="fa fa-envelope" aria-hidden="true"></i> Comment ({comments})</a>
+                </div>
             </div>
-        </div>
-    );
-  }
+        )
+    }
 }
