@@ -7,6 +7,8 @@ export default class RightColumnContainer extends React.Component {
 
     render() {
 
+    	const { user } = this.props
+
         return (
             <div class="col-xs-12 col-md-7 col-lg-6 col-lg-push-1">
             
@@ -14,7 +16,7 @@ export default class RightColumnContainer extends React.Component {
 
                 <br/><br/>
                 
-                <PostsContainer />
+                <PostsContainer user={user} />
 
             </div>
         )

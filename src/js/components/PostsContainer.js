@@ -1,10 +1,10 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from "react"
+import { connect } from "react-redux"
 
-import { fetchPosts, addComment } from "../actions/postsActions";
+import { fetchPosts, addComment } from "../actions/postsActions"
 
-import PostBuy from "../components/post/postBuy/PostBuy";
-import Post from "../components/post/Post";
+import PostBuy from "../components/post/postBuy/PostBuy"
+import Post from "../components/post/Post"
 
 
 @connect((store) => {
@@ -12,16 +12,25 @@ import Post from "../components/post/Post";
         posts: store.posts.posts
         // fetched: store.notifications.fetched,
         // fetching: store.notifications.fetching,
-    };
+    }
 })
 export default class PostsContainer extends React.Component {
 
     componentWillMount() {
-        this.fetchPosts()
+        this.fetchPosts(this.props)
     }
 
-    fetchPosts(){
-        this.props.dispatch(fetchPosts())
+    componentWillReceiveProps(nextProps){
+        const {user, postId} = this.props
+        if ((nextProps.user != user) || (nextProps.postId != postId)) {
+            this.fetchPosts(nextProps)
+        }
+    }
+
+    fetchPosts(filters){
+        const {user, postId} = filters
+        filters = { user, postId }
+        this.props.dispatch(fetchPosts(filters))
     }
 
     addComment(id, comment) {
@@ -35,12 +44,12 @@ export default class PostsContainer extends React.Component {
                 return <PostBuy key={i} {...post}/>
             else
                 return <Post addComment={this.addComment.bind(this, post.id)} key={i} {...post}/>
-        });
+        })
 
         return (
             <div>
                 {Posts}
             </div>
-        );
+        )
     }
 }

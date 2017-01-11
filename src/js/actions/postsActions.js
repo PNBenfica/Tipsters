@@ -1,6 +1,8 @@
-export function fetchPosts() {
+
+export function fetchPosts(filters) {
     return {
-        type: "FETCH_POSTS_FULFILLED"
+        type: "FETCH_POSTS_FULFILLED",
+        payload: filters
     }
 }
 

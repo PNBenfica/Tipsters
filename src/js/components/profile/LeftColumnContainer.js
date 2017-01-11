@@ -7,14 +7,14 @@ export default class LeftColumnContainer extends React.Component {
 
     render() {
 
-        const {info} = this.props
+        const { profile } = this.props
 
         return (
             <div class="col-xs-12 col-md-5 col-lg-4 col-lg-push-1">
 
-                <About info={info}/>
+                <About profile={profile}/>
 
-                <FollowersFollowing followers={info.followers} following={info.following}/>
+                <FollowersFollowing followers={profile.followers} following={profile.following}/>
 
             </div>
         )
