@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { fetchPosts, addComment } from "../actions/postsActions";
 
-import PostBuyTip from "../components/post/PostBuyTip";
+import PostBuy from "../components/post/postBuy/PostBuy";
 import Post from "../components/post/Post";
 
 
@@ -32,7 +32,7 @@ export default class PostsContainer extends React.Component {
 
         const Posts = this.props.posts.map((post, i) => {
             if (post.price > 0)
-                return <PostBuyTip key={i} {...post}/>
+                return <PostBuy key={i} {...post}/>
             else
                 return <Post addComment={this.addComment.bind(this, post.id)} key={i} {...post}/>
         });

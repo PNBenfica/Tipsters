@@ -406,10 +406,16 @@ Feed
 	margin-bottom: 0px;
 }
 
-.feed-post .panel-heading .panel-title p{
+
+.feed-post .panel-title{
+    margin-top: 10px;
+}
+
+.feed-post .panel-heading .panel-title .post-date{
 	color: #999999;	
-	padding-top: 4px;
 	font-size: 12px;
+	font-weight: normal;
+	margin-top: 4px;
 }
 
 .feed-post img{
@@ -427,13 +433,7 @@ Feed
 	font-size: 10px;
 }
 
-.feed-post .panel-title{
-    margin-top: 10px;
-}
-
 @media screen and (max-width: 767px) {
-	.feed-post  .feed-post-left-container div:first-child{
-	}
 	.feed-post  .feed-post-left-container{
 		padding-bottom: 0px !important;
 		padding-left: 20px !important;
@@ -442,6 +442,7 @@ Feed
 	.feed-post .feed-post-left-container .wrapper{
 		border-bottom-width: 1px;
 		border-bottom-style: solid;
+		padding-bottom: 15px;
 	}
 }
 
@@ -462,7 +463,7 @@ Feed
 		border-right-style: solid;
 		border-right-width: 1px;
 		padding-top: 20px;
-		padding-bottom: 20px;
+		padding-bottom: 30px;
 	}
 
 	.feed-post-right-container{
@@ -485,6 +486,7 @@ Feed
 	color: #828282;
 	font-size: 13px;
 	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+	margin-bottom: 21px;
 }
 
 .post-tips{
@@ -600,23 +602,19 @@ Feed
 /***** post to buy a tip ****/
 
 
-.feed-post-to-buy .feed-post-right-container button{
+.post-to-buy-body button{
 	color: #2DC3E8;
 	border-color: #2DC3E8;
 	background-color: white;
 }
 
-.feed-post-to-buy .feed-post-right-container button:hover{
+.post-to-buy-body button:hover{
 	color: white;
 	background-color: #2DC3E8;
 }
 
-.feed-post-to-buy .post-tips .panel-body{
-	background-color: transparent;
-}
-
-.feed-post-to-buy .feed-post-right-container{
-	margin-top: 25px;
+.post-to-buy-body{
+	margin-top: 5px;
 }
 
 /*************************************************
