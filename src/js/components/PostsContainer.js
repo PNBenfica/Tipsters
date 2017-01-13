@@ -5,6 +5,7 @@ import { fetchPosts, addComment } from "../actions/postsActions"
 
 import PostBuy from "../components/post/postBuy/PostBuy"
 import Post from "../components/post/Post"
+import ScrollPageDetector from "./ScrollPageDetector"
 
 
 @connect((store) => {
@@ -37,6 +38,10 @@ export default class PostsContainer extends React.Component {
         this.props.dispatch(addComment(id, comment))
     }
 
+    onScrollBottom(){
+        console.log("Need to fetch more posts!")
+    }
+
     render() {
 
         const Posts = this.props.posts.map((post, i) => {
@@ -47,9 +52,9 @@ export default class PostsContainer extends React.Component {
         })
 
         return (
-            <div>
+            <ScrollPageDetector onScrollBottom={this.onScrollBottom.bind(this)}>
                 {Posts}
-            </div>
+            </ScrollPageDetector>
         )
     }
 }

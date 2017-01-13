@@ -2060,3 +2060,16 @@ textarea:-ms-input-placeholder {
 	cursor: default;
 }
 
+
+
+#scrollable{
+	background-color: red;
+	width: 100px;
+	max-height: 400px;
+	overflow-y: scroll;
+}
+
+#scr{
+	width: 100%;
+	height: 100%;
+}
