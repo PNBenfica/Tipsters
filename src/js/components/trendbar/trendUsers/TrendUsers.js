@@ -6,19 +6,18 @@ import TrendUser from "./TrendUser"
 
 export default class TrendUsers extends React.Component {
 
-  render() {
+    render() {
 
-    const TrendUsers = [{tipsterName:"Paulo Teixeira", tipsterImage:"img/pauloteixeira.jpg", description:"Is on a 5 green tips streak!"},
-                        {tipsterName:"João Almeida", tipsterImage:"img/joaoalmeida.jpg", description:"Is on a 27 loosing streak!"},
-                        {tipsterName:"Paulo Teixeira", tipsterImage:"img/pauloteixeira.jpg", description:"Is on a 5 green tips streak!"}]
-                        .map((tipster, i) => <TrendUser {...tipster} key={i}/>)
+        let { users } = this.props
 
-    return (
-        <Panel title="Tipsters Sugeridos">
+        users = users.map((tipster, i) => <TrendUser {...tipster} key={i}/>)
 
-            {TrendUsers}                
+        return (
+            <Panel title="Tipsters Sugeridos">
 
-        </Panel> 
-    )
-  }
+                {users}                
+
+            </Panel> 
+        )
+    }
 }
