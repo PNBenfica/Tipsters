@@ -31,9 +31,9 @@ export default class SideBar extends React.Component {
     getOptions(pathname){
         return [ {name: "News Feed", logo: "img/navbar/news_feed.png", href:"", active :  pathname === "/" },
                  {name: "Share a tip", logo: "img/navbar/share_a_tip.png", href:"sports/1/Football", active : pathname.match(/^\/sports/), 
-                    submenus: [ {name: "Football", logo: "img/navbar/share_a_tip.png", href:"sports/1/Football", active : pathname.match(/^\/sports\/1\/Football/)},
-                                {name: "Basketball", logo: "img/navbar/share_a_tip.png", href:"sports/2/Basketball", active : pathname.match(/^\/sports\/2\/Basketball/)},
-                                {name: "Tennis", logo: "img/navbar/share_a_tip.png", href:"sports/3/Tennis", active : pathname.match(/^\/sports\/3\/Tennis/)} ]
+                    submenus: [ {name: "Football", logo: "img/navbar/football.png", href:"sports/1/Football", active : pathname.match(/^\/sports\/1\/Football/)},
+                                {name: "Basketball", logo: "img/navbar/basketball.png", href:"sports/2/Basketball", active : pathname.match(/^\/sports\/2\/Basketball/)},
+                                {name: "Tennis", logo: "img/navbar/tennis.png", href:"sports/3/Tennis", active : pathname.match(/^\/sports\/3\/Tennis/)} ]
                 },
                  {name: "Live Streams", logo: "img/navbar/live_streams.png", href:"streams", active : pathname.match(/^\/streams/) },
                  {name: "Rankings", logo: "img/navbar/rankings.png", href:"rankings", active : pathname.match(/^\/rankings/) },

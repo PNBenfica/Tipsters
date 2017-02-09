@@ -1,5 +1,4 @@
 .navbar .sidebar{
-	background-color: white;
 	z-index: 0;
 	height: calc(100vh - 50px);
 	padding: 2vh 0;
@@ -10,13 +9,15 @@
 	top: 0;
 	left: 0;
 	height: 100%;
-
-    -webkit-transition: transform 1000ms ease-in-out;
-    -moz-transition: transform 1000ms ease-in-out;
-    -o-transition: transform 1000ms ease-in-out;
-    transition: transform 1000ms ease-in-out;
+	width: 100%;
 }
 
+.navbar .sidebar .bar.active {
+	z-index: 1;
+}
+.navbar .sidebar .bar:not(.active) {
+	z-index: 0;
+}
 
 .navbar .sidebar .bar:not(.active) .item:not(.active) {
 	transform: translate(-100%, 0);
@@ -38,10 +39,10 @@
 	height: 20%;
 	margin-left: 30%;
 
-    -webkit-transition: transform 750ms ease-in-out;
-    -moz-transition: transform 750ms ease-in-out;
-    -o-transition: transform 750ms ease-in-out;
-    transition: transform 750ms ease-in-out;
+    -webkit-transition: transform 1200ms ease-in-out;
+    -moz-transition: transform 1200ms ease-in-out;
+    -o-transition: transform 1200ms ease-in-out;
+    transition: transform 1200ms ease-in-out;
 }
 
 .navbar .sidebar .bar .item > *{
@@ -124,9 +125,6 @@
 		width: 200px;
 	}
 
-	.navbar .sidebar .bar{
-		padding: 8vh 0;
-	}
 
 	.navbar .sidebar .bar .item{
 		text-align: center;
@@ -146,3 +144,7 @@
 	}
 }
 
+
+	.navbar .sidebar .bar{
+		padding: 8vh 0;
+	}

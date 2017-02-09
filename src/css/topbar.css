@@ -72,7 +72,6 @@
         position: inherit;
         margin: 0 0 0 200px;
         padding: 0 30px;
-        border-left: 1px solid #D2D3D6;
     }
 }
 
@@ -163,7 +162,16 @@
 }
 
 .navbar-brand, .navbar .navbar-brand:active, .navbar .navbar-brand:visited{
-    background-color: #2B2B2B;
-    color: white;
+    background-color: transparent;
     text-align: center;
+}
+
+.navbar-brand p{
+    display: inline-block;
+    color: #2B2B2B;
+    background: white;
+    font-size: 36px;
+    font-weight: bold;
+    padding: 5px 5px 2px 7px;
+    border-radius: 3px;
 }
