@@ -1,0 +1,169 @@
+/*!
+ * Start Bootstrap - SB Admin 2 Bootstrap Admin Theme (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+
+@media (min-width: 767px) {
+    body {
+        /*margin-top: 50px;*/
+    }
+    .navbar-default {
+        position: fixed;
+        z-index: 1030;
+        right: 0;
+        left: 0;   
+        border-radius: 0;
+        /*top: 0;*/
+        border-width: 0 0 1px;
+    }      
+}
+
+.navbar{
+    position: fixed;
+    right: 0;
+    left: 0;   
+    padding: 0px;
+    margin-bottom: 0px !important;
+}
+
+.navbar-header{
+    z-index: 1030;
+    background-color: #2B2B2B;
+}
+
+.navbar .navbar-top-links {
+}
+
+.navbar .navbar-top-links a, .navbar .navbar-top-links a i{
+    border-bottom-color: #D2D3D6;
+    color: #fff;
+}
+
+
+.navbar .navbar-brand:active, .navbar .navbar-brand:visited, .navbar .navbar-top-links a:visited {
+    color: #BEC1C9;
+}
+
+
+.panel .panel-heading{
+    border-radius: 0px;
+}
+
+.navbar .navbar-top-links .dropdown-toggle:hover, .navbar .navbar-top-links .dropdown-toggle:visited{
+    background-color: #333;
+}
+
+#wrapper {
+    width: 100%;
+}
+
+#page-wrapper {
+    padding: 0 15px;
+    padding-top: 90px !important;
+    /*min-height: 568px;*/
+    min-height: 640px !important;
+    /*background-color: #F5F5F5;*/
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 200px;
+        padding: 0 30px;
+        border-left: 1px solid #D2D3D6;
+    }
+}
+
+.navbar-top-links {
+    margin-right: 0;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.navbar-top-links li {
+    display: inline-block;
+    float: left;
+}
+
+.navbar-top-links .dropdown li {
+    float: none;
+}
+
+@media(max-width:768px) {
+    .navbar-top-links li {
+        float: right;
+    }
+}
+
+@media(max-width:370px) {
+    .navbar-top-links {
+        padding-right: 20px;
+    }
+}
+
+@media(min-width:768px) {
+    .navbar-top-links {
+        padding-left: 20px;
+        margin-right: 70px;
+    }
+}
+
+.navbar-top-links li a {
+    padding: 15px;
+    min-height: 50px;
+}
+
+.navbar-top-links .dropdown-menu li {
+    display: block;
+}
+
+.navbar-top-links .dropdown-menu li:last-child {
+    margin-right: 0;
+}
+
+.navbar-top-links .dropdown-menu li a {
+    padding: 3px 20px;
+    min-height: 0;
+}
+
+.navbar-top-links .dropdown-menu li a div {
+    white-space: normal;
+}
+
+.navbar-top-links .dropdown-messages,
+.navbar-top-links .dropdown-tasks,
+.navbar-top-links .dropdown-alerts {
+    width: 310px;
+    min-width: 0;
+}
+
+.navbar-top-links .dropdown-messages {
+    margin-left: 5px;
+}
+
+.navbar-top-links .dropdown-user {
+    right: 0;
+    left: auto;
+}
+
+
+@media(min-width:768px) {
+
+    .navbar-brand{
+        width: 200px;
+    }
+
+    .navbar-top-links .dropdown-messages,
+    .navbar-top-links .dropdown-tasks,
+    .navbar-top-links .dropdown-alerts {
+        margin-left: auto;
+    }
+}
+
+.navbar-brand, .navbar .navbar-brand:active, .navbar .navbar-brand:visited{
+    background-color: #2B2B2B;
+    color: white;
+    text-align: center;
+}

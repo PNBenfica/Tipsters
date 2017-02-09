@@ -1,109 +1,33 @@
-import React from "react";
+import React from "react"
+import classNames from "classnames"
+import SideBarItem from "./SideBarItem"
 
 export default class SideBar extends React.Component {
 
-  render() {
+    render() {
 
-    const { location } = this.props;
-    const feedClass = location.pathname === "/" ? "sidebar-item-active" : "";
-    const profileClass = location.pathname.match(/^\/profile/) ? "sidebar-item-active" : "";
-    const sportsClass = location.pathname.match(/^\/sports/) ? "sidebar-item-active" : "";
-    const rankingsClass = location.pathname.match(/^\/rankings/) ? "sidebar-item-active" : "";
+        const { location } = this.props
+        // const feedClass = location.pathname === "/" ? "sidebar-item-active" : ""
+        // const profileClass = location.pathname.match(/^\/profile/) ? "sidebar-item-active" : ""
+        // const sportsClass = location.pathname.match(/^\/sports/) ? "sidebar-item-active" : ""
+        // const rankingsClass = location.pathname.match(/^\/rankings/) ? "sidebar-item-active" : ""
 
-    return (
+        const { open } = this.props
 
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-                <ul class="nav" id="side-menu">
+        let options = [ {name: "News Feed", img: "img/navbar/news_feed", ref:"sports", active :location.pathname.match(/^\/sports/) },
+                        {name: "News Feed", img: "img/navbar/news_feed", ref:"sports", active :location.pathname.match(/^\/sports/) },
+                        {name: "News Feed", img: "img/navbar/news_feed", ref:"sports", active :location.pathname.match(/^\/sports/) },
+                        {name: "News Feed", img: "img/navbar/news_feed", ref:"sports", active :location.pathname.match(/^\/sports/) },
+                        {name: "News Feed", img: "img/navbar/news_feed", ref:"sports", active :location.pathname.match(/^\/sports/) }]
 
-                    {/* Search - visible only in xs screens */}
-                    <div class="col-sm-6 col-md-offset-1 col-lg-offset-2 visible-xs">
-                        <form class="navbar-form" role="search">
-                        <div class="input-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="Search for tipsters or sport events..." name="q"></input>
-                            <div class="input-group-btn">
-                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                            </div>
-                        </div>
-                        </form>
-                    </div> {/* Search */}
+        options = options.map((option, i) => <SideBarItem key={i} location={location} {...option}/>)
 
+        return (
+            <div class={classNames("sidebar open", { open })}>
+                
+                { options }
 
-                    {/*<!-- <li>    
-                        <p style="height:20px;" class="hidden-xs"> </p>
-                    </li> -->*/}
-
-                    <li class="visible-xs">
-                        <a className={profileClass} href="#/profile"><i class="fa fa-user fa-fw"></i> Paulo Teixeira</a>
-                    </li>
-
-                    <li id="sidebar-account-money" class="visible-xs">
-                        <a href="#"><i class="fa fa-money fa-fw"></i> Saldo: 20,00€<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#"><img src="img/deposit.png"></img> Depositos</a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="img/widthdraw.png"></img> Levantamentos</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-history fa-fw"></i> Historial</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="visible-xs">
-                        <p style={{"height":"20px"}}> </p>
-                    </li>
-
-                    <li>
-                        <a href="#" className={feedClass}><i class="fa fa-feed fa-fw color-black"></i> News Feed</a>
-                    </li>
-
-                    <li>
-                        <a id="sport-events-sidebar" className={sportsClass} href="#/sports"><i class="color-black fa fa-soccer-ball-o fa-fw"></i> Sports<span class="fa arrow"></span></a>
-                        
-                        {/*<!-- sports list -->*/}
-                        <ul class="nav nav-second-level">
-                            <li id="football-seletor-sidebar" class="active">
-                                <a href="#/sports"><i class="fa fa-soccer-ball-o fa-fw"></i> Futebol <span class="fa arrow"></span></a>
-                                
-                                {/*<!-- main football leagues -->*/}
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#/sports/Football/1/Premier-League/3"><img src="img/sports/premierleague.png"></img> Premier League</a>
-                                    </li>
-                                    <li>
-                                        <a href="#/sports/Football/1/La-Liga/7"><img src="img/sports/laliga.png"></img> La Liga</a>
-                                    </li>
-                                    <li>
-                                        <a href="#/sports/Football/1/Bundesliga/5"><img src="img/sports/bundesliga.png"></img> Bundesliga</a>
-                                    </li>
-                                    <li>
-                                        <a href="#/sports/Football/1/Serie-A/6"><img src="img/sports/seriea.png"></img> Serie A</a>
-                                    </li>
-                                </ul>
-                                {/*<!-- /.main football leagues -->*/}
-                            </li>
-                            <li>
-                                <a href="#/sports/Tennis/2"><img src="img/sports/tennis.png"></img> Tennis</a>
-                            </li>
-                            <li>
-                                <a href="#/sports/Basketball/4"><img src="img/sports/basket.png"></img> Basketball</a>
-                            </li>
-                            <li>
-                                <a href="#/sports/Formula-1/3"><img src="img/sports/wheel.png"></img> Formula 1</a>
-                            </li>
-                        </ul>
-                        {/*<!-- ./sports list -->*/}
-                    </li>
-                    <li>
-                        <a href="#/rankings" className={rankingsClass}><i class="color-black fa fa-bar-chart fa-fw"></i> Rankings</a>
-                    </li>
-                </ul>
             </div>
-            {/*<!-- /.sidebar-collapse -->*/}
-        </div>
-    );
-  }
+        )
+    }
 }

@@ -1,16 +1,16 @@
 @import url("bootstrap/dist/css/bootstrap.min.css");
 @import url("font-awesome/css/font-awesome.min.css");
-@import url("sb-admin-2.css");
-@import url("//fonts.googleapis.com/css?family=Lato");
-@import url("//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic");
+@import url("topbar.css");
+@import url("sidebar.css");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
 
 /*************************************************
 Html General Elements
 *************************************************/
 
 body{	
-    background-color: #ffffff;
-    font-family: Lato,"Helvetica Neue",Arial,Verdana,Tahoma,"Lucida Sans",FreeSans,"Lucida Sans Unicode","Luxi Sans",sans-serif;
+    background-color: rgb(250,250,250);
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 a, a:hover, a:active, a:visited {
@@ -28,6 +28,9 @@ a i{
 a:hover {
     color: #D9230F;
 }*/
+
+
+
 
 .dropdown-menu:before {
   position: absolute;
@@ -196,12 +199,6 @@ Notifications dropdown
 trend-bar-panel
 ********************************/
 
-.affix{
-	position: fixed;
-    bottom: 0px !important;
-    right: 0px !important;
-}
-
 @media screen and (min-width: 1200px) {
 	.trend-bar-container{
 		padding-right: 75px;
@@ -213,6 +210,7 @@ trend-bar-panel
 .trend-bar-panel{
 	border: none;
 	box-shadow: none;
+	background-color: transparent;
 	/*border-style: solid;
 	border-width: 1px;
 	border-color: #D3E0E9;*/
@@ -226,7 +224,6 @@ trend-bar-panel
 
 .trend-bar-panel .panel-heading{
 	color: #333
-	background-color: white;
 	padding-left: 20px;
 }
 
@@ -248,7 +245,7 @@ trend-bar-panel
 .trend-bar-panel .panel-heading .panel-title {
 	font-size: 14px;
 	font-weight: bold;
-	font-family: Lato,sans-serif;
+
 }
 
 
@@ -268,6 +265,10 @@ trend-bar-panel
 .trend-bar-panel .trend-bar-item a{
 	display:block;
 	padding: 5px 15px 0px 15px;
+}
+
+.trend-bar-panel .trend-bar-item .trend-user .media-right{
+	padding: 0px;
 }
 
 .trend-bar-panel .trend-bar-item a:hover, .trend-bar-panel .trend-bar-item a:hover .panel-footer, .trend-bar-panel .trend-bar-item a:hover .trend-user button{
@@ -363,7 +364,7 @@ Feed
 	/*border-top-width: 2px;
 	border-bottom-left-radius: 10px !important;
 	border-bottom-right-radius: 10px !important;*/
-	border-top-color: #2DC3E8;
+	/*border-top-color: #2DC3E8;*/
 
 	margin-bottom: 40px;
 	padding-left: 0px;
@@ -399,9 +400,10 @@ Feed
 
 .feed-post .panel-heading a{
 	padding-top: 0px;
-	color: #337AB7;
+	color: #365899;
+	/*color: #337AB7;*/
 	font-weight: 600;
-	font-size: 16px;
+	font-size: 15px;
 	margin-top: 0px;
 	margin-bottom: 0px;
 }
@@ -409,6 +411,7 @@ Feed
 
 .feed-post .panel-title{
     margin-top: 10px;
+    padding-top: 5px;
 }
 
 .feed-post .panel-heading .panel-title .post-date{
@@ -485,7 +488,6 @@ Feed
 .feed-post  .feed-post-left-container p{
 	color: #828282;
 	font-size: 13px;
-	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 	margin-bottom: 21px;
 }
 
@@ -495,7 +497,12 @@ Feed
 }
 
 .post-tips, .post-tips a{
-	color: #828282;
+	color: #333;
+}
+
+.post-tips .panel-body p{
+	margin: 8px 0;
+	font-size: 13px;
 }
 
 .post-tips .panel-body{
@@ -504,6 +511,12 @@ Feed
 	padding-left: 25px;
 	line-height: 90%;
 }
+
+.post-tips .panel-body .event-name img{
+	height: 20px;
+	max-width: 20px;
+}
+
 
 .feed-post .tipster-comment{
 	padding-left: 3px;
@@ -519,13 +532,12 @@ Feed
 
 .feed-post .panel-footer a{
 	color: #7f7f7f;
-	font-family:  Helvetica, Arial, sans-serif;
 
 	margin-right: 30px;
 
 	font-size: 13px;
 	/*font-weight: 700;*/
-	font-family: Lato,sans-serif;
+
 }
 
 .feed-post .panel-footer a:hover{
@@ -635,7 +647,7 @@ post-comment-box
 .post-comment-box a{
 	font-size: 13px;
 	font-weight: 700;
-	font-family: Lato,sans-serif;
+
 }
 
 .post-comment-box p{
@@ -713,7 +725,7 @@ Profile
 
 	font-size: 25px;
 	font-weight: 700;
-	font-family: Lato,sans-serif;
+
 
 	background-color: rgba(0,0,0,0.2);
 }
@@ -796,7 +808,7 @@ Profile
 .trend-bar-panel .panel-heading .panel-title {
 	font-size: 14px;
 	font-weight: 700;
-	font-family: Lato,sans-serif;
+
 }
 
 
@@ -813,7 +825,7 @@ Profile
 #profile-container .profile-panel .panel-title {
 	font-size: 14px;
 	font-weight: 700;
-	font-family: Lato,sans-serif;
+
 }
 
 #profile-container .profile-panel .description{
@@ -945,35 +957,20 @@ profile-stats
 Sports
 *************************************************/
 
-.sidebar img{
-	height: 15px;
-	width: 15px;
-	margin-right: 4px;
-}
 
-.sidebar #sidebar-account-money img{
-	height: 20px;
-	width: 20px;
-	margin-top: -4px;
-}
-
-.sidebar{
-	overflow-y:auto;
-}
-
-.chat-panel .panel-body::-webkit-scrollbar-track, .sidebar::-webkit-scrollbar-track
+.chat-panel .panel-body::-webkit-scrollbar-track
 {
 	/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
 	background-color: transparent;
 }
 
-.sidebar::-webkit-scrollbar, .chat-panel .panel-body::-webkit-scrollbar
+.chat-panel .panel-body::-webkit-scrollbar
 {
 	width: 2px;
 	background-color: #F5F5F5;
 }
 
-.sidebar::-webkit-scrollbar-thumb, .chat-panel .panel-body::-webkit-scrollbar-thumb
+.chat-panel .panel-body::-webkit-scrollbar-thumb
 {
 	background-color: rgba(0,0,0,0.0);
 }
@@ -1286,6 +1283,46 @@ bet slip
 Tips on this game
 **********************************/
 
+.chat {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.chat li {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #999;
+}
+
+.chat li.left .chat-body {
+    margin-left: 60px;
+}
+
+.chat li.right .chat-body {
+    margin-right: 60px;
+}
+
+.chat li .chat-body p {
+    margin: 0;
+}
+
+.panel .slidedown .glyphicon,
+.chat .glyphicon {
+    margin-right: 5px;
+}
+
+.chat-panel .panel-body {
+    height: 320px;
+    overflow-y: scroll;
+}
+
+.chat-panel .small-chat{
+    height: 130px;
+    overflow-y: hidden;
+}
+
+
 .chat-panel .panel-heading{	
 }
 
@@ -1312,18 +1349,19 @@ Tips on this game
 Buttons
 *****************************************/
 
-.my-sucess-button{
+.my-sucess-button, .my-fail-button{
 	color: white;
-	border-color: #5CB85C;
-	background-color: #5CB85C;
+	border-radius: 50%;
 	min-width: 20px;
 	min-height: 20px;
 	padding: 2px;
-	font-size: 60%;
-
-	font-size: 8px;
+	font-size: 9px;
 	font-weight: 700;
-	font-family: Lato,sans-serif;}
+}
+
+.my-sucess-button{
+	background-color: #5CB85C;
+}
 
 .my-sucess-button:hover{
 	color: white;
@@ -1331,17 +1369,8 @@ Buttons
 }
 
 .my-fail-button{
-	color: white;
-	border-color: #F0433D;
 	background-color: #F0433D;
-	min-width: 20px;
-	min-height: 20px;
-	padding: 2px;
-	font-size: 60%;
-
-	font-size: 8px;
-	font-weight: 700;
-	font-family: Lato,sans-serif;}
+}
 
 .my-fail-button:hover{
 	color: white;
@@ -1936,7 +1965,6 @@ textarea:-ms-input-placeholder {
 	font-weight: normal;
 	font-size: 14px;
 	font-weight: 700;
-	font-family: Lato,sans-serif;
 }
 #rankings table tbody a:hover{
 	color: #337ab7;
@@ -1968,7 +1996,6 @@ textarea:-ms-input-placeholder {
 #rankings #search-bar form input[type=search] {
 	-webkit-appearance: textfield;
 	-webkit-box-sizing: content-box;
-	font-family: inherit;
 	font-size: 100%;
 }
 #rankings #search-bar form input::-webkit-search-decoration,
@@ -2047,7 +2074,6 @@ textarea:-ms-input-placeholder {
 #ranking-filters-collapse .filter-list h5{
 	font-size: 14px;
 	font-weight: 700;
-	font-family: Lato,sans-serif;
 }
 
 #ranking-filters-collapse .filter-list p:hover{

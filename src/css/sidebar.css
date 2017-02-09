@@ -1,0 +1,106 @@
+.navbar .sidebar{
+	background-color: white;
+	z-index: 0;
+}
+
+
+
+.navbar .sidebar .item{
+	height: 20%;
+	text-align: center;
+}
+
+.navbar .sidebar .item > *{
+	display: inline-block;
+}
+
+
+.navbar .sidebar .item .name{
+	position: relative;
+	font-size: 15px;
+	text-transform: uppercase;
+	color: rgb(206,206,206);
+	transition: color 0.75s ease-in-out;
+}
+
+
+.navbar .sidebar .item .img-wrapper{
+	position: relative;
+	
+	height: calc((100vh - 50px)/5);
+	width: calc((100vh - 50px)/5);
+	vertical-align: middle;
+	margin: 0px !important;
+	background-color: rgb(206,206,206);
+}
+
+.navbar .sidebar .item .img-wrapper img{
+    height: 100%;
+    max-width: 100%;
+	position: relative;
+	z-index: 2;
+	display: block;
+}
+
+.navbar .sidebar .item .img-wrapper .hover{
+	width: 100%;
+	height: 0%;
+	background-color: #2B2B2B;
+	z-index: 1;
+
+	position: absolute;
+	bottom: 0px;
+	transition: height 0.75s ease-in-out;
+}
+
+.navbar .sidebar .item:hover{
+	cursor: pointer;
+}
+
+.navbar .sidebar .item:hover .name, .navbar .sidebar .item.active .img-wrapper .name{
+	color: #333;
+}
+
+.navbar .sidebar .item:hover .img-wrapper .hover, .navbar .sidebar .item.active .img-wrapper .hover{
+	height: 100%;
+}
+
+
+@media screen and (max-width: 767px) {
+
+
+	.navbar .sidebar{
+		position: absolute;
+		width: 100%;
+		height: calc(100vh - 50px);
+		transform: translate(0, -100%);
+		border-bottom: solid 1px black;
+
+	    -webkit-transition: transform 750ms ease-in-out;
+	    -moz-transition: transform 750ms ease-in-out;
+	    -o-transition: transform 750ms ease-in-out;
+	    transition: transform 750ms ease-in-out;
+	}
+
+	.navbar .sidebar.open{
+		transform: translate(0, 0%);
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.navbar .sidebar{
+		position: fixed;
+		width: 200px;
+		height: 100%;
+	}
+
+	.navbar .sidebar .item .img-wrapper{
+		position: relative;
+		
+		height: calc((100vh - 50px)/6);
+		width: calc((100vh - 50px)/6);
+		vertical-align: middle;
+		margin: 0px !important;
+		background-color: rgb(206,206,206);
+	}
+}

@@ -8,12 +8,14 @@ export default class TopBar extends React.Component {
 
     render() {
 
+        const { onHamburgerClick } = this.props
+
         return (
 
             <div class="row">
                 <div class="navbar-header col-xs-12">
                     
-                    <Hamburger />
+                    <Hamburger onClick={onHamburgerClick} />
 
                     <NavbarBrand />
 

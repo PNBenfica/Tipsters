@@ -10,7 +10,7 @@ export default class TipsterImage extends React.Component {
         return (        
             <Media.Left>
                 <a href="#/profile">
-                    <img src={src} class="img-circle" />
+                    <img src={src} />
                 </a>
             </Media.Left>
         )
