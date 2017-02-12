@@ -11,13 +11,13 @@ export default class Title extends React.Component {
         const { id, date, tipsterName } = this.props
 
         return (        
-            <Media.Body class="panel-title">
+            <div class="panel-title">
 
                 <TipsterName name={tipsterName}/>
                 
                 <PostDate id={id} date={date}/>
 
-            </Media.Body>
+            </div>
         )
     }
 }

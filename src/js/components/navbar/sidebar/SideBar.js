@@ -4,29 +4,6 @@ import classNames from "classnames"
 import Bar from "./Bar"
 
 export default class SideBar extends React.Component {
-    
-    /*constructor(args){
-        super(args)
-
-        const { location } = this.props
-
-        const options = this.getOptions(location.pathname)
-
-        this.state = {
-            options
-        }
-    }
-
-    componentWillReceiveProps(nextProps){
-        console.log(nextProps.location.pathname)
-        console.log(this.props.location.pathname)
-
-        if (nextProps.location.pathname !== this.props.location.pathname){
-            console.log("yeeeeeee")
-            const options = this.getOptions(nextProps.location.pathname)
-            this.setState({ options })
-        }
-    }*/
 
     getOptions(pathname){
         return [ {name: "News Feed", logo: "img/navbar/news_feed.png", href:"", active :  pathname === "/" },
@@ -49,7 +26,7 @@ export default class SideBar extends React.Component {
         const sportsPageActive = options[1].active
 
         return (
-            <div class={classNames("sidebar open", { open })}>
+            <div class={classNames("sidebar", { open })}>
                 
                 <Bar options={options} active={!sportsPageActive} />
 

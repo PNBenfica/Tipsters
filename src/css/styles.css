@@ -1,8 +1,10 @@
 @import url("bootstrap/dist/css/bootstrap.min.css");
 @import url("font-awesome/css/font-awesome.min.css");
-@import url("topbar.css");
+@import url("feed.css");
 @import url("sidebar.css");
+@import url("topbar.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600,700");
 
 /*************************************************
 Html General Elements
@@ -30,6 +32,17 @@ a:hover {
 }*/
 
 
+.panel{
+	border: solid 1px;
+	border-top-color: #DCDCDC;
+	border-bottom-color: #B1B1B1;
+	border-right-color: #CCCCCC;
+	border-left-color: #CCCCCC;
+	border-radius: 0px;
+	-webkit-box-shadow: 0 6px 6px -6px #B1B1B1;
+	-moz-box-shadow: 0 6px 6px -6px #B1B1B1;
+	box-shadow: 0 6px 6px -6px #B1B1B1;
+}
 
 
 .dropdown-menu:before {
@@ -60,7 +73,7 @@ a:hover {
 	padding-right: 0px;
 }
 
-.panel, .btn{
+.btn{
 	border-radius: 0px;
 }
 
@@ -330,357 +343,6 @@ trend-bar-panel
 
 .trend-bar-panel .trend-user button:hover, .trend-bar-panel .trend-user button:hover i {
 	color: #2a88bd;
-}
-
-
-/*************************************************
-Feed
-*************************************************/
-
-
-@media screen and (max-width: 768px) {
-	.feed-container {
-		padding-left: 2px;
-		padding-right: 2px;
-	}
-	.post-content {
-		padding-left: 0px;
-		padding-right: 0px;
-	}
-	.tipster-comment{
-		padding-left: 5px !important;
-	}
-}
-
-
-.feed-container {
-	padding: 0px;
-}
-
-.feed-post{
-	border-style: solid;
-	border-width: 1px;
-	border-color: #D3E0E9;
-	/*border-top-width: 2px;
-	border-bottom-left-radius: 10px !important;
-	border-bottom-right-radius: 10px !important;*/
-	/*border-top-color: #2DC3E8;*/
-
-	margin-bottom: 40px;
-	padding-left: 0px;
-	padding-right: 0px;
-
-	/*box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 8px 0px, rgba(0, 0, 0, 0.065) 0px 3px 5px 0px;*/
-}
-
-
-.feed-post a { 
-    color: #636363;
-}
-
-.feed-post a small{ 
-	color: #999999;
-}
-
-.feed-post a:hover{
-	color: #D9230F;
-}
-
-.feed-post .post-content{
-	color: #828282;
-}
-
-.feed-post .panel-heading{
-	background-color: white;
-	padding-top: 14px;
-	padding-left: 26px;
-	padding-bottom: 8px;
-	border-bottom: none;
-}
-
-.feed-post .panel-heading a{
-	padding-top: 0px;
-	color: #365899;
-	/*color: #337AB7;*/
-	font-weight: 600;
-	font-size: 15px;
-	margin-top: 0px;
-	margin-bottom: 0px;
-}
-
-
-.feed-post .panel-title{
-    margin-top: 10px;
-    padding-top: 5px;
-}
-
-.feed-post .panel-heading .panel-title .post-date{
-	color: #999999;	
-	font-size: 12px;
-	font-weight: normal;
-	margin-top: 4px;
-}
-
-.feed-post img{
-    height: 40px;
-	width: 40px;
-}
-
-@media screen and (min-width: 768px) {
-    .feed-post .feed-post-tipster-image {
-        margin-left: 15px;
-    }
-}
-
-.small-text{
-	font-size: 10px;
-}
-
-@media screen and (max-width: 767px) {
-	.feed-post  .feed-post-left-container{
-		padding-bottom: 0px !important;
-		padding-left: 20px !important;
-	}
-
-	.feed-post .feed-post-left-container .wrapper{
-		border-bottom-width: 1px;
-		border-bottom-style: solid;
-		padding-bottom: 15px;
-	}
-}
-
-@media screen and (min-width: 768px) {
-
-
-	.feed-post .post-content{
-		padding-left: 0px;
-		padding-top: 0px;
-		padding-bottom: 5px;
-	}
-
-	.feed-post  .feed-post-left-container .divider{
-		height: 1px;
-	}
-
-	.feed-post .feed-post-left-container .wrapper{
-		border-right-style: solid;
-		border-right-width: 1px;
-		padding-top: 20px;
-		padding-bottom: 30px;
-	}
-
-	.feed-post-right-container{
-		padding-left: 0px;
-	}
-}
-
-.feed-post  .feed-post-left-container{
-	padding: 0px;
-	padding-bottom: 10px;
-	padding-right: 29px;
-}
-
-.feed-post .feed-post-left-container .wrapper{
-	border-color: #2DC3E8;
-	padding-left: 20px;
-}
-
-.feed-post  .feed-post-left-container p{
-	color: #828282;
-	font-size: 13px;
-	margin-bottom: 21px;
-}
-
-.post-tips{
-	border-left-width: 2px;
-	border-left-color: #2DC3E8;
-}
-
-.post-tips, .post-tips a{
-	color: #333;
-}
-
-.post-tips .panel-body p{
-	margin: 8px 0;
-	font-size: 13px;
-}
-
-.post-tips .panel-body{
-	padding-top: 6px;
-	padding-bottom: 0px;
-	padding-left: 25px;
-	line-height: 90%;
-}
-
-.post-tips .panel-body .event-name img{
-	height: 20px;
-	max-width: 20px;
-}
-
-
-.feed-post .tipster-comment{
-	padding-left: 3px;
-	margin-top: -8px;
-}
-
-.feed-post .panel-footer{
-	background-color: transparent;
-	border: none;
-	padding-left: 40px;
-}
-
-
-.feed-post .panel-footer a{
-	color: #7f7f7f;
-
-	margin-right: 30px;
-
-	font-size: 13px;
-	/*font-weight: 700;*/
-
-}
-
-.feed-post .panel-footer a:hover{
-	cursor: pointer;
-	text-decoration: underline !important;
-}
-
-
-.feed-post .panel-footer a i{
-	color: #AFB4BD;
-	margin-right: 5px;
-}
-
-.feed-post .feed-post-tipster-history{
-	margin-top: -8px;
-}
-
-.feed-post .feed-post-tipster-history button{
-	margin-left: 1px !important;
-}
-
-.popover-tipster-history div div{
-	line-height: 90%;
-	padding: 5px;
-	padding-bottom: 0px;
-}
-
-.popover-tipster-history div{
-	margin-bottom: 10px;
-}
-
-.popover-tipster-history div:last-child{
-	margin-bottom: 2px;
-}
-
-
-/** new post - Got any tips? */
-
-#feed-new-post{
-	margin-bottom: 50px;
-	padding: 0px;
-	background: #FAFAFA;
-	/*background: #F2F2F2;*/
-}
-
-#feed-new-post textarea{
-	overflow:hidden;
-	border-radius:0px;
-}
-
-#feed-new-post .new-post-tipster-image{
-	padding: 0px;
-}
-
-#feed-new-post .new-post-tipster-image img{
-	width: 38px;
-	height: 38px;
-	margin-right: 5px;
-	margin-top: 1px;
-}
-
-#new-post-button-wrapper{
-	padding-top: 0px;
-}
-
-#feed-textarea{
-	padding-top: 8px;
-	border-radius: 5px;
-	border-color: #D9D9D9;
-    resize: none;
-    height: 40px;
-}
-
-/***** post to buy a tip ****/
-
-
-.post-to-buy-body button{
-	color: #2DC3E8;
-	border-color: #2DC3E8;
-	background-color: white;
-}
-
-.post-to-buy-body button:hover{
-	color: white;
-	background-color: #2DC3E8;
-}
-
-.post-to-buy-body{
-	margin-top: 5px;
-}
-
-/*************************************************
-post-comment-box
-*************************************************/
-
-.feed-post{
-	padding-bottom: 0px !important;}
-
-.post-comment-box{
-
-	border-right: none;
-	border-left: none;
-	border-bottom: none;
-    margin-bottom: 0;
-}
-
-.post-comment-box a{
-	font-size: 13px;
-	font-weight: 700;
-
-}
-
-.post-comment-box p{
-	color: #828282;
-}
-
-.post-comment-box .media-body small{
-	font-size: 70%;
-}
-
-.post-comment-box .media{
-	margin-top: 0px;
-	padding-top: 10px;
-	border-bottom: solid 1px #D3E0E9;
-}
-
-.post-comment-box .input-group{
-	padding-top: 5px;
-}
-
-.post-comment-box .media-left{
-	padding-top: 5px;
-}
-
-.post-comment-box img{
-	width: 30px;
-	height: 30px;
-}
-
-.post-comment-box button, .post-comment-box button:hover, .post-comment-box button:active, .post-comment-box button:visited{
-	background-color: #F47238 !important;
-	color: white !important;
-	border-color: #F47238 !important;
 }
 
 
@@ -1352,30 +1014,34 @@ Buttons
 .my-sucess-button, .my-fail-button{
 	color: white;
 	border-radius: 50%;
-	min-width: 20px;
-	min-height: 20px;
-	padding: 2px;
-	font-size: 9px;
+	width: 20px;
+	height: 20px;
+	padding: 0px;
+	font-size: 12px;
 	font-weight: 700;
+	border: solid 2px;
 }
 
 .my-sucess-button{
-	background-color: #5CB85C;
+	color: #59AD00;
+	border-color: #59AD00;
 }
 
 .my-sucess-button:hover{
-	color: white;
-	background-color: rgba(92, 184, 92, 0.8);
+	color: #59AD00;
+	background-color: #EEE;
+	border-color: #59AD00;
 }
 
 .my-fail-button{
-	background-color: #F0433D;
+	color: #C60203;
+	border-color: #C60203;
 }
 
 .my-fail-button:hover{
-	color: white;
-	border-color: #F0433D;
-	background-color: rgba(240, 67, 61, 0.8);
+	color: #C60203;
+	background-color: #EEE;
+	border-color: #C60203;
 }
 
 

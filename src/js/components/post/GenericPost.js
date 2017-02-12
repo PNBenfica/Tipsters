@@ -13,9 +13,9 @@ export default class GenericPost extends React.Component {
 
         return (
 
-            <div class="feed-post panel panel-default col-md-12">
+            <div class="feed-post panel">
 
-                <Header id={id} tipsterName={tipster.name} tipsterImage={tipster.image} date={date} />
+                <Header id={id} tipster={tipster} date={date} />
 
                 <GenericPostBody PostBody={this.props.children} tipster={tipster} totalOdd={totalOdd} />
 

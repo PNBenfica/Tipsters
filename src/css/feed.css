@@ -1,0 +1,282 @@
+
+
+#feed-page{
+	padding: 0 3px;
+}
+
+
+@media screen and (min-width: 768px) {
+	#feed-page .posts-container {
+		padding: 0 11px;
+	}
+}
+
+
+.feed-post{
+	margin-bottom: 40px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+
+.feed-post .panel-heading{
+	padding: 18px;
+	border-bottom-color: #E6E9EC;
+}
+
+.feed-post .panel-heading .tipster-avatar{
+	display: flex;
+}
+
+.feed-post .panel-heading .tipster-image-wrapper img{
+    height: 40px;
+	width: 40px;
+    background-size: cover;
+}
+
+.feed-post .panel-title {
+	margin-left: 7px;
+}
+
+.feed-post .panel-heading .tipster-name{
+	color: #333;
+	font-size: 15px;
+    font-weight: 600;
+    transition: color 500ms;
+}
+
+.feed-post .panel-heading .tipster-name:hover{
+	color: #0084bf;
+}
+
+.feed-post .panel-heading .panel-title .post-date{
+	color: #90949c;	
+	font-size: 12px;
+}
+
+.feed-post  .tipster-info{
+	display: flex;
+	margin: 15px 0 0 0;
+}
+
+.feed-post  .tipster-info > *:not(:first-child) {
+	padding-left: 10px;
+}
+.feed-post  .tipster-info > *:not(:last-child) {
+	padding-right: 10px;
+	border-right: solid 1px #E6E9EC;
+}
+
+.feed-post .tipster-info .feed-post-tipster-history button:not(:last-child){
+	margin-right: 4px !important;
+}
+
+.feed-post  .tipster-info .ranking, .feed-post  .tipster-info .win-losses {
+	display: flex;
+}
+
+.feed-post  .tipster-info img {
+	height: 20px;
+}
+
+
+@media screen and (max-width: 345px) {
+	.feed-post .tipster-info {
+	    flex-direction: row;
+	    flex-wrap: wrap;
+	}
+	.feed-post .tipster-info div:first-child{
+	    flex: 100%;
+	    border-right: none;
+	    margin-bottom: 5px;
+	}
+	.feed-post .tipster-info div:nth-child(2){
+	    padding-left: 0px;
+	}
+
+}
+
+@media screen and (min-width: 768px) {
+	.feed-post .panel-heading .tipster-info{
+		float: right;
+		margin-top: 7px;
+	}
+
+	.feed-post .panel-heading > *{
+	    display: inline-flex !important;
+	}
+}
+
+
+
+
+
+.post-tips{
+	border-left-width: 2px;
+	border-left-color: #2DC3E8;
+}
+
+.post-tips, .post-tips a{
+	color: #333;
+}
+
+.post-tips .panel-body p{
+	margin: 8px 0;
+	font-size: 13px;
+}
+
+.post-tips .panel-body{
+	padding-top: 6px;
+	padding-bottom: 0px;
+	padding-left: 25px;
+	line-height: 90%;
+}
+
+.post-tips .panel-body .event-name img{
+	height: 20px;
+	max-width: 20px;
+}
+
+
+.feed-post .tipster-comment{
+	padding-left: 3px;
+	margin-top: -8px;
+}
+
+.feed-post .panel-footer{
+	background-color: transparent;
+	border: none;
+	padding-left: 40px;
+}
+
+
+.feed-post .panel-footer a{
+	color: #7f7f7f;
+
+	margin-right: 30px;
+
+	font-size: 13px;
+	/*font-weight: 700;*/
+
+}
+
+.feed-post .panel-footer a:hover{
+	cursor: pointer;
+	text-decoration: underline !important;
+}
+
+
+.feed-post .panel-footer a i{
+	color: #AFB4BD;
+	margin-right: 5px;
+}
+
+/** new post - Got any tips? */
+
+#feed-new-post{
+	margin-bottom: 50px;
+	padding: 0px;
+	background: #FAFAFA;
+	/*background: #F2F2F2;*/
+}
+
+#feed-new-post textarea{
+	overflow:hidden;
+	border-radius:0px;
+}
+
+#feed-new-post .new-post-tipster-image{
+	padding: 0px;
+}
+
+#feed-new-post .new-post-tipster-image img{
+	width: 38px;
+	height: 38px;
+	margin-right: 5px;
+	margin-top: 1px;
+}
+
+#new-post-button-wrapper{
+	padding-top: 0px;
+}
+
+#feed-textarea{
+	padding-top: 8px;
+	border-radius: 5px;
+	border-color: #D9D9D9;
+    resize: none;
+    height: 40px;
+}
+
+/***** post to buy a tip ****/
+
+
+.post-to-buy-body button{
+	color: #2DC3E8;
+	border-color: #2DC3E8;
+	background-color: white;
+}
+
+.post-to-buy-body button:hover{
+	color: white;
+	background-color: #2DC3E8;
+}
+
+.post-to-buy-body{
+	margin-top: 5px;
+}
+
+/*************************************************
+post-comment-box
+*************************************************/
+
+.feed-post{
+	padding-bottom: 0px !important;}
+
+.post-comment-box{
+
+	border-right: none;
+	border-left: none;
+	border-bottom: none;
+    margin-bottom: 0;
+}
+
+.post-comment-box a{
+	font-size: 13px;
+	font-weight: 700;
+
+}
+
+.post-comment-box p{
+	color: #828282;
+}
+
+.post-comment-box .media-body small{
+	font-size: 70%;
+}
+
+.post-comment-box .media{
+	margin-top: 0px;
+	padding-top: 10px;
+	border-bottom: solid 1px #D3E0E9;
+}
+
+.post-comment-box .input-group{
+	padding-top: 5px;
+}
+
+.post-comment-box .media-left{
+	padding-top: 5px;
+}
+
+.post-comment-box img{
+	width: 30px;
+	height: 30px;
+}
+
+.post-comment-box button, .post-comment-box button:hover, .post-comment-box button:active, .post-comment-box button:visited{
+	background-color: #F47238 !important;
+	color: white !important;
+	border-color: #F47238 !important;
+}
+

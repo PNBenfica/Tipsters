@@ -8,7 +8,7 @@ export default class PostDate extends React.Component {
 
         return (        
             <a href={"#/posts/" + id}>
-                <p class="post-date"><i class="fa fa-clock-o fa-fw"></i> {date}</p>
+                <div class="post-date"><i class="fa fa-clock-o fa-fw"></i> {date}</div>
             </a>
         )
     }

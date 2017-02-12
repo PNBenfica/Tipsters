@@ -1,6 +1,6 @@
 import React from "react";
 
-import Tip from "../Tip";
+import Tip from "../../Tip";
 
 export default class TipsterFormPopover extends React.Component {
 

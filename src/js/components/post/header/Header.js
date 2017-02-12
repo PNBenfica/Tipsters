@@ -1,23 +1,23 @@
 import React from "react"
-import {Media} from "react-bootstrap"
 
-import TipsterImage from "./TipsterImage"
-import Title from "./Title"
+import TipsterAvatar from "./TipsterAvatar"
+import TipsterInfo from "./TipsterInfo"
 
 export default class Header extends React.Component {
 
     render() {
 
-        const { date, id, tipsterImage, tipsterName } = this.props
+        const { date, id, tipster } = this.props
+        const { wins, losses, lastTips } = tipster
 
         return (        
-            <Media class="panel-heading col-xs-12">
+            <div class="panel-heading">
 
-                <TipsterImage src={tipsterImage} />
+                <TipsterAvatar tipster={tipster}  id={id} date={date} />
 
-                <Title tipsterName={tipsterName} id={id} date={date} />
+                <TipsterInfo lastTips={lastTips} wins={wins} losses={losses} />
 
-            </Media>
+            </div>
         )
     }
 }

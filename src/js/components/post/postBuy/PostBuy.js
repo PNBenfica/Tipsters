@@ -13,6 +13,8 @@ export default class PostBuy extends React.Component {
 
         const { tipster, totalOdd, selections, price} = this.props
 
+        return null
+
         return (
             <div>
 

@@ -8,11 +8,9 @@ export default class TipsterImage extends React.Component {
         const { src } = this.props
 
         return (        
-            <Media.Left>
-                <a href="#/profile">
-                    <img src={src} />
-                </a>
-            </Media.Left>
+            <a href="#/profile" class="tipster-image-wrapper">
+                <img src={src} />
+            </a>
         )
     }
 }

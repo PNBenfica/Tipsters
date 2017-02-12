@@ -8,7 +8,7 @@ export default class PopoverButton extends React.Component {
 
     const {status, popover} = this.props;
     const btnClasses = classNames('btn', 'btn-xs', 'btn-default', {'my-sucess-button': status === 'win' }, {'my-fail-button': status === 'lost' });
-    const btnText = (status === 'win') ? '✔' : 'X';
+    const btnText = (status === 'win') ? '✔' : '✖';
 
     return (
         <OverlayTrigger trigger={['hover', 'focus']} placement="left" overlay={popover}>

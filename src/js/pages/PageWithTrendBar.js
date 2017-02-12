@@ -11,7 +11,7 @@ export default class PageWithTrendBar extends React.Component {
 
 				{this.props.children}
 
-				<div class="col-md-4 col-lg-push-2 hidden-xs hidden-sm trend-bar-container">
+				<div class="col-md-4 col-lg-push-2 hidden-xs hidden-sm hidden trend-bar-container">
 					<TrendBar />
 				</div>
 

@@ -23,13 +23,10 @@ export default class TipsterForm extends React.Component {
 
     return (
         <div class="feed-post-tipster-history">
-            <div class="row">
-                <div class="btn-group col-xs-12" role="group">
-                    <ButtonToolbar>
-                        {LastTips}
-                    </ButtonToolbar>
-                </div>
-                <br></br>
+            <div class="btn-group" role="group">
+                <ButtonToolbar>
+                    {LastTips}
+                </ButtonToolbar>
             </div>
         </div>
     );

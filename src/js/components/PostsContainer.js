@@ -42,18 +42,26 @@ export default class PostsContainer extends React.Component {
         console.log("Need to fetch more posts!")
     }
 
-    render() {
+    renderPosts(){
+        let { posts } = this.props
 
-        const Posts = this.props.posts.map((post, i) => {
+        return posts.map((post, i) => {
             if (post.price > 0)
                 return <PostBuy key={i} {...post}/>
             else
                 return <Post addComment={this.addComment.bind(this, post.id)} key={i} {...post}/>
         })
+    }
+
+    render() {
+
+        const Posts = this.renderPosts()
 
         return (
             <ScrollPageDetector onScrollBottom={this.onScrollBottom.bind(this)}>
-                {Posts}
+                <div class="posts-container">
+                    {Posts}
+                </div>
             </ScrollPageDetector>
         )
     }
