@@ -2,7 +2,6 @@ import React from "react"
 
 import CommentBox from "./commentBox/CommentBox"
 import Footer from "./footer/Footer"
-import GenericPostBody from "./GenericPostBody"
 import Header from "./header/Header"
 
 export default class GenericPost extends React.Component {
@@ -17,7 +16,7 @@ export default class GenericPost extends React.Component {
 
                 <Header id={id} tipster={tipster} date={date} />
 
-                <GenericPostBody PostBody={this.props.children} tipster={tipster} totalOdd={totalOdd} />
+                {this.props.children}
 
                 <Footer likes={likes} comments={nComments} toggleCommentBox={toggleCommentBox} />
 

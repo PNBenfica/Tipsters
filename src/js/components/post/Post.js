@@ -1,7 +1,8 @@
 import React from "react"
 
 import GenericPost from "./GenericPost"
-import PostBody from "./PostBody"
+import Tips from "./Tips"
+import TipsData from "./TipsData"
 
 export default class Post extends React.Component {
 
@@ -22,7 +23,9 @@ export default class Post extends React.Component {
         return (
             <GenericPost {...this.props} toggleCommentBox={this.toggleCommentBox.bind(this)} commentBoxOpen={this.state.commentBoxOpen}>
 
-                <PostBody tips={tips} comment={comment} />
+                <Tips tips={tips} />
+
+                <TipsData comment={comment} totalOdd={totalOdd} />
 
             </GenericPost>
     )

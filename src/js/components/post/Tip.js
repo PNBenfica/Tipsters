@@ -1,21 +1,24 @@
-import React from "react";
-import {Panel} from "react-bootstrap";
+import React from "react"
 
-
+import TipEvent from "./TipEvent"
+import TipRow from "./TipRow"
 
 export default class Tip extends React.Component {
 
-  render() {
+    render() {
 
-    const { tipnumber , selection , event, odd} = this.props;
+        const { selection, event, odd} = this.props
 
-            // <p><a href="#/sports">{event}</a></p>
-    return (
-        <Panel class="post-tips">
-            <p>{tipnumber}. {selection}</p>
-            <p><a href="#/sports" class="event-name">America de Cali <img src="img/sports/arsenal.png"/> vs <img src="img/sports/liverpool.jpg"/> Rionegro Aguillas</a></p>
-            <p>{odd}</p>
-        </Panel>
-    );
-  }
+        return (
+            <div class="tip">
+
+                <TipRow title="Aposta" value={selection}/>
+
+                <TipRow title="Evento" value={<TipEvent event={event}/>}/>
+
+                <TipRow title="Odd" value={odd}/>
+
+            </div>
+        )
+    }
 }

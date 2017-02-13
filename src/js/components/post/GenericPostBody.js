@@ -14,7 +14,6 @@ export default class GenericPostBody extends React.Component {
                     { PostBody }
 
                 </div>
-            </div>
         );
     }
 }

@@ -13,6 +13,7 @@ Html General Elements
 body{	
     background-color: rgb(250,250,250);
 	font-family: 'Source Sans Pro', sans-serif;
+	color: #333;
 }
 
 a, a:hover, a:active, a:visited {
@@ -25,11 +26,16 @@ a, a:hover, a:active, a:visited {
 
 a i{
 	color: #637BBF;
+}*/
+
+a{
+	color: #333 !important;
+    transition: color 500ms;
 }
 
 a:hover {
-    color: #D9230F;
-}*/
+	color: #0084bf !important;
+}
 
 
 .panel{

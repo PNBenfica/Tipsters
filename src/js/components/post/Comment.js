@@ -1,16 +1,20 @@
 import React from "react"
 var classNames = require('classnames')
 
+import TipRow from "./TipRow"
+
 export default class Comment extends React.Component {
 
 	render() {
 
 		const { comment } = this.props
-		const commentClass = classNames('tipster-comment', {'hidden' : !comment})
+		const commentClass = classNames({'hidden' : !comment})
 
 		return (
-			<div class="col-xs-12">
-				<p className={commentClass}>{comment}</p>
+			<div class={commentClass}>
+			
+				<TipRow title="Comment" value={comment} />
+
 			</div>
 		)
 	}

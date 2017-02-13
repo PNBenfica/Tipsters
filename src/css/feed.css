@@ -39,14 +39,8 @@
 }
 
 .feed-post .panel-heading .tipster-name{
-	color: #333;
 	font-size: 15px;
     font-weight: 600;
-    transition: color 500ms;
-}
-
-.feed-post .panel-heading .tipster-name:hover{
-	color: #0084bf;
 }
 
 .feed-post .panel-heading .panel-title .post-date{
@@ -110,38 +104,70 @@
 
 
 
-
-.post-tips{
-	border-left-width: 2px;
-	border-left-color: #2DC3E8;
-}
-
-.post-tips, .post-tips a{
-	color: #333;
-}
-
-.post-tips .panel-body p{
-	margin: 8px 0;
-	font-size: 13px;
-}
-
-.post-tips .panel-body{
-	padding-top: 6px;
-	padding-bottom: 0px;
-	padding-left: 25px;
-	line-height: 90%;
-}
-
-.post-tips .panel-body .event-name img{
-	height: 20px;
-	max-width: 20px;
+.feed-post .tip{
+	border-bottom: solid 1px #E6E9EC;
+	padding: 0 15px;
 }
 
 
-.feed-post .tipster-comment{
-	padding-left: 3px;
-	margin-top: -8px;
+.feed-post .tip .tip-row{
+	display: flex;
+	font-size: 15px;
+	padding: 7px 0;
 }
+
+.feed-post .tip .tip-row > *{
+	display: inline-block; 
+}
+
+.feed-post .tip .tip-row .info{
+	color: #999999;
+	width: 20%;
+	padding-right: 15px;
+	text-align: right;
+	font-weight: 300;
+}
+
+.feed-post .tip .tip-row .value{
+	width: 80%;
+}
+
+@media screen and (max-width: 380px) {
+	.feed-post .tip .tip-row .info{ width: 20%; }
+	.feed-post .tip .tip-row .value{ width: 80%; }
+}
+@media screen and (max-width: 767px) {
+	.feed-post .tip .tip-row .info{ width: 50px; }
+	.feed-post .tip .tip-row .value{ width: calc(100% - 50px); }
+}
+@media screen and (min-width: 768px) {
+	.feed-post .tip .tip-row .info{ width: 75px; }
+	.feed-post .tip .tip-row .value{ width: calc(100% - 75px); }
+}
+
+
+
+.feed-post .tip .tip-row .value .event .team:first-child{
+	margin-bottom: 5px;
+}
+
+.feed-post .tip .tip-row .value .event .team img{
+	height: 23px;
+	margin-right: 5px;
+}
+
+
+.feed-post .tip.tip-data{
+	border-bottom: none;
+}
+
+.feed-post .tip.tip-data .tip-row .info{
+	color: #c30000;
+}
+
+
+
+
 
 .feed-post .panel-footer{
 	background-color: transparent;
@@ -170,6 +196,13 @@
 	color: #AFB4BD;
 	margin-right: 5px;
 }
+
+
+
+
+
+
+
 
 /** new post - Got any tips? */
 
