@@ -151,7 +151,7 @@
 @media(min-width:768px) {
 
     .navbar-brand{
-        width: 200px;
+        width: 125px;
     }
 
     .navbar-top-links .dropdown-messages,
