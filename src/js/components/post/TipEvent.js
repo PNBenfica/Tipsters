@@ -12,6 +12,8 @@ export default class TipEvent extends React.Component {
             <a href="#/sports" class="event">
                 <TipEventTeam name="America de Cali" img="img/sports/arsenal.png"/>
 
+                <span>vs</span>
+
                 <TipEventTeam name="Rionegro Aguilas" img="img/sports/liverpool.jpg"/>
             </a>
         )

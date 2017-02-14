@@ -1,5 +1,5 @@
 import React from "react"
-import {Collapse, Panel} from "react-bootstrap"
+import { Collapse } from "react-bootstrap"
 
 import AddCommentInput from "./AddCommentInput"
 import Comment from "./Comment"
@@ -31,11 +31,11 @@ export default class CommentBox extends React.Component {
 
             <Collapse in={this.props.in}>
 
-                <Panel class="post-comment-box">
+                <div class="post-comment-box">
                     <a class={visibleComments.length < comments.length ? 'visible' : 'hidden'} onClick={this.showMoreComments.bind(this)}>Mostrar mais comentarios</a>
                     {visibleComments}
                     <AddCommentInput addComment={this.props.addComment} />
-                </Panel>
+                </div>
                 
             </Collapse>
         )

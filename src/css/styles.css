@@ -11,7 +11,7 @@ Html General Elements
 *************************************************/
 
 body{	
-    background-color: rgb(250,250,250);
+    background-color: #FAFAFA;
 	font-family: 'Source Sans Pro', sans-serif;
 	color: #333;
 }
@@ -48,6 +48,17 @@ a:hover {
 	-webkit-box-shadow: 0 6px 6px -6px #B1B1B1;
 	-moz-box-shadow: 0 6px 6px -6px #B1B1B1;
 	box-shadow: 0 6px 6px -6px #B1B1B1;
+}
+
+.panel * {
+	border-color: #E6E9EC;
+}
+
+
+.btn, .btn:hover, .btn:active, .btn:visited{
+	background-color: #2B2B2B;
+	color: white;
+	border-color: #2B2B2B;
 }
 
 
@@ -1026,6 +1037,7 @@ Buttons
 	font-size: 12px;
 	font-weight: 700;
 	border: solid 2px;
+	background-color: white;
 }
 
 .my-sucess-button{

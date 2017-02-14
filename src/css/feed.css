@@ -21,7 +21,6 @@
 
 .feed-post .panel-heading{
 	padding: 18px;
-	border-bottom-color: #E6E9EC;
 }
 
 .feed-post .panel-heading .tipster-avatar{
@@ -105,8 +104,10 @@
 
 
 .feed-post .tip{
+	position: relative;
 	border-bottom: solid 1px #E6E9EC;
 	padding: 0 15px;
+	overflow: hidden;
 }
 
 
@@ -166,36 +167,81 @@
 }
 
 
+@media screen and (min-width: 768px) {
+	.feed-post .tip .tip-row .value .event .team{
+		display: inline-block;
+		margin-bottom: 0px !important;
+	}
+
+	.feed-post .tip .tip-row .value .event .team img{
+		margin: 0px 5px;
+	}
+
+	.feed-post .tip .tip-row .value .event .team:first-child img{
+		float: right;
+	}
+}
+
+
+.feed-post .tip .tip-status{
+
+	position: absolute;
+	top: 20px;
+	right: -40px;
+	width: 140px;
+
+	font-size: 10px;	
+	text-transform: uppercase;
+	text-align: center;
+	color: white;
+
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+}
+
+.feed-post .tip .tip-status.won{
+	background-color: #59AD00;
+}
+.feed-post .tip .tip-status.lost{
+	background-color: #C60203;
+}
+
+
 
 
 
 .feed-post .panel-footer{
 	background-color: transparent;
-	border: none;
-	padding-left: 40px;
+	margin: 0 15px;
 }
 
 
-.feed-post .panel-footer a{
-	color: #7f7f7f;
+.feed-post .panel-footer .footer-button{
+	color: #777;
+	font-size: 15px;
+	font-weight: 600;
 
 	margin-right: 30px;
-
-	font-size: 13px;
-	/*font-weight: 700;*/
-
+    transition: color 500ms;
+    display: inline-block;
 }
 
-.feed-post .panel-footer a:hover{
+.feed-post .panel-footer .footer-button:hover{
 	cursor: pointer;
+	color: #0084bf;
 	text-decoration: underline !important;
 }
 
-
-.feed-post .panel-footer a i{
-	color: #AFB4BD;
+.feed-post .panel-footer .footer-button i{
+	color: #777;
 	margin-right: 5px;
 }
+
+.feed-post .panel-footer .footer-button:hover i{
+	color: #0084bf;
+}
+
 
 
 
@@ -263,53 +309,48 @@
 post-comment-box
 *************************************************/
 
-.feed-post{
-	padding-bottom: 0px !important;}
 
-.post-comment-box{
-
-	border-right: none;
-	border-left: none;
-	border-bottom: none;
+.feed-post .post-comment-box{
+	border-top: solid 1px #B1B1B1;
     margin-bottom: 0;
+    padding: 0px 15px 5px 15px;
 }
 
-.post-comment-box a{
-	font-size: 13px;
-	font-weight: 700;
-
+.feed-post .post-comment-box .post-comment{
+	display: flex;
+	padding: 10px 15px 0px 15px;
 }
 
-.post-comment-box p{
+.feed-post .post-comment-box .post-comment{
+	border-bottom: solid 1px #E6E9EC;
+}
+
+.feed-post .post-comment-box .post-comment .tipster-image img{
+	width: 30px;
+	height: 30px;
+	margin-top: 3px;
+}
+
+.feed-post .post-comment-box .post-comment .post-comment-body{
+	padding-left: 10px;
+}
+
+
+.feed-post .post-comment-box .post-comment .tipster-name{
+	font-size: 14px;
+	font-weight: 600;
+	display: inline-block;
+}
+
+.feed-post .post-comment-box .post-comment .comment-date{
+	font-size: 11px;
+	display: inline-block;
+}
+
+.feed-post .post-comment-box .post-comment .comment{
 	color: #828282;
 }
 
-.post-comment-box .media-body small{
-	font-size: 70%;
-}
-
-.post-comment-box .media{
-	margin-top: 0px;
-	padding-top: 10px;
-	border-bottom: solid 1px #D3E0E9;
-}
-
-.post-comment-box .input-group{
+.feed-post .post-comment-box .input-group{
 	padding-top: 5px;
 }
-
-.post-comment-box .media-left{
-	padding-top: 5px;
-}
-
-.post-comment-box img{
-	width: 30px;
-	height: 30px;
-}
-
-.post-comment-box button, .post-comment-box button:hover, .post-comment-box button:active, .post-comment-box button:visited{
-	background-color: #F47238 !important;
-	color: white !important;
-	border-color: #F47238 !important;
-}
-

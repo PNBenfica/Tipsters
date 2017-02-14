@@ -1,27 +1,26 @@
-import React from "react";
+import React from "react"
 
-import {Media} from "react-bootstrap";
+    export default class Comment extends React.Component {
 
-export default class Comment extends React.Component {
+    render() {
 
-  render() {
+        const { tipsterName, tipsterImage, date, comment} = this.props
 
-    const { tipsterName, tipsterImage, date, comment} = this.props;
+        return (
 
-    return (
+        <div class="post-comment">
 
-        <Media>
+            <a class="tipster-image" href="#/profile">
+                <img src={tipsterImage}></img>
+            </a>
 
-            <Media.Left>
-                <a href="#/profile"><img src={tipsterImage}></img></a>
-            </Media.Left>
+            <div class="post-comment-body">
+                <a class="tipster-name" href="#/profile">{tipsterName}</a>
+                <div class="comment-date"><i class="fa fa-clock-o fa-fw"></i> {date}</div>
+                <p class="comment">{comment}</p>            
+            </div>
 
-            <Media.Body>
-                <a href="#/profile">{tipsterName} <small><i class="fa fa-clock-o fa-fw"></i> {date}</small></a>
-                <p>{comment}</p>            
-            </Media.Body>
-            
-        </Media>
-    );
-  }
+        </div>
+        )
+    }
 }

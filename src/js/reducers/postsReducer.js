@@ -20,7 +20,7 @@ export default function reducer(state={
                 fetched: true,
                 posts: [{
                         id : 123456,
-                        tips : [ { selection : "Benfica", event : "Belenenses vs Benfica", odd : 1.51}, { selection : "Rio Ave",  event : "Sporting vs Rio Ave",   odd : 2.35}],
+                        tips : [ { selection : "Benfica", event : "Belenenses vs Benfica", odd : 1.51, status: "Won"}, { selection : "Rio Ave",  event : "Sporting vs Rio Ave",   odd : 2.35, status: "Lost"}],
                         comment : "Benfica is very strong, they win. Sporting is very weak, they lose for sure.",
                         tipster : {name: "João Almeida", image : "img/joaoalmeida.jpg", profit : 120, wins: 120, losses: 60,
                                         lastTips : [ { status: "win",  tips: [ { selection : "Benfica", event : "Belenenses vs Benfica", odd : 1.51}, { selection : "Bayern",  event : "Wolfsburg vs Bayern",   odd : 1.36}]}, 
@@ -38,7 +38,7 @@ export default function reducer(state={
                                      { tipsterName : "João Almeida", tipsterImage : "img/joaoalmeida.jpg", date : "2 min", comment : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"}]
                         },{
                         id : 123457,
-                        tips : [ { selection : "Benfica", event : "Belenenses vs Benfica", odd : 1.51}, { selection : "Rio Ave",  event : "Sporting vs Rio Ave",   odd : 2.35}],
+                        tips : [ { selection : "Benfica", event : "Belenenses vs Benfica", odd : 1.51, status: "Lost"}, { selection : "Rio Ave",  event : "Sporting vs Rio Ave",   odd : 2.35, status: "Pendent"}],
                         comment : "Benfica is very strong, they win. Sporting is very weak, they lose for sure.",
                         tipster : {name: "João Almeida", image : "img/joaoalmeida.jpg", profit : 120, wins: 120, losses: 60,
                                         lastTips : [ { status: "win",  tips: [ { selection : "Benfica", event : "Belenenses vs Benfica", odd : 1.51}, { selection : "Bayern",  event : "Wolfsburg vs Bayern",   odd : 1.36}]}, 

@@ -7,9 +7,9 @@ export default class Footer extends React.Component {
         const { title, icon, value, onClick} = this.props
 
         return (
-            <a onClick={() => onClick()}>
+            <div class="footer-button" onClick={() => onClick()}>
                 <i class={icon} aria-hidden="true"></i> {title} ({value})
-            </a>
+            </div>
         )
     }
 }
