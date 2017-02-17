@@ -53,7 +53,8 @@
 
 .navbar .sidebar .bar .item .name{
 	position: relative;
-	font-size: 15px;
+	font-size: 12px;
+	margin-top: 3px;
 	text-transform: uppercase;
 
 	transition: color 0.75s ease-in-out;
@@ -124,7 +125,7 @@
 @media screen and (min-width: 768px) {
 	.navbar .sidebar{
 		position: fixed;
-		width: 125px;
+		width: 110px;
 	}
 
 

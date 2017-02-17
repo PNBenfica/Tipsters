@@ -13,7 +13,7 @@ export default class Header extends React.Component{
         options = options.map((option, i) => <h3 key={i} class={optionClasses}>{option}</h3>)
 
 	    return (
-            <div class="panel-heading col-xs-12 no-padding-sides">
+            <div class="panel-heading col-xs-12">
                 <h3 class={titleClasses}>{title}</h3>     
                 {options}
             </div>

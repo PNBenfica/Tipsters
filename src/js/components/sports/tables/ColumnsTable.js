@@ -19,7 +19,7 @@ export default class ColumnsTable extends React.Component {
         rows = rows.map((choices,i) => this.renderRow(choices, i))
 
         return (
-            <div class="panel panel-default odds-table">
+            <div class="panel odds-table">
                 
                 <Header title={bet.name} />
 

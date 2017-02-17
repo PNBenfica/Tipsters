@@ -70,7 +70,7 @@
 @media(min-width:768px) {
     #page-wrapper {
         position: inherit;
-        margin: 0 0 0 200px;
+        margin: 0 0 0 110px;
         padding: 0 30px;
     }
 }
@@ -151,7 +151,7 @@
 @media(min-width:768px) {
 
     .navbar-brand{
-        width: 125px;
+        width: 110px;
     }
 
     .navbar-top-links .dropdown-messages,

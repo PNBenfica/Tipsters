@@ -14,7 +14,7 @@ export default class SportTable extends React.Component {
             })
 
 	    return (
-            <div class="panel panel-default">
+            <div class="panel">
             
                 <Header title={title} />
 

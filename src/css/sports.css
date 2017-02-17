@@ -1,0 +1,427 @@
+#sports-page{
+
+}
+
+.sports-tables-container .breadcrumb{
+	background: transparent;
+	padding: 0px;
+	text-transform: uppercase;
+	line-height: 14px;
+}
+
+.sports-tables-container .breadcrumb .logo{
+	margin-right: 5px;
+}
+
+
+#sports-page .sports-tables-container {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+
+#sports-page .panel{
+	border-width: 1px;
+
+	padding-bottom: 0px;
+	border-bottom-color: #CCCCCC;
+}
+
+/**********************************
+league tables
+**********************************/
+
+@media screen and (min-width: 1200px) {
+	#sports-page .sports-tables-container {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+
+#sports-page .panel .panel-heading{
+	color: #3097D1;
+	background-color: #c30000;
+	color: white;
+	padding: 8px 0px;
+}
+
+#sports-page .panel .panel-heading .panel-title{
+	font-size: 14px;
+	text-transform: uppercase;
+	font-weight: 600;
+	padding: 0px 15px;
+}
+
+#sports-page .sports-tables-container .panel-body{
+	padding: 0px;
+}
+
+#sports-page .sports-tables-container .panel-body a{
+	padding-bottom: 5px;
+	padding-top: 5px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+}
+
+
+#sports-page .sports-tables-container .panel-body a:before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #cccccc;
+}
+#sports-page .sports-tables-container .panel-body a:after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 1px;
+    height: 100%;
+    background: #cccccc;
+}
+
+
+.sports-tables-container .league-game{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.sports-tables-container .league-game a{
+	text-align: center;
+}
+
+.sports-tables-container .league-game a:first-child{
+	text-align: left;
+}
+
+.sports-tables-container .league-game a:hover,{
+	color: #3097D1;
+}
+
+.sports-tables-container .league-game-selection-type{
+	text-align: center;
+	font-size: 90%;
+}
+
+.sports-tables-container .league-game a:not(:first-child):hover{
+	background-color: rgba(48,151,209,0.1);
+	cursor: pointer;
+	color: #8B8C8E;
+}
+
+.sports-tables-container small{
+	color: #3097D1;
+	padding-right: 5px;
+}
+
+.highlighted{
+	background-color: rgba(48,151,209,0.1);
+}
+
+/**********************
+Match odds tables
+**********************/
+
+.odds-table a:hover{
+	background-color: rgba(48,151,209,0.1);
+	cursor: pointer;
+}
+
+.odds-table a.empty-option:hover{
+	background-color: white;
+	color: white;
+	cursor: default;
+}
+
+.odds-table a.empty-option{
+	color: white;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+.odds-table a.empty-option:not(.bordered){
+	border-color: transparent;
+}
+
+.centered{
+	text-align: center;
+}
+
+.odds-table a{
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 5px !important;
+	padding-bottom: 5px !important;
+	
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-left-width: 1px;
+	border-bottom-width: 1px;
+	border-color: rgba(48,151,209,0.1);
+}
+
+.odds-table a:last-child{
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: rgba(48,151,209,0.1);
+}
+
+
+.odds-table a span{
+	position: absolute;
+	right: 7px;
+	top: 6px;
+}
+
+.bigger{
+	height: 50px;
+}
+
+
+.odds-table .table{
+	padding-left: 0px;
+	border: none !important;
+}
+
+.odds-table .table tr td:not(:last-child){
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: rgba(48,151,209,0.1);
+}
+
+@media screen and (min-width: 650px) {
+	.odds-table .table tr td{
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+
+	.table .player-name
+	{
+		padding-left: 15px;
+	}
+}
+
+.sports-tables-container .table{
+	background-color: white;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #D3E0E9;
+}
+
+.sports-tables-container .table thead th{
+	border-bottom-color: #3097D1;
+	border-bottom-width: 2px;
+	color: #3097D1;
+	background-color: #fafafa;
+	font-weight: normal;
+}
+
+.sports-tables-container .table td, .sports-tables-container .table td a{
+	color: #8B8C8E;
+}
+
+.sports-tables-container .table td:hover{
+	background-color: rgba(48,151,209,0.1);
+	cursor: pointer;
+}
+.sports-tables-container .table td.not-hovered:hover, .sports-tables-container .table td.empty-option:hover, .sports-tables-container .table .match-name:hover{
+	background-color: white;
+	cursor: default;
+}
+.sports-tables-container .table .match-name:hover a{
+	color: #3097D1;
+}
+
+.sports-tables-container .table td.empty-option:hover{
+	color: white;
+}
+
+.sports-tables-container .table td.empty-option{
+	color: white;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+
+/**********************************
+bet slip
+**********************************/
+
+
+@media screen and (min-width: 1200px) {
+	.right-sports-bar-container{
+		padding-left: 40px;
+		padding-right: 20px;
+	}
+}
+
+.right-sports-bar-container .panel-heading{
+	color: #8B8C8E;
+	background-color: #ffffff;
+	border-bottom: none;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+
+#bet-slip {
+	color: #8B8C8E;
+}
+
+#bet-slip .panel-heading h3{
+	font-size: 14px;
+}
+
+#bet-slip .panel-body{
+	padding-bottom: 2px;
+	padding-top: 7px;
+}
+
+#bet-slip .panel-body input { 
+	display: inline;
+	width: 50px;
+	margin-left: 5px;
+}
+
+#bet-slip .panel-body .post-tips{ 
+	border-left-color: #F47238;
+}
+
+#bet-slip #bet-slip-total-odd{ 
+    margin-top: -10px;
+}
+
+#bet-slip .panel-body .post-tips .panel-body .cross{  
+    font-size: 90%;
+    color: #F47238;
+    font-weight: bold;
+}
+
+#bet-slip .panel-body .post-tips .panel-body .cross:hover{  
+    cursor: pointer;
+}
+
+
+#bet-slip .empty-bet-slip{  
+    margin-top: 7px;
+    margin-bottom: 0px;
+}
+
+#bet-slip .post-tips .panel-body{
+	line-height: 100%;
+}
+
+#bet-slip .empty-bet-slip .panel{  
+    padding-top: 10px;
+    padding-bottom: 7px;
+}
+
+#bet-slip button{
+	background-color: #F47238;
+	color: white;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/**********************************
+Tips on this game
+**********************************/
+
+.chat {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.chat li {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #999;
+}
+
+.chat li.left .chat-body {
+    margin-left: 60px;
+}
+
+.chat li.right .chat-body {
+    margin-right: 60px;
+}
+
+.chat li .chat-body p {
+    margin: 0;
+}
+
+.panel .slidedown .glyphicon,
+.chat .glyphicon {
+    margin-right: 5px;
+}
+
+.chat-panel .panel-body {
+    height: 320px;
+    overflow-y: scroll;
+}
+
+.chat-panel .small-chat{
+    height: 130px;
+    overflow-y: hidden;
+}
+
+
+.chat-panel .panel-heading{	
+}
+
+#tips-on-this-events .chat-img img{ 
+	margin-top: 5px;
+    width: 50px;
+    height: 50px;
+}
+
+#tips-on-this-events .post-tips { 
+    padding-left: 10px;
+}
+
+.chat-panel .tips-container{
+	margin-top: 5px;
+}
+
+.chat-panel button {
+	background-color: #F47238;
+}
+
+
+
+
+
+
+
+.chat-panel .panel-body::-webkit-scrollbar-track
+{
+	/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+	background-color: transparent;
+}
+
+.chat-panel .panel-body::-webkit-scrollbar
+{
+	width: 2px;
+	background-color: #F5F5F5;
+}
+
+.chat-panel .panel-body::-webkit-scrollbar-thumb
+{
+	background-color: rgba(0,0,0,0.0);
+}

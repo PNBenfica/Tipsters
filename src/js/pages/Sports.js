@@ -437,23 +437,25 @@ export default class Sports extends React.Component {
 
 	    return (
 
-	        <div class="row">
+            <div id="sports-page">
+    	        <div class="row">
 
-	            <div class="league-tables col-lg-8 sports-table-container">
-	                
-	                <Breadcrumb sport={sport} sportCode={sportCode} league={league} leagueCode={leagueCode} match={match} matchCode={matchCode}/>	                
+    	            <div class="col-lg-8 sports-tables-container">
+    	                
+    	                <Breadcrumb sport={sport} sportCode={sportCode} league={league} leagueCode={leagueCode} match={match} matchCode={matchCode}/>	                
 
-	                {Tables}
-	            </div>
+    	                {Tables}
+    	            </div>
 
 
-	            <div class="col-lg-4 hidden-md hidden-sm hidden-xs right-sports-bar-container">
+    	            <div class="col-lg-4 hidden-md hidden-sm hidden-xs right-sports-bar-container">
 
-	            	<BetSlip {...this.state.betSlip} updateSellingPrice={this.updateSellingPrice.bind(this)} removeTip={this.removeTip.bind(this)} shareTip={this.shareTip.bind(this)}/>
+    	            	<BetSlip {...this.state.betSlip} updateSellingPrice={this.updateSellingPrice.bind(this)} removeTip={this.removeTip.bind(this)} shareTip={this.shareTip.bind(this)}/>
 
-	                <TipsOnThisEvent />
+    	                <TipsOnThisEvent />
 
-	            </div>
+    	            </div>
+                </div>
 	        </div>
 	    );
   	}
