@@ -24,7 +24,7 @@ export default class MatchRow extends React.Component {
 
 	    return (        
             <tr>
-                <td class="col-xs-6 match-name"><small>{hour}</small> <a href={eventURL.renderPath()}>{name}</a></td>
+                <td class="col-xs-6 match-name"><span class="match-hour">{hour}</span> <a href={eventURL.renderPath()}>{name}</a></td>
                 {bets[0].choices.map((choice,i) => <ChoiceTD key={i} eventURL={eventURL} bet={bets[0]} choice={choice} addTip={addTip} isInBetSlip={isInBetSlip} classes={selectionClass}>{choice.odd}</ChoiceTD>)}
             </tr>)    
   	}

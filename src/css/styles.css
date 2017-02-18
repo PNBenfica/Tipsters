@@ -40,7 +40,8 @@ a:hover {
 }
 
 
-.panel{
+
+.panel, .table{
 	border: solid 1px;
 	border-top-color: #DCDCDC;
 	border-bottom-color: #B1B1B1;
@@ -50,6 +51,7 @@ a:hover {
 	-webkit-box-shadow: 0 6px 6px -6px #B1B1B1;
 	-moz-box-shadow: 0 6px 6px -6px #B1B1B1;
 	box-shadow: 0 6px 6px -6px #B1B1B1;
+	background-color: white;
 }
 
 .panel * {

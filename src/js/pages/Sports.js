@@ -440,15 +440,16 @@ export default class Sports extends React.Component {
             <div id="sports-page">
     	        <div class="row">
 
+                    <Breadcrumb sport={sport} sportCode={sportCode} league={league} leagueCode={leagueCode} match={match} matchCode={matchCode}/>                   
+
     	            <div class="col-lg-8 sports-tables-container">
-    	                
-    	                <Breadcrumb sport={sport} sportCode={sportCode} league={league} leagueCode={leagueCode} match={match} matchCode={matchCode}/>	                
 
     	                {Tables}
+
     	            </div>
 
 
-    	            <div class="col-lg-4 hidden-md hidden-sm hidden-xs right-sports-bar-container">
+    	            <div class="col-lg-4 hidden-md hidden-sm hidden-xs right-bar-container">
 
     	            	<BetSlip {...this.state.betSlip} updateSellingPrice={this.updateSellingPrice.bind(this)} removeTip={this.removeTip.bind(this)} shareTip={this.shareTip.bind(this)}/>
 

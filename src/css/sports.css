@@ -2,21 +2,20 @@
 
 }
 
-.sports-tables-container .breadcrumb{
+#sports-page .breadcrumb{
 	background: transparent;
 	padding: 0px;
 	text-transform: uppercase;
 	line-height: 14px;
+	margin-left: 15px;
 }
 
-.sports-tables-container .breadcrumb .logo{
+#sports-page .breadcrumb .logo{
 	margin-right: 5px;
 }
 
 
 #sports-page .sports-tables-container {
-	padding-left: 20px;
-	padding-right: 20px;
 }
 
 
@@ -27,42 +26,38 @@
 	border-bottom-color: #CCCCCC;
 }
 
-/**********************************
-league tables
-**********************************/
-
 @media screen and (min-width: 1200px) {
 	#sports-page .sports-tables-container {
-		padding-left: 20px;
-		padding-right: 20px;
 	}
 }
 
+#sports-page .sports-tables-container .table thead,
 #sports-page .panel .panel-heading{
-	color: #3097D1;
 	background-color: #c30000;
 	color: white;
 	padding: 8px 0px;
 }
 
+#sports-page .sports-tables-container .table th,
 #sports-page .panel .panel-heading .panel-title{
 	font-size: 14px;
 	text-transform: uppercase;
 	font-weight: 600;
-	padding: 0px 15px;
+	border-bottom: none;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 #sports-page .sports-tables-container .panel-body{
 	padding: 0px;
 }
 
+#sports-page .sports-tables-container .table td,
 #sports-page .sports-tables-container .panel-body a{
 	padding-bottom: 5px;
 	padding-top: 5px;
-	border-right-width: 0px;
-	border-bottom-width: 0px;
-}
 
+}
 
 #sports-page .sports-tables-container .panel-body a:before{
     content: "";
@@ -72,7 +67,7 @@ league tables
     left: 0;
     width: 100%;
     height: 1px;
-    background: #cccccc;
+    background: #CCCCCC;
 }
 #sports-page .sports-tables-container .panel-body a:after{
     content: "";
@@ -82,63 +77,56 @@ league tables
     left: 100%;
     width: 1px;
     height: 100%;
-    background: #cccccc;
+    background: #CCCCCC;
 }
 
-
-.sports-tables-container .league-game{
-	padding-left: 0px;
-	padding-right: 0px;
-}
-
-.sports-tables-container .league-game a{
-	text-align: center;
-}
-
-.sports-tables-container .league-game a:first-child{
-	text-align: left;
-}
-
-.sports-tables-container .league-game a:hover,{
-	color: #3097D1;
-}
-
-.sports-tables-container .league-game-selection-type{
-	text-align: center;
-	font-size: 90%;
-}
-
-.sports-tables-container .league-game a:not(:first-child):hover{
-	background-color: rgba(48,151,209,0.1);
-	cursor: pointer;
-	color: #8B8C8E;
-}
-
-.sports-tables-container small{
-	color: #3097D1;
+#sports-page .sports-tables-container .table .match-hour{
+	color: #c30000;
 	padding-right: 5px;
+	font-size: 12px;
 }
 
-.highlighted{
-	background-color: rgba(48,151,209,0.1);
-}
-
-/**********************
-Match odds tables
-**********************/
-
-.odds-table a:hover{
-	background-color: rgba(48,151,209,0.1);
+.highlighted,
+.odds-table a:hover,
+.sports-tables-container .table td:not(.empty-option):hover{
+	background-color: #F0F0F0;
 	cursor: pointer;
+	-webkit-transition: background .5s;
+	-moz-transition: background .5s;
+	transition: background .5s;
+	color: #333 !important;
 }
 
-.odds-table a.empty-option:hover{
+
+
+
+
+#sports-page  .odds-table .table{
+	border: none;
+}
+
+#sports-page .sports-tables-container .table tr td:not(:last-child){
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: #CCCCCC;
+}
+
+
+#sports-page .odds-table a span{
+	position: absolute;
+	right: 7px;
+	top: 6px;
+}
+
+
+
+.odds-table .empty-option:hover{
 	background-color: white;
 	color: white;
 	cursor: default;
 }
 
-.odds-table a.empty-option{
+.odds-table .empty-option{
 	color: white;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Chrome/Safari/Opera */
@@ -149,7 +137,7 @@ Match odds tables
                                   not supported by any browser */
 }
 
-.odds-table a.empty-option:not(.bordered){
+.odds-table .empty-option:not(.bordered){
 	border-color: transparent;
 }
 
@@ -157,47 +145,12 @@ Match odds tables
 	text-align: center;
 }
 
-.odds-table a{
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 5px !important;
-	padding-bottom: 5px !important;
-	
-	border-left-style: solid;
-	border-bottom-style: solid;
-	border-left-width: 1px;
-	border-bottom-width: 1px;
-	border-color: rgba(48,151,209,0.1);
-}
-
-.odds-table a:last-child{
-	border-right-style: solid;
-	border-right-width: 1px;
-	border-right-color: rgba(48,151,209,0.1);
-}
-
-
-.odds-table a span{
-	position: absolute;
-	right: 7px;
-	top: 6px;
-}
 
 .bigger{
 	height: 50px;
 }
 
 
-.odds-table .table{
-	padding-left: 0px;
-	border: none !important;
-}
-
-.odds-table .table tr td:not(:last-child){
-	border-right-style: solid;
-	border-right-width: 1px;
-	border-right-color: rgba(48,151,209,0.1);
-}
 
 @media screen and (min-width: 650px) {
 	.odds-table .table tr td{
@@ -211,29 +164,8 @@ Match odds tables
 	}
 }
 
-.sports-tables-container .table{
-	background-color: white;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #D3E0E9;
-}
 
-.sports-tables-container .table thead th{
-	border-bottom-color: #3097D1;
-	border-bottom-width: 2px;
-	color: #3097D1;
-	background-color: #fafafa;
-	font-weight: normal;
-}
 
-.sports-tables-container .table td, .sports-tables-container .table td a{
-	color: #8B8C8E;
-}
-
-.sports-tables-container .table td:hover{
-	background-color: rgba(48,151,209,0.1);
-	cursor: pointer;
-}
 .sports-tables-container .table td.not-hovered:hover, .sports-tables-container .table td.empty-option:hover, .sports-tables-container .table .match-name:hover{
 	background-color: white;
 	cursor: default;
@@ -264,18 +196,15 @@ bet slip
 
 
 @media screen and (min-width: 1200px) {
-	.right-sports-bar-container{
+	.right-bar-container{
 		padding-left: 40px;
 		padding-right: 20px;
 	}
 }
 
-.right-sports-bar-container .panel-heading{
-	color: #8B8C8E;
-	background-color: #ffffff;
-	border-bottom: none;
-	padding-top: 10px;
-	padding-bottom: 10px;
+
+#sports-page .right-bar-container .panel .panel-heading{
+	background-color: #01579b;
 }
 
 

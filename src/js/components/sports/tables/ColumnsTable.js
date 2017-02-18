@@ -1,5 +1,7 @@
 import React from "react";
 
+import classNames from "classnames";
+
 import ChoiceTD from "./ChoiceTD"
 import Header from "./Header"
 
@@ -44,7 +46,7 @@ export default class ColumnsTable extends React.Component {
         const choiceClass= nCols== 2 ? "col-xs-6" : "col-xs-4"
 
         if(choice === "")
-            return <td key={i} class={choiceClass}>-</td>
+            return <td key={i} class={classNames(choiceClass, 'empty-option bordered')}>-</td>
         return <ChoiceTD key={i} eventURL={eventURL} bet={bet} choice={choice} addTip={addTip} isInBetSlip={isInBetSlip} classes={choiceClass}>{choice.name} <span class="pull-right">{choice.odd}</span></ChoiceTD>
     }
 
