@@ -32,6 +32,10 @@ export default class EventURL {
 		return this.match.name
 	}
 
+	isSport(){
+		return (typeof this.league === 'undefined')
+	}
+
   	renderPath() {
   		let path = "#/sports/";
   		[this.sport, this.league, this.match].forEach(ele => path += this.renderElement(ele) )

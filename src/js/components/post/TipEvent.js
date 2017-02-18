@@ -12,7 +12,7 @@ export default class TipEvent extends React.Component {
             <a href="#/sports" class="event">
                 <TipEventTeam name="America de Cali" img="img/sports/arsenal.png"/>
 
-                <span>vs</span>
+                <span class="hidden-xs">vs</span>
 
                 <TipEventTeam name="Rionegro Aguilas" img="img/sports/liverpool.jpg"/>
             </a>

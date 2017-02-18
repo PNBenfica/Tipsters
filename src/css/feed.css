@@ -1,13 +1,13 @@
 
 
 #feed-page{
-	padding: 0 3px;
 }
 
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
 	#feed-page .posts-container {
-		padding: 0 11px;
+		padding: 0 45px;
+		margin-left: 40px;
 	}
 }
 
@@ -106,7 +106,7 @@
 .feed-post .tip{
 	position: relative;
 	border-bottom: solid 1px #E6E9EC;
-	padding: 0 15px;
+	padding: 3px 15px;
 	overflow: hidden;
 }
 
@@ -114,7 +114,7 @@
 .feed-post .tip .tip-row{
 	display: flex;
 	font-size: 15px;
-	padding: 7px 0;
+	padding: 3px 0;
 }
 
 .feed-post .tip .tip-row > *{
@@ -122,28 +122,14 @@
 }
 
 .feed-post .tip .tip-row .info{
-	color: #999999;
-	width: 20%;
+	width: 80px;
 	padding-right: 15px;
 	text-align: right;
-	font-weight: 300;
+	font-weight: 600;
 }
 
 .feed-post .tip .tip-row .value{
-	width: 80%;
-}
-
-@media screen and (max-width: 380px) {
-	.feed-post .tip .tip-row .info{ width: 20%; }
-	.feed-post .tip .tip-row .value{ width: 80%; }
-}
-@media screen and (max-width: 767px) {
-	.feed-post .tip .tip-row .info{ width: 50px; }
-	.feed-post .tip .tip-row .value{ width: calc(100% - 50px); }
-}
-@media screen and (min-width: 768px) {
-	.feed-post .tip .tip-row .info{ width: 75px; }
-	.feed-post .tip .tip-row .value{ width: calc(100% - 75px); }
+	width: calc(100% - 80px);
 }
 
 

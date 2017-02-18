@@ -88,7 +88,7 @@
 
 .highlighted,
 .odds-table a:hover,
-.sports-tables-container .table td:not(.empty-option):hover{
+.sports-tables-container .table td:not(.empty-option):not(.match-name):not(.player-name):hover{
 	background-color: #F0F0F0;
 	cursor: pointer;
 	-webkit-transition: background .5s;

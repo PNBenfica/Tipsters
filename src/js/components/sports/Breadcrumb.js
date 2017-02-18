@@ -8,7 +8,7 @@ export default class Breadcrumb extends React.Component {
 
 	    let {sport, sportCode, league, leagueCode, match, matchCode} = this.props;
 
-	    let options = [{name:sport, code: sportCode, logo: "fa fa-futbol-o"}, {name:league, code: leagueCode, logo: "flag-icon flag-icon-gb"}, {name:match, code: matchCode}].filter((ele) => typeof ele.name !== "undefined");
+	    let options = [{name:sport, code: sportCode, logo: "fa fa-futbol-o"}, {name:league, code: leagueCode, logo: "flag-icon flag-icon-gb-eng"}, {name:match, code: matchCode}].filter((ele) => typeof ele.name !== "undefined");
 
 	    let ref = "#/sports";
 
