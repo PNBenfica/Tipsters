@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames"
 
 import SellingPrice from "./SellingPrice";
 import Tip from "./Tip";
@@ -8,7 +9,7 @@ export default class BetSlipBody extends React.Component {
 
     render() {
 
-        const { tips } = this.props;
+        const { tips, expanded } = this.props;
         
         const totalOdd = tips.map(tip => tip.choice.odd).reduce((a,b) => a * b, 1).toFixed(2);
 
@@ -17,18 +18,23 @@ export default class BetSlipBody extends React.Component {
         return (
             <div class="panel-body">
 
-                {Tips}
-
-                <TotalOdd totalOdd={totalOdd} />
-
-                <SellingPrice updateSellingPrice={this.props.updateSellingPrice}/>
-
-                <div class="form-group">
-                    <textarea class="form-control" rows="3" id="bet-slip-comment" placeholder="Add comment"></textarea>
+                <div class="bet-slip-tips-container">
+                    {Tips}
                 </div>
 
-                <button onClick={() => this.props.shareTip()} type="button" class="btn btn-default btn-sm btn-block">Share Tip</button>
+                <div class={classNames("bet-slip-actions", {expanded})}>
 
+                    <TotalOdd totalOdd={totalOdd} />
+
+                    <SellingPrice updateSellingPrice={this.props.updateSellingPrice}/>
+
+                    <div class="form-group">
+                        <textarea class="form-control" rows="3" id="bet-slip-comment" placeholder="Add comment"></textarea>
+                    </div>
+
+                    <button onClick={() => this.props.shareTip()} type="button" class="btn btn-default btn-sm btn-block">Share Tip</button>
+
+                </div>
             </div>
         );
     }

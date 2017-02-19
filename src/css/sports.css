@@ -68,6 +68,7 @@
     width: 100%;
     height: 1px;
     background: #CCCCCC;
+    z-index: 2;
 }
 #sports-page .sports-tables-container .panel-body a:after{
     content: "";
@@ -78,6 +79,7 @@
     width: 1px;
     height: 100%;
     background: #CCCCCC;
+    z-index: 2;
 }
 
 #sports-page .sports-tables-container .table .match-hour{
@@ -86,15 +88,20 @@
 	font-size: 12px;
 }
 
-.highlighted,
-.odds-table a:hover,
-.sports-tables-container .table td:not(.empty-option):not(.match-name):not(.player-name):hover{
+#sports-page .highlighted,
+#sports-page .odds-table a:hover,
+#sports-page .sports-tables-container .table td:not(.empty-option):not(.match-name):not(.player-name):hover{
 	background-color: #F0F0F0;
 	cursor: pointer;
+	color: #333 !important;
+}
+
+#sports-page .highlighted,
+#sports-page .odds-table a,
+#sports-page .sports-tables-container .table td:not(.empty-option):not(.match-name):not(.player-name){
 	-webkit-transition: background .5s;
 	-moz-transition: background .5s;
 	transition: background .5s;
-	color: #333 !important;
 }
 
 
@@ -120,13 +127,13 @@
 
 
 
-.odds-table .empty-option:hover{
+#sports-page .odds-table .empty-option:hover{
 	background-color: white;
 	color: white;
 	cursor: default;
 }
 
-.odds-table .empty-option{
+#sports-page .empty-option{
 	color: white;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Chrome/Safari/Opera */
@@ -137,57 +144,34 @@
                                   not supported by any browser */
 }
 
-.odds-table .empty-option:not(.bordered){
+#sports-page .odds-table .empty-option:not(.bordered){
 	border-color: transparent;
 }
 
-.centered{
+#sports-page .centered{
 	text-align: center;
 }
 
 
-.bigger{
+#sports-page .bigger{
 	height: 50px;
 }
 
 
 
 @media screen and (min-width: 650px) {
-	.odds-table .table tr td{
+	#sports-page .odds-table .table tr td{
 		padding-right: 15px;
 		padding-left: 15px;
 	}
 
-	.table .player-name
+	#sports-page .table .player-name
 	{
 		padding-left: 15px;
 	}
 }
 
 
-
-.sports-tables-container .table td.not-hovered:hover, .sports-tables-container .table td.empty-option:hover, .sports-tables-container .table .match-name:hover{
-	background-color: white;
-	cursor: default;
-}
-.sports-tables-container .table .match-name:hover a{
-	color: #3097D1;
-}
-
-.sports-tables-container .table td.empty-option:hover{
-	color: white;
-}
-
-.sports-tables-container .table td.empty-option{
-	color: white;
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none;   /* Chrome/Safari/Opera */
-  -khtml-user-select: none;    /* Konqueror */
-  -moz-user-select: none;      /* Firefox */
-  -ms-user-select: none;       /* Internet Explorer/Edge */
-  user-select: none;           /* Non-prefixed version, currently
-                                  not supported by any browser */
-}
 
 
 /**********************************
@@ -207,18 +191,50 @@ bet slip
 	background-color: #01579b;
 }
 
-
-#bet-slip {
-	color: #8B8C8E;
+#bet-slip .panel-body .post-tips{ 
+	border-left-color: #01579b;
 }
 
-#bet-slip .panel-heading h3{
-	font-size: 14px;
+#bet-slip .bet-slip-actions,
+#bet-slip .panel-body .post-tips{ 
+	overflow: hidden;
+	max-height: 0px;
+	margin: 0;
+	opacity: 0;
+}
+
+#bet-slip .panel-body .post-tips.expanded{ 
+	max-height: 1000px;
+	opacity: 1;
+	margin: 10px 0;
+}
+
+#bet-slip .panel-body .post-tips.animating,
+#bet-slip .bet-slip-actions{ 
+    -webkit-transition: all 750ms ease-in-out;
+    -moz-transition: all 750ms ease-in-out;
+    -o-transition: all 750ms ease-in-out;
+    transition: all 750ms ease-in-out;
+}
+
+#bet-slip .bet-slip-actions.expanded{ 
+	max-height: 1000px;
+	opacity: 1;
+}
+
+
+#bet-slip > .panel{
+	min-height: 130px;
 }
 
 #bet-slip .panel-body{
 	padding-bottom: 2px;
 	padding-top: 7px;
+}
+
+#bet-slip .panel-body strong{
+	font-weight: 600;
+	color: black;
 }
 
 #bet-slip .panel-body input { 
@@ -227,17 +243,10 @@ bet slip
 	margin-left: 5px;
 }
 
-#bet-slip .panel-body .post-tips{ 
-	border-left-color: #F47238;
-}
-
-#bet-slip #bet-slip-total-odd{ 
-    margin-top: -10px;
-}
 
 #bet-slip .panel-body .post-tips .panel-body .cross{  
     font-size: 90%;
-    color: #F47238;
+    color: #F47238 !important;
     font-weight: bold;
 }
 
@@ -247,8 +256,9 @@ bet slip
 
 
 #bet-slip .empty-bet-slip{  
-    margin-top: 7px;
-    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin: 5px 0;
 }
 
 #bet-slip .post-tips .panel-body{
@@ -261,8 +271,6 @@ bet slip
 }
 
 #bet-slip button{
-	background-color: #F47238;
-	color: white;
     margin-bottom: 5px;
     font-size: 14px;
 }

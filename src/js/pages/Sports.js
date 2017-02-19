@@ -24,7 +24,7 @@ export default class Sports extends React.Component {
 
     constructor(...args) {
         super(...args);
-        this.state = { betSlip : { tips: [], sellingPrice : 0 }};
+        this.state = { betSlip : { tips: [], sellingPrice : 0, expanded : false }};
     }
 
     /*
@@ -109,24 +109,61 @@ export default class Sports extends React.Component {
         * @desc a betslip can only have 14 tips
     */
     isBetSlipFull(){
-        return this.getBetSlipTips().length === 14
+        return this.numberBetSlipTips() === 14
     }
 
-    addTip(eventURL, bet, choice){
+    isBetSlipEmpty(){
+        return this.numberBetSlipTips() === 0
+    }
+
+    numberBetSlipTips(){
+        return this.getBetSlipTips().length
+    }
+
+    onOddClick(eventURL, bet, choice){
         if (this.isInBetSlip(eventURL, bet, choice))
             this.removeTip(eventURL, bet, choice)
         else if (!this.isBetSlipFull() && !this.alreadyTipOnEvent(eventURL)){
-            const Tip = { eventURL, bet: { name: bet.name , id: bet.id }, choice }
-            this.state.betSlip.tips = [ ...this.state.betSlip.tips, Tip];
-            this.setState({betSlip: this.state.betSlip});
+            this.addTip(eventURL, bet, choice)
         }
     }
 
+    addTip(eventURL, bet, choice){
+        if (this.isBetSlipEmpty())
+            setTimeout(() => {this.state.betSlip.expanded = true; this.setState({betSlip: this.state.betSlip}) }, 300)
+
+        const Tip = { eventURL, bet: { name: bet.name , id: bet.id }, choice, animating: true, expanded: false }
+        this.state.betSlip.tips = [ ...this.state.betSlip.tips, Tip];
+        this.setState({betSlip: this.state.betSlip}, () => this.transitionBetSlipTip(eventURL, bet, choice));
+    }
+
+
     removeTip(eventURL, bet, choice){
-        this.state.betSlip.tips = this.state.betSlip.tips.filter(tip => !(tip.bet.id==bet.id && tip.choice.id==choice.id && (tip.eventURL.renderPath() == eventURL.renderPath())));
-        this.setState({
-            betSlip: this.state.betSlip
-        });
+        if (this.numberBetSlipTips() === 1){
+            this.state.betSlip.expanded = false
+            this.setState({betSlip: this.state.betSlip})
+        }
+
+        this.transitionBetSlipTip(eventURL, bet, choice,
+            () => {
+                this.state.betSlip.tips = this.state.betSlip.tips.filter(tip => !(tip.bet.id==bet.id && tip.choice.id==choice.id && (tip.eventURL.renderPath() == eventURL.renderPath())));
+                this.setState({betSlip: this.state.betSlip})
+            })
+    }
+
+    transitionBetSlipTip(eventURL, bet, choice, callback){
+        const tips = this.getBetSlipTips()
+        const tipIndex = tips.findIndex(tip => tip.eventURL.renderPath() == eventURL.renderPath())
+        tips[tipIndex].expanded = !tips[tipIndex].expanded
+        tips[tipIndex].animating = true
+
+        setTimeout(
+            () => this.setState({betSlip: this.state.betSlip}, () => {
+                setTimeout( () => {
+                tips[tipIndex].animating = false
+                this.setState({betSlip: this.state.betSlip}, callback)} , 750 )               
+            }
+        ),25);
     }
 
     shareTip(){
@@ -317,7 +354,7 @@ export default class Sports extends React.Component {
         * @return table
      */
     renderMatchesTable(eventURL, day, matches, i){
-        return <MatchesTable key={i} eventURL={eventURL} date={day} matches={matches} addTip={this.addTip.bind(this)} isInBetSlip={this.isInBetSlip.bind(this)} />
+        return <MatchesTable key={i} eventURL={eventURL} date={day} matches={matches} addTip={this.onOddClick.bind(this)} isInBetSlip={this.isInBetSlip.bind(this)} />
     }
 
 
@@ -388,12 +425,12 @@ export default class Sports extends React.Component {
     renderStandardOptionsTable(eventURL, bet, i, toSort = false){
         if (toSort)
             bet.choices = bet.choices.sort((choice1, choice2) => choice1.odd - choice2.odd)
-        return <StandardOptionsTable key={i} eventURL={eventURL} bet={bet} addTip={this.addTip.bind(this)} isInBetSlip={this.isInBetSlip.bind(this)}/>
+        return <StandardOptionsTable key={i} eventURL={eventURL} bet={bet} addTip={this.onOddClick.bind(this)} isInBetSlip={this.isInBetSlip.bind(this)}/>
     }
 
     /* filters will map the choices to the respective column */
     renderColumnsTable(eventURL, bet, nCols, i, filters=[]){
-        return <ColumnsTable key={i} eventURL={eventURL} bet={bet} nCols={nCols} filters={filters} addTip={this.addTip.bind(this)} isInBetSlip={this.isInBetSlip.bind(this)}/>
+        return <ColumnsTable key={i} eventURL={eventURL} bet={bet} nCols={nCols} filters={filters} addTip={this.onOddClick.bind(this)} isInBetSlip={this.isInBetSlip.bind(this)}/>
     }
 
 
@@ -412,7 +449,7 @@ export default class Sports extends React.Component {
     }
     
     renderGoalscorers(eventURL, bets, i){
-        return <GoalsScorersTable key={i} eventURL={eventURL} bets={bets} addTip={this.addTip.bind(this)} isInBetSlip={this.isInBetSlip.bind(this)}/>
+        return <GoalsScorersTable key={i} eventURL={eventURL} bets={bets} addTip={this.onOddClick.bind(this)} isInBetSlip={this.isInBetSlip.bind(this)}/>
     }
 
     renderLoadingGif(){
