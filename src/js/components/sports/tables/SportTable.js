@@ -2,6 +2,7 @@ import React from "react";
 import classNames from "classnames";
 
 import Header from "./Header"
+import Flag from "./Flag"
 
 export default class SportTable extends React.Component {
 
@@ -13,7 +14,7 @@ export default class SportTable extends React.Component {
 
         const Events = events.map((event, i) => {
                 const ref = eventURL.add(event.name, event.id).renderPath()
-                const logo = (eventURL.isSport()) ? <span class={classNames("flag-icon",logos[i])} />: null
+                const logo = <Flag id={event.id} eventURL={eventURL} />
                 return <a key={i} href={ref} class="col-xs-12 col-sm-6 col-lg-4">{logo} {event.name}</a>
             })
 

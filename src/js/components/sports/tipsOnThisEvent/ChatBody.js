@@ -14,7 +14,7 @@ export default class ChatBody extends React.Component {
     if (tips.length > 0)
         Tips = tips.map(({...tip}, i) => <TipOnThisEvent key={i} {...tip} />);
     else
-        Tips = <EmptyChatPanel />;
+        return <EmptyChatPanel />;
 
     return (
         <div class="panel-body" style={{'height': '' + Math.min(320, 130 + tips.length * 50) + 'px', 'overflowY': (130 + tips.length * 50 > 320)? 'scroll':'hidden'}}>

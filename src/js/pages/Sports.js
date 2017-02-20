@@ -11,7 +11,7 @@ import ColumnsTable from "../components/sports/tables/ColumnsTable";
 import MatchesTable from "../components/sports/tables/MatchesTable";
 import SportTable from "../components/sports/tables/SportTable";
 import StandardOptionsTable from "../components/sports/tables/StandardOptionsTable";
-import TipsOnThisEvent from "../components/sports/chatpanel/TipsOnThisEvent";
+import TipsOnThisEvent from "../components/sports/tipsOnThisEvent/TipsOnThisEvent";
 
 @connect((store) => {
   return {

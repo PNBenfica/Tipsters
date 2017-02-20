@@ -58,6 +58,9 @@ a:hover {
 	border-color: #E6E9EC;
 }
 
+.panel .panel-footer{
+	background-color: white;
+}
 
 .btn, .btn:hover, .btn:active, .btn:visited{
 	background-color: #2B2B2B;
