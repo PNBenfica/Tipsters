@@ -23,7 +23,7 @@ export default class Nav extends React.Component {
 		const { location } = this.props
 
 		return (
-			<nav class="navbar navbar-default navbar-static-top" role="navigation">
+			<nav class="navbar" role="navigation">
 				<TopBar onHamburgerClick={this.onHamburgerClick.bind(this)} />
 				<SideBar location={location} open={this.state.sidebarOpen} />
 			</nav>

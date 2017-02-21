@@ -9,12 +9,13 @@ export default class UserAvatarLink extends React.Component {
 
         return (
 
-            <li class="dropdown hidden-xs">
+            <div class="link">
             
                 <UserAvatar />
 
                 <UserDropdown />
-            </li>
+
+            </div>
         )
     }
 }

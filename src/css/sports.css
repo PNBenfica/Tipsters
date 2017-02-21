@@ -28,6 +28,11 @@
 
 @media screen and (min-width: 1200px) {
 	#sports-page .sports-tables-container {
+		padding: 0 30px;
+	}
+
+	#sports-page .breadcrumb{
+		margin-left: 30px;
 	}
 }
 
@@ -35,6 +40,8 @@
 #sports-page .panel .panel-heading{
 	background-color: #c30000;
 	color: white;
+}
+#sports-page .panel .panel-heading{
 	padding: 8px 0px;
 }
 
@@ -48,6 +55,10 @@
 	padding-right: 15px;
 }
 
+#sports-page .sports-tables-container .table th{
+	padding: 5px 15px 6px 15px;
+}
+
 #sports-page .sports-tables-container .panel-body{
 	padding: 0px;
 }
@@ -56,6 +67,8 @@
 #sports-page .sports-tables-container .panel-body a{
 	padding-bottom: 5px;
 	padding-top: 5px;
+	font-size: 13px;
+	font-weight: 600;
 
 }
 
@@ -81,6 +94,11 @@
     background: #CCCCCC;
     z-index: 2;
 }
+
+#sports-page .sports-tables-container .flag-icon{
+	margin-right: 9px;
+}
+
 
 #sports-page .sports-tables-container .table .match-hour{
 	color: #c30000;

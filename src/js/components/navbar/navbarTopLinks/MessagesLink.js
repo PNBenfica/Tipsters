@@ -7,16 +7,16 @@ export default class MessagesLink extends React.Component {
 
     render() {
 
-        const { messages, nNew, clearBadge, markAsSeen, createNewMessage } = this.props
+        const { messages, nNew, open, onClick, markAsSeen, createNewMessage } = this.props
 
         return (
-            <li class="dropdown">
+            <div class="link" onClick={() => onClick()}>
 
-                <DropdownIcon icon="fa-envelope-o" badge="badge-red"  newItems={nNew} clearBadge={clearBadge}/>
+                <DropdownIcon icon="fa-envelope-o" badge="badge-red"  newItems={nNew}/>
 
-                <MessagesDropdown messages={messages} markAsSeen={markAsSeen} createNewMessage={createNewMessage}/>
+                <MessagesDropdown messages={messages} open={open} markAsSeen={markAsSeen} createNewMessage={createNewMessage}/>
 
-            </li>
+            </div>
         )
     }
 }

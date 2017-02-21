@@ -20,15 +20,13 @@ export default class SearchLink extends React.Component {
 
 
         return (
-            <li class="dropdown hidden-xs" ref="searchDropdown">
+            <div class="link" ref="searchDropdown" onClick={() => this.toggleSearch()}>
 
-		        <a class="dropdown-toggle" data-toggle="dropdown" href="#" onClick={() => this.toggleSearch()}>
-		            <i class="fa fa-fw fa-search"></i>
-		        </a>
+	            <i class="fa fa-fw fa-search"></i>
 
                 <SearchBarDropdown focus={this.state.open} />
 
-            </li>
+            </div>
         )
     }
 }

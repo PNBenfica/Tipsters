@@ -58,6 +58,9 @@ a:hover {
 	border-color: #E6E9EC;
 }
 
+.panel .panel-heading{
+	border-radius: 0px;
+}
 .panel .panel-footer{
 	background-color: white;
 }
@@ -67,6 +70,29 @@ a:hover {
 	color: white;
 	border-color: #2B2B2B;
 }
+
+
+
+#wrapper {
+    width: 100%;
+}
+
+#page-wrapper {
+    padding: 0 15px;
+    padding-top: 90px !important;
+    /*min-height: 568px;*/
+    min-height: 640px !important;
+    /*background-color: #F5F5F5;*/
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 110px;
+        padding: 0 30px;
+    }
+}
+
 
 
 .dropdown-menu:before {
@@ -679,72 +705,6 @@ Buttons
 		font-awesome badge
 ******************************************/
 
-.font-awesome-badge {
-  position: absolute;
-  margin-top: -9px;
-  right: 31px;
-  display: inline;
-  font-size: 11px;
-  padding: 2px 4px 2px 4px;
-  text-align: center;
-  vertical-align: middle;
-  border-radius: 100%;
-  color: white;
-}
-
-.badge-default {
-  background-color: #999 !important;
-}
-.badge-primary {
-  background-color: #dc6767 !important;
-}
-.badge-red {
-  background-color: #bf4346 !important;
-}
-.badge-orange {
-  background-color: #e9662c !important;
-}
-.badge-green {
-  background-color: #5CB85C !important;
-}
-.badge-yellow {
-  background-color: #f2994b !important;
-}
-.badge-blue {
-  background-color: #0a819c !important;
-}
-.badge-violet {
-  background-color: #9351ad !important;
-}
-.badge-pink {
-  background-color: #bf3773 !important;
-}
-.badge-grey {
-  background-color: #4b5d67 !important;
-}
-.badge-dark {
-  background-color: #594857 !important;
-}
-
-.badge-success {
-  background-color: #5cb85c;
-  background-image: none !important;
-}
-
-.badge-warning {
-  background-color: #f0ad4e;
-  background-image: none !important;
-}
-
-.badge-danger {
-  background-color: #d9534f;
-  background-image: none !important;
-}
-
-.badge-info {
-  background-color: #5bc0de;
-  background-image: none !important;
-}
 
 
 /********************************************

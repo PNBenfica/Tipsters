@@ -7,16 +7,16 @@ export default class NotificationsLink extends React.Component {
 
     render() {
 
-        const { notifications, nNew, clearBadge, markAsSeen } = this.props
+        const { notifications, nNew, onClick, markAsSeen, open } = this.props
 
         return (
-            <li class="dropdown">
+            <div class="link" onClick={() => onClick()}>
 
-                <DropdownIcon icon="fa-bell-o" badge="badge-green" badgeMargin="27px" newItems={nNew} clearBadge={clearBadge}/>
+                <DropdownIcon icon="fa-bell-o" badge="badge-green" newItems={nNew}/>
 
-                <NotificationsDropdown notifications={notifications} markAsSeen={markAsSeen}/>
+                <NotificationsDropdown open={open} notifications={notifications} markAsSeen={markAsSeen}/>
                 
-            </li>
+            </div>
 
         )
     }

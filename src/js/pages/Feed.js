@@ -11,10 +11,8 @@ export default class Feed extends React.Component {
 			<PageWithTrendBar>
 
 				<div id="feed-page">
-					<div class="row">
-						<div class="col-md-8">
-							<PostsContainer {...this.props.params}/>
-						</div>
+					<div class="col-md-8">
+						<PostsContainer {...this.props.params}/>
 					</div>
 				</div>
 

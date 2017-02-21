@@ -18,6 +18,13 @@ import UserAvatarLink from "./UserAvatarLink"
 })
 export default class NavbarTopLinks extends React.Component {
 
+    constructor(args){
+        super(...args)
+        this.state = {
+            open: ""
+        }
+    }
+
     componentWillMount() {
         this.props.dispatch(fetchMessages())
     }
@@ -77,21 +84,54 @@ export default class NavbarTopLinks extends React.Component {
         this.props.dispatch(newMessage())
     }
 
+    setOpenSidebar(open, callback){
+        this.setState({ open }, callback)
+    }
+
+    onLinkClick(newLink){
+        let { open } = this.state
+        if (open === "")
+            this.setOpenSidebar(newLink)
+        else if (open === newLink)
+            this.setOpenSidebar("")
+        else{
+            this.setOpenSidebar("", () => setTimeout(() => this.setOpenSidebar(newLink), 1000))
+        }
+    }
+
+    onSearchClick(){
+    }
+
+    onMessagesClick(){
+        this.onLinkClick("messages")
+        this.clearMessagesBadge()
+    }
+
+    onNotificationsClick(){
+        this.onLinkClick("notifications")
+        this.clearNotificationsBadge()
+    }
+
+    onAvatarClick(){
+    }
+
 
     render() {
 
+        const { open } = this.state
+
         return (
-            <ul class="nav navbar-top-links navbar-right">
+            <div class="navbar-actions">
 
                 <SearchLink />
 
-                <MessagesLink messages={this.props.messages} nNew={this.numberNewMessages()} clearBadge={this.clearMessagesBadge.bind(this)} markAsSeen={this.openMessage.bind(this)} createNewMessage={this.createNewMessage.bind(this)}/>
+                <MessagesLink messages={this.props.messages} nNew={this.numberNewMessages()} onClick={this.onMessagesClick.bind(this)} open={open==="messages"}  markAsSeen={this.openMessage.bind(this)} createNewMessage={this.createNewMessage.bind(this)}/>
 
-                <NotificationsLink notifications={this.props.notifications} nNew={this.numberNewNotifications()} clearBadge={this.clearNotificationsBadge.bind(this)} />
+                <NotificationsLink notifications={this.props.notifications} nNew={this.numberNewNotifications()} onClick={this.onNotificationsClick.bind(this)} open={open==="notifications"} />
 
                 <UserAvatarLink />
 
-            </ul>
+            </div>
         )
     }
 }
