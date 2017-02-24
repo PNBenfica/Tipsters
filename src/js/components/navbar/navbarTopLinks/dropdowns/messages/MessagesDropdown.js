@@ -28,6 +28,11 @@ export default class MessagesDropdown extends React.Component {
         return (
             <div class={classNames("sidebar-right", { open } )}>
                 Messages
+
+                <ul class="dropdown-messages col-xs-12">
+                    {Messages}
+                </ul>
+                <NewMessageLi createNewMessage={this.props.createNewMessage}/>
             </div>
         )
     }
