@@ -1,7 +1,7 @@
 import React from "react"
 
 import UserAvatar from "./UserAvatar"
-import UserDropdown from "./dropdowns/settings/UserDropdown"
+import UserDropdown from "./UserDropdown"
 
 export default class UserAvatarLink extends React.Component {
 

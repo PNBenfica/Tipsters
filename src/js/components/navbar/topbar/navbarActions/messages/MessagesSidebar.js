@@ -4,7 +4,7 @@ import classNames from "classnames"
 import MessageItem from "./MessageItem"
 import NewMessageLi from "./NewMessageLi"
 
-export default class MessagesDropdown extends React.Component {
+export default class MessagesSidebar extends React.Component {
 
     renderMessageItem(message, i){
         return message.messages.length > 0?
@@ -26,13 +26,17 @@ export default class MessagesDropdown extends React.Component {
 
             
         return (
-            <div class={classNames("sidebar-right", { open } )}>
-                Messages
+            <div class={classNames("sidebar-right open", { open } )}>
 
-                <ul class="dropdown-messages col-xs-12">
+                <header>
+                    <h2>Messages</h2>
+                    
+                </header>
+
+                <ul>
                     {Messages}
                 </ul>
-                <NewMessageLi createNewMessage={this.props.createNewMessage}/>
+
             </div>
         )
     }

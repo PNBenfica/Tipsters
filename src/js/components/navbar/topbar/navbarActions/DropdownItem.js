@@ -2,8 +2,6 @@ import React from "react"
 import {Media} from "react-bootstrap"
 import classNames from "classnames"
 
-import DropdownItemImage from "./DropdownItemImage"
-
 export default class DropdownItem extends React.Component {
 
   	render() {
@@ -13,17 +11,11 @@ export default class DropdownItem extends React.Component {
 
 	    return (
 	        <li class={classes} onClick={() => markAsSeen(id)}>
-	            <Media>
 
-	                <DropdownItemImage img={img}/>
+                <img src={img}/>
 
-	                <Media.Body>
-	                    {this.props.children}
-	                </Media.Body>
+                {this.props.children}
 
-	            </Media>
-
-	            <div class="divider"></div>
 	        </li>
 	    )
   	}

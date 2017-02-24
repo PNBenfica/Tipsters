@@ -1,7 +1,7 @@
 import React from "react"
 
 import SideBar from "./sidebar/SideBar"
-import TopBar from "./TopBar"
+import TopBar from "./topbar/TopBar"
 
 export default class Nav extends React.Component {
 

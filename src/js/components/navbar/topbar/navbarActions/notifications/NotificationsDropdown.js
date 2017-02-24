@@ -1,7 +1,7 @@
 import React from "react"
 import classNames from "classnames"
 
-import NotificationsContainer from "./../../../../notifications/NotificationsContainer"
+//import NotificationsContainer from "./../../../../notifications/NotificationsContainer"
 import Footer from "./Footer"
 
 export default class NotificationsDropdown extends React.Component {

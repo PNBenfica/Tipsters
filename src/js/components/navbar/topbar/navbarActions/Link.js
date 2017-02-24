@@ -1,7 +1,7 @@
 import React from "react"
 import classNames from "classnames"
 
-export default class DropdownIcon extends React.Component {
+export default class Link extends React.Component {
 
     render() {
 

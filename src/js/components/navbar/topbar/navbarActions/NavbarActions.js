@@ -1,13 +1,13 @@
 import React from "react"
 import { connect } from "react-redux";
 
-import { fetchMessages, setMessagesNotNew, openMessage, newMessage } from "../../../actions/messagesActions";
-import { setNotificationsNotNew } from "../../../actions/notificationsActions";
+import { fetchMessages, setMessagesNotNew, openMessage, newMessage } from "../../../../actions/messagesActions";
+import { setNotificationsNotNew } from "../../../../actions/notificationsActions";
 
-import MessagesLink from "./MessagesLink"
-import NotificationsLink from "./NotificationsLink"
-import SearchLink from "./SearchLink"
-import UserAvatarLink from "./UserAvatarLink"
+import MessagesLink from "./messages/MessagesLink"
+import NotificationsLink from "./notifications/NotificationsLink"
+import SearchLink from "./search/SearchLink"
+import UserAvatarLink from "./user/UserAvatarLink"
 
 
 @connect((store) => {
@@ -16,7 +16,7 @@ import UserAvatarLink from "./UserAvatarLink"
     notifications: store.notifications.notifications,
   };
 })
-export default class NavbarTopLinks extends React.Component {
+export default class NavbarActions extends React.Component {
 
     constructor(args){
         super(...args)

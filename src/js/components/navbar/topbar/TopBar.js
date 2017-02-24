@@ -2,7 +2,7 @@ import React from "react"
 
 import Hamburger from "./Hamburger"
 import NavbarBrand from "./NavbarBrand"
-import NavbarTopLinks from "./navbarTopLinks/NavbarTopLinks"
+import NavbarActions from "./navbarActions/NavbarActions"
 
 export default class TopBar extends React.Component {
 
@@ -19,7 +19,7 @@ export default class TopBar extends React.Component {
 
                     <NavbarBrand />
 
-                    <NavbarTopLinks />
+                    <NavbarActions />
 
                 </div>
             </div>

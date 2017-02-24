@@ -7,7 +7,7 @@ export default class Time extends React.Component {
         const { date } = this.props
 
         return (
-            <span class="dropdown-menu-item-time pull-right text-muted">
+            <span class="pull-right time">
                 <i class="fa fa-clock-o fa-fw"></i>
                 <em>{date}</em>
             </span>

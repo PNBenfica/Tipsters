@@ -1,8 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
-import DropdownIcon from "./DropdownIcon"
-import SearchBarDropdown from "./dropdowns/search/SearchDropdown"
+import SearchBarDropdown from "./SearchDropdown"
 
 export default class SearchLink extends React.Component {
 

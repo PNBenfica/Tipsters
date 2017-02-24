@@ -1,7 +1,7 @@
 import React from "react"
 
-import DropdownIcon from "./DropdownIcon"
-import NotificationsDropdown from "./dropdowns/notifications/NotificationsDropdown"
+import Link from "./../Link"
+import NotificationsDropdown from "./NotificationsDropdown"
 
 export default class NotificationsLink extends React.Component {
 
@@ -12,7 +12,7 @@ export default class NotificationsLink extends React.Component {
         return (
             <div class="link" onClick={() => onClick()}>
 
-                <DropdownIcon icon="fa-bell-o" badge="badge-green" newItems={nNew}/>
+                <Link icon="fa-bell-o" badge="badge-green" newItems={nNew}/>
 
                 <NotificationsDropdown open={open} notifications={notifications} markAsSeen={markAsSeen}/>
                 
