@@ -20,17 +20,18 @@ export default class MessagesSidebar extends React.Component {
 //             </ul>
     render() {
 
-        const { messages, open } = this.props
+        const { messages, open, createNewMessage } = this.props
 
         const Messages = this.props.messages.map(this.renderMessageItem.bind(this))
 
             
         return (
-            <div class={classNames("sidebar-right open", { open } )}>
+            <div class={classNames("sidebar-right", { open } )}>
 
                 <header>
+                    <i class="fa fa-fw fa-envelope-o"></i>
                     <h2>Messages</h2>
-                    
+                    <a class="fa fa-plus new-message" onClick={createNewMessage}></a>
                 </header>
 
                 <ul>

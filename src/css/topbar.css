@@ -155,12 +155,21 @@
 }
 
 .sidebar-right header {
+    display: flex;
+    padding: 10px;
     border-right: solid 1px #dddfe2;
 }
 
+
 .sidebar-right header h2{
-    font-size: 16px;
+    font-size: 14px;
     text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 0 0 5px;
+}
+
+.sidebar-right header .new-message{
+    margin-left: auto;
 }
 
 
