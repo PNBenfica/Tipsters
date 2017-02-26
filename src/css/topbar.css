@@ -108,9 +108,11 @@
     height: calc(100vh - 51px);
     width: 300px;
     background-color: white;
-    border-left: solid 1px #E6E9EC;
     transform: translate(100%,0);
     opacity: 0.9;
+    overflow: hidden;
+    border-left: solid 1px #E6E9EC;
+    border-right: solid 1px #E6E9EC;
 
     -webkit-transition: all 1000ms;
     -moz-transition: all 1000ms;
@@ -157,7 +159,6 @@
 .sidebar-right header {
     display: flex;
     padding: 10px;
-    border-right: solid 1px #dddfe2;
 }
 
 
@@ -189,7 +190,6 @@
     padding: 10px;
 
     border-bottom: solid 1px #dddfe2;
-    border-right: solid 1px #dddfe2;
 
     background: white;
     -webkit-transition: background 0.2s;
@@ -205,6 +205,11 @@
 .sidebar-right ul li .content {
     padding: 0px 10px;
 }
+
+.sidebar-right ul li .content.notification-item {
+    display: flex;
+}
+
 
 .sidebar-right ul li .content h3 {
     font-size: 14px;
@@ -223,6 +228,10 @@
     color: #90949c;
 }
 
+.sidebar-right ul li .content.notification-item .time {
+    white-space: nowrap;
+    align-self: flex-end;
+}
 
 .sidebar-right ul li.highlighted {
     background-color: #edf2fa;

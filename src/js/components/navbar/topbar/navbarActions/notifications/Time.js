@@ -9,10 +9,10 @@ export default class Time extends React.Component {
         const iconClasses = classNames('fa','fa-fw', type)
 
         return (
-            <p class="dropdown-menu-item-time">
+            <span class="pull-right time">
                 <i class={iconClasses}></i>
-                <em> {date}</em>
-            </p>
+                <em>{date}</em>
+            </span>
         )
     }
 }

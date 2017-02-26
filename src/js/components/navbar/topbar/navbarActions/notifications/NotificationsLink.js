@@ -1,7 +1,7 @@
 import React from "react"
 
 import Link from "./../Link"
-import NotificationsDropdown from "./NotificationsDropdown"
+import NotificationsSidebar from "./NotificationsSidebar"
 
 export default class NotificationsLink extends React.Component {
 
@@ -14,7 +14,7 @@ export default class NotificationsLink extends React.Component {
 
                 <Link icon="fa-bell-o" badge="badge-green" newItems={nNew}/>
 
-                <NotificationsDropdown open={open} notifications={notifications} markAsSeen={markAsSeen}/>
+                <NotificationsSidebar open={open} notifications={notifications} markAsSeen={markAsSeen}/>
                 
             </div>
 

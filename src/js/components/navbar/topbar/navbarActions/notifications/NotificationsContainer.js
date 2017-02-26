@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux";
 import classNames from "classnames";
 
-import { fetchNotifications, markAsSeen } from "../../actions/notificationsActions";
+import { fetchNotifications, markAsSeen } from "../../../../../actions/notificationsActions";
 
 
 import NotificationItem from "./NotificationItem"
@@ -35,9 +35,9 @@ export default class NotificationsContainer extends React.Component {
         const containerClasses = classNames("notifications-container", "dropdown-content-container")
 
         return (
-            <div class="notifications-container dropdown-content-container">
+            <ul>
                 {Notifications}
-            </div>
+            </ul>
         )
     }
 }

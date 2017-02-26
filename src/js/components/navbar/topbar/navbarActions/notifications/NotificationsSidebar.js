@@ -1,10 +1,10 @@
 import React from "react"
 import classNames from "classnames"
 
-//import NotificationsContainer from "./../../../../notifications/NotificationsContainer"
-import Footer from "./Footer"
+import NotificationsContainer from "./NotificationsContainer"
+import NotificationsSidebarHeader from "./NotificationsSidebarHeader"
 
-export default class NotificationsDropdown extends React.Component {
+export default class NotificationsSidebar extends React.Component {
 
 
 
@@ -23,7 +23,11 @@ export default class NotificationsDropdown extends React.Component {
 
         return (
         	<div class={classNames("sidebar-right", { open } )}>
-        		Notifications
+
+                <NotificationsSidebarHeader />
+
+                <NotificationsContainer/>
+
         	</div>
         )
     }

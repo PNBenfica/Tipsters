@@ -15,12 +15,10 @@ export default class MessageItem extends React.Component {
 
                     <h3>{sender}</h3>
 
-                    <span class="pull-right time">
-                        <i class="fa fa-clock-o fa-fw"></i>
-                        <em>{messages[0].date}</em>
-                    </span>
+                    <Time date={messages[0].date}/>
 
                     <p>{messages[0].content.substring(0,65)}</p>
+                    
                 </div>
                 
             </DropdownItem>
