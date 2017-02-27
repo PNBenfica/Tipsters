@@ -1,6 +1,6 @@
 import React from "react"
 
-export default class MessagesSidebarHeader extends React.Component {
+export default class SidebarHeader extends React.Component {
 
     render() {
 

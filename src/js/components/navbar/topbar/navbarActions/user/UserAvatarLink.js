@@ -1,20 +1,22 @@
 import React from "react"
 
 import UserAvatar from "./UserAvatar"
-import UserDropdown from "./UserDropdown"
+import UserSidebar from "./UserSidebar"
 
 export default class UserAvatarLink extends React.Component {
 
     render() {
 
+    	const { onClick, open } = this.props
+
         return (
 
-            <div class="link">
-            
+            <div class="link" onClick={() => onClick()}>
+
                 <UserAvatar />
 
-                <UserDropdown />
-
+                <UserSidebar open={open} />
+                
             </div>
         )
     }

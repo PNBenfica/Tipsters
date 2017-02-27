@@ -63,6 +63,15 @@
 	padding: 0px;
 }
 
+#sports-page .sports-tables-container .odds-table .panel-body{
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+#sports-page .sports-tables-container .odds-table .panel-body:before{
+    display: none;
+}
+
 #sports-page .sports-tables-container .table td,
 #sports-page .sports-tables-container .panel-body a{
 	padding-bottom: 5px;
@@ -70,6 +79,10 @@
 	font-size: 13px;
 	font-weight: 600;
 
+}
+
+#sports-page .sports-tables-container .odds-table .panel-body a{
+    width: 33.33%;
 }
 
 #sports-page .sports-tables-container .panel-body a:before{
@@ -172,7 +185,7 @@
 
 
 #sports-page .bigger{
-	height: 50px;
+	/*height: 50px;*/
 }
 
 

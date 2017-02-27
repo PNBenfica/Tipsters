@@ -109,20 +109,18 @@
     width: 300px;
     background-color: white;
     transform: translate(100%,0);
-    opacity: 0.9;
     overflow: hidden;
     border-left: solid 1px #E6E9EC;
     border-right: solid 1px #E6E9EC;
 
-    -webkit-transition: all 1000ms;
-    -moz-transition: all 1000ms;
-    -o-transition: all 1000ms;
-    transition: all 1000ms;
+    -webkit-transition: transform 1000ms;
+    -moz-transition: transform 1000ms;
+    -o-transition: transform 1000ms;
+    transition: transform 1000ms;
 }
 
 .navbar .navbar-actions .sidebar-right.open{
     transform: translate(0%,0);
-    opacity: 1;
 }
 
 
@@ -159,10 +157,11 @@
 .sidebar-right header {
     display: flex;
     padding: 10px;
+    border-bottom: solid 1px #dddfe2;
 }
 
 
-.sidebar-right header h2{
+.sidebar-right h2{
     font-size: 14px;
     text-transform: uppercase;
     font-weight: 600;
@@ -180,7 +179,6 @@
     width: calc(100% + 17px);
     overflow-y: scroll;
     margin: 0;
-    border-top: solid 1px #dddfe2;
 }
 
 .sidebar-right ul li {
@@ -191,6 +189,7 @@
 
     border-bottom: solid 1px #dddfe2;
 
+    color: #333;
     background: white;
     -webkit-transition: background 0.2s;
     -moz-transition: background 0.2s;
@@ -239,41 +238,46 @@
 
 .sidebar-right ul li:hover {
     background-color: #F6F6F7;
+    color: #333;
 }
 
 
 
 
-/*************************************************
-Notifications dropdown
-*************************************************/
 
-.notifications-container li .media{
-    padding-top: 8px;
-    padding-bottom: 8px;
+/********************************************
+    Search
+ ********************************************/
+
+
+.sidebar-right .navbar-form {
+    padding: 0;
+    margin: 0;
 }
 
-.notifications-container li .media:hover, .sidebar-right ul .dropdown-load-more:hover{
-    cursor: pointer;
-    background-color: #F9F9F9;
+.sidebar-right .navbar-form input{
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-color: #E6E9EC;
+    height: 45px;
+}
+.sidebar-right .navbar-form input:focus, .sidebar-right .navbar-form input{
+    outline: none;
+    box-shadow: none;
 }
 
-.notifications-container li .media .media-left{
-    padding-left: 10px;
-    padding-right: 10px;
+.sidebar-right .navbar-form .form-control {
+    width: 100%; 
 }
 
-.notifications-container .media-body{
-    color:#5B5B5C;
-    font-size: 13px;
-    padding-bottom: 0px;
-    padding-top: 2px;
+.sidebar-right .navbar-form .form-group {
+    display: flex;
 }
 
-.notifications-container .sidebar-right ul-item-time{
-    color:#C0C2C4;
-    font-size: 11px;
-    margin-bottom: 0px;
-    padding-right: 30px;
+.sidebar-right .navbar-form .form-control-feedback {
+    display: inline;
+    padding: 15px 0;
+    height: 45px;
+    width: 45px;
 }
-

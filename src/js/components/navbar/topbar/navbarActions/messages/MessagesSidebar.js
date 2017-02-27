@@ -2,7 +2,8 @@ import React from "react"
 import classNames from "classnames"
 
 import MessageItem from "./MessageItem"
-import MessagesSidebarHeader from "./MessagesSidebarHeader"
+import SidebarHeader from "./SidebarHeader"
+import SideBar from "./../SideBar"
 
 export default class MessagesSidebar extends React.Component {
 
@@ -19,15 +20,15 @@ export default class MessagesSidebar extends React.Component {
 
             
         return (
-            <div class={classNames("sidebar-right", { open } )}>
+            <SideBar open={open}>
 
-                <MessagesSidebarHeader createNewMessage={createNewMessage}/>
+                <SidebarHeader createNewMessage={createNewMessage}/>
 
                 <ul>
                     {Messages}
                 </ul>
 
-            </div>
+            </SideBar>
         )
     }
 }

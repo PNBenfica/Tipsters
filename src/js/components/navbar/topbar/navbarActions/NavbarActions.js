@@ -99,9 +99,6 @@ export default class NavbarActions extends React.Component {
         }
     }
 
-    onSearchClick(){
-    }
-
     onMessagesClick(){
         this.onLinkClick("messages")
         this.clearMessagesBadge()
@@ -112,10 +109,6 @@ export default class NavbarActions extends React.Component {
         this.clearNotificationsBadge()
     }
 
-    onAvatarClick(){
-    }
-
-
     render() {
 
         const { open } = this.state
@@ -123,13 +116,13 @@ export default class NavbarActions extends React.Component {
         return (
             <div class="navbar-actions">
 
-                <SearchLink />
+                <SearchLink onClick={this.onLinkClick.bind(this, "search")} open={open==="search"} />
 
                 <MessagesLink messages={this.props.messages} nNew={this.numberNewMessages()} onClick={this.onMessagesClick.bind(this)} open={open==="messages"}  markAsSeen={this.openMessage.bind(this)} createNewMessage={this.createNewMessage.bind(this)}/>
 
                 <NotificationsLink notifications={this.props.notifications} nNew={this.numberNewNotifications()} onClick={this.onNotificationsClick.bind(this)} open={open==="notifications"} />
 
-                <UserAvatarLink />
+                <UserAvatarLink onClick={this.onLinkClick.bind(this, "settings")} open={open==="settings"} />
 
             </div>
         )

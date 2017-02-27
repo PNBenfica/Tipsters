@@ -1,5 +1,5 @@
 @import url("bootstrap/dist/css/bootstrap.min.css");
-@import url("font-awesome/css/font-awesome.min.css");
+@import url("font-awesome-4.7.0/css/font-awesome.min.css");
 @import url("topbar.css");
 @import url("sidebar.css");
 @import url("feed.css");
@@ -91,6 +91,11 @@ a:hover {
         margin: 0 0 0 110px;
         padding: 0 30px;
     }
+}
+
+
+[role="search"] input{
+    border-radius: 0px;
 }
 
 
@@ -614,56 +619,6 @@ Buttons
 }
 
 
-/*******************************************
-		font-awesome badge
-******************************************/
-
-
-
-/********************************************
- 	navbar search
- ********************************************/
-
-#search-dropdown{
- 	background-color: red;
-	overflow-y: hidden !important;
-}
-
-#search-dropdown .navbar-form{
- 	margin: 0px !important;
- 	padding: 0px !important;
- 	width: 430px;
- 	height: 50px;
-}
-#search-dropdown .navbar-form input{
- 	height: 50px;
-}
-
-
-[role="search"] input{
-	border-radius: 0px;
-}
-
-.navbar-form {
-    overflow: auto;
-}
-.navbar-form .form-control {
-    display: inline-block;
-    width: 100%; 
-    vertical-align: middle;
-}
-.navbar-form .form-group {
-    display: inline;
-}
-
- @media (max-width:767px) {
-    .navbar-nav.navbar-collapse {
-        margin-left: 0;
-        margin-right: 0;
-        padding-left: 0;
-        padding-right: 0;
-    }
-}
 
 
 

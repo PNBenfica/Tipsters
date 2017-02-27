@@ -17,7 +17,6 @@ export default class NotificationsLink extends React.Component {
                 <NotificationsSidebar open={open} notifications={notifications} markAsSeen={markAsSeen}/>
                 
             </div>
-
         )
     }
 }

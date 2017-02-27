@@ -13,20 +13,22 @@ export default class NotificationItem extends React.Component {
                 // <Time date={date} type={type} />
 
         return (
-            <DropdownItem id={id} img={tipsterImage} highlighted={!seen} markAsSeen={markAsSeen}>
-                
-                <div class="content notification-item">
-
-                	<div>
-						<h3>{tipsterName} </h3>{content.substring(0,65)}
-                	</div>
-
-                    <Time date={date} type={type}/>
+            <a href="#/profile">
+                <DropdownItem id={id} img={tipsterImage} highlighted={!seen} markAsSeen={markAsSeen}>
                     
-                </div>
+                    <div class="content notification-item">
+
+                    	<div>
+    						<h3>{tipsterName} </h3>{content.substring(0,65)}
+                    	</div>
+
+                        <Time date={date} type={type}/>
+                        
+                    </div>
 
 
-            </DropdownItem>
+                </DropdownItem>
+            </a>
         )
     }
 }
