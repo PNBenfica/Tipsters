@@ -730,3 +730,179 @@ Buttons
 	width: 100%;
 	height: 100%;
 }
+
+
+
+
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    display: none;
+    
+    /*position: absolute;
+    left: -9999px;*/
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 40px;
+  cursor: pointer;
+  color: rgb(36,36,36);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+[type="checkbox"]:not(:checked) + label{
+  color: rgb(136,136,136);
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left:0; top: 0px;
+  width: 23px; height: 23px;
+  border: 1px solid #bbb;
+  background: #fff;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: 'âœ”';
+  position: absolute;
+  top: 0px; left: 0px;
+  padding: 5px;
+  font-size: 14px;
+  width: 23px; height: 23px;
+  line-height: 0.8;
+  color: #c30000;
+  transition: all .2s;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+
+
+/* hover style just for information */
+label:hover:before {
+  border: 1px solid #c30000!important;
+}
+
+input[type="radio"] {
+    display:none;
+}
+input[type="radio"] + label {
+    color: rgb(36,36,36);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+input[type="radio"]:not(:checked) + label {
+    color: rgb(136,136,136);
+}
+input[type="radio"] + label span {
+    display:inline-block;
+    margin:-1px 4px 0 0;
+    vertical-align:middle;
+    -moz-border-radius:  50%;
+    border-radius:  50%;
+}
+
+input[type="radio"] + label span.outer {
+    width:20px;
+    height:20px;
+    margin: 0px 10px 0px 0px;
+    /* padding: 2px; */
+    /*margin-right: 15px;*/
+    cursor:pointer;
+    border: solid 1px rgb(137,137,137);
+    background-color: white;
+}
+input[type="radio"] + label span.inner {
+    width: 10px;
+    height: 10px;
+    margin: 4px 0px 0px 4px;
+    /*margin: 0px 10px 16px 2px;*/
+    background-color: white;
+    vertical-align: top;
+    text-align: center;
+}
+
+input[type="radio"]:checked + label span.inner{
+     background-color:#CC3300;
+}
+
+input[type="radio"] + label span,
+input[type="radio"]:checked + label span {
+  -webkit-transition:background-color 0.2s linear;
+  -o-transition:background-color 0.2s linear;
+  -moz-transition:background-color 0.2s linear;
+  transition:background-color 0.2s linear;
+}
+
+
+
+
+.button {
+    display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+    border: solid 1px black;
+    padding: 10px 24px;
+    cursor: pointer;
+
+    /* comentado devido a um 1px em falta no preenchimento */
+    /*overflow: hidden;*/
+
+    position: relative;
+    -webkit-transition: color 500ms ease-in-out, border-color 500ms ease-in-out;
+    -moz-transition: color 500ms ease-in-out, border-color 500ms ease-in-out;
+    transition: color 500ms ease-in-out, border-color 500ms ease-in-out;
+}
+
+.inner .button {
+    border-color: white;
+}
+
+.button>* {
+    position: relative;
+}
+
+.button:hover,
+.button.active {
+    color: white;
+    border-color: #c30000;
+}
+
+.button.active {
+    background-color: #c30000;
+}
+
+.button:before {
+    background-color: #c30000;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transform-origin: bottom center;
+    transform-origin: bottom center;
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+    -webkit-transition: -webkit-transform .5s ease-in-out;
+    transition: -webkit-transform .5s ease-in-out;
+    transition: transform .5s ease-in-out;
+    transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;
+}
+
+.button:hover:before {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+}

@@ -10,7 +10,7 @@ export default class Filters extends React.Component {
         const { addFilter, filters } = this.props
 
         return (
-            <div id="ranking-filters-collapse" class="collapse">
+            <div class="filters-container col-xs-12">
                 {filters.map((filter, i) => <FilterList key={i} {...filter} addFilter={addFilter} /> )}
             </div>
         )

@@ -70,6 +70,10 @@ export default class Rankings extends React.Component {
 		this.setState({ searchFilter: name.toLowerCase() })
 	}
 
+	applyFilters(){
+		console.log("TODO: apply filter")
+	}
+
 	filterData(data){
 		return data.filter(rowData => rowData.tipster.name.toLowerCase().includes(this.state.searchFilter))
 	}
@@ -88,7 +92,7 @@ export default class Rankings extends React.Component {
 				<div class="row">
 					<div class="col-lg-12">
 
-						<FiltersContainer filters={this.state.filters} addFilter={this.addFilter.bind(this)} addSearchFilter={this.addSearchFilter.bind(this)}/>
+						<FiltersContainer filters={this.state.filters} addFilter={this.addFilter.bind(this)} applyFilters={this.applyFilters.bind(this)} addSearchFilter={this.addSearchFilter.bind(this)}/>
 						
 						<Table data={data} sortBy={this.state.sortBy} changeSort={this.changeSort.bind(this)}/>
 

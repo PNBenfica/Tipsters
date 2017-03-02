@@ -48,14 +48,16 @@
 
 
 @media screen and (max-width: 767px) {
-	#rankings table tbody th{
-		margin-right: 20px;
-		padding-right: 50px;
+
+	#rankings .table-responsive{
+		border: none;
+		padding: 0;
 	}
 }
 
 #rankings table thead th:not(:first-child), #rankings table tbody td{
 	text-align: center;
+	white-space: nowrap;
 }
 
 #rankings table tbody p{
@@ -65,7 +67,7 @@
 
 
 #rankings table tbody a{
-	font-size: 13px;
+	font-size: 14px;
 	font-weight: 600;
 }
 
@@ -90,7 +92,6 @@
 
 #rankings .rankings-nav-filters{
 	display: flex;
-	text-align: right;
 	margin-bottom: 10px;
 }
 
@@ -174,28 +175,55 @@
 
 #rankings .filters-dropdown{
 	position: absolute;
-	height: 100px;
-	width: 100px;
+	top: 100%;
+	right: 15px;
+	z-index: 1;
 
+	overflow: hidden;
+	width: 38px;
+	height: 0px;
+	border-width: 0px;
+
+	transition: top 0.5s 1s, height 0.5s 1s, width 0.5s 0.5s, border-width 0s 1.25s;
+}
+
+#rankings .filters-dropdown.open{
+	width: calc(100vw - 60px);
+	height: 675px;
+	top: calc(100% + 5px);
+	border-width: 1px;
+	transition: top 0.5s, height 0.5s, border-width 0.5s, width 0.5s 0.5s;
+}
+
+#rankings .filters-dropdown > *{
+	opacity: 0;
+	transition: opacity 0.75s;
+	padding: 15px 30px; 
+}
+#rankings .filters-dropdown.open > *{
+	opacity: 1;
+	transition: opacity 1s 1s;
 }
 
 
-#ranking-filters-collapse .filter-list{
-	margin-right: 50px;
+#rankings .filters-dropdown .filters-container .filter-list{
 }
 
 
-#ranking-filters-collapse .filter-list h5{
-	font-size: 14px;
-	font-weight: 700;
+#rankings .filters-dropdown .filters-container .filter-list h5{
+	font-size: 16px;
+	font-weight: 400;
+	text-transform: uppercase;
 }
 
-#ranking-filters-collapse .filter-list p:hover{
-	color: #2DC3E8;
-	cursor: pointer;
+#rankings .filters-dropdown .button-container {
+	text-align: center;
 }
 
-#ranking-filters-collapse .filter-list p.active, #ranking-filters-collapse .filter-list p.active:hover{
-	color: #2DC3E8;
-	cursor: default;
+
+@media(min-width:768px) {
+	#rankings .filters-dropdown.open{
+		width: 600px;
+		height: 290px;
+	}
 }

@@ -9,7 +9,10 @@ export default class FilterListItem extends React.Component {
         const { filterName, value, active, addFilter } = this.props
 
         return (
-            <p class={className({active:value==active})} onClick={() => addFilter(filterName, value)} >{value}</p>
+            <div onClick={()=> {addFilter(filterName, value)}}>
+                <input type="radio" checked={value==active} onChange={()=> {addFilter(filterName, value)}} />
+                <label><span class="outer"><span class="inner"></span></span>{value}</label>
+            </div>
         )
     }
 }
