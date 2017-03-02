@@ -7,14 +7,15 @@ export default class FiltersButton extends React.Component {
 
     render() {
 
+                // <Filters filters={filters} addFilter={addFilter}/>
+	            //<div class="filters-dropdown">
+	            //    Ola
+	            //</div>
         const { addFilter, filters } = this.props
 
         return (
             <div id="ranking-filters">     
-                <i data-toggle="collapse" data-target="#ranking-filters-collapse" class="fa fa-filter" aria-hidden="true"></i>
-
-                <Filters filters={filters} addFilter={addFilter}/>
-
+                <i class="fa fa-filter"></i>
             </div>
         )
     }

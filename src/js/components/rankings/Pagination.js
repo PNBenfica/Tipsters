@@ -9,7 +9,7 @@ export default class Pagination extends React.Component {
         const { nextPage, previousPage } = this.props
 
         return (
-            <nav aria-label="...">
+            <nav class="pagination-nav">
                 <ul class="pagination pagination-sm">
 
                     <PaginationButton name="Previous" icon="&laquo;" onClick={previousPage} />

@@ -11,8 +11,8 @@ export default class Table extends React.Component {
 
         return (
             
-            <div class="table-responsive">
-                <table class="table table-striped">
+            <div class="col-xs-12 table-responsive">
+                <table class="table">
                     
                     <TableHeader sortBy={sortBy} changeSort={changeSort} />
 
