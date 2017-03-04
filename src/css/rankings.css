@@ -1,13 +1,13 @@
 
 #rankings table thead {
-	background-color: #c30000;
+	background-color: rgb(50,50,50);
 	color: white;
 }
 
 #rankings table thead th{
 	font-size: 14px;
 	text-transform: uppercase;
-	font-weight: 600;
+	font-weight: 500;
 	border-bottom: none;
 }
 

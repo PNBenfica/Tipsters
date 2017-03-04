@@ -35,7 +35,7 @@
 
 #sports-page .sports-tables-container .table thead,
 #sports-page .panel .panel-heading{
-	background-color: #c30000;
+	background-color: rgb(50,50,50);
 	color: white;
 }
 #sports-page .panel .panel-heading{
@@ -46,7 +46,7 @@
 #sports-page .panel .panel-heading .panel-title{
 	font-size: 14px;
 	text-transform: uppercase;
-	font-weight: 600;
+	font-weight: 500;
 	border-bottom: none;
 	padding-left: 15px;
 	padding-right: 15px;
@@ -216,7 +216,6 @@ bet slip
 
 
 #sports-page .right-bar-container .panel .panel-heading{
-	background-color: #01579b;
 }
 
 #bet-slip .panel-body .post-tips,

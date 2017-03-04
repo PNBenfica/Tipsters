@@ -1,16 +1,21 @@
 
 
-#feed-page{
-}
-
-
-@media screen and (min-width: 1200px) {
-	#feed-page .posts-container {
-		padding: 0 45px;
-		margin-left: 40px;
+@media screen and (min-width: 992px) {
+	#feed-page .feed-page-left{
+		border-right: solid 1px rgb(221,221,221);
 	}
 }
 
+@media screen and (min-width: 1200px) {
+	#feed-page .feed-page-left{
+		padding: 0 85px;
+	}
+}
+
+.posts-container{
+	float: left;
+	width: 100%;
+}
 
 .feed-post{
 	margin-bottom: 40px;
@@ -339,4 +344,69 @@ post-comment-box
 
 .feed-post .post-comment-box .input-group{
 	padding-top: 5px;
+}
+
+.feed-post .post-comment-box .button{
+	padding: 4px 24px;
+	border-color: #E6E9EC;
+	border-left: none;
+}
+
+
+
+
+
+
+#feed-page .status-update textarea::-webkit-input-placeholder {
+    color: rgb(79,79,135);
+}
+#feed-page .status-update textarea:-moz-placeholder {
+    /* FF 4-18 */
+    color: rgb(79,79,135);
+}
+#feed-page .status-update textarea::-moz-placeholder {
+    /* FF 19+ */
+    color: rgb(79,79,135);
+}
+#feed-page .status-update textarea:-ms-input-placeholder {
+    /* IE 10+ */
+    color: rgb(79,79,135);
+}
+
+#feed-page .status-update i {
+	color: rgb(115,115,115);
+}
+
+#feed-page .status-update .panel-body {
+	display: flex;
+	align-items: center;
+}
+
+#feed-page .status-update .panel-body i{
+	width: 10%;
+	text-align: right;
+}
+
+#feed-page .status-update .panel-body textarea{
+	border: none;
+	width: 90%;
+	resize: none;
+	font-size: 16px;
+	outline: none;
+}
+
+
+#feed-page .status-update footer{
+	border-top: solid 1px rgb(221,221,221);
+	padding: 7px 0;
+	text-align: right;
+}
+
+#feed-page .status-update .button{
+	padding: 4px 24px;
+	border-color: rgb(204,204,204);
+}
+
+#feed-page .status-update footer i{
+	margin-right: 10px;
 }

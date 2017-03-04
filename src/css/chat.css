@@ -100,23 +100,23 @@
 .chat-panel-message textarea.expand{
 }
 /* do not group these rules */
-textarea::-webkit-input-placeholder {
-    color: #DEDEDE !important;
+.chat-panel-message textarea::-webkit-input-placeholder {
+    color: #DEDEDE;
     font-size: 13px;
 }
-textarea:-moz-placeholder {
+.chat-panel-message textarea:-moz-placeholder {
     /* FF 4-18 */
-    color: #DEDEDE !important;
+    color: #DEDEDE;
     font-size: 13px;
 }
-textarea::-moz-placeholder {
+.chat-panel-message textarea::-moz-placeholder {
     /* FF 19+ */
-    color: #DEDEDE !important;
+    color: #DEDEDE;
     font-size: 13px;
 }
-textarea:-ms-input-placeholder {
+.chat-panel-message textarea:-ms-input-placeholder {
     /* IE 10+ */
-    color: #DEDEDE !important;
+    color: #DEDEDE;
     font-size: 13px;
 }
 

@@ -7,7 +7,7 @@ export default class PageWithTrendBar extends React.Component {
 	render() {
         
 	    return (
-			<div class="row">
+			<div>
 
 				{this.props.children}
 

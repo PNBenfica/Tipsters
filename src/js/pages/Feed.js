@@ -1,22 +1,30 @@
 import React from "react"
 
-import PageWithTrendBar from "./PageWithTrendBar"
+
 import PostsContainer from "../components/PostsContainer"
+import StatusUpdate from "../components/feed/statusUpdate/StatusUpdate"
+import TrendBar from "../components/trendbar/TrendBar"
 
 export default class Feed extends React.Component {
 
 	render() {
 
 	    return (
-			<PageWithTrendBar>
+			<div id="feed-page">
 
-				<div id="feed-page">
-					<div class="col-md-8">
-						<PostsContainer {...this.props.params}/>
-					</div>
+				<div class="col-md-8 feed-page-left">
+
+					<StatusUpdate />
+
+					<PostsContainer {...this.props.params}/>
+				
 				</div>
 
-			</PageWithTrendBar>
+				<div class="col-md-4 col-lg-push-2 hidden-xs hidden-sm hidden trend-bar-container">
+					<TrendBar />
+				</div>
+
+			</div>
 	    )
 	}
 }

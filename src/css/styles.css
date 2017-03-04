@@ -15,7 +15,7 @@ Html General Elements
 *************************************************/
 
 body{	
-    background-color: #FAFAFA;
+    /*background-color: #FAFAFA;*/
 	font-family: 'Source Sans Pro', sans-serif;
 	color: #333;
 }
@@ -80,18 +80,13 @@ a:hover {
 }
 
 #page-wrapper {
-    padding: 0 15px;
-    padding-top: 90px !important;
-    /*min-height: 568px;*/
     min-height: 640px !important;
-    /*background-color: #F5F5F5;*/
+    padding-top: 80px;
 }
 
 @media(min-width:768px) {
     #page-wrapper {
-        position: inherit;
-        margin: 0 0 0 110px;
-        padding: 0 30px;
+    	padding-left: 110px;
     }
 }
 
@@ -99,9 +94,6 @@ a:hover {
 [role="search"] input{
     border-radius: 0px;
 }
-
-
-
 
 .no-padding-sides{
 	padding-left: 0px;
@@ -853,7 +845,7 @@ input[type="radio"]:checked + label span {
     display: inline-block;
     font-size: 14px;
     text-transform: uppercase;
-    border: solid 1px black;
+    border: solid 1px #333;
     padding: 10px 24px;
     cursor: pointer;
 

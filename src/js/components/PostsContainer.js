@@ -52,17 +52,17 @@ export default class PostsContainer extends React.Component {
                 return <Post addComment={this.addComment.bind(this, post.id)} key={i} {...post}/>
         })
     }
+            // <ScrollPageDetector onScrollBottom={this.onScrollBottom.bind(this)}>
+            // </ScrollPageDetector>
 
     render() {
 
         const Posts = this.renderPosts()
 
         return (
-            <ScrollPageDetector onScrollBottom={this.onScrollBottom.bind(this)}>
-                <div class="posts-container">
-                    {Posts}
-                </div>
-            </ScrollPageDetector>
+            <div class="posts-container">
+                {Posts}
+            </div>
         )
     }
 }
