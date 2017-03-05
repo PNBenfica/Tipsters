@@ -20,7 +20,7 @@ export default class Feed extends React.Component {
 				
 				</div>
 
-				<div class="col-md-4 col-lg-push-2 hidden-xs hidden-sm hidden trend-bar-container">
+				<div class="col-md-4 hidden-xs hidden-sm trend-bar-container">
 					<TrendBar />
 				</div>
 

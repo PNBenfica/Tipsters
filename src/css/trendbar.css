@@ -1,0 +1,139 @@
+
+@media screen and (min-width: 1200px) {
+	.trend-bar-container{
+		padding: 0 65px;
+	}
+}
+
+
+
+
+.trend-bar-panel .panel-heading, .trend-bar-panel .panel-body{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.trend-bar-panel .panel-heading {
+	border-bottom: solid 2px rgb(221,221,221); 
+}
+
+.trend-bar-panel .panel-heading .panel-title {
+	font-size: 14px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+
+
+.trend-bar-panel .trend-bar-item{
+	border-bottom: solid 1px rgb(221,221,221);
+	padding-bottom: 17px;
+	padding-top: 17px;
+}
+.trend-bar-panel .trend-bar-item:first-child{
+	padding-top: 5px;
+}
+
+.trend-bar-panel .trend-bar-item a{
+	display:block;
+}
+
+.trend-bar-panel .trend-bar-item .trend-event a:hover, .trend-bar-panel .trend-bar-item .trend-event a:hover .panel-footer{
+	background-color: #FAFAFA;
+}
+
+.trend-bar-panel .trend-bar-item p{
+	font-weight: 500;
+	font-size: 14px;
+	margin: 0px;
+}
+
+.trend-bar-panel .trend-bar-item .trend-event .trend-event-team img{
+	width: 24px;
+	height: 24px;
+	margin: 0px 8px 5px 5px;
+}
+
+.trend-bar-panel .trend-bar-item .trend-event .panel-footer{
+	padding: 0px 0px 3px 0px;
+	background-color: white;
+	text-align: center;
+}
+.trend-bar-panel .trend-bar-item .trend-event .panel-footer span{
+	font-size: 11px;
+	color: #90949c;
+}
+
+
+
+.trend-bar-panel .trend-bar-item:nth-child(1) .trend-user{
+  	background: url("../img/trend-user-background1.jpg") top center no-repeat; 
+}
+.trend-bar-panel .trend-bar-item:nth-child(2) .trend-user{
+  	background: url("../img/trend-user-background2.jpg") top center no-repeat; 
+}
+
+.trend-bar-panel .trend-bar-item:nth-child(1) .trend-user,
+.trend-bar-panel .trend-bar-item:nth-child(2) .trend-user{
+	position: relative;
+
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
+}
+
+.trend-bar-panel .trend-user .inner-item{
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding: 8px;
+}
+
+.trend-bar-panel .trend-user .gradient{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	/*background: linear-gradient(to bottom, rgba(0, 0, 0, .9) 0%, rgba(0, 0, 0, 0) 100%);*/
+  	background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, .7), rgba(0, 0, 0, 0)); /* Standard syntax */
+}
+
+
+.trend-bar-panel .trend-user img{
+	width: 54px;
+    height: 54px;
+    padding: 2px;
+    border: none;
+    border-radius: 0px;
+    background: white;
+}
+
+
+.trend-bar-panel .trend-user .tipster-info{
+	margin-left: 5px;
+}
+
+.trend-bar-panel .trend-user .tipster-info a{
+	color: white !important;
+}
+
+.trend-bar-panel .trend-user .tipster-info p{
+	color: white;
+	font-weight: 500;
+}
+
+.trend-bar-panel .trend-user .tipster-info .tipster-name{
+	font-size: 18px;
+	line-height: 100%;
+}
+
+.trend-bar-panel .trend-user .tipster-info .tipster-description{
+	font-size: 12px;
+}
+
+.trend-bar-panel .trend-user .button {
+	margin-left: auto;
+	padding: 6px 10px;
+	background-color: white;
+}

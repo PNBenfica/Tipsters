@@ -3,6 +3,7 @@
 @import url("topbar.css");
 @import url("sidebar.css");
 @import url("feed.css");
+@import url("trendbar.css");
 @import url("sports.css");
 @import url("chat.css");
 @import url("rankings.css");
@@ -38,7 +39,7 @@ a{
 }
 
 a:hover {
-	color: #0084bf !important;
+	color: #c30000 !important;
 }
 
 
@@ -167,144 +168,6 @@ Nav bar user avatar
 
 
 
-/*******************************
-trend-bar-panel
-********************************/
-
-@media screen and (min-width: 1200px) {
-	.trend-bar-container{
-		padding-right: 75px;
-	}
-}
-
-
-
-.trend-bar-panel{
-	border: none;
-	box-shadow: none;
-	background-color: transparent;
-	/*border-style: solid;
-	border-width: 1px;
-	border-color: #D3E0E9;*/
-	/*box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 8px 0px, rgba(0, 0, 0, 0.065) 0px 3px 5px 0px;*/
-	margin-bottom: 35px;
-	padding-bottom: 0px;
-	padding-left: 0px;
-	padding-top: 5px;
-
-}
-
-.trend-bar-panel .panel-heading{
-	color: #333
-	padding-left: 20px;
-}
-
-.trend-bar-panel .panel-heading small{
-	margin-left: 3px;
-	color: #3097d1;
-	padding-top: 0px;
-	font-weight: 500;
-}
-
-.trend-bar-panel .panel-heading .small-text{
-	color: #3097d1;
-	padding-top: 3px;
-	margin-left: 3px;
-	font-weight: 500;
-	font-size: 11px;
-}
-
-.trend-bar-panel .panel-heading .panel-title {
-	font-size: 14px;
-	font-weight: bold;
-
-}
-
-
-.trend-bar-panel .panel-heading .panel-title i {
-	margin-right: 5px;
-}
-
-.trend-bar-panel .panel-body{
-	padding: 0px 15px 0px 15px;
-	margin-bottom: 0px;
-}
-
-.trend-bar-panel .trend-bar-item .panel{
-	border-color: #E5E6E9;
-}
-
-.trend-bar-panel .trend-bar-item a{
-	display:block;
-	padding: 5px 15px 0px 15px;
-}
-
-.trend-bar-panel .trend-bar-item .trend-user .media-right{
-	padding: 0px;
-}
-
-.trend-bar-panel .trend-bar-item a:hover, .trend-bar-panel .trend-bar-item a:hover .panel-footer, .trend-bar-panel .trend-bar-item a:hover .trend-user button{
-	background-color: #FAFAFA;
-}
-
-.trend-bar-panel .trend-bar-item p{
-	display: inline-block;
-	font-weight: bold;
-	font-size: 14px;
-	color: #1e3948;
-	margin: 0px;
-}
-
-.trend-bar-panel .trend-bar-item .trend-event .trend-event-team img{
-	width: 24px;
-	height: 24px;
-	margin: 0px 8px 5px 5px;
-}
-
-.trend-bar-panel .trend-bar-item .trend-event .panel-footer{
-	padding: 0px 0px 3px 0px;
-	background-color: white;
-	text-align: center;
-}
-.trend-bar-panel .trend-bar-item .trend-event .panel-footer span{
-	font-size: 11px;
-	color: #90949c;
-}
-
-
-
-.trend-bar-panel .trend-user{
-	padding-top: 5px;
-	padding-bottom: 10px;
-}
-
-.trend-bar-panel .trend-user img{
-	width: 40px;
-    height: 40px;
-}
-
-
-.trend-bar-panel .small-text{
-	font-size: 11px;
-	color: #90949c;
-}
-
-.trend-bar-panel .trend-user button {
-	padding-right: 2px;
-	font-size: 12px;
-	border-color: transparent;
-	border-left-color: rgba(0,0,0,0.15);
-}
-
-.trend-bar-panel .trend-user button i{
-	color: #4B4F56;
-}
-
-.trend-bar-panel .trend-user button:hover, .trend-bar-panel .trend-user button:hover i {
-	color: #2a88bd;
-}
-
-
 /*************************************************
 Profile
 *************************************************/
@@ -425,12 +288,6 @@ Profile
 	}
 }
 
-
-.trend-bar-panel .panel-heading .panel-title {
-	font-size: 14px;
-	font-weight: 700;
-
-}
 
 
 #profile-container .profile-panel{
@@ -845,7 +702,7 @@ input[type="radio"]:checked + label span {
     display: inline-block;
     font-size: 14px;
     text-transform: uppercase;
-    border: solid 1px #333;
+    border: solid 1px rgb(204,204,204);
     padding: 10px 24px;
     cursor: pointer;
 

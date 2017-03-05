@@ -10,7 +10,7 @@ export default class Panel extends React.Component {
         const { title } = this.props
 
         return (
-            <div class="panel trend-bar-panel">
+            <div class="trend-bar-panel">
 
                 <Header title={title} />
 

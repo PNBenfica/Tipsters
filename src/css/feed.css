@@ -260,7 +260,6 @@
 }
 
 .feed-post footer .button{
-	border-color: rgb(204,204,204);
 	padding: 8px 13px;
 }
 
@@ -410,7 +409,6 @@ post-comment-box
 
 .feed-post .post-comment-box .button{
 	padding: 4px 24px;
-	border-color: #E6E9EC;
 	border-left: none;
 }
 

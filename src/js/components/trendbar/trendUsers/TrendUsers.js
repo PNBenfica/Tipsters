@@ -13,7 +13,7 @@ export default class TrendUsers extends React.Component {
         users = users.map((tipster, i) => <TrendUser {...tipster} key={i}/>)
 
         return (
-            <Panel title="Tipsters Sugeridos">
+            <Panel title="Suggested Tipsters">
 
                 {users}                
 

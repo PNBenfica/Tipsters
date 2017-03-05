@@ -1,5 +1,4 @@
 import React from "react"
-import {Media} from "react-bootstrap"
 
 
 export default class TipsterName extends React.Component {
@@ -9,10 +8,10 @@ export default class TipsterName extends React.Component {
     const {name, description} = this.props
 
     return (
-        <Media.Body class="panel-title">
-            <p>{name}</p>
-            <div class="small-text">{description}</div>
-        </Media.Body>
+        <div class="tipster-info">
+            <p class="tipster-name"><a href="#/profile">{name}</a></p>
+            <p class="tipster-description">{description}</p>
+        </div>
     )
   }
 }

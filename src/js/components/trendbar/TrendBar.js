@@ -31,10 +31,10 @@ export default class TrendBar extends React.Component {
 	render() {
 
 		const { users, events } = this.props
+				// <TrendEvents events={events} />
 
 		return (
 			<div>
-				<TrendEvents events={events} />
 				<TrendUsers users={users} />
 			</div>
 		)

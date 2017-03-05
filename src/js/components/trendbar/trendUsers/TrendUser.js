@@ -2,34 +2,30 @@ import React from "react"
 import {Media} from "react-bootstrap"
 
 import AddUserButton from "./AddUserButton"
-import TipsterImage from "./TipsterImage"
 import TipsterName from "./TipsterName"
 
 export default class TrendUser extends React.Component {
 
-  render() {
+    render() {
 
-    const {tipsterName, tipsterImage, description} = this.props
+        const {tipsterName, tipsterImage, description} = this.props
 
-    return (
+        return (
+            <div class="trend-user">
+                
+                <div class="gradient"/>
 
-        <div class="panel">
-            <a href="#/profile">
-                <div class="row">
+                <div class="inner-item">
+                
+                    <img src={tipsterImage} class="img-thumbnail"/>
 
-                    <Media class="trend-user col-xs-12">
-                        
-                        <TipsterImage src={tipsterImage} />
+                    <TipsterName name={tipsterName} description={description}/>
 
-                        <TipsterName name={tipsterName} description={description}/>
-
-                        <AddUserButton />
-
-                    </Media>
+                    <AddUserButton />
 
                 </div>
-            </a>
-        </div>
-    )
-  }
+
+            </div>
+        )
+    }
 }
