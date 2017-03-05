@@ -3,9 +3,9 @@ import { connect } from "react-redux"
 
 import { fetchPosts, addComment } from "../actions/postsActions"
 
+import LoadingGif from "./LoadingGif"
 import PostBuy from "../components/post/postBuy/PostBuy"
 import Post from "../components/post/Post"
-import ScrollPageDetector from "./ScrollPageDetector"
 
 
 @connect((store) => {
@@ -29,9 +29,11 @@ export default class PostsContainer extends React.Component {
     }
 
     fetchPosts(filters){
-        const {user, postId} = filters
-        filters = { user, postId }
-        this.props.dispatch(fetchPosts(filters))
+        setTimeout(() => { 
+            const {user, postId} = filters
+            filters = { user, postId }
+            this.props.dispatch(fetchPosts(filters))
+        }, 2500)
     }
 
     addComment(id, comment) {
@@ -59,7 +61,9 @@ export default class PostsContainer extends React.Component {
 
     render() {
 
-        const Posts = this.renderPosts()
+        let Posts = this.renderPosts()
+        if (Posts.length === 0)
+            Posts = <LoadingGif />
 
         return (
             <div class="posts-container">

@@ -1,5 +1,6 @@
 @import url("bootstrap/dist/css/bootstrap.min.css");
 @import url("font-awesome-4.7.0/css/font-awesome.min.css");
+@import url("loadingGif.css");
 @import url("topbar.css");
 @import url("sidebar.css");
 @import url("feed.css");

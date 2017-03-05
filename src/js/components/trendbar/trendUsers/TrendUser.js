@@ -8,7 +8,7 @@ export default class TrendUser extends React.Component {
 
     render() {
 
-        const {tipsterName, tipsterImage, description} = this.props
+        const { tipsterName, tipsterImage, description } = this.props
 
         return (
             <div class="trend-user">

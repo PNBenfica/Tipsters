@@ -7,8 +7,11 @@
 
 
 
+.trend-bar-panel{
+	margin-bottom: 30px;
+}
 
-.trend-bar-panel .panel-heading, .trend-bar-panel .panel-body{
+.trend-bar-panel .panel-heading{
 	padding-left: 0px;
 	padding-right: 0px;
 }
@@ -23,15 +26,42 @@
 	text-transform: uppercase;
 }
 
+.trend-bar-panel .panel-body{
+	padding: 0px;
+	height: 210px;
+}
 
 
 .trend-bar-panel .trend-bar-item{
 	border-bottom: solid 1px rgb(221,221,221);
-	padding-bottom: 17px;
-	padding-top: 17px;
 }
-.trend-bar-panel .trend-bar-item:first-child{
-	padding-top: 5px;
+
+@keyframes trend-bar-opacity {
+    from {
+		opacity: 0;
+    }
+    to {
+		opacity: 1;
+    }
+}
+
+.trend-bar-panel .trend-bar-item > * {
+  
+	/* this section calls the dropHeader animation we defined above */
+	animation-name: trend-bar-opacity;
+	animation-duration: 1.5s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+	animation-fill-mode: forwards;  
+}
+
+
+.trend-bar-panel .trend-bar-item > * {
+	overflow: hidden;
+}
+.trend-bar-panel .trend-bar-item > *{
+	margin-bottom: 17px;
+	margin-top: 17px;
 }
 
 .trend-bar-panel .trend-bar-item a{
@@ -136,4 +166,13 @@
 	margin-left: auto;
 	padding: 6px 10px;
 	background-color: white;
+}
+
+
+
+
+.trend-bar-panel .uil-facebook-css {
+  width: 100%;
+  height: 100px;
+  -webkit-transform:scale(0.3);
 }

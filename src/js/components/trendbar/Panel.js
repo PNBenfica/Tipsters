@@ -1,13 +1,16 @@
 import React from "react"
 
 import BodyPanel from "./BodyPanel"
+import LoadingGif from "./LoadingGif"
 import Header from "./Header"
 
 export default class Panel extends React.Component {
 
     render() {
 
-        const { title } = this.props
+        const { fetching, title } = this.props
+
+        const body = fetching ? <LoadingGif /> : this.props.children.map(this.renderBodyPanel)
 
         return (
             <div class="trend-bar-panel">
@@ -15,7 +18,7 @@ export default class Panel extends React.Component {
                 <Header title={title} />
 
                 <div class="panel-body">
-                    { this.props.children.map(this.renderBodyPanel) }
+                    {body}
                 </div>
 
             </div>

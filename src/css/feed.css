@@ -17,6 +17,10 @@
 	width: 100%;
 }
 
+#feed-page .feed-page-left{
+	min-height: 100vh;
+}
+
 .feed-post,
 .feed-post .feed-post-left-wrapper,
 .feed-post .feed-post-right-wrapper{
@@ -36,6 +40,22 @@
 	width: 80%;
 }
 
+
+@keyframes feed-post-first-item {
+    to {
+    	margin-top: 0px;
+    }
+}
+
+.feed-post:first-child .inner-item{
+	margin-top: 100vh;
+  
+	/* this section calls the dropHeader animation we defined above */
+	animation-name: feed-post-first-item;
+	animation-duration: 1.5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;  
+}
 
 .feed-post:not(:first-child) .inner-item{
 	margin-top: 200px;

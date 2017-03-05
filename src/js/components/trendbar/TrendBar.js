@@ -12,7 +12,7 @@ import TrendUsers from "./trendUsers/TrendUsers"
         users: store.trends.users,
         events: store.trends.events,
         fetched: store.trends.fetched,
-        // fetching: store.trends.fetching,
+        fetching: store.trends.fetching,
     }
 })
 export default class TrendBar extends React.Component {
@@ -24,7 +24,8 @@ export default class TrendBar extends React.Component {
 	}
 
 	fetchTrends(){
-        this.props.dispatch(fetchTrends())
+		setTimeout(() => this.props.dispatch(fetchTrends()), 5000)
+        
 	}
 
 
@@ -33,9 +34,12 @@ export default class TrendBar extends React.Component {
 		const { users, events } = this.props
 				// <TrendEvents events={events} />
 
+		let { fetching } = this.props
+		fetching = users.length === 0
+
 		return (
 			<div>
-				<TrendUsers users={users} />
+				<TrendUsers fetching={fetching} users={users} />
 			</div>
 		)
 	}
