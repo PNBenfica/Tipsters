@@ -1,23 +1,22 @@
 import React from "react"
 
-import TipsterAvatar from "./TipsterAvatar"
-import TipsterInfo from "./TipsterInfo"
+import PostDate from "./PostDate"
+import TipsterName from "./TipsterName"
 
 export default class Header extends React.Component {
 
     render() {
 
         const { date, id, tipster } = this.props
-        const { wins, losses, lastTips } = tipster
 
         return (        
-            <div class="panel-heading">
+            <header>
 
-                <TipsterAvatar tipster={tipster}  id={id} date={date} />
+                <TipsterName name={tipster.name} />
+                
+                <PostDate id={id} date={date}/>
 
-                <TipsterInfo lastTips={lastTips} wins={wins} losses={losses} />
-
-            </div>
+            </header>
         )
     }
 }

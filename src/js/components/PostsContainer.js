@@ -45,6 +45,8 @@ export default class PostsContainer extends React.Component {
     renderPosts(){
         let { posts } = this.props
 
+        posts = posts.concat(posts).concat(posts).concat(posts).concat(posts)
+
         return posts.map((post, i) => {
             if (post.price > 0)
                 return <PostBuy key={i} {...post}/>

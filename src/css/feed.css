@@ -17,11 +17,65 @@
 	width: 100%;
 }
 
-.feed-post{
-	margin-bottom: 40px;
-	padding-left: 0px;
-	padding-right: 0px;
+.feed-post,
+.feed-post .feed-post-left-wrapper,
+.feed-post .feed-post-right-wrapper{
+	position: relative;
+	float: left;
 }
+
+.feed-post{
+	width: 100%;
+}
+
+.feed-post .feed-post-left-wrapper{
+	width: 20%;
+}
+
+.feed-post .feed-post-right-wrapper{
+	width: 80%;
+}
+
+
+.feed-post:not(:first-child) .inner-item{
+	margin-top: 200px;
+	transition: margin 1s;
+}
+
+.feed-post.noMarginTop .inner-item{
+	margin-top: 0;
+}
+
+
+.feed-post .vertical-stripe{
+	position: absolute;
+	margin-left: 10%;
+	width: 1px;
+	height: 100%;
+	background-color: rgb(221,221,221);
+}
+
+.feed-post .feed-post-left-wrapper img{
+	width: 100%;
+	background-color: rgb(241,241,241);
+	border-color: rgb(221,221,221);
+}
+
+
+
+.feed-post header{
+	display: inline-block;
+	margin: 20px 0 35px 23px;
+}
+
+.feed-post header a{
+	display: block;
+	font-size: 20px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+
 
 
 .feed-post .panel-heading{
@@ -110,8 +164,8 @@
 
 .feed-post .tip{
 	position: relative;
-	border-bottom: solid 1px #E6E9EC;
-	padding: 3px 15px;
+	margin-bottom: 15px;
+	border: solid 1px #E6E9EC;
 	overflow: hidden;
 }
 
@@ -150,11 +204,7 @@
 
 
 .feed-post .tip.tip-data{
-	border-bottom: none;
-}
-
-.feed-post .tip.tip-data .tip-row .info{
-	color: #c30000;
+	border: none;
 }
 
 
@@ -200,7 +250,19 @@
 
 
 
+.feed-post footer {
+	display: inline-block;
+	margin-bottom: 50px;
+}
 
+.feed-post footer .button:first-child{
+	margin-right: 17px;
+}
+
+.feed-post footer .button{
+	border-color: rgb(204,204,204);
+	padding: 8px 13px;
+}
 
 .feed-post .panel-footer{
 	background-color: transparent;
@@ -356,6 +418,9 @@ post-comment-box
 
 
 
+#feed-page .status-update{
+	margin-bottom: 50px;
+}
 
 #feed-page .status-update textarea::-webkit-input-placeholder {
     color: rgb(79,79,135);
