@@ -11,7 +11,7 @@ export default class FiltersDropdown extends React.Component {
         const { addFilter, applyFilters, filters, open } = this.props
 
         return (
-            <div class={classNames("panel filters-dropdown", {open})}>
+            <div class={classNames("panel _dropdown", {open})}>
                <Filters filters={filters} addFilter={addFilter}/>
 
                <div class="button-container">

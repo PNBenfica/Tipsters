@@ -40,10 +40,10 @@
 	height: 20%;
 	margin-left: 30%;
 
-    -webkit-transition: transform 1200ms ease-in-out;
-    -moz-transition: transform 1200ms ease-in-out;
-    -o-transition: transform 1200ms ease-in-out;
-    transition: transform 1200ms ease-in-out;
+    -webkit-transition: transform 1200ms 0.75s;
+    -moz-transition: transform 1200ms 0.75s;
+    -o-transition: transform 1200ms 0.75s;
+    transition: transform 1200ms 0.75s;
 }
 
 .navbar .sidebar .bar .item > *{
@@ -57,7 +57,7 @@
 	margin-top: 3px;
 	text-transform: uppercase;
 
-	transition: color 0.75s ease-in-out;
+	transition: color 0.75s;
 	color: #B3B3B3;
 }
 
@@ -89,7 +89,7 @@
 
 	position: absolute;
 	bottom: 0px;
-	transition: height 0.75s ease-in-out;
+	transition: height 0.75s;
 }
 
 .navbar .sidebar .bar .item:hover{
@@ -111,10 +111,10 @@
 		width: 100%;
 		transform: translate(0, -100%);
 
-	    -webkit-transition: transform 750ms ease-in-out;
-	    -moz-transition: transform 750ms ease-in-out;
-	    -o-transition: transform 750ms ease-in-out;
-	    transition: transform 750ms ease-in-out;
+	    -webkit-transition: transform 750ms 0.75s;
+	    -moz-transition: transform 750ms 0.75s;
+	    -o-transition: transform 750ms 0.75s;
+	    transition: transform 750ms 0.75s;
 	}
 
 	.navbar .sidebar.open{
@@ -150,10 +150,10 @@
 
 		transform: translate(-125px, 0);
 
-	    -webkit-transition: transform 500ms ease-in-out;
-	    -moz-transition: transform 500ms ease-in-out;
-	    -o-transition: transform 500ms ease-in-out;
-	    transition: transform 500ms ease-in-out;
+	    -webkit-transition: transform 500ms 0.75s;
+	    -moz-transition: transform 500ms 0.75s;
+	    -o-transition: transform 500ms 0.75s;
+	    transition: transform 500ms 0.75s;
 	}
 
 	.navbar .sidebar:hover .bar .item .name{

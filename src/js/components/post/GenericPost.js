@@ -10,6 +10,7 @@ export default class GenericPost extends React.Component {
     constructor(args){
         super(args)
         this.state = { noMarginTop : false }
+        this.handleScroll = this.handleScroll.bind(this);
     }
 
 
@@ -21,11 +22,11 @@ export default class GenericPost extends React.Component {
     }
 
     componentDidMount() {
-        window.addEventListener("scroll", this.handleScroll.bind(this))
+        window.addEventListener("scroll", this.handleScroll)
     }
 
     componentWillUnmount() {
-        window.removeEventListener("scroll", this.handleScroll.bind(this))
+        window.removeEventListener("scroll", this.handleScroll)
     }
 
     render() {

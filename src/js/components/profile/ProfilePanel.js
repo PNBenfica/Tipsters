@@ -8,7 +8,7 @@ export default class ProfilePanel extends React.Component {
         const {header} = this.props;
 
         return (
-            <div class="panel profile-panel">
+            <div class="profile-panel">
 
                 <div class="panel-heading">
                     <h3 class="panel-title">
@@ -16,8 +16,10 @@ export default class ProfilePanel extends React.Component {
                     </h3>
                 </div>
 
-                <div class="panel-body">
-                    {this.props.children}
+                <div class="panel">
+                    <div class="panel-body">
+                        {this.props.children}
+                    </div>
                 </div>
 
             </div>

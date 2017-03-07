@@ -1,13 +1,16 @@
 
+#rankings{
+	padding-left: 15px;
+}
+
 #rankings table thead {
-	background-color: rgb(50,50,50);
-	color: white;
+	background-color: #FAFAFA;
 }
 
 #rankings table thead th{
 	font-size: 14px;
 	text-transform: uppercase;
-	font-weight: 500;
+	font-weight: 600;
 	border-bottom: none;
 }
 
@@ -116,13 +119,8 @@
 #rankings .rankings-nav-filters > *:first-child{
 	margin-left: auto;
 }
-#rankings .rankings-nav-filters > * > i:nth-child(1){
+#rankings .rankings-nav-filters > * > .button:nth-child(1){
 	margin-left: 5px;
-}
-
-#rankings .rankings-nav-filters > * > i:hover{
-	cursor: pointer;
-	background-color: #FAFAFA;
 }
 
 
@@ -171,59 +169,34 @@
 
 
 #rankings #ranking-filters{
-}
-
-#rankings .filters-dropdown{
-	position: absolute;
-	top: 100%;
-	right: 15px;
-	z-index: 1;
-
-	overflow: hidden;
-	width: 38px;
-	height: 0px;
-	border-width: 0px;
-
-	transition: top 0.5s 1s, height 0.5s 1s, width 0.5s 0.5s, border-width 0s 1.25s;
-}
-
-#rankings .filters-dropdown.open{
-	width: calc(100vw - 60px);
-	height: 675px;
-	top: calc(100% + 5px);
-	border-width: 1px;
-	transition: top 0.5s, height 0.5s, border-width 0.5s, width 0.5s 0.5s;
-}
-
-#rankings .filters-dropdown > *{
-	opacity: 0;
-	transition: opacity 0.75s;
-	padding: 15px 30px; 
-}
-#rankings .filters-dropdown.open > *{
-	opacity: 1;
-	transition: opacity 1s 1s;
+	position: relative;
 }
 
 
-#rankings .filters-dropdown .filters-container .filter-list{
-}
-
-
-#rankings .filters-dropdown .filters-container .filter-list h5{
+#rankings ._dropdown .filters-container .filter-list h5{
 	font-size: 16px;
 	font-weight: 400;
 	text-transform: uppercase;
 }
 
-#rankings .filters-dropdown .button-container {
+#rankings ._dropdown .button-container {
 	text-align: center;
 }
 
 
 @media(min-width:768px) {
-	#rankings .filters-dropdown.open{
+	#rankings{
+		padding: 0px 4%;
+	}
+
+	#rankings ._dropdown.open{
 		width: 600px;
 		height: 290px;
+	}
+}
+
+@media(min-width:992px) {
+	#rankings{
+		padding: 0px 6%;
 	}
 }

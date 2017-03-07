@@ -10,7 +10,7 @@ export default class SportsFiltersList extends React.Component {
     	const filterList = list.map((item,i) => <SportsFiltersListItem key={i} title={item} removeFilter={removeFilter}/> )
 
         return (
-            <div class="col-xs-12">
+            <div class="col-xs-12 active-filters-buttons">
 
 		        {filterList}
 

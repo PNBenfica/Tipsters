@@ -35,8 +35,9 @@ export default class DoughnutChart extends React.Component {
 			labels: this.getLabels(data),
 			datasets: [{
 				data: data.map(selection => this.sumArray(selection.values)),
-				backgroundColor: ['#FF6384','#36A2EB','#FFCE56', '#00FF00', '#FF8000', '#C7AC12', '#27F5D9'],
-				hoverBackgroundColor: ['#E85A78','#1D9CF2','#FFC22B', '#09E309', '#E87A0C', '#B59D14', "#25D9C1"]
+				backgroundColor:        ['rgba(195,0,0,0.5)','rgba(244,121,32,0.5)', 'rgba(253,180,20,0.5)', 'rgba(235,235,0,0.5)', '#FF8000', '#C7AC12', '#27F5D9'],
+				hoverBackgroundColor:   ['rgba(195,0,0,0.7)','rgba(244,121,32,0.7)', 'rgba(253,180,20,0.7)', 'rgba(235,235,0,0.7)', '#E87A0C', '#B59D14', "#25D9C1"],
+                borderColor:            ['rgba(195,0,0,1.0)','rgba(244,121,32,1.0)', 'rgba(253,180,20,1.0)', 'rgba(235,235,0,1.0)', '#E87A0C', '#B59D14', "#25D9C1"]
 			}]
 		}
 

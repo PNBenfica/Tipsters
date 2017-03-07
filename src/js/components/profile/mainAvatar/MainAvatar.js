@@ -1,8 +1,6 @@
 import React from "react"
 
 import ButtonsContainer from "./buttons/ButtonsContainer"
-import ProfileImage from "./ProfileImage"
-import ProfileName from "./ProfileName"
 
 export default class MainAvatar extends React.Component {
 
@@ -11,15 +9,17 @@ export default class MainAvatar extends React.Component {
         const { name, img, following, toggleFollow } = this.props
 
         return (
-            <div class="main-avatar col-xs-12 col-lg-10 col-lg-push-1">
+            <div class="main-avatar">
             
-                <img id="topimage" src="img/profile-cover.jpg" />
+                <div class="content">
 
-                <ProfileImage img={img} />
+                    <img src={img} class="img-circle" />
 
-                <ProfileName name={name} />
+                    <h2>{name}</h2>
 
-                <ButtonsContainer following={following} toggleFollow={toggleFollow}/>
+                    <ButtonsContainer following={following} toggleFollow={toggleFollow}/>
+
+                </div>
 
             </div>
         )

@@ -69,20 +69,20 @@ export default class BarChart extends React.Component {
             datasets: [
                 {
                     label:"Won",
-                    backgroundColor: 'rgba(0,255,0,0.2)',
-                    borderColor: 'rgba(0,255,0,1)',
+                    backgroundColor: 'rgba(0,195,0,0.6)',
+                    borderColor: 'rgba(0,195,0,1)',
                     borderWidth: 1,
-                    hoverBackgroundColor: 'rgba(0,255,0,0.4)',
-                    hoverBorderColor: 'rgba(0,255,0,1)',
+                    hoverBackgroundColor: 'rgba(0,195,0,0.8)',
+                    hoverBorderColor: 'rgba(0,195,0,1)',
                     data: won
                 },
                 {
                     label:"Lost",
-                    backgroundColor: 'rgba(255,99,0,0.2)',
-                    borderColor: 'rgba(255,99,0,1)',
+                    backgroundColor: 'rgba(195,0,0,0.6)',
+                    borderColor: 'rgba(195,0,0,1)',
                     borderWidth: 1,
-                    hoverBackgroundColor: 'rgba(255,99,0,0.4)',
-                    hoverBorderColor: 'rgba(255,99,0,1)',
+                    hoverBackgroundColor: 'rgba(195,0,0,0.8)',
+                    hoverBorderColor: 'rgba(195,0,0,1)',
                     data: lost
                 }
 

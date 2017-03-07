@@ -7,7 +7,7 @@ export default class TimeSelectorOption extends React.Component {
 
     	const { active, title, onClick } = this.props
         return (
-			<li class={classNames({active: active})}><a onClick={() => onClick(title)}>{title}</a></li>
+			<li onClick={() => onClick(title)} class={classNames({active: active})}>{title}</li>
         )
     }
 }

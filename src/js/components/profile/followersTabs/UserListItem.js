@@ -6,11 +6,13 @@ export default class UserListItem extends React.Component {
         
         const {name, img} = this.props;
 
+                // <p class="caption">{name.substring(0,15)}</p>
         return (
-            <a href="#/profile" class="img-wrapper">
-                <img src={img} />
-                <p class="caption">{name.substring(0,15)}</p>
-            </a>
+        	<a class="square" href="#/profile">
+        		<img src={img}/>
+        		<div class="gradient"/>
+                <p class="caption">{name}</p>
+        	</a>
         );
     }
 }

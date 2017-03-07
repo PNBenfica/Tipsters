@@ -12,7 +12,7 @@ export default class FiltersButton extends React.Component {
         return (
             <div id="ranking-filters">     
 
-                <i class="fa fa-filter" onClick={() => onIconClick()}></i>
+                <div class="button" onClick={() => onIconClick()}><i class="fa fa-filter"/></div>
 
                 <FiltersDropdown open={open} filters={filters} addFilter={addFilter} applyFilters={applyFilters} />
 

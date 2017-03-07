@@ -1,5 +1,6 @@
 import React from "react"
 
+import UserPosts from "../components/profile/UserPosts"
 import LeftColumnContainer from "../components/profile/LeftColumnContainer"
 import MainAvatar from "../components/profile/mainAvatar/MainAvatar"
 import RightColumnContainer from "../components/profile/RightColumnContainer"
@@ -18,17 +19,19 @@ export default class Profile extends React.Component {
 
     render() {
 
-        const profile = {name:"João Almeida", img:"img/joaoalmeida.jpg", date: "6 Agosto de 1994", location:"Portugal", favSport:"Football", favTeam: "Benfica", profit:"120", followers:[{name:"Paulo Teixeira", img:"img/pauloteixeira.jpg"}, {name:"João Almeida", img:"img/joaoalmeida.jpg"}, {name:"Miguel Fernandes", img:"img/tennis.png"},{name:"Ricardo Vieira", img:"img/tennis.png"},{name:"Carlos Oliveira", img:"img/basket.jpg"},{name:"Maria Carmo", img:"img/run.png"},{name:"Paulo Teixeira", img:"img/pauloteixeira.jpg"},{name:"Joao Almeida", img:"img/joaoalmeida.jpg"}], following:[{name:"João Almeida", img:"img/joaoalmeida.jpg"}, {name:"Paulo Teixeira", img:"img/pauloteixeira.jpg"}, {name:"Ricardo Vieira", img:"img/tennis.png"},{name:"Carlos Oliveira", img:"img/basket.jpg"},{name:"Maria Carmo", img:"img/run.png"},{name:"Paulo Teixeira", img:"img/pauloteixeira.jpg"},{name:"Miguel Fernandes", img:"img/tennis.png"},{name:"Joao Almeida", img:"img/joaoalmeida.jpg"}]}
+        const profile = {name:"João Almeida", img:"img/joaoalmeida.jpg", date: "6 Agosto de 1994", location:"Portugal", favSport:"Football", favTeam: "Benfica", profit:"120", followers:[{name:"Paulo Teixeira", img:"img/user2.jpg"}, {name:"João Almeida", img:"img/user3.jpg"}, {name:"Miguel Fernandes", img:"img/user4.jpg"},{name:"Ricardo Vieira", img:"img/user5.jpg"},{name:"Carlos Oliveira", img:"img/user6.jpg"},{name:"Maria Carmo", img:"img/user7.jpg"},{name:"Paulo Teixeira", img:"img/user8.jpg"},{name:"Joao Almeida", img:"img/user1.jpg"}], following:[{name:"João Almeida", img:"img/user1.jpg"}, {name:"Paulo Teixeira", img:"img/user3.jpg"}, {name:"Ricardo Vieira", img:"img/user5.jpg"},{name:"Carlos Oliveira", img:"img/user7.jpg"},{name:"Maria Carmo", img:"img/user2.jpg"},{name:"Paulo Teixeira", img:"img/user8.jpg"},{name:"Miguel Fernandes", img:"img/user4.jpg"},{name:"Joao Almeida", img:"img/user6.jpg"}]}
         
         return (
 
-            <div class="row" id="profile-container">
+            <div id="profile-container">
 
                 <MainAvatar name={profile.name} img={profile.img} following={this.state.following} toggleFollow={this.toggleFollow.bind(this)}/>
 
                 <LeftColumnContainer profile={profile}/>
 
                 <RightColumnContainer user={profile.name} />
+                
+                <UserPosts user={profile} />
 
             </div>
         )

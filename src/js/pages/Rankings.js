@@ -89,17 +89,11 @@ export default class Rankings extends React.Component {
 		return (
 			<div id="rankings">
 				
-				<div class="row">
-					<div class="col-lg-12">
+				<FiltersContainer filters={this.state.filters} addFilter={this.addFilter.bind(this)} applyFilters={this.applyFilters.bind(this)} addSearchFilter={this.addSearchFilter.bind(this)}/>
+				
+				<Table data={data} sortBy={this.state.sortBy} changeSort={this.changeSort.bind(this)}/>
 
-						<FiltersContainer filters={this.state.filters} addFilter={this.addFilter.bind(this)} applyFilters={this.applyFilters.bind(this)} addSearchFilter={this.addSearchFilter.bind(this)}/>
-						
-						<Table data={data} sortBy={this.state.sortBy} changeSort={this.changeSort.bind(this)}/>
-
-						<Pagination nextPage={this.nextPage.bind(this)} previousPage={this.previousPage.bind(this)}/>
-
-					</div>
-				</div>
+				<Pagination nextPage={this.nextPage.bind(this)} previousPage={this.previousPage.bind(this)}/>
 
 			</div>
 		)

@@ -43,7 +43,7 @@ export default class FiltersContainer extends React.Component {
         const { open } = this.state
         
         return (
-            <div class="col-xs-12 rankings-nav-filters">
+            <div class="rankings-nav-filters">
                 
                 <this.WrappedSearchBar addSearchFilter={addSearchFilter} />
                 

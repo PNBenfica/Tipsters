@@ -1,6 +1,7 @@
 import React from "react";
 import classNames from "classnames"
 
+import Button from "./../../Button"
 import SellingPrice from "./SellingPrice";
 import Tip from "./Tip";
 import TotalOdd from "./TotalOdd";
@@ -9,7 +10,7 @@ export default class BetSlipBody extends React.Component {
 
     render() {
 
-        const { tips, expanded } = this.props;
+        const { tips, expanded, shareTip } = this.props;
         
         const totalOdd = tips.map(tip => tip.choice.odd).reduce((a,b) => a * b, 1).toFixed(2);
 
@@ -32,7 +33,8 @@ export default class BetSlipBody extends React.Component {
                         <textarea class="form-control" rows="3" id="bet-slip-comment" placeholder="Add comment"></textarea>
                     </div>
 
-                    <button onClick={() => this.props.shareTip()} type="button" class="btn btn-default btn-sm btn-block">Share Tip</button>
+
+                    <div class="button-wrapper"><Button title="Share Tip" onClick={shareTip} /></div>
 
                 </div>
             </div>

@@ -161,7 +161,7 @@ export default class Sports extends React.Component {
             () => this.setState({betSlip: this.state.betSlip}, () => {
                 setTimeout( () => {
                 tips[tipIndex].animating = false
-                this.setState({betSlip: this.state.betSlip}, callback)} , 750 )               
+                this.setState({betSlip: this.state.betSlip}, callback)} , 800 )               
             }
         ),25);
     }
@@ -475,25 +475,24 @@ export default class Sports extends React.Component {
 	    return (
 
             <div id="sports-page">
-    	        <div class="row">
 
-                    <Breadcrumb sport={sport} sportCode={sportCode} league={league} leagueCode={leagueCode} match={match} matchCode={matchCode}/>                   
+                <Breadcrumb sport={sport} sportCode={sportCode} league={league} leagueCode={leagueCode} match={match} matchCode={matchCode}/>                   
 
-    	            <div class="col-lg-8 sports-tables-container">
+	            <div class="col-lg-8 sports-tables-container">
 
-    	                {Tables}
+	                {Tables}
 
-    	            </div>
+	            </div>
 
 
-    	            <div class="col-lg-4 hidden-md hidden-sm hidden-xs right-bar-container">
+	            <div class="col-lg-4 hidden-md hidden-sm hidden-xs right-bar-container">
 
-    	            	<BetSlip {...this.state.betSlip} updateSellingPrice={this.updateSellingPrice.bind(this)} removeTip={this.removeTip.bind(this)} shareTip={this.shareTip.bind(this)}/>
+	            	<BetSlip {...this.state.betSlip} updateSellingPrice={this.updateSellingPrice.bind(this)} removeTip={this.removeTip.bind(this)} shareTip={this.shareTip.bind(this)}/>
 
-    	                <TipsOnThisEvent />
+	                <TipsOnThisEvent />
 
-    	            </div>
-                </div>
+	            </div>
+
 	        </div>
 	    );
   	}

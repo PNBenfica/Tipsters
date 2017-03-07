@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 
+import Button from './../../Button';
+
 export default class AddComentBox extends React.Component {
 
     addComment(){
@@ -21,9 +23,7 @@ export default class AddComentBox extends React.Component {
                 <div class="input-group">
                     <input ref="chatSportsComment" id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
                     <span class="input-group-btn">
-                        <button class="btn btn-warning btn-sm" id="btn-chat" onClick={this.addComment.bind(this)}>
-                            Send
-                        </button>
+                        <Button title="Send" onClick={this.addComment.bind(this)} />
                     </span>
                 </div>
             </div>

@@ -7,10 +7,10 @@ export default class Button extends React.Component {
         const { text, icon, onClick } = this.props
 
         return (
-            <button type="button" class="btn" onClick={() => onClick()}>
+            <div type="button" class="button" onClick={() => onClick()}>
                 <i class={icon} aria-hidden="true"></i>
-                <span class="hidden-xs"> {text}</span>
-            </button>
+                <span> {text}</span>
+            </div>
         )
     }
 }

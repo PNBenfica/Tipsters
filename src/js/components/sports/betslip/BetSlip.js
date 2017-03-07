@@ -20,13 +20,11 @@ export default class BetSlip extends React.Component {
 
         return (
             <div id="bet-slip">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-list-alt fa-fw"></i> Boletim</h3>  
-                    </div>
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-list-alt fa-fw"></i> Boletim</h3>  
+                </div>
 
-                    {betSlipBody}
-                </div> 
+                {betSlipBody}
             </div>
         );
     }

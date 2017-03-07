@@ -7,10 +7,10 @@ export default class SportsFiltersListItem extends React.Component {
     	const { title, removeFilter } = this.props
 
         return (
-            <button onClick={() => removeFilter(title)} class="btn btn-default profile-filter-button">
+            <div onClick={() => removeFilter(title)} class="button">
             	<i class="fa fa-times" aria-hidden="true"></i>
             	{title}
-            </button>
+            </div>
         )
     }
 }

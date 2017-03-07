@@ -1,0 +1,351 @@
+
+#profile-container,
+#profile-container .left-profile-container,
+#profile-container .right-profile-container{
+	position: relative;
+	float: left;
+	width: 100%;
+}
+
+
+#profile-container .left-profile-container,
+#profile-container .right-profile-container{
+	padding: 0px 8%;
+}
+
+#profile-container .main-avatar {
+    position: relative;
+    height: 250px;
+	margin-top: -29px;
+	margin-bottom: 30px;
+    background: #fff url(../img/profile-top.jpg) top center no-repeat;
+    /* background-size: 151%; */
+    background-attachment: fixed;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+#profile-container .main-avatar .content{
+    position: relative;
+}
+
+#profile-container .main-avatar img{
+	height: 100px;
+}
+
+#profile-container .main-avatar h2{
+	color: white;
+	text-transform: uppercase;
+	font-size: 24px;
+	font-weight: 500;
+}
+
+
+#profile-container .main-avatar > *{
+	text-align: center;
+}
+
+#profile-container .main-avatar .main-avatar-actions .button{
+	color: white;
+}
+
+#profile-container .main-avatar .main-avatar-actions .button:nth-child(1){
+	margin-right: 2px;
+}
+#profile-container .main-avatar .main-avatar-actions .button:nth-child(2){
+	margin-left: 2px;
+}
+
+
+
+
+#profile-container .profile-panel .panel-heading{
+	border-bottom: solid 2px rgb(221,221,221);
+	margin-bottom: 10px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+#profile-container .profile-panel .panel-title {
+	font-size: 14px;
+	font-weight: 600;
+	text-transform: uppercase;
+
+}
+
+#profile-container .profile-panel .description{
+	color: #777;
+}
+
+#profile-container .profile-panel .about-table{
+	padding-left: 5px;
+}
+#profile-container .profile-panel .about-table p{
+	padding-left: 0px;
+}
+
+
+
+#profile-container .stats-filters{
+	position: relative;
+	float: right;
+}
+
+
+#profile-container .stats-filters ._dropdown.open{
+	height: 90px;
+	width: 150px;
+}
+
+#profile-container .stats-filters ._dropdown ul{
+	padding: 0px;
+	margin: 0px;
+}
+
+#profile-container .stats-filters ._dropdown ul li{
+	display: block;
+	text-transform: uppercase;
+	padding: 5px
+}
+
+#profile-container .stats-filters ._dropdown ul li:hover{
+	background-color: #FAFAFA;
+	cursor: pointer;
+}
+#profile-container .stats-filters ._dropdown ul li.active{
+	background-color: #F0F0F0;
+}
+#profile-container .stats-filters ._dropdown ul li:hover a, 
+#profile-container .stats-filters ._dropdown ul li.active a{
+	color: #c30000;
+}
+
+
+/** Followers/Following **/
+
+#profile-container .nav-tabs .active a{
+	border-radius: 0px;
+}
+
+#profile-container .nav-tabs .active a{
+	border-top-color: #c30000;
+	border-top-width: 1px;
+}
+
+#profile-container .nav-tabs .active:first-child a{
+}
+
+#profile-container .nav-tabs li:not(.active) a{
+	background-color: #F9F9F9;
+	border-color: #EDEBEB;
+	color: #999;
+	border-bottom: none;
+}
+
+#profile-container .nav-tabs li a, #profile-container .nav-tabs li a:active, #profile-container .nav-tabs li a:visited {
+    outline: 0;
+}
+
+#profile-container .user-list-container{
+	margin-bottom: 40px;
+	background-color: white;
+	padding: 10px;
+	border: solid  1px #D3E0E9;
+	border-top: none;
+	margin-left: 0px;
+}
+
+
+
+
+#profile-container .user-list-container .gradient{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	/*background: linear-gradient(to bottom, rgba(0, 0, 0, .9) 0%, rgba(0, 0, 0, 0) 100%);*/
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.square {
+    float:left;
+    position: relative;
+    width: 30%;
+    padding-bottom : 30%; /* = width for a 1:1 aspect ratio */
+    margin:1.66%;
+    overflow: hidden;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:cover; /* you change this to "contain" if you don't want the images to be cropped */
+
+	transition: filter 200ms;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+.square:hover{
+	filter: brightness(1.2);
+}
+
+.square.plus-icon{background-image:url('./../img/plus.png');}
+.img_1-1{background-image:url('https://farm4.staticflickr.com/3766/12953056854_b8cdf14f21.jpg');}
+.img_1-2{background-image:url('https://farm7.staticflickr.com/6092/6227418584_d5883b0948.jpg');}
+.img_1-3{background-image:url('https://farm8.staticflickr.com/7187/6895047173_d4b1a0d798.jpg');}
+
+.img_2-1{background-image:url('https://farm8.staticflickr.com/7163/6822904141_50277565c3.jpg');}
+.img_2-2{background-image:url('https://farm7.staticflickr.com/6139/5986939269_10721b8017.jpg');}
+.img_2-3{background-image:url('https://farm4.staticflickr.com/3165/5733278274_2626612c70.jpg');}
+
+.img_3-1{background-image:url('https://farm9.staticflickr.com/8429/7862595906_8f953fd25b.jpg');}
+.img_3-2{background-image:url('https://farm7.staticflickr.com/6083/6055581292_d94c2d90e3.jpg');}
+.img_3-3{background-image:url('https://farm4.staticflickr.com/3771/13199704015_72aa535bd7.jpg');}
+
+
+
+
+
+#profile-container .user-list-container .img-wrapper{
+	width: 104px;
+	height: 104px;
+	position: relative;
+}
+
+#profile-container .user-list-container img{
+    width: auto;
+    height: 100%;
+    position: absolute;
+	left: 50%;
+	top: 50%;
+   -webkit-transform: translateY(-50%) translateX(-50%);
+    right: 0;
+    bottom: 0;
+  /*display: block;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;*/
+}
+
+#profile-container .user-list-container .caption{
+	color: white;
+	position: absolute; 
+	bottom: 0px; 
+	left: 0; 
+	margin: 0px;
+	padding: 5px;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+
+@media (max-width: 1113px) and (min-width: 992px) , (max-width: 1339px) and (min-width: 1205px) {
+
+	/*#profile-container .user-list-container img{
+		width: 120px;
+		height: 120px;
+	}*/
+
+	#profile-container .user-list-container .img-wrapper .caption{
+		top: 50px; 
+		width: 116px; 
+	}
+}
+
+#profile-container .user-list-container .see-all-followers{
+	width: 100px;
+	height: 100px;
+}
+
+#profile-container .user-list-container .see-all-followers i{
+	text-align: center !important;
+	margin-left: 35px;
+	margin-top: 10px;
+	padding-top: 7px;
+	width: 40px;
+	height: 40px;
+	font-size: 25px;
+	color: #333;
+	border: solid 1px #333;
+	border-radius: 100%;
+}
+
+#profile-container .user-list-container .see-all-followers i:hover{
+	color: white;
+	background-color: #333;
+	cursor: pointer;
+}
+
+
+
+#profile-container .profile-panel .active-filters-buttons .button {
+	margin-right: 10px;
+}
+#profile-container .profile-panel .active-filters-buttons .button i{
+	margin-right: 5px;
+	color: #c30000;
+	transition: color 500ms;
+}
+#profile-container .profile-panel .active-filters-buttons .button:hover i{
+	color: white;
+}
+
+
+#profile-container .profile-posts-container{
+	margin-top: 40px;
+}
+
+
+
+
+@media screen and (min-width: 768px) {
+
+	#profile-container .left-profile-container,
+	#profile-container .right-profile-container{
+		padding: 0px 150px;
+	}
+
+}
+
+@media screen and (min-width: 992px) {
+	#profile-container{
+		padding: 0px 5%;
+	}
+
+	#profile-container .left-profile-container{
+		border-right: solid 1px rgb(221,221,221);
+		width: 40%;
+		padding-right: 3%;
+		padding-left: 0;
+	}
+	#profile-container .right-profile-container{
+		width: 60%;
+		padding-left: 3%;
+		padding-right: 0;
+	}
+
+
+	#profile-container .main-avatar {
+	    height: 200px;
+	}
+
+	#profile-container .main-avatar .content{
+		display: flex;
+		align-items: center;
+	}
+
+	#profile-container .main-avatar h2{
+		margin: 0 30px 0 25px;
+	}
+
+	#profile-container .main-avatar .main-avatar-actions{
+		padding: 5px 0 5px 25px;
+		border-left: solid 1px white;
+	}
+
+	#profile-container .main-avatar .main-avatar-actions .button:nth-child(1){
+		margin-right: 6px;
+	}
+	#profile-container .main-avatar .main-avatar-actions .button:nth-child(2){
+		margin-left: 6px;
+	}
+}

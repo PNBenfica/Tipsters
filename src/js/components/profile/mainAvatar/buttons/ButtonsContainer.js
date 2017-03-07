@@ -14,11 +14,9 @@ export default class ButtonsContainer extends React.Component {
         const followButton = following ? {text:"Following", icon: "fa fa-check"} : {text:"Follow", icon: "fa fa-user-plus"}
 
         return (
-            <div class="container">
-                <ButtonToolbar>
-                    <FollowButton following={following} toggleFollow={toggleFollow}/>
-                    <MessageButton />
-                </ButtonToolbar>
+            <div class="main-avatar-actions">
+                <FollowButton following={following} toggleFollow={toggleFollow}/>
+                <MessageButton />
             </div>
         )
     }

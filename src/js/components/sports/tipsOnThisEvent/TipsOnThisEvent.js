@@ -26,7 +26,7 @@ export default class TipsOnThisEvent extends React.Component {
     render() {
 
         return (
-            <div class="tips-on-this-event panel">
+            <div class="tips-on-this-event">
 
                 <ChatHeader />
 

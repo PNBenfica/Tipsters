@@ -7,14 +7,16 @@ export default class UsersList extends React.Component {
 
     render() {
 
+        // const Users = this.props.users.map((user, i) => )
         const Users = this.props.users.map((user, i) => <UserListItem key={i} {...user}/>)
 
         return (
             <div class="col-xs-12 user-list-container">
 
-                {Users}
 
-                <SeeAllButton />
+            	{ Users }
+
+            	<div class="square plus-icon"></div>
                 
             </div>        
         );

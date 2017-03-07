@@ -87,6 +87,7 @@ export default class Stats extends React.Component {
 		this.state = {
 			data : data,
     		active: data,
+    		filterOpen: false,
     		filters: [],
     		timeFilter: "Ever",
 		}
@@ -161,7 +162,12 @@ export default class Stats extends React.Component {
 		this.setState( { active: pieClicked } )
 	}
 
+	onFilterClick(){
+		this.setState( { filterOpen: !this.state.filterOpen } )
+	}
+
 	onTimeSelectorOptionClick(timeFilter){
+		this.onFilterClick()
 		this.setState( { timeFilter } )
 	}
 
@@ -181,15 +187,15 @@ export default class Stats extends React.Component {
         return (
             <ProfilePanel header="Stats">
 
-				<TimeSelector active={this.state.timeFilter} onOptionClick={this.onTimeSelectorOptionClick.bind(this)} />
+				<TimeSelector open={this.state.filterOpen} active={this.state.timeFilter} onFilterClick={this.onFilterClick.bind(this)} onOptionClick={this.onTimeSelectorOptionClick.bind(this)} />
 
-		        <DoughnutChart data={this.state.active.selections} onPieClick={this.onPieClick.bind(this)} />
+		        <BarChart data={this.state.active.betStats} />
 
 		        <br/>
 		        <SportsFiltersList list={this.getFiltersList()} removeFilter={this.removeFilter.bind(this)} />
 		        <br/>
-
-		        <BarChart data={this.state.active.betStats} />
+		        
+		        <DoughnutChart data={this.state.active.selections} onPieClick={this.onPieClick.bind(this)} />
 
             </ProfilePanel>
         )

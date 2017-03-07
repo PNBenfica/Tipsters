@@ -10,7 +10,7 @@ export default class LeftColumnContainer extends React.Component {
         const { profile } = this.props
 
         return (
-            <div class="col-xs-12 col-md-5 col-lg-4 col-lg-push-1">
+            <div class="left-profile-container">
 
                 <About profile={profile}/>
 
