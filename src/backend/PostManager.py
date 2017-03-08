@@ -6,11 +6,11 @@ from datetime import datetime
 from sports.sportsRetriever import getBetKey
 
 
-def storePost(user_key, request):  
+def storePost(user, request):  
         
-    post_key = gaeUtils.generateKey(Post, user_key)
+    post_key = gaeUtils.generateKey(Post, user.key)
     
-    data = { 'author':"paulo", 'key':post_key, 'comment': request.comment, \
+    data = { 'author':user.key.id(), 'key':post_key, 'comment': request.comment, \
         'nComments':0, 'nLikes':0, 'date': getCurrentDate()}
     
     data['tips'] = _storeTips(request.tips)

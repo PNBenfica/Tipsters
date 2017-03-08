@@ -22,6 +22,8 @@ import SessionManager
 import UserManager
 from endpoints.api_exceptions import UnauthorizedException
 
+from DatastorePopulator import populate_datastore
+
 EMAIL_SCOPE = endpoints.EMAIL_SCOPE
 API_EXPLORER_CLIENT_ID = endpoints.API_EXPLORER_CLIENT_ID
 
@@ -103,6 +105,13 @@ class TipstersApi(remote.Service):
             return Hello(greeting=token)
         else:
             raise UnauthorizedException("Invalid credentials")
+    
+    @endpoints.method(message_types.VoidMessage, Hello, path = "populate", http_method='POST', name = "populate")
+    def populate_datastore(self, request):
+        
+        populate_datastore()         
+#         taskqueue.add(url='/tasks/populate_datastore')          
+        return Hello(greeting="Starting populating datastore task...")
     
     @endpoints.method(message_types.VoidMessage, Hello, path = "populateOdds", http_method='POST', name = "populateOdds")
     def populate_odds(self, request):        

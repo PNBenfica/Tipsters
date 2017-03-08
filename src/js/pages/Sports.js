@@ -268,9 +268,9 @@ export default class Sports extends React.Component {
         const mainLeagues = {name:"Main Leagues", events: sport.events.filter(event => mainLeaguesNames.includes(event.name))}
         const uefaLeagues = {name:"Uefa", events: sport.events.filter(event => uefaLeaguesNames.includes(event.name))}
         const allLeagues = {name:"All Leagues", events: sport.events}
-        return [mainLeagues, uefaLeagues, allLeagues].
+        return <div class="football-table">{[mainLeagues, uefaLeagues, allLeagues].
                                                 filter(category => category.events.length > 0).
-                                                map(({name, events}, i) => this.renderGenericTable(name, events, eventURL, i))
+                                                map(({name, events}, i) => this.renderGenericTable(name, events, eventURL, i))}</div>
     }
 
     /* 

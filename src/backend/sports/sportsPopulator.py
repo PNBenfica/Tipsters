@@ -8,7 +8,7 @@ from XMLOddsParser import parseXMLOdds
 def populate_odds():
     sports = parseXMLOdds()
     for sport in sports:
-        if sport["name"] in ["Football", "Tennis", "Basketball", "Formula 1"]:
+        if sport["name"] in ["Football", "Tennis", "Basketball"]:
             insertSport(sport)
         
 # @desc inserts a sport entity in the datastore and all its events

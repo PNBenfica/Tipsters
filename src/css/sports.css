@@ -36,7 +36,7 @@
 
 #sports-page .sports-tables-container .table thead,
 #sports-page .panel .panel-heading{
-	background-color: #FAFAFA;
+	background-color: rgb(244,244,244);
 }
 #sports-page .panel .panel-heading{
 	padding: 8px 0px;
@@ -428,4 +428,60 @@ Tips on this game
 #sports-page .tips-on-this-event .button{
 	padding: 4px 12px;
 	margin-left: -1px;
+}
+
+
+
+
+#sports-page .sports-tables-container .football-table .panel {
+	border: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+
+#sports-page .sports-tables-container .football-table .panel-heading {
+	border: solid 1px rgb(221,221,221);
+}
+
+#sports-page .sports-tables-container .football-table a{
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+}
+
+#sports-page .sports-tables-container .football-table a:before,
+#sports-page .sports-tables-container .football-table a:after {
+	content: none;
+}
+
+#sports-page .sports-tables-container .football-table a{
+	height: 40px;
+}
+#sports-page .sports-tables-container .football-table a .flag-icon{
+	font-size: 20px;
+}
+
+#sports-page .sports-tables-container .football-table .panel:first-child a{
+	height: 60px;
+}
+#sports-page .sports-tables-container .football-table .panel:first-child a .flag-icon{
+	font-size: 30px;
+}
+
+
+@keyframes footbal-table-animation {
+	100% {
+	  	opacity: 1;
+	}
+}
+
+#sports-page .sports-tables-container .football-table .panel .panel-body{
+  	opacity: 0;
+	animation-name: footbal-table-animation;
+	animation-duration: 0.75s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+	animation-fill-mode: forwards;  
 }

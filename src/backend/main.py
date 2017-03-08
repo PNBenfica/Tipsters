@@ -7,13 +7,21 @@ main.py -- Tipsters server-side Python App Engine
 """
 
 import webapp2
+from google.appengine.api import taskqueue
 
 from sports.sportsPopulator import populate_odds
+from DatastorePopulator import populate_datastore
 
-class PopulateOddsHandler(webapp2.RequestHandler):
+class PopulateDatastore(webapp2.RequestHandler):
     def post(self):
+        populate_datastore()    
+        
+class PopulateOdds(webapp2.RequestHandler):
+    def post(self):
+        print "not populating odds"
         populate_odds()
         
 app = webapp2.WSGIApplication([
-    ('/tasks/populate_odds', PopulateOddsHandler),
+    ('/tasks/populate_datastore', PopulateDatastore),
+    ('/tasks/populate_odds', PopulateOdds),
 ], debug=True)
