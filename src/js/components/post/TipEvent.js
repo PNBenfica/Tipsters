@@ -6,15 +6,19 @@ export default class TipEvent extends React.Component {
 
     render() {
 
-        const { event } = this.props
+        const { event, eventURL } = this.props
+
+        const [ homeTeam, awayTeam ] = event.split(' - ')
 
         return (
-            <a href="#/sports" class="event">
-                <TipEventTeam name="America de Cali" img="img/sports/arsenal.png"/>
+            <a href={eventURL} class="event">
+
+                <TipEventTeam name={homeTeam} img="img/sports/arsenal.png"/>
 
                 <span class="hidden-xs">vs</span>
 
-                <TipEventTeam name="Rionegro Aguilas" img="img/sports/liverpool.jpg"/>
+                <TipEventTeam name={awayTeam} img="img/sports/liverpool.jpg"/>
+
             </a>
         )
     }

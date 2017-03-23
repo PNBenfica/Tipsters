@@ -14,7 +14,7 @@ from protorpc import messages
 from protorpc import remote
 
 
-from models import SportMessage, SportParams, UserForm, UserCreationForm, UserMiniForm, PostForm, PostMessage, User, PostCommentMessage
+from models import SportMessage, SportParams, UserForm, UserCreationForm, UserAuthForm, PostForm, PostMessage, FeedMessage, User, PostCommentMessage
 from settings import WEB_CLIENT_ID
 from sports.sportsRetriever import get
 import PostManager
@@ -74,6 +74,7 @@ class TipstersApi(remote.Service):
     def update_user_profile(self, request):
         user = SessionManager.get_current_user()
         user.avatar = request.avatar
+        print(request.avatar)
         user.put()
         return Hello(greeting="profile successful updated")
     
@@ -94,7 +95,7 @@ class TipstersApi(remote.Service):
         return Hello(greeting="Successful removed from the followers list")
     
     
-    @endpoints.method(UserMiniForm, Hello, path = "authenticate", http_method='POST', name = "login")
+    @endpoints.method(UserAuthForm, Hello, path = "authenticate", http_method='POST', name = "login")
     def authenticate(self, request):
         username, pwd = request.name, request.pwd
         user = UserManager.getUser(username)
@@ -128,10 +129,15 @@ class TipstersApi(remote.Service):
     
     @endpoints.method(PostForm, Hello, path = "users/posts", http_method='Post', name = "addPost")
     def add_post(self, request):        
-        user_key = ndb.Key(User, "paulo") # must change to get user from token        
+        user_key = ndb.Key(User, "Aimar Bernardo") # must change to get user from token        
         PostManager.storePost(user_key, request)
         
         return Hello(greeting="post successfully created")        
+    
+    @endpoints.method(message_types.VoidMessage, FeedMessage, path = "users/posts", http_method='Get', name = "getFeed")
+    def get_feed(self, request):
+        user = SessionManager.get_current_user()
+        return PostManager.getFeed(user)
     
     @endpoints.method(POST_GET_REQUEST, PostMessage, path = "users/posts/{post_id}", http_method='Get', name = "getPost")
     def get_post(self, request):
@@ -139,7 +145,7 @@ class TipstersApi(remote.Service):
     
     @endpoints.method(COMMENT_POST_REQUEST, Hello, path = "users/posts/{post_id}/comment", http_method='Post', name = "addComment")
     def add_comment(self, request):
-        PostManager.addCommentToPost("paulo", request.post_id, request.comment)
+        PostManager.addCommentToPost("Aimar Bernardo", request.post_id, request.comment)
         
         return Hello(greeting="comment added")
     

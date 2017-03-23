@@ -1,5 +1,4 @@
-import axios from "axios";
-import {callAPI} from '../scripts/gapi';
+import { callAPI } from '../scripts/gapi'
 
 export function fetchTables(sportParams) {
 	if (typeof sportParams.matchCode !== 'undefined' ){
@@ -32,5 +31,5 @@ export function fetchTables2(sportParams) {
             dispatch: dispatch
         })
 
-	 }
+	}
 }

@@ -14,7 +14,7 @@ def get_current_user():
     #authToken = self.request_state.headers.get('authorization')
     authToken = os.getenv( 'HTTP_AUTHORIZATION' )
     print(authToken)
-    return getUser("paulo")
+    return getUser("Aimar Bernardo")
     
     user = getUserByToken(authToken)
     

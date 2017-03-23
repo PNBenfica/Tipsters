@@ -31,7 +31,7 @@ export default class GenericPost extends React.Component {
 
     render() {
 
-        const { addComment, comment, commentBoxOpen, comments, date, id, likes, nComments, tips, tipster, toggleCommentBox, totalOdd } = this.props
+        const { addComment, comment, commentBoxOpen, comments, date, websafeKey, nLikes, nComments, tips, tipster, toggleCommentBox, totalOdd } = this.props
         const { noMarginTop } = this.state
 
         return (
@@ -44,17 +44,17 @@ export default class GenericPost extends React.Component {
 
                     <div class="feed-post-left-wrapper">
 
-                        <img src={tipster.image} class="img-thumbnail img-circle" />
+                        <img src={tipster.avatar} class="img-thumbnail img-circle" />
 
                     </div>
 
                     <div class="feed-post-right-wrapper">
 
-                        <Header id={id} tipster={tipster} date={date} />
+                        <Header id={websafeKey} tipster={tipster} date={date} />
 
                         {this.props.children}
 
-                        <Footer likes={likes} comments={nComments} toggleCommentBox={toggleCommentBox} />
+                        <Footer likes={nLikes} comments={nComments} toggleCommentBox={toggleCommentBox} />
 
                         <CommentBox in={commentBoxOpen} comments={comments} addComment={addComment}/>
 

@@ -19,3 +19,14 @@ indexes:
   ancestor: yes
   properties:
   - name: start_date
+
+- kind: Post
+  properties:
+  - name: author
+  - name: date
+
+- kind: Post
+  properties:
+  - name: author
+  - name: date
+    direction: desc

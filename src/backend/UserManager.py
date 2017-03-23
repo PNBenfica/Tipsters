@@ -87,4 +87,4 @@ def _getPosts(user):
     return Post.query(ancestor=user.key)
 
 def _toUserMiniForm(user):
-    return UserMiniForm(name=user.key.id(), email=user.email)
+    return UserMiniForm(name=user.key.id(), avatar=user.avatar)

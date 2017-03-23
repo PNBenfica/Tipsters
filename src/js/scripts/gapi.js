@@ -1,17 +1,34 @@
-import gapiLoader from './gapiLoader';
+import gapiLoader from './gapiLoader'
+
+
+const TESTING_INTERFACE = false
 
 
 export function callAPI(payload){
 
     payload.dispatch({type: payload.type + "_PENDING"})
+
+    if (TESTING_INTERFACE)
+        simulateInterface(payload)
+
+    else
+        makeApiRequest(payload)
+
+}
+
+function simulateInterface(payload){
+    setTimeout(() => payload.dispatch({type: payload.type + "_FULFILLED", payload: payload.default}) , 2500)
+}
+
+function makeApiRequest(payload){
     
     if( gapiLoader.apiLoaded() ){
-        console.log("api loaded - making request");
-        var request = payload.request();
-        request.execute((resp) => apiCallBack(resp, payload));
+        console.log("api loaded - making request")
+        var request = payload.request()
+        request.execute((resp) => apiCallBack(resp, payload))
     }
     else{
-        setTimeout(() => { console.log("waiting for api load"); callAPI(payload); }, 2000);
+        setTimeout(() => { console.log("waiting for api load"); callAPI(payload); }, 500)
     }
 }
 

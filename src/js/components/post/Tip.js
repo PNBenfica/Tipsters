@@ -1,5 +1,6 @@
 import React from "react"
 
+import EventURL from "./../sports/EventURL"
 import TipEvent from "./TipEvent"
 import TipStatus from "./TipStatus"
 import TipRow from "./TipRow"
@@ -8,14 +9,16 @@ export default class Tip extends React.Component {
 
     render() {
 
-        const { selection, event, odd, status } = this.props
+        const { betName, choiceName, leagueName, leagueId, matchName, matchId, odd, sportName, sportId, status } = this.props
+        
+        const eventURL = new EventURL({name: sportName, id: sportId}, {name: leagueName, id: leagueId}, {name: matchName, id: matchId})
 
         return (
             <div class="tip">
 
-                <TipRow title="Aposta" value={selection}/>
+                <TipRow title="Bet" value={betName + ": " + choiceName}/>
 
-                <TipRow title="Evento" value={<TipEvent event={event}/>}/>
+                <TipRow title="Event" value={<TipEvent event={matchName} eventURL={eventURL.renderPath()} />}/>
 
                 <TipRow title="Odd" value={odd}/>
 

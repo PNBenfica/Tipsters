@@ -11,13 +11,20 @@ odds = parseXMLOdds()
 
 def populate_datastore():
     #register_users()
+    add_profile_pictures()
     #follow_users()
-    add_posts()
+    #add_posts()
 
 
 def register_users():
     for user in users:
         UserManager.register_user(user, user.replace(" ", "_") + "@hotmail.com", "12345")
+
+def add_profile_pictures():
+    for user in users:
+        userModel = getUser(user)
+        userModel.avatar = "img/joaoalmeida.jpg"
+        userModel.put()
 
 def follow_users():
     for user in users:

@@ -10,9 +10,9 @@ import Post from "../components/post/Post"
 
 @connect((store) => {
     return {
-        posts: store.posts.posts
-        // fetched: store.notifications.fetched,
-        // fetching: store.notifications.fetching,
+        posts: store.posts.posts,
+        fetched: store.posts.fetched,
+        fetching: store.posts.fetching,
     }
 })
 export default class PostsContainer extends React.Component {
@@ -29,11 +29,9 @@ export default class PostsContainer extends React.Component {
     }
 
     fetchPosts(filters){
-        setTimeout(() => { 
-            const {user, postId} = filters
-            filters = { user, postId }
-            this.props.dispatch(fetchPosts(filters))
-        }, 2500)
+        const {user, postId} = filters
+        filters = { user, postId }
+        this.props.dispatch(fetchPosts(filters))
     }
 
     addComment(id, comment) {
@@ -45,15 +43,13 @@ export default class PostsContainer extends React.Component {
     }
 
     renderPosts(){
-        let { posts } = this.props
-
-        posts = posts.concat(posts).concat(posts).concat(posts).concat(posts)
+        const { posts } = this.props
 
         return posts.map((post, i) => {
             if (post.price > 0)
                 return <PostBuy key={i} {...post}/>
             else
-                return <Post addComment={this.addComment.bind(this, post.id)} key={i} {...post}/>
+                return <Post addComment={this.addComment.bind(this, post.websafeKey)} key={i} {...post}/>
         })
     }
             // <ScrollPageDetector onScrollBottom={this.onScrollBottom.bind(this)}>
@@ -61,9 +57,13 @@ export default class PostsContainer extends React.Component {
 
     render() {
 
-        let Posts = this.renderPosts()
-        if (Posts.length === 0)
+        const { fetched, fetching } = this.props
+
+        let Posts = []
+        if (fetching)
             Posts = <LoadingGif />
+        else if (fetched)
+            Posts = this.renderPosts()
 
         return (
             <div class="posts-container">

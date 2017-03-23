@@ -49,8 +49,10 @@ class TipForm(messages.Message):
     betName = messages.StringField(10)
     choiceName = messages.StringField(11)
     
+    status = messages.StringField(12)
+    
 class PostMessage(messages.Message):
-    author = messages.StringField(1)
+    tipster = messages.MessageField('UserMiniForm',1)
     comment = messages.StringField(2)
     nComments = messages.IntegerField(3)
     nLikes = messages.IntegerField(4)
@@ -63,6 +65,9 @@ class PostCommentMessage(messages.Message):
     author = messages.StringField(1)
     comment = messages.StringField(2)
     date = messages.StringField(3)
+    
+class FeedMessage(messages.Message):
+    posts = messages.MessageField('PostMessage',1,repeated=True)
     
 
 class User(ndb.Model):
@@ -85,9 +90,14 @@ class UserForm(messages.Message):
     followers = messages.MessageField('UserMiniForm',3,repeated=True)
     following = messages.MessageField('UserMiniForm',4,repeated=True)
     posts = messages.MessageField('PostMessage',5,repeated=True)
-    avatar = messages.BytesField(6)
+    avatar = messages.StringField(6)
+    
     
 class UserMiniForm(messages.Message):
+    name = messages.StringField(1)
+    avatar = messages.StringField(2)
+    
+class UserAuthForm(messages.Message):
     name = messages.StringField(1)
     email = messages.StringField(2)
     pwd = messages.StringField(3)
