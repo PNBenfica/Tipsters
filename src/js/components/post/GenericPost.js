@@ -17,9 +17,29 @@ export default class GenericPost extends React.Component {
     handleScroll(){
         var viewportOffset = this.refs.post.getBoundingClientRect();
         var top = viewportOffset.top;
-        const noMarginTop = window.innerHeight - top > 199
-        this.setState( { noMarginTop } )
+            console.log(top)
+            console.log(window.innerHeight)
+        const noMarginTop = window.innerHeight - top > 0
+        if (noMarginTop != this.state.noMarginTop){
+            if (noMarginTop){
+                console.log("scroll now")
+                // this.refs.post.scrollIntoView()
+                this.scrollToTop(this.refs.post)
+            }
+            this.setState( { noMarginTop } )
+        }
     }
+
+    scrollToTop(post) {
+    // var scrollStep = (post.getBoundingClientRect().top - 73) / (scrollDuration / 15),
+    var scrollStep = (post.getBoundingClientRect().top - 73) / (500 / 15),
+        scrollInterval = setInterval(function(){
+        if ( post.getBoundingClientRect().top > 73 ) {
+            window.scrollBy( 0, scrollStep );
+        }
+        else clearInterval(scrollInterval); 
+    },15);
+}
 
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll)
@@ -61,7 +81,6 @@ export default class GenericPost extends React.Component {
                     </div>
 
                 </div>
-
 
             </div>
         )
