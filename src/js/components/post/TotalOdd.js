@@ -9,7 +9,7 @@ export default class TotalOdd extends React.Component {
         const { odd } = this.props
 
         return (
-			<TipRow title="Total Odd" value={odd} />
+			<TipRow title="Total Odd" value={odd.toFixed(2)} />
 		)
   	}
 }

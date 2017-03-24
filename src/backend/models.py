@@ -25,6 +25,7 @@ class Post(ndb.Model):
     nLikes = ndb.IntegerProperty()
     date = ndb.StringProperty()
     tips = ndb.KeyProperty(repeated=True, kind=TipModel)
+    totalOdd = ndb.FloatProperty()
     
 class PostComment(ndb.Model):
     author = ndb.StringProperty()
@@ -60,9 +61,10 @@ class PostMessage(messages.Message):
     websafeKey = messages.StringField(6)
     tips = messages.MessageField('TipForm',7,repeated=True)
     comments = messages.MessageField('PostCommentMessage',8,repeated=True)
+    totalOdd = messages.FloatField(9)
 
 class PostCommentMessage(messages.Message):
-    author = messages.StringField(1)
+    tipster = messages.MessageField('UserMiniForm',1)
     comment = messages.StringField(2)
     date = messages.StringField(3)
     

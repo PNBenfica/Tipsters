@@ -25,51 +25,25 @@ function fetchPosts_default(){
             nLikes : "5",
             nComments : "2",
             totalOdd : 3.41,
-            comments : [ { tipsterName : "João Almeida", tipsterImage : "img/joaoalmeida.jpg", date : "2 min", comment : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"},
-                         { tipsterName : "João Almeida", tipsterImage : "img/joaoalmeida.jpg", date : "2 min", comment : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"},
-                         { tipsterName : "João Almeida", tipsterImage : "img/joaoalmeida.jpg", date : "2 min", comment : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"},
-                         { tipsterName : "João Almeida", tipsterImage : "img/joaoalmeida.jpg", date : "2 min", comment : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"}]
+            comments : [ { "comment": "This will be a green!!", "date": "2017-03-24 00:03:05", "tipster": { "avatar": "img/user3.jpg", "name": "Calado Diamantino" }},
+			  			 { "comment": "What a wonderful tip", "date": "2017-03-24 00:03:05", "tipster": { "avatar": "img/user8.jpg", "name": "Aimar Bernardo" } },
+		  				 { "comment": "I ain't gonna follow that mofo", "date": "2017-03-24 00:03:05", "tipster": {"avatar": "img/user2.jpg", "name": "Xandao Zahovic" } }]
             }
-            // ,{
-            // websafeKey : "123457",
-            // tips : [ { selection : "Benfica", event : "Belenenses vs Benfica", odd : 1.51, status: "Lost"}, 
-            // 		 { selection : "Rio Ave",  event : "Sporting vs Rio Ave",   odd : 2.35, status: "Pendent"}],
-            // comment : "Benfica is very strong, they win. Sporting is very weak, they lose for sure.",
-            // tipster : {name: "João Almeida", image : "img/joaoalmeida.jpg", profit : 120, wins: 120, losses: 60,
-            //                 lastTips : [ { status: "win",  tips: [ { selection : "Benfica", event : "Belenenses vs Benfica", odd : 1.51}, { selection : "Bayern",  event : "Wolfsburg vs Bayern",   odd : 1.36}]}, 
-            //                              { status: "lost", tips: [{ selection : "Bayern",  event : "Wolfsburg vs Bayern",   odd : 1.36} ]}, 
-            //                              { status: "win",  tips: [ { selection : "Benfica", event : "Belenenses vs Benfica", odd : 1.51}, { selection : "Bayern",  event : "Wolfsburg vs Bayern",   odd : 1.36}]}, 
-            //                              { status: "lost",  tips: [{ selection : "Bayern",  event : "Wolfsburg vs Bayern",   odd : 1.36} ]}, 
-            //                              { status: "win",  tips: [ { selection : "Benfica", event : "Belenenses vs Benfica", odd : 1.51}, { selection : "Bayern",  event : "Wolfsburg vs Bayern",   odd : 1.36}]}]},
-            // date : "20:47",
-            // likes : "5",
-            // nComments : "2",
-            // totalOdd : 3.41,
-            // comments : [ { tipsterName : "João Almeida", tipsterImage : "img/joaoalmeida.jpg", date : "2 min", comment : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"},
-            //              { tipsterName : "João Almeida", tipsterImage : "img/joaoalmeida.jpg", date : "2 min", comment : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"}]
-            // },{
-            // websafeKey : "123458",
-            // tipster : {name: "João Almeida", image : "img/joaoalmeida.jpg", profit : 120, wins: 120, losses: 60,
-            //                 lastTips : [ { status: "win",  tips: [ { selection : "Benfica", event : "Belenenses vs Benfica", odd : 1.51}, { selection : "Bayern",  event : "Wolfsburg vs Bayern",   odd : 1.36}]}, 
-            //                              { status: "lost", tips: [{ selection : "Bayern",  event : "Wolfsburg vs Bayern",   odd : 1.36} ]}, 
-            //                              { status: "win",  tips: [ { selection : "Benfica", event : "Belenenses vs Benfica", odd : 1.51}, { selection : "Bayern",  event : "Wolfsburg vs Bayern",   odd : 1.36}]}, 
-            //                              { status: "lost",  tips: [{ selection : "Bayern",  event : "Wolfsburg vs Bayern",   odd : 1.36} ]}, 
-            //                              { status: "win",  tips: [ { selection : "Benfica", event : "Belenenses vs Benfica", odd : 1.51}, { selection : "Bayern",  event : "Wolfsburg vs Bayern",   odd : 1.36}]}]},
-            // date : "20:47",
-            // selections : 5,
-            // totalOdd : 3.41, 
-            // likes : "5",
-            // nComments : "2",
-            // price : 0.30                     
-            // }
             ]
         }
 }
 
 
-export function addComment(id, comment) {
-    return {
-        type: "ADD_COMMENT",
-        payload: {id:id, comment:comment}
-    }
+export function addComment(post_id, comment) {
+
+	return function(dispatch) {
+
+        callAPI({
+            type: "ADD_COMMENT",
+        	request: (() => gapi.client.tipsters.addComment({ post_id, comment })),
+            dispatch: dispatch,
+        	action: { post_id, comment }
+        })
+
+	}
 }

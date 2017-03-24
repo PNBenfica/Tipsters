@@ -11,9 +11,9 @@ odds = parseXMLOdds()
 
 def populate_datastore():
     #register_users()
-    add_profile_pictures()
+    #add_profile_pictures()
     #follow_users()
-    #add_posts()
+    add_posts()
 
 
 def register_users():
@@ -23,8 +23,12 @@ def register_users():
 def add_profile_pictures():
     for user in users:
         userModel = getUser(user)
-        userModel.avatar = "img/joaoalmeida.jpg"
+        userModel.avatar = random_picture()
         userModel.put()
+
+def random_picture():
+    pictures = ["img/user1.jpg", "img/user2.jpg", "img/user3.jpg", "img/user4.jpg", "img/user5.jpg", "img/user6.jpg", "img/user7.jpg", "img/user8.jpg", "img/joaoalmeida.jpg", "img/pauloteixeira.jpg"]
+    return random_list_element(pictures)
 
 def follow_users():
     for user in users:
@@ -34,7 +38,23 @@ def follow_users():
 
 def add_posts():
     for user in users:
-        PostManager.storePost(getUser(user), PostForm(comment=random_coment(), tips=random_tips()))
+        for _ in range(0, randint(0,3)):
+            post_key = insert_post(user)
+            add_comments(post_key.urlsafe())
+                
+def insert_post(user):
+    return PostManager.storePost(getUser(user), PostForm(comment=random_coment(), tips=random_tips()))
+
+def add_comments(post_key):
+    for _ in range(0, randint(0,3)):
+        PostManager.addCommentToPost(random_user(), post_key, random_post_coment())
+
+def random_user():
+    return random_list_element(users)
+    
+def random_post_coment():
+    comments = ["The home team has many injured so players!!", "This will be a green!!", "Benfica very strong they win for sure. Sporting very weak they lose", "This game will have many goals", "What a wonderful tip", "I ain't gonna follow that mofo","nice one dude","like"]
+    return random_list_element(comments)
 
 def random_coment():
     comments = ["The home team has many injured so players!!", "This will be a green!!", "Benfica very strong they win for sure. Sporting very weak they lose", "This game will have many goals", "Predicted line-up: A,B,C,D,E,F,G", "","",""]

@@ -24,7 +24,7 @@ export default class CommentBox extends React.Component {
 
         // get the last 'numVisibleComments'. the other are hidden
         let visibleComments = comments.slice(Math.max(comments.length-this.state.numVisibleComments, 0), comments.length)
-        visibleComments = visibleComments.map(({tipsterName, tipsterImage, date, comment}, i) => <Comment tipsterName={tipsterName} tipsterImage={tipsterImage} date={date} comment={comment} key={i} /> )
+        visibleComments = visibleComments.map((comment, i) => <Comment {...comment} key={i} /> )
 
 
         return (

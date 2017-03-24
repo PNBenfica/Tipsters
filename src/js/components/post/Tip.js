@@ -20,7 +20,7 @@ export default class Tip extends React.Component {
 
                 <TipRow title="Event" value={<TipEvent event={matchName} eventURL={eventURL.renderPath()} />}/>
 
-                <TipRow title="Odd" value={odd}/>
+                <TipRow title="Odd" value={odd.toFixed(2)}/>
 
                 <TipStatus status={status} />
 

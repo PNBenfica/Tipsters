@@ -1,12 +1,12 @@
 import gapiLoader from './gapiLoader'
 
 
-const TESTING_INTERFACE = false
+const TESTING_INTERFACE = true
 
 
 export function callAPI(payload){
 
-    payload.dispatch({type: payload.type + "_PENDING"})
+    payload.dispatch({type: payload.type + "_PENDING", params: payload.action})
 
     if (TESTING_INTERFACE)
         simulateInterface(payload)

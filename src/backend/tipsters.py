@@ -145,6 +145,7 @@ class TipstersApi(remote.Service):
     
     @endpoints.method(COMMENT_POST_REQUEST, Hello, path = "users/posts/{post_id}/comment", http_method='Post', name = "addComment")
     def add_comment(self, request):
+        print(request.comment)
         PostManager.addCommentToPost("Aimar Bernardo", request.post_id, request.comment)
         
         return Hello(greeting="comment added")

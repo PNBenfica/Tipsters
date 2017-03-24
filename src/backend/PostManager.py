@@ -10,18 +10,24 @@ def getFeed(user):
     return FeedMessage(posts = map(toPostMessage, _getPosts(user)) )
     
 def _getPosts(user):
-    return Post.query(Post.author.IN(user.followingKeys)).order(Post.date).fetch()
+    return Post.query(Post.author.IN(user.followingKeys)).order(-Post.date).fetch()
 
 def storePost(user, request):  
         
     post_key = gaeUtils.generateKey(Post, user.key)
     
     data = { 'author':user.key.id(), 'key':post_key, 'comment': request.comment, \
-        'nComments':0, 'nLikes':0, 'date': getCurrentDate()}
+        'nComments':0, 'nLikes':0, 'date': getCurrentDate(), 'totalOdd': _calculate_total_odd(request.tips) }
     
     data['tips'] = _storeTips(request.tips)
     
     Post(**data).put()
+    
+    return post_key
+
+def _calculate_total_odd(tips):
+    tips_odds = map(_getTipOdd, tips)
+    return reduce(lambda a,b: a * b, tips_odds, 1)
     
 def getCurrentDate():
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -61,10 +67,9 @@ def toPostMessage(post):
     tipster = getUserMiniProfile(post.author)
     tips = map(_toTipMessage, post.tips)
     comments = map(_toPostCommentMessage, getPostComments(post))
-    return PostMessage(tipster=tipster,comment=post.comment,nComments=post.nComments,nLikes=post.nLikes,date=post.date,websafeKey=post.key.urlsafe(),tips=tips,comments=comments)
+    return PostMessage(tipster=tipster,comment=post.comment,nComments=post.nComments,nLikes=post.nLikes,date=post.date,totalOdd=post.totalOdd,websafeKey=post.key.urlsafe(),tips=tips,comments=comments)
 
 def getUserMiniProfile(username):
-    print(username)
     user = ndb.Key(User, username).get()
     return UserMiniForm(name=username, avatar=user.avatar)
 
@@ -95,4 +100,5 @@ def getPostComments(post):
     return PostComment.query(ancestor=post.key)
 
 def _toPostCommentMessage(comment):
-    return PostCommentMessage(author=comment.author, comment=comment.comment, date=comment.date)
+    tipster = getUserMiniProfile(comment.author)
+    return PostCommentMessage(tipster=tipster, comment=comment.comment, date=comment.date)
