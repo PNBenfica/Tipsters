@@ -8,9 +8,9 @@ export default class TrendUsers extends React.Component {
 
     render() {
 
-        let { users, fetching } = this.props
+        let { users, fetching, followUser } = this.props
 
-        users = users.map((tipster, i) => <TrendUser {...tipster} key={i}/>)
+        users = users.map((tipster, i) => <TrendUser {...tipster} followUser={followUser} key={i}/>)
 
         return (
             <Panel title="Suggested Tipsters" fetching={fetching} >

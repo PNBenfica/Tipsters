@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 
-import { fetchTrends } from "./../../actions/trendsActions"
+import { fetchTrends, followUser } from "./../../actions/trendsActions"
 
 import TrendEvents from "./trendEvents/TrendEvents"
 import TrendUsers from "./trendUsers/TrendUsers"
@@ -24,8 +24,11 @@ export default class TrendBar extends React.Component {
 	}
 
 	fetchTrends(){
-		setTimeout(() => this.props.dispatch(fetchTrends()), 5000)
-        
+		this.props.dispatch(fetchTrends())
+	}
+
+	onFollowUserButtonClick(username){
+		this.props.dispatch(followUser(username))
 	}
 
 
@@ -39,7 +42,7 @@ export default class TrendBar extends React.Component {
 
 		return (
 			<div>
-				<TrendUsers fetching={fetching} users={users} />
+				<TrendUsers fetching={fetching} users={users} followUser={this.onFollowUserButtonClick.bind(this)} />
 			</div>
 		)
 	}

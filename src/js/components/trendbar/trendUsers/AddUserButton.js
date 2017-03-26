@@ -1,13 +1,17 @@
 import React from "react"
+import classNames from "classnames"
 
 export default class AddUserButton extends React.Component {
 
 	render() {
 
-		const {tipsterName, tipsterImage, description} = this.props
+		const {followUser, following, tipsterName, tipsterImage, description} = this.props
+
+		const buttonClasses = classNames("button", { active: following })
+		const iconClasses = classNames("fa fa-fw", { "fa-user-plus": !following }, { "fa-user-times": following })
 
 		return (
-			<div class="button"><i class="fa fa-user-plus fa-fw"></i></div>
+			<div onClick={()=>followUser()} class={buttonClasses}><i class={iconClasses}></i></div>
 		)
 		
 	}

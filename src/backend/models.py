@@ -105,7 +105,15 @@ class UserAuthForm(messages.Message):
     name = messages.StringField(1)
     email = messages.StringField(2)
     pwd = messages.StringField(3)
-    
+
+
+class TrendsMessage(messages.Message):
+    users = messages.MessageField('TrendUserMessage',1,repeated=True)
+
+class TrendUserMessage(messages.Message):
+    tipster = messages.MessageField('UserMiniForm',1)
+    description = messages.StringField(2)
+
 class SportModel(ndb.Model):
     name = ndb.StringProperty()
     id = ndb.StringProperty()

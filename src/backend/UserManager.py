@@ -1,7 +1,7 @@
 import endpoints
 from Crypto.Hash import SHA256
 from google.appengine.ext import ndb
-from models import User, UserForm, UserMiniForm, Post
+from models import User, UserForm, UserMiniForm, Post, TrendsMessage, TrendUserMessage
 from datetime import datetime
 from PostManager import toPostMessage
 from endpoints.api_exceptions import ConflictException
@@ -88,3 +88,18 @@ def _getPosts(user):
 
 def _toUserMiniForm(user):
     return UserMiniForm(name=user.key.id(), avatar=user.avatar)
+
+
+def getTrends(user):
+    trendUsers = map(_toTrendUserMesssage, _getTrendUsers(user))    
+    return TrendsMessage(users = trendUsers)
+
+def _getTrendUsers(user):
+    followingKeys = [ndb.Key(User, followingName) for followingName in user.followingKeys]
+    return User.query(User.key.IN(followingKeys))
+
+def _toTrendUserMesssage(user):
+    return TrendUserMessage(tipster=_toUserMiniForm(user), description=_random_description())
+
+def _random_description():
+    return "ROI: 2.5%"

@@ -14,7 +14,7 @@ from protorpc import messages
 from protorpc import remote
 
 
-from models import SportMessage, SportParams, UserForm, UserCreationForm, UserAuthForm, PostForm, PostMessage, FeedMessage, User, PostCommentMessage
+from models import SportMessage, SportParams, UserForm, UserCreationForm, TrendsMessage, UserAuthForm, PostForm, PostMessage, FeedMessage, User, PostCommentMessage
 from settings import WEB_CLIENT_ID
 from sports.sportsRetriever import get
 import PostManager
@@ -158,6 +158,11 @@ class TipstersApi(remote.Service):
         PostManager.likePost(user, request.post_id)
         
         return Hello(greeting="liked post")
+    
+    @endpoints.method(message_types.VoidMessage, TrendsMessage, path = "trends", http_method='Get', name = "fetchTrends")
+    def fetchTrends(self, request):
+        user = SessionManager.get_current_user()
+        return UserManager.getTrends(user)
     
 # registers API
 api = endpoints.api_server([TipstersApi]) 
