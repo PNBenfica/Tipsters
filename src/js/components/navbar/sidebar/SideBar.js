@@ -9,8 +9,8 @@ export default class SideBar extends React.Component {
         return [ {name: "News Feed", logo: "img/navbar/news_feed.png", href:"", active :  pathname === "/" },
                  {name: "Share a tip", logo: "img/navbar/share_a_tip.png", href:"sports/Football/1", active : pathname.match(/^\/sports/), 
                     submenus: [ {name: "Football", logo: "img/navbar/football.png", href:"sports/Football/1", active : pathname.match(/^\/sports\/Football\/1/)},
-                                {name: "Basketball", logo: "img/navbar/basketball.png", href:"sports/Basketball/2", active : pathname.match(/^\/sports\/Basketball\/2/)},
-                                {name: "Tennis", logo: "img/navbar/tennis.png", href:"sports/Tennis/3", active : pathname.match(/^\/sports\/Tennis\/3/)} ]
+                                {name: "Basketball", logo: "img/navbar/basketball.png", href:"sports/Basketball/4", active : pathname.match(/^\/sports\/Basketball\/4/)},
+                                {name: "Tennis", logo: "img/navbar/tennis.png", href:"sports/Tennis/2", active : pathname.match(/^\/sports\/Tennis\/2/)} ]
                 },
                  {name: "Live Streams", logo: "img/navbar/live_streams.png", href:"streams", active : pathname.match(/^\/streams/) },
                  {name: "Rankings", logo: "img/navbar/rankings.png", href:"rankings", active : pathname.match(/^\/rankings/) },

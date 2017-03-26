@@ -8,6 +8,7 @@ import Breadcrumb from "../components/sports/Breadcrumb";
 import EventURL from "../components/sports/EventURL";
 import GoalsScorersTable from "../components/sports/tables/GoalsScorersTable";
 import ColumnsTable from "../components/sports/tables/ColumnsTable";
+import LoadingGif from "../components/LoadingGif";
 import MatchesTable from "../components/sports/tables/MatchesTable";
 import SportTable from "../components/sports/tables/SportTable";
 import StandardOptionsTable from "../components/sports/tables/StandardOptionsTable";
@@ -453,9 +454,7 @@ export default class Sports extends React.Component {
     }
 
     renderLoadingGif(){
-        return (   <div class="cssload-container">
-                        <div class="cssload-whirlpool"></div>
-                    </div>)
+        return ( <LoadingGif />)
     }
 
   	render() {
