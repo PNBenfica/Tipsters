@@ -1,5 +1,5 @@
 from google.appengine.ext import ndb
-from models import User, UserForm, UserMiniForm, PostMessage, TipForm, TipModel, Post, PostComment, PostCommentMessage, FeedMessage
+from models import User, UserMiniForm, PostMessage, TipForm, TipModel, Post, PostComment, PostCommentMessage, FeedMessage
 from domain import Bet
 import gaeUtils
 from datetime import datetime

@@ -5,6 +5,7 @@ from models import User, UserForm, UserMiniForm, Post, TrendsMessage, TrendUserM
 from datetime import datetime
 from PostManager import toPostMessage
 from endpoints.api_exceptions import ConflictException
+from Utils import random_list_element 
 
 def register_user(name, email, pwd):    
     if _userAlreadyExist(name):
@@ -42,13 +43,14 @@ def follow_user(user, userToFollowName):
     userToFollow = getUser(userToFollowName)
     
     if userToFollowName in user.followingKeys:
-        raise ConflictException("Already following " + userToFollowName)
+        user.followingKeys.remove(userToFollowName)
+        userToFollow.followersKeys.remove(user.key.id())
     else:
         user.followingKeys.append(userToFollowName)
         userToFollow.followersKeys.append(user.key.id())
-        
-        user.put()
-        userToFollow.put()
+    
+    user.put()
+    userToFollow.put()
         
 # user is an user object
 def unfollow_user(user, userToUnfollowName):
@@ -95,11 +97,14 @@ def getTrends(user):
     return TrendsMessage(users = trendUsers)
 
 def _getTrendUsers(user):
-    followingKeys = [ndb.Key(User, followingName) for followingName in user.followingKeys]
-    return User.query(User.key.IN(followingKeys))
+    query = User.query()
+    for followingName in user.followingKeys:
+        query = query.filter(User.key != ndb.Key(User, followingName))
+    return query.filter(User.key != user.key).fetch(limit=2)
 
 def _toTrendUserMesssage(user):
     return TrendUserMessage(tipster=_toUserMiniForm(user), description=_random_description())
 
 def _random_description():
-    return "ROI: 2.5%"
+    descriptions = ["ROI: 2.5%", "Is on a 5 green tips streak", "ROI: 5.34%", "Has 50% win percentage", "He is so good", "Follow him follow him"]
+    return random_list_element(descriptions)

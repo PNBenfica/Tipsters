@@ -14,8 +14,8 @@ export default function reducer(state={
             return {...state, fetching: false, error: action.payload.err}
         }
         case "FETCH_TRENDS_FULFILLED": {
-            const { trends } = action.payload
-            const { users, events } = trends
+            const { users, events } = action.payload
+            users.forEach(user => user.following = false)
             return {
                 ...state,
                 fetching: false,

@@ -5,6 +5,7 @@ from UserManager import getUser
 from sports.XMLOddsParser import parseXMLOdds
 from models import TipForm, PostForm
 from random import randint
+from Utils import random_list_element 
 
 users = ["Aimar Bernardo", "Calado Diamantino", "Ederson Florentino", "Gamarra Hooijdonk", "Isaltino Jovic", "Kostas Lazar", "Mitroglou Nuno", "Otavio Preudhomme", "Renato Sanches", "Tamara Umbigo", "Xandao Zahovic"]
 odds = parseXMLOdds()
@@ -75,7 +76,4 @@ def random_tip():
     bet = random_list_element(match['bets'])
     choice = random_list_element(bet['choices'])
     return TipForm(sportId=sport['id'], leagueId=event['id'], matchId=match['id'], betId=bet['id'], choiceId=choice['id'] )
-
-def random_list_element(l):
-    return l[randint(0,len(l) - 1)]
 

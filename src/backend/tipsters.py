@@ -86,14 +86,7 @@ class TipstersApi(remote.Service):
     def follow_user(self, request):
         user = SessionManager.get_current_user()
         UserManager.follow_user(user, request.username)
-        return Hello(greeting="Successful added to the followers list")
-    
-    @endpoints.method(FOLLOW_USER_REQUEST, Hello, path = "users/follow/{username}", http_method='DELETE', name = "unfollowUser")
-    def unfollow_user(self, request):
-        user = SessionManager.get_current_user()
-        UserManager.unfollow_user(user, request.username)
-        return Hello(greeting="Successful removed from the followers list")
-    
+        return Hello(greeting="Successful added/removed to the followers list")
     
     @endpoints.method(UserAuthForm, Hello, path = "authenticate", http_method='POST', name = "login")
     def authenticate(self, request):
