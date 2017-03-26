@@ -13,11 +13,11 @@ export default class TipEvent extends React.Component {
         return (
             <a href={eventURL} class="event">
 
-                <TipEventTeam name={homeTeam} img="img/sports/arsenal.png"/>
+                <TipEventTeam name={homeTeam} />
 
                 <span class="hidden-xs">vs</span>
 
-                <TipEventTeam name={awayTeam} img="img/sports/liverpool.jpg"/>
+                <TipEventTeam name={awayTeam} />
 
             </a>
         )
