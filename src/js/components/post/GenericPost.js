@@ -17,13 +17,9 @@ export default class GenericPost extends React.Component {
     handleScroll(){
         var viewportOffset = this.refs.post.getBoundingClientRect();
         var top = viewportOffset.top;
-            console.log(top)
-            console.log(window.innerHeight)
         const noMarginTop = window.innerHeight - top > 0
         if (noMarginTop != this.state.noMarginTop){
             if (noMarginTop){
-                console.log("scroll now")
-                // this.refs.post.scrollIntoView()
                 this.scrollToTop(this.refs.post)
             }
             this.setState( { noMarginTop } )
@@ -51,7 +47,7 @@ export default class GenericPost extends React.Component {
 
     render() {
 
-        const { addComment, comment, commentBoxOpen, comments, date, websafeKey, nLikes, nComments, tips, tipster, toggleCommentBox, totalOdd } = this.props
+        const { addComment, comment, commentBoxOpen, comments, date, websafeKey, liked, nLikes, likePost, nComments, tips, tipster, toggleCommentBox, totalOdd } = this.props
         const { noMarginTop } = this.state
 
         return (
@@ -74,7 +70,7 @@ export default class GenericPost extends React.Component {
 
                         {this.props.children}
 
-                        <Footer likes={nLikes} comments={nComments} toggleCommentBox={toggleCommentBox} />
+                        <Footer liked={liked} likes={nLikes} likePost={likePost} comments={nComments} toggleCommentBox={toggleCommentBox} />
 
                         <CommentBox in={commentBoxOpen} comments={comments} addComment={addComment}/>
 

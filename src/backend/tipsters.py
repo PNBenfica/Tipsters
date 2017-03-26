@@ -141,14 +141,23 @@ class TipstersApi(remote.Service):
     
     @endpoints.method(POST_GET_REQUEST, PostMessage, path = "users/posts/{post_id}", http_method='Get', name = "getPost")
     def get_post(self, request):
-        return PostManager.getPostMessage(request.post_id)
+        user = SessionManager.get_current_user()
+        return PostManager.getPostMessage(user, request.post_id)
     
     @endpoints.method(COMMENT_POST_REQUEST, Hello, path = "users/posts/{post_id}/comment", http_method='Post', name = "addComment")
     def add_comment(self, request):
-        print(request.comment)
+        print(request.post_id)
         PostManager.addCommentToPost("Aimar Bernardo", request.post_id, request.comment)
         
         return Hello(greeting="comment added")
+    
+    @endpoints.method(POST_GET_REQUEST, Hello, path = "users/posts/{post_id}/like", http_method='Post', name = "likePost")
+    def like_post(self, request):
+        print( "post_id: "+ request.post_id)
+        user = SessionManager.get_current_user()
+        PostManager.likePost(user, request.post_id)
+        
+        return Hello(greeting="liked post")
     
 # registers API
 api = endpoints.api_server([TipstersApi]) 

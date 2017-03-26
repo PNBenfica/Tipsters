@@ -7,7 +7,7 @@ from sports.sportsRetriever import getBetKey
 
 
 def getFeed(user):
-    return FeedMessage(posts = map(toPostMessage, _getPosts(user)) )
+    return FeedMessage(posts = map(lambda post: toPostMessage(user, post), _getPosts(user)) )
     
 def _getPosts(user):
     return Post.query(Post.author.IN(user.followingKeys)).order(-Post.date).fetch()
@@ -58,16 +58,17 @@ def _getTipOdd(tip):
 def _getPost(postKey):
     return ndb.Key(urlsafe=postKey).get()
 
-def getPostMessage(postKey):
+def getPostMessage(user, postKey):
     post = _getPost(postKey)
-    return toPostMessage(post)
+    return toPostMessage(user, post)
 
 
-def toPostMessage(post):
+def toPostMessage(user, post):
     tipster = getUserMiniProfile(post.author)
     tips = map(_toTipMessage, post.tips)
     comments = map(_toPostCommentMessage, getPostComments(post))
-    return PostMessage(tipster=tipster,comment=post.comment,nComments=post.nComments,nLikes=post.nLikes,date=post.date,totalOdd=post.totalOdd,websafeKey=post.key.urlsafe(),tips=tips,comments=comments)
+    liked = _userLikedPost(user,post)
+    return PostMessage(tipster=tipster,liked=liked,comment=post.comment,nComments=post.nComments,nLikes=post.nLikes,date=post.date,totalOdd=post.totalOdd,websafeKey=post.key.urlsafe(),tips=tips,comments=comments)
 
 def getUserMiniProfile(username):
     user = ndb.Key(User, username).get()
@@ -98,6 +99,24 @@ def addCommentToPost(username, postUrlSafeKey, comment):
 
 def getPostComments(post):
     return PostComment.query(ancestor=post.key)
+
+
+def _userLikedPost(user, post):
+    username = user.key.id()
+    return username in post.likesUsersKeys
+    
+def likePost(user, postUrlSafeKey):
+    post = _getPost(postUrlSafeKey)
+    username = user.key.id()
+    
+    if _userLikedPost(user, post):
+        post.nLikes -= 1
+        post.likesUsersKeys.remove(username)
+    else:
+        post.nLikes += 1
+        post.likesUsersKeys.append(username)
+        
+    post.put()
 
 def _toPostCommentMessage(comment):
     tipster = getUserMiniProfile(comment.author)

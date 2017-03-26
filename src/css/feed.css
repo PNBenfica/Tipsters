@@ -390,6 +390,12 @@ post-comment-box
 	border-top: solid 1px #B1B1B1;
     margin-bottom: 0;
     padding: 0px 15px 5px 15px;
+    transition: margin-bottom 1s;
+}
+.feed-post .post-comment-box.in{
+	border-top: solid 1px #B1B1B1;
+    margin-bottom: 250px;
+    padding: 0px 15px 5px 15px;
 }
 
 .feed-post .post-comment-box .post-comment{

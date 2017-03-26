@@ -6,11 +6,11 @@ export default class Footer extends React.Component {
 
     render() {
 
-        const { likes, comments, toggleCommentBox} = this.props
+        const { likes, liked, likePost, comments, toggleCommentBox} = this.props
 
         let buttons = [
-                        { value: likes, icon: "fa fa-thumbs-o-up", onClick: () => console.log("LIKE") },
-                        { value: comments, icon: "fa fa-envelope-o", onClick: toggleCommentBox}
+                        { value: likes, icon: "fa fa-thumbs-o-up", active: liked, onClick: likePost },
+                        { value: comments, icon: "fa fa-envelope-o", active: false, onClick: toggleCommentBox}
                     ]
 
         buttons = buttons.map((button, i) => <Button {...button} key={i}/>)

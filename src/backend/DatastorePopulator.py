@@ -41,6 +41,7 @@ def add_posts():
         for _ in range(0, randint(0,3)):
             post_key = insert_post(user)
             add_comments(post_key.urlsafe())
+            add_likes(post_key.urlsafe())
                 
 def insert_post(user):
     return PostManager.storePost(getUser(user), PostForm(comment=random_coment(), tips=random_tips()))
@@ -48,6 +49,10 @@ def insert_post(user):
 def add_comments(post_key):
     for _ in range(0, randint(0,3)):
         PostManager.addCommentToPost(random_user(), post_key, random_post_coment())
+        
+def add_likes(post_key):
+    for _ in range(0, randint(0,4)):
+        PostManager.likePost(getUser(random_user()), post_key)
 
 def random_user():
     return random_list_element(users)

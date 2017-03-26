@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 
-import { fetchPosts, addComment } from "../actions/postsActions"
+import { addComment, fetchPosts, likePost } from "../actions/postsActions"
 
 import LoadingGif from "./LoadingGif"
 import PostBuy from "../components/post/postBuy/PostBuy"
@@ -38,6 +38,10 @@ export default class PostsContainer extends React.Component {
         this.props.dispatch(addComment(id, comment))
     }
 
+    likePost(id) {
+        this.props.dispatch(likePost(id))
+    }
+
     onScrollBottom(){
         console.log("Need to fetch more posts!")
     }
@@ -49,7 +53,7 @@ export default class PostsContainer extends React.Component {
             if (post.price > 0)
                 return <PostBuy key={i} {...post}/>
             else
-                return <Post addComment={this.addComment.bind(this, post.websafeKey)} key={i} {...post}/>
+                return <Post likePost={this.likePost.bind(this, post.websafeKey)} addComment={this.addComment.bind(this, post.websafeKey)} key={i} {...post}/>
         })
     }
             // <ScrollPageDetector onScrollBottom={this.onScrollBottom.bind(this)}>

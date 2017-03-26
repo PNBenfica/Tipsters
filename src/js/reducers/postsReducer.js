@@ -22,11 +22,8 @@ export default function reducer(state={
             }
         }
         case "ADD_COMMENT_PENDING":{
-            console.log(action)
             const { post_id, comment } = action.params
             const posts = [...state.posts]
-            console.log(posts)
-            console.log(post_id)
             const postToUpdate = posts.findIndex(post => post.websafeKey === post_id)
             const updatedComments = [ ...posts[postToUpdate].comments, { comment, "date": "just now", "tipster": { "avatar": "img/pauloteixeira.jpg", "name": "Paulo Teixeira" }} ]
             posts[postToUpdate] = Object.assign({}, posts[postToUpdate], {comments: updatedComments})
@@ -37,6 +34,23 @@ export default function reducer(state={
         }
         case "ADD_COMMENT_FULFILLED":{
             console.log("ADD_COMMENT_FULFILLED")
+        }
+        case "LIKE_POST_PENDING":{
+            const { post_id } = action.params
+            const posts = [...state.posts]
+            const postToUpdate = posts.findIndex(post => post.websafeKey === post_id)
+            let { liked, nLikes } = posts[postToUpdate]
+            liked = !liked
+            nLikes = liked ? ++nLikes : --nLikes
+            console.log(posts[postToUpdate])
+            posts[postToUpdate] = Object.assign({}, posts[postToUpdate], { liked }, { nLikes })
+            return {
+                ...state,
+                posts
+            }
+        }
+        case "LIKE_POST_FULFILLED":{
+            
         }
     }
 
