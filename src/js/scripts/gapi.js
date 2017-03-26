@@ -1,7 +1,7 @@
 import gapiLoader from './gapiLoader'
 
 
-const TESTING_INTERFACE = false
+const TESTING_INTERFACE = true
 
 
 export function callAPI(payload){
@@ -17,7 +17,7 @@ export function callAPI(payload){
 }
 
 function simulateInterface(payload){
-    setTimeout(() => payload.dispatch({type: payload.type + "_FULFILLED", payload: payload.default}) , 2500)
+    setTimeout(() => payload.dispatch({type: payload.type + "_FULFILLED", payload: payload.default}) , 0)
 }
 
 function makeApiRequest(payload){

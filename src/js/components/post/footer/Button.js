@@ -10,7 +10,7 @@ export default class Footer extends React.Component {
 
         return (
             <div class={classNames("button", { active } )} onClick={() => onClick()}>
-                <i class={icon} aria-hidden="true"></i> {value}
+                <i class={icon} aria-hidden="true"></i> <span>{value}</span>
             </div>
         )
     }

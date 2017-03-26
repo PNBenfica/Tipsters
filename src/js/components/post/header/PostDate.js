@@ -1,5 +1,7 @@
 import React from "react"
 
+import TimeAgo from './../../TimeAgo'
+
 export default class PostDate extends React.Component {
 
     render() {
@@ -7,7 +9,7 @@ export default class PostDate extends React.Component {
         const { date, id } = this.props
 
         return (        
-            <a href={"#/posts/" + id}>{date}</a>
+            <a class="post-date" href={"#/posts/" + id}><TimeAgo date={date}/></a>
         )
     }
 }

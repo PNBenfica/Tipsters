@@ -99,6 +99,11 @@
 	text-transform: uppercase;
 }
 
+.feed-post header a.post-date{
+	font-size: 18px;
+	font-weight: 600;
+	text-transform: none;
+}
 
 
 
