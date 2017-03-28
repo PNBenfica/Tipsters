@@ -13,6 +13,7 @@ import MatchesTable from "../components/sports/tables/MatchesTable";
 import SportTable from "../components/sports/tables/SportTable";
 import StandardOptionsTable from "../components/sports/tables/StandardOptionsTable";
 import TipsOnThisEvent from "../components/sports/tipsOnThisEvent/TipsOnThisEvent";
+import WarningAlreadyInBetSlip from "../components/sports/betslip/WarningAlreadyInBetSlip";
 
 @connect((store) => {
   return {
@@ -25,7 +26,7 @@ export default class Sports extends React.Component {
 
     constructor(...args) {
         super(...args);
-        this.state = { betSlip : { tips: [], sellingPrice : 0, expanded : false }};
+        this.state = { betSlip : { tips: [], sellingPrice : 0, expanded : false }, warningAlreadyInBetSlip : false};
     }
 
     /*
@@ -124,9 +125,10 @@ export default class Sports extends React.Component {
     onOddClick(eventURL, bet, choice){
         if (this.isInBetSlip(eventURL, bet, choice))
             this.removeTip(eventURL, bet, choice)
-        else if (!this.isBetSlipFull() && !this.alreadyTipOnEvent(eventURL)){
+        else if (this.alreadyTipOnEvent(eventURL))
+            this.showWarningAlreadyInBetSlip()
+        else if (!this.isBetSlipFull())
             this.addTip(eventURL, bet, choice)
-        }
     }
 
     addTip(eventURL, bet, choice){
@@ -165,6 +167,14 @@ export default class Sports extends React.Component {
                 this.setState({betSlip: this.state.betSlip}, callback)} , 800 )               
             }
         ),25);
+    }
+
+    showWarningAlreadyInBetSlip(){
+        this.setState({ warningAlreadyInBetSlip : true })
+    }
+
+    hideWarningAlreadyInBetSlip(){
+        this.setState({ warningAlreadyInBetSlip : false })
     }
 
     shareTip(){
@@ -491,6 +501,8 @@ export default class Sports extends React.Component {
 	                <TipsOnThisEvent />
 
 	            </div>
+
+                <WarningAlreadyInBetSlip active={this.state.warningAlreadyInBetSlip} dismiss={this.hideWarningAlreadyInBetSlip.bind(this)}/>
 
 	        </div>
 	    );
