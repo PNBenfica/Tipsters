@@ -8,14 +8,14 @@ export default class BetSlip extends React.Component {
     
     render() {
 
-        const {tips, removeTip, updateSellingPrice, shareTip, expanded} = this.props;
+        const {tips, removeTip, updateSellingPrice, setBetSlipComment,shareTip, expanded} = this.props;
 
         var betSlipBody;
         if (tips.length === 0) {
             betSlipBody = <BetSlipEmptyBody />;
         } 
         else {
-            betSlipBody = <BetSlipBody tips={tips} removeTip={removeTip} expanded={expanded} updateSellingPrice={updateSellingPrice} shareTip={shareTip}/>;
+            betSlipBody = <BetSlipBody tips={tips} removeTip={removeTip} expanded={expanded} updateSellingPrice={updateSellingPrice} setBetSlipComment={setBetSlipComment} shareTip={shareTip}/>;
         }
 
         return (

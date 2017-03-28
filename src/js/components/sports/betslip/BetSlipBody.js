@@ -1,4 +1,6 @@
 import React from "react";
+import ReactDOM from 'react-dom';
+
 import classNames from "classnames"
 
 import Button from "./../../Button"
@@ -7,6 +9,15 @@ import Tip from "./Tip";
 import TotalOdd from "./TotalOdd";
 
 export default class BetSlipBody extends React.Component {
+
+    handleCommentChange() {
+        const { setBetSlipComment } = this.props;
+
+        const input = ReactDOM.findDOMNode(this.refs.comment);
+        const comment = input.value;
+
+        setBetSlipComment(comment)
+    }
 
     render() {
 
@@ -30,11 +41,11 @@ export default class BetSlipBody extends React.Component {
                     <SellingPrice updateSellingPrice={this.props.updateSellingPrice}/>
 
                     <div class="form-group">
-                        <textarea class="form-control" rows="3" id="bet-slip-comment" placeholder="Add comment"></textarea>
+                        <textarea onChange={this.handleCommentChange.bind(this)} ref="comment" class="form-control" rows="3" id="bet-slip-comment" placeholder="Add comment"></textarea>
                     </div>
 
 
-                    <div class="button-wrapper"><Button title="Share Tip" onClick={shareTip} /></div>
+                    <div class="button-wrapper"><Button title="Share Tip" onClick={() => shareTip()} /></div>
 
                 </div>
             </div>

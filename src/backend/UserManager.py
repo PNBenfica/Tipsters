@@ -4,7 +4,6 @@ from google.appengine.ext import ndb
 from models import User, UserForm, UserMiniForm, Post, TrendsMessage, TrendUserMessage
 from datetime import datetime
 from PostManager import toPostMessage
-from endpoints.api_exceptions import ConflictException
 from Utils import random_list_element 
 
 def register_user(name, email, pwd):    
@@ -33,7 +32,7 @@ def getUserProfile(username):
     user = getUser(username)
     followers = map(_toUserMiniForm ,_getFollowers(user))
     following = map(_toUserMiniForm ,_getFollowing(user))
-    posts = map(toPostMessage, _getPosts(user))
+    posts = map(lambda post: toPostMessage(user, post), _getPosts(user))
 
     return UserForm(name=username, email=user.email, avatar=user.avatar, followers=followers, following=following, posts=posts)
 

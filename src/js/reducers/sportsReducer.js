@@ -21,6 +21,9 @@ export default function reducer(state={
                 tables: action.payload,
             }
         }
+        case "ADD_POST_FULFILLED": {
+            window.location.href = window.location.href.split("#")[0] + "#/posts/" + action.payload.greeting
+        }
     }
 
     return state

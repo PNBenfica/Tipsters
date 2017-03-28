@@ -3,8 +3,6 @@ import { callAPI } from '../scripts/gapi'
 
 export function fetchTables(sportParams) {
 
-	console.log(sportParams)
-	
 	return function(dispatch) {
 
         callAPI({
@@ -32,4 +30,22 @@ export function fetchTables_default(sportParams) {
 	}
 
 	return sportsTables
+}
+
+
+export function shareTip(betSlip) {
+
+	let { tips, comment } = betSlip
+	tips = tips.map(tip => { return { sportId: tip.eventURL.sport.id , leagueId: tip.eventURL.league.id , matchId: tip.eventURL.match.id , betId: tip.bet.id, choiceId: tip.choice.id} } )
+
+	return function(dispatch) {
+
+        callAPI({
+            type: "ADD_POST",
+            request: (() => gapi.client.tipsters.addPost({ tips, comment })),
+            dispatch: dispatch
+        })
+
+	}
+
 }

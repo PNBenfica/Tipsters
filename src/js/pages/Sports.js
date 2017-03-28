@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { fetchTables } from "../actions/sportsActions";
+import { fetchTables, shareTip } from "../actions/sportsActions";
 
 import BetSlip from "../components/sports/betslip/BetSlip";
 import Breadcrumb from "../components/sports/Breadcrumb";
@@ -26,7 +26,7 @@ export default class Sports extends React.Component {
 
     constructor(...args) {
         super(...args);
-        this.state = { betSlip : { tips: [], sellingPrice : 0, expanded : false }, warningAlreadyInBetSlip : false};
+        this.state = { betSlip : { tips: [], sellingPrice : 0, comment: "", expanded : false }, warningAlreadyInBetSlip : false};
     }
 
     /*
@@ -177,8 +177,20 @@ export default class Sports extends React.Component {
         this.setState({ warningAlreadyInBetSlip : false })
     }
 
+    setBetSlipComment(comment){
+        let { betSlip } = this.state
+        betSlip.comment = comment
+        this.setState({ betSlip })
+    }
+
     shareTip(){
-        console.log(this.state.betSlip)
+        const betSlip = {...this.state.betSlip}
+        const shareTipRequest = () => this.props.dispatch(shareTip(betSlip))
+        this.resetBetSlip(shareTipRequest)
+    }
+
+    resetBetSlip(callback){
+        this.setState( { betSlip : { tips: [], sellingPrice : 0, comment: "", expanded : false } }, callback )
     }
 
     /***** </ Bet Slip> *****/
@@ -496,7 +508,7 @@ export default class Sports extends React.Component {
 
 	            <div class="col-lg-4 hidden-md hidden-sm hidden-xs right-bar-container">
 
-	            	<BetSlip {...this.state.betSlip} updateSellingPrice={this.updateSellingPrice.bind(this)} removeTip={this.removeTip.bind(this)} shareTip={this.shareTip.bind(this)}/>
+	            	<BetSlip {...this.state.betSlip} updateSellingPrice={this.updateSellingPrice.bind(this)} removeTip={this.removeTip.bind(this)} shareTip={this.shareTip.bind(this)} setBetSlipComment={this.setBetSlipComment.bind(this)}/>
 
 	                <TipsOnThisEvent />
 

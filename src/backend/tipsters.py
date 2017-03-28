@@ -8,13 +8,12 @@ tipsters.py -- tipsters server-side Python App Engine API;
 
 import endpoints
 from google.appengine.api import taskqueue
-from google.appengine.ext import ndb
 from protorpc import message_types
 from protorpc import messages
 from protorpc import remote
 
 
-from models import SportMessage, SportParams, UserForm, UserCreationForm, TrendsMessage, UserAuthForm, PostForm, PostMessage, FeedMessage, User, PostCommentMessage
+from models import SportMessage, SportParams, UserForm, UserCreationForm, TrendsMessage, UserAuthForm, PostForm, PostMessage, FeedMessage, PostCommentMessage
 from settings import WEB_CLIENT_ID
 from sports.sportsRetriever import get
 import PostManager
@@ -122,10 +121,11 @@ class TipstersApi(remote.Service):
     
     @endpoints.method(PostForm, Hello, path = "users/posts", http_method='Post', name = "addPost")
     def add_post(self, request):        
-        user_key = ndb.Key(User, "Aimar Bernardo") # must change to get user from token        
-        PostManager.storePost(user_key, request)
+        #user_key = ndb.Key(User, "Aimar Bernardo") # must change to get user from token 
+        user = SessionManager.get_current_user()       
+        post_key = PostManager.storePost(user, request)
         
-        return Hello(greeting="post successfully created")        
+        return Hello(greeting=post_key.urlsafe())        
     
     @endpoints.method(message_types.VoidMessage, FeedMessage, path = "users/posts", http_method='Get', name = "getFeed")
     def get_feed(self, request):

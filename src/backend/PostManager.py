@@ -8,7 +8,7 @@ from sports.sportsRetriever import getBetKey
 
 def getFeed(user):
     return FeedMessage(posts = map(lambda post: toPostMessage(user, post), _getPosts(user)) )
-    
+
 def _getPosts(user):
     return Post.query(Post.author.IN(user.followingKeys)).order(-Post.date).fetch()
 
