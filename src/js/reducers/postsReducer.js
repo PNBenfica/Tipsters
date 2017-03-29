@@ -12,6 +12,21 @@ export default function reducer(state={
         case "FETCH_POSTS_REJECTED": {
             return {...state, fetching: false, error: action.payload.err}
         }
+        case "FETCH_POST_PENDING": {
+            return {...state, fetching: true}
+        }
+        case "FETCH_POST_REJECTED": {
+            return {...state, fetching: false, error: action.payload.err}
+        }
+        case "FETCH_POST_FULFILLED": {
+            console.log(action)
+            return {
+                ...state,
+                fetching: false,
+                fetched: true,
+                posts: [action.payload]
+            }
+        }
         case "FETCH_POSTS_FULFILLED": {
 
             return {

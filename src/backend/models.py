@@ -73,6 +73,9 @@ class PostCommentMessage(messages.Message):
 class FeedMessage(messages.Message):
     posts = messages.MessageField('PostMessage',1,repeated=True)
     
+class GetPostsRequest(messages.Message):
+    post_id = messages.StringField(1)
+    username = messages.StringField(2)
 
 class User(ndb.Model):
     email = ndb.StringProperty()
