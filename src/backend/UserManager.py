@@ -3,7 +3,6 @@ from Crypto.Hash import SHA256
 from google.appengine.ext import ndb
 from models import User, UserForm, UserMiniForm, Post, TrendsMessage, TrendUserMessage
 from datetime import datetime
-from PostManager import toPostMessage
 from Utils import random_list_element 
 
 def register_user(name, email, pwd):    
@@ -32,9 +31,8 @@ def getUserProfile(username):
     user = getUser(username)
     followers = map(_toUserMiniForm ,_getFollowers(user))
     following = map(_toUserMiniForm ,_getFollowing(user))
-    posts = map(lambda post: toPostMessage(user, post), _getPosts(user))
 
-    return UserForm(name=username, email=user.email, avatar=user.avatar, followers=followers, following=following, posts=posts)
+    return UserForm(name=username, email=user.email, avatar=user.avatar, followers=followers, following=following)
 
 
 # user is an user object
@@ -83,9 +81,6 @@ def _getFollowers(user):
 def _getFollowing(user):
     followingKeys = [ndb.Key(User, followingName) for followingName in user.followingKeys]
     return ndb.get_multi(followingKeys)
-
-def _getPosts(user):
-    return Post.query(ancestor=user.key)
 
 def _toUserMiniForm(user):
     return UserMiniForm(name=user.key.id(), avatar=user.avatar)

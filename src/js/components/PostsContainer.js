@@ -1,7 +1,8 @@
 import React from "react"
 import { connect } from "react-redux"
 
-import { addComment, fetchPost, fetchPosts, likePost } from "../actions/postsActions"
+import { addComment, fetchPost, fetchPosts, fetchUserPosts, likePost } from "../actions/postsActions"
+import {  } from "../actions/userActions"
 
 import LoadingGif from "./LoadingGif"
 import PostBuy from "../components/post/postBuy/PostBuy"
@@ -22,17 +23,18 @@ export default class PostsContainer extends React.Component {
     }
 
     componentWillReceiveProps(nextProps){
-        const {user, postId} = this.props
-        if ((nextProps.user != user) || (nextProps.postId != postId)) {
+        const {username, postId} = this.props
+        if ((nextProps.username != username) || (nextProps.postId != postId)) {
             this.fetchPosts(nextProps)
         }
     }
 
     fetchPosts(filters){
-        const {user, postId} = filters
-        filters = { user, postId }
+        const {username, postId} = filters
         if (typeof postId !== 'undefined')
             this.props.dispatch(fetchPost(postId))
+        else if(typeof username !== 'undefined')
+            this.props.dispatch(fetchUserPosts(username))
         else
             this.props.dispatch(fetchPosts())
     }

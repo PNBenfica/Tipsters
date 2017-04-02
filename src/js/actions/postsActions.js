@@ -246,6 +246,23 @@ function fetchPost_default(){
         }
 }
 
+
+
+export function fetchUserPosts(username) {
+
+	return function(dispatch) {
+
+        callAPI({
+            type: "FETCH_POSTS",
+        	request: () => gapi.client.tipsters.getUserPosts({ username }),
+            dispatch,
+        	default: fetchPost_default()
+        })
+
+	}
+}
+
+
 export function addComment(post_id, comment) {
 
 	return function(dispatch) {

@@ -30,6 +30,10 @@ USER_GET_REQUEST = endpoints.ResourceContainer(
     username=messages.StringField(1),
 )
 
+GET_USER_POSTS_REQUEST = endpoints.ResourceContainer(
+    username=messages.StringField(1),
+)
+
 POST_GET_REQUEST = endpoints.ResourceContainer(
     post_id=messages.StringField(1),
 )
@@ -131,6 +135,12 @@ class TipstersApi(remote.Service):
     def get_feed(self, request):
         user = SessionManager.get_current_user()
         return PostManager.getFeed(user)
+    
+    @endpoints.method(GET_USER_POSTS_REQUEST, FeedMessage, path = "users/{username}/posts", http_method='Get', name = "getUserPosts")
+    def get_user_posts(self, request):
+        user = SessionManager.get_current_user()
+        print(request.username)
+        return PostManager.getUserPosts(user, request.username)
     
     @endpoints.method(POST_GET_REQUEST, PostMessage, path = "users/posts/{post_id}", http_method='Get', name = "getPost")
     def get_post(self, request):

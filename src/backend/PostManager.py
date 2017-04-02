@@ -7,10 +7,23 @@ from sports.sportsRetriever import getBetKey
 
 
 def getFeed(user):
-    return FeedMessage(posts = map(lambda post: toPostMessage(user, post), _getPosts(user)) )
+    posts = _getFeedPosts(user)
+    return toPostsMessage(user, posts)
 
-def _getPosts(user):
+def _getFeedPosts(user):
     return Post.query(Post.author.IN(user.followingKeys)).order(-Post.date).fetch()
+
+# get the posts of a given user
+def getUserPosts(requiringUserName, fetchedUserName):
+    posts = _getUserPosts(ndb.Key(User, fetchedUserName).get())
+    return toPostsMessage(requiringUserName, posts)
+
+def _getUserPosts(user):
+    return Post.query(ancestor=user.key)
+
+def toPostsMessage(user, posts):
+    posts = map(lambda post: toPostMessage(user, post), posts)
+    return FeedMessage(posts = posts)
 
 def storePost(user, request):  
         

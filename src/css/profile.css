@@ -295,6 +295,10 @@
 }
 
 
+#profile-container .loading-gif{
+	margin-top: 80px;
+}
+
 
 
 @media screen and (min-width: 768px) {

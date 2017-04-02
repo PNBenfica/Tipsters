@@ -4,12 +4,11 @@ export default class UserListItem extends React.Component {
 
     render() {
         
-        const {name, img} = this.props;
+        const {name, avatar} = this.props;
 
-                // <p class="caption">{name.substring(0,15)}</p>
         return (
-        	<a class="square" href="#/profile">
-        		<img src={img}/>
+        	<a class="square" href={ "#/profile/" + name }>
+        		<img src={avatar}/>
         		<div class="gradient"/>
                 <p class="caption">{name}</p>
         	</a>

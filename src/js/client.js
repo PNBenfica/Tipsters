@@ -21,7 +21,7 @@ ReactDOM.render(
 		<Router onUpdate={() => window.scrollTo(0, 0)} history={hashHistory}>
 			<Route path="/" component={Layout}>
 				<IndexRoute component={Feed}></IndexRoute>
-				<Route path="profile" name="profile" component={Profile}></Route>
+				<Route path="profile(/:username)" name="profile" component={Profile}></Route>
 				<Route path="posts/:postId" name="post" component={Feed}></Route>
 				<Route path="rankings" name="rankings" component={Rankings}></Route>
 				<Route path="sports(/:sport/:sportCode(/:league/:leagueCode(/:match/:matchCode)))" name="sports" component={Sports}></Route>

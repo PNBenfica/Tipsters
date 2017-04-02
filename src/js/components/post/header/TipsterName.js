@@ -7,7 +7,7 @@ export default class TipsterName extends React.Component {
         const { name } = this.props
 
         return (        
-            <a href="#/profile" class="tipster-name">{name}</a>
+            <a href={"#/profile/" + name} class="tipster-name">{name}</a>
         )
     }
 }

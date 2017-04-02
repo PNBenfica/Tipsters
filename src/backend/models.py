@@ -96,8 +96,7 @@ class UserForm(messages.Message):
     email = messages.StringField(2)
     followers = messages.MessageField('UserMiniForm',3,repeated=True)
     following = messages.MessageField('UserMiniForm',4,repeated=True)
-    posts = messages.MessageField('PostMessage',5,repeated=True)
-    avatar = messages.StringField(6)
+    avatar = messages.StringField(5)
     
     
 class UserMiniForm(messages.Message):

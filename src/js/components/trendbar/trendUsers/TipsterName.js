@@ -9,7 +9,7 @@ export default class TipsterName extends React.Component {
 
     return (
         <div class="tipster-info">
-            <p class="tipster-name"><a href="#/profile">{name}</a></p>
+            <p class="tipster-name"><a href={"#/profile/" + name}>{name}</a></p>
             <p class="tipster-description">{description}</p>
         </div>
     )
