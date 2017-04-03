@@ -44,3 +44,7 @@ class TennisMatchValidator(MatchValidator):
         else:
             finalResult[1] += 1
         return finalResult
+    
+    def Outright_Winner_validator(self, choices, results):
+        return self.Random_validator(choices)
+        

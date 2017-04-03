@@ -19,12 +19,21 @@ class Event():
         return EventMessage(name=self.name, id=self.id, matches=map(lambda match: match.toMessage(), self.matches))
     
 class Match():
-    def __init__(self, name, matchId, start_date, status, bets = []):
-        self.name = name
-        self.id = matchId
-        self.start_date = start_date
-        self.status = status
+    def __init__(self, matchModel, bets = []):
+        self.name = matchModel.name
+        self.id = matchModel.id
+        self.start_date = matchModel.start_date
+        self.status = matchModel.status
         self.bets = bets
+        self.matchModel = matchModel
+    
+    def set_status_archived(self):
+        self.status = MatchStatus.ARCHIVED
+        self.matchModel.status = MatchStatus.ARCHIVED
+        self.put()
+    
+    def put(self):
+        self.matchModel.put()
         
     def toMessage(self):
         return MatchMessage(name = self.name, id = self.id, start_date = self.start_date, status = self.status, bets=map(lambda bet: bet.toMessage(), self.bets))

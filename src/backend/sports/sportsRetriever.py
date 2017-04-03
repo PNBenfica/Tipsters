@@ -30,7 +30,7 @@ def getLeague(sportId, eventId):
     eventKey, event = fetchEntity(EventModel, eventId, sportKey)
     
     matches = MatchModel.query(ancestor=eventKey).order(MatchModel.start_date)
-    matches = map(lambda match: Match(match.name, match.id, match.start_date, match.status, getMainBets(sportId, match.id, eventKey)), matches)
+    matches = map(lambda match: Match(match, getMainBets(sportId, match.id, eventKey)), matches)
     
     return createEvent(sport, event, matches)
 
@@ -45,6 +45,14 @@ def getMatch(sportId, eventId, matchId):
 
     bets = getMatchBets(matchKey)
     return createMatch(sport, event, match, bets)
+
+def getMatchModel(sportId, eventId, matchId):
+    matchKey = getMatchKey(sportId, eventId, matchId)
+    match = matchKey.get()
+    return Match(match)
+
+def getMatchKey(sportId, eventId, matchId):
+    return getKeyByAncestors([SportModel, sportId], [EventModel, eventId], [MatchModel, matchId])
 
 # @return only the bet with id 'betId'
 def getBet(sportId, eventId, matchId, betId):
@@ -86,5 +94,5 @@ def createEvent(sport, event, matches = None):
     return createSport(sport, [event])
 
 def createMatch(sport, event, match, bets):
-    match = Match(match.name, match.id, match.start_date, match.status, bets)
+    match = Match(match, bets)
     return createEvent(sport, event, [match])

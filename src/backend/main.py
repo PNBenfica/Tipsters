@@ -18,7 +18,6 @@ class PopulateDatastore(webapp2.RequestHandler):
         
 class PopulateOdds(webapp2.RequestHandler):
     def post(self):
-        print "not populating odds"
         populate_odds()
         
 app = webapp2.WSGIApplication([

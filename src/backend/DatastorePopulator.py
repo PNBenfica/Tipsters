@@ -5,7 +5,7 @@ from UserManager import getUser
 from sports.XMLOddsParser import parseXMLOdds
 from models import TipForm, PostForm
 from random import randint
-from Utils import random_list_element 
+from Utils import random_list_element
 
 users = ["Aimar Bernardo", "Calado Diamantino", "Ederson Florentino", "Gamarra Hooijdonk", "Isaltino Jovic", "Kostas Lazar", "Mitroglou Nuno", "Otavio Preudhomme", "Renato Sanches", "Tamara Umbigo", "Xandao Zahovic"]
 odds = parseXMLOdds()

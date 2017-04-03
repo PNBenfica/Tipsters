@@ -139,7 +139,6 @@ class TipstersApi(remote.Service):
     @endpoints.method(GET_USER_POSTS_REQUEST, FeedMessage, path = "users/{username}/posts", http_method='Get', name = "getUserPosts")
     def get_user_posts(self, request):
         user = SessionManager.get_current_user()
-        print(request.username)
         return PostManager.getUserPosts(user, request.username)
     
     @endpoints.method(POST_GET_REQUEST, PostMessage, path = "users/posts/{post_id}", http_method='Get', name = "getPost")

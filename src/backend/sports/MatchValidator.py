@@ -9,6 +9,7 @@
 from sportsRetriever import getMatch
 from betValidator import updateBet
 from ..domain import ChoiceStatus
+from ..Utils import random_list_element
 import importlib
 
 def getMatchValidator(sportId, leagueId, matchId):
@@ -29,10 +30,14 @@ class MatchValidator(object):
         bets = self.getMatchBets()
         for bet in bets:
             choicesStatus = self.determineChoicesStatus(bet, results)
-            updateBet(self.sportId, self.eventId, self.matchId, bet.id, choicesStatus)    
+            updateBet(self.sportId, self.eventId, self.matchId, bet.id, choicesStatus)
+        self._getMatch().set_status_archived() 
+    
+    def _getMatch(self):
+        return getMatch(self.sportId, self.eventId, self.matchId).events[0].matches[0]
     
     def getMatchBets(self):
-        match = getMatch(self.sportId, self.eventId, self.matchId).events[0].matches[0]
+        match = self._getMatch()
         return match.bets    
     
     # @param bet - will be assign a status to each choice of this bet
@@ -116,6 +121,14 @@ class MatchValidator(object):
     
     def getOverUnderValue(self, choice):
         return float(choice["name"].rsplit(None, 1)[-1])
+    
+    
+    def Random_validator(self, choices):
+        return self.filterWinningChoices(choices, [self.random_choice(choices)], "name")
+    
+    def random_choice(self, choices):
+        choices_names = map(lambda choice: choice["name"], choices)
+        return random_list_element(choices_names)
     
     # @return a list of the winning choices (filters the initial list based on the choices[attr])
     # @param attr - "name" or "id"
