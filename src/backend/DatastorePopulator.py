@@ -11,9 +11,9 @@ users = ["Aimar Bernardo", "Calado Diamantino", "Ederson Florentino", "Gamarra H
 odds = parseXMLOdds()
 
 def populate_datastore():
-    #register_users()
-    #add_profile_pictures()
-    #follow_users()
+    register_users()
+    add_profile_pictures()
+    follow_users()
     add_posts()
 
 

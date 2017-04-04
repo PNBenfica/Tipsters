@@ -6,9 +6,7 @@ export default class TipEvent extends React.Component {
 
     render() {
 
-        const { event, eventURL } = this.props
-
-        const [ homeTeam, awayTeam ] = event.split(' - ')
+        const { homeTeam, awayTeam, eventURL } = this.props
 
         return (
             <a href={eventURL} class="event">
