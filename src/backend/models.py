@@ -27,6 +27,7 @@ class Post(ndb.Model):
     date = ndb.StringProperty()
     tips = ndb.KeyProperty(repeated=True, kind=TipModel)
     totalOdd = ndb.FloatProperty()
+    status = ndb.StringProperty()
     
 class PostComment(ndb.Model):
     author = ndb.StringProperty()
@@ -179,3 +180,20 @@ class ChoiceMessage(messages.Message):
     id = messages.StringField(2)
     odd = messages.StringField(3)
     status = messages.StringField(4)
+
+
+class RankingsMessage(messages.Message):
+    users = messages.MessageField('UserRankingProfileMessage',1,repeated=True)
+
+class UserRankingProfileMessage(messages.Message):
+    tipster = messages.MessageField('UserMiniForm',1)
+    stats = messages.MessageField('UserStatsMessage',2)
+    
+class UserStatsMessage(messages.Message):
+    nTips = messages.IntegerField(1)
+    nFollowers = messages.IntegerField(2)
+    streak = messages.IntegerField(3)
+    ROI = messages.FloatField(4)
+    winPercentage = messages.FloatField(5)
+    avgWinOdds = messages.FloatField(6)
+    

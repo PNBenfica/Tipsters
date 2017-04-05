@@ -12,7 +12,6 @@ def populate_odds():
     for sport in sports:
         if sport["name"] in ["Football", "Tennis", "Basketball"]:
             insertSport(sport)
-    simulate_results()
     
 # @desc inserts a sport entity in the datastore and all its events
 def insertSport(sport):
@@ -70,7 +69,7 @@ def createBet(bet, match, matchKey):
 
 
 
-def simulate_results():
+def simulate_sports_results():
     sports = parseXMLOdds()
     simulators = { "Football": simulate_football_results, "Tennis": simulate_tennis_results, "Basketball": simulate_basket_results }
     for sport in sports:

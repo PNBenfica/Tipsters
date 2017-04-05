@@ -6,6 +6,7 @@ from sports.XMLOddsParser import parseXMLOdds
 from models import TipForm, PostForm
 from random import randint
 from Utils import random_list_element
+from sports.sportsPopulator import simulate_sports_results
 
 users = ["Aimar Bernardo", "Calado Diamantino", "Ederson Florentino", "Gamarra Hooijdonk", "Isaltino Jovic", "Kostas Lazar", "Mitroglou Nuno", "Otavio Preudhomme", "Renato Sanches", "Tamara Umbigo", "Xandao Zahovic"]
 odds = parseXMLOdds()
@@ -15,6 +16,7 @@ def populate_datastore():
     add_profile_pictures()
     follow_users()
     add_posts()
+    simulate_sports_results()
 
 
 def register_users():

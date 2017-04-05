@@ -19,7 +19,10 @@ def getUserPosts(requiringUserName, fetchedUserName):
     return toPostsMessage(requiringUserName, posts)
 
 def _getUserPosts(user):
-    return Post.query(ancestor=user.key)
+    return Post.query(ancestor=user.key).order(-Post.date)
+
+def _get_user_number_posts(user):
+    return Post.query(ancestor=user.key).count()
 
 def toPostsMessage(user, posts):
     posts = map(lambda post: toPostMessage(user, post), posts)
