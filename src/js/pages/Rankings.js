@@ -1,9 +1,20 @@
 import React from "react"
+import { connect } from "react-redux"
 
+import { fetchRankings } from "../actions/rankingsActions"
+
+import LoadingGif from "./../components/LoadingGif"
 import Pagination from "./../components/rankings/Pagination"
 import FiltersContainer from "./../components/rankings/FiltersContainer"
 import Table from "./../components/rankings/Table"
 
+@connect((store) => {
+    return {
+        users: store.rankings.users,
+        fetched: store.rankings.fetched,
+        fetching: store.rankings.fetching,
+    }
+})
 export default class Rankings extends React.Component {
 
 	constructor(args){
@@ -14,29 +25,34 @@ export default class Rankings extends React.Component {
 			filters: [{name:"Since", active: "Ever", values:["Last Week","Last Month","Ever"]},
 					  {name:"Odds over", active: "All", values:[1.1,1.2,1.3,"All"]},
 					  {name:"Sports", active: "All", values:["Football","Basketball","Tennis", "All"]}],
-			sortBy: "ROI",
-			data : [
-				{tipster: {name: "Rui Silva", img: "img/joaoalmeida.jpg"}, rank: 1, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
-				{tipster: {name: "Britta Buckmaster", img: "img/pauloteixeira.jpg"}, rank: 2, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
-				{tipster: {name: "Alberta Borrero", img: "img/joaoalmeida.jpg"}, rank: 3, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
-				{tipster: {name: "So Granados", img: "img/pauloteixeira.jpg"}, rank: 4, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
-				{tipster: {name: "Rossana Allensworth", img: "img/joaoalmeida.jpg"}, rank: 5, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
-				{tipster: {name: "Ilse Betton", img: "img/pauloteixeira.jpg"}, rank: 6, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
-				{tipster: {name: "Patrick Hirata", img: "img/joaoalmeida.jpg"}, rank: 7, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
-				{tipster: {name: "Lewis Sampson", img: "img/joaoalmeida.jpg"}, rank: 8, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
-				{tipster: {name: "Len Shin", img: "img/pauloteixeira.jpg"}, rank: 9, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
-				{tipster: {name: "Brad Whitmire", img: "img/joaoalmeida.jpg"}, rank: 10, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
-				{tipster: {name: "Charla Roane", img: "img/pauloteixeira.jpg"}, rank: 11, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
-				{tipster: {name: "Cristina Lollar", img: "img/pauloteixeira.jpg"}, rank: 12, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
-				{tipster: {name: "Jeane Bethel", img: "img/joaoalmeida.jpg"}, rank: 13, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
-				{tipster: {name: "Franklin Meidinger", img: "img/pauloteixeira.jpg"}, rank: 14, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5},
-				{tipster: {name: "Micheal Nix", img: "img/joaoalmeida.jpg"}, rank: 15, roi: 5.24, winpercentage: 20 , avgWinOdds: 1.36, tips: 30 , followers: 6, streak: 5}]
+			sortBy: "ROI"
 		}
 	}
 
+    componentWillMount() {
+        this.fetchRankings()
+    }
+
+
+    fetchRankings(){
+        this.props.dispatch(fetchRankings())
+    }
+
+    componentWillReceiveProps(nextProps){
+    	const { users } = nextProps
+    	if (users){
+			users.forEach((user,i) => {
+				user.rank = i + 1
+				user.stats.ROI = user.stats.ROI.toFixed(2)
+				user.stats.avgWinOdds = user.stats.avgWinOdds.toFixed(2)
+				user.stats.winPercentage = user.stats.winPercentage.toFixed(2)
+			})
+		}
+    }
+
 	nextPage(){
 		const startAt = this.state.startAt + 10
-		if (startAt < this.state.data.length)
+		if (startAt < this.props.users.length)
 			this.setState({ startAt })
 	}
 
@@ -80,10 +96,16 @@ export default class Rankings extends React.Component {
 
 	render() {
 
+		const { fetching, fetched, users } = this.props
+		console.log(this.props)
+
+        if (fetching || !fetched) {
+        	return this.renderLoadingGif()
+        }
+
 		const nVisibleRows = 10
 
-		let data = this.state.data
-		data = this.filterData(data)
+		let data = this.filterData(users)
 		data = data.slice(this.state.startAt, this.state.startAt + nVisibleRows)
 
 		return (
@@ -97,5 +119,9 @@ export default class Rankings extends React.Component {
 
 			</div>
 		)
+	}
+
+	renderLoadingGif(){
+		return <div id="rankings"><LoadingGif /></div>
 	}
 }

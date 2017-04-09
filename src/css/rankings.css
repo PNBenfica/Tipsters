@@ -183,6 +183,10 @@
 	text-align: center;
 }
 
+#rankings .loading-gif {
+	margin-top: 75px;
+}
+
 
 @media(min-width:768px) {
 	#rankings{

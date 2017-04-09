@@ -4,15 +4,17 @@ export default class TableRow extends React.Component {
 
     render() {
 
-        const { rank, tipster, roi, winpercentage, avgWinOdds, tips, followers, streak } = this.props
+        const { stats, tipster, rank } = this.props
+        const { ROI, winPercentage, avgWinOdds, nTips, nFollowers, streak } = stats
+                 
         return (
             <tr>
-                <th scope="row"><p>{rank}.</p> <img src={tipster.img} class="img-thumbnail img-circle"/><a href="#/profile">{tipster.name}</a></th>
-                <td>{roi}%</td>
-                <td>{winpercentage}%</td>
+                <th scope="row"><p>{rank}.</p> <img src={tipster.avatar} class="img-thumbnail img-circle"/><a href="#/profile">{tipster.name}</a></th>
+                <td>{ROI}%</td>
+                <td>{winPercentage}%</td>
                 <td>{avgWinOdds}</td>
-                <td>{tips}</td>
-                <td>{followers}</td>
+                <td>{nTips}</td>
+                <td>{nFollowers}</td>
                 <td>{streak}</td>
             </tr>
         )

@@ -113,6 +113,7 @@ def _random_description():
 def getRankings():
     users = _getAllUsers()
     users_ranking_profiles = map(_get_user_ranking_profile, users)
+    users_ranking_profiles = filter(lambda user: user.stats.nTips > 0, users_ranking_profiles)
     users_ranking_profiles_messages = map(_to_ranking_profile_message, users_ranking_profiles)
     return RankingsMessage(users = users_ranking_profiles_messages)
 

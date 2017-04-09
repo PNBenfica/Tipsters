@@ -8,13 +8,13 @@ import TrendBar from "../components/trendbar/TrendBar"
 export default class Feed extends React.Component {
 
 	render() {
+					// <StatusUpdate />
 
 	    return (
 			<div id="feed-page">
 
 				<div class="col-md-8 feed-page-left">
 
-					<StatusUpdate />
 
 					<PostsContainer {...this.props.params}/>
 				
