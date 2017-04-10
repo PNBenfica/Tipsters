@@ -42,12 +42,12 @@ export default class FiltersContainer extends React.Component {
         const { addFilter, applyFilters, addSearchFilter, filters } = this.props
         const { open } = this.state
         
+                // <this.WrappedFilters filters={filters} addFilter={addFilter} applyFilters={this.applyFilters.bind(this)} />
+                
         return (
             <div class="rankings-nav-filters">
                 
                 <this.WrappedSearchBar addSearchFilter={addSearchFilter} />
-                
-                <this.WrappedFilters filters={filters} addFilter={addFilter} applyFilters={this.applyFilters.bind(this)} />
                     
             </div>
         )

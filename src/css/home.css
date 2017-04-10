@@ -1,0 +1,50 @@
+#home,
+#home .col-xs-12 {
+	padding: 0;
+}
+
+#home section {
+	margin-top: 15px; 
+	margin-bottom: 15px; 
+}
+
+#home section > header{
+	border-top: 1px solid rgb(221,221,221); 
+}
+
+#home section > header > h1{
+	display: inline-block;
+
+
+	margin: -1px 0 0 0;
+	border-top: 1px solid white; 
+    
+    padding: 0 25px 18px 25px;
+	font-size: 26px;
+	font-weight: 300;
+	text-transform: uppercase;
+}
+
+
+.slick-arrow{
+}
+
+.slick-next{
+	right: 0px;
+}
+.slick-prev{
+	left: 0px;
+	transform: rotate(180deg);
+}
+
+.edge-button-path {
+    stroke: black;
+    fill: none;
+    width: 17px;
+    height: 32px;
+    stroke: #242424;
+    stroke-width: 2;
+    margin-top: 9px;
+    margin-bottom: 9px;
+}
+

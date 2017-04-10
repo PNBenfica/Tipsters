@@ -7,6 +7,7 @@ import gapiLoader from './scripts/gapiLoader'
 
 import Feed from "./pages/Feed"
 import Layout from "./pages/Layout"
+import Home from "./pages/Home"
 import Profile from "./pages/Profile"
 import Rankings from "./pages/Rankings"
 import Sports from "./pages/Sports"
@@ -20,7 +21,8 @@ ReactDOM.render(
 	<Provider store={store}>
 		<Router onUpdate={() => window.scrollTo(0, 0)} history={hashHistory}>
 			<Route path="/" component={Layout}>
-				<IndexRoute component={Feed}></IndexRoute>
+				<IndexRoute component={Home}></IndexRoute>
+				<Route path="feed" name="feed" component={Feed}></Route>
 				<Route path="profile(/:username)" name="profile" component={Profile}></Route>
 				<Route path="posts/:postId" name="post" component={Feed}></Route>
 				<Route path="rankings" name="rankings" component={Rankings}></Route>

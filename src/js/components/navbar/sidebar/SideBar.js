@@ -6,7 +6,7 @@ import Bar from "./Bar"
 export default class SideBar extends React.Component {
 
     getOptions(pathname){
-        return [ {name: "News Feed", logo: "img/navbar/news_feed.png", href:"", active :  pathname === "/" },
+        return [ {name: "News Feed", logo: "img/navbar/news_feed.png", href:"feed", active : pathname.match(/^\/feed/) },
                  {name: "Share a tip", logo: "img/navbar/share_a_tip.png", href:"sports/Football/1", active : pathname.match(/^\/sports/), 
                     submenus: [ {name: "Football", logo: "img/navbar/football.png", href:"sports/Football/1", active : pathname.match(/^\/sports\/Football\/1/)},
                                 {name: "Basketball", logo: "img/navbar/basketball.png", href:"sports/Basketball/4", active : pathname.match(/^\/sports\/Basketball\/4/)},
