@@ -6,10 +6,10 @@ export default class Section extends React.Component {
 
     render() {
 
-    	const { title } = this.props
+    	const { id, title } = this.props
 
         return (
-            <section class="col-xs-12">
+            <section id={id} class="col-xs-12">
 
             	<SectionHeader title={title} />
 

@@ -25,26 +25,206 @@
 	text-transform: uppercase;
 }
 
+#home section a.slide-panel picture{
+	min-height: 0px;
+	height: 0px;
+    padding-top: 56.25%;
+    overflow: hidden;
+}
+
+#home section a.slide-panel picture img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    -webkit-filter: saturate(0%) brightness(70%) contrast(100%);
+    filter: saturate(0%) brightness(70%) contrast(100%);
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+
+#home section a.slide-panel:hover picture img {
+    transform: scale(1.2) translate3d(0,0,0);
+}
+
+#home section a.slide-panel:hover .red-layer {
+    top: 0;
+}
+#home section a.slide-panel:hover .black-layer {
+    opacity: 0;
+}
+
+#home section a.slide-panel .black-layer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #000;
+    opacity: 0.35;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+}
+
+#home section a.slide-panel .red-layer {
+    position: absolute;
+    top: 100%;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(195, 0, 0, 0.6);
+    -webkit-transition: top .5s ease-in-out;
+    -moz-transition: top .5s ease-in-out;
+    transition: top .5s ease-in-out;
+}
+
+#home section a.slide-panel .league-name {
+    position: absolute;
+    width: 100%;
+    padding: 0 2% 0 5%;
+    top: 32%;
+}
+
+#home section a.slide-panel .league-name h2 {
+	color: white;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 24px;
+}
+
+
+#home section a.slide-panel:after{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    background-color: white;
+    top: 0px;
+    right: 0px;
+    z-index: 5;
+}
+
+
+#home section#live-streams a.slide-panel .video-icon{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding-top: 56.25%;
+}
+
+#home section#live-streams a.slide-panel .video-icon svg{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    fill: rgba(255,255,255,0);
+    width: 100%;
+    height: 100%;
+    padding: 10%;
+    -webkit-transition: fill .5s ease-in-out;
+    -moz-transition: fill .5s ease-in-out;
+    transition: fill .5s ease-in-out;
+}
+
+#home section#live-streams a.slide-panel:hover .video-icon svg{
+    fill: rgba(255,255,255,0.2);
+    animation-name: scale-up-down;
+    animation-duration: .3s;
+}
+
+@keyframes scale-up-down {
+    0%   {transform: scale(1);}
+    50%  {transform: scale(1.2);}
+    100% {transform: scale(1);}
+}
+
+#home section#live-streams a.slide-panel picture img {
+    -webkit-filter: none;
+    filter: none;
+    transform: none;
+}
+
+#home section#live-streams a.slide-panel picture {
+    -webkit-filter: saturate(80%) brightness(60%) contrast(100%);
+    filter: saturate(80%) brightness(60%) contrast(100%);
+}
+
+
+#home section#live-streams a.slide-panel .description{
+    padding: 5px 5%;
+    border: solid 2px rgba(0,0,0,0.1);
+    border-top: none;
+    border-left-width: 1px;
+}
+
+#home section#live-streams a.slide-panel .description p {
+	color: #c30000;
+	margin: 0;
+}
+
+#home section#live-streams a.slide-panel .description h3 {
+	text-transform: uppercase;
+	font-weight: 300;
+	margin: 0;
+	font-size: 20px;
+}
+
+
+#home section#live-streams .start-live-stream-panel{
+    height: 0px;
+    padding-top: 56.25%;
+}
+
+#home section#live-streams .start-live-stream-panel .inner-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+.slick-arrow:before{
+	content: none;
+}
 
 .slick-arrow{
+    display: flex !important;
+    align-items: center;
+    z-index: 1;
+    height: 100%;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+
+}
+
+.slick-disabled{
+	opacity: 0;
 }
 
 .slick-next{
-	right: 0px;
+	right: 10px;
 }
 .slick-prev{
-	left: 0px;
+	left: 10px;
+	top: 0px;
 	transform: rotate(180deg);
 }
 
 .edge-button-path {
-    stroke: black;
     fill: none;
     width: 17px;
     height: 32px;
-    stroke: #242424;
+    stroke: white;
     stroke-width: 2;
-    margin-top: 9px;
-    margin-bottom: 9px;
 }
 

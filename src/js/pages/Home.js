@@ -1,6 +1,7 @@
 import React from "react"
 
 import NewsFeedSection from "../components/home/newsfeed/NewsFeedSection"
+import LiveStreamsSection from "../components/home/livestreams/LiveStreamsSection"
 import SectionsContainer from "../components/home/SectionsContainer"
 import ShareATipSection from "../components/home/shareatip/ShareATipSection"
 
@@ -14,6 +15,8 @@ export default class Feed extends React.Component {
 				<SectionsContainer>
 
 					<ShareATipSection />
+
+					<LiveStreamsSection />
 
 					<NewsFeedSection />
 
