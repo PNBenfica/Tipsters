@@ -11,7 +11,7 @@ export default class LiveStreamPanel extends React.Component {
         return (
             <SlidePanel url={url} img={tipster.avatar}>
             
-                <div class="video-icon"><svg><use xlinkHref="img/icons.svg#icon-video" /></svg></div>
+                <div class="hover-icon"><svg><use xlinkHref="img/icons.svg#icon-video" /></svg></div>
 
                 <div class="description col-xs-12">
 

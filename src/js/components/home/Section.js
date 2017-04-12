@@ -1,15 +1,17 @@
 import React from "react"
 
+import classNames from "classnames"
+
 import SectionHeader from "./SectionHeader"
 
 export default class Section extends React.Component {
 
     render() {
 
-    	const { id, title } = this.props
+    	const { id, title, classes } = this.props
 
         return (
-            <section id={id} class="col-xs-12">
+            <section id={id} class={classNames(classes, "col-xs-12")} >
 
             	<SectionHeader title={title} />
 

@@ -8,7 +8,7 @@ export default class NewsFeedSection extends React.Component {
     render() {
 
         return (
-            <Section title="News feed">
+            <Section title="News feed" id="news-feed">
 
                 <Posts />
             	

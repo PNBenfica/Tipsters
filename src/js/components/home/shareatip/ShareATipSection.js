@@ -1,6 +1,5 @@
 import React from "react"
 
-import EmptySlide from "../EmptySlide"
 import Section from "../Section"
 import Slider from "../Slider"
 import LeaguePanel from "./LeaguePanel"
@@ -8,39 +7,6 @@ import LeaguePanel from "./LeaguePanel"
 export default class ShareATipSection extends React.Component {
 
     render() {
-
-        var responsive = [
-            {
-                breakpoint: 992,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3
-                }
-            },
-            {
-                breakpoint: 425,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            }];
-        const settings = {
-            slidesToShow: 5,
-            slidesToScroll: 5,
-            infinite: false,
-            speed: 1000,
-            adaptiveHeight: false,
-            mobileFirst: true,
-            outerEdgeLimit: true,
-            responsive: responsive
-        }
 
         let leagues = [
             {name:"Premier League", url:"#", img:"img/home/ibra.jpg"},

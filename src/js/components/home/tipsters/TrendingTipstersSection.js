@@ -2,10 +2,9 @@ import React from "react"
 
 import Section from "../Section"
 import Slider from "../Slider"
-import LiveStreamPanel from "./LiveStreamPanel"
-import MakeLiveStreamPanel from "./MakeLiveStreamPanel"
+import TrendTipsterPanel from "./TrendTipsterPanel"
 
-export default class LiveStreamsSection extends React.Component {
+export default class TrendingTipstersSection extends React.Component {
 
     render() {
 
@@ -20,13 +19,13 @@ export default class LiveStreamsSection extends React.Component {
             { tipster:{name: "João Almeida", avatar:"img/user8.jpg"}, date:"Há 27 minutos", url:"#" },
         ]
 
-        liveStreams = liveStreams.map((liveStream,i) => <div key={i}><LiveStreamPanel {...liveStream} /></div>)
+        liveStreams = liveStreams.map((liveStream,i) => <div key={i}><TrendTipsterPanel {...liveStream} /></div>)
 
         return (
-            <Section title="Live streams" id="live-streams" classes="card-slide">
+            <Section title="Trending Tipsters" id="trend-users" classes="card-slide">
 
                 <Slider>
-                    <div key={1000}><MakeLiveStreamPanel/></div>
+                    <div key={1000}/>
                     { liveStreams }
                 </Slider>
 

@@ -10,7 +10,7 @@ export default class TipsData extends React.Component {
         const { tipster, tips, comment, totalOdd } = this.props
 
         return (
-            <div class="tip tip-data">
+            <div class="tip tip-data col-xs-12">
 
                 <TotalOdd odd={totalOdd} />
 

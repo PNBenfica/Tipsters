@@ -38,11 +38,11 @@ export default class GenericPost extends React.Component {
 }
 
     componentDidMount() {
-        window.addEventListener("scroll", this.handleScroll)
+        // window.addEventListener("scroll", this.handleScroll)
     }
 
     componentWillUnmount() {
-        window.removeEventListener("scroll", this.handleScroll)
+        // window.removeEventListener("scroll", this.handleScroll)
     }
 
     render() {
@@ -60,7 +60,7 @@ export default class GenericPost extends React.Component {
 
                     <div class="feed-post-left-wrapper">
 
-                        <img src={tipster.avatar} class="img-thumbnail img-circle" />
+                        <img src={tipster.avatar} class="img-thumbnail" />
 
                     </div>
 
@@ -68,11 +68,15 @@ export default class GenericPost extends React.Component {
 
                         <Header id={websafeKey} tipster={tipster} date={date} />
 
-                        {this.props.children}
+                        <div class="col-xs-12 wrapper">
 
-                        <Footer liked={liked} likes={nLikes} likePost={likePost} comments={nComments} toggleCommentBox={toggleCommentBox} />
+                            {this.props.children}
 
-                        <CommentBox in={commentBoxOpen} comments={comments} addComment={addComment}/>
+                            <Footer liked={liked} likes={nLikes} likePost={likePost} comments={nComments} toggleCommentBox={toggleCommentBox} />
+
+                            <CommentBox in={commentBoxOpen} comments={comments} addComment={addComment}/>
+
+                        </div>
 
                     </div>
 

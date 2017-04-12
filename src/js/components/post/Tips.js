@@ -10,7 +10,7 @@ export default class Tips extends React.Component {
         .map(({...tip}, i) => <Tip key={i} {...tip}/>)
 
     return (
-            <div>                
+            <div class="col-xs-12">                
                 {Tips}             
             </div>
         )

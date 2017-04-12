@@ -108,7 +108,7 @@
 }
 
 
-#home section#live-streams a.slide-panel .video-icon{
+#home section a.slide-panel .hover-icon{
     position: absolute;
     left: 0;
     top: 0;
@@ -116,7 +116,18 @@
     padding-top: 56.25%;
 }
 
-#home section#live-streams a.slide-panel .video-icon svg{
+#home section#trend-users a.slide-panel .hover-icon{
+    opacity: 0;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+}
+
+#home section#trend-users a.slide-panel:hover .hover-icon{
+    opacity: 1;
+}
+
+#home section a.slide-panel .hover-icon svg{
     position: absolute;
     top: 0px;
     left: 0px;
@@ -129,10 +140,15 @@
     transition: fill .5s ease-in-out;
 }
 
-#home section#live-streams a.slide-panel:hover .video-icon svg{
-    fill: rgba(255,255,255,0.2);
+#home section a.slide-panel:hover .hover-icon svg{
     animation-name: scale-up-down;
     animation-duration: .3s;
+}
+#home section#live-streams a.slide-panel:hover .hover-icon svg{
+    fill: rgba(255,255,255,0.2);
+}
+#home section#trend-users a.slide-panel:hover .hover-icon svg{
+    fill: rgba(255,255,255,0.8);
 }
 
 @keyframes scale-up-down {
@@ -141,31 +157,32 @@
     100% {transform: scale(1);}
 }
 
-#home section#live-streams a.slide-panel picture img {
+#home section.card-slide a.slide-panel picture img {
     -webkit-filter: none;
     filter: none;
     transform: none;
 }
 
-#home section#live-streams a.slide-panel picture {
+#home section.card-slide a.slide-panel picture {
     -webkit-filter: saturate(80%) brightness(60%) contrast(100%);
     filter: saturate(80%) brightness(60%) contrast(100%);
 }
 
 
-#home section#live-streams a.slide-panel .description{
+#home section.card-slide a.slide-panel .description{
     padding: 5px 5%;
-    border: solid 2px rgba(0,0,0,0.1);
+    border: solid 1px rgba(0,0,0,0.1);
     border-top: none;
-    border-left-width: 1px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
 }
 
-#home section#live-streams a.slide-panel .description p {
+#home section.card-slide a.slide-panel .description p {
 	color: #c30000;
 	margin: 0;
 }
 
-#home section#live-streams a.slide-panel .description h3 {
+#home section.card-slide a.slide-panel .description h3 {
 	text-transform: uppercase;
 	font-weight: 300;
 	margin: 0;
@@ -173,12 +190,12 @@
 }
 
 
-#home section#live-streams .start-live-stream-panel{
+#home section .buttons-slide{
     height: 0px;
     padding-top: 56.25%;
 }
 
-#home section#live-streams .start-live-stream-panel .inner-item{
+#home section .buttons-slide .inner-item{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -188,7 +205,6 @@
     width: 100%;
     height: 100%;
 }
-
 
 
 
@@ -228,3 +244,15 @@
     stroke-width: 2;
 }
 
+
+
+
+@media screen and (min-width: 1200px) {
+
+	#home section#news-feed .posts-container{
+
+		padding: 0 4%;
+
+	}
+
+}

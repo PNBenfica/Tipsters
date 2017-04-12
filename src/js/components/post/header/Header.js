@@ -12,9 +12,13 @@ export default class Header extends React.Component {
         return (        
             <header>
 
-                <TipsterName name={tipster.name} />
-                
-                <PostDate id={id} date={date}/>
+            	<div class="inner-item">
+
+	                <TipsterName name={tipster.name} />
+	                
+	                <PostDate id={id} date={date}/>
+
+                </div>
 
             </header>
         )
