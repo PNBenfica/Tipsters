@@ -13,12 +13,13 @@ from protorpc import messages
 from protorpc import remote
 
 
-from models import NotificationsMessage, NotificationMessage, UserMiniForm, RankingsMessage, SportMessage, SportParams, UserForm, UserCreationForm, TrendsMessage, UserAuthForm, PostForm, PostMessage, FeedMessage, PostCommentMessage
+from models import NotificationsMessage, RankingsMessage, SportMessage, SportParams, UserForm, UserCreationForm, TrendsMessage, UserAuthForm, PostForm, PostMessage, FeedMessage, PostCommentMessage
 from settings import WEB_CLIENT_ID
 from sports.sportsRetriever import get
 import PostManager
 import SessionManager
 import UserManager
+import NotificationsManager
 from endpoints.api_exceptions import UnauthorizedException
 
 from DatastorePopulator import populate_datastore
@@ -172,8 +173,11 @@ class TipstersApi(remote.Service):
     
     @endpoints.method(message_types.VoidMessage, NotificationsMessage, path = "notifications", http_method='Get', name = "fetchNotifications")
     def fetchNotifications(self, request):
-        notifications = [NotificationMessage(id="12346", date="20/3", type="LIKE", tipster=UserMiniForm(name="Paulo",avatar="img/"), post_id="123465", content="likey likey", seen=False, new=True)]
-        return NotificationsMessage(notifications = notifications)
+        NotificationsManager.send_follow_notification("Aimar Bernardo", "Ederson Florentino")
+        NotificationsManager.send_like_notification("Aimar Bernardo", "Ederson Florentino", "123465789")
+        NotificationsManager.send_comment_notification("Aimar Bernardo", "Ederson Florentino", "123465789")
+        user = SessionManager.get_current_user()
+        return NotificationsManager.get_notifications_message(user)
     
 # registers API
 api = endpoints.api_server([TipstersApi]) 

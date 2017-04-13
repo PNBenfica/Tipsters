@@ -20,6 +20,12 @@ indexes:
   properties:
   - name: start_date
 
+- kind: NotificationModel
+  ancestor: yes
+  properties:
+  - name: date
+    direction: desc
+
 - kind: Post
   properties:
   - name: author

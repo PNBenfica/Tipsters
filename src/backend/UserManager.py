@@ -23,8 +23,11 @@ def _hashPassword(pwd):
 def checkPassword(user, pwd):
     return user.pwd ==  _hashPassword(pwd)   
 
+def _get_user_key(username):
+    return ndb.Key(User, username)
+    
 def getUser(username):
-    user = ndb.Key(User, username).get()
+    user = _get_user_key(username).get()
     if not user:
         raise endpoints.NotFoundException(username)
     else:
@@ -91,6 +94,9 @@ def _getFollowing(user):
 def _toUserMiniForm(user):
     return UserMiniForm(name=user.key.id(), avatar=user.avatar)
 
+def get_user_mini_form(username):
+    user = getUser(username)
+    return _toUserMiniForm(user)
 
 def getTrends(user):
     trendUsers = map(_toTrendUserMesssage, _getTrendUsers(user))    

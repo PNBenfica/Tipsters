@@ -214,3 +214,12 @@ class NotificationMessage(messages.Message):
     seen = messages.BooleanField(7)
     new = messages.BooleanField(8)
     
+class NotificationModel(ndb.Model):
+    id = ndb.StringProperty()
+    date =  ndb.StringProperty()
+    type =  ndb.StringProperty()
+    username = ndb.StringProperty()
+    post_id = ndb.StringProperty()
+    content = ndb.StringProperty()
+    seen = ndb.BooleanProperty()
+    new = ndb.BooleanProperty()

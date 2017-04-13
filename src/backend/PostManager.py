@@ -2,7 +2,7 @@ from google.appengine.ext import ndb
 from models import User, UserMiniForm, PostMessage, TipForm, TipModel, Post, PostComment, PostCommentMessage, FeedMessage
 from domain import Bet
 import gaeUtils
-from datetime import datetime
+from Utils import getCurrentDate
 from sports.sportsRetriever import getBetKey
 
 
@@ -44,10 +44,7 @@ def storePost(user, request):
 def _calculate_total_odd(tips):
     tips_odds = map(_getTipOdd, tips)
     return reduce(lambda a,b: a * b, tips_odds, 1)
-    
-def getCurrentDate():
-    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-   
+       
 # store the tips in the datastore
 # @return - list of keys of the tip models
 def _storeTips(tips):
