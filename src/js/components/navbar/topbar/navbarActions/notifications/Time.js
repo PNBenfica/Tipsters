@@ -5,8 +5,8 @@ export default class Time extends React.Component {
 
     render() {
 
-        const { date, type } = this.props
-        const iconClasses = classNames('fa','fa-fw', type)
+        const { date, icon } = this.props
+        const iconClasses = classNames('fa','fa-fw', icon)
 
         return (
             <span class="pull-right time">

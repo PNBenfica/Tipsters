@@ -13,23 +13,8 @@ export default function reducer(state={
             return {...state, fetching: false, error: action.payload}
         }
         case "FETCH_NOTIFICATIONS_FULFILLED": {
-            let notifications = [...state.notifications]
-            if (notifications.length == 0)
-                notifications = [
-                    { id: 4, date : "15:11", type : "fa-comment", tipsterImage : "img/joaoalmeida.jpg", tipsterName : "John Smith", content : "e 3 outras pessoas comentaram a tua tip", seen:false, new: true},
-                    { id: 5, date : "13:53", type : "fa-user", tipsterImage : "img/pauloteixeira.jpg", tipsterName : "John Smith", content : "começou a seguir-te", seen:false, new: true},
-                    { id: 6, date : "13:53", type : "fa-user", tipsterImage : "img/pauloteixeira.jpg", tipsterName : "John Smith", content : "começou a seguir-te", seen:false, new: true},
-                    { id: 7, date : "13:53", type : "fa-user", tipsterImage : "img/pauloteixeira.jpg", tipsterName : "John Smith", content : "começou a seguir-te", seen:false, new: true},
-                    { id: 8, date : "13:53", type : "fa-user", tipsterImage : "img/pauloteixeira.jpg", tipsterName : "John Smith", content : "começou a seguir-te", seen:true, new:false},
-                    { id: 9, date : "13:53", type : "fa-user", tipsterImage : "img/pauloteixeira.jpg", tipsterName : "John Smith", content : "começou a seguir-te", seen:true, new:false},
-                    { id: 10, date : "13:53", type : "fa-user", tipsterImage : "img/pauloteixeira.jpg", tipsterName : "John Smith", content : "começou a seguir-te", seen:true, new:false},
-                    { id: 11, date : "13:53", type : "fa-user", tipsterImage : "img/pauloteixeira.jpg", tipsterName : "John Smith", content : "começou a seguir-te", seen:true, new:false},
-                    { id: 12, date : "13:53", type : "fa-user", tipsterImage : "img/pauloteixeira.jpg", tipsterName : "John Smith", content : "começou a seguir-te", seen:false, new:false},
-                    { id: 13, date : "13:53", type : "fa-user", tipsterImage : "img/pauloteixeira.jpg", tipsterName : "John Smith", content : "começou a seguir-te", seen:true, new:false},
-                    { id: 14, date : "13:53", type : "fa-user", tipsterImage : "img/pauloteixeira.jpg", tipsterName : "John Smith", content : "começou a seguir-te", seen:false, new:false},
-                    { id: 15, date : "13:53", type : "fa-user", tipsterImage : "img/pauloteixeira.jpg", tipsterName : "John Smith", content : "começou a seguir-te", seen:true, new:false},
-                    { id: 16, date : "13:53", type : "fa-user", tipsterImage : "img/pauloteixeira.jpg", tipsterName : "John Smith", content : "começou a seguir-te", seen:true, new:false},
-                    { id: 17, date : "15:11", type : "fa-thumbs-up", tipsterImage : "img/pauloteixeira.jpg", tipsterName : "John Smith", content : "gostou da tua tip", seen:true, new:false}]
+            let { notifications } = action.payload
+
             return {
                 ...state,
                 fetching: false,
