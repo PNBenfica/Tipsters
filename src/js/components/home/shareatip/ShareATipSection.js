@@ -17,6 +17,8 @@ export default class ShareATipSection extends React.Component {
             {name:"Ligue 1", url:"#/sports/Football/1/French Ligue 1/4", img:"img/home/bernardo_silva.jpg"},
             {name:"Champions League", url:"#/sports/Football/1/Champions League/8", img:"img/home/champions_league.jpg"},
             {name:"Europa League", url:"#/sports/Football/1/Europa League/3453", img:"img/home/europa_league.jpg"},
+            {name:"NBA", url:"#/sports/Basketball/4/NBA/13", img:"img/home/nba.jpg"},
+            {name:"Australian Open", url:"#/sports/Tennis/2/Australian Open M./22", img:"img/home/federer.jpg"},
         ]
 
         leagues = leagues.map((league,i) => <div key={i}><LeaguePanel {...league} /></div>)
