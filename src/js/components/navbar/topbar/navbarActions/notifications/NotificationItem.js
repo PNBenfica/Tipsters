@@ -32,6 +32,7 @@ export default class NotificationItem extends React.Component {
 
         return (
             <a href={url}>
+            
                 <DropdownItem id={id} img={tipster.avatar} highlighted={!seen} markAsSeen={markAsSeen}>
                     
                     <div class="content notification-item">
@@ -43,7 +44,6 @@ export default class NotificationItem extends React.Component {
                         <Time date={date} icon={icon}/>
                         
                     </div>
-
 
                 </DropdownItem>
             </a>

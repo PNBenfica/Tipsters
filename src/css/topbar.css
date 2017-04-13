@@ -155,6 +155,10 @@
     }
 }
 
+.sidebar-right{
+    cursor: default;
+}
+
 .sidebar-right header {
     display: flex;
     padding: 10px;
@@ -171,6 +175,7 @@
 
 .sidebar-right header .new-message{
     margin-left: auto;
+    cursor: pointer;
 }
 
 
@@ -196,11 +201,22 @@
     -moz-transition: background 0.2s;
     transition: background 0.2s;
 }
+.sidebar-right ul li.empty:hover {
+    background-color: white;
+    cursor: default;
+}
 
 .sidebar-right ul li img {
     width: 39px;
     height: 39px;
 }
+
+.sidebar-right ul li.empty {
+    display: block;
+    text-align: center;
+    padding: 20px 0;
+}
+
 
 .sidebar-right ul li .content {
     padding: 0px 10px;
@@ -240,6 +256,7 @@
 .sidebar-right ul li:hover {
     background-color: #F6F6F7;
     color: #333;
+    cursor: pointer;
 }
 
 
