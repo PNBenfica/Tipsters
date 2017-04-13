@@ -14,7 +14,7 @@ export default class MessagesLink extends React.Component {
 
                 <Link icon="fa-envelope-o" badge="badge-red"  newItems={nNew}/>
 
-                <MessagesSidebar messages={messages} open={open} markAsSeen={markAsSeen} createNewMessage={createNewMessage}/>
+                <MessagesSidebar close={onClick} messages={messages} open={open} markAsSeen={markAsSeen} createNewMessage={createNewMessage}/>
 
             </div>
         )

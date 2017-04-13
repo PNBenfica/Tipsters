@@ -14,7 +14,7 @@ export default class NotificationsLink extends React.Component {
 
                 <Link icon="fa-bell-o" badge="badge-green" newItems={nNew}/>
 
-                <NotificationsSidebar open={open} notifications={notifications} markAsSeen={markAsSeen}/>
+                <NotificationsSidebar open={open} close={onClick} notifications={notifications} markAsSeen={markAsSeen}/>
                 
             </div>
         )

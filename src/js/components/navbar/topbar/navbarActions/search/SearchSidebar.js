@@ -8,10 +8,10 @@ export default class SearchDropdown extends React.Component {
 
     render() {
 
-        const { open } = this.props
+        const { open, close } = this.props
 
         return (
-            <SideBar open={open}>
+            <SideBar open={open} close={close}>
 
                 <SidebarHeader title={"Search"} icon={"fa-search"}/>
 

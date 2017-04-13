@@ -1,7 +1,15 @@
 import React from "react"
 import classNames from "classnames"
 
-export default class SideBar extends React.Component {
+import onClickOutside from 'react-onclickoutside'
+
+export default onClickOutside(class SideBar extends React.Component {
+
+    handleClickOutside(event){
+        const { open, close } = this.props
+        if (open)
+        	close()
+    }
 
     render() {
 
@@ -15,4 +23,4 @@ export default class SideBar extends React.Component {
         	</div>
         )
     }
-}
+})

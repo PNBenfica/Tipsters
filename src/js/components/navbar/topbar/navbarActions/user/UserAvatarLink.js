@@ -15,7 +15,7 @@ export default class UserAvatarLink extends React.Component {
 
                 <UserAvatar />
 
-                <UserSidebar open={open} />
+                <UserSidebar open={open} close={onClick} />
                 
             </div>
         )

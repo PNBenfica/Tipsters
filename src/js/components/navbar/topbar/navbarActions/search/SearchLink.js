@@ -15,7 +15,7 @@ export default class SearchLink extends React.Component {
 
 	            <i class="fa fa-fw fa-search"></i>
 
-                <SearchSidebar open={open} />
+                <SearchSidebar open={open} close={onClick} />
 
             </div>
         )

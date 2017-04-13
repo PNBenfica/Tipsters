@@ -15,7 +15,7 @@ export default class MessagesSidebar extends React.Component {
 
     render() {
 
-        let { messages, open, createNewMessage } = this.props
+        let { close, createNewMessage, messages, open, } = this.props
 
         if (messages.length > 0){
             messages = messages.map(this.renderMessageItem.bind(this))
@@ -25,7 +25,7 @@ export default class MessagesSidebar extends React.Component {
         }
 
         return (
-            <SideBar open={open}>
+            <SideBar open={open} close={close}>
 
                 <SidebarHeader createNewMessage={createNewMessage}/>
 

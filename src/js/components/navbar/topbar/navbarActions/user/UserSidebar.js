@@ -8,10 +8,10 @@ export default class UserDropdown extends React.Component {
 
     render() {
 
-        const { open } = this.props
+        const { open, close } = this.props
 
         return (
-            <SideBar open={open}>
+            <SideBar open={open} close={close}>
 
                 <ul>
                     <ListItem title="Profile" href="#/profile" icon="fa fa-user-o fa-fw" />
