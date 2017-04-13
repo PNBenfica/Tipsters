@@ -13,7 +13,7 @@ export default class TipEventTeam extends React.Component {
 
         return (
             <div class="team">
-                <img src={this.randomImage()}/>
+                <img src={img}/>
                 {name}
             </div>
         )

@@ -19,7 +19,8 @@ export default function reducer(state={
             return {...state, fetching: false, error: action.payload.err}
         }
         case "FETCH_POST_FULFILLED": {
-            console.log(action)
+            const post = action.payload
+            post.tips.forEach(tip => [tip.homeImg, tip.awayImg] = randomTeamImages() )
             return {
                 ...state,
                 fetching: false,
@@ -28,7 +29,8 @@ export default function reducer(state={
             }
         }
         case "FETCH_POSTS_FULFILLED": {
-
+            const { posts } = action.payload
+            posts.forEach(post => post.tips.forEach(tip => [tip.homeImg, tip.awayImg] = randomTeamImages() ))
             return {
                 ...state,
                 fetching: false,
@@ -70,4 +72,16 @@ export default function reducer(state={
     }
 
     return state
+}
+
+function randomTeamImages(){
+    let images = ["img/sports/arouca.png", "img/sports/arsenal.png", "img/sports/barcelona.png", "img/sports/belenenses.png", "img/sports/borussia.png", "img/sports/braga.png", "img/sports/chaves.png", "img/sports/feirense.png", "img/sports/liverpool.jpg", "img/sports/maritimo.png", "img/sports/moreirense.png", "img/sports/nacional.png", "img/sports/pferreira.png", "img/sports/porto.png", "img/sports/realmadrid.png"]
+    const homeImg = randomElement(images)
+    images.splice(images.indexOf(homeImg),1)
+    const awayImg = randomElement(images)
+    return [ homeImg, awayImg ]
+}
+
+function randomElement(array){
+    return array[Math.floor(Math.random()*array.length)];  
 }

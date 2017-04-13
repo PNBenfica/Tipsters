@@ -15,7 +15,7 @@ export default class Tip extends React.Component {
 
     render() {
 
-        const { betName, leagueName, leagueId, matchName, matchId, odd, sportName, sportId, status } = this.props
+        const { betName, leagueName, leagueId, matchName, matchId, odd, sportName, sportId, status, homeImg, awayImg } = this.props
         
         const eventURL = new EventURL({name: sportName, id: sportId}, {name: leagueName, id: leagueId}, {name: matchName, id: matchId})
         
@@ -27,7 +27,7 @@ export default class Tip extends React.Component {
 
                 <TipRow title="Bet" value={betName + ": " + choiceName}/>
 
-                <TipRow title="Event" value={<TipEvent homeTeam={homeTeam} awayTeam={awayTeam} eventURL={eventURL.renderPath()} />}/>
+                <TipRow title="Event" value={<TipEvent homeTeam={homeTeam} awayTeam={awayTeam} homeImg={homeImg} awayImg={awayImg} eventURL={eventURL.renderPath()} />}/>
 
                 <TipRow title="Odd" value={odd.toFixed(2)}/>
 
