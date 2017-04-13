@@ -13,7 +13,7 @@ from protorpc import messages
 from protorpc import remote
 
 
-from models import RankingsMessage, SportMessage, SportParams, UserForm, UserCreationForm, TrendsMessage, UserAuthForm, PostForm, PostMessage, FeedMessage, PostCommentMessage
+from models import NotificationsMessage, NotificationMessage, UserMiniForm, RankingsMessage, SportMessage, SportParams, UserForm, UserCreationForm, TrendsMessage, UserAuthForm, PostForm, PostMessage, FeedMessage, PostCommentMessage
 from settings import WEB_CLIENT_ID
 from sports.sportsRetriever import get
 import PostManager
@@ -169,6 +169,11 @@ class TipstersApi(remote.Service):
     @endpoints.method(message_types.VoidMessage, RankingsMessage, path = "rankings", http_method='Get', name = "fetchRankings")
     def fetchRankings(self, request):
         return UserManager.getRankings()
+    
+    @endpoints.method(message_types.VoidMessage, NotificationsMessage, path = "notifications", http_method='Get', name = "fetchNotifications")
+    def fetchNotifications(self, request):
+        notifications = [NotificationMessage(id="12346", date="20/3", type="LIKE", tipster=UserMiniForm(name="Paulo",avatar="img/"), post_id="123465", content="likey likey", seen=False, new=True)]
+        return NotificationsMessage(notifications = notifications)
     
 # registers API
 api = endpoints.api_server([TipstersApi]) 

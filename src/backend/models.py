@@ -196,4 +196,21 @@ class UserStatsMessage(messages.Message):
     ROI = messages.FloatField(4)
     winPercentage = messages.FloatField(5)
     avgWinOdds = messages.FloatField(6)
+
+
+
+
+
+class NotificationsMessage(messages.Message):
+    notifications = messages.MessageField('NotificationMessage',1, repeated=True)
+
+class NotificationMessage(messages.Message):
+    id = messages.StringField(1)
+    date =  messages.StringField(2)
+    type =  messages.StringField(3)
+    tipster = messages.MessageField('UserMiniForm',4)
+    post_id = messages.StringField(5)
+    content = messages.StringField(6)
+    seen = messages.BooleanField(7)
+    new = messages.BooleanField(8)
     

@@ -24,11 +24,33 @@ export default class NotificationItem extends React.Component {
 
     }
 
+    /*
+    * @return the icon of the notification based on its type
+    */
+    notificationURL(notificationType){
+
+        const { post_id, tipster } = this.props
+
+        let url = "#/"
+        if (notificationType === "FOLLOW"){
+            
+            url += "profile/" + tipster.name
+        
+        }
+        else{
+            url += "posts/" + post_id
+        }
+
+        return url
+
+    }
+
     render() {
 
 
-        const { id, date , content , type, tipster, url, seen, markAsSeen} = this.props
+        const { id, date , content , type, tipster, seen, markAsSeen} = this.props
         const icon = this.notificationIcon(type)
+        const url = this.notificationURL(type)
 
         return (
             <a href={url}>

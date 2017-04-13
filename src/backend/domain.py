@@ -78,3 +78,6 @@ def enum(**enums):
 PostStatus = enum(PENDENT="Pendent", WON="Won", LOST="Lost", VOID="Void")
 ChoiceStatus = enum(PENDENT="Pendent", WON="Won", LOST="Lost", VOID="Void")
 MatchStatus = enum(PRELIVE="Pre-live", LIVE="Live", ARCHIVED="Archived")
+
+
+NotificationType = enum(LIKE="LIKE", COMMENT="COMMENT", FOLLOW="FOLLOW")
