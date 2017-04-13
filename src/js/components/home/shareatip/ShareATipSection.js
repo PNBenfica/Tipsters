@@ -9,14 +9,14 @@ export default class ShareATipSection extends React.Component {
     render() {
 
         let leagues = [
-            {name:"Premier League", url:"#", img:"img/home/ibra.jpg"},
-            {name:"Bundesliga", url:"#", img:"img/home/deus_nato.jpg"},
-            {name:"La Liga", url:"#", img:"img/home/messi_neymar.jpg"},
-            {name:"Liga Nos", url:"#", img:"img/home/pizzi_cervi.jpg"},
-            {name:"Serie A", url:"#", img:"img/home/deus_joao.jpg"},
-            {name:"Ligue 1", url:"#", img:"img/home/bernardo_silva.jpg"},
-            {name:"Champions League", url:"#", img:"img/home/champions_league.jpg"},
-            {name:"Europa League", url:"#", img:"img/home/europa_league.jpg"},
+            {name:"Premier League", url:"#/sports/Football/1/Eng. Premier League/3", img:"img/home/ibra.jpg"},
+            {name:"Bundesliga", url:"#/sports/Football/1/German Bundesliga/5/", img:"img/home/deus_nato.jpg"},
+            {name:"La Liga", url:"#/sports/Football/1/Spanish Liga Primera/7", img:"img/home/messi_neymar.jpg"},
+            {name:"Liga Nos", url:"#/sports/Football/1/Portuguese Prim. Liga/32", img:"img/home/pizzi_cervi.jpg"},
+            {name:"Serie A", url:"#/sports/Football/1/Italian Serie A/6", img:"img/home/deus_joao.jpg"},
+            {name:"Ligue 1", url:"#/sports/Football/1/French Ligue 1/4", img:"img/home/bernardo_silva.jpg"},
+            {name:"Champions League", url:"#/sports/Football/1/Champions League/8", img:"img/home/champions_league.jpg"},
+            {name:"Europa League", url:"#/sports/Football/1/Europa League/3453", img:"img/home/europa_league.jpg"},
         ]
 
         leagues = leagues.map((league,i) => <div key={i}><LeaguePanel {...league} /></div>)
