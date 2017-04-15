@@ -30,6 +30,9 @@ handlers:       # static then dynamic
 
 - url: /tasks/populate_odds
   script: src.backend.main.app
+
+- url: /tasks/send_notification
+  script: src.backend.main.app
   
 - url: /client\.min\.js
   static_files: src/client.min.js

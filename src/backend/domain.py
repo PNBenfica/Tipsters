@@ -80,4 +80,4 @@ ChoiceStatus = enum(PENDENT="Pendent", WON="Won", LOST="Lost", VOID="Void")
 MatchStatus = enum(PRELIVE="Pre-live", LIVE="Live", ARCHIVED="Archived")
 
 
-NotificationType = enum(LIKE="LIKE", COMMENT="COMMENT", FOLLOW="FOLLOW")
+NotificationType = enum(LIKE="LIKE", DISLIKE="DISLIKE", COMMENT="COMMENT", FOLLOW="FOLLOW", UNFOLLOW="UNFOLLOW")

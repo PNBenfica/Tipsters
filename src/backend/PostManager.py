@@ -1,9 +1,10 @@
 from google.appengine.ext import ndb
 from models import User, UserMiniForm, PostMessage, TipForm, TipModel, Post, PostComment, PostCommentMessage, FeedMessage
-from domain import Bet
+from domain import Bet, NotificationType
 import gaeUtils
 from Utils import getCurrentDate
 from sports.sportsRetriever import getBetKey
+from google.appengine.api import taskqueue
 
 
 def getFeed(user):
@@ -109,6 +110,12 @@ def addCommentToPost(username, postUrlSafeKey, comment):
     
     post.nComments += 1
     post.put()
+    
+    send_comment_post_notification(post, postUrlSafeKey, username)
+
+def send_comment_post_notification(post, postUrlSafeKey, username):
+    params = { 'type' : NotificationType.COMMENT, 'source' : username, 'target' : post.author, 'post_id' : postUrlSafeKey }
+    taskqueue.add(url='/tasks/send_notification', params=params)
 
 def getPostComments(post):
     return PostComment.query(ancestor=post.key)
@@ -122,7 +129,8 @@ def likePost(user, postUrlSafeKey):
     post = _getPost(postUrlSafeKey)
     username = user.key.id()
     
-    if _userLikedPost(user, post):
+    disliking = _userLikedPost(user, post)
+    if disliking:
         post.nLikes -= 1
         post.likesUsersKeys.remove(username)
     else:
@@ -130,6 +138,17 @@ def likePost(user, postUrlSafeKey):
         post.likesUsersKeys.append(username)
         
     post.put()
+    
+    send_like_notification(post, postUrlSafeKey, username, not disliking)
+
+
+
+def send_like_notification(post, post_id, username, liking):
+    if liking:
+        params = { 'type' : NotificationType.LIKE, 'source' : username, 'target' : post.author, 'post_id' : post_id }
+    else:
+        params = { 'type' : NotificationType.DISLIKE, 'source' : username, 'target' : post.author, 'post_id' : post_id }
+    taskqueue.add(url='/tasks/send_notification', params=params)
 
 def _toPostCommentMessage(comment):
     tipster = getUserMiniProfile(comment.author)

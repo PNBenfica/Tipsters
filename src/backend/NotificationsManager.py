@@ -7,6 +7,19 @@ from Utils import getCurrentDate
 
 ###### PUSH NOTITIFICATIONS ######
 
+def push_notification(request):
+    notification_type = request.get('type')
+    user_source = request.get('source')
+    user_target = request.get('target')
+    post_id = request.get('post_id')
+    return {
+        NotificationType.FOLLOW : lambda: send_follow_notification(user_target, user_source),
+        NotificationType.UNFOLLOW : lambda: remove_follow_notification(user_target, user_source),
+        NotificationType.LIKE : lambda: send_like_notification(user_target, user_source, post_id),
+        NotificationType.DISLIKE : lambda: remove_like_notification(user_target, user_source, post_id),
+        NotificationType.COMMENT : lambda: send_comment_notification(user_target, user_source, post_id)
+    }[notification_type]()
+
 def send_like_notification(userTargetName, userSourceName, post_id):
     
     data = {'type': NotificationType.LIKE, 'post_id': post_id, 'content': "liked your post"}
@@ -20,7 +33,6 @@ def send_comment_notification(userTargetName, userSourceName, post_id):
 
 
 def send_follow_notification(userTargetName, followerName):
-    
     data = {'type': NotificationType.FOLLOW, 'content': "started following you"}
     _push_new_notification(userTargetName, followerName, data)
 
@@ -44,12 +56,26 @@ def _generate_notification_key(username):
     return notification_key
 
 
+def remove_like_notification(user_target, user_source, post_id):
+    query_filter = lambda query: query.filter( NotificationModel.post_id == post_id )
+    _remove_notification(NotificationType.LIKE, user_target, user_source, query_filter)
+    
+def remove_follow_notification(user_target, user_source):
+    _remove_notification(NotificationType.FOLLOW, user_target, user_source)
+    
+def _remove_notification(notification_type, user_target, user_source, query_filter = lambda x: x):
+    user_target_key = _get_user_key(user_target)
+    notification_query = NotificationModel.query(ancestor=user_target_key)\
+                        .filter(NotificationModel.type == notification_type)\
+                        .filter(NotificationModel.username == user_source)
+                        
+    notification = query_filter(notification_query).get()                   
+    notification.key.delete()
 
 ###### PULL NOTITIFICATIONS ######
 
 def get_notifications_message(user):
     notifications = _get_user_notifications(user)
-    print len(notifications)
     notifications_messages = map(_to_notification_message, notifications)
     return NotificationsMessage(notifications=notifications_messages)
 

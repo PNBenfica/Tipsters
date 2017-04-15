@@ -7,10 +7,10 @@ main.py -- Tipsters server-side Python App Engine
 """
 
 import webapp2
-from google.appengine.api import taskqueue
 
 from sports.sportsPopulator import populate_odds
 from DatastorePopulator import populate_datastore
+import NotificationsManager
 
 class PopulateDatastore(webapp2.RequestHandler):
     def post(self):
@@ -20,7 +20,12 @@ class PopulateOdds(webapp2.RequestHandler):
     def post(self):
         populate_odds()
         
+class SendNotification(webapp2.RequestHandler):
+    def post(self):
+        NotificationsManager.push_notification(self.request)
+        
 app = webapp2.WSGIApplication([
     ('/tasks/populate_datastore', PopulateDatastore),
     ('/tasks/populate_odds', PopulateOdds),
+    ('/tasks/send_notification', SendNotification),
 ], debug=True)

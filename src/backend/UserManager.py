@@ -1,5 +1,6 @@
 from __future__ import division
 import endpoints
+from google.appengine.api import taskqueue
 from Crypto.Hash import SHA256
 from google.appengine.ext import ndb
 from domain import Bet, PostStatus
@@ -7,6 +8,7 @@ from models import User, UserForm, UserMiniForm, TrendsMessage, TrendUserMessage
 from datetime import datetime
 from Utils import average, random_list_element
 import PostManager
+from domain import NotificationType
 
 def register_user(name, email, pwd):    
     if _userAlreadyExist(name):
@@ -45,7 +47,8 @@ def getUserProfile(username):
 def follow_user(user, userToFollowName):
     userToFollow = getUser(userToFollowName)
     
-    if userToFollowName in user.followingKeys:
+    is_following = _is_following(user, userToFollowName)
+    if is_following:
         user.followingKeys.remove(userToFollowName)
         userToFollow.followersKeys.remove(user.key.id())
     else:
@@ -54,17 +57,19 @@ def follow_user(user, userToFollowName):
     
     user.put()
     userToFollow.put()
-        
-# user is an user object
-def unfollow_user(user, userToUnfollowName):
-    userToUnfollow = getUser(userToUnfollowName)
     
-    if userToUnfollowName in user.followingKeys:
-        user.followingKeys.remove(userToUnfollowName)
-        userToUnfollow.followersKeys.remove(user.key.id())
-        
-        user.put()
-        userToUnfollow.put()
+    send_follow_notification(user.key.id(), userToFollowName, not is_following)
+    
+
+def _is_following(user, userToFollowName):
+    return userToFollowName in user.followingKeys
+
+def send_follow_notification(user_source, user_target, follow):
+    if follow:
+        params = { 'type' : NotificationType.FOLLOW, 'source' : user_source, 'target' : user_target }
+    else:
+        params = { 'type' : NotificationType.UNFOLLOW, 'source' : user_source, 'target' : user_target }
+    taskqueue.add(url='/tasks/send_notification', params=params)
 
 def _userAlreadyExist(username):
     return ndb.Key(User, username).get()
