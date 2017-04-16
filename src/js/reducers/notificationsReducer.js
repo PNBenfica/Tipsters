@@ -6,7 +6,7 @@ export default function reducer(state={
     }, action) {
 
     switch (action.type) {
-        case "FETCH_NOTIFICATIONS": {
+        case "FETCH_NOTIFICATIONS_PENDING": {
             return {...state, fetching: true}
         }
         case "FETCH_NOTIFICATIONS_REJECTED": {
@@ -22,7 +22,7 @@ export default function reducer(state={
                 notifications: notifications,
             }
         }
-        case "SET_NOTIFICATIONS_NOT_NEW": {
+        case "SET_NOTIFICATIONS_NOT_NEW_PENDING": {
             let notifications = [...state.notifications]
             notifications.forEach(ele => ele.new=false)
             return {
@@ -30,9 +30,10 @@ export default function reducer(state={
                 notifications: notifications,
             }
         }
-        case "MARK_AS_SEEN": {
+        case "MARK_AS_SEEN_PENDING": {
+            const notification_key = action.params.notification_key
             const notifications = [...state.notifications]
-            const notificationToUpdate = notifications.findIndex(notification => notification.id === action.payload)
+            const notificationToUpdate = notifications.findIndex(notification => notification.id === notification_key)
             notifications[notificationToUpdate] = Object.assign({}, notifications[notificationToUpdate], {"seen":true});
 
             return {

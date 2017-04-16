@@ -35,14 +35,30 @@ function fetchNotifications_default(){
 }
 
 export function setNotificationsNotNew() {
-    return {
-        type: 'SET_NOTIFICATIONS_NOT_NEW',
+
+    return function(dispatch) {
+
+        callAPI({
+            type: "SET_NOTIFICATIONS_NOT_NEW",
+            request: (() => gapi.client.tipsters.resetNewNotificationsCount()),
+            dispatch
+        })
+
     }
+
 }
 
-export function markAsSeen(notificationId) {
-    return {
-        type: 'MARK_AS_SEEN',
-        payload: notificationId,
+export function markAsSeen(notification_key) {
+
+    return function(dispatch) {
+
+        callAPI({
+            type: "MARK_AS_SEEN",
+            request: (() => gapi.client.tipsters.markNotificationAsSeen({ notification_key })),
+            dispatch, 
+            action: { notification_key }
+        })
+
     }
+
 }

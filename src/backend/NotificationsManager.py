@@ -85,6 +85,7 @@ def _get_user_notifications(user):
     return NotificationModel.query(ancestor=user.key).order(-NotificationModel.date).fetch()
 
 def _get_notification(user, notification_websafekey):
+    #notification = NotificationModel.query(ancestor=user.key).filter(NotificationModel.key == ndb.Key(urlsafe=notification_websafekey)).get()
     notification_key = ndb.Key(urlsafe=notification_websafekey)
     notification = notification_key.get()
     
@@ -109,13 +110,16 @@ def _to_notification_message(notification):
 
 ############
 
+@ndb.transactional()
 def reset_new_notifications(user):
     notifications = _get_user_notifications(user)
     for notification in notifications:
         notification.new = False
     ndb.put_multi(notifications)
-    
+
+@ndb.transactional()
 def mark_notification_as_seen(user, notification_key):
     notification = _get_notification(user, notification_key)
     notification.seen = True
     notification.put()
+    
