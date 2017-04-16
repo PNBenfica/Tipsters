@@ -26,3 +26,6 @@ def generateKey(model, parent_key):
     model_id = model.allocate_ids(size=1, parent=parent_key)[0]
     model_key = ndb.Key(model, model_id, parent=parent_key)
     return model_key
+
+def put_multi(entities):
+    ndb.put_multi(entities)

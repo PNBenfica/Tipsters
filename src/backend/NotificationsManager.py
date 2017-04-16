@@ -1,8 +1,10 @@
+from google.appengine.ext import ndb
 from domain import NotificationType
 from models import NotificationModel, NotificationMessage, NotificationsMessage
 from gaeUtils import generateKey
 from UserManager import _get_user_key, get_user_mini_form
 from Utils import getCurrentDate
+from endpoints.api_exceptions import ForbiddenException
 
 
 ###### PUSH NOTITIFICATIONS ######
@@ -82,6 +84,16 @@ def get_notifications_message(user):
 def _get_user_notifications(user):
     return NotificationModel.query(ancestor=user.key).order(-NotificationModel.date).fetch()
 
+def _get_notification(user, notification_websafekey):
+    notification_key = ndb.Key(urlsafe=notification_websafekey)
+    notification = notification_key.get()
+    
+    user_target = notification_key.parent().id()
+    if user_target == user.key.id():
+        return notification
+    else:
+        raise ForbiddenException('Not your notification mofo')
+
 def _to_notification_message(notification):
     print notification.type
     return NotificationMessage(
@@ -94,3 +106,16 @@ def _to_notification_message(notification):
                 post_id = notification.post_id,
                 tipster = get_user_mini_form(notification.username)
             )
+
+############
+
+def reset_new_notifications(user):
+    notifications = _get_user_notifications(user)
+    for notification in notifications:
+        notification.new = False
+    ndb.put_multi(notifications)
+    
+def mark_notification_as_seen(user, notification_key):
+    notification = _get_notification(user, notification_key)
+    notification.seen = True
+    notification.put()

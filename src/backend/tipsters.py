@@ -52,6 +52,9 @@ UPDATE_USER_PHOTO_REQUEST = endpoints.ResourceContainer(
     photo_bytes=messages.BytesField(1)
 )
 
+NOTIFICATION_SEEN_REQUEST = endpoints.ResourceContainer(
+    notification_key=messages.StringField(1),
+)
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 class Hello(messages.Message):
@@ -173,11 +176,21 @@ class TipstersApi(remote.Service):
     
     @endpoints.method(message_types.VoidMessage, NotificationsMessage, path = "notifications", http_method='Get', name = "fetchNotifications")
     def fetchNotifications(self, request):
-        NotificationsManager.send_follow_notification("Aimar Bernardo", "Ederson Florentino")
-        NotificationsManager.send_like_notification("Aimar Bernardo", "Ederson Florentino", "123465789")
-        NotificationsManager.send_comment_notification("Aimar Bernardo", "Ederson Florentino", "123465789")
         user = SessionManager.get_current_user()
         return NotificationsManager.get_notifications_message(user)
+    
+    #endpoint called when notification icon clicked (ex: 3 new notifications -> 0 new notifications)
+    @endpoints.method(message_types.VoidMessage, Hello, path = "notifications/notnew", http_method='Post', name = "resetNewNotificationsCount")
+    def reset_new_notifications_count(self, request):
+        user = SessionManager.get_current_user()
+        NotificationsManager.reset_new_notifications(user)
+        return Hello(greeting="notifications count reseted")
+    
+    @endpoints.method(NOTIFICATION_SEEN_REQUEST, Hello, path = "notifications/mark_as_seen", http_method='Post', name = "markNotificationAsSeen")
+    def mark_notification_as_seen(self, request):
+        user = SessionManager.get_current_user()
+        NotificationsManager.mark_notification_as_seen(user, request.notification_key)
+        return Hello(greeting="notification marked as seen")
     
 # registers API
 api = endpoints.api_server([TipstersApi]) 
