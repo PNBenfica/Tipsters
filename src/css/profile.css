@@ -18,13 +18,25 @@
     height: 250px;
 	margin-top: -29px;
 	margin-bottom: 30px;
-    background: #fff url(../img/profile-top.jpg) top center no-repeat;
+    /*background: #fff url(../img/profile-top.jpg) top center no-repeat;*/
     /* background-size: 151%; */
-    background-attachment: fixed;
+    /*background-attachment: fixed;*/
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.background{
+	position: absolute;
+	top:0;
+	left:0;
+	height: 100%;
+	width: 100%;
+    background: #fff url(http://www.planwallpaper.com/static/images/wallpaper-photos-61.jpg) center center no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    filter: brightness(60%);
 }
 
 
@@ -312,19 +324,19 @@
 
 @media screen and (min-width: 992px) {
 	#profile-container{
-		padding: 0px 5%;
+		padding: 0px;
 	}
 
 	#profile-container .left-profile-container{
 		border-right: solid 1px rgb(221,221,221);
 		width: 40%;
 		padding-right: 3%;
-		padding-left: 0;
+		padding-left: 3%;
 	}
 	#profile-container .right-profile-container{
 		width: 60%;
 		padding-left: 3%;
-		padding-right: 0;
+		padding-right: 3%;
 	}
 
 

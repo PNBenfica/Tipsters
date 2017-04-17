@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { fetchTables, shareTip } from "../actions/sportsActions";
 
+import LeaguePanel from "../components/home/shareatip/LeaguePanel";
 import BetSlip from "../components/sports/betslip/BetSlip";
 import Breadcrumb from "../components/sports/Breadcrumb";
 import EventURL from "../components/sports/EventURL";
@@ -272,9 +273,10 @@ export default class Sports extends React.Component {
         * @return sports tables
      */
     renderSport(sport, eventURL){
-        if (sport.name == "Football")
-            return this.renderFootball(sport, eventURL)
-        return this.renderGenericTable("Leagues", sport.events, eventURL)
+        return [
+                this.renderMainLeagues(sport.name),
+                <div key={2} class="sports-page-tables">{this.renderGenericTable("All Leagues", sport.events, eventURL)}</div>
+                ]
     }
 
 
@@ -291,9 +293,35 @@ export default class Sports extends React.Component {
         const mainLeagues = {name:"Main Leagues", events: sport.events.filter(event => mainLeaguesNames.includes(event.name))}
         const uefaLeagues = {name:"Uefa", events: sport.events.filter(event => uefaLeaguesNames.includes(event.name))}
         const allLeagues = {name:"All Leagues", events: sport.events}
-        return <div class="football-table">{[mainLeagues, uefaLeagues, allLeagues].
+        return <div class="sports-page-tables">{[mainLeagues, uefaLeagues, allLeagues].
                                                 filter(category => category.events.length > 0).
                                                 map(({name, events}, i) => this.renderGenericTable(name, events, eventURL, i))}</div>
+    }
+
+
+    renderMainLeagues(sportName){
+
+        let mainLeagues = this.getMainLeagues(sportName)
+
+        return (
+            <div  key={1} class="main-leagues col-xs-12">
+                {mainLeagues.map((league,i) => this.renderMainLeague(league,i))}
+            </div>
+        )
+    }
+
+    getMainLeagues(sportName){
+        let mainLeagues = {
+            "Football": [{name:"Premier League", url:"#/sports/Football/1/Eng. Premier League/3", img:"img/home/ibra.jpg"},{name:"Bundesliga", url:"#/sports/Football/1/German Bundesliga/5/", img:"img/home/deus_nato.jpg"},{name:"La Liga", url:"#/sports/Football/1/Spanish Liga Primera/7", img:"img/home/messi_neymar.jpg"},{name:"Liga Nos", url:"#/sports/Football/1/Portuguese Prim. Liga/32", img:"img/home/pizzi_cervi.jpg"},{name:"Serie A", url:"#/sports/Football/1/Italian Serie A/6", img:"img/home/deus_joao.jpg"},{name:"Ligue 1", url:"#/sports/Football/1/French Ligue 1/4", img:"img/home/bernardo_silva.jpg"},{name:"Champions League", url:"#/sports/Football/1/Champions League/8", img:"img/home/champions_league.jpg"},{name:"Europa League", url:"#/sports/Football/1/Europa League/3453", img:"img/home/europa_league.jpg"}],
+            "Basketball": [{name:"NBA", url:"#/sports/Basketball/4/NBA/13", img:"img/home/nba.jpg"},],
+            "Tennis": [{name:"Australian Open", url:"#/sports/Tennis/2/Australian Open M./22", img:"img/home/federer.jpg"}]
+        }
+
+        return mainLeagues[sportName]
+    }
+
+    renderMainLeague(league, i){
+        return <div key={i} class="col-xs-4"><LeaguePanel {...league}/></div>
     }
 
     /* 
@@ -476,7 +504,7 @@ export default class Sports extends React.Component {
     }
 
     renderLoadingGif(){
-        return ( <LoadingGif />)
+        return ( <div class="col-xs-12"><LoadingGif /></div>)
     }
 
   	render() {
@@ -499,9 +527,9 @@ export default class Sports extends React.Component {
 
                 <Breadcrumb sport={sport} sportCode={sportCode} league={league} leagueCode={leagueCode} match={match} matchCode={matchCode}/>                   
 
-	            <div class="col-lg-8 sports-tables-container">
+                <div class="col-lg-8 sports-tables-container">
 
-	                {Tables}
+                    {Tables}
 
 	            </div>
 

@@ -10,6 +10,8 @@ export default class MainAvatar extends React.Component {
 
         return (
             <div class="main-avatar">
+
+                <div class="background"/>
             
                 <div class="content">
 

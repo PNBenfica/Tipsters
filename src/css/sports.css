@@ -77,7 +77,7 @@
 	padding-bottom: 5px;
 	padding-top: 5px;
 	font-size: 13px;
-	font-weight: 600;
+	font-weight: 400;
 
 }
 
@@ -436,7 +436,24 @@ Tips on this game
 
 
 
-#sports-page .sports-tables-container .football-table .panel {
+#sports-page .sports-tables-container .main-leagues > * > *,
+#sports-page .sports-tables-container .main-leagues {
+	padding: 0px;
+}
+#sports-page .sports-tables-container .main-leagues > * {
+	padding: 1px;
+}
+
+#sports-page .sports-tables-container .main-leagues {
+	margin-bottom: 30px;
+}
+
+
+#sports-page .sports-tables-container .sports-page-tables {
+	float: left;
+}
+
+#sports-page .sports-tables-container .sports-page-tables .panel {
 	border: none;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
@@ -444,33 +461,46 @@ Tips on this game
 }
 
 
-#sports-page .sports-tables-container .football-table .panel-heading {
-	border: solid 1px rgb(221,221,221);
+#sports-page .sports-tables-container .sports-page-tables .panel-heading {
+    border-top: solid 1px rgb(221,221,221);
+    border-bottom: none;
+    padding: 0px;
+    background-color: white;
 }
 
-#sports-page .sports-tables-container .football-table a{
+#sports-page .sports-tables-container .sports-page-tables a{
 	display: flex;
 	align-items: center;
 	font-size: 14px;
 }
 
-#sports-page .sports-tables-container .football-table a:before,
-#sports-page .sports-tables-container .football-table a:after {
+#sports-page .sports-tables-container .sports-page-tables .panel-heading .panel-title{
+    padding: 0px 25px 25px 0;
+    display: inline-block;
+    font-weight: 300;
+    font-size: 26px;
+    border-top: 1px solid white;
+    margin-top: -1px;
+}
+
+
+#sports-page .sports-tables-container .sports-page-tables a:before,
+#sports-page .sports-tables-container .sports-page-tables a:after {
 	content: none;
 }
 
-#sports-page .sports-tables-container .football-table a{
+#sports-page .sports-tables-container .sports-page-tables a{
 	height: 40px;
 }
-#sports-page .sports-tables-container .football-table a .flag-icon{
+#sports-page .sports-tables-container .sports-page-tables a .flag-icon{
 	font-size: 20px;
 }
 
-#sports-page .sports-tables-container .football-table .panel:first-child a{
-	height: 60px;
+#sports-page .sports-tables-container .sports-page-tables .panel:first-child a{
+	/*height: 60px;*/
 }
-#sports-page .sports-tables-container .football-table .panel:first-child a .flag-icon{
-	font-size: 30px;
+#sports-page .sports-tables-container .sports-page-tables .panel:first-child a .flag-icon{
+	/*font-size: 30px;*/
 }
 
 
@@ -480,7 +510,7 @@ Tips on this game
 	}
 }
 
-#sports-page .sports-tables-container .football-table .panel .panel-body{
+#sports-page .sports-tables-container .sports-page-tables .panel .panel-body{
   	opacity: 0;
 	animation-name: footbal-table-animation;
 	animation-duration: 0.75s;

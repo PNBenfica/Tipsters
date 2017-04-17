@@ -1,6 +1,7 @@
 #home,
 #home .col-xs-12 {
-	padding: 0;
+    padding-left: 0;
+	padding-right: 0;
 }
 
 #home section {
@@ -25,39 +26,39 @@
 	text-transform: uppercase;
 }
 
-#home section a.slide-panel picture{
+.slide-panel picture{
 	min-height: 0px;
 	height: 0px;
     padding-top: 56.25%;
     overflow: hidden;
 }
 
-#home section a.slide-panel picture img {
+.slide-panel picture img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     right: 0;
     bottom: 0;
-    -webkit-filter: saturate(0%) brightness(70%) contrast(100%);
-    filter: saturate(0%) brightness(70%) contrast(100%);
+    -webkit-filter: saturate(100%) brightness(60%) contrast(100%);
+    filter: saturate(100%) brightness(60%) contrast(100%);
     -webkit-transition: all .5s ease-in-out;
     -moz-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
 }
 
-#home section a.slide-panel:hover picture img {
+.slide-panel:hover picture img {
     transform: scale(1.2) translate3d(0,0,0);
 }
 
-#home section a.slide-panel:hover .red-layer {
+.slide-panel:hover .red-layer {
     top: 0;
 }
-#home section a.slide-panel:hover .black-layer {
+.slide-panel:hover .black-layer {
     opacity: 0;
 }
 
-#home section a.slide-panel .black-layer {
+.slide-panel .black-layer {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -69,7 +70,7 @@
     transition: opacity .5s ease-in-out;
 }
 
-#home section a.slide-panel .red-layer {
+.slide-panel .red-layer {
     position: absolute;
     top: 100%;
     bottom: 0;
@@ -80,14 +81,14 @@
     transition: top .5s ease-in-out;
 }
 
-#home section a.slide-panel .league-name {
+.slide-panel .league-name {
     position: absolute;
     width: 100%;
     padding: 0 2% 0 5%;
     top: 32%;
 }
 
-#home section a.slide-panel .league-name h2 {
+.slide-panel .league-name h2 {
 	color: white;
     margin: 0;
     text-transform: uppercase;
@@ -96,7 +97,7 @@
 }
 
 
-#home section a.slide-panel:after{
+.slide-panel:after{
     content: '';
     position: absolute;
     height: 100%;
@@ -108,7 +109,7 @@
 }
 
 
-#home section a.slide-panel .hover-icon{
+.slide-panel .hover-icon{
     position: absolute;
     left: 0;
     top: 0;
@@ -127,7 +128,7 @@
     opacity: 1;
 }
 
-#home section a.slide-panel .hover-icon svg{
+.slide-panel .hover-icon svg{
     position: absolute;
     top: 0px;
     left: 0px;
@@ -140,7 +141,7 @@
     transition: fill .5s ease-in-out;
 }
 
-#home section a.slide-panel:hover .hover-icon svg{
+.slide-panel:hover .hover-icon svg{
     animation-name: scale-up-down;
     animation-duration: .3s;
 }
