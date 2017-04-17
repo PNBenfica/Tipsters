@@ -73,6 +73,7 @@
 
 
 .navbar .navbar-actions .link > i{
+    position: relative;
     font-size: 16px;
     color: #fff;
 }
@@ -84,10 +85,15 @@
 
 .navbar .navbar-actions .link > i .font-awesome-badge {
     position: absolute;
-    margin-top: -9px;
-    font-size: 11px;
-    padding: 2px 4px 2px 4px;
+    top: -11px;
+    right: -13px;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+
     border-radius: 100%;
+
+    font-size: 10px;
     color: white;
 }
 
@@ -201,6 +207,9 @@
     -moz-transition: background 0.2s;
     transition: background 0.2s;
 }
+.sidebar-right ul a:last-child li:not(.empty) {
+    margin-bottom: 100px;
+}
 .sidebar-right ul li.empty:hover {
     background-color: white;
     cursor: default;
@@ -224,6 +233,7 @@
 
 .sidebar-right ul li .content.notification-item {
     display: flex;
+    align-items: center;
 }
 
 
@@ -246,7 +256,15 @@
 
 .sidebar-right ul li .content.notification-item .time {
     white-space: nowrap;
-    align-self: flex-end;
+    align-self: center;
+}
+
+.sidebar-right ul li .content.notification-item .time i {
+    display: block;
+    margin: auto;
+}
+.sidebar-right ul li .content.notification-item .time .em {
+    white-space: nowrap;
 }
 
 .sidebar-right ul li.highlighted {

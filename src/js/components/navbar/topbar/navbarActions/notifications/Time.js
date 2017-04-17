@@ -1,6 +1,8 @@
 import React from "react"
 import classNames from "classnames"
 
+import TimeAgo from "./../TimeAgo"
+
 export default class Time extends React.Component {
 
     render() {
@@ -9,9 +11,9 @@ export default class Time extends React.Component {
         const iconClasses = classNames('fa','fa-fw', icon)
 
         return (
-            <span class="pull-right time">
+            <span class="time">
                 <i class={iconClasses}></i>
-                <em>{date}</em>
+                <TimeAgo date={date} />
             </span>
         )
     }
