@@ -7,7 +7,9 @@ import sports from "./sportsReducer"
 import trends from "./trendsReducer"
 import users from "./usersReducer"
 import rankings from "./rankingsReducer"
+import search from "./searchReducer"
+
 
 export default combineReducers({
-  messages, notifications, sports, posts, rankings, trends, users
+  messages, notifications, sports, posts, rankings, search, trends, users
 })

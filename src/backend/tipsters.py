@@ -13,13 +13,14 @@ from protorpc import messages
 from protorpc import remote
 
 
-from models import NotificationsMessage, RankingsMessage, SportMessage, SportParams, UserForm, UserCreationForm, TrendsMessage, UserAuthForm, PostForm, PostMessage, FeedMessage, PostCommentMessage
+from models import SearchSuggestionsMessage, NotificationsMessage, RankingsMessage, SportMessage, SportParams, UserForm, UserCreationForm, TrendsMessage, UserAuthForm, PostForm, PostMessage, FeedMessage, PostCommentMessage
 from settings import WEB_CLIENT_ID
 from sports.sportsRetriever import get
 import PostManager
 import SessionManager
 import UserManager
 import NotificationsManager
+import SearchManager
 from endpoints.api_exceptions import UnauthorizedException
 
 from DatastorePopulator import populate_datastore
@@ -191,6 +192,12 @@ class TipstersApi(remote.Service):
         user = SessionManager.get_current_user()
         NotificationsManager.mark_notification_as_seen(user, request.notification_key)
         return Hello(greeting="notification marked as seen")
+    
+    
+    @endpoints.method(message_types.VoidMessage, SearchSuggestionsMessage, path = "search/suggestions", http_method='Get', name = "fetchSearchSuggestions")
+    def fetch_search_suggestions(self, request):
+        suggestions = SearchManager.fetch_suggestions()
+        return SearchSuggestionsMessage(suggestions=suggestions)
     
 # registers API
 api = endpoints.api_server([TipstersApi]) 

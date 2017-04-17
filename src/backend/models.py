@@ -223,3 +223,16 @@ class NotificationModel(ndb.Model):
     content = ndb.StringProperty()
     seen = ndb.BooleanProperty()
     new = ndb.BooleanProperty()
+    
+class SearchSuggestionsMessage(messages.Message):
+    suggestions = messages.MessageField('SearchSuggestionMessage',1, repeated=True)
+    
+class SearchSuggestionMessage(messages.Message):
+    type = messages.StringField(1)
+    name = messages.StringField(2)
+    sportId = messages.StringField(3)
+    sportName = messages.StringField(4)
+    leagueId = messages.StringField(5)
+    leagueName = messages.StringField(6)
+    matchId = messages.StringField(7)
+    matchName = messages.StringField(8)
