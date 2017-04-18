@@ -23,7 +23,7 @@ export default class LiveStreamsSection extends React.Component {
         liveStreams = liveStreams.map((liveStream,i) => <div key={i}><LiveStreamPanel {...liveStream} /></div>)
 
         return (
-            <Section title="Live streams" id="live-streams" classes="card-slide">
+            <Section title="Live streams" id="live-streams" classes="card-slide pad-left-header">
 
                 <Slider>
                     <div key={1000}><MakeLiveStreamPanel/></div>

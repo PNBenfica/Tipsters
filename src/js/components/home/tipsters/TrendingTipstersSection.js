@@ -22,7 +22,7 @@ export default class TrendingTipstersSection extends React.Component {
         liveStreams = liveStreams.map((liveStream,i) => <div key={i}><TrendTipsterPanel {...liveStream} /></div>)
 
         return (
-            <Section title="Trending Tipsters" id="trend-users" classes="card-slide">
+            <Section title="Trending Tipsters" id="trend-users" classes="card-slide pad-left-header">
 
                 <Slider>
                     <div key={1000}/>

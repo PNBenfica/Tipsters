@@ -22,14 +22,14 @@ section.generic > header > h1{
 	margin: -1px 0 0 0;
 	border-top: 1px solid white; 
     
-    padding: 0 25px 18px 25px;
+    padding: 0 25px 18px 0px;
 	font-size: 26px;
 	font-weight: 300;
 	text-transform: uppercase;
 }
 
-section.generic.align-left > header > h1{
-    padding: 0 25px 18px 0px;
+section.generic.pad-left-header > header > h1{
+    padding: 0 25px 18px 25px;
 }
 
 section.generic > .body{

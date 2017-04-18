@@ -5,7 +5,9 @@ import { fetchProfile } from "../actions/userActions"
 
 import UserPosts from "../components/profile/UserPosts"
 import About from "../components/profile/About"
+import Recomendations from "../components/profile/Recomendations"
 import LoadingGif from "../components/LoadingGif"
+import TopStatsPanels from "../components/profile/topStatsPanels/TopStatsPanels"
 import MainAvatar from "../components/profile/mainAvatar/MainAvatar"
 
 @connect((store) => {
@@ -60,7 +62,15 @@ export default class Profile extends React.Component {
 
                 <MainAvatar name={profile.name} img={profile.avatar} following={this.state.following} toggleFollow={this.toggleFollow.bind(this)}/>
 
-                <About text={profile.about} />
+                <div class="col-xs-12">
+
+                    <About text={profile.about} />
+
+                    <TopStatsPanels nFollowers={profile.followers.length} />
+
+                    <Recomendations />
+
+                </div>
 
             </div>
         )

@@ -24,7 +24,7 @@ export default class ShareATipSection extends React.Component {
         leagues = leagues.map((league,i) => <div key={i}><LeaguePanel {...league} /></div>)
 
         return (
-            <Section title="Share a Tip" id="share-a-tip">
+            <Section title="Share a Tip" id="share-a-tip" classes="pad-left-header">
 
                 <Slider>
                     <div key={1000}/>
