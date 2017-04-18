@@ -4,16 +4,18 @@
 	padding-right: 0;
 }
 
-#home section {
+section.generic {
 	margin-top: 15px; 
 	margin-bottom: 15px; 
+    padding: 0;
 }
 
-#home section > header{
-	border-top: 1px solid rgb(221,221,221); 
+section.generic > header{
+	border-top: 1px solid rgb(221,221,221);
+    padding: 0;
 }
 
-#home section > header > h1{
+section.generic > header > h1{
 	display: inline-block;
 
 
@@ -24,6 +26,14 @@
 	font-size: 26px;
 	font-weight: 300;
 	text-transform: uppercase;
+}
+
+section.generic.align-left > header > h1{
+    padding: 0 25px 18px 0px;
+}
+
+section.generic > .body{
+    padding: 0;
 }
 
 .slide-panel picture{
@@ -97,7 +107,7 @@
 }
 
 
-.slide-panel:after{
+#home .slide-panel:after{
     content: '';
     position: absolute;
     height: 100%;

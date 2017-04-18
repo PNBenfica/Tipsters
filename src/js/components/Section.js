@@ -11,7 +11,7 @@ export default class Section extends React.Component {
     	const { id, title, classes } = this.props
 
         return (
-            <section id={id} class={classNames(classes, "col-xs-12")} >
+            <section id={id} class={classNames(classes, "col-xs-12", "generic")} >
 
             	<SectionHeader title={title} />
 

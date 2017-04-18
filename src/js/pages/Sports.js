@@ -11,6 +11,7 @@ import GoalsScorersTable from "../components/sports/tables/GoalsScorersTable";
 import ColumnsTable from "../components/sports/tables/ColumnsTable";
 import LoadingGif from "../components/LoadingGif";
 import MatchesTable from "../components/sports/tables/MatchesTable";
+import Section from "../components/Section";
 import SportTable from "../components/sports/tables/SportTable";
 import StandardOptionsTable from "../components/sports/tables/StandardOptionsTable";
 import TipsOnThisEvent from "../components/sports/tipsOnThisEvent/TipsOnThisEvent";
@@ -273,9 +274,12 @@ export default class Sports extends React.Component {
         * @return sports tables
      */
     renderSport(sport, eventURL){
+
         return [
                 this.renderMainLeagues(sport.name),
-                <div key={2} class="sports-page-tables">{this.renderGenericTable("All Leagues", sport.events, eventURL)}</div>
+                <Section key={2} title="All leagues" classes="align-left sports-page-tables">
+                    {this.renderGenericTable("All Leagues", sport.events, eventURL)}
+                </Section>
                 ]
     }
 
@@ -304,9 +308,9 @@ export default class Sports extends React.Component {
         let mainLeagues = this.getMainLeagues(sportName)
 
         return (
-            <div  key={1} class="main-leagues col-xs-12">
+            <Section key={1} title="Main leagues" classes="align-left main-leagues">
                 {mainLeagues.map((league,i) => this.renderMainLeague(league,i))}
-            </div>
+            </Section>
         )
     }
 

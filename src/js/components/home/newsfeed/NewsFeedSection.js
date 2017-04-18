@@ -1,6 +1,6 @@
 import React from "react"
 
-import Section from "../Section"
+import Section from "../../Section"
 import Posts from "./Posts"
 
 export default class NewsFeedSection extends React.Component {

@@ -436,12 +436,12 @@ Tips on this game
 
 
 
-#sports-page .sports-tables-container .main-leagues > * > *,
+#sports-page .sports-tables-container .main-leagues .body > * > *,
 #sports-page .sports-tables-container .main-leagues {
 	padding: 0px;
 }
-#sports-page .sports-tables-container .main-leagues > * {
-	padding: 1px;
+#sports-page .sports-tables-container .main-leagues .body > * {
+	padding: 1px 1px 0 0;
 }
 
 #sports-page .sports-tables-container .main-leagues {
@@ -462,6 +462,7 @@ Tips on this game
 
 
 #sports-page .sports-tables-container .sports-page-tables .panel-heading {
+	display: none;
     border-top: solid 1px rgb(221,221,221);
     border-bottom: none;
     padding: 0px;

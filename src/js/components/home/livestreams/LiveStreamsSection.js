@@ -1,6 +1,6 @@
 import React from "react"
 
-import Section from "../Section"
+import Section from "../../Section"
 import Slider from "../Slider"
 import LiveStreamPanel from "./LiveStreamPanel"
 import MakeLiveStreamPanel from "./MakeLiveStreamPanel"
