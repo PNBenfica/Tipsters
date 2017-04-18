@@ -277,7 +277,7 @@ export default class Sports extends React.Component {
 
         return [
                 this.renderMainLeagues(sport.name),
-                <Section key={2} title="All leagues" classes="align-left sports-page-tables">
+                <Section key={2} title="All leagues" classes="sports-page-tables">
                     {this.renderGenericTable("All Leagues", sport.events, eventURL)}
                 </Section>
                 ]
@@ -308,7 +308,7 @@ export default class Sports extends React.Component {
         let mainLeagues = this.getMainLeagues(sportName)
 
         return (
-            <Section key={1} title="Main leagues" classes="align-left main-leagues">
+            <Section key={1} title="Main leagues" classes="main-leagues">
                 {mainLeagues.map((league,i) => this.renderMainLeague(league,i))}
             </Section>
         )

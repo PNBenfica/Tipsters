@@ -4,10 +4,9 @@ import { connect } from "react-redux"
 import { fetchProfile } from "../actions/userActions"
 
 import UserPosts from "../components/profile/UserPosts"
-import LeftColumnContainer from "../components/profile/LeftColumnContainer"
+import About from "../components/profile/About"
 import LoadingGif from "../components/LoadingGif"
 import MainAvatar from "../components/profile/mainAvatar/MainAvatar"
-import RightColumnContainer from "../components/profile/RightColumnContainer"
 
 @connect((store) => {
     return {
@@ -50,18 +49,18 @@ export default class Profile extends React.Component {
 
         if (!fetched || fetching)
             return this.renderLoadingGif()
-        
+                // <LeftColumnContainer profile={profile}/>
+
+                // <RightColumnContainer user={profile.name} />
+                
+                // <UserPosts username={profile.name} />
         return (
 
             <div id="profile-container">
 
                 <MainAvatar name={profile.name} img={profile.avatar} following={this.state.following} toggleFollow={this.toggleFollow.bind(this)}/>
 
-                <LeftColumnContainer profile={profile}/>
-
-                <RightColumnContainer user={profile.name} />
-                
-                <UserPosts username={profile.name} />
+                <About text={profile.about} />
 
             </div>
         )
