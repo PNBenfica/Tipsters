@@ -175,6 +175,27 @@
     animation-duration: .3s;
 }
 
+
+
+#profile-container .profile-followers-section .slide-panel {
+	padding: 0 1px;
+}
+
+#profile-container .profile-followers-section .slide-panel .description {
+    border-width: 1px;
+}
+
+#profile-container .profile-followers-section .slide-panel picture {
+	transition: filter 250ms;
+	filter: brightness(80%);
+}
+
+#profile-container .profile-followers-section .slide-panel:hover picture {
+	filter: brightness(100%);
+}
+
+
+
 #profile-container .stats-filters{
 	position: relative;
 	float: right;

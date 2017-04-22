@@ -3,12 +3,13 @@ import { connect } from "react-redux"
 
 import { fetchProfile } from "../actions/userActions"
 
-import UserPosts from "../components/profile/UserPosts"
 import About from "../components/profile/About"
-import Recomendations from "../components/profile/Recomendations"
 import LoadingGif from "../components/LoadingGif"
-import TopStatsPanels from "../components/profile/topStatsPanels/TopStatsPanels"
 import MainAvatar from "../components/profile/mainAvatar/MainAvatar"
+import Recomendations from "../components/profile/Recomendations"
+import TopStatsPanels from "../components/profile/topStatsPanels/TopStatsPanels"
+import UserPosts from "../components/profile/UserPosts"
+import UserSlide from "../components/profile/userSlide/UserSlide"
 
 @connect((store) => {
     return {
@@ -56,6 +57,10 @@ export default class Profile extends React.Component {
                 // <RightColumnContainer user={profile.name} />
                 
                 // <UserPosts username={profile.name} />
+
+        const nFollowers = profile.followers.length
+        const nFollowing = profile.following.length
+
         return (
 
             <div id="profile-container">
@@ -66,9 +71,13 @@ export default class Profile extends React.Component {
 
                     <About text={profile.about} />
 
-                    <TopStatsPanels nFollowers={profile.followers.length} />
+                    <TopStatsPanels nFollowers={nFollowers} />
 
                     <Recomendations />
+
+                    <UserSlide title={nFollowers + " Followers"} tipsters={profile.followers} />
+
+                    <UserSlide title={nFollowing + " Following"} tipsters={profile.following} />
 
                 </div>
 
