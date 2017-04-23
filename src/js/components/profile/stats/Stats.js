@@ -6,6 +6,7 @@ import Chart from 'chart.js'
 import BarChart from './BarChart';
 import DoughnutChart from './DoughnutChart';
 import ProfilePanel from "./../ProfilePanel"
+import Section from "../../Section"
 import SportsFiltersList from "./SportsFiltersList"
 import TimeSelector from "./TimeSelector"
 
@@ -184,20 +185,37 @@ export default class Stats extends React.Component {
 
     render() {
 
-        return (
-            <ProfilePanel header="Stats">
+    //         <ProfilePanel header="Stats">
 
-				<TimeSelector open={this.state.filterOpen} active={this.state.timeFilter} onFilterClick={this.onFilterClick.bind(this)} onOptionClick={this.onTimeSelectorOptionClick.bind(this)} />
+				// <TimeSelector open={this.state.filterOpen} active={this.state.timeFilter} onFilterClick={this.onFilterClick.bind(this)} onOptionClick={this.onTimeSelectorOptionClick.bind(this)} />
 
-		        <BarChart data={this.state.active.betStats} />
+		  //       <BarChart data={this.state.active.betStats} />
 
-		        <br/>
-		        <SportsFiltersList list={this.getFiltersList()} removeFilter={this.removeFilter.bind(this)} />
-		        <br/>
+		  //       <SportsFiltersList list={this.getFiltersList()} removeFilter={this.removeFilter.bind(this)} />
 		        
-		        <DoughnutChart data={this.state.active.selections} onPieClick={this.onPieClick.bind(this)} />
+		  //       <DoughnutChart data={this.state.active.selections} onPieClick={this.onPieClick.bind(this)} />
 
-            </ProfilePanel>
+    //         </ProfilePanel>
+        return (
+            <div class="col-xs-12">
+	            <Section title="Stats" classes="user-stats">
+
+	            	<div class="col-md-6">
+
+			        	<BarChart data={this.state.active.betStats} />
+
+	            	</div>
+
+	            	<div class="col-md-6">
+				        
+				        <DoughnutChart data={this.state.active.selections} onPieClick={this.onPieClick.bind(this)} />
+	            	
+				        <SportsFiltersList list={this.getFiltersList()} removeFilter={this.removeFilter.bind(this)} />
+
+	            	</div>
+
+	            </Section>
+        	</div>
         )
     }
 }

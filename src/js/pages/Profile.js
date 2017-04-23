@@ -10,6 +10,7 @@ import Recomendations from "../components/profile/Recomendations"
 import TopStatsPanels from "../components/profile/topStatsPanels/TopStatsPanels"
 import UserPosts from "../components/profile/UserPosts"
 import UserSlide from "../components/profile/userSlide/UserSlide"
+import Stats from "../components/profile/stats/Stats"
 
 @connect((store) => {
     return {
@@ -56,7 +57,7 @@ export default class Profile extends React.Component {
 
                 // <RightColumnContainer user={profile.name} />
                 
-                // <UserPosts username={profile.name} />
+                // 
 
         const nFollowers = profile.followers.length
         const nFollowing = profile.following.length
@@ -71,13 +72,17 @@ export default class Profile extends React.Component {
 
                     <About text={profile.about} />
 
-                    <TopStatsPanels nFollowers={nFollowers} />
+                    <TopStatsPanels nFollowers={nFollowers} nFollowing={nFollowing}/>
 
                     <Recomendations />
 
                     <UserSlide title={nFollowers + " Followers"} tipsters={profile.followers} />
 
                     <UserSlide title={nFollowing + " Following"} tipsters={profile.following} />
+
+                    <Stats />
+                    
+                    <UserPosts username={profile.name} />
 
                 </div>
 

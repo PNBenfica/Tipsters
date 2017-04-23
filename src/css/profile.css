@@ -383,16 +383,19 @@
 }
 
 
-
-#profile-container .profile-panel .active-filters-buttons .button {
+#profile-container .user-stats .active-filters-buttons {
+    min-height: 42px;
+    margin-top: 10px;
+}
+#profile-container .user-stats .active-filters-buttons .button {
 	margin-right: 10px;
 }
-#profile-container .profile-panel .active-filters-buttons .button i{
+#profile-container .user-stats .active-filters-buttons .button i{
 	margin-right: 5px;
 	color: #c30000;
 	transition: color 500ms;
 }
-#profile-container .profile-panel .active-filters-buttons .button:hover i{
+#profile-container .user-stats .active-filters-buttons .button:hover i{
 	color: white;
 }
 

@@ -181,7 +181,7 @@ section.card-slide a.slide-panel picture {
 
 
 section.card-slide a.slide-panel .description{
-    padding: 5px 5%;
+    padding: 5px 5% !important;
     border: solid 1px rgba(0,0,0,0.1);
     border-top: none;
     border-right-width: 2px;

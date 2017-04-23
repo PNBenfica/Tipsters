@@ -8,8 +8,9 @@ export default class SportsFiltersListItem extends React.Component {
 
         return (
             <div onClick={() => removeFilter(title)} class="button">
+            	<span>
             	<i class="fa fa-times" aria-hidden="true"></i>
-            	{title}
+            	{title}</span>
             </div>
         )
     }

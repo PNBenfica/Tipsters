@@ -256,7 +256,7 @@ export function fetchUserPosts(username) {
             type: "FETCH_POSTS",
         	request: () => gapi.client.tipsters.getUserPosts({ username }),
             dispatch,
-        	default: fetchPost_default()
+        	default: fetchPosts_default()
         })
 
 	}
