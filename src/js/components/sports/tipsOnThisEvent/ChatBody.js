@@ -1,27 +1,47 @@
-import React from "react";
-import classNames from "classnames";
+import React from "react"
+import classNames from "classnames"
 
-import EmptyChatPanel from "./EmptyChatPanel";
-import TipOnThisEvent from "./TipOnThisEvent";
+import EmptyChatPanel from "./EmptyChatPanel"
+import TipOnThisEvent from "./TipOnThisEvent"
 
 export default class ChatBody extends React.Component {
 
-  render() {
+    constructor(...args) {
+        super(...args)
+        this.state = { visibleTips : 5 }
+        this.handleScroll = this.handleScroll.bind(this)
+    }
 
-  	const {tips} = this.props;
+    componentDidMount() {
+        window.addEventListener("scroll", this.handleScroll)
+    }
 
-  	var Tips;
-    if (tips.length > 0)
-        Tips = tips.map(({...tip}, i) => <TipOnThisEvent key={i} {...tip} />);
-    else
-        return <EmptyChatPanel />;
+    componentWillUnmount() {
+        window.removeEventListener("scroll", this.handleScroll)
+    }
 
-    return (
-        <div class="panel-body" style={{'height': '' + Math.min(320, 130 + tips.length * 50) + 'px', 'overflowY': (130 + tips.length * 50 > 320)? 'scroll':'hidden'}}>
-            <ul class="chat" id="tips-on-this-events">                    
-                {Tips}
-            </ul>
-        </div>
-    );
-  }
+    handleScroll(){
+        var viewportOffset = this.refs.panel.getBoundingClientRect()
+        var bottom = viewportOffset.bottom
+        if (window.innerHeight > bottom)
+            this.setState( { visibleTips : this.state.visibleTips + 10 } )
+    }
+
+    render() {
+
+        let { tips } = this.props
+
+        if (tips && tips.length > 0)
+            tips = tips.map(({...tip}, i) => <TipOnThisEvent key={i} {...tip} invisible={ i > this.state.visibleTips } />)
+        else
+            return <EmptyChatPanel />
+
+        return (
+            <div class="panel-body" ref="panel">
+                <ul class="chat" id="tips-on-this-events">                    
+                    {tips}
+                </ul>
+            </div>
+        )
+    }
 }

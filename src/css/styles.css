@@ -551,15 +551,19 @@ a.link-button{
 	height: 100vh;
     align-items: center;
     justify-content: center;
-	z-index: 2000;
-	background-color: rgba(0,0,0,0.0);
-	display: none;
-	transition: background-color 2s;
+    z-index: -10000;
+    background-color: rgba(0,0,0,0.0);
+    display: flex;
+    transition: background-color 0.2s, opacity 0.2s, z-index 0s 0.2s;
+    opacity: 0;
 }
 
 .warning.active{
     display: flex;
-	background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0,0,0,0.6);
+    z-index: 2000;
+    opacity: 1;
+    transition: background-color 0.2s, opacity 0.2s;
 }
 
 .warning .panel{

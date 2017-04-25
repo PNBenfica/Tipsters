@@ -1,14 +1,14 @@
-import React from "react";
+import React from "react"
 
 
 export default class Tipstername extends React.Component {
 
-  render() {
+  	render() {
 
-    const {name} = this.props;
+    	const {name} = this.props
 
-    return (
-    	<strong class="primary-font">{name}</strong>
-    );
-  }
+	    return (
+	    	<h5>{name}</h5>
+	    )
+  	}
 }

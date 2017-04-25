@@ -212,8 +212,12 @@ bet slip
 
 @media screen and (min-width: 1200px) {
 	.right-bar-container{
-		padding: 0 60px;
+		padding: 0 50px;
 	}
+}
+
+#sports-page .right-bar-container > section header h1{
+	font-size: 18px;
 }
 
 #bet-slip{
@@ -233,6 +237,7 @@ bet slip
 	margin: 0;
 	opacity: 0;
 }
+
 
 #sports-page .tips-on-this-event .post-tips,
 #bet-slip .panel-body .bet-slip-tips-container .post-tips.expanded{ 
@@ -364,6 +369,24 @@ Tips on this game
     margin-bottom: 10px;
     padding-bottom: 5px;
     border-bottom: 1px dotted #999;
+	padding: 0;	
+	transition: opacity 0.5s;
+	opacity: 1;
+}
+
+#sports-page .tips-on-this-event .chat li.invisible {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-bottom: 0px;
+}
+
+#sports-page .tips-on-this-event .chat li header a{
+    display: flex;
+    align-items: center;
+}
+#sports-page .tips-on-this-event .chat li > *{
+	padding: 0;	
 }
 
 #sports-page .tips-on-this-event .chat li.left .chat-body {
@@ -393,10 +416,14 @@ Tips on this game
     overflow-y: hidden;
 }
 
-#sports-page .tips-on-this-event #tips-on-this-events .chat-img img{ 
-	margin-top: 5px;
-    width: 50px;
-    height: 50px;
+#sports-page .tips-on-this-event #tips-on-this-events h5{ 
+    margin-left: 5px;
+    text-transform: uppercase;
+}
+
+#sports-page .tips-on-this-event #tips-on-this-events img{ 
+    width: 30px;
+    height: 30px;
 }
 
 #sports-page .tips-on-this-event #tips-on-this-events .post-tips { 

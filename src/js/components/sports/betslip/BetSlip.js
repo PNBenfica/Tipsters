@@ -2,6 +2,7 @@ import React from "react";
 
 import BetSlipBody from "./BetSlipBody";
 import BetSlipEmptyBody from "./BetSlipEmptyBody";
+import Section from "./../../Section"
 
 export default class BetSlip extends React.Component {
 
@@ -19,13 +20,11 @@ export default class BetSlip extends React.Component {
         }
 
         return (
-            <div id="bet-slip">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-list-alt fa-fw"></i> Boletim</h3>  
-                </div>
+            <Section id="bet-slip" title="Betslip" >
 
                 {betSlipBody}
-            </div>
+
+            </Section>
         );
     }
 }

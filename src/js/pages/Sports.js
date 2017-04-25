@@ -542,7 +542,7 @@ export default class Sports extends React.Component {
 
 	            	<BetSlip {...this.state.betSlip} updateSellingPrice={this.updateSellingPrice.bind(this)} removeTip={this.removeTip.bind(this)} shareTip={this.shareTip.bind(this)} setBetSlipComment={this.setBetSlipComment.bind(this)}/>
 
-	                <TipsOnThisEvent />
+	                <TipsOnThisEvent tips={this.props.tables.tips} />
 
 	            </div>
 

@@ -1,39 +1,36 @@
-import React from "react";
+import React from "react"
 
-import Date from "./Date";
-import TipsterImage from "./TipsterImage";
-import TipsterName from "./TipsterName";
-import TipWithComment from "./TipWithComment";
-import TipWithSelections from "./TipWithSelections";
+import className from "classnames"
+
+import Header from "./Header"
+import TipWithComment from "./TipWithComment"
+import TipWithSelections from "./TipWithSelections"
 
 export default class TipsOnThisEvent extends React.Component {
 
   render() {
 
-    const {date, tipster, tips, comment} = this.props;
+    const {date, tipster, tip, comment, invisible} = this.props
 
-    var tipBody;
-    if (tips)
-        tipBody = <TipWithSelections tips={tips}/>;
+    var tipBody
+    if (tip)
+        tipBody = <TipWithSelections tips={[tip]}/>
     else
-        tipBody = <TipWithComment comment={comment}/>;
+        tipBody = <TipWithComment comment={comment}/>
 
     return (
 
-        <li class="left clearfix">
+        <li class={className("col-xs-12", { invisible } )}>
 
-            <TipsterImage image={tipster.image} />
+            <Header tipster={tipster}/>
 
-            <div class="chat-body clearfix">
+            <div class="chat-body col-xs-12">
 
-                <div class="header">
-                    <TipsterName name={tipster.name}/>
-                    <Date date={date} />                    
-                </div>
-                
                 {tipBody}
+
             </div>
+
         </li>
-    );
+    )
   }
 }
