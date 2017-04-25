@@ -1,10 +1,10 @@
 from google.appengine.ext import ndb
-from models import User, UserMiniForm, PostMessage, TipForm, TipModel, Post, PostComment, PostCommentMessage, FeedMessage
+from models import MatchModel, EventModel, SportModel, BetModel, User, UserMiniForm, PostMessage, TipForm, TipModel, Post, PostComment, PostCommentMessage, FeedMessage
 from domain import Bet, NotificationType
 import gaeUtils
 from Utils import getCurrentDate
-from sports.sportsRetriever import getBetKey
 from google.appengine.api import taskqueue
+from gaeUtils import getKeyByAncestors
 
 
 def getFeed(user):
@@ -60,14 +60,17 @@ def _storeTip(tip):
     return tip_key
 
 def _getTipModelKey(tip):
-    bet_key = getBetKey(tip.sportId, tip.leagueId, tip.matchId, tip.betId)
+    bet_key = _getBetKey(tip.sportId, tip.leagueId, tip.matchId, tip.betId)
     return gaeUtils.generateKey(TipModel, bet_key)
 
 def _getTipOdd(tip):
-    bet_key = getBetKey(tip.sportId, tip.leagueId, tip.matchId, tip.betId)
+    bet_key = _getBetKey(tip.sportId, tip.leagueId, tip.matchId, tip.betId)
     bet = Bet(bet_key.get())
     choice = bet.getChoice(tip.choiceId)
     return float(choice["odd"])
+
+def _getBetKey(sportId, eventId, matchId, betId):
+    return getKeyByAncestors([SportModel, sportId], [EventModel, eventId], [MatchModel, matchId], [BetModel, betId])
 
 def _getPost(postKey):
     return ndb.Key(urlsafe=postKey).get()
@@ -87,6 +90,9 @@ def toPostMessage(user, post):
 def getUserMiniProfile(username):
     user = ndb.Key(User, username).get()
     return UserMiniForm(name=username, avatar=user.avatar)
+
+def toTipMessage(tip):
+    return _toTipMessage(tip.key)
 
 def _toTipMessage(tip_key):
     tip = tip_key.get()

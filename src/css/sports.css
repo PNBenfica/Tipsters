@@ -359,6 +359,15 @@ Tips on this game
 **********************************/
 
 
+#sports-page .tips-on-this-event .loading-gif{
+	margin-top: 20px;
+}
+
+#sports-page .tips-on-this-event .uil-facebook-css {
+	width: 100%;
+  -webkit-transform:scale(0.2);
+}
+
 #sports-page .tips-on-this-event .chat {
     margin: 0;
     padding: 0;

@@ -12,6 +12,10 @@ export default class ChatBody extends React.Component {
         this.handleScroll = this.handleScroll.bind(this)
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState( { visibleTips : 5 } )
+    }
+
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll)
     }
@@ -21,10 +25,14 @@ export default class ChatBody extends React.Component {
     }
 
     handleScroll(){
-        var viewportOffset = this.refs.panel.getBoundingClientRect()
-        var bottom = viewportOffset.bottom
-        if (window.innerHeight > bottom)
-            this.setState( { visibleTips : this.state.visibleTips + 10 } )
+        let { tips } = this.props
+
+        if (tips && tips.length > 0){
+            let viewportOffset = this.refs.panel.getBoundingClientRect()
+            let bottom = viewportOffset.bottom
+            if (window.innerHeight > bottom)
+                this.setState( { visibleTips : this.state.visibleTips + 10 } )
+        }
     }
 
     render() {

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { fetchTables, shareTip } from "../actions/sportsActions";
+import { fetchTables, fetchTips, shareTip } from "../actions/sportsActions";
 
 import LeaguePanel from "../components/home/shareatip/LeaguePanel";
 import BetSlip from "../components/sports/betslip/BetSlip";
@@ -22,6 +22,9 @@ import WarningAlreadyInBetSlip from "../components/sports/betslip/WarningAlready
     tables: store.sports.tables,
     fetched: store.sports.fetched,
     fetching: store.sports.fetching,
+    tips: store.sportsTips.tips,
+    fetchingTips: store.sportsTips.fetching,
+    fetchedTips: store.sportsTips.fetched,
   };
 })
 export default class Sports extends React.Component {
@@ -38,6 +41,7 @@ export default class Sports extends React.Component {
         if (typeof sportParams.sportCode === 'undefined')
             sportParams = {sportCode: '1'}
         this.props.dispatch(fetchTables(sportParams))
+        this.props.dispatch(fetchTips(sportParams))
     }
     
     componentWillMount() {
@@ -513,7 +517,8 @@ export default class Sports extends React.Component {
 
   	render() {
 
-	  	let {sport = "Football", sportCode = "1", league, leagueCode, match, matchCode}  = this.props.params;
+        let {sport = "Football", sportCode = "1", league, leagueCode, match, matchCode}  = this.props.params
+	  	let { tips, fetchingTips, fetchedTips }  = this.props
 
         let Tables = []
         if (this.props.fetching) {
@@ -522,7 +527,7 @@ export default class Sports extends React.Component {
         else if (this.props.fetched){
             const data = this.props.tables;
             Tables  = this.renderTables(data);
-            ({ sport, league, match }  = this.getSportUrlParams(data));
+            ({ sport, league, match }  = this.getSportUrlParams(data))
         }
 
 	    return (
@@ -542,7 +547,7 @@ export default class Sports extends React.Component {
 
 	            	<BetSlip {...this.state.betSlip} updateSellingPrice={this.updateSellingPrice.bind(this)} removeTip={this.removeTip.bind(this)} shareTip={this.shareTip.bind(this)} setBetSlipComment={this.setBetSlipComment.bind(this)}/>
 
-	                <TipsOnThisEvent tips={this.props.tables.tips} />
+	                <TipsOnThisEvent tips={tips} fetching={fetchingTips} fetched={fetchedTips} />
 
 	            </div>
 

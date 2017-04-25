@@ -13,9 +13,9 @@ from protorpc import messages
 from protorpc import remote
 
 
-from models import SearchSuggestionsMessage, NotificationsMessage, RankingsMessage, SportMessage, SportParams, UserForm, UserCreationForm, TrendsMessage, UserAuthForm, PostForm, PostMessage, FeedMessage, PostCommentMessage
+from models import TipsOnThisEventMessage, SearchSuggestionsMessage, NotificationsMessage, RankingsMessage, SportMessage, SportParams, UserForm, UserCreationForm, TrendsMessage, UserAuthForm, PostForm, PostMessage, FeedMessage, PostCommentMessage
 from settings import WEB_CLIENT_ID
-from sports.sportsRetriever import get
+from sports.sportsRetriever import get, get_tips
 import PostManager
 import SessionManager
 import UserManager
@@ -127,6 +127,11 @@ class TipstersApi(remote.Service):
         sport = get(sportCode, leagueCode, matchCode)
         return sport.toMessage()
     
+    @endpoints.method(SportParams, TipsOnThisEventMessage, path = "sports/tips", http_method='GET', name = "getSportTips")
+    def get_sport_tips(self, request):        
+        sportCode, leagueCode, matchCode = request.sportCode, request.leagueCode, request.matchCode     
+        tips = get_tips(sportCode, leagueCode, matchCode)
+        return TipsOnThisEventMessage(tips=tips)
     
     @endpoints.method(PostForm, Hello, path = "users/posts", http_method='Post', name = "addPost")
     def add_post(self, request):        

@@ -13,3 +13,6 @@ def average(array):
 
 def getCurrentDate():
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+def remove_empty(l):
+    return [x[0] for x in l if x != []]

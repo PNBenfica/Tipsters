@@ -2,16 +2,16 @@ import React from "react";
 
 export default class Tip extends React.Component {
 
-  render() {
+    render() {
 
-    const { tipnumber , selection , event, odd} = this.props;
+        const { betId, betName, choiceId, choiceName, leagueId, leagueName, matchId, matchName, odd, sportId, sportName, status } = this.props;
 
-    return (
-        <div class="panel post-tips">
-            <p>{tipnumber}. {selection}</p>
-            <p><a href="#/sports">{event}</a></p>
-            <p>{odd}</p>
-        </div>
-    );
-  }
+        return (
+            <div class="panel post-tips">
+                <p>{betName + ":" + choiceName}</p>
+                <p><a href="#/sports">{matchName}</a></p>
+                <p>{odd}</p>
+            </div>
+        )
+    }
 }

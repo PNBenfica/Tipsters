@@ -157,6 +157,13 @@ class SportMessage(messages.Message):
     id = messages.StringField(2)
     events = messages.MessageField('EventMessage',3,repeated=True)
 
+class TipsOnThisEventMessage(messages.Message):
+    tips = messages.MessageField('TipOnThisEventMessage',1,repeated=True)
+    
+class TipOnThisEventMessage(messages.Message):
+    tipster = messages.MessageField('UserMiniForm',1)
+    tip = messages.MessageField('TipForm',2)
+    
 class EventMessage(messages.Message):
     name = messages.StringField(1)
     id = messages.StringField(2)
