@@ -15,15 +15,36 @@ import NotificationItem from "./NotificationItem"
   };
 })
 export default class NotificationsContainer extends React.Component {
-
     
     componentWillMount() {
         this.fetchNotifications()
+        const fetchNotifications = setInterval(this.fetchNotifications.bind(this), 10000)
+        this.setState( { fetchNotifications } )
+    }
+
+
+    componentWillUnmount() {
+        clearInterval(this.state.fetchNotifications)
     }
 
     fetchNotifications(){
         this.props.dispatch(fetchNotifications())
     }
+
+    componentWillReceiveProps(nextProps){
+        const { notifications } = this.props
+        if (notifications.length < nextProps.notifications.length){
+            this.scrollNotificationsTop()
+        }
+    }
+
+    scrollNotificationsTop(){
+        if (this.refs.notificationsList.scrollTop > 0){
+            this.refs.notificationsList.scrollTop -= 1
+            setTimeout(this.scrollNotificationsTop.bind(this), 0)
+        }
+    }
+
 
     markNotificationAsSeen(notificationId){
         this.props.dispatch(markAsSeen(notificationId))
@@ -41,7 +62,7 @@ export default class NotificationsContainer extends React.Component {
         }
 
         return (
-            <ul>
+            <ul ref="notificationsList">
                 {notifications}
             </ul>
         )
