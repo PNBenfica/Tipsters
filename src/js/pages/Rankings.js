@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 
-import { fetchRankings } from "../actions/rankingsActions"
+import { fetchRankings, sortRankings } from "../actions/rankingsActions"
 
 import LoadingGif from "./../components/LoadingGif"
 import Pagination from "./../components/rankings/Pagination"
@@ -66,6 +66,15 @@ export default class Rankings extends React.Component {
 		@desc- function called when a table header is clicked
 	*/
 	changeSort(sortBy){
+		const sortMap = {
+			"Followers": "nFollowers",
+			"ROI": "ROI",
+			"Win %": "winPercentage",
+			"Avg Win Odds": "avgWinOdds",
+			"Tips": "nTips",
+			"Streak": "streak"
+		}
+		this.props.dispatch(sortRankings(sortMap[sortBy]))
 		this.setState({ sortBy })
 	}
 
@@ -97,7 +106,6 @@ export default class Rankings extends React.Component {
 	render() {
 
 		const { fetching, fetched, users } = this.props
-		console.log(this.props)
 
         if (fetching || !fetched) {
         	return this.renderLoadingGif()

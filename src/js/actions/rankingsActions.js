@@ -41,3 +41,12 @@ function fetchRankings_default(){
 			"tipster": {"avatar": "img/user8.jpg","name": "Xandao Zahovic"}}]
     }
 }
+
+
+export function sortRankings(sortBy) {
+
+	return {
+        type: "SORT_RANKINGS",
+        payload: sortBy
+	}
+}
