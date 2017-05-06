@@ -7,16 +7,18 @@ from models import TipForm, PostForm
 from random import randint
 from Utils import random_list_element
 from sports.sportsPopulator import simulate_sports_results
+import ChatManager
 
 users = ["Aimar Bernardo", "Calado Diamantino", "Ederson Florentino", "Gamarra Hooijdonk", "Isaltino Jovic", "Kostas Lazar", "Mitroglou Nuno", "Otavio Preudhomme", "Renato Sanches", "Tamara Umbigo", "Xandao Zahovic"]
 odds = parseXMLOdds()
 
 def populate_datastore():
-    register_users()
-    add_profile_pictures()
-    follow_users()
-    add_posts()
-    simulate_sports_results()
+    #register_users()
+    #add_profile_pictures()
+    #follow_users()
+    #add_posts()
+    send_messages()
+    #simulate_sports_results()
 
 
 def register_users():
@@ -79,3 +81,19 @@ def random_tip():
     choice = random_list_element(bet['choices'])
     return TipForm(sportId=sport['id'], leagueId=event['id'], matchId=match['id'], betId=bet['id'], choiceId=choice['id'] )
 
+
+def send_messages():
+    for _ in range(30):
+        users = random_chat_partners()
+        for i in range(randint(0,5)):
+            ChatManager.send_message(users[i % 2], users[(i+1) % 2], random_chat_message())
+
+def random_chat_partners():
+    user1 = random_list_element(users)
+    user2 = random_list_element(filter(lambda u: user1 != u, users))
+    return [user1,user2]
+
+def random_chat_message():
+    messages = ["Oi gata", "td bein?", "partilha ai uma tip moleque", "burro do crl perdi por sua causa", "es o maior", "ya concordo", "tenho que discordar neste caso", "renato joga muito ya", "nao sei se bate, talvez", "bora bora"]
+    return random_list_element(messages)
+    

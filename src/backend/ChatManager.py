@@ -7,6 +7,7 @@ from UserManager import get_user_mini_form
 def get_chats_message(username):
     chats = _get_chats(username)
     messages = map(lambda chat: _to_chat_message(chat, username), chats)
+    messages.sort(key=lambda message: message.messages[0].date, reverse=True)
     return ChatsMessage(messages = messages)
 
 def _to_chat_message(chat, username):
@@ -33,7 +34,7 @@ def send_message(usernameFrom, usernameTo, message):
     messageData = { "key" : messageKey, "author" : usernameFrom, "content" : message, "date" : getCurrentDate() }
     ChatMessageModel(**messageData).put()
     
-    _reset_user_chat_status(chat)
+    _reset_user_chat_status(chat, usernameTo)
 
 
 def _get_chats(username):
@@ -61,12 +62,11 @@ def _create_user_chat_status(chat_key, username):
     status_data = { "key" : status_key, "name" : username, "seen" : False, "new" : True }
     UserChatStatusModel(**status_data).put()
     
-def _reset_user_chat_status(chat):
-    status = _get_users_chat_stats(chat)
-    for user_status in status:
-        user_status.new = True
-        user_status.seen = False
-    put_multi(status)
+def _reset_user_chat_status(chat, username):
+    status = _get_user_status(chat, username)
+    status.seen = False
+    status.new = True
+    status.put()
 
 def _get_users_chat_stats(chat):
     return UserChatStatusModel.query(ancestor=chat.key).fetch()
