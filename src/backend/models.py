@@ -206,7 +206,31 @@ class UserStatsMessage(messages.Message):
 
 
 
+class ChatsMessage(messages.Message):
+    messages = messages.MessageField('ChatMessage',1, repeated=True)
 
+class ChatMessage(messages.Message):
+    tipster = messages.MessageField('UserMiniForm',1)
+    seen = messages.BooleanField(2)
+    new = messages.BooleanField(3)
+    messages = messages.MessageField('SingleChatMessage',4, repeated=True)
+
+class SingleChatMessage(messages.Message):
+    content = messages.StringField(1)
+    date = messages.StringField(2)
+    author = messages.StringField(3)
+
+
+class ChatModel(ndb.Model):
+    user1 = ndb.StringProperty()
+    user2 = ndb.StringProperty()
+    seen = ndb.BooleanProperty()
+    new = ndb.BooleanProperty()
+    
+class ChatMessageModel(ndb.Model):
+    author = ndb.StringProperty()
+    date = ndb.StringProperty()
+    content = ndb.StringProperty()
 
 class NotificationsMessage(messages.Message):
     notifications = messages.MessageField('NotificationMessage',1, repeated=True)

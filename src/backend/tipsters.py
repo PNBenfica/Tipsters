@@ -13,7 +13,7 @@ from protorpc import messages
 from protorpc import remote
 
 
-from models import TipsOnThisEventMessage, SearchSuggestionsMessage, NotificationsMessage, RankingsMessage, SportMessage, SportParams, UserForm, UserCreationForm, TrendsMessage, UserAuthForm, PostForm, PostMessage, FeedMessage, PostCommentMessage
+from models import ChatsMessage, TipsOnThisEventMessage, SearchSuggestionsMessage, NotificationsMessage, RankingsMessage, SportMessage, SportParams, UserForm, UserCreationForm, TrendsMessage, UserAuthForm, PostForm, PostMessage, FeedMessage, PostCommentMessage
 from settings import WEB_CLIENT_ID
 from sports.sportsRetriever import get, get_tips
 import PostManager
@@ -21,6 +21,7 @@ import SessionManager
 import UserManager
 import NotificationsManager
 import SearchManager
+import ChatManager
 from endpoints.api_exceptions import UnauthorizedException
 
 from DatastorePopulator import populate_datastore
@@ -43,6 +44,11 @@ POST_GET_REQUEST = endpoints.ResourceContainer(
 COMMENT_POST_REQUEST = endpoints.ResourceContainer(
     PostCommentMessage,
     post_id=messages.StringField(1)
+)
+
+SEND_MESSAGE_REQUEST = endpoints.ResourceContainer(
+    username=messages.StringField(1),
+    message=messages.StringField(2)
 )
 
 FOLLOW_USER_REQUEST = endpoints.ResourceContainer(
@@ -203,6 +209,17 @@ class TipstersApi(remote.Service):
     def fetch_search_suggestions(self, request):
         suggestions = SearchManager.fetch_suggestions()
         return SearchSuggestionsMessage(suggestions=suggestions)
+    
+    @endpoints.method(message_types.VoidMessage, ChatsMessage, path = "messages", http_method='Get', name = "fetchMessages")
+    def fetch_messages(self, request):
+        user = SessionManager.get_current_user()
+        return ChatManager.get_chats_message(user.key.id())
+    
+    @endpoints.method(SEND_MESSAGE_REQUEST, Hello, path = "messages", http_method='Post', name = "sendMessage")
+    def send_message(self, request):
+        user = SessionManager.get_current_user()
+        ChatManager.send_message(user.key.id(), request.username, request.message)
+        return Hello(greeting="message sent")
     
 # registers API
 api = endpoints.api_server([TipstersApi]) 
