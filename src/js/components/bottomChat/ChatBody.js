@@ -18,8 +18,8 @@ export default class ChatBody extends React.Component {
     }
 
     renderMessage(message, i){
-    	if (message.author == this.props.message.sender)
-    		return <SenderMessage key={i} {...message} img={this.props.message.senderImage}/>
+    	if (message.author == this.props.message.tipster.name)
+    		return <SenderMessage key={i} {...message} img={this.props.message.tipster.avatar}/>
     	else
     		return <MyMessage key={i} {...message} />
     }

@@ -7,31 +7,20 @@ export default function reducer(state={
     }, action) {
 
     switch (action.type) {
-        case "FETCH_MESSAGES": {
+        case "FETCH_MESSAGES_PENDING": {
             return {...state, fetching: true}
         }
         case "FETCH_MESSAGES_REJECTED": {
             return {...state, fetching: false, error: action.payload}
         }
         case "FETCH_MESSAGES_FULFILLED": {
-            let messages = [...state.messages]
-            let openMessagesIds = [...state.openMessagesIds]
+            let { messages } = action.payload
 
-            if (messages.length == 0){
-                messages = [
-                    { id: 1, sender : "John Smith", senderImage : "img/joaoalmeida.jpg", messages : [ {content:"Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"11:34", author:"John Smith"},{content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}, {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"John Smith"}] , seen : false, new : true},
-                    { id: 2, sender : "Paulo Teixeira", senderImage : "img/pauloteixeira.jpg", messages : [ {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"10:32", author:"Paulo Teixeira"},{content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}, {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}] , seen : false, new : true},
-                    { id: 3, sender : "Rui Silva", senderImage : "img/joaoalmeida.jpg", messages : [ {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"9:20", author:"Rui Silva"},{content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Rui Silva"}, {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}] , seen : true, new : false},
-                    { id: 4, sender : "Carlos Silva", senderImage : "img/joaoalmeida.jpg", messages : [ {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"9:20", author:"Rui Silva"},{content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Rui Silva"}, {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}] , seen : true, new : false},
-                    { id: 5, sender : "Silvia Silva", senderImage : "img/joaoalmeida.jpg", messages : [ {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"9:20", author:"Rui Silva"},{content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Rui Silva"}, {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}] , seen : true, new : false},
-                    { id: 6, sender : "Gonçalo Silva", senderImage : "img/joaoalmeida.jpg", messages : [ {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"9:20", author:"Rui Silva"},{content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Rui Silva"}, {content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...",date:"12:34", author:"Paulo Teixeira"}] , seen : true, new : false}]
-            }
             return {
                 ...state,
                 fetching: false,
                 fetched: true,
-                messages: messages,
-                openMessagesIds: openMessagesIds
+                messages
             }
         }
         case "SET_MESSAGES_NOT_NEW": {

@@ -229,6 +229,7 @@
 
 .sidebar-right ul li .content {
     padding: 0px 10px;
+    width: 100%;
 }
 
 .sidebar-right ul li .content.notification-item {

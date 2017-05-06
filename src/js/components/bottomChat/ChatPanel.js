@@ -61,7 +61,7 @@ export default class ChatPanel extends React.Component {
                 <div class="panel-group">
                     <div class="panel panel-default">
 
-                        <Header title={message.sender} href={"#" + chat_id} toggle={this.toggle.bind(this)} close={close}/>
+                        <Header title={message.tipster.name} href={"#" + chat_id} toggle={this.toggle.bind(this)} close={close}/>
                         
                         <div id={chat_id} class="panel-collapse collapse in" ref="panelCollapse">
                             <ChatBody height={bodyHeight} message={message} />

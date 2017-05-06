@@ -7,13 +7,13 @@ export default class MessageItem extends React.Component {
 
     render() {
 
-        const { id, messages, sender , senderImage , seen, markAsSeen } = this.props
+        const { id, messages, tipster , seen, markAsSeen } = this.props
         return (
-            <DropdownItem id={id} img={senderImage} highlighted={!seen} markAsSeen={markAsSeen}>
+            <DropdownItem id={id} img={tipster.avatar} highlighted={!seen} markAsSeen={markAsSeen}>
 
                 <div class="content">
 
-                    <h3>{sender}</h3>
+                    <h3>{tipster.name}</h3>
 
                     <Time date={messages[0].date}/>
 
