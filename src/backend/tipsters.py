@@ -29,6 +29,10 @@ from DatastorePopulator import populate_datastore
 EMAIL_SCOPE = endpoints.EMAIL_SCOPE
 API_EXPLORER_CLIENT_ID = endpoints.API_EXPLORER_CLIENT_ID
 
+USER_REQUEST = endpoints.ResourceContainer(
+    username=messages.StringField(1),
+)
+
 USER_GET_REQUEST = endpoints.ResourceContainer(
     username=messages.StringField(1),
 )
@@ -220,6 +224,19 @@ class TipstersApi(remote.Service):
         user = SessionManager.get_current_user()
         ChatManager.send_message(user.key.id(), request.username, request.message)
         return Hello(greeting="message sent")
+    
+    #endpoint called when message icon clicked (ex: 3 new messages -> 0 new notifications)
+    @endpoints.method(message_types.VoidMessage, Hello, path = "messages/notnew", http_method='Post', name = "resetNewMessagesCount")
+    def reset_new_messages_count(self, request):
+        user = SessionManager.get_current_user()
+        ChatManager.reset_new_messages(user.key.id())
+        return Hello(greeting="messages count reseted")
+    
+    @endpoints.method(USER_REQUEST, Hello, path = "messages/mark_as_seen", http_method='Post', name = "markMessageAsSeen")
+    def mark_message_as_seen(self, request):
+        user = SessionManager.get_current_user()
+        ChatManager.mark_message_as_seen(user.key.id(), request.username)
+        return Hello(greeting="message marked as seen")
     
 # registers API
 api = endpoints.api_server([TipstersApi]) 

@@ -224,6 +224,9 @@ class SingleChatMessage(messages.Message):
 class ChatModel(ndb.Model):
     user1 = ndb.StringProperty()
     user2 = ndb.StringProperty()
+    
+class UserChatStatusModel(ndb.Model):
+    name = ndb.StringProperty()
     seen = ndb.BooleanProperty()
     new = ndb.BooleanProperty()
     
