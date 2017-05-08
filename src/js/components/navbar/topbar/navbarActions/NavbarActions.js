@@ -26,6 +26,16 @@ export default class NavbarActions extends React.Component {
     }
 
     componentWillMount() {
+        this.fetchMessages()
+        const fetchMessages = setInterval(this.fetchMessages.bind(this), 10000)
+        this.setState( { fetchMessages } )
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.state.fetchMessages)
+    }
+
+    fetchMessages(){
         this.props.dispatch(fetchMessages())
     }
 

@@ -1,7 +1,7 @@
 import gapiLoader from './gapiLoader'
 
 
-const TESTING_INTERFACE = false
+const TESTING_INTERFACE = true
 
 
 export function callAPI(payload){
