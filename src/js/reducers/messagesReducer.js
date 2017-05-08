@@ -15,6 +15,7 @@ export default function reducer(state={
         }
         case "FETCH_MESSAGES_FULFILLED": {
             let { messages } = action.payload
+            messages.forEach(message => message.id = message.tipster.name)
 
             return {
                 ...state,
@@ -23,7 +24,7 @@ export default function reducer(state={
                 messages
             }
         }
-        case "SET_MESSAGES_NOT_NEW": {
+        case "SET_MESSAGES_NOT_NEW_PENDING": {
             let messages = [...state.messages]
             messages.forEach(ele => ele.new=false)
             return {
@@ -52,11 +53,23 @@ export default function reducer(state={
                 messages : messages
             }
         }
-        case "OPEN_MESSAGE": {
+        case "MARK_MESSAGE_AS_SEEN_PENDING": {
             const messages = [...state.messages]
-            const messageToUpdate = messages.findIndex(message => message.id === action.payload)
+            const messageId = action.params
+            const messageToUpdate = messages.findIndex(message => message.id === messageId)
             messages[messageToUpdate] = Object.assign({}, messages[messageToUpdate], {"seen":true});
-            const openMessagesIds = [...state.openMessagesIds, action.payload]  
+
+            return {
+                ...state,
+                messages: messages,
+            }
+        }
+        case "OPEN_MESSAGE_PENDING": {
+            const messages = [...state.messages]
+            const messageId = action.params
+            const messageToUpdate = messages.findIndex(message => message.id === messageId)
+            messages[messageToUpdate] = Object.assign({}, messages[messageToUpdate], {"seen":true});
+            const openMessagesIds = [...state.openMessagesIds, messageId]  
 
             return {
                 ...state,

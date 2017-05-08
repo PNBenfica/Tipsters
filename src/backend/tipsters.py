@@ -235,6 +235,7 @@ class TipstersApi(remote.Service):
     @endpoints.method(USER_REQUEST, Hello, path = "messages/mark_as_seen", http_method='Post', name = "markMessageAsSeen")
     def mark_message_as_seen(self, request):
         user = SessionManager.get_current_user()
+        print request.username
         ChatManager.mark_message_as_seen(user.key.id(), request.username)
         return Hello(greeting="message marked as seen")
     

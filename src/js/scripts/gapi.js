@@ -1,7 +1,7 @@
 import gapiLoader from './gapiLoader'
 
 
-const TESTING_INTERFACE = true
+const TESTING_INTERFACE = false
 
 
 export function callAPI(payload){
@@ -28,7 +28,7 @@ function makeApiRequest(payload){
         request.execute((resp) => apiCallBack(resp, payload))
     }
     else{
-        setTimeout(() => { console.log("waiting for api load"); callAPI(payload); }, 500)
+        setTimeout(() => { console.log("waiting for api load"); callAPI(payload); }, 2000)
     }
 }
 

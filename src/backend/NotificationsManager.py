@@ -96,7 +96,6 @@ def _get_notification(user, notification_websafekey):
         raise ForbiddenException('Not your notification mofo')
 
 def _to_notification_message(notification):
-    print notification.type
     return NotificationMessage(
                 id = notification.id,
                 date = notification.date,

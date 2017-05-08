@@ -6,14 +6,18 @@ from UserManager import get_user_mini_form
 
 def get_chats_message(username):
     chats = _get_chats(username)
+    print chats
     messages = map(lambda chat: _to_chat_message(chat, username), chats)
     messages.sort(key=lambda message: message.messages[0].date, reverse=True)
     return ChatsMessage(messages = messages)
 
 def _to_chat_message(chat, username):
+    print(username)
     chat_partner = _get_chat_partner(chat, username)
+    print(chat_partner)
     messages = _get_chat_messages(chat)
     user_chat_status = _get_user_status(chat, username)
+    print(user_chat_status)
     return ChatMessage(tipster=get_user_mini_form(chat_partner),messages= map(_to_chat_single_message, messages),seen=user_chat_status.seen, new=user_chat_status.new )
 
 def _get_chat_partner(chat, current_user):

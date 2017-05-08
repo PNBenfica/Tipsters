@@ -52,7 +52,7 @@ export default class ChatPanel extends React.Component {
     render() {
 
         const { message, close, onInputChange, sendMessage, textInput } = this.props
-        const chat_id = 'chat_msg_' + message.id
+        const chat_id = 'chat_msg_' + message.id.replace(" ","_")
 
         const { bodyHeight, inputHeight } = this.getBodyHeights()
 
