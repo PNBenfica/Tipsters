@@ -84,10 +84,10 @@ export default function reducer(state={
                 openMessagesIds : openMessagesIds
             }
         }
-        case "SEND_MESSAGE":{
-            const newMessage = {author:"Paulo Teixeira", content: action.payload.content, date: "just now" }
+        case "SEND_MESSAGE_PENDING":{
+            const newMessage = {author:"Paulo Teixeira", content: action.params.message, date: "just now" }
             const messages = [...state.messages]
-            const index = messages.findIndex(message => message.id === action.payload.id)
+            const index = messages.findIndex(message => message.id === action.params.username)
             messages[index] = Object.assign({}, messages[index], {"messages": [newMessage, ...messages[index].messages]})
             return {
                 ...state,

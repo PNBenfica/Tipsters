@@ -89,7 +89,7 @@ export function sendMessage(username, message) {
     return function(dispatch) {
 
         callAPI({
-            type: "OPEN_MESSAGE",
+            type: "SEND_MESSAGE",
             request: (() => gapi.client.tipsters.sendMessage({username,message})),
             dispatch,
             action: {username,message} 
