@@ -38,8 +38,8 @@ export default function reducer(state={
             if (action.payload){
                 const destUser = action.payload
 
-                const id = Math.floor((Math.random() * 10000) + 10)
-                messages = [{id: id, sender: destUser, senderImage : "img/joaoalmeida.jpg", messages : [], seen : true, new : false}, ...messages]
+                const id = destUser
+                messages = [{id: id, "tipster": {"avatar": "img/user6.jpg", "name": destUser} , messages : [], seen : true, new : false}, ...messages]
                 openMessagesIds = [id, ...openMessagesIds]
                 openMessagesIds = openMessagesIds.filter(id => id != "NEW_MESSAGE")
             }
@@ -49,8 +49,8 @@ export default function reducer(state={
 
             return {
                 ...state,
-                openMessagesIds : openMessagesIds,
-                messages : messages
+                openMessagesIds,
+                messages
             }
         }
         case "MARK_MESSAGE_AS_SEEN_PENDING": {
