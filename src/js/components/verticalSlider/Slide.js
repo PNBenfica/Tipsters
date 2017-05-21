@@ -11,7 +11,11 @@ export default class Slide extends React.Component {
         return (
             <section class={classNames("slide", { active, next, prevDotClick } ) } style={{ backgroundImage: "url("+ background + ")" }} >
 
-            	<p>{title}</p>
+            	<div>
+            	
+            		<p>{title}</p>
+
+            	</div>
 
             </section>
         )

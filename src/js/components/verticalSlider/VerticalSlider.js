@@ -81,11 +81,11 @@ export default class VerticalSlider extends React.Component {
         return (
             <section id="vertical-slider">
 
-                <Slide active={active==0} next={false} prevDotClick={prevDotClick==0} background={"img/home/section1.jpg"} title="1" />
+                <Slide active={active==0} next={false} prevDotClick={prevDotClick==0} background={"img/home/section1.jpg"} title="Slide 1" />
 
-                <Slide active={active==1} next={active==0} prevDotClick={prevDotClick==1} background={"img/home/section2.jpg"} title="2" />
+                <Slide active={active==1} next={active==0} prevDotClick={prevDotClick==1} background={"img/home/section2.jpg"} title="Slide 2" />
 
-                <Slide active={active==2} next={active==1} prevDotClick={prevDotClick==2} background={"img/home/section3.jpg"} title="3" />
+                <Slide active={active==2} next={active==1} prevDotClick={prevDotClick==2} background={"img/home/section3.jpg"} title="Slide 3" />
 
                 <Dots n={this.nSlides} tooltipsData={["Slide 1", "Slide 2", "Slide 3"]} onDotClick={this.onDotClick.bind(this)} active={active} />
 

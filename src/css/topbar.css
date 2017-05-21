@@ -1,33 +1,32 @@
-/*!
- * Start Bootstrap - SB Admin 2 Bootstrap Admin Theme (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-
 .navbar{
     position: fixed;
     z-index: 1030;
     right: 0;
     left: 0;   
     padding: 0px;
-    border-width: 0 0 1px;
+    /*border-width: 0 0 1px;
     border-bottom: solid 1px #E7E7E7;
-    box-shadow: 0 0 8px rgba(0,0,0,0.075);
+    box-shadow: 0 0 8px rgba(0,0,0,0.075);*/
 }
 
 .navbar .navbar-header{
     z-index: 1030;
-    background-color: #2B2B2B;
+    height: 60px;
+    display: flex;
 }
 
-.navbar .navbar-toggle .icon-bar {
-    background-color: #888;
+.navbar-toggle{
+    z-index: 1;
 }
 
+.navbar-toggle .icon-bar{
+    background-color: white;
+}
 
 .navbar .navbar-brand {
     text-align: center;
+    z-index: 1;
+    position: relative;
 }
 
 .navbar .navbar-brand p{
@@ -41,11 +40,35 @@
 }
 
 
+.navbar .navbar-links{
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 0;
+    height: 0;
+    overflow: hidden;
+
+    padding-top: 60px;
+
+    background-color: rgba(0,0,0,0.85);
+
+    opacity: 0;
+    transition: opacity 750ms, width 0s 750ms, height 0s 750ms;
+}
+
+.navbar .navbar-links.open{
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    background-color: rgba(0,0,0,0.85);
+    transition: opacity 750ms;
+}
+
 
 .navbar .navbar-actions{
     width: 59%;
     max-width: 200px; 
-    height: 50px;
     float: right;
 
     display: flex;
@@ -60,6 +83,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    z-index: 0;
 
     -webkit-transition: background .5s;
     -moz-transition: background .5s;
@@ -130,36 +155,6 @@
     transform: translate(0%,0);
 }
 
-
-@media(min-width:768px) {
-
-    .navbar .navbar-header{
-        background-color: white;
-    }
-
-    .navbar .navbar-brand{
-        width: 110px;
-        background-color: rgb(50,50,50);
-    }
-
-    .navbar .navbar-actions .link{
-        border-right: solid 1px #e7e7e7;
-    }
-    .navbar .navbar-actions .link:first-child{
-        border-left: solid 1px #e7e7e7;
-    }
-    .navbar .navbar-actions .link > i{
-        color: #333;
-    }
-
-    .navbar .navbar-actions .link:hover{
-        background-color: #FAFAFA;
-    }
-
-    .navbar .navbar-actions{
-        margin-right: 100px;
-    }
-}
 
 .sidebar-right{
     cursor: default;
@@ -317,4 +312,32 @@
     padding: 15px 0;
     height: 45px;
     width: 45px;
+}
+
+
+
+
+@media(min-width:768px) {
+
+    .navbar .navbar-brand{
+        width: 110px;
+    }
+
+    .navbar .navbar-actions .link{
+        border-right: solid 1px #e7e7e7;
+    }
+    .navbar .navbar-actions .link:first-child{
+        border-left: solid 1px #e7e7e7;
+    }
+    .navbar .navbar-actions .link > i{
+        color: #333;
+    }
+
+    .navbar .navbar-actions .link:hover{
+        background-color: #FAFAFA;
+    }
+
+    .navbar .navbar-actions{
+        margin-right: 100px;
+    }
 }

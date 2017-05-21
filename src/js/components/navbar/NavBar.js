@@ -24,8 +24,7 @@ export default class Nav extends React.Component {
 
 		return (
 			<nav class="navbar" role="navigation">
-				<TopBar onHamburgerClick={this.onHamburgerClick.bind(this)} />
-				<SideBar location={location} open={this.state.sidebarOpen} />
+				<TopBar location={location} onHamburgerClick={this.onHamburgerClick.bind(this)} sidebarOpen={this.state.sidebarOpen} />
 			</nav>
 		)
 	}
