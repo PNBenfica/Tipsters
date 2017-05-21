@@ -1,5 +1,7 @@
 import React from "react"
 
+import classNames from "classnames"
+
 import SideBar from "./sidebar/SideBar"
 import TopBar from "./topbar/TopBar"
 
@@ -20,10 +22,10 @@ export default class Nav extends React.Component {
 
 	render() {
 
-		const { location } = this.props
+		const { location, inverted } = this.props
 
 		return (
-			<nav class="navbar" role="navigation">
+			<nav class={classNames( "navbar", { inverted })} role="navigation" >
 				<TopBar location={location} onHamburgerClick={this.onHamburgerClick.bind(this)} sidebarOpen={this.state.sidebarOpen} />
 			</nav>
 		)

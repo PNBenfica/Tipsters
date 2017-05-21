@@ -13,7 +13,7 @@ export default class SearchLink extends React.Component {
 
             <div class="link" onClick={() => onClick()}>
 
-	            <i class="fa fa-fw fa-search"></i>
+        		<svg><use xlinkHref="img/icons.svg#search" /></svg>
 
                 <SearchSidebar open={open} close={onClick} />
 

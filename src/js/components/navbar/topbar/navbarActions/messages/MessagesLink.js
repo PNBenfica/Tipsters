@@ -12,7 +12,7 @@ export default class MessagesLink extends React.Component {
         return (
             <div class="link" onClick={() => onClick()}>
 
-                <Link icon="fa-envelope-o" badge="badge-red"  newItems={nNew}/>
+                <Link icon="img/icons.svg#envelope" badge="badge-red"  newItems={nNew}/>
 
                 <MessagesSidebar close={onClick} messages={messages} open={open} markAsSeen={markAsSeen} createNewMessage={createNewMessage}/>
 

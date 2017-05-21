@@ -8,7 +8,6 @@ import TrendBar from "../components/trendbar/TrendBar"
 export default class Feed extends React.Component {
 
 	render() {
-					// <StatusUpdate />
 
 	    return (
 			<div id="feed-page">

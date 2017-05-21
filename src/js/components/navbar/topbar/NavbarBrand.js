@@ -6,7 +6,7 @@ export default class NavbarBrand extends React.Component {
     render() {
         return (
             <a class="navbar-brand" href="#">
-            	<p>t</p>
+            	<p>t</p><small>ipsters</small>
             </a>
         )
     }

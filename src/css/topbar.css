@@ -4,6 +4,12 @@
     right: 0;
     left: 0;   
     padding: 0px;
+
+    background-color: rgba(255,255,255,0)
+    box-shadow: 0px 0px 15px 0px rgba(189,187,189, 0);
+
+    transition: all 750ms linear;
+    -webkit-transition: all 750ms linear;
     /*border-width: 0 0 1px;
     border-bottom: solid 1px #E7E7E7;
     box-shadow: 0 0 8px rgba(0,0,0,0.075);*/
@@ -13,6 +19,7 @@
     z-index: 1030;
     height: 60px;
     display: flex;
+    justify-content: space-between;
 }
 
 .navbar-toggle{
@@ -23,20 +30,36 @@
     background-color: white;
 }
 
+.navbar-toggle:hover .icon-bar{
+    background-color: #c30000;
+}
+
+
 .navbar .navbar-brand {
-    text-align: center;
-    z-index: 1;
     position: relative;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: auto;
+    width: 100px;
+    padding: 0;
+
+    font-weight: 300;
+}
+
+
+.navbar .navbar-brand *{
+    color: white;
+    transition: color 200ms;
 }
 
 .navbar .navbar-brand p{
     display: inline-block;
-    color: #2B2B2B;
-    background: white;
     font-size: 36px;
-    font-weight: bold;
-    padding: 5px 5px 2px 7px;
-    border-radius: 3px;
+    margin: 0;
 }
 
 
@@ -51,7 +74,7 @@
 
     padding-top: 60px;
 
-    background-color: rgba(0,0,0,0.85);
+    background-color: rgba(0,0,0,0.93);
 
     opacity: 0;
     transition: opacity 750ms, width 0s 750ms, height 0s 750ms;
@@ -61,10 +84,24 @@
     width: 100vw;
     height: 100vh;
     opacity: 1;
-    background-color: rgba(0,0,0,0.85);
     transition: opacity 750ms;
 }
 
+
+.navbar .navbar-links a {
+    color: white !important;
+    text-transform: uppercase;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 500ms 250ms, color 200ms;
+}
+
+.navbar .navbar-links.open a {
+    opacity: 1;
+}
 
 .navbar .navbar-actions{
     width: 59%;
@@ -91,11 +128,20 @@
     transition: background .5s;
 }
 
-.navbar .navbar-actions .link:hover{
+.navbar .link svg{
     cursor: pointer;
-    background-color: #333;
+    width: 100%;
+    height: 100%;
+    padding: 25%;
+
+    fill: white;
+    stroke: white;
+    transition: stroke 200ms, fill 200ms;
 }
 
+.navbar .link:hover svg{
+    cursor: pointer;
+}
 
 .navbar .navbar-actions .link > i{
     position: relative;
@@ -315,29 +361,97 @@
 }
 
 
+/* navbar inverted */
 
+.navbar.inverted {
+
+    background-color: rgba(255,255,255,1);
+    box-shadow: 0px 0px 15px 0px rgba(189,187,189, 1);
+}
+
+.navbar.inverted .link svg{
+    fill: #333;
+    stroke: #333;
+}
+
+.navbar.inverted .link:hover svg{
+    fill: #c30000;
+    stroke: #c30000;
+}
+
+.navbar.inverted .navbar-links a{
+    color: #333 !important;
+}
+
+.navbar.inverted .navbar-links a.active,
+.navbar.inverted .navbar-links a:hover{
+    color: #c30000 !important;
+}
+
+.navbar.inverted .navbar-brand *{
+    color: #333;
+}
 
 @media(min-width:768px) {
+
+    .navbar .navbar-header{
+        height: 85px;
+        justify-content: flex-start;
+    }
 
     .navbar .navbar-brand{
         width: 110px;
     }
 
-    .navbar .navbar-actions .link{
-        border-right: solid 1px #e7e7e7;
-    }
-    .navbar .navbar-actions .link:first-child{
-        border-left: solid 1px #e7e7e7;
-    }
-    .navbar .navbar-actions .link > i{
-        color: #333;
+    .navbar .navbar-actions{
+        margin-left: auto;
     }
 
-    .navbar .navbar-actions .link:hover{
-        background-color: #FAFAFA;
+
+    .navbar .navbar-brand p{
+        font-size: 50px;
+    }
+    .navbar .navbar-brand small{
+        font-size: 25px;
     }
 
+    .navbar .navbar-links.open,
+    .navbar .navbar-links{
+        position: relative;
+        width: 60%;
+        height: auto;
+        padding: 0;
+        margin-left: 5%;
+        opacity: 1;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .navbar .navbar-links a{
+        opacity: 1;
+        display: inline-flex;
+        font-size: 17px;
+    }
+
+}
+
+
+@media(min-width:992px) {
+
+    .navbar .navbar-brand{
+        margin-left: 5%;
+    }
+
+    .navbar .navbar-links{
+        margin-left: 2%;
+        width: 50%;
+    }
+
+    .navbar .navbar-links.open,
     .navbar .navbar-actions{
         margin-right: 100px;
     }
+
 }

@@ -7,11 +7,11 @@ export default class Link extends React.Component {
 
         const {icon, badge, newItems, clearBadge} = this.props
 
-        const iconClass = classNames("fa", "fa-fw", icon)
         const badgeClass = classNames("font-awesome-badge", badge, {hidden:newItems==0})
 
+            // <i class={iconClass}><span class={badgeClass}>{newItems}</span></i>
         return (
-            <i class={iconClass}><span class={badgeClass}>{newItems}</span></i>
+        	<svg><use xlinkHref={icon} /></svg>
         )
     }
 }

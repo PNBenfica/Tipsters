@@ -5,7 +5,7 @@ export default class UserAvatar extends React.Component {
 	render() {
 
 		return (
-			<img src="img/joaoalmeida.jpg" class="img-thumbnail img-circle"></img>
+    		<svg><use xlinkHref="img/icons.svg#user-avatar-small" /></svg>
 		)
 	}
 }

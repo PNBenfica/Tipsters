@@ -1,5 +1,7 @@
 import React from "react"
 
+import classNames from "classnames"
+
 import Dots from "./Dots"
 import Slide from "./Slide"
 
@@ -55,7 +57,7 @@ export default class VerticalSlider extends React.Component {
     }
 
     setActiveSlide(active, prevDotClick = -1){
-        if (!this.animating) {
+        if (!this.animating && this.props.selected) {
             this.animating = true
             this.setState({ active, prevDotClick }, this.animationEnd.bind(this) )
         }
@@ -76,10 +78,10 @@ export default class VerticalSlider extends React.Component {
     render() {
 
         const { active, prevDotClick } = this.state
-        console.log(prevDotClick)
+        const { selected } = this.props
 
         return (
-            <section id="vertical-slider">
+            <section id="vertical-slider" class={classNames({ selected })}>
 
                 <Slide active={active==0} next={false} prevDotClick={prevDotClick==0} background={"img/home/section1.jpg"} title="Slide 1" />
 

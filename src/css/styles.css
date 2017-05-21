@@ -23,6 +23,7 @@ body{
     /*background-color: #FAFAFA;*/
 	font-family: 'Source Sans Pro', sans-serif;
 	color: #333;
+	overflow-y: scroll;
 }
 
 a, a:hover, a:active, a:visited {
@@ -90,16 +91,19 @@ textarea, input{
 }
 
 #page-wrapper {
-    min-height: 640px !important;
-    padding-top: 80px;
+    min-height: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 0s 1.5s;
 }
 
-@media(min-width:768px) {
-    #page-wrapper {
-    	padding-left: 110px;
-    }
+#page-wrapper.selected{
+	margin-top: calc(-100vh + 85px);
+    min-height: 100vh;
+    height: auto;
+    overflow: auto;
+    transition: none;
 }
-
 
 [role="search"] input{
     border-radius: 0px;

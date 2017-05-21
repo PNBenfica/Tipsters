@@ -12,7 +12,7 @@ export default class NotificationsLink extends React.Component {
         return (
             <div class="link" onClick={() => onClick()}>
 
-                <Link icon="fa-bell-o" badge="badge-green" newItems={nNew}/>
+                <Link icon="img/icons.svg#bell" badge="badge-green" newItems={nNew}/>
 
                 <NotificationsSidebar open={open} close={onClick} notifications={notifications} markAsSeen={markAsSeen}/>
                 
