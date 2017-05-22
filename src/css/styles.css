@@ -99,10 +99,48 @@ textarea, input{
 
 #page-wrapper.selected{
 	margin-top: calc(-100vh + 85px);
-    min-height: 100vh;
+    min-height: calc(100vh - 158px);
     height: auto;
     overflow: auto;
     transition: none;
+}
+
+
+#page-wrapper > .breadcrumb{
+    background-color: rgba(246,247,248,1);
+    border-bottom: solid 1px rgb(221,221,221);
+    padding: 23px 50px;
+    font-size: 18px;
+    color: rgba(36,36,36,1);
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    transform: translateX(-100%);
+    transition: none;
+}
+
+
+#page-wrapper.selected > .breadcrumb{
+    transform: translate(0%);
+    background-color: rgb(246,247,248);
+    transition: transform 1000ms 1s;
+}
+
+
+#page-wrapper.selected > .loading-gif{
+    opacity: 0;
+    height: calc(100vh - 158px);
+	animation-name: opacity-fade-in-animation;
+	animation-duration: 2000ms;
+	animation-delay: 1.5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards; 
+}
+
+
+@keyframes opacity-fade-in-animation {
+    to {
+    	opacity: 1;
+    }
 }
 
 [role="search"] input{
@@ -616,4 +654,23 @@ a.link-button{
 .warning .panel-body i{
 	margin-right: 10px;
 	color: #c30000;
+}
+
+.hover-underline{
+	position: relative;
+}
+
+.hover-underline:after{
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0px;
+	height: 2px;
+	background-color: #333;
+	transition: width 200ms;
+}
+
+.hover-underline:hover:after{
+	width: 100%;
 }

@@ -7,13 +7,16 @@ import TrendBar from "../components/trendbar/TrendBar"
 
 export default class Feed extends React.Component {
 
+	componentDidMount(){
+		setTimeout(() => this.props.onLoad(), 2000)
+	}
+
 	render() {
 
 	    return (
 			<div id="feed-page">
 
 				<div class="col-md-8 feed-page-left">
-
 
 					<PostsContainer {...this.props.params}/>
 				

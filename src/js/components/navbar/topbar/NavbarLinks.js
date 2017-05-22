@@ -20,7 +20,7 @@ export default class NavbarLinks extends React.Component {
         return (
         	<div class={classNames("navbar-links", { open })} >
 	        	{
-	        		options.map((option, i) => <a key={i} class={classNames({ active: option.active })} href={"#/"+option.href}>{option.name}</a> )
+	        		options.map((option, i) => <a key={i} class={classNames("hover-underline", { active: option.active })} href={"#/"+option.href}>{option.name}</a> )
 	        	}
         	</div>
         )

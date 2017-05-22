@@ -103,6 +103,11 @@
     opacity: 1;
 }
 
+.navbar .navbar-links a.hover-underline:after{
+    content: none;
+}
+
+
 .navbar .navbar-actions{
     width: 59%;
     max-width: 200px; 
@@ -433,6 +438,12 @@
         opacity: 1;
         display: inline-flex;
         font-size: 17px;
+    }
+
+    .navbar .navbar-links a.hover-underline:after{
+        content: '';
+        bottom: calc(50% - 16px);
+        background-color: white;
     }
 
 }
