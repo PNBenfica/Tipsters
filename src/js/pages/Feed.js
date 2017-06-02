@@ -1,20 +1,28 @@
 import React from "react"
+import { connect } from "react-redux"
 
-
+import Page from "./Page"
 import PostsContainer from "../components/PostsContainer"
 import StatusUpdate from "../components/feed/statusUpdate/StatusUpdate"
 import TrendBar from "../components/trendbar/TrendBar"
 
+@connect((store) => {
+    return {
+        fetched: store.posts.fetched,
+        fetching: store.posts.fetching,
+    }
+})
 export default class Feed extends React.Component {
 
 	componentDidMount(){
-		setTimeout(() => this.props.onLoad(), 2000)
 	}
 
 	render() {
 
+		const loading = this.props.fetching || !this.props.fetched
+
 	    return (
-			<div id="feed-page">
+			<Page id="feed-page" title="News Feed" loading={loading} img="img/feed.jpg" >
 
 				<div class="col-md-8 feed-page-left">
 
@@ -26,7 +34,7 @@ export default class Feed extends React.Component {
 					<TrendBar />
 				</div>
 
-			</div>
+			</Page>
 	    )
 	}
 }

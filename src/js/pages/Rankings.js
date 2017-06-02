@@ -6,6 +6,7 @@ import { fetchRankings, sortRankings } from "../actions/rankingsActions"
 import LoadingGif from "./../components/LoadingGif"
 import Pagination from "./../components/rankings/Pagination"
 import FiltersContainer from "./../components/rankings/FiltersContainer"
+import Page from "./Page"
 import Table from "./../components/rankings/Table"
 
 @connect((store) => {
@@ -107,25 +108,37 @@ export default class Rankings extends React.Component {
 
 		const { fetching, fetched, users } = this.props
 
-        if (fetching || !fetched) {
-        	return this.renderLoadingGif()
-        }
+		const loading = fetching || !fetched
 
 		const nVisibleRows = 10
 
-		let data = this.filterData(users)
-		data = data.slice(this.state.startAt, this.state.startAt + nVisibleRows)
+		let body = null
+
+		if (!loading){
+			
+			let data = this.filterData(users)
+			data = data.slice(this.state.startAt, this.state.startAt + nVisibleRows)
+
+			body = (
+				<div class="col-xs-12">
+
+					<FiltersContainer filters={this.state.filters} addFilter={this.addFilter.bind(this)} applyFilters={this.applyFilters.bind(this)} addSearchFilter={this.addSearchFilter.bind(this)}/>
+					
+					<Table data={data} sortBy={this.state.sortBy} changeSort={this.changeSort.bind(this)}/>
+
+					<Pagination nextPage={this.nextPage.bind(this)} previousPage={this.previousPage.bind(this)}/>
+
+				</div>
+			)
+		}
+
 
 		return (
-			<div id="rankings">
+			<Page id="rankings" title="Rankings" loading={loading} img="img/feed.jpg" >
 				
-				<FiltersContainer filters={this.state.filters} addFilter={this.addFilter.bind(this)} applyFilters={this.applyFilters.bind(this)} addSearchFilter={this.addSearchFilter.bind(this)}/>
-				
-				<Table data={data} sortBy={this.state.sortBy} changeSort={this.changeSort.bind(this)}/>
+				{ body }
 
-				<Pagination nextPage={this.nextPage.bind(this)} previousPage={this.previousPage.bind(this)}/>
-
-			</div>
+			</Page>
 		)
 	}
 

@@ -17,7 +17,7 @@ export function callAPI(payload){
 }
 
 function simulateInterface(payload){
-    setTimeout(() => payload.dispatch({type: payload.type + "_FULFILLED", payload: payload.default}) , 100)
+    setTimeout(() => payload.dispatch({type: payload.type + "_FULFILLED", payload: payload.default}) , 2000)
 }
 
 function makeApiRequest(payload){
