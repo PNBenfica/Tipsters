@@ -1,21 +1,25 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect } from "react-redux"
 
-import { fetchTables, fetchTips, shareTip } from "../actions/sportsActions";
+import { fetchTables, fetchTips, shareTip } from "../actions/sportsActions"
 
-import LeaguePanel from "../components/home/shareatip/LeaguePanel";
-import BetSlip from "../components/sports/betslip/BetSlip";
-import Breadcrumb from "../components/sports/Breadcrumb";
-import EventURL from "../components/sports/EventURL";
-import GoalsScorersTable from "../components/sports/tables/GoalsScorersTable";
-import ColumnsTable from "../components/sports/tables/ColumnsTable";
-import LoadingGif from "../components/LoadingGif";
-import MatchesTable from "../components/sports/tables/MatchesTable";
-import Section from "../components/Section";
-import SportTable from "../components/sports/tables/SportTable";
-import StandardOptionsTable from "../components/sports/tables/StandardOptionsTable";
-import TipsOnThisEvent from "../components/sports/tipsOnThisEvent/TipsOnThisEvent";
-import WarningAlreadyInBetSlip from "../components/sports/betslip/WarningAlreadyInBetSlip";
+import classNames from "classnames"
+
+import LeaguePanel from "../components/home/shareatip/LeaguePanel"
+import BetSlip from "../components/sports/betslip/BetSlip"
+import Breadcrumb from "../components/sports/Breadcrumb"
+import EventURL from "../components/sports/EventURL"
+import GoalsScorersTable from "../components/sports/tables/GoalsScorersTable"
+import ColumnsTable from "../components/sports/tables/ColumnsTable"
+import LoadingGif from "../components/LoadingGif"
+import MatchesTable from "../components/sports/tables/MatchesTable"
+import Page from "./Page"
+import Section from "../components/Section"
+import SportsList from "../components/sports/SportsList"
+import SportTable from "../components/sports/tables/SportTable"
+import StandardOptionsTable from "../components/sports/tables/StandardOptionsTable"
+import TipsOnThisEvent from "../components/sports/tipsOnThisEvent/TipsOnThisEvent"
+import WarningAlreadyInBetSlip from "../components/sports/betslip/WarningAlreadyInBetSlip"
 
 @connect((store) => {
   return {
@@ -57,7 +61,25 @@ export default class Sports extends React.Component {
 
         if (urlParamsChanged){
             this.fetchTables(nextProps.params)
+
+            let target
+            if (typeof matchCode !== "undefined"){
+                target = this.refs.match
+            }
+            else if (typeof leagueCode !== "undefined"){
+                target = this.refs.matches
+            }
+            else if (typeof sportCode !== "undefined"){
+                target = this.refs.leagues
+            }
+            else{
+                target = this.refs.sports
+            }
+
+            $("html, body").stop().animate({scrollTop:target.getBoundingClientRect().top + document.body.scrollTop - 100}, 750);
+
         }
+
     }
 
     /*
@@ -511,49 +533,62 @@ export default class Sports extends React.Component {
         return <GoalsScorersTable key={i} eventURL={eventURL} bets={bets} addTip={this.onOddClick.bind(this)} isInBetSlip={this.isInBetSlip.bind(this)}/>
     }
 
-    renderLoadingGif(){
-        return ( <div class="col-xs-12"><LoadingGif /></div>)
-    }
-
   	render() {
+                // {
 
-        let {sport = "Football", sportCode = "1", league, leagueCode, match, matchCode}  = this.props.params
+                // <Breadcrumb sport={sport} sportCode={sportCode} league={league} leagueCode={leagueCode} match={match} matchCode={matchCode}/>                   
+                    // <div class="col-lg-4 hidden-md hidden-sm hidden-xs right-bar-container">
+
+                //     <BetSlip {...this.state.betSlip} updateSellingPrice={this.updateSellingPrice.bind(this)} removeTip={this.removeTip.bind(this)} shareTip={this.shareTip.bind(this)} setBetSlipComment={this.setBetSlipComment.bind(this)}/>
+
+                //     <TipsOnThisEvent tips={tips} fetching={fetchingTips} fetched={fetchedTips} />
+
+                // </div>}
+
+        let {sport = "Football", sportCode, league, leagueCode, match, matchCode}  = this.props.params
 	  	let { tips, fetchingTips, fetchedTips }  = this.props
 
+        const loading = this.props.fetching || !this.props.fetched
+
         let Tables = []
-        if (this.props.fetching) {
-            Tables = this.renderLoadingGif()
-        }
-        else if (this.props.fetched){
-            const data = this.props.tables;
-            Tables  = this.renderTables(data);
-            ({ sport, league, match }  = this.getSportUrlParams(data))
+        if (!loading) {
+            // const data = this.props.tables;
+            // Tables  = this.renderTables(data);
+            // ({ sport, league, match }  = this.getSportUrlParams(data))
         }
 
 	    return (
 
-            <div id="sports-page">
-
-                <Breadcrumb sport={sport} sportCode={sportCode} league={league} leagueCode={leagueCode} match={match} matchCode={matchCode}/>                   
-
-                <div class="col-lg-8 sports-tables-container">
-
-                    {Tables}
-
-	            </div>
+            <Page id="sports-page" title="Share a tip" loading={false} img="img/covers/shareatip.jpg" >
 
 
-	            <div class="col-lg-4 hidden-md hidden-sm hidden-xs right-bar-container">
+                <div class="col-xs-12 col-md-8 col-md-push-2 sports-tables-container">
 
-	            	<BetSlip {...this.state.betSlip} updateSellingPrice={this.updateSellingPrice.bind(this)} removeTip={this.removeTip.bind(this)} shareTip={this.shareTip.bind(this)} setBetSlipComment={this.setBetSlipComment.bind(this)}/>
+                    <div class="col-xs-12 sports active" ref="sports">
+                        <SportsList activeSportCode={sportCode}/>
+                    </div>
 
-	                <TipsOnThisEvent tips={tips} fetching={fetchingTips} fetched={fetchedTips} />
+                    <div class={classNames("col-xs-12 leagues", {active: typeof sportCode !== 'undefined'} )} ref="leagues">
+                        <a href="#/sports/Football/1/Eng. Premier League/3">Leagues</a>
+                    </div>
+
+                    <div class={classNames("col-xs-12 matches", {active: typeof leagueCode !== 'undefined'} )} ref="matches">
+                        <a href="#/sports/Football/1/Eng. Premier League/3/Manchester United - Arsenal/1267076/">Matches</a>
+                    </div>
+
+                    <div class={classNames("col-xs-12 macth", {active: typeof matchCode !== 'undefined'} )} ref="match">
+                        <a href="#/sports/Football/1">Match</a>
+                    </div>
 
 	            </div>
 
                 <WarningAlreadyInBetSlip active={this.state.warningAlreadyInBetSlip} dismiss={this.hideWarningAlreadyInBetSlip.bind(this)}/>
 
-	        </div>
-	    );
+	        </Page>
+	    )
+
+
+
   	}
 }
+

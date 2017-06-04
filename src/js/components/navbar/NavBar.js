@@ -20,6 +20,14 @@ export default class Nav extends React.Component {
 		this.setState({ sidebarOpen })
 	}
 
+
+    componentWillReceiveProps(nextProps){
+        const currentpath = this.props.location.pathname
+        if (currentpath != nextProps.location.pathname){
+			this.setState({ sidebarOpen : false })
+        }
+    }
+
 	render() {
 
 		const { location, inverted } = this.props

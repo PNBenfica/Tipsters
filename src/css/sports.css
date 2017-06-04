@@ -1,5 +1,6 @@
-#sports-page{
-
+#sports-page .col-xs-12{
+	padding-left: 0;
+	padding-right: 0;
 }
 
 #sports-page .breadcrumb{
@@ -7,7 +8,6 @@
 	padding: 0px;
 	text-transform: uppercase;
 	line-height: 14px;
-	margin-left: 15px;
 }
 
 #sports-page .breadcrumb .logo{
@@ -26,16 +26,6 @@
 	border-bottom-color: #CCCCCC;
 }
 
-@media screen and (min-width: 1200px) {
-	#sports-page .sports-tables-container {
-		padding: 0 30px;
-		border-right: solid 1px rgb(221,221,221);
-	}
-
-	#sports-page .breadcrumb{
-		margin-left: 30px;
-	}
-}
 
 #sports-page .sports-tables-container .table thead,
 #sports-page .panel .panel-heading{
@@ -136,7 +126,87 @@
 }
 
 
+#sports-page .sports-tables-container > div {
+	max-height: 0;
+	opacity: 0;
+	transition: opacity 750ms ease-in-out;
+	overflow: hidden;
+}
 
+#sports-page .sports-tables-container > div.active {
+	opacity: 1;
+	max-height: none;
+	min-height: 300px;
+	margin-bottom: 50px;
+}
+
+#sports-page .sports .sport{
+	padding: 5%;
+}
+
+#sports-page .sports .sport .aspect-ratio{
+    position: relative;
+    padding-top: 100%;
+    width: 100%;
+}
+
+#sports-page .sports .sport .inner-item{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+    top: 0;
+    left: 0;
+    border: solid 1px rgb(221,221,221);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#sports-page .sports .sport .inner-item div{
+	position: relative;
+    text-align: center;
+}
+
+#sports-page .sports .sport .inner-item svg{
+	width: 50px;
+    max-height: 50px;
+    fill: white;
+}
+
+#sports-page .sports .sport .inner-item h2{
+	text-transform: uppercase;
+    font-size: 20px;
+    color: white;
+}
+
+#sports-page .sports .sport .inner-item picture{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: filter 500ms ease-in-out;
+    filter: brightness(0.2) blur(1px);
+}
+
+#sports-page .sports .sport.active .inner-item picture,
+#sports-page .sports .sport .inner-item:hover picture{
+    filter: brightness(0.5) blur(0px);
+}
+
+.leagues{
+	background-color: red;
+}
+.matches{
+	background-color: green;
+}
+.macth{
+	background-color: orange;
+}
 
 
 #sports-page  .odds-table .table{
@@ -555,3 +625,18 @@ Tips on this game
 	animation-timing-function: ease-out;
 	animation-fill-mode: forwards;  
 }
+
+@media(min-width:768px) {
+
+	#sports-page .sports .sport .inner-item svg{
+		width: 80px;
+	    max-height: 80px;
+	}
+
+	#sports-page .sports .sport .inner-item h2{
+		font-size: 20px;
+	}
+
+}
+
+

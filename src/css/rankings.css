@@ -3,6 +3,10 @@
 	padding-left: 15px;
 }
 
+#rankings .table-responsive{
+	min-height: 448px;
+}
+
 #rankings table thead {
 	background-color: rgb(244,244,244);
 }
@@ -76,10 +80,15 @@
 
 #rankings .pagination-nav{
 	text-align: center;
+	margin-bottom: 30px;
 }
 
 #rankings .pagination{
 	margin: 0;
+}
+
+#rankings .page-link{
+	border-radius: 0px;
 }
 
 #rankings .page-item:hover{

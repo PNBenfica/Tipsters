@@ -14,15 +14,12 @@ import TrendBar from "../components/trendbar/TrendBar"
 })
 export default class Feed extends React.Component {
 
-	componentDidMount(){
-	}
-
 	render() {
 
 		const loading = this.props.fetching || !this.props.fetched
 
 	    return (
-			<Page id="feed-page" title="News Feed" loading={loading} img="img/feed.jpg" >
+			<Page id="feed-page" title="News Feed" loading={loading} img="img/covers/feed.jpg" >
 
 				<div class="col-md-8 feed-page-left">
 

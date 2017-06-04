@@ -134,7 +134,7 @@ export default class Rankings extends React.Component {
 
 
 		return (
-			<Page id="rankings" title="Rankings" loading={loading} img="img/feed.jpg" >
+			<Page id="rankings" title="Rankings" loading={loading} img="img/covers/rankings.jpg" >
 				
 				{ body }
 

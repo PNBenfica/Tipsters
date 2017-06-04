@@ -3,7 +3,6 @@ import React from "react"
 import classNames from "classnames"
 
 import BottomChatContainer from "../components/bottomChat/BottomChatContainer"
-// import Breadcrumb from "../components/Breadcrumb"
 import NavBar from "../components/navbar/NavBar"
 import VerticalSlider from "../components/verticalSlider/VerticalSlider"
 

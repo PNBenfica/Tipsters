@@ -26,12 +26,17 @@
     z-index: 1;
 }
 
-.navbar-toggle .icon-bar{
+.navbar .navbar-toggle .icon-bar{
     background-color: white;
 }
 
-.navbar-toggle:hover .icon-bar{
+.navbar.inverted .navbar-toggle:hover .icon-bar,
+.navbar .navbar-toggle:hover .icon-bar{
     background-color: #c30000;
+}
+
+.navbar.inverted .navbar-toggle .icon-bar{
+    background-color: #333;
 }
 
 
@@ -384,9 +389,6 @@
     stroke: #c30000;
 }
 
-.navbar.inverted .navbar-links a{
-    color: #333 !important;
-}
 
 .navbar.inverted .navbar-links a.active,
 .navbar.inverted .navbar-links a:hover{
@@ -438,6 +440,10 @@
         opacity: 1;
         display: inline-flex;
         font-size: 17px;
+    }
+
+    .navbar.inverted .navbar-links a{
+        color: #333 !important;
     }
 
     .navbar .navbar-links a.hover-underline:after{
