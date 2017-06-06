@@ -637,6 +637,49 @@ Tips on this game
 }
 
 
+.go-up-button{
+	position: fixed;
+	bottom: 10vh;
+	left: 5vh;
+	width: 30px;
+	height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+	background-color: rgba(0,0,0,0.2);
+	transition: background-color 500ms ease-in-out;
+}
+
+.go-up-button:hover{
+	background-color: rgba(0,0,0,0.4);
+	cursor: pointer;
+}
+
+.go-up-button .arrow{
+    transform: rotate(270deg);
+    width: 50%;
+    height: 50%;
+    stroke: white;
+}
+
+.go-up-button:hover .arrow{
+    -webkit-animation-name: up-and-down-arrow; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 500ms; /* Safari 4.0 - 8.0 */
+    -webkit-animation-iteration-count: infinite; /* Safari 4.0 - 8.0 */
+    animation-name: up-and-down-arrow;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+}
+
+
+@keyframes up-and-down-arrow {
+    0%   {transform: translateY(0px) rotate(270deg);}
+    25%  {transform: translateY(2px) rotate(270deg);}
+    75%  {transform: translateY(-2px) rotate(270deg);}
+    100% {transform: translateY(0px) rotate(270deg);}
+}
+
 @media(min-width:768px) {
 
 	#sports-page .square-list .square{

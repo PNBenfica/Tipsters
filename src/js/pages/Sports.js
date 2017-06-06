@@ -18,6 +18,7 @@ import Section from "../components/Section"
 import SportsList from "../components/sports/SportsList"
 import SquaresList from "../components/sports/SquaresList"
 import SportTable from "../components/sports/tables/SportTable"
+import SVG from "../components/SVG"
 import StandardOptionsTable from "../components/sports/tables/StandardOptionsTable"
 import TipsOnThisEvent from "../components/sports/tipsOnThisEvent/TipsOnThisEvent"
 import WarningAlreadyInBetSlip from "../components/sports/betslip/WarningAlreadyInBetSlip"
@@ -63,25 +64,63 @@ export default class Sports extends React.Component {
         if (urlParamsChanged){
             this.fetchTables(nextProps.params)
 
-            let target
-            if (typeof matchCode !== "undefined"){
-                target = this.refs.match
-            }
-            else if (typeof leagueCode !== "undefined"){
-                target = this.refs.matches
-            }
-            else if (typeof sportCode !== "undefined"){
-                target = this.refs.leagues
-            }
-            else{
-                target = this.refs.sports
-            }
 
-            $("html, body").stop().delay(50).animate({scrollTop:target.getBoundingClientRect().top + document.body.scrollTop - 100}, 750);
+            this.scrollToActivePanel(nextProps.params)
 
         }
 
     }
+
+    scrollToActivePanel(sportParams){
+        const target = this.activePanel(sportParams)
+        this.scrollTo(target)
+    }
+
+    scrollTo(target){
+        $("html, body").stop().delay(50).animate({scrollTop:target.getBoundingClientRect().top + document.body.scrollTop - 100}, 750);
+    }
+
+    activePanel(sportParams){
+
+        const {sportCode, leagueCode, matchCode} = sportParams
+
+        let target
+        if (matchCode !== undefined){
+            target = this.refs.match
+        }
+        else if (leagueCode !== undefined){
+            target = this.refs.matches
+        }
+        else if (sportCode !== undefined){
+            target = this.refs.leagues
+        }
+        else{
+            target = this.refs.sports
+        }
+
+        return target
+    }
+
+
+
+
+    scrollToPreviousPanel(){
+        const target = this.previousPanel(this.props.params)
+        this.scrollTo(target)
+    }
+
+    previousPanel(sportParams){
+
+        const isOffScreen = (element) => element.getBoundingClientRect().top < 0
+        let target = this.refs.sports
+        const refs = [this.refs.sports, this.refs.leagues, this.refs.matches, this.refs.match]
+
+        refs.forEach(ref => { if (isOffScreen(ref)) target = ref } )
+
+        return target
+    }
+
+
 
     /*
         * @desc must redefine this method since the componentWillReceiveProps will cause a rerender of the page before the new tables are fetched
@@ -361,8 +400,6 @@ export default class Sports extends React.Component {
     }
 
     getMainLeagues(sportName){
-            // "Basketball": [{name:"", url:"", img:"img/home/nba.jpg"},],
-            // "Tennis": [{name:"", url:"", img:"img/home/federer.jpg"}]
 
         let mainLeagues = {
             "Football": [
@@ -625,6 +662,8 @@ export default class Sports extends React.Component {
 	            </div>
 
                 <WarningAlreadyInBetSlip active={this.state.warningAlreadyInBetSlip} dismiss={this.hideWarningAlreadyInBetSlip.bind(this)}/>
+
+                <div class={classNames("go-up-button hidden-xs", {hidden: sportCode === undefined} )} onClick={this.scrollToPreviousPanel.bind(this)}><SVG classes="arrow" icon="edge-button-path" /></div>
 
 	        </Page>
 	    )
