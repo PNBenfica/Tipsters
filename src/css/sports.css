@@ -3,6 +3,10 @@
 	padding-right: 0;
 }
 
+#sports-page .sports-tables-container{
+	margin-bottom: 100px;
+}
+
 #sports-page .breadcrumb{
 	background: transparent;
 	padding: 0px;
@@ -64,8 +68,7 @@
 
 #sports-page .sports-tables-container .table td,
 #sports-page .sports-tables-container .panel-body a{
-	padding-bottom: 5px;
-	padding-top: 5px;
+	padding: 8px;
 	font-size: 13px;
 	font-weight: 400;
 
@@ -136,52 +139,67 @@
 #sports-page .sports-tables-container > div.active {
 	opacity: 1;
 	max-height: none;
-	min-height: 300px;
+	min-height: 200px;
 	margin-bottom: 50px;
 }
 
-#sports-page .sports .sport{
-	padding: 5%;
+#sports-page .square-list .square{
+	padding: 0;
 }
 
-#sports-page .sports .sport .aspect-ratio{
+#sports-page .leagues .square-list .square{
+	width: 50%;
+    border: solid 1px rgb(221,221,221);
+}
+
+#sports-page .square-list .square .aspect-ratio{
     position: relative;
-    padding-top: 100%;
+	padding-top: 56.25%;
     width: 100%;
+    border-bottom: solid 1px rgb(221,221,221);
 }
 
-#sports-page .sports .sport .inner-item{
+#sports-page .leagues .square-list .square .aspect-ratio{
+    padding-top: 56.25%;
+}
+
+#sports-page .square-list .square .inner-item{
 	position: absolute;
 	width: 100%;
 	height: 100%;
     top: 0;
     left: 0;
-    border: solid 1px rgb(221,221,221);
 
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+
+    overflow: hidden;
 }
 
-#sports-page .sports .sport .inner-item div{
+#sports-page .square-list .square .inner-item div{
 	position: relative;
     text-align: center;
 }
 
-#sports-page .sports .sport .inner-item svg{
+#sports-page .square-list .square .inner-item svg{
 	width: 50px;
     max-height: 50px;
     fill: white;
 }
 
-#sports-page .sports .sport .inner-item h2{
+#sports-page .square-list .square .inner-item h2{
 	text-transform: uppercase;
     font-size: 20px;
     color: white;
 }
 
-#sports-page .sports .sport .inner-item picture{
+#sports-page .square-list .square .inner-item h2{
+	font-size: 16px;
+}
+
+#sports-page .square-list .square .inner-item picture{
     position: absolute;
     top: 0;
     left: 0;
@@ -189,23 +207,15 @@
     height: 100%;
     background-size: cover;
     background-position: center;
-    transition: filter 500ms ease-in-out;
-    filter: brightness(0.2) blur(1px);
+    filter: brightness(0.2);
+    transform: perspective(1000px) translateZ(0px);
+    transition: filter 500ms ease-in-out, transform 500ms ease-in-out;
 }
 
-#sports-page .sports .sport.active .inner-item picture,
-#sports-page .sports .sport .inner-item:hover picture{
-    filter: brightness(0.5) blur(0px);
-}
-
-.leagues{
-	background-color: red;
-}
-.matches{
-	background-color: green;
-}
-.macth{
-	background-color: orange;
+#sports-page .square-list .square.active .inner-item picture,
+#sports-page .square-list .square .inner-item:hover picture{
+    filter: brightness(0.5);
+    transform: perspective(1000px) translateZ(50px);
 }
 
 
@@ -626,14 +636,33 @@ Tips on this game
 	animation-fill-mode: forwards;  
 }
 
+
 @media(min-width:768px) {
 
-	#sports-page .sports .sport .inner-item svg{
+	#sports-page .square-list .square{
+		padding: 3%;
+	}
+
+	#sports-page .leagues .square-list .square{
+	    width: 25%;
+	    padding: 2px;
+	    border: none;
+	}
+
+	#sports-page .square-list .square .aspect-ratio{
+	    border: none;
+	}
+
+	#sports-page .square-list .square .aspect-ratio{
+		padding-top: 100%;
+	}
+
+	#sports-page .square-list .square .inner-item svg{
 		width: 80px;
 	    max-height: 80px;
 	}
 
-	#sports-page .sports .sport .inner-item h2{
+	#sports-page .square-list .square .inner-item h2{
 		font-size: 20px;
 	}
 

@@ -16,6 +16,7 @@ import MatchesTable from "../components/sports/tables/MatchesTable"
 import Page from "./Page"
 import Section from "../components/Section"
 import SportsList from "../components/sports/SportsList"
+import SquaresList from "../components/sports/SquaresList"
 import SportTable from "../components/sports/tables/SportTable"
 import StandardOptionsTable from "../components/sports/tables/StandardOptionsTable"
 import TipsOnThisEvent from "../components/sports/tipsOnThisEvent/TipsOnThisEvent"
@@ -76,7 +77,7 @@ export default class Sports extends React.Component {
                 target = this.refs.sports
             }
 
-            $("html, body").stop().animate({scrollTop:target.getBoundingClientRect().top + document.body.scrollTop - 100}, 750);
+            $("html, body").stop().delay(50).animate({scrollTop:target.getBoundingClientRect().top + document.body.scrollTop - 100}, 750);
 
         }
 
@@ -309,42 +310,83 @@ export default class Sports extends React.Component {
                 ]
     }
 
-
-    /* 
-        * @desc renders the football page, it must first separate the leagues (main leagues - [premier league, la liga, ...])
-        * @param json 'sport' - sport data fetched from the server 
-        * @param EventURL 'eventURL' - contains the url params, used to build events href
-        * @return sports tables
-     */
-    renderFootball(sport, eventURL){
-        const mainLeaguesNames = ["Eng. Premier League", "Portuguese Prim. Liga", "German Bundesliga", "Italian Serie A", "French League 1", "Spanish Liga Primera"]
-        const uefaLeaguesNames = ["Champions League", "Europa League"]
-
-        const mainLeagues = {name:"Main Leagues", events: sport.events.filter(event => mainLeaguesNames.includes(event.name))}
-        const uefaLeagues = {name:"Uefa", events: sport.events.filter(event => uefaLeaguesNames.includes(event.name))}
-        const allLeagues = {name:"All Leagues", events: sport.events}
-        return <div class="sports-page-tables">{[mainLeagues, uefaLeagues, allLeagues].
-                                                filter(category => category.events.length > 0).
-                                                map(({name, events}, i) => this.renderGenericTable(name, events, eventURL, i))}</div>
+    renderMatchOddsTables(){
+        const sport = this.props.tables
+        if (sport !== undefined && sport.events !== undefined){
+            const league = sport.events[0]
+            if (league !== undefined && league.matches !== undefined){
+                const match = league.matches[0]
+                if (match !== undefined && this.props.params.matchCode !== undefined)
+                    return this.renderMatch(match, new EventURL(sport, league, match))
+            }
+        }
     }
 
+    renderLeagueMatchesTable(){
+        const sport = this.props.tables
+        const events = sport.events
+        const { sportCode, leagueCode } = this.props.params
+        const macthesLoaded = sportCode !== undefined && leagueCode !== undefined && sport.id !== undefined && events[0].id !== undefined && sport.id === sportCode && events[0].id === leagueCode
+        if (macthesLoaded){
+            const league = events[0]
+            return this.renderLeague(league, new EventURL(sport, league))
+        }
+        else {
+            return <LoadingGif />
+        }
+    }
+
+
+    /*
+        * @desc renders the main league and all leagues panels
+    */
+    renderLeaguesTable(){
+        const sport = this.props.tables
+        // const leaguesLoaded = this.props.params.sportCode !== undefined && sport.id === this.props.params.sportCode
+        const leaguesLoaded = this.props.params.sportCode !== undefined && sport.id !== undefined && sport.id === this.props.params.sportCode
+        if (leaguesLoaded){
+            return this.renderMainLeagues(sport.name)
+        }
+        else {
+            return <LoadingGif />
+        }
+    }
 
     renderMainLeagues(sportName){
 
         let mainLeagues = this.getMainLeagues(sportName)
 
-        return (
-            <Section key={1} title="Main leagues" classes="main-leagues">
-                {mainLeagues.map((league,i) => this.renderMainLeague(league,i))}
-            </Section>
-        )
+        return <SquaresList items={mainLeagues} activeCode={this.props.params.leagueCode} />
+
     }
 
     getMainLeagues(sportName){
+            // "Basketball": [{name:"", url:"", img:"img/home/nba.jpg"},],
+            // "Tennis": [{name:"", url:"", img:"img/home/federer.jpg"}]
+
         let mainLeagues = {
-            "Football": [{name:"Premier League", url:"#/sports/Football/1/Eng. Premier League/3", img:"img/home/ibra.jpg"},{name:"Bundesliga", url:"#/sports/Football/1/German Bundesliga/5/", img:"img/home/deus_nato.jpg"},{name:"La Liga", url:"#/sports/Football/1/Spanish Liga Primera/7", img:"img/home/messi_neymar.jpg"},{name:"Liga Nos", url:"#/sports/Football/1/Portuguese Prim. Liga/32", img:"img/home/pizzi_cervi.jpg"},{name:"Serie A", url:"#/sports/Football/1/Italian Serie A/6", img:"img/home/deus_joao.jpg"},{name:"Ligue 1", url:"#/sports/Football/1/French Ligue 1/4", img:"img/home/bernardo_silva.jpg"},{name:"Champions League", url:"#/sports/Football/1/Champions League/8", img:"img/home/champions_league.jpg"},{name:"Europa League", url:"#/sports/Football/1/Europa League/3453", img:"img/home/europa_league.jpg"}],
-            "Basketball": [{name:"NBA", url:"#/sports/Basketball/4/NBA/13", img:"img/home/nba.jpg"},],
-            "Tennis": [{name:"Australian Open", url:"#/sports/Tennis/2/Australian Open M./22", img:"img/home/federer.jpg"}]
+            "Football": [
+                { name: "Premier League", code: 3, img: "img/sports/ibra.jpg", url:"#/sports/Football/1/Eng. Premier League/3"},
+                { name: "Bundesliga", code: 5, img: "img/sports/deus_nato.jpg", url:"#/sports/Football/1/German Bundesliga/5/"},
+                { name: "La Liga", code: 7, img: "img/sports/messi_neymar.jpg", url:"#/sports/Football/1/Spanish Liga Primera/7"},
+                { name: "Liga Nos", code: 32, img: "img/sports/pizzi_cervi.jpg", url:"#/sports/Football/1/Portuguese Prim. Liga/32"},
+                { name: "Ligue 1", code: 4, img: "img/sports/bernardo_silva.jpg", url:"#/sports/Football/1/French Ligue 1/4"},
+                { name: "Serie A", code: 6, img: "img/sports/deus_joao.jpg", url:"#/sports/Football/1/Italian Serie A/6"},
+                { name: "Champions League", code: 8, img: "img/sports/champions_league.jpg", url:"#/sports/Football/1/Champions League/"},
+                { name: "Europa League", code: 3453, img: "img/sports/europa_league.jpg", url:"#/sports/Football/1/Europa League/"}
+            ],
+            "Basketball": [
+                { name: "NBA", code: 13, img: "img/sports/nba.jpg", url:"#/sports/Basketball/4/NBA/13"},
+                { name: "International", code: 14, img: "img/sports/basket2.jpg", url:"#/sports/Basketball/4/NBA/14"},
+                { name: "Spain", code: 15, img: "img/sports/basket3.jpg", url:"#/sports/Basketball/4/NBA/15"},
+                { name: "France", code: 16, img: "img/sports/basket4.jpg", url:"#/sports/Basketball/4/NBA/16"}
+            ],
+            "Tennis": [
+                { name: "Australian Open", code: 22, img: "img/sports/federer.jpg", url:"#/sports/Tennis/2/Australian Open M./22"},
+                { name: "Estoril Open", code: 23, img: "img/sports/djokovic.jpg", url:"#/sports/Tennis/2/Australian Open M./23"},
+                { name: "Prostejov", code: 24, img: "img/sports/tsonga.jpg", url:"#/sports/Tennis/2/Australian Open M./24"},
+                { name: "Surbiton", code: 25, img: "img/sports/monfils.jpg", url:"#/sports/Tennis/2/Australian Open M./25"}
+            ]
         }
 
         return mainLeagues[sportName]
@@ -562,22 +604,22 @@ export default class Sports extends React.Component {
             <Page id="sports-page" title="Share a tip" loading={false} img="img/covers/shareatip.jpg" >
 
 
-                <div class="col-xs-12 col-md-8 col-md-push-2 sports-tables-container">
+                <div class="col-xs-12 sports-tables-container">
 
-                    <div class="col-xs-12 sports active" ref="sports">
+                    <div class="col-xs-12 col-md-8 col-md-push-2 sports active" ref="sports">
                         <SportsList activeSportCode={sportCode}/>
                     </div>
 
-                    <div class={classNames("col-xs-12 leagues", {active: typeof sportCode !== 'undefined'} )} ref="leagues">
-                        <a href="#/sports/Football/1/Eng. Premier League/3">Leagues</a>
+                    <div class={classNames("leagues col-xs-12 col-md-10 col-md-push-1", {active: typeof sportCode !== 'undefined'} )} ref="leagues">
+                        { this.renderLeaguesTable() }
                     </div>
 
-                    <div class={classNames("col-xs-12 matches", {active: typeof leagueCode !== 'undefined'} )} ref="matches">
-                        <a href="#/sports/Football/1/Eng. Premier League/3/Manchester United - Arsenal/1267076/">Matches</a>
+                    <div class={classNames("matches col-xs-12 col-md-8 col-md-push-2", {active: typeof leagueCode !== 'undefined'} )} ref="matches">
+                        { this.renderLeagueMatchesTable() }
                     </div>
 
-                    <div class={classNames("col-xs-12 macth", {active: typeof matchCode !== 'undefined'} )} ref="match">
-                        <a href="#/sports/Football/1">Match</a>
+                    <div class={classNames("macth col-xs-12 col-md-8 col-md-push-2", {active: typeof matchCode !== 'undefined'} )} ref="match">
+                        { this.renderMatchOddsTables() }
                     </div>
 
 	            </div>

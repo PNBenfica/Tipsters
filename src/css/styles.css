@@ -119,11 +119,10 @@ textarea, input{
 #page-wrapper section > .breadcrumb{
     background-color: rgba(246,247,248,1);
     border-bottom: solid 1px rgb(221,221,221);
-    padding: 35px 80px;
-    font-size: 18px;
+    padding: 15px;
     color: rgba(36,36,36,1);
     margin-bottom: 0px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     margin-bottom: 15px;
 }
@@ -775,5 +774,12 @@ a.link-button{
 
 	#page-wrapper .loading-placeholder h2{
 		font-size: 60px;
+	}
+
+
+
+	#page-wrapper section > .breadcrumb{
+	    padding: 35px 80px;
+    	font-size: 16px;
 	}
 }

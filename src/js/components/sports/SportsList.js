@@ -1,6 +1,6 @@
 import React from "react"
 
-import Sport from "./Sport"
+import SquaresList from "./SquaresList"
 
 
 export default class SportsList extends React.Component {
@@ -10,15 +10,13 @@ export default class SportsList extends React.Component {
     const { activeSportCode } = this.props
 
     const sports = [
-        { name: "Football", code: 1, icon: "img/icons.svg#football-ball", img: "img/sports/messi.jpg"},
-        { name: "Basketball", code: 2, icon: "img/icons.svg#basket-ball", img: "img/sports/lebron-james.jpg"},
-        { name: "Tennis", code: 3, icon: "img/icons.svg#tennis-ball", img: "img/sports/nadal.jpg"}
-    ].map((sport,i) => <Sport key={i} {...sport} active={activeSportCode==sport.code} />)
+        { name: "Football", code: 1, icon: "img/icons.svg#football-ball", img: "img/sports/messi.jpg", url:"#/sports/Football/1"},
+        { name: "Basketball", code: 4, icon: "img/icons.svg#basket-ball", img: "img/sports/lebron-james.jpg", url:"#/sports/Basketball/4"},
+        { name: "Tennis", code: 2, icon: "img/icons.svg#tennis-ball", img: "img/sports/nadal.jpg", url:"#/sports/Tennis/2"}
+    ]
 
     return (
-            <div class="col-xs-12">
-                { sports }
-            </div>
+            <SquaresList items={sports} activeCode={activeSportCode} />
         )
     }
 }
