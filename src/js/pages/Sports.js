@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux"
 
-import { fetchTables, fetchTips, shareTip } from "../actions/sportsActions"
+import { fetchLeagues, fetchMatches, fetchMatch, fetchTips, shareTip } from "../actions/sportsActions"
 
 import classNames from "classnames"
 
@@ -25,9 +25,21 @@ import WarningAlreadyInBetSlip from "../components/sports/betslip/WarningAlready
 
 @connect((store) => {
   return {
-    tables: store.sports.tables,
-    fetched: store.sports.fetched,
-    fetching: store.sports.fetching,
+    leaguesTables: store.sports.leaguesTables,
+    fetchingLeagues: store.sports.fetchingLeagues,
+    fetchedLeagues: store.sports.fetchedLeagues,
+    errorLeagues: store.sports.errorLeagues,
+
+    matchesTables: store.sports.matchesTables,
+    fetchingMatches: store.sports.fetchingMatches,
+    fetchedMatches: store.sports.fetchedMatches,
+    errorMatches: store.sports.errorMatches,
+
+    matchTables: store.sports.matchTables,
+    fetchingMatch: store.sports.fetchingMatch,
+    fetchedMatch: store.sports.fetchedMatch,
+    errorMatch: store.sports.errorMatch,
+
     tips: store.sportsTips.tips,
     fetchingTips: store.sportsTips.fetching,
     fetchedTips: store.sportsTips.fetched,
@@ -43,11 +55,31 @@ export default class Sports extends React.Component {
     /*
         * @desc fetch tables from the server based on the url params
     */
-    fetchTables(sportParams){
-        if (typeof sportParams.sportCode === 'undefined')
-            sportParams = {sportCode: '1'}
-        this.props.dispatch(fetchTables(sportParams))
-        this.props.dispatch(fetchTips(sportParams))
+    fetchTables(sportParams, changedParams = { sportChanged : true, leagueChanged : true }){
+
+        const { sportCode, leagueCode, matchCode } = sportParams
+        const { sportChanged, leagueChanged } = changedParams
+
+        if (sportCode !== undefined){
+
+            if (sportChanged)
+                this.props.dispatch(fetchLeagues(sportParams))
+
+            if (leagueCode !== undefined){
+
+                if (leagueChanged)
+                    this.props.dispatch(fetchMatches(sportParams))
+
+                if (matchCode !== undefined){
+
+                    this.props.dispatch(fetchMatch(sportParams))
+                }
+
+            }
+
+            this.props.dispatch(fetchTips(sportParams))
+
+        }
     }
     
     componentWillMount() {
@@ -59,11 +91,15 @@ export default class Sports extends React.Component {
     */
     componentWillReceiveProps(nextProps) {
         const {sportCode, leagueCode, matchCode} = nextProps.params
-        const urlParamsChanged = (sportCode !== this.props.params.sportCode || leagueCode !== this.props.params.leagueCode  || matchCode !== this.props.params.matchCode)
+
+        const sportChanged = sportCode !== this.props.params.sportCode 
+        const leagueChanged = leagueCode !== this.props.params.leagueCode 
+        const matchChanged = matchCode !== this.props.params.matchCode 
+        const urlParamsChanged = (sportChanged || leagueChanged || matchChanged)
 
         if (urlParamsChanged){
-            this.fetchTables(nextProps.params)
 
+            this.fetchTables(nextProps.params, { sportChanged, leagueChanged } )
 
             this.scrollToActivePanel(nextProps.params)
 
@@ -350,24 +386,23 @@ export default class Sports extends React.Component {
     }
 
     renderMatchOddsTables(){
-        const sport = this.props.tables
-        if (sport !== undefined && sport.events !== undefined){
+        const macthLoaded = !this.props.fetchingMatch && this.props.fetchedMatch
+        if (macthLoaded){
+            const sport = this.props.matchTables
             const league = sport.events[0]
-            if (league !== undefined && league.matches !== undefined){
-                const match = league.matches[0]
-                if (match !== undefined && this.props.params.matchCode !== undefined)
-                    return this.renderMatch(match, new EventURL(sport, league, match))
-            }
+            const match = league.matches[0]
+            return this.renderMatch(match, new EventURL(sport, league, match))
+        }
+        else {
+            return <LoadingGif />
         }
     }
 
     renderLeagueMatchesTable(){
-        const sport = this.props.tables
-        const events = sport.events
-        const { sportCode, leagueCode } = this.props.params
-        const macthesLoaded = sportCode !== undefined && leagueCode !== undefined && sport.id !== undefined && events[0].id !== undefined && sport.id === sportCode && events[0].id === leagueCode
+        const macthesLoaded = !this.props.fetchingMatches && this.props.fetchedMatches
         if (macthesLoaded){
-            const league = events[0]
+            const sport = this.props.matchesTables
+            const league = sport.events[0]
             return this.renderLeague(league, new EventURL(sport, league))
         }
         else {
@@ -380,10 +415,9 @@ export default class Sports extends React.Component {
         * @desc renders the main league and all leagues panels
     */
     renderLeaguesTable(){
-        const sport = this.props.tables
-        // const leaguesLoaded = this.props.params.sportCode !== undefined && sport.id === this.props.params.sportCode
-        const leaguesLoaded = this.props.params.sportCode !== undefined && sport.id !== undefined && sport.id === this.props.params.sportCode
+        const leaguesLoaded = !this.props.fetchingLeagues && this.props.fetchedLeagues
         if (leaguesLoaded){
+            const sport = this.props.leaguesTables
             return this.renderMainLeagues(sport.name)
         }
         else {
@@ -618,7 +652,6 @@ export default class Sports extends React.Component {
                 // <Breadcrumb sport={sport} sportCode={sportCode} league={league} leagueCode={leagueCode} match={match} matchCode={matchCode}/>                   
                     // <div class="col-lg-4 hidden-md hidden-sm hidden-xs right-bar-container">
 
-                //     <BetSlip {...this.state.betSlip} updateSellingPrice={this.updateSellingPrice.bind(this)} removeTip={this.removeTip.bind(this)} shareTip={this.shareTip.bind(this)} setBetSlipComment={this.setBetSlipComment.bind(this)}/>
 
                 //     <TipsOnThisEvent tips={tips} fetching={fetchingTips} fetched={fetchedTips} />
 
@@ -660,16 +693,14 @@ export default class Sports extends React.Component {
                     </div>
 
 	            </div>
+                
+                <BetSlip {...this.state.betSlip} updateSellingPrice={this.updateSellingPrice.bind(this)} removeTip={this.removeTip.bind(this)} shareTip={this.shareTip.bind(this)} setBetSlipComment={this.setBetSlipComment.bind(this)}/>
 
                 <WarningAlreadyInBetSlip active={this.state.warningAlreadyInBetSlip} dismiss={this.hideWarningAlreadyInBetSlip.bind(this)}/>
 
-                <div class={classNames("go-up-button hidden-xs", {hidden: sportCode === undefined} )} onClick={this.scrollToPreviousPanel.bind(this)}><SVG classes="arrow" icon="edge-button-path" /></div>
+                <div class={classNames("go-up-button", {hidden: sportCode === undefined} )} onClick={this.scrollToPreviousPanel.bind(this)}><SVG classes="arrow" icon="edge-button-path" /></div>
 
 	        </Page>
 	    )
-
-
-
   	}
 }
-

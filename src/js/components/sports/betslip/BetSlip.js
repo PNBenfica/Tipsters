@@ -1,12 +1,14 @@
 import React from "react";
 
+import classNames from "classnames"
+
 import BetSlipBody from "./BetSlipBody";
 import BetSlipEmptyBody from "./BetSlipEmptyBody";
+import FixedPagePanel from "./FixedPagePanel"
 import Section from "./../../Section"
 
 export default class BetSlip extends React.Component {
 
-    
     render() {
 
         const {tips, removeTip, updateSellingPrice, setBetSlipComment,shareTip, expanded} = this.props;
@@ -20,11 +22,11 @@ export default class BetSlip extends React.Component {
         }
 
         return (
-            <Section id="bet-slip" title="Betslip" >
+            <FixedPagePanel id="bet-slip" active={tips.length > 0} icon="list-icon" iconNumber={tips.length}>
 
-                {betSlipBody}
+                { betSlipBody }
 
-            </Section>
-        );
+            </FixedPagePanel>
+        )
     }
 }
