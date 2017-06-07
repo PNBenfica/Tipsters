@@ -11,8 +11,9 @@ export default class BetSlip extends React.Component {
 		this.state = { scaleUpDown: true }
 	}
 
-	componentWillReceiveProps(props){
-		this.setState( { scaleUpDown : false }, () => setTimeout(() => this.setState({ scaleUpDown : true }), 500) )
+	componentWillReceiveProps(nextProps){
+		if ( nextProps.n !== this.props.n )
+			this.setState( { scaleUpDown : false }, () => setTimeout(() => this.setState({ scaleUpDown : true }), 500) )
 	}
 
     

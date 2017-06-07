@@ -19,7 +19,7 @@ export default class SportTable extends React.Component {
             })
 
 	    return (
-            <div class="panel">
+            <div class="panel col-xs-12">
             
                 <Header title={title} />
 

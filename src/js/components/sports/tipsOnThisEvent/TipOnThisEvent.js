@@ -20,7 +20,7 @@ export default class TipsOnThisEvent extends React.Component {
 
     return (
 
-        <li class={className("col-xs-12", { invisible } )}>
+        <li class={className("col-xs-12 col-sm-6 col-md-4", { invisible } )}>
 
             <Header tipster={tipster}/>
 

@@ -49,7 +49,7 @@ export default class Sports extends React.Component {
 
     constructor(...args) {
         super(...args);
-        this.state = { betSlip : { tips: [], sellingPrice : 0, comment: "", expanded : false }, warningAlreadyInBetSlip : false};
+        this.state = { betSlip : { tips: [], sellingPrice : 0, comment: "", expanded : false }, warningAlreadyInBetSlip : false, allLeaguesVisible: false};
     }
 
     /*
@@ -67,8 +67,9 @@ export default class Sports extends React.Component {
 
             if (leagueCode !== undefined){
 
-                if (leagueChanged)
+                if (leagueChanged){
                     this.props.dispatch(fetchMatches(sportParams))
+                }
 
                 if (matchCode !== undefined){
 
@@ -78,6 +79,7 @@ export default class Sports extends React.Component {
             }
 
             this.props.dispatch(fetchTips(sportParams))
+            this.setState({ allLeaguesVisible : false })
 
         }
     }
@@ -418,10 +420,20 @@ export default class Sports extends React.Component {
         const leaguesLoaded = !this.props.fetchingLeagues && this.props.fetchedLeagues
         if (leaguesLoaded){
             const sport = this.props.leaguesTables
-            return this.renderMainLeagues(sport.name)
+
+            return <div class="col-xs-12">{this.renderMainLeagues(sport.name)} {this.renderAllLeagues(sport)}</div>
         }
         else {
             return <LoadingGif />
+        }
+    }
+
+    renderAllLeagues(sport){
+        if (this.state.allLeaguesVisible){
+            return this.renderGenericTable("All Leagues", sport.events, new EventURL(sport))
+        }
+        else{
+            return <a class="show-all-leagues col-xs-12" onClick={() => this.setState({ allLeaguesVisible : true }) } >Show all leagues</a>
         }
     }
 
@@ -653,7 +665,6 @@ export default class Sports extends React.Component {
                     // <div class="col-lg-4 hidden-md hidden-sm hidden-xs right-bar-container">
 
 
-                //     <TipsOnThisEvent tips={tips} fetching={fetchingTips} fetched={fetchedTips} />
 
                 // </div>}
 
@@ -695,6 +706,8 @@ export default class Sports extends React.Component {
 	            </div>
                 
                 <BetSlip {...this.state.betSlip} updateSellingPrice={this.updateSellingPrice.bind(this)} removeTip={this.removeTip.bind(this)} shareTip={this.shareTip.bind(this)} setBetSlipComment={this.setBetSlipComment.bind(this)}/>
+
+                <TipsOnThisEvent tips={tips} fetching={fetchingTips} fetched={fetchedTips} />
 
                 <WarningAlreadyInBetSlip active={this.state.warningAlreadyInBetSlip} dismiss={this.hideWarningAlreadyInBetSlip.bind(this)}/>
 

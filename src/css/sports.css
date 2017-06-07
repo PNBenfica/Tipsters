@@ -147,6 +147,17 @@
 	padding: 0;
 }
 
+#sports-page .leagues > .col-xs-12 > .panel{
+	margin-top: 40px;
+}
+
+#sports-page .leagues .show-all-leagues{
+	margin-top: 40px;
+	cursor: pointer;
+}
+
+
+
 #sports-page .leagues .square-list .square{
 	width: 50%;
     border: solid 1px rgb(221,221,221);
@@ -312,7 +323,7 @@ bet slip
     border-radius: 100%;
 
     transform: scale(0);
-    z-index: 1;
+    z-index: 2;
 
     transition: transform 500ms ease-in-out;
     cursor: pointer;
@@ -320,6 +331,12 @@ bet slip
 
 .fixed-page-panel.active .icon{
     transform: scale(1);
+}
+
+
+.fixed-page-panel.tips-on-this-event .icon{ top: calc(40vh + 100px); padding: 11px;}
+#sports-page .tips-on-this-event .panel-body{
+	width: 100%;
 }
 
 .fixed-page-panel svg{
@@ -379,6 +396,7 @@ bet slip
     padding-right: 8vw;
     padding-top: 5vh;
     opacity: 1;
+    z-index: 1;
 }
 
 
@@ -393,10 +411,10 @@ bet slip
 	background: rgba(0,0,0,0.5);
 }
 
-.fixed-page-panel.open .page-panel > .panel-body .post-tips a{
+.fixed-page-panel.open .page-panel a{
 	color: white !important;
 }
-.fixed-page-panel.open .page-panel > .panel-body .post-tips a:hover{
+.fixed-page-panel.open .page-panel a:hover{
 	color: #c30000 !important;
 }
 
@@ -550,10 +568,10 @@ Tips on this game
 #sports-page .tips-on-this-event .chat li {
     margin-bottom: 10px;
     padding-bottom: 5px;
-    border-bottom: 1px dotted #999;
 	padding: 0;	
 	transition: opacity 0.5s;
 	opacity: 1;
+    padding: 0 15px;
 }
 
 #sports-page .tips-on-this-event .chat li.invisible {
@@ -805,8 +823,8 @@ Tips on this game
 
 
 	.fixed-page-panel .page-panel{
-	    top: 89px;
-	    height: calc(100vh - 89px);
+	    top: 88px;
+	    height: calc(100vh - 88px);
 	}
 
 }

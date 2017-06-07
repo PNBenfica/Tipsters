@@ -1,10 +1,11 @@
 import React from "react";
 
 import classNames from "classnames"
+import onClickOutside from 'react-onclickoutside'
 
 import Icon from "./Icon";
 
-export default class FixedPagePanel extends React.Component {
+export default onClickOutside( class FixedPagePanel extends React.Component {
 
     constructor(args){
         super(...args)
@@ -15,14 +16,20 @@ export default class FixedPagePanel extends React.Component {
         const open = !this.state.open
         this.setState( { open } )
     }
+
+    handleClickOutside(event){
+        const { open } = this.state
+        if (open)
+            this.setState( { open : false } )
+    }
     
     render() {
 
-        const { active, icon, iconNumber, id } = this.props;
+        const { active, classes, icon, iconNumber, id } = this.props;
         const { open } = this.state
 
         return (
-            <div id={id} class={ classNames("fixed-page-panel", { active: active || open, open }) } >
+            <div id={id} class={ classNames("fixed-page-panel", classes, { active: active || open, open }) } >
 
                 <Icon icon={icon} n={iconNumber} onClick={this.onIconClick.bind(this)} />
 
@@ -33,4 +40,4 @@ export default class FixedPagePanel extends React.Component {
             </div>
         )
     }
-}
+})

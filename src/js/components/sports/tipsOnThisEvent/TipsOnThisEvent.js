@@ -3,35 +3,22 @@ import React from "react";
 import AddComentBox from "./AddComentBox";
 import ChatBody from "./ChatBody";
 import ChatHeader from "./ChatHeader";
-import Section from "./../../Section"
 import LoadingGif from "./../../LoadingGif"
+import FixedPagePanel from "./../betslip/FixedPagePanel"
 
 export default class TipsOnThisEvent extends React.Component {
 
-    renderLoadingGif(){
-        return ( <div class="col-xs-12"><LoadingGif /></div>)
-    }
-
-    renderBody(){
-        const { fetching, fetched, tips } = this.props
-
-        if (fetching) {
-            return this.renderLoadingGif()
-        }
-        else if (fetched){
-            return <ChatBody tips={tips}/>
-        }
-    }
-
     render() {
 
+        const { fetching, fetched, tips } = this.props
 
         return (
-            <Section title="tips on this event" classes="tips-on-this-event" >
+            <FixedPagePanel classes="tips-on-this-event" active={!fetching} icon="light-bulb" iconNumber={tips.length}>
 
-                { this.renderBody() }
+                { <ChatBody tips={tips}/> }
 
-            </Section>
+            </FixedPagePanel>
+
         );
     }
 }

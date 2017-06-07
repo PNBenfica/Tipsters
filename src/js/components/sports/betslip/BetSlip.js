@@ -5,7 +5,6 @@ import classNames from "classnames"
 import BetSlipBody from "./BetSlipBody";
 import BetSlipEmptyBody from "./BetSlipEmptyBody";
 import FixedPagePanel from "./FixedPagePanel"
-import Section from "./../../Section"
 
 export default class BetSlip extends React.Component {
 
