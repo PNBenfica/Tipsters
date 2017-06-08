@@ -30,23 +30,25 @@ export default class Page extends React.Component {
 
 	render() {
 
-		const { id, classes, img, title } = this.props
+		const { id, classes, img, title, customHeader } = this.props
 		const { backgroundPositionY } = this.state
 
 		let loading = this.props.loading || this.state.loading
+
+		const header = customHeader || ( <h2>{ title }</h2> )
 
 	    return (
 			<section id={id} class={classNames("col-xs-12 fade-in", classes, { loading } )} >
 
 				<div class="loading-placeholder col-xs-12">
 					<picture style={ { backgroundImage: "url(" + img + ")", backgroundPositionY: backgroundPositionY + "px" } } />
-					<h2>{ title }</h2>
+					{ header }
 					<div class={classNames("loading-gif-container", {loading: this.props.loading})}><LoadingGif /></div>
 				</div>
 				
 				<Breadcrumb title={title} />
 
-				<div>
+				<div class="col-xs-12">
 					{ this.props.children }
 				</div>
 

@@ -2,17 +2,15 @@ import React from "react"
 
 import ButtonsContainer from "./buttons/ButtonsContainer"
 
-export default class MainAvatar extends React.Component {
+export default class Header extends React.Component {
 
     render() {
 
         const { name, img, following, toggleFollow } = this.props
 
         return (
-            <div class="main-avatar">
+            <header>
 
-                <div class="background"/>
-            
                 <div class="content">
 
                     <img src={img} class="img-circle" />
@@ -23,7 +21,7 @@ export default class MainAvatar extends React.Component {
 
                 </div>
 
-            </div>
+            </header>
         )
     }
 }

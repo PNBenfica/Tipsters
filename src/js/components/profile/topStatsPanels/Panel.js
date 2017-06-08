@@ -4,20 +4,24 @@ export default class Panel extends React.Component {
 
     constructor(args){
         super(args)
-        this.state = { counter: 0, timerFunction : null }
+        this.state = { counter: 0 }
     }
 
-    componentWillMount(){
-        setTimeout(() => this.startCounterAnimation(), 50)
+    componentDidMount(){
+        this.startCounterAnimation()
+    }
+
+    componentWillUnmount () {
+        this.timerFunction && clearInterval(this.timerFunction);
+        this.timerFunction = false;
     }
 
     startCounterAnimation(){
         const { counter } = this.props
         const animationDuration = 2000;
         const repetitionDuration = animationDuration / (this.isInt(counter) ? counter : counter * 10)
-        console.log(repetitionDuration)
-        const timerFunction = setInterval(this.counterAnimation.bind(this), repetitionDuration)
-        this.setState({ animationDuration, timerFunction })
+        this.timerFunction = setInterval(this.counterAnimation.bind(this), repetitionDuration)
+        this.setState({ animationDuration })
     }
 
     counterAnimation(){
@@ -26,7 +30,7 @@ export default class Panel extends React.Component {
             this.setState({ counter: this.state.counter + (this.isInt(counter) ? 1 : 0.11) })
         }
         else{
-            clearInterval(this.state.timerFunction);
+            clearInterval(this.timerFunction);
             this.setState({ counter })
         } 
     }

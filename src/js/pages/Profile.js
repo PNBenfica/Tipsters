@@ -5,8 +5,8 @@ import { fetchProfile } from "../actions/userActions"
 
 import About from "../components/profile/About"
 import LoadingGif from "../components/LoadingGif"
-import MainAvatar from "../components/profile/mainAvatar/MainAvatar"
-import Recomendations from "../components/profile/Recomendations"
+import Header from "../components/profile/header/Header"
+import Page from "./Page"
 import TopStatsPanels from "../components/profile/topStatsPanels/TopStatsPanels"
 import UserPosts from "../components/profile/UserPosts"
 import UserSlide from "../components/profile/userSlide/UserSlide"
@@ -47,34 +47,27 @@ export default class Profile extends React.Component {
         this.setState({ following })
     }
 
-    render() {
+    renderHeader(){
+        const { profile } = this.props
+        return <Header name={this.props.params.username} img={profile.avatar} following={this.state.following} toggleFollow={this.toggleFollow.bind(this)}/>
+    }
 
-        const { profile, fetched, fetching } = this.props
+    renderBody(){
 
-        if (!fetched || fetching)
-            return this.renderLoadingGif()
-                // <LeftColumnContainer profile={profile}/>
-
-                // <RightColumnContainer user={profile.name} />
-                
-                // 
-
+        const { profile } = this.props
+            
         const nFollowers = profile.followers.length
         const nFollowing = profile.following.length
 
+
+
         return (
-
-            <div id="profile-container">
-
-                <MainAvatar name={profile.name} img={profile.avatar} following={this.state.following} toggleFollow={this.toggleFollow.bind(this)}/>
 
                 <div class="col-xs-12">
 
                     <About text={profile.about} />
 
                     <TopStatsPanels nFollowers={nFollowers} nFollowing={nFollowing}/>
-
-                    <Recomendations />
 
                     <UserSlide title={nFollowers + " Followers"} tipsters={profile.followers} />
 
@@ -83,10 +76,31 @@ export default class Profile extends React.Component {
                     <Stats />
                     
                     <UserPosts username={profile.name} />
-
                 </div>
 
-            </div>
+            )
+    }
+
+
+    render() {
+
+        const { fetched, fetching } = this.props
+
+        const loading = fetching || !fetched 
+
+        const customHeader = this.renderHeader()
+
+        const body = loading ? null : this.renderBody()
+
+        return (
+
+            <Page id="profile-container" title={this.props.params.username} customHeader={ customHeader } loading={loading} img="img/covers/profile.jpg" >
+                
+                { body }
+
+            </Page>
+
+
         )
     }
 

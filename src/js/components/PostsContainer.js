@@ -61,19 +61,15 @@ export default class PostsContainer extends React.Component {
                 return <Post likePost={this.likePost.bind(this, post.websafeKey)} addComment={this.addComment.bind(this, post.websafeKey)} key={i} {...post}/>
         })
     }
-            // <ScrollPageDetector onScrollBottom={this.onScrollBottom.bind(this)}>
-            // </ScrollPageDetector>
 
     render() {
 
         const { fetched, fetching } = this.props
 
-        let Posts = []
-        if (fetching)
-            Posts = <LoadingGif />
-        else if (fetched)
-            Posts = this.renderPosts()
+        const loading = fetching || !fetched 
 
+        const Posts = loading ? null : this.renderPosts()
+        
         return (
             <div class="posts-container">
                 {Posts}
