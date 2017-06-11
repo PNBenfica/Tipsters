@@ -5,16 +5,28 @@ export default class Panel extends React.Component {
     constructor(args){
         super(args)
         this.state = { counter: 0 }
+
+        this.handleScroll = this.handleScroll.bind(this)
     }
 
     componentDidMount(){
-        this.startCounterAnimation()
+        window.addEventListener("scroll", this.handleScroll)
     }
 
-    componentWillUnmount () {
+    componentWillUnmount() {
+        window.removeEventListener("scroll", this.handleScroll)
         this.timerFunction && clearInterval(this.timerFunction);
         this.timerFunction = false;
     }
+
+    handleScroll() {
+        if (this.refs.panel.getBoundingClientRect().top < window.innerHeight){
+            window.removeEventListener("scroll", this.handleScroll)
+            setTimeout(this.startCounterAnimation.bind(this), 1000)
+        }
+    }
+
+
 
     startCounterAnimation(){
         const { counter } = this.props
@@ -44,7 +56,7 @@ export default class Panel extends React.Component {
     	const { icon, description, percentage } = this.props
         const { counter } = this.state
         return (
-        	<div class="top-stat-panel col-xs-4">
+        	<div class="top-stat-panel col-xs-4" ref="panel">
         		<div class="inner-item">
         			<div class="border">
 

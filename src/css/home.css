@@ -6,26 +6,32 @@
 
 section.generic {
 	margin-top: 15px; 
-	margin-bottom: 15px; 
+	margin-bottom: 60px; 
     padding: 0;
 }
 
 section.generic > header{
-	border-top: 1px solid rgb(221,221,221);
-    padding: 0;
+    padding: 45px 0;
+    text-align: center;
 }
 
 section.generic > header > h1{
-	display: inline-block;
-
-
-	margin: -1px 0 0 0;
-	border-top: 1px solid white; 
-    
-    padding: 0 25px 18px 0px;
+    position: relative;
+    display: inline-block;
+    margin: 0;
 	font-size: 26px;
-	font-weight: 300;
+	font-weight: 500;
 	text-transform: uppercase;
+}
+
+section.generic > header > h1:after{
+    content: '';
+    position: absolute;
+    left: 20%;
+    bottom: -10px;
+    width: 60%;
+    height: 3px;
+    background: #c30000;
 }
 
 section.generic.pad-left-header > header > h1{
@@ -47,9 +53,12 @@ section.generic > .body{
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
     right: 0;
     bottom: 0;
+    
+    width: 100%;
+    margin: auto;
+    
     -webkit-filter: saturate(100%) brightness(60%) contrast(100%);
     filter: saturate(100%) brightness(60%) contrast(100%);
     -webkit-transition: all .5s ease-in-out;

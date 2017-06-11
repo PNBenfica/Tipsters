@@ -11,7 +11,7 @@ export default class Header extends React.Component {
         return (
             <header>
 
-                <div class="content">
+                <div class="content fade-in">
 
                     <img src={img} class="img-circle" />
 

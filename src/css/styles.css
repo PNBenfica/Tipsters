@@ -197,8 +197,10 @@ textarea, input{
     height: calc(100vh - 62px);
 }
 
-#page-wrapper > section .loading-placeholder picture{
+picture.parallax{
 	position: absolute;
+    left: 0;
+    top: 0;
 	width: 100%;
 	height: 100%;
     background-size: cover;

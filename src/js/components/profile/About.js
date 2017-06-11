@@ -8,7 +8,7 @@ export default class About extends React.Component {
     	const { text } = this.props
 
         return (
-            <div class="col-md-6">
+            <div class="col-xs-12">
                 <Section title="About" id="profile-about-section">
                     {text}
                 </Section>

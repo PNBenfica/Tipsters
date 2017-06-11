@@ -47,9 +47,13 @@ export default class Profile extends React.Component {
         this.setState({ following })
     }
 
-    renderHeader(){
-        const { profile } = this.props
-        return <Header name={this.props.params.username} img={profile.avatar} following={this.state.following} toggleFollow={this.toggleFollow.bind(this)}/>
+    renderHeader(loading){
+        if (loading)
+            return <h2>{this.props.params.username}</h2>
+        else {
+            const { profile } = this.props
+            return <Header name={this.props.params.username} img={profile.avatar} following={this.state.following} toggleFollow={this.toggleFollow.bind(this)}/>
+        }
     }
 
     renderBody(){
@@ -72,10 +76,9 @@ export default class Profile extends React.Component {
                     <UserSlide title={nFollowers + " Followers"} tipsters={profile.followers} />
 
                     <UserSlide title={nFollowing + " Following"} tipsters={profile.following} />
-
-                    <Stats />
                     
                     <UserPosts username={profile.name} />
+                    
                 </div>
 
             )
@@ -88,7 +91,7 @@ export default class Profile extends React.Component {
 
         const loading = fetching || !fetched 
 
-        const customHeader = this.renderHeader()
+        const customHeader = this.renderHeader(loading)
 
         const body = loading ? null : this.renderBody()
 

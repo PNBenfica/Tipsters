@@ -4,34 +4,22 @@ import classNames from "classnames"
 
 import Breadcrumb from "../components/Breadcrumb"
 import LoadingGif from "../components/LoadingGif"
+import ParallaxImage from "../components/ParallaxImage"
 
 export default class Page extends React.Component {
 
 	constructor(args){
 		super(...args)
-		this.state = { loading: true, backgroundPositionY : 0 }
-
-		this.handleScroll = this.handleScroll.bind(this)
+		this.state = { loading: true }
 	}
 
 	componentDidMount(){
 		setTimeout( () => this.setState( { loading : false } ), 750 )
-        window.addEventListener("scroll", this.handleScroll)
 	}
-
-    componentWillUnmount() {
-        window.removeEventListener("scroll", this.handleScroll)
-    }
-
-    handleScroll() {
-    	const backgroundPositionY = -document.body.scrollTop/5
-    	this.setState({ backgroundPositionY })
-    }
 
 	render() {
 
 		const { id, classes, img, title, customHeader } = this.props
-		const { backgroundPositionY } = this.state
 
 		let loading = this.props.loading || this.state.loading
 
@@ -41,7 +29,7 @@ export default class Page extends React.Component {
 			<section id={id} class={classNames("col-xs-12 fade-in", classes, { loading } )} >
 
 				<div class="loading-placeholder col-xs-12">
-					<picture style={ { backgroundImage: "url(" + img + ")", backgroundPositionY: backgroundPositionY + "px" } } />
+					<ParallaxImage img={img} />
 					{ header }
 					<div class={classNames("loading-gif-container", {loading: this.props.loading})}><LoadingGif /></div>
 				</div>
