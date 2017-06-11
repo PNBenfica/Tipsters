@@ -98,7 +98,8 @@ class TipstersApi(remote.Service):
     
     @endpoints.method(USER_GET_REQUEST, UserForm, path = "users/{username}", http_method='GET', name = "getUserProfile")
     def get_user(self, request):
-        return UserManager.getUserProfile(request.username)
+        user = SessionManager.get_current_user()
+        return UserManager.getUserProfile(user, request.username)
     
     @endpoints.method(FOLLOW_USER_REQUEST, Hello, path = "users/follow/{username}", http_method='POST', name = "followUser")
     def follow_user(self, request):

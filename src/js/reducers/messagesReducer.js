@@ -39,9 +39,14 @@ export default function reducer(state={
                 const destUser = action.payload
 
                 const id = destUser
-                messages = [{id: id, "tipster": {"avatar": "img/user6.jpg", "name": destUser} , messages : [], seen : true, new : false}, ...messages]
-                openMessagesIds = [id, ...openMessagesIds]
-                openMessagesIds = openMessagesIds.filter(id => id != "NEW_MESSAGE")
+                console.log(messages)
+                if (!messages.map(m=>m.id).includes(destUser)){
+                    messages = [{id: id, "tipster": {"avatar": "img/user6.jpg", "name": destUser} , messages : [], seen : true, new : false}, ...messages]
+                }
+                else if(!openMessagesIds.includes(destUser)) {
+                    openMessagesIds = [id, ...openMessagesIds]
+                    openMessagesIds = openMessagesIds.filter(id => id != "NEW_MESSAGE")
+                }
             }
             else if(!openMessagesIds.includes("NEW_MESSAGE")) {
                 openMessagesIds = [ "NEW_MESSAGE" , ...openMessagesIds]

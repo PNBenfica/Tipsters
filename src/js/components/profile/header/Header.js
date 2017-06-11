@@ -17,7 +17,7 @@ export default class Header extends React.Component {
 
                     <h2>{name}</h2>
 
-                    <ButtonsContainer following={following} toggleFollow={toggleFollow}/>
+                    <ButtonsContainer name={name} following={following} toggleFollow={toggleFollow}/>
 
                 </div>
 

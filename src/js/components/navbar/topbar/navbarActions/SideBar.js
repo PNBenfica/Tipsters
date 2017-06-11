@@ -7,7 +7,7 @@ export default onClickOutside(class SideBar extends React.Component {
 
     handleClickOutside(event){
         const { open, close } = this.props
-        const clickedTopLink = event.target.className && ( event.target.className.includes("link") || event.target.parentNode.className.includes("link") )
+        const clickedTopLink = event.target.className && ( (typeof event.target.className === "string" &&  event.target.className.includes("link") )   || event.target.parentNode.className.includes("link") )
         if (open && !clickedTopLink){
         	close()
         }

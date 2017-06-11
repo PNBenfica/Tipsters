@@ -21,14 +21,10 @@ export default class Feed extends React.Component {
 	    return (
 			<Page id="feed-page" title="News Feed" loading={loading} img="img/covers/feed.jpg" >
 
-				<div class="col-md-8 feed-page-left">
+				<div class="col-xs-12 col-md-8 col-md-push-2">
 
 					<PostsContainer {...this.props.params}/>
 				
-				</div>
-
-				<div class="col-md-4 hidden-xs hidden-sm trend-bar-container">
-					<TrendBar />
 				</div>
 
 			</Page>

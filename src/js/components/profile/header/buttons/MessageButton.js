@@ -9,7 +9,7 @@ import Button from "./Button"
 export default class MessageButton extends React.Component {
 
 	createNewMessage(){
-		this.props.dispatch(newMessage("João Almeida"))
+		this.props.dispatch(newMessage(this.props.name))
 	}
 
     render() {

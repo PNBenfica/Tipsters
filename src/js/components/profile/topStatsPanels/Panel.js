@@ -31,20 +31,40 @@ export default class Panel extends React.Component {
     startCounterAnimation(){
         const { counter } = this.props
         const animationDuration = 2000;
-        const repetitionDuration = animationDuration / (this.isInt(counter) ? counter : counter * 10)
+        const repetitionDuration = animationDuration / (this.isInt(counter) ? this.modulo(counter) : this.modulo(counter) * 10)
         this.timerFunction = setInterval(this.counterAnimation.bind(this), repetitionDuration)
         this.setState({ animationDuration })
     }
 
     counterAnimation(){
         const { counter } = this.props
-        if (this.state.counter < counter){
-            this.setState({ counter: this.state.counter + (this.isInt(counter) ? 1 : 0.11) })
+        if (this.modulo(this.state.counter) < this.modulo(counter)){
+            this.setState({ counter: this.state.counter + this.inc(counter) })
         }
         else{
             clearInterval(this.timerFunction);
             this.setState({ counter })
         } 
+    }
+
+    inc(n){
+        let inc = 1
+        if (!this.isInt(n))
+            inc = 0.11
+        if (!this.isPositive(n))
+            inc = -inc
+        return inc
+    }
+
+    modulo(n){
+        if (this.isPositive(n))
+            return n
+        else 
+            return -n
+    }
+
+    isPositive(n){
+        return n > 0
     }
     
     isInt(n) {

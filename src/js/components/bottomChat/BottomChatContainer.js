@@ -90,7 +90,7 @@ export default class BottomChatContainer extends React.Component {
     *   @param destination - name of the user to send a message
     */
     createNewMessage(destination){
-        const messageIndex = this.props.messages.findIndex(message => message.sender === destination)
+        const messageIndex = this.props.messages.findIndex(message => message.tipster.name === destination)
         if (messageIndex != -1 && this.isOpen(this.props.messages[messageIndex])) {
             let open = [...this.state.open]
             const index = open.findIndex(ele => ele.id === this.props.messages[messageIndex].id)

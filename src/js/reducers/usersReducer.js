@@ -15,16 +15,19 @@ export default function reducer(state={
         case "FETCH_PROFILE_FULFILLED": {
             const profile = action.payload
 
-            profile.date = "6 Agosto de 1994"
-            profile.location = "Portugal"
-            profile.favSport = "Football"
-            profile.favTeam = "Benfica"
-            profile.profit ="120"
-
             return {
                 ...state,
                 fetching: false,
                 fetched: true,
+                profile
+            }
+        }
+        case "FOLLOW_USER_PENDING": {
+            let { profile } = state
+            profile = Object.assign({}, profile, { is_following: !profile.is_following })
+
+            return {
+                ...state,
                 profile
             }
         }

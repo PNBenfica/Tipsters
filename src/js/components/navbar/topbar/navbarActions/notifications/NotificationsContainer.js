@@ -18,7 +18,7 @@ export default class NotificationsContainer extends React.Component {
     
     componentWillMount() {
         this.fetchNotifications()
-        const fetchNotifications = setInterval(this.fetchNotifications.bind(this), 10000)
+        const fetchNotifications = setInterval(this.fetchNotifications.bind(this), 1000000)
         this.setState( { fetchNotifications } )
     }
 

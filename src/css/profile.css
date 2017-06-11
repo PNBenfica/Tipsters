@@ -96,6 +96,7 @@
 
 #profile-container header .main-avatar-actions .button{
 	color: white;
+    width: 138px;
 }
 
 #profile-container header .main-avatar-actions .button:nth-child(1){

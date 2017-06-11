@@ -35,12 +35,14 @@ def getUser(username):
     else:
         return user
     
-def getUserProfile(username):   
-    user = getUser(username)
-    followers = map(_toUserMiniForm ,_getFollowers(user))
-    following = map(_toUserMiniForm ,_getFollowing(user))
+def getUserProfile(currentUser, requestedUsername):   
+    requestedUser = getUser(requestedUsername)
+    followers = map(_toUserMiniForm ,_getFollowers(requestedUser))
+    following = map(_toUserMiniForm ,_getFollowing(requestedUser))
+    is_following = _is_following(currentUser, requestedUsername)
+    stats = _get_user_stats(requestedUser)
 
-    return UserForm(name=username, email=user.email, avatar=user.avatar, followers=followers, following=following)
+    return UserForm(name=requestedUsername, email=requestedUser.email, avatar=requestedUser.avatar, followers=followers, following=following, stats=stats, is_following=is_following)
 
 
 # user is an user object

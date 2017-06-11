@@ -98,6 +98,9 @@ class UserForm(messages.Message):
     followers = messages.MessageField('UserMiniForm',3,repeated=True)
     following = messages.MessageField('UserMiniForm',4,repeated=True)
     avatar = messages.StringField(5)
+    is_following = messages.BooleanField(6)
+    stats = messages.MessageField('UserStatsMessage',7)
+    about = messages.StringField(8)
     
     
 class UserMiniForm(messages.Message):

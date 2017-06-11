@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 
-import { fetchProfile } from "../actions/userActions"
+import { fetchProfile, followUser } from "../actions/userActions"
 
 import About from "../components/profile/About"
 import LoadingGif from "../components/LoadingGif"
@@ -21,11 +21,6 @@ import Stats from "../components/profile/stats/Stats"
 })
 export default class Profile extends React.Component {
 
-    constructor(args){
-        super(...args)
-        this.state = {following:false}
-    }
-
     componentWillMount() {
         const { username } = this.props.params
         this.fetchProfile(username)
@@ -43,8 +38,8 @@ export default class Profile extends React.Component {
     }
 
     toggleFollow(){
-        const following = !this.state.following
-        this.setState({ following })
+        const { profile } = this.props
+        this.props.dispatch(followUser(profile.name))
     }
 
     renderHeader(loading){
@@ -52,7 +47,7 @@ export default class Profile extends React.Component {
             return <h2>{this.props.params.username}</h2>
         else {
             const { profile } = this.props
-            return <Header name={this.props.params.username} img={profile.avatar} following={this.state.following} toggleFollow={this.toggleFollow.bind(this)}/>
+            return <Header name={profile.name} img={profile.avatar} following={profile.is_following} toggleFollow={this.toggleFollow.bind(this)}/>
         }
     }
 
@@ -71,14 +66,14 @@ export default class Profile extends React.Component {
 
                     <About text={profile.about} />
 
-                    <TopStatsPanels nFollowers={nFollowers} nFollowing={nFollowing}/>
+                    <TopStatsPanels ROI={profile.stats.ROI} nFollowers={nFollowers} nFollowing={nFollowing}/>
 
                     <UserSlide title={nFollowers + " Followers"} tipsters={profile.followers} />
 
                     <UserSlide title={nFollowing + " Following"} tipsters={profile.following} />
                     
                     <UserPosts username={profile.name} />
-                    
+
                 </div>
 
             )

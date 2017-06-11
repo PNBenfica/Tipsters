@@ -12,7 +12,7 @@ export default class FollowButton extends React.Component {
         const icon = following ? "fa fa-check" : "fa fa-user-plus"
 
         return (
-            <Button text={text} icon={icon} onClick={toggleFollow} />
+            <Button text={text} icon={icon} active={following} onClick={toggleFollow} />
         )
     }
 }
