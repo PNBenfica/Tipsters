@@ -18,6 +18,10 @@ export default onClickOutside( class FixedPagePanel extends React.Component {
     }
 
     handleClickOutside(event){
+        ~this.closePanel()
+    }
+
+    closePanel(){
         const { open } = this.state
         if (open)
             this.setState( { open : false } )
@@ -29,7 +33,7 @@ export default onClickOutside( class FixedPagePanel extends React.Component {
         const { open } = this.state
 
         return (
-            <div id={id} class={ classNames("fixed-page-panel", classes, { active: active || open, open }) } >
+            <div id={id} onClick={this.closePanel.bind(this)} class={ classNames("fixed-page-panel", classes, { active: active || open, open }) } >
 
                 <Icon icon={icon} n={iconNumber} onClick={this.onIconClick.bind(this)} />
 

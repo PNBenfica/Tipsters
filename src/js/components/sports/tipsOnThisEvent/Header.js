@@ -12,7 +12,7 @@ export default class Header extends React.Component {
         return (
             <header class="col-xs-12">
 
-                <a href={"#/" + tipster.name} >
+                <a href={"#/profile/" + tipster.name} >
             
                     <TipsterImage image={tipster.avatar} />
 

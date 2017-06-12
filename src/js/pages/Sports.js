@@ -86,13 +86,14 @@ export default class Sports extends React.Component {
     
     componentWillMount() {
         this.fetchTables(this.props.params)
+        this.scrollToActivePanelOnLoad(this.props.params)
     }
 
     /*
         * @desc when the url params change (sport, league or match code) the tables must be updated
     */
     componentWillReceiveProps(nextProps) {
-        const {sportCode, leagueCode, matchCode} = nextProps.params
+        const {sportCode, leagueCode, matchCode, fetchingLeagues, fetchingMatches, fetchingMatch} = nextProps.params
 
         const sportChanged = sportCode !== this.props.params.sportCode 
         const leagueChanged = leagueCode !== this.props.params.leagueCode 
@@ -107,6 +108,19 @@ export default class Sports extends React.Component {
 
         }
 
+        else if( (!fetchingLeagues && this.props.fetchingLeagues) || (!fetchingMatches && this.props.fetchingMatches) || (!fetchingMatch && this.props.fetchingMatch) ){
+
+            this.scrollToActivePanel(nextProps.params)
+
+        }
+
+    }
+
+    scrollToActivePanelOnLoad(sportParams){
+        const { fetchingLeagues, fetchingMatches, fetchingMatch } = this.props
+        if ( fetchingLeagues || fetchingMatches || fetchingMatch ){
+
+        }
     }
 
     scrollToActivePanel(sportParams){
@@ -672,13 +686,6 @@ export default class Sports extends React.Component {
 	  	let { tips, fetchingTips, fetchedTips }  = this.props
 
         const loading = this.props.fetching || !this.props.fetched
-
-        let Tables = []
-        if (!loading) {
-            // const data = this.props.tables;
-            // Tables  = this.renderTables(data);
-            // ({ sport, league, match }  = this.getSportUrlParams(data))
-        }
 
 	    return (
 

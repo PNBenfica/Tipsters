@@ -5,6 +5,7 @@
 
 #sports-page .sports-tables-container{
 	margin-bottom: 100px;
+	z-index: 1;
 }
 
 #sports-page .breadcrumb{
@@ -141,6 +142,12 @@
 	max-height: none;
 	min-height: 200px;
 	margin-bottom: 50px;
+}
+
+#sports-page .sports-tables-container > .macth {
+    padding-top: 40px;
+    border-top: solid 2px rgb(221,221,221);
+    border-top-style: dashed;
 }
 
 #sports-page .square-list .square{
@@ -323,7 +330,7 @@ bet slip
     border-radius: 100%;
 
     transform: scale(0);
-    z-index: 2;
+    z-index: 3;
 
     transition: transform 500ms ease-in-out;
     cursor: pointer;
@@ -396,7 +403,7 @@ bet slip
     padding-right: 8vw;
     padding-top: 5vh;
     opacity: 1;
-    z-index: 1;
+    z-index: 2;
 }
 
 
@@ -757,6 +764,7 @@ Tips on this game
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1;
 
 	background-color: rgba(0,0,0,0.2);
 	transition: background-color 500ms ease-in-out;

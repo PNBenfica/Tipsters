@@ -22,7 +22,7 @@ function fetchProfile_default(username){
         followers:[{name:"Paulo Teixeira", avatar:"img/user2.jpg"}, {name:"João Almeida", avatar:"img/user3.jpg"}, {name:"Miguel Fernandes", avatar:"img/user4.jpg"},{name:"Ricardo Vieira", avatar:"img/user5.jpg"},{name:"Carlos Oliveira", avatar:"img/user6.jpg"},{name:"Maria Carmo", avatar:"img/user7.jpg"},{name:"Paulo Teixeira", avatar:"img/user8.jpg"},{name:"Joao Almeida", avatar:"img/user1.jpg"}],
         following:[{name:"João Almeida", avatar:"img/user1.jpg"}, {name:"Paulo Teixeira", avatar:"img/user3.jpg"}, {name:"Ricardo Vieira", avatar:"img/user5.jpg"},{name:"Carlos Oliveira", avatar:"img/user7.jpg"},{name:"Maria Carmo", avatar:"img/user2.jpg"},{name:"Paulo Teixeira", avatar:"img/user8.jpg"},{name:"Miguel Fernandes", avatar:"img/user4.jpg"},{name:"Joao Almeida", avatar:"img/user6.jpg"}],
         is_following: false,
-        ROI: 5.41
+        stats: { ROI: 5.41 }
     }
 }
 
