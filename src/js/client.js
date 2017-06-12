@@ -9,6 +9,7 @@ import Feed from "./pages/Feed"
 import Layout from "./pages/Layout"
 import LiveStreams from "./pages/LiveStreams"
 import Home from "./pages/Home"
+import Login from "./pages/Login"
 import Profile from "./pages/Profile"
 import Rankings from "./pages/Rankings"
 import Sports from "./pages/Sports"
@@ -24,11 +25,12 @@ ReactDOM.render(
 			<Route path="/" component={Layout}>
 				<IndexRoute component={Home}></IndexRoute>
 				<Route path="feed" name="feed" component={Feed}></Route>
-				<Route path="profile(/:username)" name="profile" component={Profile}></Route>
+				<Route path="login" name="login" component={Login}></Route>
 				<Route path="posts/:postId" name="post" component={Feed}></Route>
+				<Route path="profile(/:username)" name="profile" component={Profile}></Route>
 				<Route path="rankings" name="rankings" component={Rankings}></Route>
-				<Route path="streams" name="streams" component={LiveStreams}></Route>
 				<Route path="sports(/:sport/:sportCode(/:league/:leagueCode(/:match/:matchCode)))" name="sports" component={Sports}></Route>
+				<Route path="streams" name="streams" component={LiveStreams}></Route>
 			</Route>
 		</Router>
 	</Provider>,

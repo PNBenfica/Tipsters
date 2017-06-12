@@ -13,6 +13,13 @@ export default class Layout extends React.Component {
         this.state = { animating : false }
     }
 
+    componentWillMount(){
+        if (true){
+            const { history } = this.props
+            history.pushState(null, '/login')
+        }
+    }
+
     componentWillReceiveProps(nextProps){
         const currentpath = this.props.location.pathname
         if (currentpath === "/" && currentpath != nextProps.location.pathname){
@@ -24,12 +31,20 @@ export default class Layout extends React.Component {
         setTimeout(() => this.setState({ animating : false }), 750)
     }
 
+    isLoggedIn(){
+        return this.props.location.pathname === "/login"
+    }
+
     render() {
 
         const { location } = this.props
         const { animating } = this.state
 
         const verticalSliderVisible = location.pathname === "/"
+
+        if (this.isLoggedIn()){
+            return this.props.children
+        }
 
         return (
             <div id="wrapper">
