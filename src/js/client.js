@@ -10,6 +10,8 @@ import Layout from "./pages/Layout"
 import LiveStreams from "./pages/LiveStreams"
 import Home from "./pages/Home"
 import Login from "./pages/Login"
+import LoginForm from "./components/login/LoginForm"
+import RegisterForm from "./components/login/RegisterForm"
 import Profile from "./pages/Profile"
 import Rankings from "./pages/Rankings"
 import Sports from "./pages/Sports"
@@ -25,7 +27,10 @@ ReactDOM.render(
 			<Route path="/" component={Layout}>
 				<IndexRoute component={Home}></IndexRoute>
 				<Route path="feed" name="feed" component={Feed}></Route>
-				<Route path="login" name="login" component={Login}></Route>
+				<Route name="login" component={Login}>
+      				<Route path="login" component={LoginForm}/>
+      				<Route path="login/register" component={RegisterForm}/>
+				</Route>
 				<Route path="posts/:postId" name="post" component={Feed}></Route>
 				<Route path="profile(/:username)" name="profile" component={Profile}></Route>
 				<Route path="rankings" name="rankings" component={Rankings}></Route>

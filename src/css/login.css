@@ -1,4 +1,18 @@
 
+#auth-page {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+#auth-page .brand-name p{
+    font-size: 50px;
+}
+#auth-page .brand-name small{
+    font-size: 25px;
+}
+
 #auth-page video { 
     position: fixed;
     top: 50%;
@@ -9,18 +23,108 @@
     height: auto;
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
-	background: url('../video/marques_poster.png') no-repeat;
+	background: url('../video/beach-soccer.jpg') no-repeat;
 	background-size: cover;
 	transition: 1s opacity;
-    filter: brightness(0.4) blur(2px);
+    /*filter: brightness(0.4) blur(2px);*/
 }
 
 #auth-page .form-container{
-    top: 10vh;
-    min-height: 80vh;
-    background: rgba(20,20,20,0.8);
-    border: solid 1px black;
-    border-radius: 20px;
-    box-shadow: 0px 0px 15px rgba(255,255,255,0.5);
+    position: relative;
+    top: 20vh;
+    width: 250px;
+    max-width: 58vw;
+    text-align: center;
 
+    /*box-shadow: 0px 0px 15px rgba(255,255,255,0.5);*/
+
+}
+
+
+#auth-page .form.login .register-link{
+	color: white;
+    margin: 0;
+    padding: 10px 0;
+}
+
+#auth-page .form.login .register-link a{
+	color: white !important;
+}
+
+#auth-page .form.login .register-link a.hover-underline:after{
+	background-color: white; 
+	bottom: -3px;
+    height: 1px;
+    transition: width 500ms ease-in-out;
+}
+
+#auth-page .form input {
+    width: 100%;
+    margin: 12px 0;
+    padding: 7px;
+    background: rgba(255,255,255,0.8);
+    border: none;
+
+    box-shadow: 0px 0px 0px rgba(255,255,255,0.0);
+    transition: box-shadow 500ms ease-in-out;
+}
+
+#auth-page .form input:focus {
+    box-shadow: 0px 0px 15px rgba(255,255,255,0.8);
+}
+
+
+#auth-page .form svg.arrow {
+    position: absolute;
+    top: 111px;
+    right: -53px;
+    width: 35px;
+    height: 35px;
+    padding: 7px;
+    border: solid 2px white;
+    border-radius: 100%;
+    stroke: white;
+    stroke-width: 3px;
+
+    background-color: rgba(255,255,255,0);
+    transition: background-color 200ms ease-in-out;
+}
+
+#auth-page .form svg.arrow:hover{
+	cursor: pointer;
+    background-color: rgba(255,255,255,0.1);
+}
+
+#auth-page .form svg.arrow:hover > use{
+    -webkit-animation-name: left-and-right-arrow; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 500ms; /* Safari 4.0 - 8.0 */
+    -webkit-animation-iteration-count: infinite; /* Safari 4.0 - 8.0 */
+    animation-name: left-and-right-arrow;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+}
+
+
+@keyframes left-and-right-arrow {
+    0%   {transform: translateX(0px);}
+    25%  {transform: translateX(1px);}
+    75%  {transform: translateX(-1px);}
+    100% {transform: translateX(0px);}
+}
+
+#auth-page .form.register .button {
+    margin-top: 12px;
+    color: white;
+
+    background-color: rgba(255,255,255,0);
+    transition: background-color 100ms ease-in-out;
+}
+
+#auth-page .form.register .button:hover {
+    background-color: rgba(255,255,255,0.1);
+    border-color: white;
+}
+
+#auth-page .form.register .button:before {
+    content: none;
 }

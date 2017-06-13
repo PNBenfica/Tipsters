@@ -1,4 +1,7 @@
-import React from "react";
+import React from "react"
+
+import BackgroundVideo from './../components/login/BackgroundVideo'
+import BrandName from './../components/login/BrandName'
 
 export default class Login extends React.Component {
 
@@ -6,16 +9,17 @@ export default class Login extends React.Component {
 
         return  (
             <section id="auth-page">
-                <video poster="video/marques_poster.png" id="bgvid" playsinline autoPlay muted loop>
-                    <source src="video/marques.mp4" type="video/webm"/>
-                </video>
 
-                <div class="form-container col-xs-12 col-md-4 col-md-push-4">
-                    <a class="brand-name">
-                        <p>t</p>
-                        <small>ipsters</small>
-                    </a>
+                <BackgroundVideo />
+
+                <div class="form-container">
+
+                    <BrandName />
+
+                    { this.props.children }
+
                 </div>
+                
             </section>
 	    )
   	}

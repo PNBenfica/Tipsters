@@ -32,7 +32,7 @@ export default class Layout extends React.Component {
     }
 
     isLoggedIn(){
-        return this.props.location.pathname === "/login"
+        return this.props.location.pathname.startsWith("/login")
     }
 
     render() {
