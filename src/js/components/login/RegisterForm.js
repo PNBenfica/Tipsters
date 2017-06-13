@@ -1,15 +1,30 @@
 import React from "react"
+import { connect } from "react-redux"
+import classNames from "classnames"
+
+import { register } from "../../actions/registerActions"
 
 import FormGroup from "./FormGroup"
-import SVG from "./../SVG"
+import LoadingGif from "./../LoadingGif"
 
+@connect((store) => {
+    return {
+        fetched: store.register.fetched,
+        fetching: store.register.fetching,
+    }
+})
 export default class RegisterForm extends React.Component {
 
 	onSubmit(values){
 		const { mail, username, password } = values
-		console.log(mail)
-		console.log(username)
-		console.log(password)
+        this.props.dispatch(register( username, mail, password ))
+	}
+
+	componentWillReceiveProps(nextProps){
+		if (this.props.fetching && !nextProps.fetching){
+            const { history } = this.props
+            history.pushState(null, '/login')
+		}
 	}
 
     render() {
@@ -22,6 +37,8 @@ export default class RegisterForm extends React.Component {
         			submitButton={ <div class="button"><span>Register</span></div> }
         			onSubmit={this.onSubmit.bind(this)}
         		/>
+
+        		<div class={ classNames({hidden: !this.props.fetching}) } ><LoadingGif/></div>
 
         	</div>
         )

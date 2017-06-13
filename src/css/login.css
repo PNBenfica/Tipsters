@@ -128,3 +128,33 @@
 #auth-page .form.register .button:before {
     content: none;
 }
+
+
+
+#auth-page .loading-gif{
+    margin-bottom: 60px;
+    position: relative;
+    float: left;
+    width: 100%;
+}
+
+#auth-page .loading-gif .uil-facebook-css > div{
+    background: white;
+    width: 20px;
+    height: 80px;
+    opacity: 0.8;
+}
+
+#auth-page .loading-gif .uil-facebook-css > div:nth-of-type(2){
+    opacity: 0.9;
+}
+
+#auth-page .loading-gif .uil-facebook-css > div:nth-of-type(3){
+    opacity: 1;
+}
+
+
+#auth-page .loading-gif .uil-facebook-css{
+    position: relative;
+    left: -15px;
+}

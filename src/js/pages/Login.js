@@ -6,7 +6,7 @@ import BrandName from './../components/login/BrandName'
 export default class Login extends React.Component {
 
   	render() {
-
+        
         return  (
             <section id="auth-page">
 

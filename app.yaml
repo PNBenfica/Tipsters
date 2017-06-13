@@ -12,6 +12,9 @@ handlers:       # static then dynamic
 - url: /img
   static_dir: src/img
 
+- url: /video
+  static_dir: src/video
+
 - url: /css
   static_dir: src/css
 
