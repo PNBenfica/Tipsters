@@ -14,8 +14,9 @@ export default function reducer(state={
         }
         case "AUTHENTICATE_FULFILLED": {
 
-            const token = action.payload.greeting
-            console.log("TOKEN: " + token)
+            const { username, token } = action.payload
+            localStorage.setItem('access_token', token);
+            localStorage.setItem('username', username);
 
             return {
                 ...state,

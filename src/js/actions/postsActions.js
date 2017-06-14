@@ -6,7 +6,8 @@ export function fetchPosts() {
 
         callAPI({
             type: "FETCH_POSTS",
-        	request: (() => gapi.client.tipsters.getFeed()),
+        	path: "users/posts",
+            auth: true,
             dispatch,
         	default: fetchPosts_default()
         })
@@ -20,7 +21,8 @@ export function fetchPost(post_id) {
 
         callAPI({
             type: "FETCH_POST",
-        	request: () => gapi.client.tipsters.getPost({ post_id }),
+        	path: "users/posts/" + post_id,
+            auth: true,
             dispatch,
         	default: fetchPost_default()
         })
@@ -254,7 +256,8 @@ export function fetchUserPosts(username) {
 
         callAPI({
             type: "FETCH_POSTS",
-        	request: () => gapi.client.tipsters.getUserPosts({ username }),
+        	path: "users/" + username + "/posts",
+            auth: true,
             dispatch,
         	default: fetchPosts_default()
         })
@@ -269,7 +272,10 @@ export function addComment(post_id, comment) {
 
         callAPI({
             type: "ADD_COMMENT",
-        	request: (() => gapi.client.tipsters.addComment({ post_id, comment })),
+        	path: "users/posts/" + post_id + "/comment",
+        	method: "POST",
+        	body: { comment },
+            auth: true,
             dispatch: dispatch,
         	action: { post_id, comment }
         })
@@ -284,7 +290,9 @@ export function likePost(post_id) {
 
         callAPI({
             type: "LIKE_POST",
-        	request: (() => gapi.client.tipsters.likePost({ post_id })),
+        	path: "users/posts/" + post_id + "/like",
+        	method: "POST",
+            auth: true,
             dispatch: dispatch,
         	action: { post_id }
         })

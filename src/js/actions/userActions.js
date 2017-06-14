@@ -6,9 +6,10 @@ export function fetchProfile(username) {
 
         callAPI({
             type: "FETCH_PROFILE",
-        	request: (() => gapi.client.tipsters.getUserProfile({ username })),
+            path: "users/" + username,
+            auth: true,
             dispatch: dispatch,
-        	default: fetchProfile_default(username)
+        	default: fetchProfile_default(username),
         })
 
 	}
@@ -32,7 +33,9 @@ export function followUser(username) {
 
         callAPI({
             type: "FOLLOW_USER",
-            request: (() => gapi.client.tipsters.followUser({ username })),
+            path: "users/follow/" + username,
+            method: "POST",
+            auth: true,
             dispatch: dispatch,
             action: { username }
         })

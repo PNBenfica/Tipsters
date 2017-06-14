@@ -6,7 +6,8 @@ export function fetchMessages() {
 
         callAPI({
             type: "FETCH_MESSAGES",
-            request: (() => gapi.client.tipsters.fetchMessages()),
+            path: "messages",
+            auth: true,
             dispatch,
             default: fetchMessages_default()
         })
@@ -34,7 +35,9 @@ export function setMessagesNotNew() {
 
         callAPI({
             type: "SET_MESSAGES_NOT_NEW",
-            request: (() => gapi.client.tipsters.resetNewMessagesCount()),
+            path: "messages/notnew",
+            method: "POST",
+            auth: true,
             dispatch
         })
 
@@ -48,7 +51,10 @@ export function markMessageAsSeen(username) {
 
         callAPI({
             type: "MARK_MESSAGE_AS_SEEN",
-            request: (() => gapi.client.tipsters.markMessageAsSeen({username})),
+            path: "messages/mark_as_seen",
+            method: "POST",
+            params: { username },
+            auth: true,
             dispatch,
             action: username 
         })
@@ -62,7 +68,10 @@ export function openMessage(username) {
 
         callAPI({
             type: "OPEN_MESSAGE",
-            request: (() => gapi.client.tipsters.markMessageAsSeen({username})),
+            path: "messages/mark_as_seen",
+            method: "POST",
+            params: { username },
+            auth: true,
             dispatch,
             action: username 
         })
@@ -90,7 +99,10 @@ export function sendMessage(username, message) {
 
         callAPI({
             type: "SEND_MESSAGE",
-            request: (() => gapi.client.tipsters.sendMessage({username,message})),
+            path: "messages",
+            method: "POST",
+            params: {username,message},
+            auth: true,
             dispatch,
             action: {username,message} 
         })

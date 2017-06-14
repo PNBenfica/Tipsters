@@ -21,11 +21,12 @@ const app = document.getElementById('app')
 
 gapiLoader.loadAPI()
 
+// <IndexRoute component={Home}></IndexRoute>
+
 ReactDOM.render(
 	<Provider store={store}>
 		<Router onUpdate={() => {if(!window.location.hash.startsWith("#/sports/")) window.scrollTo(0, 0)}} history={hashHistory}>
 			<Route path="/" component={Layout}>
-				<IndexRoute component={Home}></IndexRoute>
 				<Route path="feed" name="feed" component={Feed}></Route>
 				<Route name="login" component={Login}>
       				<Route path="login" component={LoginForm}/>

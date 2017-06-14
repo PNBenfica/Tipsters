@@ -6,7 +6,7 @@ export function fetchRankings() {
 
         callAPI({
             type: "FETCH_RANKINGS",
-        	request: (() => gapi.client.tipsters.fetchRankings()),
+        	path: "rankings",
             dispatch,
         	default: fetchRankings_default()
         })

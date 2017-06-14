@@ -6,7 +6,8 @@ export function fetchNotifications() {
 
         callAPI({
             type: "FETCH_NOTIFICATIONS",
-            request: (() => gapi.client.tipsters.fetchNotifications()),
+            path: "notifications",
+            auth: true,
             dispatch,
             default: fetchNotifications_default()
         })
@@ -49,7 +50,9 @@ export function setNotificationsNotNew() {
 
         callAPI({
             type: "SET_NOTIFICATIONS_NOT_NEW",
-            request: (() => gapi.client.tipsters.resetNewNotificationsCount()),
+            path: "notifications/notnew",
+            method: "POST",
+            auth: true,
             dispatch
         })
 
@@ -63,7 +66,10 @@ export function markAsSeen(notification_key) {
 
         callAPI({
             type: "MARK_AS_SEEN",
-            request: (() => gapi.client.tipsters.markNotificationAsSeen({ notification_key })),
+            path: "notifications/mark_as_seen",
+            method: "POST",
+            params: { notification_key },
+            auth: true,
             dispatch, 
             action: { notification_key }
         })

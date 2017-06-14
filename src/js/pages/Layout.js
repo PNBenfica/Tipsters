@@ -14,9 +14,25 @@ export default class Layout extends React.Component {
     }
 
     componentWillMount(){
-        if (true){
-            const { history } = this.props
+
+        this.checkAuthToken(this.props)
+
+    }
+
+    checkAuthToken(props){
+        const { history } = this.props
+
+
+
+        if (!this.isLoggedIn() && !this.isInLoginPage(this.props)){
+
             history.pushState(null, '/login')
+
+        }
+        else if(this.isLoggedIn() && this.isInLoginPage(props)){
+
+            history.pushState(null, '')
+
         }
     }
 
@@ -25,6 +41,8 @@ export default class Layout extends React.Component {
         if (currentpath === "/" && currentpath != nextProps.location.pathname){
             this.setState( { animating : true }, this.endAnimationCallback.bind(this))
         }
+
+        this.checkAuthToken(nextProps)
     }
 
     endAnimationCallback(){
@@ -32,7 +50,11 @@ export default class Layout extends React.Component {
     }
 
     isLoggedIn(){
-        return this.props.location.pathname.startsWith("/login")
+        return localStorage.getItem('access_token') !== null
+    }
+
+    isInLoginPage(props){
+        return props.location.pathname.startsWith("/login")
     }
 
     render() {
@@ -42,9 +64,13 @@ export default class Layout extends React.Component {
 
         const verticalSliderVisible = location.pathname === "/"
 
-        if (this.isLoggedIn()){
+        if (!this.isLoggedIn() && this.isInLoginPage(this.props)){
             return this.props.children
         }
+        // else if(this.props.location.pathname.startsWith("/login")){
+        //     const { history } = this.props
+        //     history.pushState(null, '')
+        // }
 
         return (
             <div id="wrapper">

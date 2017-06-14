@@ -33,6 +33,7 @@ export function followUser(username) {
         callAPI({
             type: "FOLLOW_USER",
         	request: (() => gapi.client.tipsters.followUser({ username })),
+            auth: true,
             dispatch: dispatch,
         	action: { username }
         })

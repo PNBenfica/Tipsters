@@ -6,7 +6,9 @@ export function register(name, email, pwd) {
 
         callAPI({
             type: "REGISTER",
-        	request: (() => gapi.client.tipsters.registerUser({ name, email, pwd })),
+            path: "users",
+            method: "POST",
+            body: { name, email, pwd },
             dispatch: dispatch,
         	default: register_default()
         })

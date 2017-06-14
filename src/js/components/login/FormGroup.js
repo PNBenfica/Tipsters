@@ -19,6 +19,13 @@ export default class FormGroup extends React.Component {
 
     }
 
+    handleKeyPress(e) {
+        if (e.key === 'Enter'){
+            e.preventDefault();
+            this.onSubmit()
+        }
+    }
+
     onSubmit(){
 
         const { onSubmit } = this.props
@@ -50,7 +57,7 @@ export default class FormGroup extends React.Component {
         const { submitButton } = this.props
         const { values } = this.state
 
-        const inputs = this.props.inputs.map( (input,i) => <input key={i} {...input} value={ values[input.name] } onChange={ e => this.handleInputChange(e, input.name) } /> )
+        const inputs = this.props.inputs.map( (input,i) => <input key={i} {...input} value={ values[input.name] } onChange={ e => this.handleInputChange(e, input.name) } onKeyPress={this.handleKeyPress.bind(this)} /> )
 
         return (
 

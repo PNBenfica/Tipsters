@@ -62,7 +62,7 @@
 
 .brand-name *,
 .navbar .navbar-brand *{
-    color: white !important;
+    color: white;
     transition: color 200ms;
 }
 
@@ -197,10 +197,11 @@
 
 .navbar .navbar-actions .sidebar-right{
     position: absolute;
-    top: 51px;
-    right: 15px;
-    height: calc(100vh - 51px);
+    top: 61px;
+    right: 14px;
+    height: calc(100vh - 61px);
     width: 300px;
+    max-width: 90vw;
     background-color: white;
     transform: translate(100%,0);
     overflow: hidden;
@@ -264,6 +265,7 @@
     -moz-transition: background 0.2s;
     transition: background 0.2s;
 }
+.sidebar-right ul > *:last-child,
 .sidebar-right ul a:last-child li:not(.empty) {
     margin-bottom: 100px;
 }
@@ -405,6 +407,17 @@
     color: #333;
 }
 
+.sidebar-right.user-sidebar ul li{
+    padding: 10% 20px;
+}
+
+.navbar .navbar-actions .sidebar-right.user-sidebar {
+    height: auto;
+}
+.sidebar-right.user-sidebar ul a:last-child li:not(.empty){
+    margin-bottom: 0;
+}
+
 @media(min-width:768px) {
 
     .navbar .navbar-header{
@@ -460,6 +473,11 @@
         background-color: white;
     }
 
+
+    .navbar .navbar-actions .sidebar-right{
+        top: 87px;
+        height: calc(100vh - 87px);
+    }
 }
 
 

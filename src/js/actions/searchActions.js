@@ -6,7 +6,7 @@ export function fetchSuggestions() {
 
         callAPI({
             type: "FETCH_SEARCH_SUGGESTIONS",
-            request: (() => gapi.client.tipsters.fetchSearchSuggestions()),
+            path: "search/suggestions",
             dispatch,
             default: fetchSuggestions_default()
         })

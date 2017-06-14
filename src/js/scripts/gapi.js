@@ -24,8 +24,14 @@ function makeApiRequest(payload){
     
     if( gapiLoader.apiLoaded() ){
         console.log("api loaded - making request")
-        var request = payload.request()
-        request.execute((resp) => apiCallBack(resp, payload))
+
+        const path = window.location.origin+"/_ah/api/tipsters/v1/" + payload.path
+        const headers = payload.auth ? getAuthToken() : {}
+        const { params, method, body } = payload
+        const request = { path, headers, params, body, method }
+        console.log(request)
+        
+        gapi.client.request(request).then((resp) => apiCallBack(resp, payload))
     }
     else{
         setTimeout(() => { console.log("waiting for api load"); callAPI(payload); }, 2000)
@@ -38,4 +44,8 @@ function apiCallBack(resp, payload){
     } else {
     	payload.dispatch({type: payload.type + "_FULFILLED", payload: resp.result})
     }
+}
+
+function getAuthToken(){
+    return localStorage.access_token
 }

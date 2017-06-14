@@ -8,7 +8,9 @@ export function authenticate(name, pwd) {
 
         callAPI({
             type: "AUTHENTICATE",
-        	request: (() => gapi.client.tipsters.login({ name, pwd })),
+        	path: "users/authenticate",
+            method: "POST",
+            body: { name, pwd },
             dispatch: dispatch,
         	default: authenticate_default()
         })
@@ -18,6 +20,7 @@ export function authenticate(name, pwd) {
 
 function authenticate_default(){
 	return {
-        greeting: "SUPER_VALID_TOKEN",
+        token: "SUPER_VALID_TOKEN",
+        username: "Paulo Teixeira"
     }
 }

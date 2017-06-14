@@ -25,7 +25,8 @@ function fetchTables(sportParams, type, defaultValues){
 
         callAPI({
             type: type,
-            request: (() => gapi.client.tipsters.getOdds(sportParams)),
+            path: "sports/odds",
+            params: sportParams,
             dispatch: dispatch,
             default: defaultValues
         })
@@ -61,7 +62,8 @@ export function fetchTips(sportParams) {
 
         callAPI({
             type: "FETCH_EVENT_TIPS",
-            request: (() => gapi.client.tipsters.getSportTips(sportParams)),
+            path: "sports/tips",
+            params: sportParams,
             dispatch: dispatch,
             default: fetchTips_default(sportParams)
         })
@@ -84,7 +86,10 @@ export function shareTip(betSlip) {
 
         callAPI({
             type: "ADD_POST",
-            request: (() => gapi.client.tipsters.addPost({ tips, comment })),
+            path: "users/posts",
+            body: { tips, comment },
+            method: "POST",
+            auth: true,
             dispatch: dispatch
         })
 

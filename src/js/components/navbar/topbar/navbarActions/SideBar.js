@@ -15,10 +15,10 @@ export default onClickOutside(class SideBar extends React.Component {
 
     render() {
 
-        const { open } = this.props
+        const { classes, open } = this.props
 
         return (
-        	<div class={classNames("sidebar-right", { open } )}>
+        	<div class={classNames("sidebar-right", { open }, classes )}>
 
                 {this.props.children}
 

@@ -50,7 +50,9 @@ export default function reducer(state={
             }
         }
         case "ADD_COMMENT_FULFILLED":{
-            console.log("ADD_COMMENT_FULFILLED")
+            return {
+                ...state,
+            }
         }
         case "LIKE_POST_PENDING":{
             const { post_id } = action.params

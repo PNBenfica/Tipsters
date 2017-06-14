@@ -80,9 +80,10 @@ class TipstersApi(remote.Service):
     
     @endpoints.method(message_types.VoidMessage, Hello, path = "sayHello", http_method='GET', name = "sayHello")
     def say_hello(self, request):
+        user = SessionManager.get_current_user()
         return Hello(greeting="Hello World")
     
-    @endpoints.method(UserCreationForm, Hello, path = "users/register", http_method='POST', name = "registerUser")
+    @endpoints.method(UserCreationForm, Hello, path = "users", http_method='POST', name = "registerUser")
     def register_user(self, request):
         name, email, pwd = request.name, request.email, request.pwd
         UserManager.register_user(name, email, pwd)
@@ -107,7 +108,7 @@ class TipstersApi(remote.Service):
         UserManager.follow_user(user, request.username)
         return Hello(greeting="Successful added/removed to the followers list")
     
-    @endpoints.method(UserAuthForm, Hello, path = "authenticate", http_method='POST', name = "login")
+    @endpoints.method(UserAuthForm, Hello, path = "users/authenticate", http_method='POST', name = "login")
     def authenticate(self, request):
         username, pwd = request.name, request.pwd
         user = UserManager.getUser(username)
