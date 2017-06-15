@@ -14,7 +14,7 @@ export default function reducer(state={
             return {...state, fetching: false, error: action.payload}
         }
         case "FETCH_MESSAGES_FULFILLED": {
-            let { messages } = action.payload
+            let { messages = [] } = action.payload
             messages.forEach(message => message.id = message.tipster.name)
 
             return {

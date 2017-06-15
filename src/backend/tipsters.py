@@ -13,7 +13,7 @@ from protorpc import messages
 from protorpc import remote
 
 
-from models import ChatsMessage, TipsOnThisEventMessage, SearchSuggestionsMessage, NotificationsMessage, RankingsMessage, SportMessage, SportParams, UserForm, UserCreationForm, TrendsMessage, UserAuthForm, PostForm, PostMessage, FeedMessage, PostCommentMessage
+from models import UserAuthTokenMessage, ChatsMessage, TipsOnThisEventMessage, SearchSuggestionsMessage, NotificationsMessage, RankingsMessage, SportMessage, SportParams, UserForm, UserCreationForm, TrendsMessage, UserAuthForm, PostForm, PostMessage, FeedMessage, PostCommentMessage
 from settings import WEB_CLIENT_ID
 from sports.sportsRetriever import get, get_tips
 import PostManager
@@ -92,8 +92,7 @@ class TipstersApi(remote.Service):
     @endpoints.method(UserForm, Hello, path = "users", http_method='PUT', name = "updateUserProfile")
     def update_user_profile(self, request):
         user = SessionManager.get_current_user()
-        user.avatar = request.avatar
-        print(request.avatar)
+        user.avatar = str(request.avatar)
         user.put()
         return Hello(greeting="profile successful updated")
     
@@ -108,7 +107,7 @@ class TipstersApi(remote.Service):
         UserManager.follow_user(user, request.username)
         return Hello(greeting="Successful added/removed to the followers list")
     
-    @endpoints.method(UserAuthForm, Hello, path = "users/authenticate", http_method='POST', name = "login")
+    @endpoints.method(UserAuthForm, UserAuthTokenMessage, path = "users/authenticate", http_method='POST', name = "login")
     def authenticate(self, request):
         username, pwd = request.name, request.pwd
         user = UserManager.getUser(username)
@@ -116,7 +115,7 @@ class TipstersApi(remote.Service):
         if UserManager.checkPassword(user, pwd):
             token = SessionManager.generateAuthToken()
             UserManager.updateAuthToken(user, token)
-            return Hello(greeting=token)
+            return UserAuthTokenMessage(token=token, username=username)
         else:
             raise UnauthorizedException("Invalid credentials")
     

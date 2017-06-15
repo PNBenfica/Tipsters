@@ -111,6 +111,10 @@ class UserAuthForm(messages.Message):
     name = messages.StringField(1)
     email = messages.StringField(2)
     pwd = messages.StringField(3)
+    
+class UserAuthTokenMessage(messages.Message):
+    token = messages.StringField(1)
+    username = messages.StringField(2)
 
 
 class TrendsMessage(messages.Message):

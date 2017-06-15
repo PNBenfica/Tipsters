@@ -13,7 +13,7 @@ export default function reducer(state={
             return {...state, fetching: false, error: action.payload}
         }
         case "FETCH_NOTIFICATIONS_FULFILLED": {
-            let { notifications } = action.payload
+            let { notifications = [] } = action.payload
 
             return {
                 ...state,

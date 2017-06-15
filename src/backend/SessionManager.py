@@ -13,8 +13,9 @@ from UserManager import getUser, getUserByToken
 def get_current_user():
     #authToken = self.request_state.headers.get('authorization')
     authToken = os.getenv( 'HTTP_AUTHORIZATION' )
-    print(authToken)
-    return getUser("Aimar Bernardo")
+    #print(authToken)
+    if (authToken is None):
+        return getUser("paulo")
     
     user = getUserByToken(authToken)
     

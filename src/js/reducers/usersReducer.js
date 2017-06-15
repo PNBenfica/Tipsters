@@ -31,6 +31,16 @@ export default function reducer(state={
                 profile
             }
         }
+        case "UPDATE_IMAGE_PENDING": {
+            let { profile } = state
+            let { avatar } = action.params
+            profile = Object.assign({}, profile, { avatar })
+
+            return {
+                ...state,
+                profile
+            }
+        }
     }
 
     return state

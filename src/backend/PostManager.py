@@ -9,9 +9,12 @@ from gaeUtils import getKeyByAncestors
 
 def getFeed(user):
     posts = _getFeedPosts(user)
+    print (posts)
     return toPostsMessage(user, posts)
 
 def _getFeedPosts(user):
+    if not len(user.followingKeys): 
+        return []
     return Post.query(Post.author.IN(user.followingKeys)).order(-Post.date).fetch()
 
 # get the posts of a given user
@@ -87,9 +90,15 @@ def toPostMessage(user, post):
     liked = _userLikedPost(user,post)
     return PostMessage(tipster=tipster,liked=liked,comment=post.comment,nComments=post.nComments,nLikes=post.nLikes,date=post.date,totalOdd=post.totalOdd,websafeKey=post.key.urlsafe(),tips=tips,comments=comments)
 
+def getUserAvatar(user):
+    avatar = user.avatar
+    if avatar is None:
+        avatar = "img/default_user.png"
+    return avatar
+
 def getUserMiniProfile(username):
     user = ndb.Key(User, username).get()
-    return UserMiniForm(name=username, avatar=user.avatar)
+    return UserMiniForm(name=username, avatar=getUserAvatar(user))
 
 def toTipMessage(tip):
     return _toTipMessage(tip.key)

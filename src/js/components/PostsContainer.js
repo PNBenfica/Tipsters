@@ -54,6 +54,8 @@ export default class PostsContainer extends React.Component {
     renderPosts(){
         const { posts } = this.props
 
+        if (posts === undefined) return <p>You are not following any Tipster.<br/>Go to <a href="#/rankings">rankings</a> page to find the best Tipsters.</p>
+
         return posts.map((post, i) => {
             if (post.price > 0)
                 return <PostBuy key={i} {...post}/>

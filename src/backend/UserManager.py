@@ -15,9 +15,8 @@ def register_user(name, email, pwd):
         raise endpoints.ConflictException("Username already exists")
     if _emailAlreadyExist(email):
         raise endpoints.ConflictException("Email already being used")
-    
     hashPwd = _hashPassword(pwd)
-    User(id=name, email=email, pwd=hashPwd).put()
+    User(id=name, email=email, pwd=hashPwd, avatar="img/default_user.png").put()
 
 def _hashPassword(pwd):
     return SHA256.new(pwd).hexdigest()
@@ -34,7 +33,13 @@ def getUser(username):
         raise endpoints.NotFoundException(username)
     else:
         return user
-    
+
+def getUserAvatar(user):
+    avatar = user.avatar
+    if avatar is None:
+        avatar = "img/default_user.png"
+    return avatar
+
 def getUserProfile(currentUser, requestedUsername):   
     requestedUser = getUser(requestedUsername)
     followers = map(_toUserMiniForm ,_getFollowers(requestedUser))
@@ -42,7 +47,7 @@ def getUserProfile(currentUser, requestedUsername):
     is_following = _is_following(currentUser, requestedUsername)
     stats = _get_user_stats(requestedUser)
 
-    return UserForm(name=requestedUsername, email=requestedUser.email, avatar=requestedUser.avatar, followers=followers, following=following, stats=stats, is_following=is_following)
+    return UserForm(name=requestedUsername, email=requestedUser.email, avatar=getUserAvatar(requestedUser), followers=followers, following=following, stats=stats, is_following=is_following)
 
 
 # user is an user object
@@ -99,7 +104,7 @@ def _getFollowing(user):
     return ndb.get_multi(followingKeys)
 
 def _toUserMiniForm(user):
-    return UserMiniForm(name=user.key.id(), avatar=user.avatar)
+    return UserMiniForm(name=user.key.id(), avatar=getUserAvatar(user))
 
 def get_user_mini_form(username):
     user = getUser(username)

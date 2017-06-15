@@ -42,3 +42,21 @@ export function followUser(username) {
 
     }
 }
+
+export function updateImage(avatar) {
+
+    return function(dispatch) {
+
+        callAPI({
+            type: "UPDATE_IMAGE",
+            path: "users",
+            body: { avatar },
+            method: "PUT",
+            auth: true,
+            dispatch: dispatch,
+            action: { avatar }
+        })
+
+    }
+
+}

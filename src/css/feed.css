@@ -17,6 +17,17 @@
 	width: 100%;
 }
 
+.posts-container > p{
+    text-align: center;
+    font-size: 18px;
+    margin: 50px 0;
+    line-height: 2;
+}
+
+.posts-container > p a{
+	color: #c30000 !important;
+}
+
 #feed-page .feed-page-left{
 	min-height: 100vh;
 }

@@ -7,7 +7,7 @@ import Section from "../../Section"
 export default class Recomendations extends React.Component {
 
     render() {
-    	const { nFollowers, nFollowing, ROI } = this.props
+    	const { nFollowers, nFollowing, ROI = 0.0 } = this.props
 
         return (
             <div class="col-xs-12 top-stats">

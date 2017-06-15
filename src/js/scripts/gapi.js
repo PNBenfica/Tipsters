@@ -26,7 +26,7 @@ function makeApiRequest(payload){
         console.log("api loaded - making request")
 
         const path = window.location.origin+"/_ah/api/tipsters/v1/" + payload.path
-        const headers = payload.auth ? getAuthToken() : {}
+        const headers = payload.auth ? { 'authorization': getAuthToken() } : {}
         const { params, method, body } = payload
         const request = { path, headers, params, body, method }
         console.log(request)

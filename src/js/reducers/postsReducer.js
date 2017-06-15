@@ -29,7 +29,7 @@ export default function reducer(state={
             }
         }
         case "FETCH_POSTS_FULFILLED": {
-            const { posts } = action.payload
+            const { posts = [] } = action.payload
             posts.forEach(post => post.tips.forEach(tip => [tip.homeImg, tip.awayImg] = randomTeamImages() ))
             return {
                 ...state,

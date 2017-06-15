@@ -1,7 +1,9 @@
 import React from "react"
 import { connect } from "react-redux"
 
-import { fetchProfile, followUser } from "../actions/userActions"
+import { fetchProfile, followUser, updateImage } from "../actions/userActions"
+
+import classNames from "classnames"
 
 import About from "../components/profile/About"
 import LoadingGif from "../components/LoadingGif"
@@ -21,9 +23,14 @@ import Stats from "../components/profile/stats/Stats"
 })
 export default class Profile extends React.Component {
 
+    construtor(args){
+        this.state = { newImage : "" }
+    }
+
     componentWillMount() {
         const { username } = this.props.params
         this.fetchProfile(username)
+        this.setState({ myProfile : username === localStorage.username })
     }
 
     componentWillReceiveProps(nextProps){
@@ -42,21 +49,32 @@ export default class Profile extends React.Component {
         this.props.dispatch(followUser(profile.name))
     }
 
+    onUpdateImageInputChange(ev){
+        const newImage = ev.target.value
+        this.setState({ newImage })
+    }
+
+    updateImage(img){
+        this.props.dispatch(updateImage(this.state.newImage))
+    }
+
     renderHeader(loading){
         if (loading)
             return <h2>{this.props.params.username}</h2>
         else {
             const { profile } = this.props
-            return <Header name={profile.name} img={profile.avatar} following={profile.is_following} toggleFollow={this.toggleFollow.bind(this)}/>
+            const { myProfile, newImage } = this.state
+            return <Header name={profile.name} img={profile.avatar} following={profile.is_following} toggleFollow={this.toggleFollow.bind(this)} myProfile={myProfile} inputValue={newImage} updateImage={this.updateImage.bind(this)} onInputChange={this.onUpdateImageInputChange.bind(this)} />
         }
     }
 
     renderBody(){
 
         const { profile } = this.props
+        const { followers = [], following = [] } = profile
             
-        const nFollowers = profile.followers.length
-        const nFollowing = profile.following.length
+        const nFollowers = followers.length
+        const nFollowing = following.length
 
 
 
@@ -68,9 +86,9 @@ export default class Profile extends React.Component {
 
                     <TopStatsPanels ROI={profile.stats.ROI} nFollowers={nFollowers} nFollowing={nFollowing}/>
 
-                    <UserSlide title={nFollowers + " Followers"} tipsters={profile.followers} />
+                    <UserSlide title={nFollowers + " Followers"} tipsters={followers} />
 
-                    <UserSlide title={nFollowing + " Following"} tipsters={profile.following} />
+                    <UserSlide title={nFollowing + " Following"} tipsters={following} />
                     
                     <UserPosts username={profile.name} />
 
@@ -83,6 +101,7 @@ export default class Profile extends React.Component {
     render() {
 
         const { fetched, fetching } = this.props
+        const { myProfile } = this.state
 
         const loading = fetching || !fetched 
 
@@ -92,7 +111,7 @@ export default class Profile extends React.Component {
 
         return (
 
-            <Page id="profile-container" title={this.props.params.username} customHeader={ customHeader } loading={loading} img="img/covers/profile.jpg" >
+            <Page id="profile-container" classes={classNames( { myProfile } )} title={this.props.params.username} customHeader={ customHeader } loading={loading} img="img/covers/profile.jpg" >
                 
                 { body }
 
