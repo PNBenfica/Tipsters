@@ -539,6 +539,40 @@
     justify-content: center;
 }
 
+
+#profile-container .edit-about {
+	text-align: center;
+}
+
+#profile-container .edit-about > .button {
+    margin: 30px 0;
+}
+
+#profile-container .edit-about .content{
+	max-height: 0;
+	min-height: 0;
+	overflow: hidden;
+	transition: max-height 300ms ease-in-out;
+}
+
+#profile-container .edit-about .content.open{
+	max-height: 500px;
+}
+
+#profile-container .edit-about .content textarea{
+	display: block;
+	width: 100%;
+	padding: 2%;
+    border-color: rgb(221,221,221);
+}
+
+#profile-container .edit-about .content .button{
+	float: right;
+	margin-top: 20px;
+    transform: translate3d(0,0,0);
+}
+
+
 @media screen and (min-width: 768px) {
 
 	#profile-container .left-profile-container,

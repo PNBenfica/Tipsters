@@ -92,8 +92,12 @@ class TipstersApi(remote.Service):
     @endpoints.method(UserForm, Hello, path = "users", http_method='PUT', name = "updateUserProfile")
     def update_user_profile(self, request):
         user = SessionManager.get_current_user()
-        user.avatar = str(request.avatar)
-        user.put()
+        if request.avatar is not None:
+            user.avatar = str(request.avatar)
+            user.put()
+        if request.about is not None:
+            user.about = request.about
+            user.put()
         return Hello(greeting="profile successful updated")
     
     @endpoints.method(USER_GET_REQUEST, UserForm, path = "users/{username}", http_method='GET', name = "getUserProfile")

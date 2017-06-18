@@ -47,7 +47,7 @@ def getUserProfile(currentUser, requestedUsername):
     is_following = _is_following(currentUser, requestedUsername)
     stats = _get_user_stats(requestedUser)
 
-    return UserForm(name=requestedUsername, email=requestedUser.email, avatar=getUserAvatar(requestedUser), followers=followers, following=following, stats=stats, is_following=is_following)
+    return UserForm(name=requestedUsername, email=requestedUser.email, avatar=getUserAvatar(requestedUser), followers=followers, following=following, stats=stats, is_following=is_following, about=requestedUser.about)
 
 
 # user is an user object

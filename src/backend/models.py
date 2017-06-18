@@ -86,6 +86,7 @@ class User(ndb.Model):
     followingKeys = ndb.StringProperty(repeated=True)
     authToken = ndb.StringProperty()
     authTokenDate = ndb.StringProperty()
+    about = ndb.StringProperty()
     
 class UserCreationForm(messages.Message):
     name = messages.StringField(1, required=True)

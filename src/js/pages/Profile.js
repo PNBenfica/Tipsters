@@ -1,11 +1,11 @@
 import React from "react"
 import { connect } from "react-redux"
 
-import { fetchProfile, followUser, updateImage } from "../actions/userActions"
+import { fetchProfile, followUser, updateAbout, updateImage } from "../actions/userActions"
 
 import classNames from "classnames"
 
-import About from "../components/profile/About"
+import About from "../components/profile/about/About"
 import LoadingGif from "../components/LoadingGif"
 import Header from "../components/profile/header/Header"
 import Page from "./Page"
@@ -23,14 +23,14 @@ import Stats from "../components/profile/stats/Stats"
 })
 export default class Profile extends React.Component {
 
-    construtor(args){
-        this.state = { newImage : "" }
+    constructor(args){
+        super(...args)
+        this.state = { newImage : "", aboutState : { text: "", editing: false } }
     }
 
     componentWillMount() {
         const { username } = this.props.params
         this.fetchProfile(username)
-        this.setState({ myProfile : username === localStorage.username })
     }
 
     componentWillReceiveProps(nextProps){
@@ -44,9 +44,34 @@ export default class Profile extends React.Component {
         this.props.dispatch(fetchProfile(username))
     }
 
+    editingProfile(){
+        const {username } = this.props.params
+        return username === localStorage.username
+    }
+
     toggleFollow(){
         const { profile } = this.props
         this.props.dispatch(followUser(profile.name))
+    }
+
+    editAbout(){
+        const { aboutState } = this.state
+        if (!aboutState.editing){
+            this.setState({ aboutState : { text: "", editing: true, edited: false } })
+        }
+    }
+
+    updateAbout(){
+        const { aboutState } = this.state
+        if (aboutState.edited){
+            const aboutText = aboutState.text
+            this.props.dispatch(updateAbout(aboutText))
+            this.setState({ aboutState : { text: "", editing: false, edited: false } })
+        }
+    }
+
+    onAboutInputChange(ev){
+        this.setState({ aboutState : { text: ev.target.value, edited: true, editing: true } })
     }
 
     onUpdateImageInputChange(ev){
@@ -63,7 +88,8 @@ export default class Profile extends React.Component {
             return <h2>{this.props.params.username}</h2>
         else {
             const { profile } = this.props
-            const { myProfile, newImage } = this.state
+            const { newImage } = this.state
+            const myProfile = this.editingProfile()
             return <Header name={profile.name} img={profile.avatar} following={profile.is_following} toggleFollow={this.toggleFollow.bind(this)} myProfile={myProfile} inputValue={newImage} updateImage={this.updateImage.bind(this)} onInputChange={this.onUpdateImageInputChange.bind(this)} />
         }
     }
@@ -76,13 +102,16 @@ export default class Profile extends React.Component {
         const nFollowers = followers.length
         const nFollowing = following.length
 
+        const editingProfile = this.editingProfile()
+
+        const { aboutState } = this.state
 
 
         return (
 
                 <div class="col-xs-12">
 
-                    <About text={profile.about} />
+                    <About text={profile.about} editingProfile={editingProfile} state={aboutState} openEdit={this.editAbout.bind(this)} save={this.updateAbout.bind(this)} onInputChange={this.onAboutInputChange.bind(this)} />
 
                     <TopStatsPanels ROI={profile.stats.ROI} nFollowers={nFollowers} nFollowing={nFollowing}/>
 
@@ -101,7 +130,7 @@ export default class Profile extends React.Component {
     render() {
 
         const { fetched, fetching } = this.props
-        const { myProfile } = this.state
+        const myProfile = this.editingProfile()
 
         const loading = fetching || !fetched 
 

@@ -41,6 +41,16 @@ export default function reducer(state={
                 profile
             }
         }
+        case "UPDATE_ABOUT_PENDING": {
+            let { profile } = state
+            let { about } = action.params
+            profile = Object.assign({}, profile, { about })
+
+            return {
+                ...state,
+                profile
+            }
+        }
     }
 
     return state

@@ -106,7 +106,7 @@ def get_tips(sportId, leagueId, matchId):
 def _getSportTips(sportId):
     sportKey = fetchEntity(SportModel, sportId)[0]
     events = EventModel.query(ancestor=sportKey)
-    
+
     tips = []
     for event in events:
         tips += _getLeagueTips(sportId, event.id)

@@ -29,11 +29,16 @@ def add_profile_pictures():
     for user in users:
         userModel = getUser(user)
         userModel.avatar = random_picture()
+        userModel.about = random_about()
         userModel.put()
 
 def random_picture():
     pictures = ["img/user1.jpg", "img/user2.jpg", "img/user3.jpg", "img/user4.jpg", "img/user5.jpg", "img/user6.jpg", "img/user7.jpg", "img/user8.jpg", "img/joaoalmeida.jpg", "img/pauloteixeira.jpg"]
     return random_list_element(pictures)
+
+def random_about():
+    abouts = ["O meu percurso enquanto trader profissional é o resultado de dois percursos distintos, um enquanto profissional em vários cargos na area do futebol e outro enquanto apostador…Largos anos de experiência ligado ao mundo do futebol, passagens como Treinador por diversos clubes, entre eles a formação do Sporting CP, por diversas agências de Gestão de Carreiras de jogadores profissionais de futebol, e na area do Scoutng (observação e captação de novos talentos)", "Sigo de volta", "Sou fortissimo, sigam-me", "Olá, tenho 22 anos e sou de Portugal. Qql coisa manda mensagem."]
+    return random_list_element(abouts)
 
 def follow_users():
     for user in users:
