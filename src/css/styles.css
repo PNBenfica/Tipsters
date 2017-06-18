@@ -166,6 +166,8 @@ textarea, input{
 
 #page-wrapper .loading-placeholder > .loading-gif-container .loading-gif .uil-facebook-css{
 	width: 60px;
+    position: relative;
+    left: -15px;
 }
 
 .fade-in{

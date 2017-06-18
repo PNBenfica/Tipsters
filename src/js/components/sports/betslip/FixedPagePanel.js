@@ -3,7 +3,8 @@ import React from "react";
 import classNames from "classnames"
 import onClickOutside from 'react-onclickoutside'
 
-import Icon from "./Icon";
+import Icon from "./Icon"
+import Section from "../../Section"
 
 export default onClickOutside( class FixedPagePanel extends React.Component {
 
@@ -18,7 +19,7 @@ export default onClickOutside( class FixedPagePanel extends React.Component {
     }
 
     handleClickOutside(event){
-        ~this.closePanel()
+        this.closePanel()
     }
 
     closePanel(){
@@ -29,16 +30,18 @@ export default onClickOutside( class FixedPagePanel extends React.Component {
     
     render() {
 
-        const { active, classes, icon, iconNumber, id } = this.props;
+        const { active, classes, icon, iconNumber, id, title } = this.props;
         const { open } = this.state
 
         return (
-            <div id={id} onClick={this.closePanel.bind(this)} class={ classNames("fixed-page-panel", classes, { active: active || open, open }) } >
+            <div id={id} class={ classNames("fixed-page-panel", classes, { active: active || open, open }) } >
 
                 <Icon icon={icon} n={iconNumber} onClick={this.onIconClick.bind(this)} />
 
                 <div class="page-panel">
-                    { this.props.children }
+                    <Section title={title}>
+                        { this.props.children }
+                    </Section>
                 </div>
 
             </div>

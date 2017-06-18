@@ -90,9 +90,19 @@ export function shareTip(betSlip) {
             body: { tips, comment },
             method: "POST",
             auth: true,
-            dispatch: dispatch
+            dispatch: dispatch,
+            default: shareTip_default()
         })
 
 	}
+
+}
+
+
+export function shareTip_default() {
+
+    return { 
+        "greeting": "1a35ascad5sdc5s"
+    }
 
 }

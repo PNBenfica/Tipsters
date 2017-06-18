@@ -21,7 +21,7 @@ export default class BetSlip extends React.Component {
         }
 
         return (
-            <FixedPagePanel id="bet-slip" active={tips.length > 0} icon="list-icon" iconNumber={tips.length}>
+            <FixedPagePanel id="bet-slip" title="Bet Slip" active={tips.length > 0} icon="list-icon" iconNumber={tips.length}>
 
                 { betSlipBody }
 

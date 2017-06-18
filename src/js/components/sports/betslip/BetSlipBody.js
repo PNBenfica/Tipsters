@@ -30,11 +30,11 @@ export default class BetSlipBody extends React.Component {
         return (
             <div class="panel-body">
 
-                <div class="bet-slip-tips-container">
+                <div class="bet-slip-tips-container col-xs-12 col-sm-4 col-sm-push-1">
                     {Tips}
                 </div>
 
-                <div class={classNames("bet-slip-actions", {expanded})}>
+                <div class={classNames("bet-slip-actions col-xs-12 col-sm-5 col-xs-push-2", {expanded})}>
 
                     <TotalOdd totalOdd={totalOdd} />
 
@@ -44,7 +44,7 @@ export default class BetSlipBody extends React.Component {
                         <textarea onChange={this.handleCommentChange.bind(this)} ref="comment" class="form-control" rows="3" id="bet-slip-comment" placeholder="Add comment"></textarea>
                     </div>
 
-
+<input type="file" accept="video/*;capture=camcorder"/>
                     <div class="button-wrapper"><Button title="Share Tip" onClick={() => shareTip()} /></div>
 
                 </div>

@@ -13,7 +13,7 @@ export default class TipsOnThisEvent extends React.Component {
         const { fetching, fetched, tips } = this.props
 
         return (
-            <FixedPagePanel classes="tips-on-this-event" active={!fetching && tips.length > 0} icon="light-bulb" iconNumber={tips.length}>
+            <FixedPagePanel title="Tips on this event" classes="tips-on-this-event" active={!fetching && tips.length > 0} icon="light-bulb" iconNumber={tips.length}>
 
                 { <ChatBody tips={tips}/> }
 

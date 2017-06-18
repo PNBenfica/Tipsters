@@ -9,7 +9,7 @@ export default class BetSlipEmptyBody extends React.Component {
 
     render() {
         return (     
-            <div class="panel-body empty-bet-slip">
+            <div class="panel-body empty-bet-slip col-xs-12 col-sm-4 col-sm-push-4">
 
                 <div class="panel panel-default post-tips expanded">
                     <div class="panel-body">

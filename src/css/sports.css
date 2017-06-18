@@ -387,44 +387,35 @@ bet slip
 .fixed-page-panel .page-panel{
     position: fixed;
     top: 62px;
-    width: 0;
-    height: 0;
-    background: rgba(0,0,0,0.9);
+    width: 100%;
+    height: calc(100vh - 62px);
+    padding: 5vh 8vw;
+    background: white;
     overflow: auto;
 
     opacity: 0;
 
-    transition: opacity 500ms ease-in-out;
+    transition: opacity 500ms ease-in-out, z-index 0s 500ms;
+    z-index: 0;
 }
 
 .fixed-page-panel.open .page-panel{
-    width: 100%;
-    height: calc(100vh - 62px);
-    padding-right: 8vw;
-    padding-top: 5vh;
     opacity: 1;
     z-index: 2;
+    transition: opacity 500ms ease-in-out, z-index 0s;
 }
 
 
-.fixed-page-panel.open .page-panel > .panel-body{
+.fixed-page-panel .page-panel > .panel-body{
     max-width: 100%;
     width: 400px;
     float: right;
-	color: white;
+    padding: 2% !important;
 }
 
-.fixed-page-panel.open .page-panel > .panel-body .post-tips{
-	background: rgba(0,0,0,0.5);
+.fixed-page-panel .page-panel section.generic{
+    margin-top: 0;
 }
-
-.fixed-page-panel.open .page-panel a{
-	color: white !important;
-}
-.fixed-page-panel.open .page-panel a:hover{
-	color: #c30000 !important;
-}
-
 
 
 #bet-slip .bet-slip-actions,
@@ -453,6 +444,10 @@ bet slip
     -moz-transition: all 0.75s;
     -o-transition: all 0.75s;
     transition: all 0.75s;
+}
+
+#bet-slip .bet-slip-actions.expanded{ 
+    text-transform: uppercase;
 }
 
 #bet-slip .bet-slip-actions.expanded{ 
@@ -487,11 +482,6 @@ bet slip
 	display: inline;
 	width: 50px;
 	margin-left: 5px;
-    background: rgba(0,0,0,0.5);
-}
-
-#bet-slip .panel-body textarea.form-control{
-    background: rgba(0,0,0,0.5);
 }
 
 
@@ -634,7 +624,7 @@ Tips on this game
 }
 
 #sports-page .tips-on-this-event #tips-on-this-events .post-tips { 
-    padding-left: 10px;
+    padding: 5px 10px;
 }
 
 #sports-page .tips-on-this-event .chat-panel .tips-container{

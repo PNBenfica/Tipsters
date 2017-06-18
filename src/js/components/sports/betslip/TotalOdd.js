@@ -7,7 +7,7 @@ export default class TotalOdd extends React.Component {
         const {totalOdd} = this.props;
 
         return (
-            <p id="bet-slip-total-odd">Odd total: {totalOdd}</p>
+            <p id="bet-slip-total-odd">Total odd: {totalOdd}</p>
         );
   }
 }
