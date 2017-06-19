@@ -36,7 +36,7 @@ def storePost(user, request):
         
     post_key = gaeUtils.generateKey(Post, user.key)
     
-    data = { 'author':user.key.id(), 'key':post_key, 'comment': request.comment, \
+    data = { 'author':user.key.id(), 'key':post_key, 'comment': request.comment, 'video': request.video, \
         'nComments':0, 'nLikes':0, 'date': getCurrentDate(), 'totalOdd': _calculate_total_odd(request.tips) }
     
     data['tips'] = _storeTips(request.tips)
@@ -88,7 +88,7 @@ def toPostMessage(user, post):
     tips = map(_toTipMessage, post.tips)
     comments = map(_toPostCommentMessage, getPostComments(post))
     liked = _userLikedPost(user,post)
-    return PostMessage(tipster=tipster,liked=liked,comment=post.comment,nComments=post.nComments,nLikes=post.nLikes,date=post.date,totalOdd=post.totalOdd,websafeKey=post.key.urlsafe(),tips=tips,comments=comments)
+    return PostMessage(tipster=tipster,liked=liked,comment=post.comment,nComments=post.nComments,nLikes=post.nLikes,date=post.date,totalOdd=post.totalOdd,websafeKey=post.key.urlsafe(),tips=tips,comments=comments, video=post.video)
 
 def getUserAvatar(user):
     avatar = user.avatar

@@ -49,7 +49,11 @@ export default class Sports extends React.Component {
 
     constructor(...args) {
         super(...args);
-        this.state = { betSlip : { tips: [], sellingPrice : 0, comment: "", expanded : false }, warningAlreadyInBetSlip : false, allLeaguesVisible: false};
+        this.state = { 
+            betSlip : { tips: [], sellingPrice : 0, comment: "", expanded : false, uploadedVideo : false }, 
+            warningAlreadyInBetSlip : false, 
+            allLeaguesVisible: false,
+        };
     }
 
     /*
@@ -301,6 +305,24 @@ export default class Sports extends React.Component {
         let { betSlip } = this.state
         betSlip.comment = comment
         this.setState({ betSlip })
+    }
+
+    setUploadVideo(video){
+        let { betSlip } = this.state
+
+        const setVideo = (video) => {
+            betSlip.uploadedVideo = video
+            this.setState({ betSlip })
+        }
+
+        var reader = new FileReader();
+
+        reader.addEventListener("loadend", function() {
+            setVideo(reader.result)
+        });
+
+        reader.readAsDataURL(video);
+
     }
 
     shareTip(){
@@ -712,7 +734,7 @@ export default class Sports extends React.Component {
 
 	            </div>
                 
-                <BetSlip {...this.state.betSlip} updateSellingPrice={this.updateSellingPrice.bind(this)} removeTip={this.removeTip.bind(this)} shareTip={this.shareTip.bind(this)} setBetSlipComment={this.setBetSlipComment.bind(this)}/>
+                <BetSlip {...this.state.betSlip} updateSellingPrice={this.updateSellingPrice.bind(this)} removeTip={this.removeTip.bind(this)} shareTip={this.shareTip.bind(this)} setBetSlipComment={this.setBetSlipComment.bind(this)} setUploadVideo={this.setUploadVideo.bind(this)} />
 
                 <TipsOnThisEvent tips={tips} fetching={fetchingTips} fetched={fetchedTips} />
 

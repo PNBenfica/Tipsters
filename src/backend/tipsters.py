@@ -11,7 +11,7 @@ from google.appengine.api import taskqueue
 from protorpc import message_types
 from protorpc import messages
 from protorpc import remote
-
+import base64
 
 from models import UserAuthTokenMessage, ChatsMessage, TipsOnThisEventMessage, SearchSuggestionsMessage, NotificationsMessage, RankingsMessage, SportMessage, SportParams, UserForm, UserCreationForm, TrendsMessage, UserAuthForm, PostForm, PostMessage, FeedMessage, PostCommentMessage
 from settings import WEB_CLIENT_ID
@@ -149,8 +149,15 @@ class TipstersApi(remote.Service):
         return TipsOnThisEventMessage(tips=tips)
     
     @endpoints.method(PostForm, Hello, path = "users/posts", http_method='Post', name = "addPost")
-    def add_post(self, request):        
-        #user_key = ndb.Key(User, "Aimar Bernardo") # must change to get user from token 
+    def add_post(self, request):
+        
+    
+        #print (request.video)
+        #video = Video()
+        #video.video = request.video
+        #video.put()
+        #return Hello(greeting="ola")
+        
         user = SessionManager.get_current_user()       
         post_key = PostManager.storePost(user, request)
         

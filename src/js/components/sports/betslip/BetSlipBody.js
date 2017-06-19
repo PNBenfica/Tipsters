@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import classNames from "classnames"
 
 import Button from "./../../Button"
+import RecordPage from "../../videoUploader/RecordPage";
 import SellingPrice from "./SellingPrice";
 import Tip from "./Tip";
 import TotalOdd from "./TotalOdd";
@@ -21,7 +22,7 @@ export default class BetSlipBody extends React.Component {
 
     render() {
 
-        const { tips, expanded, shareTip } = this.props;
+        const { tips, expanded, shareTip, setUploadVideo, uploadedVideo } = this.props;
         
         const totalOdd = tips.map(tip => tip.choice.odd).reduce((a,b) => a * b, 1).toFixed(2);
 
@@ -36,6 +37,8 @@ export default class BetSlipBody extends React.Component {
 
                 <div class={classNames("bet-slip-actions col-xs-12 col-sm-5 col-xs-push-2", {expanded})}>
 
+                    <RecordPage setUploadVideo={setUploadVideo} uploadedVideo={uploadedVideo} />
+
                     <TotalOdd totalOdd={totalOdd} />
 
                     <SellingPrice updateSellingPrice={this.props.updateSellingPrice}/>
@@ -44,7 +47,6 @@ export default class BetSlipBody extends React.Component {
                         <textarea onChange={this.handleCommentChange.bind(this)} ref="comment" class="form-control" rows="3" id="bet-slip-comment" placeholder="Add comment"></textarea>
                     </div>
 
-<input type="file" accept="video/*;capture=camcorder"/>
                     <div class="button-wrapper"><Button title="Share Tip" onClick={() => shareTip()} /></div>
 
                 </div>

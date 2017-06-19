@@ -37,7 +37,7 @@ def random_picture():
     return random_list_element(pictures)
 
 def random_about():
-    abouts = ["O meu percurso enquanto trader profissional é o resultado de dois percursos distintos, um enquanto profissional em vários cargos na area do futebol e outro enquanto apostador…Largos anos de experiência ligado ao mundo do futebol, passagens como Treinador por diversos clubes, entre eles a formação do Sporting CP, por diversas agências de Gestão de Carreiras de jogadores profissionais de futebol, e na area do Scoutng (observação e captação de novos talentos)", "Sigo de volta", "Sou fortissimo, sigam-me", "Olá, tenho 22 anos e sou de Portugal. Qql coisa manda mensagem."]
+    abouts = ["O meu percurso enquanto trader profissional e o resultado de dois percursos distintos, um enquanto profissional em varios cargos na area do futebol e outro enquanto apostador...Largos anos de experiencia ligado ao mundo do futebol, passagens como Treinador por diversos clubes, entre eles a formacao do Sporting CP, por diversas agencias de Gestao de Carreiras de jogadores profissionais de futebol, e na area do Scoutng (observacao e captacao de novos talentos)", "Sigo de volta", "Sou fortissimo, sigam-me", "Ola, tenho 22 anos e sou de Portugal. Qql coisa manda mensagem."]
     return random_list_element(abouts)
 
 def follow_users():

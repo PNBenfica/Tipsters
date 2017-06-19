@@ -28,6 +28,10 @@ class Post(ndb.Model):
     tips = ndb.KeyProperty(repeated=True, kind=TipModel)
     totalOdd = ndb.FloatProperty()
     status = ndb.StringProperty()
+    video = ndb.TextProperty()
+
+#class Video(ndb.Model):
+#    video = ndb.TextProperty()
     
 class PostComment(ndb.Model):
     author = ndb.StringProperty()
@@ -35,8 +39,9 @@ class PostComment(ndb.Model):
     date = ndb.StringProperty()
 
 class PostForm(messages.Message):
-    comment = messages.StringField(1, required=True)
+    comment = messages.StringField(1)
     tips = messages.MessageField('TipForm',2,repeated=True)
+    video = messages.StringField(3)
     
 class TipForm(messages.Message):
     sportId = messages.StringField(1)
@@ -65,6 +70,7 @@ class PostMessage(messages.Message):
     tips = messages.MessageField('TipForm',8,repeated=True)
     comments = messages.MessageField('PostCommentMessage',9,repeated=True)
     totalOdd = messages.FloatField(10)
+    video = messages.StringField(11)
 
 class PostCommentMessage(messages.Message):
     tipster = messages.MessageField('UserMiniForm',1)

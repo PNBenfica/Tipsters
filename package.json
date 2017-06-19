@@ -30,6 +30,7 @@
     "react-router": "^1.0.3",
     "react-slick": "^0.14.7",
     "react-timeago": "^3.2.0",
+    "recordrtc": "^5.2.6",
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-promise-middleware": "^3.3.2",

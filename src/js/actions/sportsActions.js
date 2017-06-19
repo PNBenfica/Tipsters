@@ -79,7 +79,7 @@ export function fetchTips_default(sportParams) {
 
 export function shareTip(betSlip) {
 
-	let { tips, comment } = betSlip
+	let { tips, comment, uploadedVideo } = betSlip
 	tips = tips.map(tip => { return { sportId: tip.eventURL.sport.id , leagueId: tip.eventURL.league.id , matchId: tip.eventURL.match.id , betId: tip.bet.id, choiceId: tip.choice.id} } )
 
 	return function(dispatch) {
@@ -87,7 +87,7 @@ export function shareTip(betSlip) {
         callAPI({
             type: "ADD_POST",
             path: "users/posts",
-            body: { tips, comment },
+            body: { tips, comment, video : uploadedVideo },
             method: "POST",
             auth: true,
             dispatch: dispatch,
