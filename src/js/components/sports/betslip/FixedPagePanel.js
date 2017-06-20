@@ -15,7 +15,13 @@ export default onClickOutside( class FixedPagePanel extends React.Component {
 
     onIconClick(){
         const open = !this.state.open
-        this.setState( { open } )
+        if (open){
+            this.lockBody()
+            this.setState( { open } )
+        }
+        else{
+            this.closePanel()
+        }
     }
 
     handleClickOutside(event){
@@ -24,8 +30,10 @@ export default onClickOutside( class FixedPagePanel extends React.Component {
 
     closePanel(){
         const { open } = this.state
-        if (open)
+        if (open){
+            this.unlockBody()
             this.setState( { open : false } )
+        }
     }
     
     render() {
@@ -47,4 +55,29 @@ export default onClickOutside( class FixedPagePanel extends React.Component {
             </div>
         )
     }
+
+
+
+    lockBody() {
+        var scrollbarwidth = (window.innerWidth - $(window).width());
+        var scrollPosition = [
+            self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
+            self.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+        ];
+        var html = $('html'); 
+        if (!html.hasClass("scroll-lock")) {
+            html.addClass("scroll-lock");
+            html.data('scroll-position', scrollPosition);
+            html.data('previous-overflow', html.css('overflow'));
+            $('html').css('overflow-y', 'hidden');
+            window.scrollTo(scrollPosition[0], scrollPosition[1]);
+            $('html, .fixed, .fixed-nav > .nav-top, .cookies-bar').css('padding-right', scrollbarwidth + 'px');
+        }
+    };
+    unlockBody(){
+        var html = $('html');
+        html.css('overflow-y', 'visible');
+        $('html, .fixed, .fixed-nav > .nav-top, .cookies-bar').css('padding-right', '0');
+        html.removeClass("scroll-lock");
+    };
 })

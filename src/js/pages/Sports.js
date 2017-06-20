@@ -315,13 +315,20 @@ export default class Sports extends React.Component {
             this.setState({ betSlip })
         }
 
-        var reader = new FileReader();
+        if (video){
+            var reader = new FileReader();
 
-        reader.addEventListener("loadend", function() {
-            setVideo(reader.result)
-        });
+            reader.addEventListener("loadend", function() {
+                setVideo(reader.result)
+            });
 
-        reader.readAsDataURL(video);
+            reader.readAsDataURL(video);
+        }
+        else{
+            console.log("resssseeet")
+            setVideo(false)
+        }
+
 
     }
 

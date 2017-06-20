@@ -3,6 +3,7 @@ import React from "react"
 import GenericPost from "./GenericPost"
 import Tips from "./Tips"
 import TipsData from "./TipsData"
+import Video from "./Video"
 
 export default class Post extends React.Component {
 
@@ -18,7 +19,7 @@ export default class Post extends React.Component {
 
     render() {
 
-        const { tipster, tips, comment, totalOdd } = this.props
+        const { tipster, tips, comment, totalOdd, video } = this.props
 
         return (
             <GenericPost {...this.props} toggleCommentBox={this.toggleCommentBox.bind(this)} commentBoxOpen={this.state.commentBoxOpen}>
@@ -26,6 +27,8 @@ export default class Post extends React.Component {
                 <Tips tips={tips} />
 
                 <TipsData comment={comment} totalOdd={totalOdd} />
+
+                { video ? <Video video={video} /> : null }
 
             </GenericPost>
     )

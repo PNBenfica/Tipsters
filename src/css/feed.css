@@ -479,6 +479,54 @@ post-comment-box
 }
 
 
+.feed-post .video-container{
+	padding: 8% 10%;
+	cursor: pointer;
+}
+
+.feed-post video{
+	width: 100%;
+    filter: brightness(0.6);
+    transition: filter .5s ease-in-out;
+}
+
+.feed-post .video-container.playing video,
+.feed-post .video-container:hover video{
+    filter: brightness(1);
+}
+
+
+.feed-post .play-button{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    padding: 8% 10%;
+    opacity: 1;
+    transition: opacity .2s ease-in-out;
+}
+
+.feed-post .video-container.playing .play-button{
+	opacity: 0;
+}
+
+.feed-post .play-button svg{
+	position: relative;
+    fill: rgba(255,255,255,0);
+    width: 100%;
+    height: 100%;
+    padding: 20%;
+    -webkit-transition: fill .5s ease-in-out;
+    -moz-transition: fill .5s ease-in-out;
+    transition: fill .5s ease-in-out;
+}
+
+.feed-post .video-container:hover .play-button:hover svg{
+    animation-name: scale-up-down;
+    animation-duration: .3s;
+    fill: rgba(255,255,255,0.2);
+}
 
 
 

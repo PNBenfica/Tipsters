@@ -336,6 +336,10 @@ bet slip
     cursor: pointer;
 }
 
+html.scroll-lock .icon{
+    right: calc(5vh + 17px);
+}
+
 .fixed-page-panel.active .icon{
     transform: scale(1);
 }
@@ -546,6 +550,38 @@ bet slip
     width: 100%;
 }
 
+
+#bet-slip .expandable-input header{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+#bet-slip .expandable-input header svg{
+    fill: #c30000;
+    stroke: #c30000;
+    width: 20px;
+    height: 20px;
+}
+
+#bet-slip .expandable-input header p{
+    margin-bottom: 0;
+    margin-left: 10px;
+}
+
+#bet-slip .expandable-input .body{
+    margin-bottom: 10px;
+}
+
+#bet-slip .expandable-input.open .body{
+}
+
+
+#bet-slip .record-container .actions .button{
+    width: 145px;
+    text-align: center;
+}
 
 /**********************************
 Tips on this game

@@ -1,15 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-class Webcam extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+export default class Webcam extends React.Component {
 
-  render() {
-    return (
-      <video autoPlay loop muted src={this.props.src} />
-    )
-  }
+  	render() {
+  		
+  		const { uploadedVideo } = this.props
+
+		return (
+			uploadedVideo ? <video controls src={this.props.src} /> : <video autoPlay loop muted src={this.props.src} />
+		)
+	}
 }
-
-export default Webcam;

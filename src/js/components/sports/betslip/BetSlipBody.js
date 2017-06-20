@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import classNames from "classnames"
 
 import Button from "./../../Button"
+import ExpandableInput from "./ExpandableInput"
 import RecordPage from "../../videoUploader/RecordPage";
 import SellingPrice from "./SellingPrice";
 import Tip from "./Tip";
@@ -37,15 +38,18 @@ export default class BetSlipBody extends React.Component {
 
                 <div class={classNames("bet-slip-actions col-xs-12 col-sm-5 col-xs-push-2", {expanded})}>
 
-                    <RecordPage setUploadVideo={setUploadVideo} uploadedVideo={uploadedVideo} />
-
                     <TotalOdd totalOdd={totalOdd} />
 
-                    <SellingPrice updateSellingPrice={this.props.updateSellingPrice}/>
+                    <ExpandableInput title="Add video">
+                        <RecordPage setUploadVideo={setUploadVideo} uploadedVideo={uploadedVideo} />
+                    </ExpandableInput>
 
-                    <div class="form-group">
-                        <textarea onChange={this.handleCommentChange.bind(this)} ref="comment" class="form-control" rows="3" id="bet-slip-comment" placeholder="Add comment"></textarea>
-                    </div>
+                    <ExpandableInput title="Add comment">
+                        <div class="form-group">
+                            <textarea onChange={this.handleCommentChange.bind(this)} ref="comment" class="form-control" rows="3" id="bet-slip-comment" placeholder="Add comment"></textarea>
+                        </div>
+                    </ExpandableInput>
+
 
                     <div class="button-wrapper"><Button title="Share Tip" onClick={() => shareTip()} /></div>
 

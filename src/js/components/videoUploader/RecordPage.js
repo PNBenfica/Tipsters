@@ -1,5 +1,5 @@
 import React from 'react';
-import { captureUserMedia, S3Upload } from './AppUtils';
+import { captureUserMedia } from './AppUtils';
 import Webcam from './Webcam';
 import RecordRTC from 'recordrtc';
 
@@ -12,6 +12,7 @@ class RecordPage extends React.Component {
 
     this.state = {
       recordVideo: null,
+      recording: false,
       src: null
     };
 
@@ -35,53 +36,77 @@ class RecordPage extends React.Component {
   }
 
   startRecord() {
+
+    this.setState({ recording : true })
+
     captureUserMedia((stream) => {
       this.state.recordVideo = RecordRTC(stream, { type: 'video' });
       this.state.recordVideo.startRecording();
     });
 
-    setTimeout(() => {
-      this.stopRecord();
-    }, 4000);
+
+    // setTimeout(() => {
+      // this.stopRecord();
+    // }, 4000);
   }
 
   stopRecord() {
     const { setUploadVideo } = this.props
 
+    this.setState({ recording : false })
+
     this.state.recordVideo.stopRecording(() => {
 
-      setUploadVideo( this.state.recordVideo.blob );
+      setUploadVideo( this.state.recordVideo.blob )
 
     });
+
   }
 
-  _base64ToArrayBuffer(base64) {
-    var binary_string =  window.atob(base64);
-    var len = binary_string.length;
-    var bytes = new Uint8Array( len );
-    for (var i = 0; i < len; i++)        {
-        bytes[i] = binary_string.charCodeAt(i);
-    }
-    return bytes.buffer;
-}
-
-  render() {
-
-    let { src } = this.state
-    const { uploadedVideo } = this.props
-
-    if (uploadedVideo){
-        // var videoSRC = new Blob([this._base64ToArrayBuffer(uploadedVideo)], { type: "video/webm" })
-        src = uploadedVideo
+    discardRecord() {
+        const { setUploadVideo } = this.props
+        setUploadVideo( false )
     }
 
-    return(
-      <div>
-        <div><Webcam src={src}/></div>
-        <div><button onClick={this.startRecord}>Start Record</button></div>
-      </div>
-    )
-  }
+    renderActions(){
+
+        const { uploadedVideo } = this.props
+        const { recording } = this.state
+
+        let button
+        if (uploadedVideo)
+            button = { name : "Discard video", onClick : this.discardRecord.bind(this)}
+        else if (recording)
+            button = { name : "Stop", onClick : this.stopRecord}
+        else
+            button = { name : "Start", onClick : this.startRecord}
+
+        return (
+            <div class="actions">
+            {
+                <div class="button" onClick={button.onClick}><span>{button.name}</span></div>
+            }
+            </div>
+        )
+    }
+
+    render() {
+
+        let { src } = this.state
+        const { uploadedVideo } = this.props
+
+        if (uploadedVideo){
+            src = uploadedVideo
+        }
+
+        return(
+            <div class="record-container col-xs-12">
+                <div><Webcam src={src} uploadedVideo={uploadedVideo} /></div>
+
+                {this.renderActions()}
+            </div>
+        )
+    }
 }
 
 export default RecordPage;
