@@ -7,7 +7,6 @@ export default class NavbarLinks extends React.Component {
     getOptions(pathname){
         return [ {name: "News Feed", href:"feed", active : pathname.match(/^\/feed/) },
                  {name: "Share a tip", href:"sports", active : pathname.match(/^\/sports/)},
-                 {name: "Live Streams", href:"streams", active : pathname.match(/^\/streams/) },
                  {name: "Rankings", href:"rankings", active : pathname.match(/^\/rankings/) }]
     }
 

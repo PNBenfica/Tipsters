@@ -24,6 +24,8 @@ export default class Slide extends React.Component {
 
             	</div>
 
+                <div class="icon-scroll"></div>
+
             </section>
         )
 

@@ -1,5 +1,6 @@
 import React from "react"
-import { Collapse } from "react-bootstrap"
+
+import classNames from "classnames"
 
 import AddCommentInput from "./AddCommentInput"
 import Comment from "./Comment"
@@ -20,7 +21,7 @@ export default class CommentBox extends React.Component {
 
     render() {
 
-        const { comments = [] } = this.props 
+        const { comments = [], open } = this.props 
 
         // get the last 'numVisibleComments'. the other are hidden
         let visibleComments = comments.slice(Math.max(comments.length-this.state.numVisibleComments, 0), comments.length)
@@ -29,15 +30,15 @@ export default class CommentBox extends React.Component {
 
         return (
 
-            <Collapse in={this.props.in}>
+            <div >
 
-                <div class="post-comment-box">
+                <div class={classNames("post-comment-box", { open }) }>
                     <a class={visibleComments.length < comments.length ? 'visible' : 'hidden'} onClick={this.showMoreComments.bind(this)}>Mostrar mais comentarios</a>
                     {visibleComments}
                     <AddCommentInput addComment={this.props.addComment} />
                 </div>
                 
-            </Collapse>
+            </div>
         )
     }
 }

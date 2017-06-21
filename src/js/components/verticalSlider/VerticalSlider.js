@@ -15,8 +15,7 @@ export default class VerticalSlider extends React.Component {
             { title: "Tipsters", description:"Share your tips. Make money.", background: "img/covers/section001.jpg" },
             { title: "News Feed", description:"View the previsions made by other tipsters", href:"#/feed", refTitle:"News Feed", background: "img/covers/section002.jpg" },
             { title: "Share a tip", description:"Browse through the sport events available and share a tip", href:"#/sports", refTitle:"Share a tip", background: "img/covers/section003.jpg" },
-            { title: "Live streams", description:"Start or view a video live stream about any sport event", href:"#/streams", refTitle:"Live streams", background: "img/covers/section004.jpg" },
-            { title: "Rankings", description:"Find the best tipsters to help you become more profitable", href:"#/rankings", refTitle:"Rankings", background: "img/covers/section005.jpg" }
+            { title: "Rankings", description:"Find the best tipsters to help you become more profitable", href:"#/rankings", refTitle:"Rankings", background: "img/covers/section004.jpg" }
         ]
 
         this.slides = slides

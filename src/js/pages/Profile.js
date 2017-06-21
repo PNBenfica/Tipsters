@@ -140,7 +140,7 @@ export default class Profile extends React.Component {
 
         return (
 
-            <Page id="profile-container" classes={classNames( { myProfile } )} title={this.props.params.username} customHeader={ customHeader } loading={loading} img="img/covers/profile.jpg" >
+            <Page id="profile-container" classes={classNames( { myProfile } )} title={this.props.params.username} customHeader={ customHeader } loading={loading} img="img/covers/livestreams.jpg" >
                 
                 { body }
 

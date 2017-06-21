@@ -102,12 +102,14 @@
 .navbar .navbar-links a {
     color: white !important;
     text-transform: uppercase;
-    height: 20vh;
+    height: 30vh;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: opacity 500ms 250ms, color 200ms;
+    font-weight: 400;
+    font-size: 24px;
 }
 
 .navbar .navbar-links.open a {

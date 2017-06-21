@@ -74,7 +74,7 @@ export default class GenericPost extends React.Component {
 
                             <Footer liked={liked} likes={nLikes} likePost={likePost} comments={nComments} toggleCommentBox={toggleCommentBox} />
 
-                            <CommentBox in={commentBoxOpen} comments={comments} addComment={addComment}/>
+                            <CommentBox open={commentBoxOpen} comments={comments} addComment={addComment}/>
 
                         </div>
 

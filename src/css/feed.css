@@ -423,15 +423,20 @@ post-comment-box
 
 
 .feed-post .post-comment-box{
-	border-top: solid 1px #B1B1B1;
-    margin-bottom: 0;
+    margin-bottom: 50px;
     padding: 0px 15px 5px 15px;
-    transition: margin-bottom 1s;
+	border-top: solid 1px rgb(221,221,221);
+	opacity: 0;
+	max-height: 0;
+	overflow: hidden;
+
+    transition: opacity 500ms ease-in-out, max-height 200ms 500ms ease-in-out;
 }
-.feed-post .post-comment-box.in{
-	border-top: solid 1px #B1B1B1;
-    margin-bottom: 250px;
-    padding: 0px 15px 5px 15px;
+.feed-post .post-comment-box.open{
+	max-height: 5000px;
+	opacity: 1;
+
+    transition: opacity 500ms 200ms ease-in-out, max-height 2000ms ease-in-out;
 }
 
 .feed-post .post-comment-box .post-comment{

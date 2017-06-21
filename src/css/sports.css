@@ -11,7 +11,6 @@
 #sports-page .breadcrumb{
 	background: transparent;
 	padding: 0px;
-	text-transform: uppercase;
 	line-height: 14px;
 }
 
@@ -337,7 +336,7 @@ bet slip
 }
 
 html.scroll-lock .icon{
-    right: calc(5vh + 17px);
+    /*right: calc(5vh + 17px);*/
 }
 
 .fixed-page-panel.active .icon{

@@ -50,6 +50,12 @@ a:hover {
 	color: #c30000 !important;
 }
 
+/*#app{
+	position: relative;
+	width: 100%;
+	float: left;
+}*/
+
 
 
 .panel, .table{

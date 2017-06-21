@@ -16,7 +16,7 @@ export default onClickOutside( class FixedPagePanel extends React.Component {
     onIconClick(){
         const open = !this.state.open
         if (open){
-            this.lockBody()
+            // this.lockBody()
             this.setState( { open } )
         }
         else{
@@ -31,7 +31,7 @@ export default onClickOutside( class FixedPagePanel extends React.Component {
     closePanel(){
         const { open } = this.state
         if (open){
-            this.unlockBody()
+            // this.unlockBody()
             this.setState( { open : false } )
         }
     }
