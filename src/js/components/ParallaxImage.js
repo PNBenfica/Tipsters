@@ -10,6 +10,7 @@ export default class ParallaxImage extends React.Component {
 	}
 
 	componentDidMount(){
+        this.handleScroll()
         window.addEventListener("scroll", this.handleScroll)
 	}
 
@@ -19,7 +20,7 @@ export default class ParallaxImage extends React.Component {
 
     handleScroll() {
     	// const backgroundPositionY = -document.body.scrollTop / 5
-    	const backgroundPositionY = -(window.innerHeight - this.refs.picture.getBoundingClientRect().top) / 8 + 60
+    	const backgroundPositionY = -(window.innerHeight - this.refs.picture.getBoundingClientRect().top) / 8 + 80.875
 		// console.log(-(window.innerHeight - this.refs.picture.getBoundingClientRect().top) / 8 + 60)
 		// console.log(backgroundPositionY)
 		// console.log("-----------------")

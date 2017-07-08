@@ -89,20 +89,20 @@
     position: relative;
 }
 
-#profile-container header img{
-    height: 100%;
-    min-width: 100%;
-
-}
 
 #profile-container header picture{
+	position: relative;
+	width: 100%;
+	float:left;
+}
+
+#profile-container header picture img{
 	position: relative;
 	width: 100px;
 	height: 100px;
 	border-radius: 100%;
     overflow: hidden;
 }
-
 
 #profile-container .loading-placeholder header> *{
 	text-align: center;
@@ -573,6 +573,17 @@
 }
 
 
+#profile-container header .content{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+#profile-container header h2{
+	width: 100%;
+}
+
 @media screen and (min-width: 768px) {
 
 	#profile-container .left-profile-container,
@@ -611,13 +622,14 @@
 
 
 
-	#profile-container header .content{
-		display: flex;
-		align-items: center;
+	#profile-container header picture,
+	#profile-container header h2{
+		width: auto;
 	}
 
 	#profile-container:not(.loading) .loading-placeholder h2{
     	font-size: 34px;
+    	transition: none;
 	}
 
 	#profile-container header h2{

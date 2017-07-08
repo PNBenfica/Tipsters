@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "dependencies": {
     "axios": "^0.13.1",
+    "babel-core": "^6.0.0",
     "babel-loader": "^6.2.0",
     "babel-plugin-add-module-exports": "^0.1.2",
     "babel-plugin-react-html-attrs": "^2.0.0",
@@ -24,6 +25,7 @@
     "react": "^15.0.1",
     "react-bootstrap": "^0.30.0-rc.2",
     "react-chartjs": "^0.8.0",
+    "react-chartjs-2": "^2.1.0",
     "react-dom": "^15.0.1",
     "react-onclickoutside": "^5.9.0",
     "react-redux": "^4.4.5",
